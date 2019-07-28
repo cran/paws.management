@@ -61,6 +61,43 @@ servicecatalog_accept_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 }
 .servicecatalog$operations$accept_portfolio_share <- servicecatalog_accept_portfolio_share
 
+#' Associates the specified budget with the specified resource
+#'
+#' Associates the specified budget with the specified resource.
+#'
+#' @usage
+#' servicecatalog_associate_budget_with_resource(BudgetName, ResourceId)
+#'
+#' @param BudgetName &#91;required&#93; The name of the budget you want to associate.
+#' @param ResourceId &#91;required&#93; The resource identifier. Either a portfolio-id or a product-id.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_budget_with_resource(
+#'   BudgetName = "string",
+#'   ResourceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicecatalog_associate_budget_with_resource
+servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId) {
+  op <- new_operation(
+    name = "AssociateBudgetWithResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .servicecatalog$associate_budget_with_resource_input(BudgetName = BudgetName, ResourceId = ResourceId)
+  output <- .servicecatalog$associate_budget_with_resource_output()
+  svc <- .servicecatalog$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicecatalog$operations$associate_budget_with_resource <- servicecatalog_associate_budget_with_resource
+
 #' Associates the specified principal ARN with the specified portfolio
 #'
 #' Associates the specified principal ARN with the specified portfolio.
@@ -463,7 +500,7 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' 
 #'     `\{"NotificationArns" : \\["arn:aws:sns:us-east-1:123456789012:Topic"\\]\}`
 #' 
-#' RESOUCE\\_UPDATE
+#' RESOURCE\\_UPDATE
 #' 
 #' :   Specify the `TagUpdatesOnProvisionedProduct` property as follows:
 #' 
@@ -711,7 +748,8 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'     Info = list(
 #'       "string"
 #'     ),
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+#'     DisableTemplateValidation = TRUE|FALSE
 #'   ),
 #'   IdempotencyToken = "string"
 #' )
@@ -780,6 +818,10 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
 #' @param Tags One or more tags.
+#' 
+#' If the plan is for an existing provisioned product, the product must
+#' have a `RESOURCE_UPDATE` constraint with
+#' `TagUpdatesOnProvisionedProduct` set to `ALLOWED` to allow tag updates.
 #'
 #' @section Request syntax:
 #' ```
@@ -867,7 +909,8 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
 #'     Info = list(
 #'       "string"
 #'     ),
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+#'     DisableTemplateValidation = TRUE|FALSE
 #'   ),
 #'   IdempotencyToken = "string"
 #' )
@@ -1887,6 +1930,13 @@ servicecatalog_describe_provisioning_parameters <- function(AcceptLanguage = NUL
 #' Use this operation after calling a request operation (for example,
 #' ProvisionProduct, TerminateProvisionedProduct, or
 #' UpdateProvisionedProduct).
+#' 
+#' If a provisioned product was transferred to a new owner using
+#' UpdateProvisionedProductProperties, the new owner will be able to
+#' describe all past records for that product. The previous owner will no
+#' longer be able to describe the records, but will be able to use
+#' ListRecordHistory to see the product\'s history from when he was the
+#' owner.
 #'
 #' @usage
 #' servicecatalog_describe_record(AcceptLanguage, Id, PageToken, PageSize)
@@ -1976,6 +2026,46 @@ servicecatalog_describe_service_action <- function(Id, AcceptLanguage = NULL) {
 }
 .servicecatalog$operations$describe_service_action <- servicecatalog_describe_service_action
 
+#' Describe service action execution parameters
+#'
+#' 
+#'
+#' @usage
+#' servicecatalog_describe_service_action_execution_parameters(
+#'   ProvisionedProductId, ServiceActionId, AcceptLanguage)
+#'
+#' @param ProvisionedProductId &#91;required&#93; 
+#' @param ServiceActionId &#91;required&#93; 
+#' @param AcceptLanguage 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_service_action_execution_parameters(
+#'   ProvisionedProductId = "string",
+#'   ServiceActionId = "string",
+#'   AcceptLanguage = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicecatalog_describe_service_action_execution_parameters
+servicecatalog_describe_service_action_execution_parameters <- function(ProvisionedProductId, ServiceActionId, AcceptLanguage = NULL) {
+  op <- new_operation(
+    name = "DescribeServiceActionExecutionParameters",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .servicecatalog$describe_service_action_execution_parameters_input(ProvisionedProductId = ProvisionedProductId, ServiceActionId = ServiceActionId, AcceptLanguage = AcceptLanguage)
+  output <- .servicecatalog$describe_service_action_execution_parameters_output()
+  svc <- .servicecatalog$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicecatalog$operations$describe_service_action_execution_parameters <- servicecatalog_describe_service_action_execution_parameters
+
 #' Gets information about the specified TagOption
 #'
 #' Gets information about the specified TagOption.
@@ -2046,6 +2136,44 @@ servicecatalog_disable_aws_organizations_access <- function() {
   return(response)
 }
 .servicecatalog$operations$disable_aws_organizations_access <- servicecatalog_disable_aws_organizations_access
+
+#' Disassociates the specified budget from the specified resource
+#'
+#' Disassociates the specified budget from the specified resource.
+#'
+#' @usage
+#' servicecatalog_disassociate_budget_from_resource(BudgetName, ResourceId)
+#'
+#' @param BudgetName &#91;required&#93; The name of the budget you want to disassociate.
+#' @param ResourceId &#91;required&#93; The resource identifier you want to disassociate from. Either a
+#' portfolio-id or a product-id.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_budget_from_resource(
+#'   BudgetName = "string",
+#'   ResourceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicecatalog_disassociate_budget_from_resource
+servicecatalog_disassociate_budget_from_resource <- function(BudgetName, ResourceId) {
+  op <- new_operation(
+    name = "DisassociateBudgetFromResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .servicecatalog$disassociate_budget_from_resource_input(BudgetName = BudgetName, ResourceId = ResourceId)
+  output <- .servicecatalog$disassociate_budget_from_resource_output()
+  svc <- .servicecatalog$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicecatalog$operations$disassociate_budget_from_resource <- servicecatalog_disassociate_budget_from_resource
 
 #' Disassociates a previously associated principal ARN from a specified
 #' portfolio
@@ -2324,7 +2452,8 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
 #'
 #' @usage
 #' servicecatalog_execute_provisioned_product_service_action(
-#'   ProvisionedProductId, ServiceActionId, ExecuteToken, AcceptLanguage)
+#'   ProvisionedProductId, ServiceActionId, ExecuteToken, AcceptLanguage,
+#'   Parameters)
 #'
 #' @param ProvisionedProductId &#91;required&#93; The identifier of the provisioned product.
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
@@ -2336,6 +2465,7 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
+#' @param Parameters 
 #'
 #' @section Request syntax:
 #' ```
@@ -2343,21 +2473,26 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
 #'   ProvisionedProductId = "string",
 #'   ServiceActionId = "string",
 #'   ExecuteToken = "string",
-#'   AcceptLanguage = "string"
+#'   AcceptLanguage = "string",
+#'   Parameters = list(
+#'     list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_execute_provisioned_product_service_action
-servicecatalog_execute_provisioned_product_service_action <- function(ProvisionedProductId, ServiceActionId, ExecuteToken, AcceptLanguage = NULL) {
+servicecatalog_execute_provisioned_product_service_action <- function(ProvisionedProductId, ServiceActionId, ExecuteToken, AcceptLanguage = NULL, Parameters = NULL) {
   op <- new_operation(
     name = "ExecuteProvisionedProductServiceAction",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$execute_provisioned_product_service_action_input(ProvisionedProductId = ProvisionedProductId, ServiceActionId = ServiceActionId, ExecuteToken = ExecuteToken, AcceptLanguage = AcceptLanguage)
+  input <- .servicecatalog$execute_provisioned_product_service_action_input(ProvisionedProductId = ProvisionedProductId, ServiceActionId = ServiceActionId, ExecuteToken = ExecuteToken, AcceptLanguage = AcceptLanguage, Parameters = Parameters)
   output <- .servicecatalog$execute_provisioned_product_service_action_output()
   svc <- .servicecatalog$service()
   request <- new_request(svc, op, input, output)
@@ -2454,6 +2589,55 @@ servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL,
   return(response)
 }
 .servicecatalog$operations$list_accepted_portfolio_shares <- servicecatalog_list_accepted_portfolio_shares
+
+#' Lists all the budgets associated to the specified resource
+#'
+#' Lists all the budgets associated to the specified resource.
+#'
+#' @usage
+#' servicecatalog_list_budgets_for_resource(AcceptLanguage, ResourceId,
+#'   PageSize, PageToken)
+#'
+#' @param AcceptLanguage The language code.
+#' 
+#' -   `en` - English (default)
+#' 
+#' -   `jp` - Japanese
+#' 
+#' -   `zh` - Chinese
+#' @param ResourceId &#91;required&#93; The resource identifier.
+#' @param PageSize The maximum number of items to return with this call.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of
+#' results, use null.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_budgets_for_resource(
+#'   AcceptLanguage = "string",
+#'   ResourceId = "string",
+#'   PageSize = 123,
+#'   PageToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicecatalog_list_budgets_for_resource
+servicecatalog_list_budgets_for_resource <- function(AcceptLanguage = NULL, ResourceId, PageSize = NULL, PageToken = NULL) {
+  op <- new_operation(
+    name = "ListBudgetsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .servicecatalog$list_budgets_for_resource_input(AcceptLanguage = AcceptLanguage, ResourceId = ResourceId, PageSize = PageSize, PageToken = PageToken)
+  output <- .servicecatalog$list_budgets_for_resource_output()
+  svc <- .servicecatalog$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicecatalog$operations$list_budgets_for_resource <- servicecatalog_list_budgets_for_resource
 
 #' Lists the constraints for the specified portfolio and product
 #'
@@ -3161,6 +3345,59 @@ servicecatalog_list_service_actions_for_provisioning_artifact <- function(Produc
 }
 .servicecatalog$operations$list_service_actions_for_provisioning_artifact <- servicecatalog_list_service_actions_for_provisioning_artifact
 
+#' Returns summary information about stack instances that are associated
+#' with the specified CFN_STACKSET type provisioned product
+#'
+#' Returns summary information about stack instances that are associated
+#' with the specified `CFN_STACKSET` type provisioned product. You can
+#' filter for stack instances that are associated with a specific AWS
+#' account name or region.
+#'
+#' @usage
+#' servicecatalog_list_stack_instances_for_provisioned_product(
+#'   AcceptLanguage, ProvisionedProductId, PageToken, PageSize)
+#'
+#' @param AcceptLanguage The language code.
+#' 
+#' -   `en` - English (default)
+#' 
+#' -   `jp` - Japanese
+#' 
+#' -   `zh` - Chinese
+#' @param ProvisionedProductId &#91;required&#93; The identifier of the provisioned product.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of
+#' results, use null.
+#' @param PageSize The maximum number of items to return with this call.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_stack_instances_for_provisioned_product(
+#'   AcceptLanguage = "string",
+#'   ProvisionedProductId = "string",
+#'   PageToken = "string",
+#'   PageSize = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicecatalog_list_stack_instances_for_provisioned_product
+servicecatalog_list_stack_instances_for_provisioned_product <- function(AcceptLanguage = NULL, ProvisionedProductId, PageToken = NULL, PageSize = NULL) {
+  op <- new_operation(
+    name = "ListStackInstancesForProvisionedProduct",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .servicecatalog$list_stack_instances_for_provisioned_product_input(AcceptLanguage = AcceptLanguage, ProvisionedProductId = ProvisionedProductId, PageToken = PageToken, PageSize = PageSize)
+  output <- .servicecatalog$list_stack_instances_for_provisioned_product_output()
+  svc <- .servicecatalog$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicecatalog$operations$list_stack_instances_for_provisioned_product <- servicecatalog_list_stack_instances_for_provisioned_product
+
 #' Lists the specified TagOptions or all TagOptions
 #'
 #' Lists the specified TagOptions or all TagOptions.
@@ -3680,7 +3917,8 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' Updates the specified constraint.
 #'
 #' @usage
-#' servicecatalog_update_constraint(AcceptLanguage, Id, Description)
+#' servicecatalog_update_constraint(AcceptLanguage, Id, Description,
+#'   Parameters)
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3691,27 +3929,76 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The identifier of the constraint.
 #' @param Description The updated description of the constraint.
+#' @param Parameters The constraint parameters, in JSON format. The syntax depends on the
+#' constraint type as follows:
+#' 
+#' LAUNCH
+#' 
+#' :   Specify the `RoleArn` property as follows:
+#' 
+#'     `\{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"\}`
+#' 
+#'     You cannot have both a `LAUNCH` and a `STACKSET` constraint.
+#' 
+#'     You also cannot have more than one `LAUNCH` constraint on a product
+#'     and portfolio.
+#' 
+#' NOTIFICATION
+#' 
+#' :   Specify the `NotificationArns` property as follows:
+#' 
+#'     `\{"NotificationArns" : \\["arn:aws:sns:us-east-1:123456789012:Topic"\\]\}`
+#' 
+#' RESOURCE\\_UPDATE
+#' 
+#' :   Specify the `TagUpdatesOnProvisionedProduct` property as follows:
+#' 
+#'     `\{"Version":"2.0","Properties":\{"TagUpdateOnProvisionedProduct":"String"\}\}`
+#' 
+#'     The `TagUpdatesOnProvisionedProduct` property accepts a string value
+#'     of `ALLOWED` or `NOT_ALLOWED`.
+#' 
+#' STACKSET
+#' 
+#' :   Specify the `Parameters` property as follows:
+#' 
+#'     `\{"Version": "String", "Properties": \{"AccountList": \\[ "String" \\], "RegionList": \\[ "String" \\], "AdminRole": "String", "ExecutionRole": "String"\}\}`
+#' 
+#'     You cannot have both a `LAUNCH` and a `STACKSET` constraint.
+#' 
+#'     You also cannot have more than one `STACKSET` constraint on a
+#'     product and portfolio.
+#' 
+#'     Products with a `STACKSET` constraint will launch an AWS
+#'     CloudFormation stack set.
+#' 
+#' TEMPLATE
+#' 
+#' :   Specify the `Rules` property. For more information, see [Template
+#'     Constraint
+#'     Rules](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_constraint(
 #'   AcceptLanguage = "string",
 #'   Id = "string",
-#'   Description = "string"
+#'   Description = "string",
+#'   Parameters = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_constraint
-servicecatalog_update_constraint <- function(AcceptLanguage = NULL, Id, Description = NULL) {
+servicecatalog_update_constraint <- function(AcceptLanguage = NULL, Id, Description = NULL, Parameters = NULL) {
   op <- new_operation(
     name = "UpdateConstraint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$update_constraint_input(AcceptLanguage = AcceptLanguage, Id = Id, Description = Description)
+  input <- .servicecatalog$update_constraint_input(AcceptLanguage = AcceptLanguage, Id = Id, Description = Description, Parameters = Parameters)
   output <- .servicecatalog$update_constraint_output()
   svc <- .servicecatalog$service()
   request <- new_request(svc, op, input, output)
@@ -3879,7 +4166,7 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param ProvisionedProductName The updated name of the provisioned product. You cannot specify both
+#' @param ProvisionedProductName The name of the provisioned product. You cannot specify both
 #' `ProvisionedProductName` and `ProvisionedProductId`.
 #' @param ProvisionedProductId The identifier of the provisioned product. You cannot specify both
 #' `ProvisionedProductName` and `ProvisionedProductId`.
@@ -3954,6 +4241,76 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 }
 .servicecatalog$operations$update_provisioned_product <- servicecatalog_update_provisioned_product
 
+#' Requests updates to the properties of the specified provisioned product
+#'
+#' Requests updates to the properties of the specified provisioned product.
+#'
+#' @usage
+#' servicecatalog_update_provisioned_product_properties(AcceptLanguage,
+#'   ProvisionedProductId, ProvisionedProductProperties, IdempotencyToken)
+#'
+#' @param AcceptLanguage The language code.
+#' 
+#' -   `en` - English (default)
+#' 
+#' -   `jp` - Japanese
+#' 
+#' -   `zh` - Chinese
+#' @param ProvisionedProductId &#91;required&#93; The identifier of the provisioned product.
+#' @param ProvisionedProductProperties &#91;required&#93; A map that contains the provisioned product properties to be updated.
+#' 
+#' The `OWNER` key only accepts user ARNs. The owner is the user that is
+#' allowed to see, update, terminate, and execute service actions in the
+#' provisioned product.
+#' 
+#' The administrator can change the owner of a provisioned product to
+#' another IAM user within the same account. Both end user owners and
+#' administrators can see ownership history of the provisioned product
+#' using the `ListRecordHistory` API. The new owner can describe all past
+#' records for the provisioned product using the `DescribeRecord` API. The
+#' previous owner can no longer use `DescribeRecord`, but can still see the
+#' product\'s history from when he was an owner using `ListRecordHistory`.
+#' 
+#' If a provisioned product ownership is assigned to an end user, they can
+#' see and perform any action through the API or Service Catalog console
+#' such as update, terminate, and execute service actions. If an end user
+#' provisions a product and the owner is updated to someone else, they will
+#' no longer be able to see or perform any actions through API or the
+#' Service Catalog console on that provisioned product.
+#' @param IdempotencyToken &#91;required&#93; The idempotency token that uniquely identifies the provisioning product
+#' update request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_provisioned_product_properties(
+#'   AcceptLanguage = "string",
+#'   ProvisionedProductId = "string",
+#'   ProvisionedProductProperties = list(
+#'     "string"
+#'   ),
+#'   IdempotencyToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicecatalog_update_provisioned_product_properties
+servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage = NULL, ProvisionedProductId, ProvisionedProductProperties, IdempotencyToken) {
+  op <- new_operation(
+    name = "UpdateProvisionedProductProperties",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .servicecatalog$update_provisioned_product_properties_input(AcceptLanguage = AcceptLanguage, ProvisionedProductId = ProvisionedProductId, ProvisionedProductProperties = ProvisionedProductProperties, IdempotencyToken = IdempotencyToken)
+  output <- .servicecatalog$update_provisioned_product_properties_output()
+  svc <- .servicecatalog$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicecatalog$operations$update_provisioned_product_properties <- servicecatalog_update_provisioned_product_properties
+
 #' Updates the specified provisioning artifact (also known as a version)
 #' for the specified product
 #'
@@ -3965,7 +4322,7 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #'
 #' @usage
 #' servicecatalog_update_provisioning_artifact(AcceptLanguage, ProductId,
-#'   ProvisioningArtifactId, Name, Description, Active)
+#'   ProvisioningArtifactId, Name, Description, Active, Guidance)
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3979,6 +4336,15 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #' @param Name The updated name of the provisioning artifact.
 #' @param Description The updated description of the provisioning artifact.
 #' @param Active Indicates whether the product version is active.
+#' @param Guidance Information set by the administrator to provide guidance to end users
+#' about which provisioning artifacts to use.
+#' 
+#' The `DEFAULT` value indicates that the product version is active.
+#' 
+#' The administrator can set the guidance to `DEPRECATED` to inform users
+#' that the product version is deprecated. Users are able to make updates
+#' to a provisioned product of a deprecated version but cannot launch new
+#' provisioned products using a deprecated version.
 #'
 #' @section Request syntax:
 #' ```
@@ -3988,21 +4354,22 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #'   ProvisioningArtifactId = "string",
 #'   Name = "string",
 #'   Description = "string",
-#'   Active = TRUE|FALSE
+#'   Active = TRUE|FALSE,
+#'   Guidance = "DEFAULT"|"DEPRECATED"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_provisioning_artifact
-servicecatalog_update_provisioning_artifact <- function(AcceptLanguage = NULL, ProductId, ProvisioningArtifactId, Name = NULL, Description = NULL, Active = NULL) {
+servicecatalog_update_provisioning_artifact <- function(AcceptLanguage = NULL, ProductId, ProvisioningArtifactId, Name = NULL, Description = NULL, Active = NULL, Guidance = NULL) {
   op <- new_operation(
     name = "UpdateProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$update_provisioning_artifact_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, Name = Name, Description = Description, Active = Active)
+  input <- .servicecatalog$update_provisioning_artifact_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, Name = Name, Description = Description, Active = Active, Guidance = Guidance)
   output <- .servicecatalog$update_provisioning_artifact_output()
   svc <- .servicecatalog$service()
   request <- new_request(svc, op, input, output)

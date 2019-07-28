@@ -353,6 +353,42 @@ configservice_delete_evaluation_results <- function(ConfigRuleName) {
 }
 .configservice$operations$delete_evaluation_results <- configservice_delete_evaluation_results
 
+#' Delete organization config rule
+#'
+#' 
+#'
+#' @usage
+#' configservice_delete_organization_config_rule(
+#'   OrganizationConfigRuleName)
+#'
+#' @param OrganizationConfigRuleName &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_organization_config_rule(
+#'   OrganizationConfigRuleName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_delete_organization_config_rule
+configservice_delete_organization_config_rule <- function(OrganizationConfigRuleName) {
+  op <- new_operation(
+    name = "DeleteOrganizationConfigRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$delete_organization_config_rule_input(OrganizationConfigRuleName = OrganizationConfigRuleName)
+  output <- .configservice$delete_organization_config_rule_output()
+  svc <- .configservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$delete_organization_config_rule <- configservice_delete_organization_config_rule
+
 #' Deletes pending authorization requests for a specified aggregator
 #' account in a specified region
 #'
@@ -780,7 +816,7 @@ configservice_describe_compliance_by_resource <- function(ResourceType = NULL, R
 #' @param Limit The number of rule evaluation results that you want returned.
 #' 
 #' This parameter is required if the rule limit for your account is more
-#' than the default of 50 rules.
+#' than the default of 150 rules.
 #' 
 #' For information about requesting a rule limit increase, see [AWS Config
 #' Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config)
@@ -1131,6 +1167,90 @@ configservice_describe_delivery_channels <- function(DeliveryChannelNames = NULL
   return(response)
 }
 .configservice$operations$describe_delivery_channels <- configservice_describe_delivery_channels
+
+#' Describe organization config rule statuses
+#'
+#' 
+#'
+#' @usage
+#' configservice_describe_organization_config_rule_statuses(
+#'   OrganizationConfigRuleNames, Limit, NextToken)
+#'
+#' @param OrganizationConfigRuleNames 
+#' @param Limit 
+#' @param NextToken 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_organization_config_rule_statuses(
+#'   OrganizationConfigRuleNames = list(
+#'     "string"
+#'   ),
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_describe_organization_config_rule_statuses
+configservice_describe_organization_config_rule_statuses <- function(OrganizationConfigRuleNames = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeOrganizationConfigRuleStatuses",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$describe_organization_config_rule_statuses_input(OrganizationConfigRuleNames = OrganizationConfigRuleNames, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$describe_organization_config_rule_statuses_output()
+  svc <- .configservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$describe_organization_config_rule_statuses <- configservice_describe_organization_config_rule_statuses
+
+#' Describe organization config rules
+#'
+#' 
+#'
+#' @usage
+#' configservice_describe_organization_config_rules(
+#'   OrganizationConfigRuleNames, Limit, NextToken)
+#'
+#' @param OrganizationConfigRuleNames 
+#' @param Limit 
+#' @param NextToken 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_organization_config_rules(
+#'   OrganizationConfigRuleNames = list(
+#'     "string"
+#'   ),
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_describe_organization_config_rules
+configservice_describe_organization_config_rules <- function(OrganizationConfigRuleNames = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeOrganizationConfigRules",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$describe_organization_config_rules_input(OrganizationConfigRuleNames = OrganizationConfigRuleNames, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$describe_organization_config_rules_output()
+  svc <- .configservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$describe_organization_config_rules <- configservice_describe_organization_config_rules
 
 #' Returns a list of all pending aggregation requests
 #'
@@ -1821,6 +1941,51 @@ configservice_get_discovered_resource_counts <- function(resourceTypes = NULL, l
 }
 .configservice$operations$get_discovered_resource_counts <- configservice_get_discovered_resource_counts
 
+#' Get organization config rule detailed status
+#'
+#' 
+#'
+#' @usage
+#' configservice_get_organization_config_rule_detailed_status(
+#'   OrganizationConfigRuleName, Filters, Limit, NextToken)
+#'
+#' @param OrganizationConfigRuleName &#91;required&#93; 
+#' @param Filters 
+#' @param Limit 
+#' @param NextToken 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_organization_config_rule_detailed_status(
+#'   OrganizationConfigRuleName = "string",
+#'   Filters = list(
+#'     AccountId = "string",
+#'     MemberAccountRuleStatus = "CREATE_SUCCESSFUL"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"UPDATE_IN_PROGRESS"|"DELETE_SUCCESSFUL"|"DELETE_FAILED"|"DELETE_IN_PROGRESS"
+#'   ),
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_get_organization_config_rule_detailed_status
+configservice_get_organization_config_rule_detailed_status <- function(OrganizationConfigRuleName, Filters = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetOrganizationConfigRuleDetailedStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$get_organization_config_rule_detailed_status_input(OrganizationConfigRuleName = OrganizationConfigRuleName, Filters = Filters, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$get_organization_config_rule_detailed_status_output()
+  svc <- .configservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$get_organization_config_rule_detailed_status <- configservice_get_organization_config_rule_detailed_status
+
 #' Returns a list of configuration items for the specified resource
 #'
 #' Returns a list of configuration items for the specified resource. The
@@ -2083,30 +2248,37 @@ configservice_list_tags_for_resource <- function(ResourceArn, Limit = NULL, Next
 #'
 #' @usage
 #' configservice_put_aggregation_authorization(AuthorizedAccountId,
-#'   AuthorizedAwsRegion)
+#'   AuthorizedAwsRegion, Tags)
 #'
 #' @param AuthorizedAccountId &#91;required&#93; The 12-digit account ID of the account authorized to aggregate data.
 #' @param AuthorizedAwsRegion &#91;required&#93; The region authorized to collect aggregated data.
+#' @param Tags 
 #'
 #' @section Request syntax:
 #' ```
 #' svc$put_aggregation_authorization(
 #'   AuthorizedAccountId = "string",
-#'   AuthorizedAwsRegion = "string"
+#'   AuthorizedAwsRegion = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname configservice_put_aggregation_authorization
-configservice_put_aggregation_authorization <- function(AuthorizedAccountId, AuthorizedAwsRegion) {
+configservice_put_aggregation_authorization <- function(AuthorizedAccountId, AuthorizedAwsRegion, Tags = NULL) {
   op <- new_operation(
     name = "PutAggregationAuthorization",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .configservice$put_aggregation_authorization_input(AuthorizedAccountId = AuthorizedAccountId, AuthorizedAwsRegion = AuthorizedAwsRegion)
+  input <- .configservice$put_aggregation_authorization_input(AuthorizedAccountId = AuthorizedAccountId, AuthorizedAwsRegion = AuthorizedAwsRegion, Tags = Tags)
   output <- .configservice$put_aggregation_authorization_output()
   svc <- .configservice$service()
   request <- new_request(svc, op, input, output)
@@ -2159,9 +2331,10 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #' in the *AWS Config Developer Guide*.
 #'
 #' @usage
-#' configservice_put_config_rule(ConfigRule)
+#' configservice_put_config_rule(ConfigRule, Tags)
 #'
 #' @param ConfigRule &#91;required&#93; The rule that you want to add to your account.
+#' @param Tags 
 #'
 #' @section Request syntax:
 #' ```
@@ -2194,6 +2367,12 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #'     MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
 #'     ConfigRuleState = "ACTIVE"|"DELETING"|"DELETING_RESULTS"|"EVALUATING",
 #'     CreatedBy = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2201,14 +2380,14 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #' @keywords internal
 #'
 #' @rdname configservice_put_config_rule
-configservice_put_config_rule <- function(ConfigRule) {
+configservice_put_config_rule <- function(ConfigRule, Tags = NULL) {
   op <- new_operation(
     name = "PutConfigRule",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .configservice$put_config_rule_input(ConfigRule = ConfigRule)
+  input <- .configservice$put_config_rule_input(ConfigRule = ConfigRule, Tags = Tags)
   output <- .configservice$put_config_rule_output()
   svc <- .configservice$service()
   request <- new_request(svc, op, input, output)
@@ -2234,11 +2413,12 @@ configservice_put_config_rule <- function(ConfigRule) {
 #'
 #' @usage
 #' configservice_put_configuration_aggregator(ConfigurationAggregatorName,
-#'   AccountAggregationSources, OrganizationAggregationSource)
+#'   AccountAggregationSources, OrganizationAggregationSource, Tags)
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param AccountAggregationSources A list of AccountAggregationSource object.
 #' @param OrganizationAggregationSource An OrganizationAggregationSource object.
+#' @param Tags 
 #'
 #' @section Request syntax:
 #' ```
@@ -2261,6 +2441,12 @@ configservice_put_config_rule <- function(ConfigRule) {
 #'       "string"
 #'     ),
 #'     AllAwsRegions = TRUE|FALSE
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2268,14 +2454,14 @@ configservice_put_config_rule <- function(ConfigRule) {
 #' @keywords internal
 #'
 #' @rdname configservice_put_configuration_aggregator
-configservice_put_configuration_aggregator <- function(ConfigurationAggregatorName, AccountAggregationSources = NULL, OrganizationAggregationSource = NULL) {
+configservice_put_configuration_aggregator <- function(ConfigurationAggregatorName, AccountAggregationSources = NULL, OrganizationAggregationSource = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PutConfigurationAggregator",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .configservice$put_configuration_aggregator_input(ConfigurationAggregatorName = ConfigurationAggregatorName, AccountAggregationSources = AccountAggregationSources, OrganizationAggregationSource = OrganizationAggregationSource)
+  input <- .configservice$put_configuration_aggregator_input(ConfigurationAggregatorName = ConfigurationAggregatorName, AccountAggregationSources = AccountAggregationSources, OrganizationAggregationSource = OrganizationAggregationSource, Tags = Tags)
   output <- .configservice$put_configuration_aggregator_output()
   svc <- .configservice$service()
   request <- new_request(svc, op, input, output)
@@ -2462,6 +2648,76 @@ configservice_put_evaluations <- function(Evaluations = NULL, ResultToken, TestM
   return(response)
 }
 .configservice$operations$put_evaluations <- configservice_put_evaluations
+
+#' Put organization config rule
+#'
+#' 
+#'
+#' @usage
+#' configservice_put_organization_config_rule(OrganizationConfigRuleName,
+#'   OrganizationManagedRuleMetadata, OrganizationCustomRuleMetadata,
+#'   ExcludedAccounts)
+#'
+#' @param OrganizationConfigRuleName &#91;required&#93; 
+#' @param OrganizationManagedRuleMetadata 
+#' @param OrganizationCustomRuleMetadata 
+#' @param ExcludedAccounts 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_organization_config_rule(
+#'   OrganizationConfigRuleName = "string",
+#'   OrganizationManagedRuleMetadata = list(
+#'     Description = "string",
+#'     RuleIdentifier = "string",
+#'     InputParameters = "string",
+#'     MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
+#'     ResourceTypesScope = list(
+#'       "string"
+#'     ),
+#'     ResourceIdScope = "string",
+#'     TagKeyScope = "string",
+#'     TagValueScope = "string"
+#'   ),
+#'   OrganizationCustomRuleMetadata = list(
+#'     Description = "string",
+#'     LambdaFunctionArn = "string",
+#'     OrganizationConfigRuleTriggerTypes = list(
+#'       "ConfigurationItemChangeNotification"|"OversizedConfigurationItemChangeNotification"|"ScheduledNotification"
+#'     ),
+#'     InputParameters = "string",
+#'     MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
+#'     ResourceTypesScope = list(
+#'       "string"
+#'     ),
+#'     ResourceIdScope = "string",
+#'     TagKeyScope = "string",
+#'     TagValueScope = "string"
+#'   ),
+#'   ExcludedAccounts = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_put_organization_config_rule
+configservice_put_organization_config_rule <- function(OrganizationConfigRuleName, OrganizationManagedRuleMetadata = NULL, OrganizationCustomRuleMetadata = NULL, ExcludedAccounts = NULL) {
+  op <- new_operation(
+    name = "PutOrganizationConfigRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$put_organization_config_rule_input(OrganizationConfigRuleName = OrganizationConfigRuleName, OrganizationManagedRuleMetadata = OrganizationManagedRuleMetadata, OrganizationCustomRuleMetadata = OrganizationCustomRuleMetadata, ExcludedAccounts = ExcludedAccounts)
+  output <- .configservice$put_organization_config_rule_output()
+  svc <- .configservice$service()
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$put_organization_config_rule <- configservice_put_organization_config_rule
 
 #' Adds or updates the remediation configuration with a specific AWS Config
 #' rule with the selected target or action

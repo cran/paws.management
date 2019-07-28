@@ -1,6 +1,6 @@
 Package: paws.management
 Title: Amazon Web Services Management & Governance APIs
-Version: 0.1.0
+Version: 0.1.3
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -24,7 +24,10 @@ LazyData: true
 RoxygenNote: 6.1.1
 Collate: 'applicationautoscaling_service.R'
         'applicationautoscaling_interfaces.R'
-        'applicationautoscaling_operations.R' 'autoscaling_service.R'
+        'applicationautoscaling_operations.R'
+        'applicationinsights_service.R'
+        'applicationinsights_interfaces.R'
+        'applicationinsights_operations.R' 'autoscaling_service.R'
         'autoscaling_interfaces.R' 'autoscaling_operations.R'
         'autoscalingplans_service.R' 'autoscalingplans_interfaces.R'
         'autoscalingplans_operations.R' 'cloudformation_service.R'
@@ -51,14 +54,16 @@ Collate: 'applicationautoscaling_service.R'
         'resourcegroupstaggingapi_interfaces.R'
         'resourcegroupstaggingapi_operations.R'
         'servicecatalog_service.R' 'servicecatalog_interfaces.R'
-        'servicecatalog_operations.R' 'ssm_service.R'
-        'ssm_interfaces.R' 'ssm_operations.R' 'support_service.R'
-        'support_interfaces.R' 'support_operations.R'
+        'servicecatalog_operations.R' 'servicequotas_service.R'
+        'servicequotas_interfaces.R' 'servicequotas_operations.R'
+        'ssm_service.R' 'ssm_interfaces.R' 'ssm_operations.R'
+        'support_service.R' 'support_interfaces.R'
+        'support_operations.R'
 NeedsCompilation: no
-Packaged: 2019-05-10 01:34:30 UTC; david.kretch
+Packaged: 2019-07-27 22:50:42 UTC; david.kretch
 Author: David Kretch [aut, cre],
   Adam Banker [aut],
   Amazon.com, Inc. [cph]
 Maintainer: David Kretch <david.kretch@gmail.com>
 Repository: CRAN
-Date/Publication: 2019-05-13 10:10:23 UTC
+Date/Publication: 2019-07-28 04:50:22 UTC
