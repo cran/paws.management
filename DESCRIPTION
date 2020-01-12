@@ -1,6 +1,6 @@
 Package: paws.management
 Title: Amazon Web Services Management & Governance APIs
-Version: 0.1.5
+Version: 0.1.6
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -17,11 +17,11 @@ Description: Interface to Amazon Web Services management and governance
     monitoring, 'Auto Scaling' for automatically scaling resources, and
     more <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
-Imports: paws.common (>= 0.2.4)
+Imports: paws.common (>= 0.2.5)
 Suggests: testthat
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Collate: 'applicationautoscaling_service.R'
         'applicationautoscaling_interfaces.R'
         'applicationautoscaling_operations.R'
@@ -60,10 +60,10 @@ Collate: 'applicationautoscaling_service.R'
         'support_service.R' 'support_interfaces.R'
         'support_operations.R'
 NeedsCompilation: no
-Packaged: 2019-10-19 21:58:31 UTC; david.kretch
+Packaged: 2020-01-12 21:44:45 UTC; david.kretch
 Author: David Kretch [aut, cre],
   Adam Banker [aut],
   Amazon.com, Inc. [cph]
 Maintainer: David Kretch <david.kretch@gmail.com>
 Repository: CRAN
-Date/Publication: 2019-10-20 04:30:09 UTC
+Date/Publication: 2020-01-12 22:10:02 UTC
