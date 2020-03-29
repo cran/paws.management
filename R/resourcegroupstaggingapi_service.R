@@ -257,7 +257,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- resourcegroupstaggingapi()
+#' \dontrun{svc <- resourcegroupstaggingapi()
 #' svc$describe_report_creation(
 #'   Foo = 123
 #' )}
@@ -297,8 +297,7 @@ resourcegroupstaggingapi <- function(config = list()) {
   target_prefix = "ResourceGroupsTaggingAPI_20170126"
 )
 
-.resourcegroupstaggingapi$handlers <- new_handlers("jsonrpc", "v4")
-
 .resourcegroupstaggingapi$service <- function(config = list()) {
-  new_service(.resourcegroupstaggingapi$metadata, .resourcegroupstaggingapi$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.resourcegroupstaggingapi$metadata, handlers, config)
 }

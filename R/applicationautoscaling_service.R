@@ -81,7 +81,7 @@ NULL
 #' @examples
 #' # This example deletes a scaling policy for the Amazon ECS service called
 #' # web-app, which is running in the default cluster.
-#' \donttest{svc <- applicationautoscaling()
+#' \dontrun{svc <- applicationautoscaling()
 #' svc$delete_scaling_policy(
 #'   PolicyName = "web-app-cpu-lt-25",
 #'   ResourceId = "service/default/web-app",
@@ -126,8 +126,7 @@ applicationautoscaling <- function(config = list()) {
   target_prefix = "AnyScaleFrontendService"
 )
 
-.applicationautoscaling$handlers <- new_handlers("jsonrpc", "v4")
-
 .applicationautoscaling$service <- function(config = list()) {
-  new_service(.applicationautoscaling$metadata, .applicationautoscaling$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.applicationautoscaling$metadata, handlers, config)
 }

@@ -53,7 +53,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- ssm()
+#' \dontrun{svc <- ssm()
 #' svc$add_tags_to_resource(
 #'   Foo = 123
 #' )}
@@ -207,8 +207,7 @@ ssm <- function(config = list()) {
   target_prefix = "AmazonSSM"
 )
 
-.ssm$handlers <- new_handlers("jsonrpc", "v4")
-
 .ssm$service <- function(config = list()) {
-  new_service(.ssm$metadata, .ssm$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.ssm$metadata, handlers, config)
 }

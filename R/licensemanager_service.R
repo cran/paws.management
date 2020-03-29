@@ -31,7 +31,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- licensemanager()
+#' \dontrun{svc <- licensemanager()
 #' svc$create_license_configuration(
 #'   Foo = 123
 #' )}
@@ -79,8 +79,7 @@ licensemanager <- function(config = list()) {
   target_prefix = "AWSLicenseManager"
 )
 
-.licensemanager$handlers <- new_handlers("jsonrpc", "v4")
-
 .licensemanager$service <- function(config = list()) {
-  new_service(.licensemanager$metadata, .licensemanager$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.licensemanager$metadata, handlers, config)
 }

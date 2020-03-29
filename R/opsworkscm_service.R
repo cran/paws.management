@@ -94,7 +94,7 @@ NULL
 #' ```
 #'
 #' @examples
-#' \donttest{svc <- opsworkscm()
+#' \dontrun{svc <- opsworkscm()
 #' svc$associate_node(
 #'   Foo = 123
 #' )}
@@ -145,8 +145,7 @@ opsworkscm <- function(config = list()) {
   target_prefix = "OpsWorksCM_V2016_11_01"
 )
 
-.opsworkscm$handlers <- new_handlers("jsonrpc", "v4")
-
 .opsworkscm$service <- function(config = list()) {
-  new_service(.opsworkscm$metadata, .opsworkscm$handlers, config)
+  handlers <- new_handlers("jsonrpc", "v4")
+  new_service(.opsworkscm$metadata, handlers, config)
 }
