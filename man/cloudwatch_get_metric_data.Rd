@@ -42,7 +42,7 @@ data, using a period of 5 seconds, you receive data timestamped between
 15:02:15 and 15:07:15.
 
 For better performance, specify \code{StartTime} and \code{EndTime} values that
-align with the value of the metric\'s \code{Period} and sync up with the
+align with the value of the metric's \code{Period} and sync up with the
 beginning and end of an hour. For example, if the \code{Period} of a metric
 is 5 minutes, specifying 12:05 or 12:30 as \code{StartTime} can get a faster
 response from CloudWatch than setting 12:07 or 12:29 as the \code{StartTime}.}
@@ -53,13 +53,13 @@ The value specified is exclusive; results include data points up to the
 specified time stamp.
 
 For better performance, specify \code{StartTime} and \code{EndTime} values that
-align with the value of the metric\'s \code{Period} and sync up with the
+align with the value of the metric's \code{Period} and sync up with the
 beginning and end of an hour. For example, if the \code{Period} of a metric
 is 5 minutes, specifying 12:05 or 12:30 as \code{EndTime} can get a faster
 response from CloudWatch than setting 12:07 or 12:29 as the \code{EndTime}.}
 
-\item{NextToken}{Include this value, if it was returned by the previous call, to get the
-next set of data points.}
+\item{NextToken}{Include this value, if it was returned by the previous \code{GetMetricData}
+operation, to get the next set of data points.}
 
 \item{ScanBy}{The order in which data points should be returned. \code{TimestampDescending}
 returns the newest data first and paginates when the \code{MaxDatapoints}
@@ -79,8 +79,7 @@ divide the Errors metric by the Invocations metric to get an error rate
 time series. For more information about metric math expressions, see
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax}{Metric Math Syntax and Functions}
 in the \emph{Amazon CloudWatch User Guide}.
-}
-\details{
+
 Calls to the \code{GetMetricData} API have a different pricing structure than
 calls to \code{GetMetricStatistics}. For more information about pricing, see
 \href{https://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
@@ -110,9 +109,9 @@ resolution of 1 hour.
 If you omit \code{Unit} in your request, all data that was collected with any
 unit is returned, along with the corresponding units that were specified
 when the data was reported to CloudWatch. If you specify a unit, the
-operation returns only data data that was collected with that unit
-specified. If you specify a unit that does not match the data collected,
-the results of the operation are null. CloudWatch does not perform unit
+operation returns only data that was collected with that unit specified.
+If you specify a unit that does not match the data collected, the
+results of the operation are null. CloudWatch does not perform unit
 conversions.
 }
 \section{Request syntax}{

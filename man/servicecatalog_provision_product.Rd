@@ -4,10 +4,10 @@
 \alias{servicecatalog_provision_product}
 \title{Provisions the specified product}
 \usage{
-servicecatalog_provision_product(AcceptLanguage, ProductId,
-  ProvisioningArtifactId, PathId, ProvisionedProductName,
-  ProvisioningParameters, ProvisioningPreferences, Tags, NotificationArns,
-  ProvisionToken)
+servicecatalog_provision_product(AcceptLanguage, ProductId, ProductName,
+  ProvisioningArtifactId, ProvisioningArtifactName, PathId, PathName,
+  ProvisionedProductName, ProvisioningParameters, ProvisioningPreferences,
+  Tags, NotificationArns, ProvisionToken)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -17,13 +17,22 @@ servicecatalog_provision_product(AcceptLanguage, ProductId,
 \item \code{zh} - Chinese
 }}
 
-\item{ProductId}{[required] The product identifier.}
+\item{ProductId}{The product identifier. You must provide the name or ID, but not both.}
 
-\item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact.}
+\item{ProductName}{The name of the product. You must provide the name or ID, but not both.}
+
+\item{ProvisioningArtifactId}{The identifier of the provisioning artifact. You must provide the name
+or ID, but not both.}
+
+\item{ProvisioningArtifactName}{The name of the provisioning artifact. You must provide the name or ID,
+but not both.}
 
 \item{PathId}{The path identifier of the product. This value is optional if the
 product has a default path, and required if the product has more than
-one path. To list the paths for a product, use ListLaunchPaths.}
+one path. To list the paths for a product, use ListLaunchPaths. You must
+provide the name or ID, but not both.}
+
+\item{PathName}{The name of the path. You must provide the name or ID, but not both.}
 
 \item{ProvisionedProductName}{[required] A user-friendly name for the provisioned product. This value must be
 unique for the AWS account and cannot be updated after the product is
@@ -44,8 +53,7 @@ stack-related events.}
 }
 \description{
 Provisions the specified product.
-}
-\details{
+
 A provisioned product is a resourced instance of a product. For example,
 provisioning a product based on a CloudFormation template launches a
 CloudFormation stack and its underlying resources. You can check the
@@ -53,15 +61,18 @@ status of this request using DescribeRecord.
 
 If the request contains a tag key with an empty list of values, there is
 a tag conflict for that key. Do not include conflicted keys as tags, or
-this causes the error \"Parameter validation failed: Missing required
-parameter in Tags[\emph{N}]:\emph{Value}\".
+this causes the error "Parameter validation failed: Missing required
+parameter in Tags[\emph{N}]:\emph{Value}".
 }
 \section{Request syntax}{
 \preformatted{svc$provision_product(
   AcceptLanguage = "string",
   ProductId = "string",
+  ProductName = "string",
   ProvisioningArtifactId = "string",
+  ProvisioningArtifactName = "string",
   PathId = "string",
+  PathName = "string",
   ProvisionedProductName = "string",
   ProvisioningParameters = list(
     list(

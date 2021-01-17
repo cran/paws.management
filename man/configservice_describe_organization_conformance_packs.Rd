@@ -19,16 +19,13 @@ next page of results in a paginated response.}
 }
 \description{
 Returns a list of organization conformance packs.
-}
-\details{
+
 When you specify the limit and the next token, you receive a paginated
 response.
 
 Limit and next token are not applicable if you specify organization
 conformance packs names. They are only applicable, when you request all
 the organization conformance packs.
-
-Only a master account can call this API.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_organization_conformance_packs(

@@ -15,19 +15,22 @@ data. For more information, see \href{https://docs.aws.amazon.com/general/latest
 \item{tags}{The key-value pairs to use for the tags.}
 }
 \description{
-Creates a log group with the specified name.
-}
-\details{
-You can create up to 20,000 log groups per account.
+Creates a log group with the specified name. You can create up to 20,000
+log groups per account.
 
 You must use the following guidelines when naming a log group:
 \itemize{
 \item Log group names must be unique within a region for an AWS account.
 \item Log group names can be between 1 and 512 characters long.
 \item Log group names consist of the following characters: a-z, A-Z, 0-9,
-\'\\_\' (underscore), \'-\' (hyphen), \'/\' (forward slash), \'.\'
-(period), and \'\\#\' (number sign)
+'\\_' (underscore), '-' (hyphen), '/' (forward slash), '.' (period),
+and '\\#' (number sign)
 }
+
+When you create a log group, by default the log events in the log group
+never expire. To set a retention policy so that events expire and are
+deleted after a specified time, use
+\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutRetentionPolicy.html}{PutRetentionPolicy}.
 
 If you associate a AWS Key Management Service (AWS KMS) customer master
 key (CMK) with the log group, ingested data is encrypted using the CMK.
@@ -36,12 +39,11 @@ still within Amazon CloudWatch Logs. This enables Amazon CloudWatch Logs
 to decrypt this data whenever it is requested.
 
 If you attempt to associate a CMK with the log group but the CMK does
-not exist or the CMK is disabled, you will receive an
+not exist or the CMK is disabled, you receive an
 \code{InvalidParameterException} error.
 
-\strong{Important:} CloudWatch Logs supports only symmetric CMKs. Do not
-associate an asymmetric CMK with your log group. For more information,
-see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric Keys}.
+CloudWatch Logs supports only symmetric CMKs. Do not associate an
+asymmetric CMK with your log group. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric Keys}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_log_group(

@@ -13,8 +13,7 @@ ssm_create_association_batch(Entries)
 \description{
 Associates the specified Systems Manager document with the specified
 instances or targets.
-}
-\details{
+
 When you associate a document with one or more instances using instance
 IDs or tags, SSM Agent running on the instance processes the document
 and configures the instance as specified.
@@ -57,7 +56,20 @@ exception.
       MaxConcurrency = "string",
       ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
       SyncCompliance = "AUTO"|"MANUAL",
-      ApplyOnlyAtCronInterval = TRUE|FALSE
+      ApplyOnlyAtCronInterval = TRUE|FALSE,
+      TargetLocations = list(
+        list(
+          Accounts = list(
+            "string"
+          ),
+          Regions = list(
+            "string"
+          ),
+          TargetLocationMaxConcurrency = "string",
+          TargetLocationMaxErrors = "string",
+          ExecutionRoleName = "string"
+        )
+      )
     )
   )
 )

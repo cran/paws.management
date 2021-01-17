@@ -22,7 +22,7 @@ metric alarms or composite alarms. If you omit this parameter, only
 metric alarms are returned.}
 
 \item{ChildrenOfAlarmName}{If you use this parameter and specify the name of a composite alarm, the
-operation returns information about the \"children\" alarms of the alarm
+operation returns information about the "children" alarms of the alarm
 you specify. These are the metric alarms and composite alarms referenced
 in the \code{AlarmRule} field of the composite alarm that you specify in
 \code{ChildrenOfAlarmName}. Information about the composite alarm that you
@@ -30,7 +30,7 @@ name in \code{ChildrenOfAlarmName} is not returned.
 
 If you specify \code{ChildrenOfAlarmName}, you cannot specify any other
 parameters in the request except for \code{MaxRecords} and \code{NextToken}. If
-you do so, you will receive a validation error.
+you do so, you receive a validation error.
 
 Only the \verb{Alarm Name}, \code{ARN}, \code{StateValue}
 (OK/ALARM/INSUFFICIENT\\_DATA), and \code{StateUpdatedTimestamp} information
@@ -40,7 +40,7 @@ complete information about these alarms, perform another
 \code{AlarmNames} parameter.}
 
 \item{ParentsOfAlarmName}{If you use this parameter and specify the name of a metric or composite
-alarm, the operation returns information about the \"parent\" alarms of
+alarm, the operation returns information about the "parent" alarms of
 the alarm you specify. These are the composite alarms that have
 \code{AlarmRule} parameters that reference the alarm named in
 \code{ParentsOfAlarmName}. Information about the alarm that you specify in
@@ -48,7 +48,7 @@ the alarm you specify. These are the composite alarms that have
 
 If you specify \code{ParentsOfAlarmName}, you cannot specify any other
 parameters in the request except for \code{MaxRecords} and \code{NextToken}. If
-you do so, you will receive a validation error.
+you do so, you receive a validation error.
 
 Only the Alarm Name and ARN are returned by this operation when you use
 this parameter. To get complete information about these alarms, perform
@@ -70,7 +70,7 @@ data available.}
 }
 \description{
 Retrieves the specified alarms. You can filter the results by specifying
-a a prefix for the alarm name, the alarm state, or a prefix for any
+a prefix for the alarm name, the alarm state, or a prefix for any
 action.
 }
 \section{Request syntax}{

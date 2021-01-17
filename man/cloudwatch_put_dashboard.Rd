@@ -11,7 +11,7 @@ cloudwatch_put_dashboard(DashboardName, DashboardBody)
 \item{DashboardName}{[required] The name of the dashboard. If a dashboard with this name already exists,
 this call modifies that dashboard, replacing its current contents.
 Otherwise, a new dashboard is created. The maximum length is 255, and
-valid characters are A-Z, a-z, 0-9, \"-\", and \"\\_\". This parameter is
+valid characters are A-Z, a-z, 0-9, "-", and "\\_". This parameter is
 required.}
 
 \item{DashboardBody}{[required] The detailed information about the dashboard in JSON format, including
@@ -24,8 +24,7 @@ For more information about the syntax, see \href{https://docs.aws.amazon.com/Ama
 Creates a dashboard if it does not already exist, or updates an existing
 dashboard. If you update a dashboard, the entire contents are replaced
 with what you specify here.
-}
-\details{
+
 All dashboards in your account are global, not region-specific.
 
 A simple way to create a dashboard using \code{PutDashboard} is to copy an

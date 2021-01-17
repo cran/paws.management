@@ -24,8 +24,7 @@ hook.}
 Records a heartbeat for the lifecycle action associated with the
 specified token or instance. This extends the timeout by the length of
 time defined using the PutLifecycleHook API call.
-}
-\details{
+
 This step is a part of the procedure for adding a lifecycle hook to an
 Auto Scaling group:
 \enumerate{
@@ -44,7 +43,7 @@ keep the instance in a pending state.}
 action.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html}{Auto Scaling Lifecycle}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html}{Auto Scaling lifecycle}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

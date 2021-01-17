@@ -48,11 +48,11 @@ specify an activation ID and code. When you specify the activation ID
 and code, tags assigned to the activation are automatically applied to
 the on-premises servers or VMs.
 
-You can\'t add tags to or delete tags from an existing activation. You
+You can't add tags to or delete tags from an existing activation. You
 can tag your on-premises servers and VMs after they connect to Systems
 Manager for the first time and are assigned a managed instance ID. This
 means they are listed in the AWS Systems Manager console with an ID that
-is prefixed with \"mi-\". For information about how to add tags to your
+is prefixed with "mi-". For information about how to add tags to your
 managed instances, see AddTagsToResource. For information about how to
 remove tags from your managed instances, see RemoveTagsFromResource.}
 }
@@ -65,8 +65,7 @@ code and ID when installing SSM Agent on machines in your hybrid
 environment. For more information about requirements for managing
 on-premises instances and VMs using Systems Manager, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html}{Setting up AWS Systems Manager for hybrid environments}
 in the \emph{AWS Systems Manager User Guide}.
-}
-\details{
+
 On-premises servers or VMs that are registered with Systems Manager and
 EC2 instances that you manage with Systems Manager are all called
 \emph{managed instances}.

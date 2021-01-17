@@ -12,32 +12,32 @@ organizations_list_policies_for_target(TargetId, Filter, NextToken,
 \item{TargetId}{[required] The unique identifier (ID) of the root, organizational unit, or account
 whose policies you want to list.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a target ID
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a target ID
 string requires one of the following:
 \itemize{
-\item \strong{Root} - A string that begins with \"r-\" followed by from 4 to 32
+\item \strong{Root} - A string that begins with "r-" followed by from 4 to 32
 lowercase letters or digits.
 \item \strong{Account} - A string that consists of exactly 12 digits.
-\item \strong{Organizational unit (OU)} - A string that begins with \"ou-\"
+\item \strong{Organizational unit (OU)} - A string that begins with "ou-"
 followed by from 4 to 32 lowercase letters or digits (the ID of the
-root that the OU is in). This string is followed by a second \"-\"
+root that the OU is in). This string is followed by a second "-"
 dash and from 8 to 32 additional lowercase letters or digits.
 }}
 
 \item{Filter}{[required] The type of policy that you want to include in the returned list. You
 must specify one of the following values:
 \itemize{
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html}{SERVICE\\_CONTROL\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE\\_CONTROL\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
 }}
 
 \item{NextToken}{The parameter for receiving additional results if you receive a
 \code{NextToken} response in a previous request. A \code{NextToken} response
 indicates that more output is available. Set this parameter to the value
-of the previous call\'s \code{NextToken} response to indicate where the
-output should continue from.}
+of the previous call's \code{NextToken} response to indicate where the output
+should continue from.}
 
 \item{MaxResults}{The total number of results that you want included on each page of the
 response. If you do not include this parameter, it defaults to a value
@@ -54,15 +54,14 @@ results.}
 Lists the policies that are directly attached to the specified target
 root, organizational unit (OU), or account. You must specify the policy
 type that you want included in the returned list.
-}
-\details{
+
 Always check the \code{NextToken} response parameter for a \code{null} value when
 calling a \verb{List*} operation. These operations can occasionally return an
 empty set of results even when there are more results available. The
 \code{NextToken} response parameter value is \code{null} \emph{only} when there are no
 more results to display.
 
-This operation can be called only from the organization\'s master
+This operation can be called only from the organization's management
 account or by a member account that is a delegated administrator for an
 AWS service.
 }

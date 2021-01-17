@@ -18,18 +18,17 @@ is \code{50} and the maximum value is \code{100}.}
 }
 \description{
 Describes the specified tags.
-}
-\details{
+
 You can use filters to limit the results. For example, you can query for
 the tags for a specific Auto Scaling group. You can specify multiple
 values for a filter. A tag must match at least one of the specified
 values for it to be included in the results.
 
 You can also specify multiple filters. The result includes information
-for a particular tag only if it matches all the filters. If there\'s no
+for a particular tag only if it matches all the filters. If there's no
 match, no special message is returned.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html}{Tagging Auto Scaling Groups and Instances}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html}{Tagging Auto Scaling groups and instances}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

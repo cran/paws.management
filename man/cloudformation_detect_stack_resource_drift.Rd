@@ -3,8 +3,8 @@
 \name{cloudformation_detect_stack_resource_drift}
 \alias{cloudformation_detect_stack_resource_drift}
 \title{Returns information about whether a resource's actual configuration
-differs, or has \emph{drifted}, from it's expected configuration, as defined
-in the stack template and any values specified as template parameters}
+differs, or has drifted, from it's expected configuration, as defined in
+the stack template and any values specified as template parameters}
 \usage{
 cloudformation_detect_stack_resource_drift(StackName, LogicalResourceId)
 }
@@ -14,23 +14,22 @@ cloudformation_detect_stack_resource_drift(StackName, LogicalResourceId)
 \item{LogicalResourceId}{[required] The logical name of the resource for which to return drift information.}
 }
 \description{
-Returns information about whether a resource\'s actual configuration
-differs, or has \emph{drifted}, from it\'s expected configuration, as defined
+Returns information about whether a resource's actual configuration
+differs, or has \emph{drifted}, from it's expected configuration, as defined
 in the stack template and any values specified as template parameters.
 This information includes actual and expected property values for
 resources in which AWS CloudFormation detects drift. Only resource
 properties explicitly defined in the stack template are checked for
 drift. For more information about stack and resource drift, see
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html}{Detecting Unregulated Configuration Changes to Stacks and Resources}.
-}
-\details{
+
 Use \code{DetectStackResourceDrift} to detect drift on individual resources,
 or DetectStackDrift to detect drift on all resources in a given stack
 that support drift detection.
 
 Resources that do not currently support drift detection cannot be
 checked. For a list of resources that support drift detection, see
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html}{Resources that Support Drift Detection}.
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html}{Resources that Support Drift Detection}.
 }
 \section{Request syntax}{
 \preformatted{svc$detect_stack_resource_drift(

@@ -6,6 +6,7 @@ NULL
 #' Deletes the specified scaling policy for an Application Auto Scaling
 #' scalable target
 #'
+#' @description
 #' Deletes the specified scaling policy for an Application Auto Scaling
 #' scalable target.
 #' 
@@ -71,6 +72,10 @@ NULL
 #'     Example:
 #'     `arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE`.
 #' 
+#' -   Amazon Comprehend entity recognizer endpoint - The resource type and
+#'     unique identifier are specified using the endpoint ARN. Example:
+#'     `arn:aws:comprehend:us-west-2:123456789012:entity-recognizer-endpoint/EXAMPLE`.
+#' 
 #' -   Lambda provisioned concurrency - The resource type is `function` and
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
@@ -79,6 +84,10 @@ NULL
 #' -   Amazon Keyspaces table - The resource type is `table` and the unique
 #'     identifier is the table name. Example:
 #'     `keyspace/mykeyspace/table/mytable`.
+#' 
+#' -   Amazon MSK cluster - The resource type and unique identifier are
+#'     specified using the cluster ARN. Example:
+#'     `arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -120,6 +129,10 @@ NULL
 #'     The number of inference units for an Amazon Comprehend document
 #'     classification endpoint.
 #' 
+#' -   `comprehend:entity-recognizer-endpoint:DesiredInferenceUnits` - The
+#'     number of inference units for an Amazon Comprehend entity recognizer
+#'     endpoint.
+#' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
 #' 
@@ -128,14 +141,17 @@ NULL
 #' 
 #' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
 #'     capacity for an Amazon Keyspaces table.
+#' 
+#' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
+#'     GiB) for brokers in an Amazon MSK cluster.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_scaling_policy(
 #'   PolicyName = "string",
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"
 #' )
 #' ```
 #'
@@ -174,6 +190,7 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' Deletes the specified scheduled action for an Application Auto Scaling
 #' scalable target
 #'
+#' @description
 #' Deletes the specified scheduled action for an Application Auto Scaling
 #' scalable target.
 #' 
@@ -233,6 +250,10 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #'     Example:
 #'     `arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE`.
 #' 
+#' -   Amazon Comprehend entity recognizer endpoint - The resource type and
+#'     unique identifier are specified using the endpoint ARN. Example:
+#'     `arn:aws:comprehend:us-west-2:123456789012:entity-recognizer-endpoint/EXAMPLE`.
+#' 
 #' -   Lambda provisioned concurrency - The resource type is `function` and
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
@@ -241,6 +262,10 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' -   Amazon Keyspaces table - The resource type is `table` and the unique
 #'     identifier is the table name. Example:
 #'     `keyspace/mykeyspace/table/mytable`.
+#' 
+#' -   Amazon MSK cluster - The resource type and unique identifier are
+#'     specified using the cluster ARN. Example:
+#'     `arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -282,6 +307,10 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #'     The number of inference units for an Amazon Comprehend document
 #'     classification endpoint.
 #' 
+#' -   `comprehend:entity-recognizer-endpoint:DesiredInferenceUnits` - The
+#'     number of inference units for an Amazon Comprehend entity recognizer
+#'     endpoint.
+#' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
 #' 
@@ -290,14 +319,17 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' 
 #' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
 #'     capacity for an Amazon Keyspaces table.
+#' 
+#' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
+#'     GiB) for brokers in an Amazon MSK cluster.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_scheduled_action(
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
 #'   ScheduledActionName = "string",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"
 #' )
 #' ```
 #'
@@ -324,6 +356,7 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' Deregisters an Application Auto Scaling scalable target when you have
 #' finished using it
 #'
+#' @description
 #' Deregisters an Application Auto Scaling scalable target when you have
 #' finished using it. To see which resources have been registered, use
 #' [DescribeScalableTargets](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html).
@@ -382,6 +415,10 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #'     Example:
 #'     `arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE`.
 #' 
+#' -   Amazon Comprehend entity recognizer endpoint - The resource type and
+#'     unique identifier are specified using the endpoint ARN. Example:
+#'     `arn:aws:comprehend:us-west-2:123456789012:entity-recognizer-endpoint/EXAMPLE`.
+#' 
 #' -   Lambda provisioned concurrency - The resource type is `function` and
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
@@ -390,6 +427,10 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' -   Amazon Keyspaces table - The resource type is `table` and the unique
 #'     identifier is the table name. Example:
 #'     `keyspace/mykeyspace/table/mytable`.
+#' 
+#' -   Amazon MSK cluster - The resource type and unique identifier are
+#'     specified using the cluster ARN. Example:
+#'     `arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' 
@@ -431,6 +472,10 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #'     The number of inference units for an Amazon Comprehend document
 #'     classification endpoint.
 #' 
+#' -   `comprehend:entity-recognizer-endpoint:DesiredInferenceUnits` - The
+#'     number of inference units for an Amazon Comprehend entity recognizer
+#'     endpoint.
+#' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
 #' 
@@ -439,13 +484,16 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' 
 #' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
 #'     capacity for an Amazon Keyspaces table.
+#' 
+#' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
+#'     GiB) for brokers in an Amazon MSK cluster.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_scalable_target(
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"
 #' )
 #' ```
 #'
@@ -482,6 +530,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 
 #' Gets information about the scalable targets in the specified namespace
 #'
+#' @description
 #' Gets information about the scalable targets in the specified namespace.
 #' 
 #' You can filter the results using `ResourceIds` and `ScalableDimension`.
@@ -538,6 +587,10 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #'     Example:
 #'     `arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE`.
 #' 
+#' -   Amazon Comprehend entity recognizer endpoint - The resource type and
+#'     unique identifier are specified using the endpoint ARN. Example:
+#'     `arn:aws:comprehend:us-west-2:123456789012:entity-recognizer-endpoint/EXAMPLE`.
+#' 
 #' -   Lambda provisioned concurrency - The resource type is `function` and
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
@@ -546,6 +599,10 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' -   Amazon Keyspaces table - The resource type is `table` and the unique
 #'     identifier is the table name. Example:
 #'     `keyspace/mykeyspace/table/mytable`.
+#' 
+#' -   Amazon MSK cluster - The resource type and unique identifier are
+#'     specified using the cluster ARN. Example:
+#'     `arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5`.
 #' @param ScalableDimension The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' If you specify a scalable dimension, you must also specify a resource
@@ -589,6 +646,10 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #'     The number of inference units for an Amazon Comprehend document
 #'     classification endpoint.
 #' 
+#' -   `comprehend:entity-recognizer-endpoint:DesiredInferenceUnits` - The
+#'     number of inference units for an Amazon Comprehend entity recognizer
+#'     endpoint.
+#' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
 #' 
@@ -597,6 +658,9 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' 
 #' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
 #'     capacity for an Amazon Keyspaces table.
+#' 
+#' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
+#'     GiB) for brokers in an Amazon MSK cluster.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 50. The default value is 50.
 #' 
@@ -610,11 +674,11 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' @section Request syntax:
 #' ```
 #' svc$describe_scalable_targets(
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
 #'   ResourceIds = list(
 #'     "string"
 #'   ),
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -652,6 +716,7 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' Provides descriptive information about the scaling activities in the
 #' specified namespace from the previous six weeks
 #'
+#' @description
 #' Provides descriptive information about the scaling activities in the
 #' specified namespace from the previous six weeks.
 #' 
@@ -709,6 +774,10 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #'     Example:
 #'     `arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE`.
 #' 
+#' -   Amazon Comprehend entity recognizer endpoint - The resource type and
+#'     unique identifier are specified using the endpoint ARN. Example:
+#'     `arn:aws:comprehend:us-west-2:123456789012:entity-recognizer-endpoint/EXAMPLE`.
+#' 
 #' -   Lambda provisioned concurrency - The resource type is `function` and
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
@@ -717,6 +786,10 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' -   Amazon Keyspaces table - The resource type is `table` and the unique
 #'     identifier is the table name. Example:
 #'     `keyspace/mykeyspace/table/mytable`.
+#' 
+#' -   Amazon MSK cluster - The resource type and unique identifier are
+#'     specified using the cluster ARN. Example:
+#'     `arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
@@ -759,6 +832,10 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #'     The number of inference units for an Amazon Comprehend document
 #'     classification endpoint.
 #' 
+#' -   `comprehend:entity-recognizer-endpoint:DesiredInferenceUnits` - The
+#'     number of inference units for an Amazon Comprehend entity recognizer
+#'     endpoint.
+#' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
 #' 
@@ -767,6 +844,9 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' 
 #' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
 #'     capacity for an Amazon Keyspaces table.
+#' 
+#' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
+#'     GiB) for brokers in an Amazon MSK cluster.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 50. The default value is 50.
 #' 
@@ -780,9 +860,9 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' @section Request syntax:
 #' ```
 #' svc$describe_scaling_activities(
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -822,6 +902,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' Describes the Application Auto Scaling scaling policies for the
 #' specified service namespace
 #'
+#' @description
 #' Describes the Application Auto Scaling scaling policies for the
 #' specified service namespace.
 #' 
@@ -887,6 +968,10 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'     Example:
 #'     `arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE`.
 #' 
+#' -   Amazon Comprehend entity recognizer endpoint - The resource type and
+#'     unique identifier are specified using the endpoint ARN. Example:
+#'     `arn:aws:comprehend:us-west-2:123456789012:entity-recognizer-endpoint/EXAMPLE`.
+#' 
 #' -   Lambda provisioned concurrency - The resource type is `function` and
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
@@ -895,6 +980,10 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' -   Amazon Keyspaces table - The resource type is `table` and the unique
 #'     identifier is the table name. Example:
 #'     `keyspace/mykeyspace/table/mytable`.
+#' 
+#' -   Amazon MSK cluster - The resource type and unique identifier are
+#'     specified using the cluster ARN. Example:
+#'     `arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
@@ -937,6 +1026,10 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'     The number of inference units for an Amazon Comprehend document
 #'     classification endpoint.
 #' 
+#' -   `comprehend:entity-recognizer-endpoint:DesiredInferenceUnits` - The
+#'     number of inference units for an Amazon Comprehend entity recognizer
+#'     endpoint.
+#' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
 #' 
@@ -945,6 +1038,9 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' 
 #' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
 #'     capacity for an Amazon Keyspaces table.
+#' 
+#' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
+#'     GiB) for brokers in an Amazon MSK cluster.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 50. The default value is 50.
 #' 
@@ -961,9 +1057,9 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'   PolicyNames = list(
 #'     "string"
 #'   ),
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -1001,6 +1097,7 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' Describes the Application Auto Scaling scheduled actions for the
 #' specified service namespace
 #'
+#' @description
 #' Describes the Application Auto Scaling scheduled actions for the
 #' specified service namespace.
 #' 
@@ -1064,6 +1161,10 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #'     Example:
 #'     `arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE`.
 #' 
+#' -   Amazon Comprehend entity recognizer endpoint - The resource type and
+#'     unique identifier are specified using the endpoint ARN. Example:
+#'     `arn:aws:comprehend:us-west-2:123456789012:entity-recognizer-endpoint/EXAMPLE`.
+#' 
 #' -   Lambda provisioned concurrency - The resource type is `function` and
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
@@ -1072,6 +1173,10 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' -   Amazon Keyspaces table - The resource type is `table` and the unique
 #'     identifier is the table name. Example:
 #'     `keyspace/mykeyspace/table/mytable`.
+#' 
+#' -   Amazon MSK cluster - The resource type and unique identifier are
+#'     specified using the cluster ARN. Example:
+#'     `arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
@@ -1114,6 +1219,10 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #'     The number of inference units for an Amazon Comprehend document
 #'     classification endpoint.
 #' 
+#' -   `comprehend:entity-recognizer-endpoint:DesiredInferenceUnits` - The
+#'     number of inference units for an Amazon Comprehend entity recognizer
+#'     endpoint.
+#' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
 #' 
@@ -1122,6 +1231,9 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' 
 #' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
 #'     capacity for an Amazon Keyspaces table.
+#' 
+#' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
+#'     GiB) for brokers in an Amazon MSK cluster.
 #' @param MaxResults The maximum number of scheduled action results. This value can be
 #' between 1 and 50. The default value is 50.
 #' 
@@ -1138,9 +1250,9 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #'   ScheduledActionNames = list(
 #'     "string"
 #'   ),
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -1169,6 +1281,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' Creates or updates a scaling policy for an Application Auto Scaling
 #' scalable target
 #'
+#' @description
 #' Creates or updates a scaling policy for an Application Auto Scaling
 #' scalable target.
 #' 
@@ -1260,6 +1373,10 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'     Example:
 #'     `arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE`.
 #' 
+#' -   Amazon Comprehend entity recognizer endpoint - The resource type and
+#'     unique identifier are specified using the endpoint ARN. Example:
+#'     `arn:aws:comprehend:us-west-2:123456789012:entity-recognizer-endpoint/EXAMPLE`.
+#' 
 #' -   Lambda provisioned concurrency - The resource type is `function` and
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
@@ -1268,6 +1385,10 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' -   Amazon Keyspaces table - The resource type is `table` and the unique
 #'     identifier is the table name. Example:
 #'     `keyspace/mykeyspace/table/mytable`.
+#' 
+#' -   Amazon MSK cluster - The resource type and unique identifier are
+#'     specified using the cluster ARN. Example:
+#'     `arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -1309,6 +1430,10 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'     The number of inference units for an Amazon Comprehend document
 #'     classification endpoint.
 #' 
+#' -   `comprehend:entity-recognizer-endpoint:DesiredInferenceUnits` - The
+#'     number of inference units for an Amazon Comprehend entity recognizer
+#'     endpoint.
+#' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
 #' 
@@ -1317,15 +1442,18 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' 
 #' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
 #'     capacity for an Amazon Keyspaces table.
+#' 
+#' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
+#'     GiB) for brokers in an Amazon MSK cluster.
 #' @param PolicyType The policy type. This parameter is required if you are creating a
 #' scaling policy.
 #' 
 #' The following policy types are supported:
 #' 
-#' `TargetTrackingScaling`---Not supported for Amazon EMR
+#' `TargetTrackingScaling`—Not supported for Amazon EMR
 #' 
-#' `StepScaling`---Not supported for DynamoDB, Amazon Comprehend, Lambda,
-#' or Amazon Keyspaces (for Apache Cassandra).
+#' `StepScaling`—Not supported for DynamoDB, Amazon Comprehend, Lambda,
+#' Amazon Keyspaces (for Apache Cassandra), or Amazon MSK.
 #' 
 #' For more information, see [Target Tracking Scaling
 #' Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
@@ -1346,9 +1474,9 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' ```
 #' svc$put_scaling_policy(
 #'   PolicyName = "string",
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
 #'   PolicyType = "StepScaling"|"TargetTrackingScaling",
 #'   StepScalingPolicyConfiguration = list(
 #'     AdjustmentType = "ChangeInCapacity"|"PercentChangeInCapacity"|"ExactCapacity",
@@ -1366,7 +1494,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'   TargetTrackingScalingPolicyConfiguration = list(
 #'     TargetValue = 123.0,
 #'     PredefinedMetricSpecification = list(
-#'       PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"AppStreamAverageCapacityUtilization"|"ComprehendInferenceUtilization"|"LambdaProvisionedConcurrencyUtilization"|"CassandraReadCapacityUtilization"|"CassandraWriteCapacityUtilization",
+#'       PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"AppStreamAverageCapacityUtilization"|"ComprehendInferenceUtilization"|"LambdaProvisionedConcurrencyUtilization"|"CassandraReadCapacityUtilization"|"CassandraWriteCapacityUtilization"|"KafkaBrokerStorageUtilization",
 #'       ResourceLabel = "string"
 #'     ),
 #'     CustomizedMetricSpecification = list(
@@ -1435,6 +1563,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' Creates or updates a scheduled action for an Application Auto Scaling
 #' scalable target
 #'
+#' @description
 #' Creates or updates a scheduled action for an Application Auto Scaling
 #' scalable target.
 #' 
@@ -1449,7 +1578,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' action starts and stops.
 #' 
 #' To update a scheduled action, specify the parameters that you want to
-#' change. If you don\'t specify start and end times, the old values are
+#' change. If you don't specify start and end times, the old values are
 #' deleted.
 #' 
 #' For more information, see [Scheduled
@@ -1471,23 +1600,23 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' @param Schedule The schedule for this action. The following formats are supported:
 #' 
 #' -   At expressions -
-#'     \"`at(<i>yyyy</i>-<i>mm</i>-<i>dd</i>T<i>hh</i>:<i>mm</i>:<i>ss</i>)`\"
+#'     "`at(<i>yyyy</i>-<i>mm</i>-<i>dd</i>T<i>hh</i>:<i>mm</i>:<i>ss</i>)`"
 #' 
-#' -   Rate expressions - \"`rate(<i>value</i> <i>unit</i>)`\"
+#' -   Rate expressions - "`rate(<i>value</i> <i>unit</i>)`"
 #' 
-#' -   Cron expressions - \"`cron(<i>fields</i>)`\"
+#' -   Cron expressions - "`cron(<i>fields</i>)`"
 #' 
 #' At expressions are useful for one-time schedules. Specify the time in
 #' UTC.
 #' 
 #' For rate expressions, *value* is a positive integer and *unit* is
-#' `minute` \\| `minutes` \\| `hour` \\| `hours` \\| `day` \\| `days`.
+#' `minute` | `minutes` | `hour` | `hours` | `day` | `days`.
 #' 
-#' For more information about cron expressions, see [Cron
-#' Expressions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions)
-#' in the *Amazon CloudWatch Events User Guide*.
+#' For cron expressions, *fields* is a cron expression. The supported cron
+#' format consists of six fields separated by white spaces: \[Minutes\]
+#' \[Hours\] \[Day\\_of\\_Month\] \[Month\] \[Day\\_of\\_Week\] \[Year\].
 #' 
-#' For examples of using these expressions, see [Scheduled
+#' For more information and examples, see [Scheduled
 #' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html)
 #' in the *Application Auto Scaling User Guide*.
 #' @param ScheduledActionName &#91;required&#93; The name of the scheduled action. This name must be unique among all
@@ -1536,6 +1665,10 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #'     Example:
 #'     `arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE`.
 #' 
+#' -   Amazon Comprehend entity recognizer endpoint - The resource type and
+#'     unique identifier are specified using the endpoint ARN. Example:
+#'     `arn:aws:comprehend:us-west-2:123456789012:entity-recognizer-endpoint/EXAMPLE`.
+#' 
 #' -   Lambda provisioned concurrency - The resource type is `function` and
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
@@ -1544,6 +1677,10 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' -   Amazon Keyspaces table - The resource type is `table` and the unique
 #'     identifier is the table name. Example:
 #'     `keyspace/mykeyspace/table/mytable`.
+#' 
+#' -   Amazon MSK cluster - The resource type and unique identifier are
+#'     specified using the cluster ARN. Example:
+#'     `arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -1585,6 +1722,10 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #'     The number of inference units for an Amazon Comprehend document
 #'     classification endpoint.
 #' 
+#' -   `comprehend:entity-recognizer-endpoint:DesiredInferenceUnits` - The
+#'     number of inference units for an Amazon Comprehend entity recognizer
+#'     endpoint.
+#' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
 #' 
@@ -1593,6 +1734,9 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' 
 #' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
 #'     capacity for an Amazon Keyspaces table.
+#' 
+#' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
+#'     GiB) for brokers in an Amazon MSK cluster.
 #' @param StartTime The date and time for this scheduled action to start.
 #' @param EndTime The date and time for the recurring schedule to end.
 #' @param ScalableTargetAction The new minimum and maximum capacity. You can set both values or just
@@ -1604,11 +1748,11 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' @section Request syntax:
 #' ```
 #' svc$put_scheduled_action(
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
 #'   Schedule = "string",
 #'   ScheduledActionName = "string",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
 #'   StartTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -1644,6 +1788,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 
 #' Registers or updates a scalable target
 #'
+#' @description
 #' Registers or updates a scalable target.
 #' 
 #' A scalable target is a resource that Application Auto Scaling can scale
@@ -1651,8 +1796,10 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' combination of resource ID, scalable dimension, and namespace.
 #' 
 #' When you register a new scalable target, you must specify values for
-#' minimum and maximum capacity. Application Auto Scaling scaling policies
-#' will not scale capacity to values that are outside of this range.
+#' minimum and maximum capacity. Current capacity will be adjusted within
+#' the specified range when scaling starts. Application Auto Scaling
+#' scaling policies will not scale capacity to values that are outside of
+#' this range.
 #' 
 #' After you register a scalable target, you do not need to register it
 #' again to use other Application Auto Scaling operations. To see which
@@ -1666,7 +1813,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' To update a scalable target, specify the parameters that you want to
 #' change. Include the parameters that identify the scalable target:
 #' resource ID, scalable dimension, and namespace. Any parameters that you
-#' don\'t specify are not changed by this update request.
+#' don't specify are not changed by this update request.
 #'
 #' @usage
 #' applicationautoscaling_register_scalable_target(ServiceNamespace,
@@ -1720,6 +1867,10 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #'     Example:
 #'     `arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE`.
 #' 
+#' -   Amazon Comprehend entity recognizer endpoint - The resource type and
+#'     unique identifier are specified using the endpoint ARN. Example:
+#'     `arn:aws:comprehend:us-west-2:123456789012:entity-recognizer-endpoint/EXAMPLE`.
+#' 
 #' -   Lambda provisioned concurrency - The resource type is `function` and
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
@@ -1728,6 +1879,10 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' -   Amazon Keyspaces table - The resource type is `table` and the unique
 #'     identifier is the table name. Example:
 #'     `keyspace/mykeyspace/table/mytable`.
+#' 
+#' -   Amazon MSK cluster - The resource type and unique identifier are
+#'     specified using the cluster ARN. Example:
+#'     `arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' 
@@ -1769,6 +1924,10 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #'     The number of inference units for an Amazon Comprehend document
 #'     classification endpoint.
 #' 
+#' -   `comprehend:entity-recognizer-endpoint:DesiredInferenceUnits` - The
+#'     number of inference units for an Amazon Comprehend entity recognizer
+#'     endpoint.
+#' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
 #' 
@@ -1777,20 +1936,31 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' 
 #' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
 #'     capacity for an Amazon Keyspaces table.
+#' 
+#' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
+#'     GiB) for brokers in an Amazon MSK cluster.
 #' @param MinCapacity The minimum value that you plan to scale in to. When a scaling policy is
 #' in effect, Application Auto Scaling can scale in (contract) as needed to
-#' the minimum capacity limit in response to changing demand.
+#' the minimum capacity limit in response to changing demand. This property
+#' is required when registering a new scalable target.
 #' 
-#' This parameter is required if you are registering a scalable target. For
-#' certain resources, the minimum value allowed is 0. This includes Lambda
-#' provisioned concurrency, Spot Fleet, ECS services, Aurora DB clusters,
-#' EMR clusters, and custom resources. For all other resources, the minimum
-#' value allowed is 1.
+#' For certain resources, the minimum value allowed is 0. This includes
+#' Lambda provisioned concurrency, Spot Fleet, ECS services, Aurora DB
+#' clusters, EMR clusters, and custom resources. For all other resources,
+#' the minimum value allowed is 1.
 #' @param MaxCapacity The maximum value that you plan to scale out to. When a scaling policy
 #' is in effect, Application Auto Scaling can scale out (expand) as needed
-#' to the maximum capacity limit in response to changing demand.
+#' to the maximum capacity limit in response to changing demand. This
+#' property is required when registering a new scalable target.
 #' 
-#' This parameter is required if you are registering a scalable target.
+#' Although you can specify a large maximum capacity, note that service
+#' quotas may impose lower limits. Each service has its own default quotas
+#' for the maximum capacity of the resource. If you want to specify a
+#' higher limit, you can request an increase. For more information, consult
+#' the documentation for that service. For information about the default
+#' quotas for each service, see [Service Endpoints and
+#' Quotas](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html)
+#' in the *Amazon Web Services General Reference*.
 #' @param RoleARN This parameter is required for services that do not support
 #' service-linked roles (such as Amazon EMR), and it must specify the ARN
 #' of an IAM role that allows Application Auto Scaling to modify the
@@ -1826,9 +1996,9 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' @section Request syntax:
 #' ```
 #' svc$register_scalable_target(
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
 #'   MinCapacity = 123,
 #'   MaxCapacity = 123,
 #'   RoleARN = "string",

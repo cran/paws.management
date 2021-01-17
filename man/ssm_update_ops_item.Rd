@@ -6,7 +6,8 @@
 \usage{
 ssm_update_ops_item(Description, OperationalData,
   OperationalDataToDelete, Notifications, Priority, RelatedOpsItems,
-  Status, OpsItemId, Title, Category, Severity)
+  Status, OpsItemId, Title, Category, Severity, ActualStartTime,
+  ActualEndTime, PlannedStartTime, PlannedEndTime)
 }
 \arguments{
 \item{Description}{Update the information about the OpsItem. Provide enough information so
@@ -21,7 +22,7 @@ strings, license keys, troubleshooting tips, or other relevant data. You
 enter operational data as key-value pairs. The key has a maximum length
 of 128 characters. The value has a maximum size of 20 KB.
 
-Operational data keys \emph{can\'t} begin with the following: amazon, aws,
+Operational data keys \emph{can't} begin with the following: amazon, aws,
 amzn, ssm, /amazon, /aws, /amzn, /ssm.
 
 You can choose to make the data searchable by other users in the account
@@ -62,14 +63,25 @@ impacted resource.}
 \item{Category}{Specify a new category for an OpsItem.}
 
 \item{Severity}{Specify a new severity for an OpsItem.}
+
+\item{ActualStartTime}{The time a runbook workflow started. Currently reported only for the
+OpsItem type \verb{/aws/changerequest}.}
+
+\item{ActualEndTime}{The time a runbook workflow ended. Currently reported only for the
+OpsItem type \verb{/aws/changerequest}.}
+
+\item{PlannedStartTime}{The time specified in a change request for a runbook workflow to start.
+Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
+
+\item{PlannedEndTime}{The time specified in a change request for a runbook workflow to end.
+Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
 }
 \description{
 Edit or change an OpsItem. You must have permission in AWS Identity and
 Access Management (IAM) to update an OpsItem. For more information, see
 \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting started with OpsCenter}
 in the \emph{AWS Systems Manager User Guide}.
-}
-\details{
+
 Operations engineers and IT professionals use OpsCenter to view,
 investigate, and remediate operational issues impacting the performance
 and health of their AWS resources. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html}{AWS Systems Manager OpsCenter}
@@ -98,11 +110,23 @@ in the \emph{AWS Systems Manager User Guide}.
       OpsItemId = "string"
     )
   ),
-  Status = "Open"|"InProgress"|"Resolved",
+  Status = "Open"|"InProgress"|"Resolved"|"Pending"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"CompletedWithSuccess"|"CompletedWithFailure"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"PendingApproval"|"Approved"|"Rejected",
   OpsItemId = "string",
   Title = "string",
   Category = "string",
-  Severity = "string"
+  Severity = "string",
+  ActualStartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  ActualEndTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  PlannedStartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  PlannedEndTime = as.POSIXct(
+    "2015-01-01"
+  )
 )
 }
 }

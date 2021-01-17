@@ -18,18 +18,18 @@ Naming Constraints:
 \itemize{
 \item Parameter names are case sensitive.
 \item A parameter name must be unique within an AWS Region
-\item A parameter name can\'t be prefixed with \"aws\" or \"ssm\"
+\item A parameter name can't be prefixed with "aws" or "ssm"
 (case-insensitive).
 \item Parameter names can include only the following symbols and letters:
 \verb{a-zA-Z0-9_.-/}
-\item A parameter name can\'t include spaces.
+\item A parameter name can't include spaces.
 \item Parameter hierarchies are limited to a maximum depth of fifteen
 levels.
 }
 
 For additional information about valid values for parameter names, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-parameter-name-constraints.html}{About requirements and constraints for parameter names}
-in the \emph{AWS Systems Manager User Guide}.
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{About requirements and constraints for parameter names} in
+the \emph{AWS Systems Manager User Guide}.
 
 The maximum length constraint listed below includes capacity for
 additional system attributes that are not part of the name. The maximum
@@ -46,14 +46,18 @@ Do not enter personally identifiable information in this field.}
 
 \item{Value}{[required] The parameter value that you want to add to the system. Standard
 parameters have a value limit of 4 KB. Advanced parameters have a value
-limit of 8 KB.}
+limit of 8 KB.
+
+Parameters can't be referenced or nested in the values of other
+parameters. You can't include \verb{\\\{\\\{\\\}\\\}} or \verb{\\\{\\\{ssm:<i>parameter-name</i>\\\}\\\}}
+in a parameter value.}
 
 \item{Type}{The type of parameter that you want to add to the system.
 
 \code{SecureString} is not currently supported for AWS CloudFormation
-templates or in the China Regions.
+templates.
 
-Items in a \code{StringList} must be separated by a comma (,). You can\'t use
+Items in a \code{StringList} must be separated by a comma (,). You can't use
 other punctuation or special character to escape items in the list. If
 you have a parameter value that requires a comma, then use the \code{String}
 data type.
@@ -66,7 +70,7 @@ default AWS Key Management Service (AWS KMS) key automatically assigned
 to your AWS account or a custom key. Required for parameters that use
 the \code{SecureString} data type.
 
-If you don\'t specify a key ID, the system uses the default key
+If you don't specify a key ID, the system uses the default key
 associated with your AWS account.
 \itemize{
 \item To use your default AWS KMS key, choose the \code{SecureString} data
@@ -78,11 +82,11 @@ the \verb{Key ID} parameter.
 }}
 
 \item{Overwrite}{Overwrite an existing parameter. If not specified, will default to
-\"false\".}
+"false".}
 
 \item{AllowedPattern}{A regular expression used to validate the parameter value. For example,
 for String types with values restricted to numbers, you can specify the
-following: AllowedPattern=\\^\verb{\\\\d}+\\$}
+following: AllowedPattern=^\verb{\\\\d}+$}
 
 \item{Tags}{Optional metadata that you assign to a resource. Tags enable you to
 categorize a resource in different ways, such as by purpose, owner, or
@@ -104,7 +108,7 @@ AddTagsToResource action.}
 
 Parameter Store offers a standard tier and an advanced tier for
 parameters. Standard parameters have a content size limit of 4 KB and
-can\'t be configured to use parameter policies. You can create a maximum
+can't be configured to use parameter policies. You can create a maximum
 of 10,000 standard parameters for each Region in an AWS account.
 Standard parameters are offered at no additional cost.
 
@@ -115,7 +119,7 @@ parameters incur a charge. For more information, see \href{https://docs.aws.amaz
 in the \emph{AWS Systems Manager User Guide}.
 
 You can change a standard parameter to an advanced parameter any time.
-But you can\'t revert an advanced parameter to a standard parameter.
+But you can't revert an advanced parameter to a standard parameter.
 Reverting an advanced parameter to a standard parameter would result in
 data loss because the system would truncate the size of the parameter
 from 8 KB to 4 KB. Reverting would also remove any policies attached to
@@ -144,7 +148,7 @@ requests as advanced parameters.
 \item \strong{Intelligent-Tiering}: With this option, Parameter Store evaluates
 each request to determine if the parameter is standard or advanced.
 
-If the request doesn\'t include any options that require an advanced
+If the request doesn't include any options that require an advanced
 parameter, the parameter is created in the standard-parameter tier.
 If one or more options requiring an advanced parameter are included
 in the request, Parameter Store create a parameter in the
@@ -164,8 +168,8 @@ current Region.
 }
 
 For more information about configuring the default tier option, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/ps-default-tier.html}{Specifying a default parameter tier}
-in the \emph{AWS Systems Manager User Guide}.}
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Specifying a default parameter tier} in
+the \emph{AWS Systems Manager User Guide}.}
 
 \item{Policies}{One or more policies to apply to a parameter. This action takes a JSON
 array. Parameter Store supports the following policy types:
@@ -202,7 +206,7 @@ plain text and Amazon Machine Image IDs.
 When you create a \code{String} parameter and specify \code{aws:ec2:image},
 Systems Manager validates the parameter value is in the required format,
 such as \verb{ami-12345abcdeEXAMPLE}, and that the specified AMI is available
-in your AWS account. For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html}{Native parameter support for Amazon Machine Image IDs}
+in your AWS account. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html}{Native parameter support for Amazon Machine Image IDs}
 in the \emph{AWS Systems Manager User Guide}.}
 }
 \description{

@@ -27,8 +27,9 @@ expression.}
 
 \item{ScheduleTimezone}{The time zone that the scheduled maintenance window executions are based
 on, in Internet Assigned Numbers Authority (IANA) format. For example:
-\"America/Los\\_Angeles\", \"etc/UTC\", or \"Asia/Seoul\". For more
-information, see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA website.}
+"America/Los\\_Angeles", "UTC", or "Asia/Seoul". For more information,
+see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the
+IANA website.}
 
 \item{ScheduleOffset}{The number of days to wait after the date and time specified by a CRON
 expression before running the maintenance window.
@@ -36,9 +37,9 @@ expression before running the maintenance window.
 For example, the following cron expression schedules a maintenance
 window to run on the third Tuesday of every month at 11:30 PM.
 
-\verb{cron(0 30 23 ? * TUE#3 *)}
+\verb{cron(30 23 ? * TUE#3 *)}
 
-If the schedule offset is \code{2}, the maintenance window won\'t run until
+If the schedule offset is \code{2}, the maintenance window won't run until
 two days later.}
 
 \item{Duration}{[required] The duration of the maintenance window in hours.}
@@ -51,7 +52,7 @@ you have not registered those instances as targets. If enabled, then you
 must specify the unregistered instances (by instance ID) when you
 register a task with the maintenance window.
 
-If you don\'t enable this option, then you must specify
+If you don't enable this option, then you must specify
 previously-registered targets when you register a task with the
 maintenance window.}
 
@@ -74,8 +75,7 @@ action.}
 }
 \description{
 Creates a new maintenance window.
-}
-\details{
+
 The value you specify for \code{Duration} determines the specific end time
 for the maintenance window based on the time it begins. No maintenance
 window tasks are permitted to start after the resulting endtime minus

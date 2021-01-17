@@ -24,8 +24,8 @@ You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 which you want to update parameter values for stack instances. If your
 update targets OUs, the overridden parameter values only apply to the
 accounts that are currently in the target OUs and their child OUs.
-Accounts added to the target OUs and their child OUs in the future
-won\'t use the overridden values.
+Accounts added to the target OUs and their child OUs in the future won't
+use the overridden values.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 
@@ -83,15 +83,14 @@ you retry the request multiple times. You might retry stack set
 operation requests to ensure that AWS CloudFormation successfully
 received them.
 
-If you don\'t specify an operation ID, the SDK generates one
+If you don't specify an operation ID, the SDK generates one
 automatically.}
 }
 \description{
 Updates the parameter values for stack instances for the specified
 accounts, within the specified Regions. A stack instance refers to a
 stack in a specific account and Region.
-}
-\details{
+
 You can only update stack instances in Regions and accounts where they
 already exist; to create additional stack instances, use
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html}{CreateStackInstances}.

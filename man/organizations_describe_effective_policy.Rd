@@ -11,12 +11,12 @@ organizations_describe_effective_policy(PolicyType, TargetId)
 \item{PolicyType}{[required] The type of policy that you want information about. You can specify one
 of the following values:
 \itemize{
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
 }}
 
-\item{TargetId}{When you\'re signed in as the master account, specify the ID of the
+\item{TargetId}{When you're signed in as the management account, specify the ID of the
 account that you want details about. Specifying an organization root or
 organizational unit (OU) as the target is not supported.}
 }
@@ -25,15 +25,14 @@ Returns the contents of the effective policy for specified policy type
 and account. The effective policy is the aggregation of any policies of
 the specified type that the account inherits, plus any policy of that
 type that is directly attached to the account.
-}
-\details{
+
 This operation applies only to policy types \emph{other} than service control
 policies (SCPs).
 
-For more information about policy inheritance, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies-inheritance.html}{How Policy Inheritance Works}
-in the \emph{AWS Organizations User Guide}.
+For more information about policy inheritance, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/}{How Policy Inheritance Works} in
+the \emph{AWS Organizations User Guide}.
 
-This operation can be called only from the organization\'s master
+This operation can be called only from the organization's management
 account or by a member account that is a delegated administrator for an
 AWS service.
 }

@@ -11,7 +11,7 @@ cloudformation_describe_stack_resources(StackName, LogicalResourceId,
 \item{StackName}{The name or the unique stack ID that is associated with the stack, which
 are not always interchangeable:
 \itemize{
-\item Running stacks: You can specify either the stack\'s name or its
+\item Running stacks: You can specify either the stack's name or its
 unique stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
 }
@@ -44,8 +44,7 @@ Returns AWS resource descriptions for running and deleted stacks. If
 the stack are returned. If \code{PhysicalResourceId} is specified, the
 associated resources of the stack that the resource belongs to are
 returned.
-}
-\details{
+
 Only the first 100 resources will be returned. If your stack has more
 resources than this, you should use \code{ListStackResources} instead.
 

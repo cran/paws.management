@@ -11,13 +11,12 @@ autoscaling_create_or_update_tags(Tags)
 }
 \description{
 Creates or updates tags for the specified Auto Scaling group.
-}
-\details{
+
 When you specify a tag with a key that already exists, the operation
 overwrites the previous tag definition, and you do not get an error
 message.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html}{Tagging Auto Scaling Groups and Instances}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html}{Tagging Auto Scaling groups and instances}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

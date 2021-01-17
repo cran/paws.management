@@ -8,8 +8,7 @@ cloudwatch_set_alarm_state(AlarmName, StateValue, StateReason,
   StateReasonData)
 }
 \arguments{
-\item{AlarmName}{[required] The name for the alarm. This name must be unique within the AWS account.
-The maximum length is 255 characters.}
+\item{AlarmName}{[required] The name of the alarm.}
 
 \item{StateValue}{[required] The value of the state.}
 
@@ -29,18 +28,17 @@ updated state differs from the previous value, the action configured for
 the appropriate state is invoked. For example, if your alarm is
 configured to send an Amazon SNS message when an alarm is triggered,
 temporarily changing the alarm state to \code{ALARM} sends an SNS message.
-}
-\details{
+
 Metric alarms returns to their actual state quickly, often within
 seconds. Because the metric alarm state change happens quickly, it is
-typically only visible in the alarm\'s \strong{History} tab in the Amazon
+typically only visible in the alarm's \strong{History} tab in the Amazon
 CloudWatch console or through
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarmHistory.html}{DescribeAlarmHistory}.
 
 If you use \code{SetAlarmState} on a composite alarm, the composite alarm is
-not guaranteed to return to its actual state. It will return to its
-actual state only once any of its children alarms change state. It is
-also re-evaluated if you update its configuration.
+not guaranteed to return to its actual state. It returns to its actual
+state only once any of its children alarms change state. It is also
+reevaluated if you update its configuration.
 
 If an alarm triggers EC2 Auto Scaling policies or application Auto
 Scaling policies, you must include information in the \code{StateReasonData}

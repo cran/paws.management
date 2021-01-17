@@ -9,7 +9,7 @@ ssm_list_resource_data_sync(SyncType, NextToken, MaxResults)
 \arguments{
 \item{SyncType}{View a list of resource data syncs according to the sync type. Specify
 \code{SyncToDestination} to view resource data syncs that synchronize data to
-an Amazon S3 buckets. Specify \code{SyncFromSource} to view resource data
+an Amazon S3 bucket. Specify \code{SyncFromSource} to view resource data
 syncs from AWS Organizations or from multiple AWS Regions.}
 
 \item{NextToken}{A token to start the list. Use this token to get the next set of
@@ -23,8 +23,7 @@ next set of results.}
 Lists your resource data sync configurations. Includes information about
 the last time a sync attempted to start, the last sync status, and the
 last time a sync successfully completed.
-}
-\details{
+
 The number of sync configurations might be too large to return using a
 single call to \code{ListResourceDataSync}. You can limit the number of sync
 configurations returned by using the \code{MaxResults} parameter. To

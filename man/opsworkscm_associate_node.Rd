@@ -31,8 +31,7 @@ that is created by the node.
 \description{
 Associates a new node with the server. For more information about how to
 disassociate a node, see DisassociateNode.
-}
-\details{
+
 On a Chef server: This command is an alternative to \verb{knife bootstrap}.
 
 Example (Chef):
@@ -50,7 +49,7 @@ state. Otherwise, an \code{InvalidStateException} is thrown. A
 \code{ValidationException} is raised when parameters of the request are not
 valid. The AssociateNode API call can be integrated into Auto Scaling
 configurations, AWS Cloudformation templates, or the user data of a
-server\'s instance.
+server's instance.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_node(

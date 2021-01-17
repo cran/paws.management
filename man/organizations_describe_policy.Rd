@@ -11,15 +11,14 @@ organizations_describe_policy(PolicyId)
 You can get the ID from the ListPolicies or ListPoliciesForTarget
 operations.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID
-string requires \"p-\" followed by from 8 to 128 lowercase or uppercase
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a policy ID
+string requires "p-" followed by from 8 to 128 lowercase or uppercase
 letters, digits, or the underscore character (\\_).}
 }
 \description{
 Retrieves information about a policy.
-}
-\details{
-This operation can be called only from the organization\'s master
+
+This operation can be called only from the organization's management
 account or by a member account that is a delegated administrator for an
 AWS service.
 }

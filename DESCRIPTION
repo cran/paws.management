@@ -1,6 +1,6 @@
 Package: paws.management
 Title: Amazon Web Services Management & Governance Services
-Version: 0.1.9
+Version: 0.1.10
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -23,7 +23,7 @@ Imports: paws.common (>= 0.3.0)
 Suggests: testthat
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Collate: 'applicationautoscaling_service.R'
         'applicationautoscaling_interfaces.R'
         'applicationautoscaling_operations.R'
@@ -62,10 +62,10 @@ Collate: 'applicationautoscaling_service.R'
         'support_service.R' 'support_interfaces.R'
         'support_operations.R'
 NeedsCompilation: no
-Packaged: 2020-08-03 00:17:26 UTC; david.kretch
+Packaged: 2021-01-17 13:48:32 UTC; david.kretch
 Author: David Kretch [aut, cre],
   Adam Banker [aut],
   Amazon.com, Inc. [cph]
 Maintainer: David Kretch <david.kretch@gmail.com>
 Repository: CRAN
-Date/Publication: 2020-08-03 08:50:04 UTC
+Date/Publication: 2021-01-17 14:30:02 UTC

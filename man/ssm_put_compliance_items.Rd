@@ -21,7 +21,7 @@ State Manager association), Patch, or Custom:\code{string}.}
 \item{ExecutionSummary}{[required] A summary of the call execution that includes an execution ID, the type
 of execution (for example, \code{Command}), and the date/time of the
 execution using a datetime object that is saved in the following format:
-yyyy-MM-dd\'T\'HH:mm:ss\'Z\'.}
+yyyy-MM-dd'T'HH:mm:ss'Z'.}
 
 \item{Items}{[required] Information about the compliance as defined by the resource type. For
 example, for a patch compliance type, \code{Items} includes information about
@@ -49,8 +49,7 @@ resource. This action lets you register custom compliance details with a
 resource. This call overwrites existing compliance information on the
 resource, so you must provide a full list of compliance items each time
 that you send the request.
-}
-\details{
+
 ComplianceType can be one of the following:
 \itemize{
 \item ExecutionId: The execution ID when the patch, association, or custom
@@ -75,7 +74,7 @@ AWS-RunPatchBaseline.
 \item PatchGroup: The name of a patch group.
 \item InstalledTime: The time the association, patch, or custom compliance
 item was applied to the resource. Specify the time by using the
-following format: yyyy-MM-dd\'T\'HH:mm:ss\'Z\'
+following format: yyyy-MM-dd'T'HH:mm:ss'Z'
 }
 }
 \section{Request syntax}{

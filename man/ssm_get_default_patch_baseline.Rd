@@ -13,14 +13,13 @@ ssm_get_default_patch_baseline(OperatingSystem)
 Retrieves the default patch baseline. Note that Systems Manager supports
 creating multiple default patch baselines. For example, you can create a
 default patch baseline for each operating system.
-}
-\details{
+
 If you do not specify an operating system value, the default patch
 baseline for Windows is returned.
 }
 \section{Request syntax}{
 \preformatted{svc$get_default_patch_baseline(
-  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"
+  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS"
 )
 }
 }

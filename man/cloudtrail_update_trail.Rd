@@ -27,7 +27,7 @@ If \code{Name} is a trail ARN, it must be in the format:
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 
 \item{S3BucketName}{Specifies the name of the Amazon S3 bucket designated for publishing log
-files. See \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html}{Amazon S3 Bucket Naming Requirements}.}
+files. See \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html}{Amazon S3 Bucket Naming Requirements}.}
 
 \item{S3KeyPrefix}{Specifies the Amazon S3 key prefix that comes after the name of the
 bucket you have designated for log file delivery. For more information,
@@ -66,12 +66,12 @@ identifier that represents the log group to which CloudTrail logs will
 be delivered. Not required unless you specify CloudWatchLogsRoleArn.}
 
 \item{CloudWatchLogsRoleArn}{Specifies the role for the CloudWatch Logs endpoint to assume to write
-to a user\'s log group.}
+to a user's log group.}
 
 \item{KmsKeyId}{Specifies the KMS key ID to use to encrypt the logs delivered by
-CloudTrail. The value can be an alias name prefixed by \"alias/\", a
-fully specified ARN to an alias, a fully specified ARN to a key, or a
-globally unique identifier.
+CloudTrail. The value can be an alias name prefixed by "alias/", a fully
+specified ARN to an alias, a fully specified ARN to a key, or a globally
+unique identifier.
 
 Examples:
 \itemize{

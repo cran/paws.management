@@ -12,13 +12,12 @@ opsworks_delete_instance(InstanceId, DeleteElasticIp, DeleteVolumes)
 
 \item{DeleteElasticIp}{Whether to delete the instance Elastic IP address.}
 
-\item{DeleteVolumes}{Whether to delete the instance\'s Amazon EBS volumes.}
+\item{DeleteVolumes}{Whether to delete the instance's Amazon EBS volumes.}
 }
 \description{
 Deletes a specified instance, which terminates the associated Amazon EC2
 instance. You must stop an instance before you can delete it.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-delete.html}{Deleting Instances}.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a

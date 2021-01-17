@@ -4,11 +4,16 @@
 \alias{ssm_create_ops_item}
 \title{Creates a new OpsItem}
 \usage{
-ssm_create_ops_item(Description, OperationalData, Notifications,
-  Priority, RelatedOpsItems, Source, Title, Tags, Category, Severity)
+ssm_create_ops_item(Description, OpsItemType, OperationalData,
+  Notifications, Priority, RelatedOpsItems, Source, Title, Tags, Category,
+  Severity, ActualStartTime, ActualEndTime, PlannedStartTime,
+  PlannedEndTime)
 }
 \arguments{
 \item{Description}{[required] Information about the OpsItem.}
+
+\item{OpsItemType}{The type of OpsItem to create. Currently, the only valid values are
+\verb{/aws/changerequest} and \verb{/aws/issue}.}
 
 \item{OperationalData}{Operational data is custom data that provides useful reference details
 about the OpsItem. For example, you can specify log files, error
@@ -16,7 +21,7 @@ strings, license keys, troubleshooting tips, or other relevant data. You
 enter operational data as key-value pairs. The key has a maximum length
 of 128 characters. The value has a maximum size of 20 KB.
 
-Operational data keys \emph{can\'t} begin with the following: amazon, aws,
+Operational data keys \emph{can't} begin with the following: amazon, aws,
 amzn, ssm, /amazon, /aws, /amzn, /ssm.
 
 You can choose to make the data searchable by other users in the account
@@ -45,7 +50,7 @@ resource.}
 
 \item{Source}{[required] The origin of the OpsItem, such as Amazon EC2 or Systems Manager.
 
-The source name can\'t contain the following strings: aws, amazon, and
+The source name can't contain the following strings: aws, amazon, and
 amzn.}
 
 \item{Title}{[required] A short heading that describes the nature of the OpsItem and the
@@ -65,14 +70,25 @@ To add tags to an existing OpsItem, use the AddTagsToResource action.}
 \item{Category}{Specify a category to assign to an OpsItem.}
 
 \item{Severity}{Specify a severity to assign to an OpsItem.}
+
+\item{ActualStartTime}{The time a runbook workflow started. Currently reported only for the
+OpsItem type \verb{/aws/changerequest}.}
+
+\item{ActualEndTime}{The time a runbook workflow ended. Currently reported only for the
+OpsItem type \verb{/aws/changerequest}.}
+
+\item{PlannedStartTime}{The time specified in a change request for a runbook workflow to start.
+Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
+
+\item{PlannedEndTime}{The time specified in a change request for a runbook workflow to end.
+Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
 }
 \description{
 Creates a new OpsItem. You must have permission in AWS Identity and
 Access Management (IAM) to create a new OpsItem. For more information,
 see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting started with OpsCenter}
 in the \emph{AWS Systems Manager User Guide}.
-}
-\details{
+
 Operations engineers and IT professionals use OpsCenter to view,
 investigate, and remediate operational issues impacting the performance
 and health of their AWS resources. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html}{AWS Systems Manager OpsCenter}
@@ -81,6 +97,7 @@ in the \emph{AWS Systems Manager User Guide}.
 \section{Request syntax}{
 \preformatted{svc$create_ops_item(
   Description = "string",
+  OpsItemType = "string",
   OperationalData = list(
     list(
       Value = "string",
@@ -107,7 +124,19 @@ in the \emph{AWS Systems Manager User Guide}.
     )
   ),
   Category = "string",
-  Severity = "string"
+  Severity = "string",
+  ActualStartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  ActualEndTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  PlannedStartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  PlannedEndTime = as.POSIXct(
+    "2015-01-01"
+  )
 )
 }
 }

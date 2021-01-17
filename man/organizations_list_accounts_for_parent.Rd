@@ -14,8 +14,8 @@ whose accounts you want to list.}
 \item{NextToken}{The parameter for receiving additional results if you receive a
 \code{NextToken} response in a previous request. A \code{NextToken} response
 indicates that more output is available. Set this parameter to the value
-of the previous call\'s \code{NextToken} response to indicate where the
-output should continue from.}
+of the previous call's \code{NextToken} response to indicate where the output
+should continue from.}
 
 \item{MaxResults}{The total number of results that you want included on each page of the
 response. If you do not include this parameter, it defaults to a value
@@ -31,19 +31,18 @@ results.}
 \description{
 Lists the accounts in an organization that are contained by the
 specified target root or organizational unit (OU). If you specify the
-root, you get a list of all the accounts that aren\'t in any OU. If you
+root, you get a list of all the accounts that aren't in any OU. If you
 specify an OU, you get a list of all the accounts in only that OU and
 not in any child OUs. To get a list of all accounts in the organization,
 use the ListAccounts operation.
-}
-\details{
+
 Always check the \code{NextToken} response parameter for a \code{null} value when
 calling a \verb{List*} operation. These operations can occasionally return an
 empty set of results even when there are more results available. The
 \code{NextToken} response parameter value is \code{null} \emph{only} when there are no
 more results to display.
 
-This operation can be called only from the organization\'s master
+This operation can be called only from the organization's management
 account or by a member account that is a delegated administrator for an
 AWS service.
 }

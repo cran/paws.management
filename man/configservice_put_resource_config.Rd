@@ -11,8 +11,8 @@ configservice_put_resource_config(ResourceType, SchemaVersionId,
 \item{ResourceType}{[required] The type of the resource. The custom resource type must be registered
 with AWS CloudFormation.
 
-You cannot use the organization names "aws", "amzn", "amazon", "alexa",
-"custom" with custom resource types. It is the first part of the
+You cannot use the organization names “aws”, “amzn”, “amazon”, “alexa”,
+“custom” with custom resource types. It is the first part of the
 ResourceType up to the first ::.}
 
 \item{SchemaVersionId}{[required] Version of the schema registered for the ResourceType in AWS
@@ -35,8 +35,7 @@ request. The configuration state of a resource is represented in AWS
 Config as Configuration Items. Once this API records the configuration
 item, you can retrieve the list of configuration items for the custom
 resource type using existing AWS Config APIs.
-}
-\details{
+
 The custom resource type must be registered with AWS CloudFormation.
 This API accepts the configuration item registered with AWS
 CloudFormation.
@@ -44,6 +43,9 @@ CloudFormation.
 When you call this API, AWS Config only stores configuration state of
 the resource provided in the request. This API does not change or
 remediate the configuration of the resource.
+
+Write-only schema properites are not recorded as part of the published
+configuration item.
 }
 \section{Request syntax}{
 \preformatted{svc$put_resource_config(

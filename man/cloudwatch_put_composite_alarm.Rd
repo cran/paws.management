@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudwatch_operations.R
 \name{cloudwatch_put_composite_alarm}
 \alias{cloudwatch_put_composite_alarm}
-\title{Creates or updates a \emph{composite alarm}}
+\title{Creates or updates a composite alarm}
 \usage{
 cloudwatch_put_composite_alarm(ActionsEnabled, AlarmActions,
   AlarmDescription, AlarmName, AlarmRule, InsufficientDataActions,
@@ -17,15 +17,16 @@ from any other state. Each action is specified as an Amazon Resource
 Name (ARN).
 
 Valid Values:
-\verb{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> }}
+\verb{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> } |
+\verb{arn:aws:ssm:<i>region</i>:<i>account-id</i>:opsitem:<i>severity</i> }}
 
 \item{AlarmDescription}{The description for the composite alarm.}
 
-\item{AlarmName}{[required] The name for the composite alarm. This name must be unique within your
-AWS account.}
+\item{AlarmName}{[required] The name for the composite alarm. This name must be unique within the
+Region.}
 
 \item{AlarmRule}{[required] An expression that specifies which other alarms are to be evaluated to
-determine this composite alarm\'s state. For each alarm that you
+determine this composite alarm's state. For each alarm that you
 reference, you designate a function that specifies whether that alarm
 needs to be in ALARM state, OK state, or INSUFFICIENT\\_DATA state. You
 can use operators (AND, OR and NOT) to combine multiple functions in a
@@ -51,7 +52,7 @@ TRUE and FALSE are useful for testing a complex \code{AlarmRule} structure,
 and for testing your alarm actions.
 
 Alarm names specified in \code{AlarmRule} can be surrounded with
-double-quotes (\"), but do not have to be.
+double-quotes ("), but do not have to be.
 
 The following are some examples of \code{AlarmRule}:
 \itemize{
@@ -73,7 +74,7 @@ action on high CPU or disk usage if a known network problem is also
 occurring.
 }
 
-The \code{AlarmRule} can specify as many as 100 \"children\" alarms. The
+The \code{AlarmRule} can specify as many as 100 "children" alarms. The
 \code{AlarmRule} expression can have as many as 500 elements. Elements are
 child alarms, TRUE or FALSE statements, and parentheses.}
 
@@ -104,9 +105,8 @@ alarm, you specify a rule expression for the alarm that takes into
 account the alarm states of other alarms that you have created. The
 composite alarm goes into ALARM state only if all conditions of the rule
 are met.
-}
-\details{
-The alarms specified in a composite alarm\'s rule expression can include
+
+The alarms specified in a composite alarm's rule expression can include
 metric alarms and other composite alarms.
 
 Using composite alarms can reduce alarm noise. You can create multiple
@@ -120,7 +120,7 @@ are notifying SNS topics.
 
 It is possible to create a loop or cycle of composite alarms, where
 composite alarm A depends on composite alarm B, and composite alarm B
-also depends on composite alarm A. In this scenario, you can\'t delete
+also depends on composite alarm A. In this scenario, you can't delete
 any composite alarm that is part of the cycle because there is always
 still a composite alarm that depends on that alarm that you want to
 delete.
@@ -141,6 +141,9 @@ only time that the alarm can be in \code{INSUFFICIENT_DATA} state.
 
 When you update an existing alarm, its state is left unchanged, but the
 update completely overwrites the previous configuration of the alarm.
+
+If you are an IAM user, you must have \code{iam:CreateServiceLinkedRole} to
+create a composite alarm that has Systems Manager OpsItem actions.
 }
 \section{Request syntax}{
 \preformatted{svc$put_composite_alarm(

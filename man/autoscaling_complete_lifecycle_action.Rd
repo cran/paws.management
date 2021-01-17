@@ -27,8 +27,7 @@ created the lifecycle hook.}
 \description{
 Completes the lifecycle action for the specified token or instance with
 the specified result.
-}
-\details{
+
 This step is a part of the procedure for adding a lifecycle hook to an
 Auto Scaling group:
 \enumerate{
@@ -47,7 +46,7 @@ the instance in a pending state.
 lifecycle action.}
 }
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html}{Amazon EC2 Auto Scaling Lifecycle Hooks}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html}{Amazon EC2 Auto Scaling lifecycle hooks}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

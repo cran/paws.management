@@ -12,10 +12,9 @@ opsworks_update_elastic_ip(ElasticIp, Name)
 \item{Name}{The new name.}
 }
 \description{
-Updates a registered Elastic IP address\'s name. For more information,
+Updates a registered Elastic IP address's name. For more information,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
-}
-\details{
+
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user permissions,

@@ -17,7 +17,8 @@ configservice_select_aggregate_resource_config(Expression,
 
 \item{Limit}{The maximum number of query results returned on each page.}
 
-\item{MaxResults}{}
+\item{MaxResults}{The maximum number of query results returned on each page. AWS Config
+also allows the Limit request parameter.}
 
 \item{NextToken}{The nextToken string returned in a previous request that you use to
 request the next page of results in a paginated response.}
@@ -27,8 +28,7 @@ Accepts a structured query language (SQL) SELECT command and an
 aggregator to query configuration state of AWS resources across multiple
 accounts and regions, performs the corresponding search, and returns
 resource configurations matching the properties.
-}
-\details{
+
 For more information about query components, see the \href{https://docs.aws.amazon.com/config/latest/developerguide/query-components.html}{\strong{Query Components}}
 section in the AWS Config Developer Guide.
 }

@@ -22,7 +22,13 @@ then the user can also access \verb{/a/b}. Even if a user has explicitly been
 denied access in IAM for parameter \verb{/a/b}, they can still call the
 GetParametersByPath API action recursively for \verb{/a} and view \verb{/a/b}.}
 
-\item{ParameterFilters}{Filters to limit the request results.}
+\item{ParameterFilters}{Filters to limit the request results.
+
+For \code{GetParametersByPath}, the following filter \code{Key} names are
+supported: \code{Type}, \code{KeyId}, \code{Label}, and \code{DataType}.
+
+The following \code{Key} values are not supported for \code{GetParametersByPath}:
+\code{tag}, \code{Name}, \code{Path}, and \code{Tier}.}
 
 \item{WithDecryption}{Retrieve all parameters in a hierarchy with their value decrypted.}
 
@@ -36,8 +42,7 @@ results.}
 \description{
 Retrieve information about one or more parameters in a specific
 hierarchy.
-}
-\details{
+
 Request results are returned on a best-effort basis. If you specify
 \code{MaxResults} in the request, the response includes information up to the
 limit specified. The number of items returned, however, can be between

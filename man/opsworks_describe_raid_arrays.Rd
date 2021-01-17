@@ -17,9 +17,8 @@ descriptions of the RAID arrays associated with the specified instance.}
 Otherwise, it returns a description of every array.}
 }
 \description{
-Describe an instance\'s RAID arrays.
-}
-\details{
+Describe an instance's RAID arrays.
+
 This call accepts only one resource-identifying parameter.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a

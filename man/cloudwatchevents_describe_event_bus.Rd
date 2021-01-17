@@ -7,8 +7,8 @@
 cloudwatchevents_describe_event_bus(Name)
 }
 \arguments{
-\item{Name}{The name of the event bus to show details for. If you omit this, the
-default event bus is displayed.}
+\item{Name}{The name or ARN of the event bus to show details for. If you omit this,
+the default event bus is displayed.}
 }
 \description{
 Displays details about an event bus in your account. This can include
@@ -16,8 +16,7 @@ the external AWS accounts that are permitted to write events to your
 default event bus, and the associated policy. For custom event buses and
 partner event buses, it displays the name, ARN, policy, state, and
 creation time.
-}
-\details{
+
 To enable your account to receive events from other accounts on its
 default event bus, use PutPermission.
 

@@ -13,7 +13,7 @@ cloudwatchlogs_create_export_task(taskName, logGroupName,
 
 \item{logGroupName}{[required] The name of the log group.}
 
-\item{logStreamNamePrefix}{Export only log streams that match the provided prefix. If you don\'t
+\item{logStreamNamePrefix}{Export only log streams that match the provided prefix. If you don't
 specify a value, no prefix filter is applied.}
 
 \item{from}{[required] The start time of the range for the request, expressed as the number of
@@ -28,13 +28,15 @@ later than this time are not exported.}
 the same AWS region.}
 
 \item{destinationPrefix}{The prefix used as the start of the key for every object exported. If
-you don\'t specify a value, the default is \code{exportedlogs}.}
+you don't specify a value, the default is \code{exportedlogs}.}
 }
 \description{
 Creates an export task, which allows you to efficiently export data from
-a log group to an Amazon S3 bucket.
-}
-\details{
+a log group to an Amazon S3 bucket. When you perform a
+\code{CreateExportTask} operation, you must use credentials that have
+permission to write to the S3 bucket that you specify as the
+destination.
+
 This is an asynchronous call. If all the required information is
 provided, this operation initiates an export task and responds with the
 ID of the task. After the task has started, you can use

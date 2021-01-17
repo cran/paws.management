@@ -13,13 +13,12 @@ cloudwatchlogs_put_destination(destinationName, targetArn, roleArn)
 events.}
 
 \item{roleArn}{[required] The ARN of an IAM role that grants CloudWatch Logs permissions to call
-the Amazon Kinesis PutRecord operation on the destination stream.}
+the Amazon Kinesis \code{PutRecord} operation on the destination stream.}
 }
 \description{
 Creates or updates a destination. This operation is used only to create
 destinations for cross-account subscriptions.
-}
-\details{
+
 A destination encapsulates a physical resource (such as an Amazon
 Kinesis stream) and enables you to subscribe to a real-time stream of
 log events for a different account, ingested using
@@ -33,6 +32,9 @@ against this destination. To enable this, the destination owner must
 call
 \href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDestinationPolicy.html}{PutDestinationPolicy}
 after \code{PutDestination}.
+
+To perform a \code{PutDestination} operation, you must also have the
+\code{iam:PassRole} permission.
 }
 \section{Request syntax}{
 \preformatted{svc$put_destination(

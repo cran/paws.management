@@ -21,8 +21,7 @@ the next page of results in a paginated response.}
 Indicates whether the specified AWS Config rules are compliant. If a
 rule is noncompliant, this action returns the number of AWS resources
 that do not comply with the rule.
-}
-\details{
+
 A rule is compliant if all of the evaluated resources comply with it. It
 is noncompliant if any of these resources do not comply.
 
@@ -34,14 +33,14 @@ conditions:
 whether it has, use the \code{DescribeConfigRuleEvaluationStatus} action
 to get the \code{LastSuccessfulInvocationTime} and
 \code{LastFailedInvocationTime}.
-\item The rule\'s AWS Lambda function is failing to send evaluation
-results to AWS Config. Verify that the role you assigned to your
+\item The rule's AWS Lambda function is failing to send evaluation results
+to AWS Config. Verify that the role you assigned to your
 configuration recorder includes the \code{config:PutEvaluations}
 permission. If the rule is a custom rule, verify that the AWS Lambda
 execution role includes the \code{config:PutEvaluations} permission.
-\item The rule\'s AWS Lambda function has returned \code{NOT_APPLICABLE} for
-all evaluation results. This can occur if the resources were deleted
-or removed from the rule\'s scope.
+\item The rule's AWS Lambda function has returned \code{NOT_APPLICABLE} for all
+evaluation results. This can occur if the resources were deleted or
+removed from the rule's scope.
 }
 }
 \section{Request syntax}{

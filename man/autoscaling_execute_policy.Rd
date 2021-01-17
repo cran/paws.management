@@ -16,7 +16,7 @@ autoscaling_execute_policy(AutoScalingGroupName, PolicyName,
 to complete before executing the policy.
 
 Valid only if the policy type is \code{SimpleScaling}. For more information,
-see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns for Amazon EC2 Auto Scaling}
+see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling cooldowns for Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MetricValue}{The metric value to compare to \code{BreachThreshold}. This enables you to
@@ -25,7 +25,7 @@ adjustment to use. For example, if the breach threshold is 50 and you
 want to use a step adjustment with a lower bound of 0 and an upper bound
 of 10, you can set the metric value to 59.
 
-If you specify a metric value that doesn\'t correspond to a step
+If you specify a metric value that doesn't correspond to a step
 adjustment for the policy, the call returns an error.
 
 Required if the policy type is \code{StepScaling} and not supported

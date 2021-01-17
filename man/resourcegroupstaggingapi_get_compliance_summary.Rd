@@ -25,12 +25,12 @@ specifying a resource type of \code{ec2} returns all Amazon EC2 resources
 \code{ec2:instance} returns only EC2 instances.
 
 The string for each service name and resource type is the same as that
-embedded in a resource\'s Amazon Resource Name (ARN). Consult the \emph{AWS
+embedded in a resource's Amazon Resource Name (ARN). Consult the \emph{AWS
 General Reference} for the following:
 \itemize{
-\item For a list of service name strings, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}.
-\item For resource type strings, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax}{Example ARNs}.
-\item For more information about ARNs, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.
+\item For a list of service name strings, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}.
+\item For resource type strings, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax}{Example ARNs}.
+\item For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.
 }
 
 You can specify multiple resource types by using an array. The array can
@@ -54,12 +54,11 @@ additional page of data.}
 \description{
 Returns a table that shows counts of resources that are noncompliant
 with their tag policies.
-}
-\details{
-For more information on tag policies, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{Tag Policies}
+
+For more information on tag policies, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{Tag Policies}
 in the \emph{AWS Organizations User Guide.}
 
-You can call this operation only from the organization\'s master account
+You can call this operation only from the organization's master account
 and from the us-east-1 Region.
 }
 \section{Request syntax}{

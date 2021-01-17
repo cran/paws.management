@@ -15,8 +15,7 @@ configservice_put_config_rule(ConfigRule, Tags)
 \description{
 Adds or updates an AWS Config rule for evaluating whether your AWS
 resources comply with your desired configurations.
-}
-\details{
+
 You can use this action for custom AWS Config rules and AWS managed
 Config rules. A custom AWS Config rule is a rule that you develop and
 maintain. An AWS managed Config rule is a customizable, predefined rule
@@ -30,7 +29,7 @@ Lambda assigns to the function. Specify the ARN for the
 \code{SourceIdentifier} key. This key is part of the \code{Source} object, which
 is part of the \code{ConfigRule} object.
 
-If you are adding an AWS managed Config rule, specify the rule\'s
+If you are adding an AWS managed Config rule, specify the rule's
 identifier for the \code{SourceIdentifier} key. To reference AWS managed
 Config rule identifiers, see \href{https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html}{About AWS Managed Config Rules}.
 
@@ -44,7 +43,7 @@ the rule by \code{ConfigRuleName}, \code{ConfigRuleId}, or \code{ConfigRuleArn} 
 
 The maximum number of rules that AWS Config supports is 150.
 
-For information about requesting a rule limit increase, see \href{http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config}{AWS Config Limits}
+For information about requesting a rule limit increase, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config}{AWS Config Limits}
 in the \emph{AWS General Reference Guide}.
 
 For more information about developing and using AWS Config rules, see

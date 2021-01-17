@@ -28,8 +28,6 @@ If you specify a trail ARN, it must be in the format:
 Describes the settings for the event selectors that you configured for
 your trail. The information returned for your event selectors includes
 the following:
-}
-\details{
 \itemize{
 \item If your event selector includes read-only events, write-only events,
 or all events. This applies to both management events and data
@@ -39,8 +37,8 @@ events.
 or AWS Lambda functions that you are logging for data events.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html}{Logging Data and Management Events for Trails}
-in the \emph{AWS CloudTrail User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/}{Logging Data and Management Events for Trails} in
+the \emph{AWS CloudTrail User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_event_selectors(

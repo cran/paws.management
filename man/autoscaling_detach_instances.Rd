@@ -17,8 +17,7 @@ value by the number of instances detached.}
 }
 \description{
 Removes one or more instances from the specified Auto Scaling group.
-}
-\details{
+
 After the instances are detached, you can manage them independent of the
 Auto Scaling group.
 
@@ -31,7 +30,7 @@ the instances are deregistered from the load balancer. If there are
 target groups attached to the Auto Scaling group, the instances are
 deregistered from the target groups.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html}{Detach EC2 Instances from Your Auto Scaling Group}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html}{Detach EC2 instances from your Auto Scaling group}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

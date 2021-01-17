@@ -7,15 +7,14 @@
 opsworks_describe_permissions(IamUserArn, StackId)
 }
 \arguments{
-\item{IamUserArn}{The user\'s IAM ARN. This can also be a federated user\'s ARN. For more
-information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
+\item{IamUserArn}{The user's IAM ARN. This can also be a federated user's ARN. For more
+information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{Using Identifiers}.}
 
 \item{StackId}{The stack ID.}
 }
 \description{
 Describes the permissions for a specified stack.
-}
-\details{
+
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user permissions,

@@ -11,14 +11,14 @@ organizations_list_children(ParentId, ChildType, NextToken, MaxResults)
 \item{ParentId}{[required] The unique identifier (ID) for the parent root or OU whose children you
 want to list.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a parent ID
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a parent ID
 string requires one of the following:
 \itemize{
-\item \strong{Root} - A string that begins with \"r-\" followed by from 4 to 32
+\item \strong{Root} - A string that begins with "r-" followed by from 4 to 32
 lowercase letters or digits.
-\item \strong{Organizational unit (OU)} - A string that begins with \"ou-\"
+\item \strong{Organizational unit (OU)} - A string that begins with "ou-"
 followed by from 4 to 32 lowercase letters or digits (the ID of the
-root that the OU is in). This string is followed by a second \"-\"
+root that the OU is in). This string is followed by a second "-"
 dash and from 8 to 32 additional lowercase letters or digits.
 }}
 
@@ -27,8 +27,8 @@ dash and from 8 to 32 additional lowercase letters or digits.
 \item{NextToken}{The parameter for receiving additional results if you receive a
 \code{NextToken} response in a previous request. A \code{NextToken} response
 indicates that more output is available. Set this parameter to the value
-of the previous call\'s \code{NextToken} response to indicate where the
-output should continue from.}
+of the previous call's \code{NextToken} response to indicate where the output
+should continue from.}
 
 \item{MaxResults}{The total number of results that you want included on each page of the
 response. If you do not include this parameter, it defaults to a value
@@ -46,15 +46,14 @@ Lists all of the organizational units (OUs) or accounts that are
 contained in the specified parent OU or root. This operation, along with
 ListParents enables you to traverse the tree structure that makes up
 this root.
-}
-\details{
+
 Always check the \code{NextToken} response parameter for a \code{null} value when
 calling a \verb{List*} operation. These operations can occasionally return an
 empty set of results even when there are more results available. The
 \code{NextToken} response parameter value is \code{null} \emph{only} when there are no
 more results to display.
 
-This operation can be called only from the organization\'s master
+This operation can be called only from the organization's management
 account or by a member account that is a delegated administrator for an
 AWS service.
 }

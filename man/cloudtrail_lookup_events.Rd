@@ -31,8 +31,8 @@ default is 50.}
 \item{NextToken}{The token to use to get the next page of results after a previous API
 call. This token must be passed in with the same parameters that were
 specified in the the original call. For example, if the original call
-specified an AttributeKey of \'Username\' with a value of \'root\', the
-call with NextToken should include those same parameters.}
+specified an AttributeKey of 'Username' with a value of 'root', the call
+with NextToken should include those same parameters.}
 }
 \description{
 Looks up \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-management-events}{management events}
@@ -40,8 +40,6 @@ or \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-c
 that are captured by CloudTrail. You can look up events that occurred in
 a region within the last 90 days. Lookup supports the following
 attributes for management events:
-}
-\details{
 \itemize{
 \item AWS access key
 \item Event ID
@@ -64,8 +62,8 @@ All attributes are optional. The default number of results returned is
 50, with a maximum of 50 possible. The response includes a token that
 you can use to get the next page of results.
 
-The rate of lookup requests is limited to two per second per account. If
-this limit is exceeded, a throttling error occurs.
+The rate of lookup requests is limited to two per second, per account,
+per region. If this limit is exceeded, a throttling error occurs.
 }
 \section{Request syntax}{
 \preformatted{svc$lookup_events(

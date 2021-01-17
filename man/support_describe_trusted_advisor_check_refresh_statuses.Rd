@@ -17,9 +17,8 @@ you might see an \code{InvalidParameterValue} error.}
 Returns the refresh status of the AWS Trusted Advisor checks that have
 the specified check IDs. You can get the check IDs by calling the
 DescribeTrustedAdvisorChecks operation.
-}
-\details{
-Some checks are refreshed automatically, and you can\'t return their
+
+Some checks are refreshed automatically, and you can't return their
 refresh statuses by using the
 \code{DescribeTrustedAdvisorCheckRefreshStatuses} operation. If you call this
 operation for these checks, you might see an \code{InvalidParameterValue}
@@ -30,7 +29,7 @@ Support API.
 \item If you call the AWS Support API from an account that does not have a
 Business or Enterprise support plan, the
 \code{SubscriptionRequiredException} error message appears. For
-information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
+information about changing your support plan, see \href{https://aws.amazon.com/premiumsupport/}{AWS Support}.
 }
 }
 \section{Request syntax}{

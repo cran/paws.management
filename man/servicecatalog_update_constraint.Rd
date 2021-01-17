@@ -24,7 +24,7 @@ constraint type as follows:
 \subsection{LAUNCH}{
 
 You are required to specify either the \code{RoleArn} or the \code{LocalRoleName}
-but can\'t use both.
+but can't use both.
 
 Specify the \code{RoleArn} property as follows:
 
@@ -83,7 +83,7 @@ stack set.
 
 \subsection{TEMPLATE}{
 
-Specify the \code{Rules} property. For more information, see \href{http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html}{Template Constraint Rules}.
+Specify the \code{Rules} property. For more information, see \href{https://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html}{Template Constraint Rules}.
 }}
 }
 \description{

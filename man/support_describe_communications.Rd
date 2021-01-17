@@ -28,8 +28,7 @@ Returns communications and attachments for one or more support cases.
 Use the \code{afterTime} and \code{beforeTime} parameters to filter by date. You
 can use the \code{caseId} parameter to restrict the results to a specific
 case.
-}
-\details{
+
 Case data is available for 12 months after creation. If a case was
 created more than 12 months ago, a request for data might cause an
 error.
@@ -44,7 +43,7 @@ Support API.
 \item If you call the AWS Support API from an account that does not have a
 Business or Enterprise support plan, the
 \code{SubscriptionRequiredException} error message appears. For
-information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
+information about changing your support plan, see \href{https://aws.amazon.com/premiumsupport/}{AWS Support}.
 }
 }
 \section{Request syntax}{

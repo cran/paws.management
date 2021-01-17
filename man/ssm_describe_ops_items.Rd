@@ -52,7 +52,7 @@ Operations: Equals
 
 *If you filter the response by using the OperationalData operator,
 specify a key-value pair by using the following JSON format:
-\{\"key\":\"key\\_name\",\"value\":\"a\\_value\"\}}
+\{"key":"key\\_name","value":"a\\_value"\}}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -66,8 +66,7 @@ Query a set of OpsItems. You must have permission in AWS Identity and
 Access Management (IAM) to query a list of OpsItems. For more
 information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting started with OpsCenter}
 in the \emph{AWS Systems Manager User Guide}.
-}
-\details{
+
 Operations engineers and IT professionals use OpsCenter to view,
 investigate, and remediate operational issues impacting the performance
 and health of their AWS resources. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html}{AWS Systems Manager OpsCenter}
@@ -77,7 +76,7 @@ in the \emph{AWS Systems Manager User Guide}.
 \preformatted{svc$describe_ops_items(
   OpsItemFilters = list(
     list(
-      Key = "Status"|"CreatedBy"|"Source"|"Priority"|"Title"|"OpsItemId"|"CreatedTime"|"LastModifiedTime"|"OperationalData"|"OperationalDataKey"|"OperationalDataValue"|"ResourceId"|"AutomationId"|"Category"|"Severity",
+      Key = "Status"|"CreatedBy"|"Source"|"Priority"|"Title"|"OpsItemId"|"CreatedTime"|"LastModifiedTime"|"ActualStartTime"|"ActualEndTime"|"PlannedStartTime"|"PlannedEndTime"|"OperationalData"|"OperationalDataKey"|"OperationalDataValue"|"ResourceId"|"AutomationId"|"Category"|"Severity"|"OpsItemType"|"ChangeRequestByRequesterArn"|"ChangeRequestByRequesterName"|"ChangeRequestByApproverArn"|"ChangeRequestByApproverName"|"ChangeRequestByTemplate"|"ChangeRequestByTargetsResourceGroup",
       Values = list(
         "string"
       ),

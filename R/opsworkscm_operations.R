@@ -5,6 +5,7 @@ NULL
 
 #' Associates a new node with the server
 #'
+#' @description
 #' Associates a new node with the server. For more information about how to
 #' disassociate a node, see DisassociateNode.
 #' 
@@ -25,7 +26,7 @@ NULL
 #' `ValidationException` is raised when parameters of the request are not
 #' valid. The AssociateNode API call can be integrated into Auto Scaling
 #' configurations, AWS Cloudformation templates, or the user data of a
-#' server\'s instance.
+#' server's instance.
 #'
 #' @usage
 #' opsworkscm_associate_node(ServerName, NodeName, EngineAttributes)
@@ -84,6 +85,7 @@ opsworkscm_associate_node <- function(ServerName, NodeName, EngineAttributes) {
 
 #' Creates an application-level backup of a server
 #'
+#' @description
 #' Creates an application-level backup of a server. While the server is in
 #' the `BACKING_UP` state, the server cannot be changed, and no additional
 #' backup can be created.
@@ -161,6 +163,7 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 
 #' Creates and immedately starts a new server
 #'
+#' @description
 #' Creates and immedately starts a new server. The server is ready to use
 #' when it is in the `HEALTHY` state. By default, you can create a maximum
 #' of 10 servers.
@@ -226,11 +229,11 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #'     chain in PEM format.
 #' 
 #' -   The certificate must be valid at the time of upload. A certificate
-#'     can\'t be used before its validity period begins (the certificate\'s
-#'     `NotBefore` date), or after it expires (the certificate\'s
-#'     `NotAfter` date).
+#'     can't be used before its validity period begins (the certificate's
+#'     `NotBefore` date), or after it expires (the certificate's `NotAfter`
+#'     date).
 #' 
-#' -   The certificate's common name or subject alternative names (SANs),
+#' -   The certificate’s common name or subject alternative names (SANs),
 #'     if present, must match the value of `CustomDomain`.
 #' 
 #' -   The certificate must match the value of `CustomPrivateKey`.
@@ -260,7 +263,7 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #'     user in the Chef Automate web-based dashboard. The password length
 #'     is a minimum of eight characters, and a maximum of 32. The password
 #'     can contain letters, numbers, and special characters
-#'     (!/@@\\#\\$%\\^&+=\\_). The password must contain at least one lower case
+#'     (!/@@\\#$%^&+=\\_). The password must contain at least one lower case
 #'     letter, one upper case letter, one number, and one special
 #'     character. When no CHEF\\_AUTOMATE\\_ADMIN\\_PASSWORD is set, one is
 #'     generated and returned in the response.
@@ -272,7 +275,7 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' 
 #' -   `PUPPET_R10K_REMOTE`: The r10k remote is the URL of your control
 #'     repository (for example,
-#'     ssh://git\\@@your.git-repo.com:user/control-repo.git). Specifying an
+#'     ssh://git@@your.git-repo.com:user/control-repo.git). Specifying an
 #'     r10k remote opens TCP port 8170.
 #' 
 #' -   `PUPPET_R10K_PRIVATE_KEY`: If you are using a private Git
@@ -338,16 +341,16 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' @param SubnetIds The IDs of subnets in which to launch the server EC2 instance.
 #' 
 #' Amazon EC2-Classic customers: This field is required. All servers must
-#' run within a VPC. The VPC must have \"Auto Assign Public IP\" enabled.
+#' run within a VPC. The VPC must have "Auto Assign Public IP" enabled.
 #' 
 #' EC2-VPC customers: This field is optional. If you do not specify subnet
 #' IDs, your EC2 instances are created in a default subnet that is selected
-#' by Amazon EC2. If you specify subnet IDs, the VPC must have \"Auto
-#' Assign Public IP\" enabled.
+#' by Amazon EC2. If you specify subnet IDs, the VPC must have "Auto Assign
+#' Public IP" enabled.
 #' 
 #' For more information about supported Amazon EC2 platforms, see
 #' [Supported
-#' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
+#' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html).
 #' @param Tags A map that contains tag keys and tag values to attach to an AWS OpsWorks
 #' for Chef Automate or AWS OpsWorks for Puppet Enterprise server.
 #' 
@@ -432,6 +435,7 @@ opsworkscm_create_server <- function(AssociatePublicIpAddress = NULL, CustomDoma
 
 #' Deletes a backup
 #'
+#' @description
 #' Deletes a backup. You can delete both manual and automated backups. This
 #' operation is asynchronous.
 #' 
@@ -477,8 +481,9 @@ opsworkscm_delete_backup <- function(BackupId) {
 #' Deletes the server and the underlying AWS CloudFormation stacks
 #' (including the server's EC2 instance)
 #'
+#' @description
 #' Deletes the server and the underlying AWS CloudFormation stacks
-#' (including the server\'s EC2 instance). When you run this command, the
+#' (including the server's EC2 instance). When you run this command, the
 #' server state is updated to `DELETING`. After the server is deleted, it
 #' is no longer returned by `DescribeServer` requests. If the AWS
 #' CloudFormation stack cannot be deleted, the server cannot be deleted.
@@ -524,6 +529,7 @@ opsworkscm_delete_server <- function(ServerName) {
 
 #' Describes your OpsWorks-CM account attributes
 #'
+#' @description
 #' Describes your OpsWorks-CM account attributes.
 #' 
 #' This operation is synchronous.
@@ -558,6 +564,7 @@ opsworkscm_describe_account_attributes <- function() {
 
 #' Describes backups
 #'
+#' @description
 #' Describes backups. The results are ordered by time, with newest backups
 #' first. If you do not specify a BackupId or ServerName, the command
 #' returns all backups.
@@ -608,6 +615,7 @@ opsworkscm_describe_backups <- function(BackupId = NULL, ServerName = NULL, Next
 
 #' Describes events for a specified server
 #'
+#' @description
 #' Describes events for a specified server. Results are ordered by time,
 #' with newest events first.
 #' 
@@ -626,7 +634,7 @@ opsworkscm_describe_backups <- function(BackupId = NULL, ServerName = NULL, Next
 #' at least one more request to get remaining items. To get remaining
 #' results, call `DescribeEvents` again, and assign the token from the
 #' previous results as the value of the `nextToken` parameter. If there are
-#' no more results, the response object\'s `nextToken` parameter value is
+#' no more results, the response object's `nextToken` parameter value is
 #' `null`. Setting a `nextToken` value that was not returned in your
 #' previous results causes an `InvalidNextTokenException` to occur.
 #' @param MaxResults To receive a paginated response, use this parameter to specify the
@@ -667,6 +675,7 @@ opsworkscm_describe_events <- function(ServerName, NextToken = NULL, MaxResults 
 #' Returns the current status of an existing association or disassociation
 #' request
 #'
+#' @description
 #' Returns the current status of an existing association or disassociation
 #' request.
 #' 
@@ -714,6 +723,7 @@ opsworkscm_describe_node_association_status <- function(NodeAssociationStatusTok
 #' Lists all configuration management servers that are identified with your
 #' account
 #'
+#' @description
 #' Lists all configuration management servers that are identified with your
 #' account. Only the stored results from Amazon DynamoDB are returned. AWS
 #' OpsWorks CM does not query other services.
@@ -763,10 +773,11 @@ opsworkscm_describe_servers <- function(ServerName = NULL, NextToken = NULL, Max
 #' Disassociates a node from an AWS OpsWorks CM server, and removes the
 #' node from the server's managed nodes
 #'
+#' @description
 #' Disassociates a node from an AWS OpsWorks CM server, and removes the
-#' node from the server\'s managed nodes. After a node is disassociated,
-#' the node key pair is no longer valid for accessing the configuration
-#' manager\'s API. For more information about how to associate a node, see
+#' node from the server's managed nodes. After a node is disassociated, the
+#' node key pair is no longer valid for accessing the configuration
+#' manager's API. For more information about how to associate a node, see
 #' AssociateNode.
 #' 
 #' A node can can only be disassociated from a server that is in a
@@ -825,6 +836,7 @@ opsworkscm_disassociate_node <- function(ServerName, NodeName, EngineAttributes 
 
 #' Exports a specified server engine attribute as a base64-encoded string
 #'
+#' @description
 #' Exports a specified server engine attribute as a base64-encoded string.
 #' For example, you can export user data that you can use in EC2 to
 #' associate nodes with a server.
@@ -903,6 +915,7 @@ opsworkscm_export_server_engine_attribute <- function(ExportAttributeName, Serve
 #' for Chef Automate or AWS OpsWorks for Puppet Enterprise servers or
 #' backups
 #'
+#' @description
 #' Returns a list of tags that are applied to the specified AWS OpsWorks
 #' for Chef Automate or AWS OpsWorks for Puppet Enterprise servers or
 #' backups.
@@ -919,7 +932,7 @@ opsworkscm_export_server_engine_attribute <- function(ExportAttributeName, Serve
 #' at least one more request to get remaining items. To get remaining
 #' results, call `ListTagsForResource` again, and assign the token from the
 #' previous results as the value of the `nextToken` parameter. If there are
-#' no more results, the response object\'s `nextToken` parameter value is
+#' no more results, the response object's `nextToken` parameter value is
 #' `null`. Setting a `nextToken` value that was not returned in your
 #' previous results causes an `InvalidNextTokenException` to occur.
 #' @param MaxResults To receive a paginated response, use this parameter to specify the
@@ -960,11 +973,12 @@ opsworkscm_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, Max
 #' Restores a backup to a server that is in a CONNECTION_LOST, HEALTHY,
 #' RUNNING, UNHEALTHY, or TERMINATED state
 #'
+#' @description
 #' Restores a backup to a server that is in a `CONNECTION_LOST`, `HEALTHY`,
 #' `RUNNING`, `UNHEALTHY`, or `TERMINATED` state. When you run
-#' RestoreServer, the server\'s EC2 instance is deleted, and a new EC2
+#' RestoreServer, the server's EC2 instance is deleted, and a new EC2
 #' instance is configured. RestoreServer maintains the existing server
-#' endpoint, so configuration management of the server\'s client devices
+#' endpoint, so configuration management of the server's client devices
 #' (nodes) should continue to work.
 #' 
 #' Restoring from a backup is performed by creating a new EC2 instance. If
@@ -1025,6 +1039,7 @@ opsworkscm_restore_server <- function(BackupId, ServerName, InstanceType = NULL,
 
 #' Manually starts server maintenance
 #'
+#' @description
 #' Manually starts server maintenance. This command can be useful if an
 #' earlier maintenance attempt failed, and the underlying cause of
 #' maintenance failure has been resolved. The server is in an
@@ -1088,6 +1103,7 @@ opsworkscm_start_maintenance <- function(ServerName, EngineAttributes = NULL) {
 #' Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
 #' Puppet Enterprise server, or to server backups
 #'
+#' @description
 #' Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
 #' Puppet Enterprise server, or to server backups.
 #'
@@ -1151,6 +1167,7 @@ opsworkscm_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes specified tags from an AWS OpsWorks-CM server or backup
 #'
+#' @description
 #' Removes specified tags from an AWS OpsWorks-CM server or backup.
 #'
 #' @usage
@@ -1193,6 +1210,7 @@ opsworkscm_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates settings for a server
 #'
+#' @description
 #' Updates settings for a server.
 #' 
 #' This operation is synchronous.
@@ -1241,10 +1259,11 @@ opsworkscm_update_server <- function(DisableAutomatedBackup = NULL, BackupRetent
 
 #' Updates engine-specific attributes on a specified server
 #'
+#' @description
 #' Updates engine-specific attributes on a specified server. The server
 #' enters the `MODIFYING` state when this operation is in progress. Only
 #' one update can occur at a time. You can use this command to reset a Chef
-#' server\'s public key (`CHEF_PIVOTAL_KEY`) or a Puppet server\'s admin
+#' server's public key (`CHEF_PIVOTAL_KEY`) or a Puppet server's admin
 #' password (`PUPPET_ADMIN_PASSWORD`).
 #' 
 #' This operation is asynchronous.

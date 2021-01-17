@@ -7,12 +7,11 @@
 opsworks_update_my_user_profile(SshPublicKey)
 }
 \arguments{
-\item{SshPublicKey}{The user\'s SSH public key.}
+\item{SshPublicKey}{The user's SSH public key.}
 }
 \description{
-Updates a user\'s SSH public key.
-}
-\details{
+Updates a user's SSH public key.
+
 \strong{Required Permissions}: To use this action, an IAM user must have
 self-management enabled or an attached policy that explicitly grants
 permissions. For more information about user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.

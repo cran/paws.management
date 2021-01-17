@@ -12,23 +12,23 @@ organizations_attach_policy(PolicyId, TargetId)
 target. You can get the ID for the policy by calling the ListPolicies
 operation.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID
-string requires \"p-\" followed by from 8 to 128 lowercase or uppercase
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a policy ID
+string requires "p-" followed by from 8 to 128 lowercase or uppercase
 letters, digits, or the underscore character (\\_).}
 
 \item{TargetId}{[required] The unique identifier (ID) of the root, OU, or account that you want to
 attach the policy to. You can get the ID by calling the ListRoots,
 ListOrganizationalUnitsForParent, or ListAccounts operations.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a target ID
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a target ID
 string requires one of the following:
 \itemize{
-\item \strong{Root} - A string that begins with \"r-\" followed by from 4 to 32
+\item \strong{Root} - A string that begins with "r-" followed by from 4 to 32
 lowercase letters or digits.
 \item \strong{Account} - A string that consists of exactly 12 digits.
-\item \strong{Organizational unit (OU)} - A string that begins with \"ou-\"
+\item \strong{Organizational unit (OU)} - A string that begins with "ou-"
 followed by from 4 to 32 lowercase letters or digits (the ID of the
-root that the OU is in). This string is followed by a second \"-\"
+root that the OU is in). This string is followed by a second "-"
 dash and from 8 to 32 additional lowercase letters or digits.
 }}
 }
@@ -37,16 +37,14 @@ Attaches a policy to a root, an organizational unit (OU), or an
 individual account. How the policy affects accounts depends on the type
 of policy. Refer to the \emph{AWS Organizations User Guide} for information
 about each policy type:
-}
-\details{
 \itemize{
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html}{SERVICE\\_CONTROL\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE\\_CONTROL\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
 }
 
-This operation can be called only from the organization\'s master
+This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{

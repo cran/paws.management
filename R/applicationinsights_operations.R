@@ -5,6 +5,7 @@ NULL
 
 #' Adds an application that is created from a resource group
 #'
+#' @description
 #' Adds an application that is created from a resource group.
 #'
 #' @usage
@@ -63,6 +64,7 @@ applicationinsights_create_application <- function(ResourceGroupName, OpsCenterE
 #' Creates a custom component by grouping similar standalone instances to
 #' monitor
 #'
+#' @description
 #' Creates a custom component by grouping similar standalone instances to
 #' monitor.
 #'
@@ -107,6 +109,7 @@ applicationinsights_create_component <- function(ResourceGroupName, ComponentNam
 
 #' Adds an log pattern to a LogPatternSet
 #'
+#' @description
 #' Adds an log pattern to a `LogPatternSet`.
 #'
 #' @usage
@@ -116,8 +119,19 @@ applicationinsights_create_component <- function(ResourceGroupName, ComponentNam
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
 #' @param PatternName &#91;required&#93; The name of the log pattern.
-#' @param Pattern &#91;required&#93; The log pattern.
-#' @param Rank &#91;required&#93; Rank of the log pattern.
+#' @param Pattern &#91;required&#93; The log pattern. The pattern must be DFA compatible. Patterns that
+#' utilize forward lookahead or backreference constructions are not
+#' supported.
+#' @param Rank &#91;required&#93; Rank of the log pattern. Must be a value between `1` and `1,000,000`.
+#' The patterns are sorted by rank, so we recommend that you set your
+#' highest priority patterns with the lowest rank. A pattern of rank `1`
+#' will be the first to get matched to a log line. A pattern of rank
+#' `1,000,000` will be last to get matched. When you configure custom log
+#' patterns from the console, a `Low` severity pattern translates to a
+#' `750,000` rank. A `Medium` severity pattern translates to a `500,000`
+#' rank. And a `High` severity pattern translates to a `250,000` rank. Rank
+#' values less than `1` or greater than `1,000,000` are reserved for
+#' AWS-provided patterns.
 #'
 #' @section Request syntax:
 #' ```
@@ -152,6 +166,7 @@ applicationinsights_create_log_pattern <- function(ResourceGroupName, PatternSet
 
 #' Removes the specified application from monitoring
 #'
+#' @description
 #' Removes the specified application from monitoring. Does not delete the
 #' application.
 #'
@@ -189,6 +204,7 @@ applicationinsights_delete_application <- function(ResourceGroupName) {
 
 #' Ungroups a custom component
 #'
+#' @description
 #' Ungroups a custom component. When you ungroup custom components, all
 #' applicable monitors that are set up for the component are removed and
 #' the instances revert to their standalone status.
@@ -229,6 +245,7 @@ applicationinsights_delete_component <- function(ResourceGroupName, ComponentNam
 
 #' Removes the specified log pattern from a LogPatternSet
 #'
+#' @description
 #' Removes the specified log pattern from a `LogPatternSet`.
 #'
 #' @usage
@@ -270,6 +287,7 @@ applicationinsights_delete_log_pattern <- function(ResourceGroupName, PatternSet
 
 #' Describes the application
 #'
+#' @description
 #' Describes the application.
 #'
 #' @usage
@@ -307,6 +325,7 @@ applicationinsights_describe_application <- function(ResourceGroupName) {
 #' Describes a component and lists the resources that are grouped together
 #' in a component
 #'
+#' @description
 #' Describes a component and lists the resources that are grouped together
 #' in a component.
 #'
@@ -346,6 +365,7 @@ applicationinsights_describe_component <- function(ResourceGroupName, ComponentN
 
 #' Describes the monitoring configuration of the component
 #'
+#' @description
 #' Describes the monitoring configuration of the component.
 #'
 #' @usage
@@ -385,6 +405,7 @@ applicationinsights_describe_component_configuration <- function(ResourceGroupNa
 
 #' Describes the recommended monitoring configuration of the component
 #'
+#' @description
 #' Describes the recommended monitoring configuration of the component.
 #'
 #' @usage
@@ -402,7 +423,7 @@ applicationinsights_describe_component_configuration <- function(ResourceGroupNa
 #' svc$describe_component_configuration_recommendation(
 #'   ResourceGroupName = "string",
 #'   ComponentName = "string",
-#'   Tier = "DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB"|"SQL_SERVER"
+#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"
 #' )
 #' ```
 #'
@@ -428,6 +449,7 @@ applicationinsights_describe_component_configuration_recommendation <- function(
 
 #' Describe a specific log pattern from a LogPatternSet
 #'
+#' @description
 #' Describe a specific log pattern from a `LogPatternSet`.
 #'
 #' @usage
@@ -469,6 +491,7 @@ applicationinsights_describe_log_pattern <- function(ResourceGroupName, PatternS
 
 #' Describes an anomaly or error with the application
 #'
+#' @description
 #' Describes an anomaly or error with the application.
 #'
 #' @usage
@@ -505,6 +528,7 @@ applicationinsights_describe_observation <- function(ObservationId) {
 
 #' Describes an application problem
 #'
+#' @description
 #' Describes an application problem.
 #'
 #' @usage
@@ -541,6 +565,7 @@ applicationinsights_describe_problem <- function(ProblemId) {
 
 #' Describes the anomalies or errors associated with the problem
 #'
+#' @description
 #' Describes the anomalies or errors associated with the problem.
 #'
 #' @usage
@@ -577,6 +602,7 @@ applicationinsights_describe_problem_observations <- function(ProblemId) {
 
 #' Lists the IDs of the applications that you are monitoring
 #'
+#' @description
 #' Lists the IDs of the applications that you are monitoring.
 #'
 #' @usage
@@ -618,6 +644,7 @@ applicationinsights_list_applications <- function(MaxResults = NULL, NextToken =
 #' Lists the auto-grouped, standalone, and custom components of the
 #' application
 #'
+#' @description
 #' Lists the auto-grouped, standalone, and custom components of the
 #' application.
 #'
@@ -663,6 +690,7 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
 #' Lists the INFO, WARN, and ERROR events for periodic configuration
 #' updates performed by Application Insights
 #'
+#' @description
 #' Lists the INFO, WARN, and ERROR events for periodic configuration
 #' updates performed by Application Insights. Examples of events
 #' represented are:
@@ -736,6 +764,7 @@ applicationinsights_list_configuration_history <- function(ResourceGroupName = N
 
 #' Lists the log pattern sets in the specific application
 #'
+#' @description
 #' Lists the log pattern sets in the specific application.
 #'
 #' @usage
@@ -779,6 +808,7 @@ applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResu
 
 #' Lists the log patterns in the specific log LogPatternSet
 #'
+#' @description
 #' Lists the log patterns in the specific log `LogPatternSet`.
 #'
 #' @usage
@@ -824,6 +854,7 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 
 #' Lists the problems with your application
 #'
+#' @description
 #' Lists the problems with your application.
 #'
 #' @usage
@@ -831,7 +862,7 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #'   MaxResults, NextToken)
 #'
 #' @param ResourceGroupName The name of the resource group.
-#' @param StartTime The time when the problem was detected, in epoch seconds. If you don\'t
+#' @param StartTime The time when the problem was detected, in epoch seconds. If you don't
 #' specify a time frame for the request, problems within the past seven
 #' days are returned.
 #' @param EndTime The time when the problem ended, in epoch seconds. If not specified,
@@ -879,6 +910,7 @@ applicationinsights_list_problems <- function(ResourceGroupName = NULL, StartTim
 #' Retrieve a list of the tags (keys and values) that are associated with a
 #' specified application
 #'
+#' @description
 #' Retrieve a list of the tags (keys and values) that are associated with a
 #' specified application. A *tag* is a label that you optionally define and
 #' associate with an application. Each tag consists of a required *tag key*
@@ -921,6 +953,7 @@ applicationinsights_list_tags_for_resource <- function(ResourceARN) {
 
 #' Add one or more tags (keys and values) to a specified application
 #'
+#' @description
 #' Add one or more tags (keys and values) to a specified application. A
 #' *tag* is a label that you optionally define and associate with an
 #' application. Tags can help you categorize and manage application in
@@ -977,6 +1010,7 @@ applicationinsights_tag_resource <- function(ResourceARN, Tags) {
 
 #' Remove one or more tags (keys and values) from a specified application
 #'
+#' @description
 #' Remove one or more tags (keys and values) from a specified application.
 #'
 #' @usage
@@ -1024,6 +1058,7 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 
 #' Updates the application
 #'
+#' @description
 #' Updates the application.
 #'
 #' @usage
@@ -1076,6 +1111,7 @@ applicationinsights_update_application <- function(ResourceGroupName, OpsCenterE
 #' Updates the custom component name and/or the list of resources that make
 #' up the component
 #'
+#' @description
 #' Updates the custom component name and/or the list of resources that make
 #' up the component.
 #'
@@ -1122,6 +1158,7 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
 
 #' Updates the monitoring configurations for the component
 #'
+#' @description
 #' Updates the monitoring configurations for the component. The
 #' configuration input parameter is an escaped JSON of the configuration
 #' and should match the schema of what is returned by
@@ -1152,7 +1189,7 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
 #'   ResourceGroupName = "string",
 #'   ComponentName = "string",
 #'   Monitor = TRUE|FALSE,
-#'   Tier = "DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB"|"SQL_SERVER",
+#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
 #'   ComponentConfiguration = "string"
 #' )
 #' ```
@@ -1179,6 +1216,7 @@ applicationinsights_update_component_configuration <- function(ResourceGroupName
 
 #' Adds a log pattern to a LogPatternSet
 #'
+#' @description
 #' Adds a log pattern to a `LogPatternSet`.
 #'
 #' @usage
@@ -1188,8 +1226,19 @@ applicationinsights_update_component_configuration <- function(ResourceGroupName
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
 #' @param PatternName &#91;required&#93; The name of the log pattern.
-#' @param Pattern The log pattern.
-#' @param Rank Rank of the log pattern.
+#' @param Pattern The log pattern. The pattern must be DFA compatible. Patterns that
+#' utilize forward lookahead or backreference constructions are not
+#' supported.
+#' @param Rank Rank of the log pattern. Must be a value between `1` and `1,000,000`.
+#' The patterns are sorted by rank, so we recommend that you set your
+#' highest priority patterns with the lowest rank. A pattern of rank `1`
+#' will be the first to get matched to a log line. A pattern of rank
+#' `1,000,000` will be last to get matched. When you configure custom log
+#' patterns from the console, a `Low` severity pattern translates to a
+#' `750,000` rank. A `Medium` severity pattern translates to a `500,000`
+#' rank. And a `High` severity pattern translates to a `250,000` rank. Rank
+#' values less than `1` or greater than `1,000,000` are reserved for
+#' AWS-provided patterns.
 #'
 #' @section Request syntax:
 #' ```

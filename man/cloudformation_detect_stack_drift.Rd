@@ -2,9 +2,9 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_detect_stack_drift}
 \alias{cloudformation_detect_stack_drift}
-\title{Detects whether a stack's actual configuration differs, or has
-\emph{drifted}, from it's expected configuration, as defined in the stack
-template and any values specified as template parameters}
+\title{Detects whether a stack's actual configuration differs, or has drifted,
+from it's expected configuration, as defined in the stack template and
+any values specified as template parameters}
 \usage{
 cloudformation_detect_stack_drift(StackName, LogicalResourceIds)
 }
@@ -14,8 +14,8 @@ cloudformation_detect_stack_drift(StackName, LogicalResourceIds)
 \item{LogicalResourceIds}{The logical names of any resources you want to use as filters.}
 }
 \description{
-Detects whether a stack\'s actual configuration differs, or has
-\emph{drifted}, from it\'s expected configuration, as defined in the stack
+Detects whether a stack's actual configuration differs, or has
+\emph{drifted}, from it's expected configuration, as defined in the stack
 template and any values specified as template parameters. For each
 resource in the stack that supports drift detection, AWS CloudFormation
 compares the actual configuration of the resource with its expected
@@ -23,14 +23,13 @@ template configuration. Only resource properties explicitly defined in
 the stack template are checked for drift. A stack is considered to have
 drifted if one or more of its resources differ from their expected
 template configurations. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html}{Detecting Unregulated Configuration Changes to Stacks and Resources}.
-}
-\details{
+
 Use \code{DetectStackDrift} to detect drift on all supported resources for a
 given stack, or DetectStackResourceDrift to detect drift on individual
 resources.
 
 For a list of stack resources that currently support drift detection,
-see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html}{Resources that Support Drift Detection}.
+see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html}{Resources that Support Drift Detection}.
 
 \code{DetectStackDrift} can take up to several minutes, depending on the
 number of resources contained within the stack. Use

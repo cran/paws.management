@@ -18,8 +18,7 @@ the last known configuration state of the resources. Use
 updated is working as expected. \code{StartConfigRulesEvaluation} does not
 re-record the latest configuration state for your resources. It re-runs
 an evaluation against the last known state of your resources.
-}
-\details{
+
 You can specify up to 25 AWS Config rules per request.
 
 An existing \code{StartConfigRulesEvaluation} call for the specified rules
@@ -27,7 +26,7 @@ must complete before you can call the API again. If you chose to have
 AWS Config stream to an Amazon SNS topic, you will receive a
 \code{ConfigRuleEvaluationStarted} notification when the evaluation starts.
 
-You don\'t need to call the \code{StartConfigRulesEvaluation} API to run an
+You don't need to call the \code{StartConfigRulesEvaluation} API to run an
 evaluation for a new rule. When you create a rule, AWS Config evaluates
 your resources against the rule automatically.
 

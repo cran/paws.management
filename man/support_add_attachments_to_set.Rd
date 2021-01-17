@@ -23,11 +23,10 @@ attachment, such as \code{troubleshoot-screenshot.png}.}
 }
 \description{
 Adds one or more attachments to an attachment set.
-}
-\details{
+
 An attachment set is a temporary container for attachments that you add
 to a case or case communication. The set is available for 1 hour after
-it\'s created. The \code{expiryTime} returned in the response is when the set
+it's created. The \code{expiryTime} returned in the response is when the set
 expires.
 \itemize{
 \item You must have a Business or Enterprise support plan to use the AWS
@@ -35,7 +34,7 @@ Support API.
 \item If you call the AWS Support API from an account that does not have a
 Business or Enterprise support plan, the
 \code{SubscriptionRequiredException} error message appears. For
-information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
+information about changing your support plan, see \href{https://aws.amazon.com/premiumsupport/}{AWS Support}.
 }
 }
 \section{Request syntax}{

@@ -11,17 +11,16 @@ organizations_describe_organizational_unit(OrganizationalUnitId)
 details about. You can get the ID from the
 ListOrganizationalUnitsForParent operation.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for an
-organizational unit ID string requires \"ou-\" followed by from 4 to 32
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for an
+organizational unit ID string requires "ou-" followed by from 4 to 32
 lowercase letters or digits (the ID of the root that contains the OU).
-This string is followed by a second \"-\" dash and from 8 to 32
-additional lowercase letters or digits.}
+This string is followed by a second "-" dash and from 8 to 32 additional
+lowercase letters or digits.}
 }
 \description{
 Retrieves information about an organizational unit (OU).
-}
-\details{
-This operation can be called only from the organization\'s master
+
+This operation can be called only from the organization's management
 account or by a member account that is a delegated administrator for an
 AWS service.
 }

@@ -19,6 +19,10 @@ example, AWS Config adds 3 exceptions for 3 resource keys.}
 \description{
 Deletes one or more remediation exceptions mentioned in the resource
 keys.
+
+AWS Config generates a remediation exception when a problem occurs
+executing a remediation action to a specific resource. Remediation
+exceptions blocks auto-remediation until the exception is cleared.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_remediation_exceptions(

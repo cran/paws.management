@@ -10,16 +10,15 @@ cloudwatchevents_put_targets(Rule, EventBusName, Targets)
 \arguments{
 \item{Rule}{[required] The name of the rule.}
 
-\item{EventBusName}{The name of the event bus associated with the rule. If you omit this,
-the default event bus is used.}
+\item{EventBusName}{The name or ARN of the event bus associated with the rule. If you omit
+this, the default event bus is used.}
 
 \item{Targets}{[required] The targets to update or add to the rule.}
 }
 \description{
 Adds the specified targets to the specified rule, or updates the targets
 if they are already associated with the rule.
-}
-\details{
+
 Targets are the resources that are invoked when a rule is triggered.
 
 You can configure the following as targets for Events:
@@ -40,6 +39,7 @@ You can configure the following as targets for Events:
 \item Amazon SQS queues, including FIFO queues
 \item The default event bus of another AWS account
 \item Amazon API Gateway REST APIs
+\item Redshift Clusters to invoke Data API ExecuteStatement on
 }
 
 Creating rules with built-in targets is supported only in the AWS
@@ -64,8 +64,8 @@ in the \emph{Amazon EventBridge User Guide}.
 
 If another AWS account is in the same region and has granted you
 permission (using \code{PutPermission}), you can send events to that account.
-Set that account\'s event bus as a target of the rules in your account.
-To send the matched events to the other account, specify that account\'s
+Set that account's event bus as a target of the rules in your account.
+To send the matched events to the other account, specify that account's
 event bus as the \code{Arn} value when you run \code{PutTargets}. If your account
 sends events to another account, your account is charged for each sent
 event. Each event sent to another account is charged as a custom event.
@@ -187,6 +187,21 @@ and the error code.
         QueryStringParameters = list(
           "string"
         )
+      ),
+      RedshiftDataParameters = list(
+        SecretManagerArn = "string",
+        Database = "string",
+        DbUser = "string",
+        Sql = "string",
+        StatementName = "string",
+        WithEvent = TRUE|FALSE
+      ),
+      DeadLetterConfig = list(
+        Arn = "string"
+      ),
+      RetryPolicy = list(
+        MaximumRetryAttempts = 123,
+        MaximumEventAgeInSeconds = 123
       )
     )
   )

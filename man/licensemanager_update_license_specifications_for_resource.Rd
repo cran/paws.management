@@ -18,8 +18,7 @@ licensemanager_update_license_specifications_for_resource(ResourceArn,
 \description{
 Adds or removes the specified license configurations for the specified
 AWS resource.
-}
-\details{
+
 You can update the license specifications of AMIs, instances, and hosts.
 You cannot update the license specifications for launch templates and
 AWS CloudFormation templates, as they send license configurations to the
@@ -30,12 +29,14 @@ operation that creates the resource.
   ResourceArn = "string",
   AddLicenseSpecifications = list(
     list(
-      LicenseConfigurationArn = "string"
+      LicenseConfigurationArn = "string",
+      AmiAssociationScope = "string"
     )
   ),
   RemoveLicenseSpecifications = list(
     list(
-      LicenseConfigurationArn = "string"
+      LicenseConfigurationArn = "string",
+      AmiAssociationScope = "string"
     )
   )
 )

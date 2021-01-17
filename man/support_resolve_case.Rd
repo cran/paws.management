@@ -14,15 +14,13 @@ case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
 \description{
 Resolves a support case. This operation takes a \code{caseId} and returns the
 initial and final state of the case.
-}
-\details{
 \itemize{
 \item You must have a Business or Enterprise support plan to use the AWS
 Support API.
 \item If you call the AWS Support API from an account that does not have a
 Business or Enterprise support plan, the
 \code{SubscriptionRequiredException} error message appears. For
-information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
+information about changing your support plan, see \href{https://aws.amazon.com/premiumsupport/}{AWS Support}.
 }
 }
 \section{Request syntax}{

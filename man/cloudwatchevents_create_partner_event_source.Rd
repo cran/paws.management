@@ -20,15 +20,14 @@ bus for this partner event source.}
 \description{
 Called by an SaaS partner to create a partner event source. This
 operation is not used by AWS customers.
-}
-\details{
+
 Each partner event source can be used by one AWS account to create a
 matching partner event bus in that AWS account. A SaaS partner must
 create one partner event source for each AWS account that wants to
 receive those event types.
 
 A partner event source creates events based on resources within the SaaS
-partner\'s service or application.
+partner's service or application.
 
 An AWS account that creates a partner event bus that matches the partner
 event source can use that event bus to receive events from the partner,

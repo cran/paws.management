@@ -22,16 +22,15 @@ creation.}
 Case communications are available for 12 months after creation.}
 
 \item{includeResolvedCases}{Specifies whether to include resolved support cases in the
-\code{DescribeCases} response. By default, resolved cases aren\'t included.}
+\code{DescribeCases} response. By default, resolved cases aren't included.}
 
 \item{nextToken}{A resumption point for pagination.}
 
 \item{maxResults}{The maximum number of results to return before paginating.}
 
 \item{language}{The ISO 639-1 code for the language in which AWS provides support. AWS
-Support currently supports English (\"en\") and Japanese (\"ja\").
-Language parameters must be passed explicitly for operations that take
-them.}
+Support currently supports English ("en") and Japanese ("ja"). Language
+parameters must be passed explicitly for operations that take them.}
 
 \item{includeCommunications}{Specifies whether to include communications in the \code{DescribeCases}
 response. By default, communications are incuded.}
@@ -42,8 +41,7 @@ IDs. You can use the \code{afterTime} and \code{beforeTime} parameters to filter
 the cases by date. You can set values for the \code{includeResolvedCases} and
 \code{includeCommunications} parameters to specify how much information to
 return.
-}
-\details{
+
 The response returns the following in JSON format:
 \itemize{
 \item One or more
@@ -61,7 +59,7 @@ Support API.
 \item If you call the AWS Support API from an account that does not have a
 Business or Enterprise support plan, the
 \code{SubscriptionRequiredException} error message appears. For
-information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
+information about changing your support plan, see \href{https://aws.amazon.com/premiumsupport/}{AWS Support}.
 }
 }
 \section{Request syntax}{

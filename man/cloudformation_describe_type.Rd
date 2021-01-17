@@ -31,15 +31,14 @@ default type version.}
 }
 \description{
 Returns detailed information about a type that has been registered.
-}
-\details{
+
 If you specify a \code{VersionId}, \code{DescribeType} returns information about
 that specific type version. Otherwise, it returns information about the
 default type version.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_type(
-  Type = "RESOURCE",
+  Type = "RESOURCE"|"MODULE",
   TypeName = "string",
   Arn = "string",
   VersionId = "string"

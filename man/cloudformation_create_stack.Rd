@@ -74,7 +74,7 @@ The following IAM resources require you to specify either the
 \item If you have IAM resources, you can specify either capability.
 \item If you have IAM resources with custom names, you \emph{must} specify
 \code{CAPABILITY_NAMED_IAM}.
-\item If you don\'t specify either of these capabilities, AWS
+\item If you don't specify either of these capabilities, AWS
 CloudFormation returns an \code{InsufficientCapabilities} error.
 }
 
@@ -91,7 +91,7 @@ permissions if necessary.
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html}{AWS::IAM::UserToGroupAddition}
 }
 
-For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in AWS CloudFormation Templates}.
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in AWS CloudFormation Templates}.
 \item \code{CAPABILITY_AUTO_EXPAND}
 
 Some template contain macros. Macros perform custom processing on
@@ -104,15 +104,14 @@ your stack template contains one or more macros, and you choose to
 create a stack directly from the processed template, without first
 reviewing the resulting changes in a change set, you must
 acknowledge this capability. This includes the
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html}{AWS::Include}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html}{AWS::Include}
 and
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
 transforms, which are macros hosted by AWS CloudFormation.
 
-Change sets do not currently support nested stacks. If you want to
-create a stack from a stack template that contains macros \emph{and}
-nested stacks, you must create the stack directly from the template
-using this capability.
+If you want to create a stack from a stack template that contains
+macros \emph{and} nested stacks, you must create the stack directly from
+the template using this capability.
 
 You should only create stacks directly from a stack template that
 contains macros if you know what processing the macro performs.
@@ -122,7 +121,7 @@ processing stack templates. Be aware that the Lambda function owner
 can update the function operation without AWS CloudFormation being
 notified.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using AWS CloudFormation Macros to Perform Custom Processing on Templates}.
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using AWS CloudFormation Macros to Perform Custom Processing on Templates}.
 }}
 
 \item{ResourceTypes}{The template resource types that you have permissions to work with for
@@ -135,7 +134,7 @@ particular AWS service), and
 \verb{AWS::<i>service_name</i>::<i>resource_logical_ID</i> } (for a specific
 AWS resource).
 
-If the list of resource types doesn\'t include a resource that you\'re
+If the list of resource types doesn't include a resource that you're
 creating, the stack creation fails. By default, AWS CloudFormation
 grants permissions to all resource types. AWS Identity and Access
 Management (IAM) uses this parameter for AWS CloudFormation-specific
@@ -143,13 +142,13 @@ condition keys in IAM policies. For more information, see \href{https://docs.aws
 
 \item{RoleARN}{The Amazon Resource Name (ARN) of an AWS Identity and Access Management
 (IAM) role that AWS CloudFormation assumes to create the stack. AWS
-CloudFormation uses the role\'s credentials to make calls on your
-behalf. AWS CloudFormation always uses this role for all future
-operations on the stack. As long as users have permission to operate on
-the stack, AWS CloudFormation uses this role even if the users don\'t
-have permission to pass it. Ensure that the role grants least privilege.
+CloudFormation uses the role's credentials to make calls on your behalf.
+AWS CloudFormation always uses this role for all future operations on
+the stack. As long as users have permission to operate on the stack, AWS
+CloudFormation uses this role even if the users don't have permission to
+pass it. Ensure that the role grants least privilege.
 
-If you don\'t specify a value, AWS CloudFormation uses the role that was
+If you don't specify a value, AWS CloudFormation uses the role that was
 previously associated with the stack. If no role is available, AWS
 CloudFormation uses a temporary session that is generated from your user
 credentials.}
@@ -176,7 +175,7 @@ number of 50 tags can be specified.}
 
 \item{ClientRequestToken}{A unique identifier for this \code{CreateStack} request. Specify this token
 if you plan to retry requests so that AWS CloudFormation knows that
-you\'re not attempting to create a stack with the same name. You might
+you're not attempting to create a stack with the same name. You might
 retry \code{CreateStack} requests to ensure that AWS CloudFormation
 successfully received them.
 
@@ -197,11 +196,11 @@ following format:
 \item{EnableTerminationProtection}{Whether to enable termination protection on the specified stack. If a
 user attempts to delete a stack with termination protection enabled, the
 operation fails and the stack remains unchanged. For more information,
-see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html}{Protecting a Stack From Being Deleted}
+see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html}{Protecting a Stack From Being Deleted}
 in the \emph{AWS CloudFormation User Guide}. Termination protection is
 disabled on stacks by default.
 
-For \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html}{nested stacks},
+For \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html}{nested stacks},
 termination protection is set on the root stack and cannot be changed
 directly on the nested stack.}
 }

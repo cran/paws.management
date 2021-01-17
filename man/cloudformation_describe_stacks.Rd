@@ -11,7 +11,7 @@ cloudformation_describe_stacks(StackName, NextToken)
 \item{StackName}{The name or the unique stack ID that is associated with the stack, which
 are not always interchangeable:
 \itemize{
-\item Running stacks: You can specify either the stack\'s name or its
+\item Running stacks: You can specify either the stack's name or its
 unique stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
 }
@@ -24,8 +24,7 @@ retrieve.}
 \description{
 Returns the description for the specified stack; if no stack name was
 specified, then it returns the description for all the stacks created.
-}
-\details{
+
 If the stack does not exist, an \code{AmazonCloudFormationException} is
 returned.
 }

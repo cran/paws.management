@@ -13,11 +13,10 @@ opsworks_associate_elastic_ip(ElasticIp, InstanceId)
 \item{InstanceId}{The instance ID.}
 }
 \description{
-Associates one of the stack\'s registered Elastic IP addresses with a
+Associates one of the stack's registered Elastic IP addresses with a
 specified instance. The address must first be registered with the stack
 by calling RegisterElasticIp. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
-}
-\details{
+
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user permissions,

@@ -8,7 +8,8 @@ on your instances}
 ssm_create_association(Name, DocumentVersion, InstanceId, Parameters,
   Targets, ScheduleExpression, OutputLocation, AssociationName,
   AutomationTargetParameterName, MaxErrors, MaxConcurrency,
-  ComplianceSeverity, SyncCompliance, ApplyOnlyAtCronInterval)
+  ComplianceSeverity, SyncCompliance, ApplyOnlyAtCronInterval,
+  TargetLocations)
 }
 \arguments{
 \item{Name}{[required] The name of the SSM document that contains the configuration information
@@ -74,7 +75,7 @@ is received.
 
 Executions that are already running an association when MaxErrors is
 reached are allowed to complete, but some of these executions may fail
-as well. If you need to ensure that there won\'t be more than max-errors
+as well. If you need to ensure that there won't be more than max-errors
 failed executions, set MaxConcurrency to 1 so that executions proceed
 one at a time.}
 
@@ -95,7 +96,7 @@ MaxConcurrency.}
 or \code{MANUAL}. In \code{AUTO} mode, the system uses the status of the
 association execution to determine the compliance status. If the
 association execution runs successfully, then the association is
-\code{COMPLIANT}. If the association execution doesn\'t run successfully, the
+\code{COMPLIANT}. If the association execution doesn't run successfully, the
 association is \code{NON-COMPLIANT}.
 
 In \code{MANUAL} mode, you must specify the \code{AssociationId} as a parameter
@@ -107,8 +108,13 @@ By default, all associations use \code{AUTO} mode.}
 
 \item{ApplyOnlyAtCronInterval}{By default, when you create a new associations, the system runs it
 immediately after it is created and then according to the schedule you
-specified. Specify this option if you don\'t want an association to run
-immediately after you create it.}
+specified. Specify this option if you don't want an association to run
+immediately after you create it. This parameter is not supported for
+rate expressions.}
+
+\item{TargetLocations}{A location is a combination of AWS Regions and AWS accounts where you
+want to run the association. Use this action to create an association in
+multiple Regions and multiple accounts.}
 }
 \description{
 A State Manager association defines the state that you want to maintain
@@ -157,7 +163,20 @@ start the service.
   MaxConcurrency = "string",
   ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
   SyncCompliance = "AUTO"|"MANUAL",
-  ApplyOnlyAtCronInterval = TRUE|FALSE
+  ApplyOnlyAtCronInterval = TRUE|FALSE,
+  TargetLocations = list(
+    list(
+      Accounts = list(
+        "string"
+      ),
+      Regions = list(
+        "string"
+      ),
+      TargetLocationMaxConcurrency = "string",
+      TargetLocationMaxErrors = "string",
+      ExecutionRoleName = "string"
+    )
+  )
 )
 }
 }

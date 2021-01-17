@@ -7,7 +7,7 @@
 opsworks_grant_access(InstanceId, ValidForInMinutes)
 }
 \arguments{
-\item{InstanceId}{[required] The instance\'s AWS OpsWorks Stacks ID.}
+\item{InstanceId}{[required] The instance's AWS OpsWorks Stacks ID.}
 
 \item{ValidForInMinutes}{The length of time (in minutes) that the grant is valid. When the grant
 expires at the end of this period, the user will no longer be able to
@@ -16,8 +16,7 @@ or she automatically will be logged out.}
 }
 \description{
 This action can be used only with Windows stacks.
-}
-\details{
+
 Grants RDP access to a Windows instance for a specified time period.
 }
 \section{Request syntax}{

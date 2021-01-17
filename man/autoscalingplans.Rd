@@ -12,16 +12,26 @@ autoscalingplans(config = list())
 \description{
 AWS Auto Scaling
 
-Use AWS Auto Scaling to quickly discover all the scalable AWS resources
-for your application and configure dynamic scaling and predictive
-scaling for your resources using scaling plans. Use this service in
-conjunction with the Amazon EC2 Auto Scaling, Application Auto Scaling,
-Amazon CloudWatch, and AWS CloudFormation services.
+Use AWS Auto Scaling to create scaling plans for your applications to
+automatically scale your scalable AWS resources.
 
-Currently, predictive scaling is only available for Amazon EC2 Auto
-Scaling groups.
+\strong{API Summary}
 
-For more information about AWS Auto Scaling, including information about
+You can use the AWS Auto Scaling service API to accomplish the following
+tasks:
+\itemize{
+\item Create and manage scaling plans
+\item Define target tracking scaling policies to dynamically scale your
+resources based on utilization
+\item Scale Amazon EC2 Auto Scaling groups using predictive scaling and
+dynamic scaling to scale your Amazon EC2 capacity faster
+\item Set minimum and maximum capacity limits
+\item Retrieve information on existing scaling plans
+\item Access current forecast data and historical forecast data for up to
+56 days previous
+}
+
+To learn more about AWS Auto Scaling, including information about
 granting IAM users required permissions for AWS Auto Scaling actions,
 see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html}{AWS Auto Scaling User Guide}.
 }
@@ -46,11 +56,11 @@ see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aw
 \section{Operations}{
 
 \tabular{ll}{
-\link[=autoscalingplans_create_scaling_plan]{create_scaling_plan} \tab Creates a scaling plan \cr
-\link[=autoscalingplans_delete_scaling_plan]{delete_scaling_plan} \tab Deletes the specified scaling plan \cr
+\link[=autoscalingplans_create_scaling_plan]{create_scaling_plan} \tab Creates a scaling plan\cr
+\link[=autoscalingplans_delete_scaling_plan]{delete_scaling_plan} \tab Deletes the specified scaling plan\cr
 \link[=autoscalingplans_describe_scaling_plan_resources]{describe_scaling_plan_resources} \tab Describes the scalable resources in the specified scaling plan\cr
-\link[=autoscalingplans_describe_scaling_plans]{describe_scaling_plans} \tab Describes one or more of your scaling plans \cr
-\link[=autoscalingplans_get_scaling_plan_resource_forecast_data]{get_scaling_plan_resource_forecast_data} \tab Retrieves the forecast data for a scalable resource \cr
+\link[=autoscalingplans_describe_scaling_plans]{describe_scaling_plans} \tab Describes one or more of your scaling plans\cr
+\link[=autoscalingplans_get_scaling_plan_resource_forecast_data]{get_scaling_plan_resource_forecast_data} \tab Retrieves the forecast data for a scalable resource\cr
 \link[=autoscalingplans_update_scaling_plan]{update_scaling_plan} \tab Updates the specified scaling plan
 }
 }

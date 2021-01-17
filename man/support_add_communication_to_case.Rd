@@ -26,15 +26,13 @@ Adds additional customer communication to an AWS Support case. Use the
 You can list a set of email addresses to copy on the communication by
 using the \code{ccEmailAddresses} parameter. The \code{communicationBody} value
 contains the text of the communication.
-}
-\details{
 \itemize{
 \item You must have a Business or Enterprise support plan to use the AWS
 Support API.
 \item If you call the AWS Support API from an account that does not have a
 Business or Enterprise support plan, the
 \code{SubscriptionRequiredException} error message appears. For
-information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
+information about changing your support plan, see \href{https://aws.amazon.com/premiumsupport/}{AWS Support}.
 }
 }
 \section{Request syntax}{

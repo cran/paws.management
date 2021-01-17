@@ -9,8 +9,8 @@ cloudwatchevents_delete_rule(Name, EventBusName, Force)
 \arguments{
 \item{Name}{[required] The name of the rule.}
 
-\item{EventBusName}{The event bus associated with the rule. If you omit this, the default
-event bus is used.}
+\item{EventBusName}{The name or ARN of the event bus associated with the rule. If you omit
+this, the default event bus is used.}
 
 \item{Force}{If this is a managed rule, created by an AWS service on your behalf, you
 must specify \code{Force} as \code{True} to delete the rule. This parameter is
@@ -20,8 +20,7 @@ checking the \code{ManagedBy} field of the response.}
 }
 \description{
 Deletes the specified rule.
-}
-\details{
+
 Before you can delete the rule, you must remove all targets, using
 RemoveTargets.
 

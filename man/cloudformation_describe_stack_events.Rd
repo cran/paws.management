@@ -11,7 +11,7 @@ cloudformation_describe_stack_events(StackName, NextToken)
 \item{StackName}{The name or the unique stack ID that is associated with the stack, which
 are not always interchangeable:
 \itemize{
-\item Running stacks: You can specify either the stack\'s name or its
+\item Running stacks: You can specify either the stack's name or its
 unique stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
 }
@@ -23,12 +23,11 @@ retrieve.}
 }
 \description{
 Returns all stack related events for a specified stack in reverse
-chronological order. For more information about a stack\'s event
-history, go to
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/concept-stack.html}{Stacks}
+chronological order. For more information about a stack's event history,
+go to
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html}{Stacks}
 in the AWS CloudFormation User Guide.
-}
-\details{
+
 You can list events for stacks that have failed to create or have been
 deleted by specifying the unique stack identifier (stack ID).
 }

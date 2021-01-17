@@ -10,22 +10,21 @@ organizations_decline_handshake(HandshakeId)
 \item{HandshakeId}{[required] The unique identifier (ID) of the handshake that you want to decline.
 You can get the ID from the ListHandshakesForAccount operation.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for handshake ID
-string requires \"h-\" followed by from 8 to 32 lowercase letters or
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for handshake
+ID string requires "h-" followed by from 8 to 32 lowercase letters or
 digits.}
 }
 \description{
 Declines a handshake request. This sets the handshake state to
 \code{DECLINED} and effectively deactivates the request.
-}
-\details{
+
 This operation can be called only from the account that received the
 handshake. The originator of the handshake can use CancelHandshake
-instead. The originator can\'t reactivate a declined request, but can
+instead. The originator can't reactivate a declined request, but can
 reinitiate the process with a new handshake request.
 
 After you decline a handshake, it continues to appear in the results of
-relevant APIs for only 30 days. After that, it\'s deleted.
+relevant APIs for only 30 days. After that, it's deleted.
 }
 \section{Request syntax}{
 \preformatted{svc$decline_handshake(

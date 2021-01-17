@@ -12,8 +12,8 @@ organizations_list_aws_service_access_for_organization(NextToken,
 \item{NextToken}{The parameter for receiving additional results if you receive a
 \code{NextToken} response in a previous request. A \code{NextToken} response
 indicates that more output is available. Set this parameter to the value
-of the previous call\'s \code{NextToken} response to indicate where the
-output should continue from.}
+of the previous call's \code{NextToken} response to indicate where the output
+should continue from.}
 
 \item{MaxResults}{The total number of results that you want included on each page of the
 response. If you do not include this parameter, it defaults to a value
@@ -31,14 +31,13 @@ Returns a list of the AWS services that you enabled to integrate with
 your organization. After a service on this list creates the resources
 that it requires for the integration, it can perform operations on your
 organization and its accounts.
-}
-\details{
+
 For more information about integrating other services with AWS
 Organizations, including the list of services that currently work with
-Organizations, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{Integrating AWS Organizations with Other AWS Services}
+Organizations, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{Integrating AWS Organizations with Other AWS Services}
 in the \emph{AWS Organizations User Guide.}
 
-This operation can be called only from the organization\'s master
+This operation can be called only from the organization's management
 account or by a member account that is a delegated administrator for an
 AWS service.
 }

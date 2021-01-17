@@ -9,7 +9,7 @@ ssm_describe_sessions(State, MaxResults, NextToken, Filters)
 }
 \arguments{
 \item{State}{[required] The session status to retrieve a list of sessions for. For example,
-\"Active\".}
+"Active".}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -32,7 +32,7 @@ disconnected) or terminated sessions from the past 30 days.
   NextToken = "string",
   Filters = list(
     list(
-      key = "InvokedAfter"|"InvokedBefore"|"Target"|"Owner"|"Status",
+      key = "InvokedAfter"|"InvokedBefore"|"Target"|"Owner"|"Status"|"SessionId",
       value = "string"
     )
   )

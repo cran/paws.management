@@ -22,8 +22,7 @@ not exist, CloudWatch creates the metric. When CloudWatch creates a
 metric, it can take up to fifteen minutes for the metric to appear in
 calls to
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_ListMetrics.html}{ListMetrics}.
-}
-\details{
+
 You can publish either individual data points in the \code{Value} field, or
 arrays of values and the number of times each value occurred during the
 period by using the \code{Values} and \code{Counts} fields in the \code{MetricDatum}
@@ -37,13 +36,17 @@ also limited to no more than 20 different metrics.
 
 Although the \code{Value} parameter accepts numbers of type \code{Double},
 CloudWatch rejects values that are either too small or too large. Values
-must be in the range of -2\\^360 to 2\\^360. In addition, special values
+must be in the range of -2^360 to 2^360. In addition, special values
 (for example, NaN, +Infinity, -Infinity) are not supported.
 
 You can use up to 10 dimensions per metric to further clarify what data
 the metric collects. Each dimension consists of a Name and Value pair.
 For more information about specifying dimensions, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html}{Publishing Metrics}
 in the \emph{Amazon CloudWatch User Guide}.
+
+You specify the time stamp to be associated with each data point. You
+can specify time stamps that are as much as two weeks before the current
+date, and as much as 2 hours after the current day and time.
 
 Data points with time stamps from 24 hours ago or longer can take at
 least 48 hours to become available for
