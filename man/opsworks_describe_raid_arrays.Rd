@@ -7,14 +7,38 @@
 opsworks_describe_raid_arrays(InstanceId, StackId, RaidArrayIds)
 }
 \arguments{
-\item{InstanceId}{The instance ID. If you use this parameter, \code{DescribeRaidArrays} returns
+\item{InstanceId}{The instance ID. If you use this parameter,
+\code{\link[=opsworks_describe_raid_arrays]{describe_raid_arrays}} returns
 descriptions of the RAID arrays associated with the specified instance.}
 
 \item{StackId}{The stack ID.}
 
 \item{RaidArrayIds}{An array of RAID array IDs. If you use this parameter,
-\code{DescribeRaidArrays} returns descriptions of the specified arrays.
-Otherwise, it returns a description of every array.}
+\code{\link[=opsworks_describe_raid_arrays]{describe_raid_arrays}} returns
+descriptions of the specified arrays. Otherwise, it returns a
+description of every array.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  RaidArrays = list(
+    list(
+      RaidArrayId = "string",
+      InstanceId = "string",
+      Name = "string",
+      RaidLevel = 123,
+      NumberOfDisks = 123,
+      Size = 123,
+      Device = "string",
+      MountPoint = "string",
+      AvailabilityZone = "string",
+      CreatedAt = "string",
+      StackId = "string",
+      VolumeType = "string",
+      Iops = 123
+    )
+  )
+)
+}
 }
 \description{
 Describe an instance's RAID arrays.

@@ -71,7 +71,8 @@ by the different instance types, see \href{https://docs.aws.amazon.com/AWSEC2/la
 \item{InstallUpdatesOnBoot}{Whether to install operating system and package updates when the
 instance boots. The default value is \code{true}. To control when updates are
 installed, set this value to \code{false}. You must then update your
-instances manually by using CreateDeployment to run the
+instances manually by using
+\code{\link[=opsworks_create_deployment]{create_deployment}} to run the
 \code{update_dependencies} stack command or by manually running \code{yum} (Amazon
 Linux) or \code{apt-get} (Ubuntu) on the instances.
 
@@ -84,7 +85,7 @@ your instances have the latest security updates.}
 options:
 \itemize{
 \item \code{INHERIT} - Use the stack's default agent version setting.
-\item \emph{version\\_number} - Use the specified agent version. This value
+\item \emph{version_number} - Use the specified agent version. This value
 overrides the stack's default setting. To update the agent version,
 you must edit the instance configuration and specify a new version.
 AWS OpsWorks Stacks then automatically installs that version on the
@@ -94,9 +95,12 @@ instance.
 The default setting is \code{INHERIT}. To specify an agent version, you must
 use the complete version number, not the abbreviated number shown on the
 console. For a list of available agent version numbers, call
-DescribeAgentVersions.
+\code{\link[=opsworks_describe_agent_versions]{describe_agent_versions}}.
 
 AgentVersion cannot be set to Chef 12.2.}
+}
+\value{
+An empty list.
 }
 \description{
 Updates a specified instance.

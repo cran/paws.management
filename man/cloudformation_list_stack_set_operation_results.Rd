@@ -15,7 +15,8 @@ results for.}
 
 \item{NextToken}{If the previous request didn't return all of the remaining results, the
 response object's \code{NextToken} parameter value is set to a token. To
-retrieve the next set of results, call \code{ListStackSetOperationResults}
+retrieve the next set of results, call
+\code{\link[=cloudformation_list_stack_set_operation_results]{list_stack_set_operation_results}}
 again and assign that token to the request object's \code{NextToken}
 parameter. If there are no remaining results, the previous response
 object's \code{NextToken} parameter is set to \code{null}.}
@@ -24,6 +25,25 @@ object's \code{NextToken} parameter is set to \code{null}.}
 number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Summaries = list(
+    list(
+      Account = "string",
+      Region = "string",
+      Status = "PENDING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED",
+      StatusReason = "string",
+      AccountGateResult = list(
+        Status = "SUCCEEDED"|"FAILED"|"SKIPPED",
+        StatusReason = "string"
+      ),
+      OrganizationalUnitId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Returns summary information about the results of a stack set operation.

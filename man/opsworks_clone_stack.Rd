@@ -54,8 +54,9 @@ AWS OpsWorks Stacks to work with AWS resources on your behalf. You must
 set this parameter to the Amazon Resource Name (ARN) for an existing IAM
 role. If you create a stack by using the AWS OpsWorks Stacks console, it
 creates the role for you. You can obtain an existing stack's IAM ARN
-programmatically by calling DescribePermissions. For more information
-about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{Using Identifiers}.
+programmatically by calling
+\code{\link[=opsworks_describe_permissions]{describe_permissions}}. For more
+information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{Using Identifiers}.
 
 You must set this parameter to a valid service role ARN or the action
 will fail; there is no default value. You can specify the source stack's
@@ -130,7 +131,7 @@ this parameter is required, see the \code{VpcId} parameter description.}
 the corresponding default stack configuration JSON values. The string
 should be in the following format:
 
-\verb{"\\\{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...\\\}"}
+\verb{"\{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...\}"}
 
 For more information about custom JSON, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html}{Use Custom JSON to Modify the Stack Configuration Attributes}}
 
@@ -203,10 +204,17 @@ installs that version on the stack's instances.
 The default setting is \code{LATEST}. To specify an agent version, you must
 use the complete version number, not the abbreviated number shown on the
 console. For a list of available agent version numbers, call
-DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.
+\code{\link[=opsworks_describe_agent_versions]{describe_agent_versions}}.
+AgentVersion cannot be set to Chef 12.2.
 
 You can also specify an agent version when you create or update an
 instance, which overrides the stack's default setting.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  StackId = "string"
+)
+}
 }
 \description{
 Creates a clone of a specified stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html}{Clone a Stack}.

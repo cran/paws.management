@@ -8,14 +8,19 @@ cloudwatchevents_create_partner_event_source(Name, Account)
 }
 \arguments{
 \item{Name}{[required] The name of the partner event source. This name must be unique and must
-be in the format
-\verb{<i>partner_name</i>/<i>event_namespace</i>/<i>event_name</i>}. The
-AWS account that wants to use this partner event source must create a
+be in the format \code{partner_name/event_namespace/event_name}. The AWS
+account that wants to use this partner event source must create a
 partner event bus with a name that matches the name of the partner event
 source.}
 
 \item{Account}{[required] The AWS account ID that is permitted to create a matching partner event
 bus for this partner event source.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  EventSourceArn = "string"
+)
+}
 }
 \description{
 Called by an SaaS partner to create a partner event source. This
@@ -35,14 +40,14 @@ and then process them using AWS Events rules and targets.
 
 Partner event source names follow this format:
 
-\verb{<i>partner_name</i>/<i>event_namespace</i>/<i>event_name</i>}
+\code{partner_name/event_namespace/event_name}
 
-\emph{partner\\_name} is determined during partner registration and identifies
-the partner to AWS customers. \emph{event\\_namespace} is determined by the
+\emph{partner_name} is determined during partner registration and identifies
+the partner to AWS customers. \emph{event_namespace} is determined by the
 partner and is a way for the partner to categorize their events.
-\emph{event\\_name} is determined by the partner, and should uniquely identify
+\emph{event_name} is determined by the partner, and should uniquely identify
 an event-generating resource within the partner system. The combination
-of \emph{event\\_namespace} and \emph{event\\_name} should help AWS customers decide
+of \emph{event_namespace} and \emph{event_name} should help AWS customers decide
 whether to create an event bus to receive these events.
 }
 \section{Request syntax}{

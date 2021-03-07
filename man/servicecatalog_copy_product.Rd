@@ -36,6 +36,12 @@ product are copied to the target product.}
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  CopyProductToken = "string"
+)
+}
+}
 \description{
 Copies the specified source product to the specified target product or a
 new product.
@@ -44,7 +50,8 @@ You can copy a product to the same account or another account. You can
 copy a product to the same region or another region.
 
 This operation is performed asynchronously. To track the progress of the
-operation, use DescribeCopyProductStatus.
+operation, use
+\code{\link[=servicecatalog_describe_copy_product_status]{describe_copy_product_status}}.
 }
 \section{Request syntax}{
 \preformatted{svc$copy_product(

@@ -33,6 +33,12 @@ For more information, see
 \href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_RefreshPreferences.html}{RefreshPreferences}
 in the \emph{Amazon EC2 Auto Scaling API Reference}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  InstanceRefreshId = "string"
+)
+}
+}
 \description{
 Starts a new instance refresh operation, which triggers a rolling
 replacement of all previously launched instances in the Auto Scaling
@@ -40,10 +46,12 @@ group with a new group of instances.
 
 If successful, this call creates a new instance refresh request with a
 unique ID that you can use to track its progress. To query its status,
-call the DescribeInstanceRefreshes API. To describe the instance
-refreshes that have already run, call the DescribeInstanceRefreshes API.
-To cancel an instance refresh operation in progress, use the
-CancelInstanceRefresh API.
+call the
+\code{\link[=autoscaling_describe_instance_refreshes]{describe_instance_refreshes}}
+API. To describe the instance refreshes that have already run, call the
+\code{\link[=autoscaling_describe_instance_refreshes]{describe_instance_refreshes}}
+API. To cancel an instance refresh operation in progress, use the
+\code{\link[=autoscaling_cancel_instance_refresh]{cancel_instance_refresh}} API.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html}{Replacing Auto Scaling Instances Based on an Instance Refresh}.
 }

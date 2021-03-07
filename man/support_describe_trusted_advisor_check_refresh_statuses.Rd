@@ -13,16 +13,29 @@ support_describe_trusted_advisor_check_refresh_statuses(checkIds)
 If you specify the check ID of a check that is automatically refreshed,
 you might see an \code{InvalidParameterValue} error.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  statuses = list(
+    list(
+      checkId = "string",
+      status = "string",
+      millisUntilNextRefreshable = 123
+    )
+  )
+)
+}
+}
 \description{
 Returns the refresh status of the AWS Trusted Advisor checks that have
 the specified check IDs. You can get the check IDs by calling the
-DescribeTrustedAdvisorChecks operation.
+\code{\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks}}
+operation.
 
 Some checks are refreshed automatically, and you can't return their
 refresh statuses by using the
-\code{DescribeTrustedAdvisorCheckRefreshStatuses} operation. If you call this
-operation for these checks, you might see an \code{InvalidParameterValue}
-error.
+\code{\link[=support_describe_trusted_advisor_check_refresh_statuses]{describe_trusted_advisor_check_refresh_statuses}}
+operation. If you call this operation for these checks, you might see an
+\code{InvalidParameterValue} error.
 \itemize{
 \item You must have a Business or Enterprise support plan to use the AWS
 Support API.

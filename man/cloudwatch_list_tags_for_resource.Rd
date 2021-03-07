@@ -10,13 +10,24 @@ cloudwatch_list_tags_for_resource(ResourceARN)
 \item{ResourceARN}{[required] The ARN of the CloudWatch resource that you want to view tags for.
 
 The ARN format of an alarm is
-\verb{arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:alarm:<i>alarm-name</i> }
+\code{arn:aws:cloudwatch:Region:account-id:alarm:alarm-name }
 
 The ARN format of a Contributor Insights rule is
-\verb{arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:insight-rule:<i>insight-rule-name</i> }
+\code{arn:aws:cloudwatch:Region:account-id:insight-rule:insight-rule-name }
 
 For more information about ARN format, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies}{Resource Types Defined by Amazon CloudWatch}
 in the \emph{Amazon Web Services General Reference}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
 }
 \description{
 Displays the tags associated with a CloudWatch resource. Currently,

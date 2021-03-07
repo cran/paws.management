@@ -21,7 +21,7 @@ document that is shared with you from another account.
 For SSM documents that are shared with you from other AWS accounts, you
 must specify the complete SSM document ARN, in the following format:
 
-\verb{arn:<i>partition</i>:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> }
+\code{arn:partition:ssm:region:account-id:document/document-name }
 
 For example:
 
@@ -100,9 +100,10 @@ association execution runs successfully, then the association is
 association is \code{NON-COMPLIANT}.
 
 In \code{MANUAL} mode, you must specify the \code{AssociationId} as a parameter
-for the PutComplianceItems API action. In this case, compliance data is
-not managed by State Manager. It is managed by your direct call to the
-PutComplianceItems API action.
+for the \code{\link[=ssm_put_compliance_items]{put_compliance_items}} API action.
+In this case, compliance data is not managed by State Manager. It is
+managed by your direct call to the
+\code{\link[=ssm_put_compliance_items]{put_compliance_items}} API action.
 
 By default, all associations use \code{AUTO} mode.}
 
@@ -115,6 +116,86 @@ rate expressions.}
 \item{TargetLocations}{A location is a combination of AWS Regions and AWS accounts where you
 want to run the association. Use this action to create an association in
 multiple Regions and multiple accounts.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  AssociationDescription = list(
+    Name = "string",
+    InstanceId = "string",
+    AssociationVersion = "string",
+    Date = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdateAssociationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    Status = list(
+      Date = as.POSIXct(
+        "2015-01-01"
+      ),
+      Name = "Pending"|"Success"|"Failed",
+      Message = "string",
+      AdditionalInfo = "string"
+    ),
+    Overview = list(
+      Status = "string",
+      DetailedStatus = "string",
+      AssociationStatusAggregatedCount = list(
+        123
+      )
+    ),
+    DocumentVersion = "string",
+    AutomationTargetParameterName = "string",
+    Parameters = list(
+      list(
+        "string"
+      )
+    ),
+    AssociationId = "string",
+    Targets = list(
+      list(
+        Key = "string",
+        Values = list(
+          "string"
+        )
+      )
+    ),
+    ScheduleExpression = "string",
+    OutputLocation = list(
+      S3Location = list(
+        OutputS3Region = "string",
+        OutputS3BucketName = "string",
+        OutputS3KeyPrefix = "string"
+      )
+    ),
+    LastExecutionDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastSuccessfulExecutionDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    AssociationName = "string",
+    MaxErrors = "string",
+    MaxConcurrency = "string",
+    ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
+    SyncCompliance = "AUTO"|"MANUAL",
+    ApplyOnlyAtCronInterval = TRUE|FALSE,
+    TargetLocations = list(
+      list(
+        Accounts = list(
+          "string"
+        ),
+        Regions = list(
+          "string"
+        ),
+        TargetLocationMaxConcurrency = "string",
+        TargetLocationMaxErrors = "string",
+        ExecutionRoleName = "string"
+      )
+    )
+  )
+)
+}
 }
 \description{
 A State Manager association defines the state that you want to maintain

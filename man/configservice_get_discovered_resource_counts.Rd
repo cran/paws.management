@@ -30,6 +30,19 @@ specify 0, AWS Config uses the default.}
 \item{nextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  totalDiscoveredResources = 123,
+  resourceCounts = list(
+    list(
+      resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
+      count = 123
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns the resource types, the number of each resource type, and the
 total number of resources that AWS Config is recording in this region
@@ -40,8 +53,9 @@ for your AWS account.
 \item AWS Config is recording three resource types in the US East (Ohio)
 Region for your account: 25 EC2 instances, 20 IAM users, and 15 S3
 buckets.
-\item You make a call to the \code{GetDiscoveredResourceCounts} action and
-specify that you want all resource types.
+\item You make a call to the
+\code{\link[=configservice_get_discovered_resource_counts]{get_discovered_resource_counts}}
+action and specify that you want all resource types.
 \item AWS Config returns the following:
 \itemize{
 \item The resource types (EC2 instances, IAM users, and S3 buckets).
@@ -56,8 +70,10 @@ the \code{limit} parameter. The response includes a \code{nextToken} string. To
 get the next page of results, run the request again and specify the
 string for the \code{nextToken} parameter.
 
-If you make a call to the GetDiscoveredResourceCounts action, you might
-not immediately receive resource counts in the following situations:
+If you make a call to the
+\code{\link[=configservice_get_discovered_resource_counts]{get_discovered_resource_counts}}
+action, you might not immediately receive resource counts in the
+following situations:
 \itemize{
 \item You are a new AWS Config customer.
 \item You just enabled resource recording.
@@ -65,7 +81,8 @@ not immediately receive resource counts in the following situations:
 
 It might take a few minutes for AWS Config to record and count your
 resources. Wait a few minutes and then retry the
-GetDiscoveredResourceCounts action.
+\code{\link[=configservice_get_discovered_resource_counts]{get_discovered_resource_counts}}
+action.
 }
 \section{Request syntax}{
 \preformatted{svc$get_discovered_resource_counts(

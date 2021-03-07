@@ -9,13 +9,24 @@ organizations_describe_organizational_unit(OrganizationalUnitId)
 \arguments{
 \item{OrganizationalUnitId}{[required] The unique identifier (ID) of the organizational unit that you want
 details about. You can get the ID from the
-ListOrganizationalUnitsForParent operation.
+\code{\link[=organizations_list_organizational_units_for_parent]{list_organizational_units_for_parent}}
+operation.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for an
 organizational unit ID string requires "ou-" followed by from 4 to 32
 lowercase letters or digits (the ID of the root that contains the OU).
 This string is followed by a second "-" dash and from 8 to 32 additional
 lowercase letters or digits.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  OrganizationalUnit = list(
+    Id = "string",
+    Arn = "string",
+    Name = "string"
+  )
+)
+}
 }
 \description{
 Retrieves information about an organizational unit (OU).

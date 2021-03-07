@@ -15,6 +15,19 @@ events.}
 \item{roleArn}{[required] The ARN of an IAM role that grants CloudWatch Logs permissions to call
 the Amazon Kinesis \code{PutRecord} operation on the destination stream.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  destination = list(
+    destinationName = "string",
+    targetArn = "string",
+    roleArn = "string",
+    accessPolicy = "string",
+    arn = "string",
+    creationTime = 123
+  )
+)
+}
+}
 \description{
 Creates or updates a destination. This operation is used only to create
 destinations for cross-account subscriptions.
@@ -22,19 +35,19 @@ destinations for cross-account subscriptions.
 A destination encapsulates a physical resource (such as an Amazon
 Kinesis stream) and enables you to subscribe to a real-time stream of
 log events for a different account, ingested using
-\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html}{PutLogEvents}.
+\code{\link[=cloudwatchlogs_put_log_events]{put_log_events}}.
 
 Through an access policy, a destination controls what is written to it.
-By default, \code{PutDestination} does not set any access policy with the
-destination, which means a cross-account user cannot call
-\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutSubscriptionFilter.html}{PutSubscriptionFilter}
+By default, \code{\link[=cloudwatchlogs_put_destination]{put_destination}} does not
+set any access policy with the destination, which means a cross-account
+user cannot call
+\code{\link[=cloudwatchlogs_put_subscription_filter]{put_subscription_filter}}
 against this destination. To enable this, the destination owner must
-call
-\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDestinationPolicy.html}{PutDestinationPolicy}
-after \code{PutDestination}.
+call \code{\link[=cloudwatchlogs_put_destination_policy]{put_destination_policy}}
+after \code{\link[=cloudwatchlogs_put_destination]{put_destination}}.
 
-To perform a \code{PutDestination} operation, you must also have the
-\code{iam:PassRole} permission.
+To perform a \code{\link[=cloudwatchlogs_put_destination]{put_destination}}
+operation, you must also have the \code{iam:PassRole} permission.
 }
 \section{Request syntax}{
 \preformatted{svc$put_destination(

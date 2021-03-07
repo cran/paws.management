@@ -9,11 +9,29 @@ organizations_describe_account(AccountId)
 }
 \arguments{
 \item{AccountId}{[required] The unique identifier (ID) of the AWS account that you want information
-about. You can get the ID from the ListAccounts or ListAccountsForParent
+about. You can get the ID from the
+\code{\link[=organizations_list_accounts]{list_accounts}} or
+\code{\link[=organizations_list_accounts_for_parent]{list_accounts_for_parent}}
 operations.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for an account
 ID string requires exactly 12 digits.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Account = list(
+    Id = "string",
+    Arn = "string",
+    Email = "string",
+    Name = "string",
+    Status = "ACTIVE"|"SUSPENDED",
+    JoinedMethod = "INVITED"|"CREATED",
+    JoinedTimestamp = as.POSIXct(
+      "2015-01-01"
+    )
+  )
+)
+}
 }
 \description{
 Retrieves AWS Organizations-related information about the specified

@@ -7,12 +7,64 @@
 opsworks_describe_apps(StackId, AppIds)
 }
 \arguments{
-\item{StackId}{The app stack ID. If you use this parameter, \code{DescribeApps} returns a
-description of the apps in the specified stack.}
+\item{StackId}{The app stack ID. If you use this parameter,
+\code{\link[=opsworks_describe_apps]{describe_apps}} returns a description of the
+apps in the specified stack.}
 
 \item{AppIds}{An array of app IDs for the apps to be described. If you use this
-parameter, \code{DescribeApps} returns a description of the specified apps.
-Otherwise, it returns a description of every app.}
+parameter, \code{\link[=opsworks_describe_apps]{describe_apps}} returns a
+description of the specified apps. Otherwise, it returns a description
+of every app.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Apps = list(
+    list(
+      AppId = "string",
+      StackId = "string",
+      Shortname = "string",
+      Name = "string",
+      Description = "string",
+      DataSources = list(
+        list(
+          Type = "string",
+          Arn = "string",
+          DatabaseName = "string"
+        )
+      ),
+      Type = "aws-flow-ruby"|"java"|"rails"|"php"|"nodejs"|"static"|"other",
+      AppSource = list(
+        Type = "git"|"svn"|"archive"|"s3",
+        Url = "string",
+        Username = "string",
+        Password = "string",
+        SshKey = "string",
+        Revision = "string"
+      ),
+      Domains = list(
+        "string"
+      ),
+      EnableSsl = TRUE|FALSE,
+      SslConfiguration = list(
+        Certificate = "string",
+        PrivateKey = "string",
+        Chain = "string"
+      ),
+      Attributes = list(
+        "string"
+      ),
+      CreatedAt = "string",
+      Environment = list(
+        list(
+          Key = "string",
+          Value = "string",
+          Secure = TRUE|FALSE
+        )
+      )
+    )
+  )
+)
+}
 }
 \description{
 Requests a description of a specified set of apps.

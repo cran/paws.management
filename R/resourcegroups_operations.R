@@ -51,6 +51,55 @@ NULL
 #' A resource group can contain either a `Configuration` or a
 #' `ResourceQuery`, but not both.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Group = list(
+#'     GroupArn = "string",
+#'     Name = "string",
+#'     Description = "string"
+#'   ),
+#'   ResourceQuery = list(
+#'     Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
+#'     Query = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   GroupConfiguration = list(
+#'     Configuration = list(
+#'       list(
+#'         Type = "string",
+#'         Parameters = list(
+#'           list(
+#'             Name = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ProposedConfiguration = list(
+#'       list(
+#'         Type = "string",
+#'         Parameters = list(
+#'           list(
+#'             Name = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     Status = "UPDATING"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
+#'     FailureReason = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_group(
@@ -118,6 +167,18 @@ resourcegroups_create_group <- function(Name, Description = NULL, ResourceQuery 
 #' @param GroupName Deprecated - don't use this parameter. Use `Group` instead.
 #' @param Group The name or the ARN of the resource group to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Group = list(
+#'     GroupArn = "string",
+#'     Name = "string",
+#'     Description = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_group(
@@ -162,6 +223,18 @@ resourcegroups_delete_group <- function(GroupName = NULL, Group = NULL) {
 #'
 #' @param GroupName Deprecated - don't use this parameter. Use `Group` instead.
 #' @param Group The name or the ARN of the resource group to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Group = list(
+#'     GroupArn = "string",
+#'     Name = "string",
+#'     Description = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -211,6 +284,43 @@ resourcegroups_get_group <- function(GroupName = NULL, Group = NULL) {
 #'
 #' @param Group The name or the ARN of the resource group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupConfiguration = list(
+#'     Configuration = list(
+#'       list(
+#'         Type = "string",
+#'         Parameters = list(
+#'           list(
+#'             Name = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ProposedConfiguration = list(
+#'       list(
+#'         Type = "string",
+#'         Parameters = list(
+#'           list(
+#'             Name = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     Status = "UPDATING"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
+#'     FailureReason = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_group_configuration(
@@ -259,6 +369,20 @@ resourcegroups_get_group_configuration <- function(Group = NULL) {
 #' @param GroupName Don't use this parameter. Use `Group` instead.
 #' @param Group The name or the ARN of the resource group to query.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupQuery = list(
+#'     GroupName = "string",
+#'     ResourceQuery = list(
+#'       Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
+#'       Query = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_group_query(
@@ -305,6 +429,17 @@ resourcegroups_get_group_query <- function(GroupName = NULL, Group = NULL) {
 #'
 #' @param Arn &#91;required&#93; The ARN of the resource group whose tags you want to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_tags(
@@ -348,6 +483,28 @@ resourcegroups_get_tags <- function(Arn) {
 #'
 #' @param Group &#91;required&#93; The name or the ARN of the resource group to add resources to.
 #' @param ResourceArns &#91;required&#93; The list of ARNs for resources to be added to the group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Succeeded = list(
+#'     "string"
+#'   ),
+#'   Failed = list(
+#'     list(
+#'       ResourceArn = "string",
+#'       ErrorMessage = "string",
+#'       ErrorCode = "string"
+#'     )
+#'   ),
+#'   Pending = list(
+#'     list(
+#'       ResourceArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -400,21 +557,24 @@ resourcegroups_group_resources <- function(Group, ResourceArns) {
 #' instead.***
 #' @param Group The name or the ARN of the resource group
 #' @param Filters Filters, formatted as ResourceFilter objects, that you want to apply to
-#' a `ListGroupResources` operation. Filters the results to include only
-#' those of the specified resource types.
+#' a [`list_group_resources`][resourcegroups_list_group_resources]
+#' operation. Filters the results to include only those of the specified
+#' resource types.
 #' 
 #' -   `resource-type` - Filter resources by their type. Specify up to five
 #'     resource types in the format `AWS::ServiceCode::ResourceType`. For
 #'     example, `AWS::EC2::Instance`, or `AWS::S3::Bucket`.
 #' 
-#' When you specify a `resource-type` filter for `ListGroupResources`, AWS
+#' When you specify a `resource-type` filter for
+#' [`list_group_resources`][resourcegroups_list_group_resources], AWS
 #' Resource Groups validates your filter resource types against the types
 #' that are defined in the query associated with the group. For example, if
 #' a group contains only S3 buckets because its query specifies only that
 #' resource type, but your `resource-type` filter includes EC2 instances,
 #' AWS Resource Groups does not filter for EC2 instances. In this case, a
-#' `ListGroupResources` request returns a `BadRequestException` error with
-#' a message similar to the following:
+#' [`list_group_resources`][resourcegroups_list_group_resources] request
+#' returns a `BadRequestException` error with a message similar to the
+#' following:
 #' 
 #' `The resource types specified as filters in the request are not valid.`
 #' 
@@ -439,6 +599,37 @@ resourcegroups_group_resources <- function(Group, ResourceArns) {
 #' indicates that more output is available. Set this parameter to the value
 #' provided by a previous call's `NextToken` response to indicate where the
 #' output should continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Resources = list(
+#'     list(
+#'       Identifier = list(
+#'         ResourceArn = "string",
+#'         ResourceType = "string"
+#'       ),
+#'       Status = list(
+#'         Name = "PENDING"
+#'       )
+#'     )
+#'   ),
+#'   ResourceIdentifiers = list(
+#'     list(
+#'       ResourceArn = "string",
+#'       ResourceType = "string"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   QueryErrors = list(
+#'     list(
+#'       ErrorCode = "CLOUDFORMATION_STACK_INACTIVE"|"CLOUDFORMATION_STACK_NOT_EXISTING",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -493,11 +684,11 @@ resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, 
 #' resourcegroups_list_groups(Filters, MaxResults, NextToken)
 #'
 #' @param Filters Filters, formatted as GroupFilter objects, that you want to apply to a
-#' `ListGroups` operation.
+#' [`list_groups`][resourcegroups_list_groups] operation.
 #' 
 #' -   `resource-type` - Filter the results to include only those of the
 #'     specified resource types. Specify up to five resource types in the
-#'     format `AWS::<i>ServiceCode</i>::<i>ResourceType</i> `. For example,
+#'     format `AWS::ServiceCode::ResourceType `. For example,
 #'     `AWS::EC2::Instance`, or `AWS::S3::Bucket`.
 #' 
 #' -   `configuration-type` - Filter the results to include only those
@@ -522,6 +713,27 @@ resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, 
 #' indicates that more output is available. Set this parameter to the value
 #' provided by a previous call's `NextToken` response to indicate where the
 #' output should continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupIdentifiers = list(
+#'     list(
+#'       GroupName = "string",
+#'       GroupArn = "string"
+#'     )
+#'   ),
+#'   Groups = list(
+#'     list(
+#'       GroupArn = "string",
+#'       Name = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -564,7 +776,8 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
 #' @description
 #' Attaches a service configuration to the specified group. This occurs
 #' asynchronously, and can take time to complete. You can use
-#' GetGroupConfiguration to check the status of the update.
+#' [`get_group_configuration`][resourcegroups_get_group_configuration] to
+#' check the status of the update.
 #' 
 #' **Minimum permissions**
 #' 
@@ -588,6 +801,9 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
 #' 
 #' A resource group can contain either a `Configuration` or a
 #' `ResourceQuery`, but not both.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -647,7 +863,8 @@ resourcegroups_put_group_configuration <- function(Group = NULL, Configuration =
 #' resourcegroups_search_resources(ResourceQuery, MaxResults, NextToken)
 #'
 #' @param ResourceQuery &#91;required&#93; The search query, using the same formats that are supported for resource
-#' group definition. For more information, see CreateGroup.
+#' group definition. For more information, see
+#' [`create_group`][resourcegroups_create_group].
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -663,6 +880,26 @@ resourcegroups_put_group_configuration <- function(Group = NULL, Configuration =
 #' indicates that more output is available. Set this parameter to the value
 #' provided by a previous call's `NextToken` response to indicate where the
 #' output should continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceIdentifiers = list(
+#'     list(
+#'       ResourceArn = "string",
+#'       ResourceType = "string"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   QueryErrors = list(
+#'     list(
+#'       ErrorCode = "CLOUDFORMATION_STACK_INACTIVE"|"CLOUDFORMATION_STACK_NOT_EXISTING",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -721,6 +958,17 @@ resourcegroups_search_resources <- function(ResourceQuery, MaxResults = NULL, Ne
 #' @param Tags &#91;required&#93; The tags to add to the specified resource group. A tag is a
 #' string-to-string map of key-value pairs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$tag(
@@ -768,6 +1016,28 @@ resourcegroups_tag <- function(Arn, Tags) {
 #' @param Group &#91;required&#93; The name or the ARN of the resource group from which to remove the
 #' resources.
 #' @param ResourceArns &#91;required&#93; The ARNs of the resources to be removed from the group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Succeeded = list(
+#'     "string"
+#'   ),
+#'   Failed = list(
+#'     list(
+#'       ResourceArn = "string",
+#'       ErrorMessage = "string",
+#'       ErrorCode = "string"
+#'     )
+#'   ),
+#'   Pending = list(
+#'     list(
+#'       ResourceArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -817,6 +1087,17 @@ resourcegroups_ungroup_resources <- function(Group, ResourceArns) {
 #' removed both the specified keys and any values associated with those
 #' keys.
 #' @param Keys &#91;required&#93; The keys of the tags to be removed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Keys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -868,6 +1149,18 @@ resourcegroups_untag <- function(Arn, Keys) {
 #' @param Description The new description that you want to update the resource group with.
 #' Descriptions can contain letters, numbers, hyphens, underscores,
 #' periods, and spaces.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Group = list(
+#'     GroupArn = "string",
+#'     Name = "string",
+#'     Description = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -921,6 +1214,20 @@ resourcegroups_update_group <- function(GroupName = NULL, Group = NULL, Descript
 #' 
 #' A resource group can contain either a `Configuration` or a
 #' `ResourceQuery`, but not both.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupQuery = list(
+#'     GroupName = "string",
+#'     ResourceQuery = list(
+#'       Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
+#'       Query = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

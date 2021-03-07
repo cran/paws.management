@@ -37,7 +37,7 @@ NULL
 #' 
 #' The ManagedInstance type for this API action is for on-premises managed
 #' instances. You must specify the name of the managed instance in the
-#' following format: mi-ID\\_number. For example, mi-1a2b3c4d5e6f.
+#' following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
 #' @param ResourceId &#91;required&#93; The resource ID you want to tag.
 #' 
 #' Use the ID of the resource. Here are some examples:
@@ -52,12 +52,15 @@ NULL
 #' 
 #' The ManagedInstance type for this API action is only for on-premises
 #' managed instances. You must specify the name of the managed instance in
-#' the following format: mi-ID\\_number. For example, mi-1a2b3c4d5e6f.
+#' the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
 #' @param Tags &#91;required&#93; One or more tags. The value parameter is required, but if you don't want
 #' the tag to have a value, specify the parameter with no value, and we set
 #' the value to an empty string.
 #' 
 #' Do not enter personally identifiable information in this field.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -108,6 +111,9 @@ ssm_add_tags_to_resource <- function(ResourceType, ResourceId, Tags) {
 #' command. If not provided, the command is canceled on every instance on
 #' which it was requested.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_command(
@@ -150,6 +156,14 @@ ssm_cancel_command <- function(CommandId, InstanceIds = NULL) {
 #' ssm_cancel_maintenance_window_execution(WindowExecutionId)
 #'
 #' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution to stop.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowExecutionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -242,8 +256,19 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' Manager for the first time and are assigned a managed instance ID. This
 #' means they are listed in the AWS Systems Manager console with an ID that
 #' is prefixed with "mi-". For information about how to add tags to your
-#' managed instances, see AddTagsToResource. For information about how to
-#' remove tags from your managed instances, see RemoveTagsFromResource.
+#' managed instances, see
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource]. For information
+#' about how to remove tags from your managed instances, see
+#' [`remove_tags_from_resource`][ssm_remove_tags_from_resource].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ActivationId = "string",
+#'   ActivationCode = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -318,7 +343,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' For SSM documents that are shared with you from other AWS accounts, you
 #' must specify the complete SSM document ARN, in the following format:
 #' 
-#' `arn:<i>partition</i>:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> `
+#' `arn:partition:ssm:region:account-id:document/document-name `
 #' 
 #' For example:
 #' 
@@ -386,9 +411,10 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' association is `NON-COMPLIANT`.
 #' 
 #' In `MANUAL` mode, you must specify the `AssociationId` as a parameter
-#' for the PutComplianceItems API action. In this case, compliance data is
-#' not managed by State Manager. It is managed by your direct call to the
-#' PutComplianceItems API action.
+#' for the [`put_compliance_items`][ssm_put_compliance_items] API action.
+#' In this case, compliance data is not managed by State Manager. It is
+#' managed by your direct call to the
+#' [`put_compliance_items`][ssm_put_compliance_items] API action.
 #' 
 #' By default, all associations use `AUTO` mode.
 #' @param ApplyOnlyAtCronInterval By default, when you create a new associations, the system runs it
@@ -399,6 +425,88 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' @param TargetLocations A location is a combination of AWS Regions and AWS accounts where you
 #' want to run the association. Use this action to create an association in
 #' multiple Regions and multiple accounts.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociationDescription = list(
+#'     Name = "string",
+#'     InstanceId = "string",
+#'     AssociationVersion = "string",
+#'     Date = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdateAssociationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = list(
+#'       Date = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "Pending"|"Success"|"Failed",
+#'       Message = "string",
+#'       AdditionalInfo = "string"
+#'     ),
+#'     Overview = list(
+#'       Status = "string",
+#'       DetailedStatus = "string",
+#'       AssociationStatusAggregatedCount = list(
+#'         123
+#'       )
+#'     ),
+#'     DocumentVersion = "string",
+#'     AutomationTargetParameterName = "string",
+#'     Parameters = list(
+#'       list(
+#'         "string"
+#'       )
+#'     ),
+#'     AssociationId = "string",
+#'     Targets = list(
+#'       list(
+#'         Key = "string",
+#'         Values = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     ScheduleExpression = "string",
+#'     OutputLocation = list(
+#'       S3Location = list(
+#'         OutputS3Region = "string",
+#'         OutputS3BucketName = "string",
+#'         OutputS3KeyPrefix = "string"
+#'       )
+#'     ),
+#'     LastExecutionDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastSuccessfulExecutionDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AssociationName = "string",
+#'     MaxErrors = "string",
+#'     MaxConcurrency = "string",
+#'     ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
+#'     SyncCompliance = "AUTO"|"MANUAL",
+#'     ApplyOnlyAtCronInterval = TRUE|FALSE,
+#'     TargetLocations = list(
+#'       list(
+#'         Accounts = list(
+#'           "string"
+#'         ),
+#'         Regions = list(
+#'           "string"
+#'         ),
+#'         TargetLocationMaxConcurrency = "string",
+#'         TargetLocationMaxErrors = "string",
+#'         ExecutionRoleName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -489,6 +597,142 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
 #' ssm_create_association_batch(Entries)
 #'
 #' @param Entries &#91;required&#93; One or more associations.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Successful = list(
+#'     list(
+#'       Name = "string",
+#'       InstanceId = "string",
+#'       AssociationVersion = "string",
+#'       Date = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdateAssociationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = list(
+#'         Date = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Name = "Pending"|"Success"|"Failed",
+#'         Message = "string",
+#'         AdditionalInfo = "string"
+#'       ),
+#'       Overview = list(
+#'         Status = "string",
+#'         DetailedStatus = "string",
+#'         AssociationStatusAggregatedCount = list(
+#'           123
+#'         )
+#'       ),
+#'       DocumentVersion = "string",
+#'       AutomationTargetParameterName = "string",
+#'       Parameters = list(
+#'         list(
+#'           "string"
+#'         )
+#'       ),
+#'       AssociationId = "string",
+#'       Targets = list(
+#'         list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ScheduleExpression = "string",
+#'       OutputLocation = list(
+#'         S3Location = list(
+#'           OutputS3Region = "string",
+#'           OutputS3BucketName = "string",
+#'           OutputS3KeyPrefix = "string"
+#'         )
+#'       ),
+#'       LastExecutionDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastSuccessfulExecutionDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AssociationName = "string",
+#'       MaxErrors = "string",
+#'       MaxConcurrency = "string",
+#'       ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
+#'       SyncCompliance = "AUTO"|"MANUAL",
+#'       ApplyOnlyAtCronInterval = TRUE|FALSE,
+#'       TargetLocations = list(
+#'         list(
+#'           Accounts = list(
+#'             "string"
+#'           ),
+#'           Regions = list(
+#'             "string"
+#'           ),
+#'           TargetLocationMaxConcurrency = "string",
+#'           TargetLocationMaxErrors = "string",
+#'           ExecutionRoleName = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Failed = list(
+#'     list(
+#'       Entry = list(
+#'         Name = "string",
+#'         InstanceId = "string",
+#'         Parameters = list(
+#'           list(
+#'             "string"
+#'           )
+#'         ),
+#'         AutomationTargetParameterName = "string",
+#'         DocumentVersion = "string",
+#'         Targets = list(
+#'           list(
+#'             Key = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         ScheduleExpression = "string",
+#'         OutputLocation = list(
+#'           S3Location = list(
+#'             OutputS3Region = "string",
+#'             OutputS3BucketName = "string",
+#'             OutputS3KeyPrefix = "string"
+#'           )
+#'         ),
+#'         AssociationName = "string",
+#'         MaxErrors = "string",
+#'         MaxConcurrency = "string",
+#'         ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
+#'         SyncCompliance = "AUTO"|"MANUAL",
+#'         ApplyOnlyAtCronInterval = TRUE|FALSE,
+#'         TargetLocations = list(
+#'           list(
+#'             Accounts = list(
+#'               "string"
+#'             ),
+#'             Regions = list(
+#'               "string"
+#'             ),
+#'             TargetLocationMaxConcurrency = "string",
+#'             TargetLocationMaxErrors = "string",
+#'             ExecutionRoleName = "string"
+#'           )
+#'         )
+#'       ),
+#'       Message = "string",
+#'       Fault = "Client"|"Server"|"Unknown"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -639,8 +883,77 @@ ssm_create_association_batch <- function(Entries) {
 #' 
 #' -   `Key=Environment,Value=Production`
 #' 
-#' To add tags to an existing SSM document, use the AddTagsToResource
-#' action.
+#' To add tags to an existing SSM document, use the
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentDescription = list(
+#'     Sha1 = "string",
+#'     Hash = "string",
+#'     HashType = "Sha256"|"Sha1",
+#'     Name = "string",
+#'     VersionName = "string",
+#'     Owner = "string",
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
+#'     StatusInformation = "string",
+#'     DocumentVersion = "string",
+#'     Description = "string",
+#'     Parameters = list(
+#'       list(
+#'         Name = "string",
+#'         Type = "String"|"StringList",
+#'         Description = "string",
+#'         DefaultValue = "string"
+#'       )
+#'     ),
+#'     PlatformTypes = list(
+#'       "Windows"|"Linux"
+#'     ),
+#'     DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+#'     SchemaVersion = "string",
+#'     LatestVersion = "string",
+#'     DefaultVersion = "string",
+#'     DocumentFormat = "YAML"|"JSON"|"TEXT",
+#'     TargetType = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     AttachmentsInformation = list(
+#'       list(
+#'         Name = "string"
+#'       )
+#'     ),
+#'     Requires = list(
+#'       list(
+#'         Name = "string",
+#'         Version = "string"
+#'       )
+#'     ),
+#'     Author = "string",
+#'     ReviewInformation = list(
+#'       list(
+#'         ReviewedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Status = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED",
+#'         Reviewer = "string"
+#'       )
+#'     ),
+#'     ApprovedVersion = "string",
+#'     PendingReviewVersion = "string",
+#'     ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -726,7 +1039,7 @@ ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Na
 #' expression.
 #' @param ScheduleTimezone The time zone that the scheduled maintenance window executions are based
 #' on, in Internet Assigned Numbers Authority (IANA) format. For example:
-#' "America/Los\\_Angeles", "UTC", or "Asia/Seoul". For more information,
+#' "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information,
 #' see the [Time Zone Database](https://www.iana.org/time-zones) on the
 #' IANA website.
 #' @param ScheduleOffset The number of days to wait after the date and time specified by a CRON
@@ -764,8 +1077,16 @@ ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Na
 #' 
 #' -   `Key=Environment,Value=Production`
 #' 
-#' To add tags to an existing maintenance window, use the AddTagsToResource
-#' action.
+#' To add tags to an existing maintenance window, use the
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -847,9 +1168,10 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' You can choose to make the data searchable by other users in the account
 #' or you can restrict search access. Searchable data means that all users
 #' with access to the OpsItem Overview page (as provided by the
-#' DescribeOpsItems API action) can view and search on the specified data.
-#' Operational data that is not searchable is only viewable by users who
-#' have access to the OpsItem (as provided by the GetOpsItem API action).
+#' [`describe_ops_items`][ssm_describe_ops_items] API action) can view and
+#' search on the specified data. Operational data that is not searchable is
+#' only viewable by users who have access to the OpsItem (as provided by
+#' the [`get_ops_item`][ssm_get_ops_item] API action).
 #' 
 #' Use the `/aws/resources` key in OperationalData to specify a related
 #' resource in the request. Use the `/aws/automations` key in
@@ -882,7 +1204,8 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' 
 #' `Key=Department,Value=Finance`
 #' 
-#' To add tags to an existing OpsItem, use the AddTagsToResource action.
+#' To add tags to an existing OpsItem, use the
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
 #' @param Category Specify a category to assign to an OpsItem.
 #' @param Severity Specify a severity to assign to an OpsItem.
 #' @param ActualStartTime The time a runbook workflow started. Currently reported only for the
@@ -893,6 +1216,14 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' Currently supported only for the OpsItem type `/aws/changerequest`.
 #' @param PlannedEndTime The time specified in a change request for a runbook workflow to end.
 #' Currently supported only for the OpsItem type `/aws/changerequest`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OpsItemId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -976,6 +1307,14 @@ ssm_create_ops_item <- function(Description, OpsItemType = NULL, OperationalData
 #' @param ResourceId &#91;required&#93; A resource ID for a new Application Manager application.
 #' @param Metadata Metadata for a new Application Manager application.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OpsMetadataArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_ops_metadata(
@@ -1051,7 +1390,7 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL) {
 #' @param RejectedPatchesAction The action for Patch Manager to take on patches included in the
 #' RejectedPackages list.
 #' 
-#' -   **ALLOW\\_AS\\_DEPENDENCY**: A package in the Rejected patches list is
+#' -   **ALLOW_AS_DEPENDENCY**: A package in the Rejected patches list is
 #'     installed only if it is a dependency of another package. It is
 #'     considered compliant with the patch baseline, and its status is
 #'     reported as *InstalledOther*. This is the default action if no
@@ -1078,8 +1417,16 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL) {
 #' 
 #' -   `Key=OS,Value=Windows`
 #' 
-#' To add tags to an existing patch baseline, use the AddTagsToResource
-#' action.
+#' To add tags to an existing patch baseline, use the
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BaselineId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1193,7 +1540,7 @@ ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilter
 #' A resource data sync is an asynchronous operation that returns
 #' immediately. After a successful initial sync is completed, the system
 #' continuously syncs data. To check the status of a sync, use the
-#' ListResourceDataSync.
+#' [`list_resource_data_sync`][ssm_list_resource_data_sync].
 #' 
 #' By default, data is not encrypted in Amazon S3. We strongly recommend
 #' that you enable encryption in Amazon S3 to ensure secure data storage.
@@ -1217,6 +1564,9 @@ ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilter
 #' `SyncToDestination`.
 #' @param SyncSource Specify information about the data sources to synchronize. This
 #' parameter is required if the `SyncType` value is SyncFromSource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1285,6 +1635,9 @@ ssm_create_resource_data_sync <- function(SyncName, S3Destination = NULL, SyncTy
 #'
 #' @param ActivationId &#91;required&#93; The ID of the activation that you want to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_activation(
@@ -1332,6 +1685,9 @@ ssm_delete_activation <- function(ActivationId) {
 #' @param InstanceId The ID of the instance.
 #' @param AssociationId The association ID that you want to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_association(
@@ -1369,8 +1725,8 @@ ssm_delete_association <- function(Name = NULL, InstanceId = NULL, AssociationId
 #' the document.
 #' 
 #' Before you delete the document, we recommend that you use
-#' DeleteAssociation to disassociate all instances that are associated with
-#' the document.
+#' [`delete_association`][ssm_delete_association] to disassociate all
+#' instances that are associated with the document.
 #'
 #' @usage
 #' ssm_delete_document(Name, DocumentVersion, VersionName, Force)
@@ -1385,6 +1741,9 @@ ssm_delete_association <- function(Name = NULL, InstanceId = NULL, AssociationId
 #' flag to delete a document of type `ApplicationConfigurationSchema`. You
 #' can restrict access to the `Force` flag in an AWS Identity and Access
 #' Management (IAM) policy.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1436,8 +1795,9 @@ ssm_delete_document <- function(Name, DocumentVersion = NULL, VersionName = NULL
 #' 
 #' DisableSchema: If you choose this option, the system ignores all
 #' inventory data for the specified version, and any earlier versions. To
-#' enable this schema again, you must call the `PutInventory` action for a
-#' version greater than the disabled version.
+#' enable this schema again, you must call the
+#' [`put_inventory`][ssm_put_inventory] action for a version greater than
+#' the disabled version.
 #' 
 #' DeleteSchema: This option deletes the specified custom type from the
 #' Inventory service. You can recreate the schema later, if you want.
@@ -1447,6 +1807,26 @@ ssm_delete_document <- function(Name, DocumentVersion = NULL, VersionName = NULL
 #' to be deleted is what you intend to delete, you can run the same command
 #' without specifying the `DryRun` option.
 #' @param ClientToken User-provided idempotency token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeletionId = "string",
+#'   TypeName = "string",
+#'   DeletionSummary = list(
+#'     TotalCount = 123,
+#'     RemainingCount = 123,
+#'     SummaryItems = list(
+#'       list(
+#'         Version = "string",
+#'         Count = 123,
+#'         RemainingCount = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1488,6 +1868,14 @@ ssm_delete_inventory <- function(TypeName, SchemaDeleteOption = NULL, DryRun = N
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_maintenance_window(
@@ -1524,6 +1912,9 @@ ssm_delete_maintenance_window <- function(WindowId) {
 #' ssm_delete_ops_metadata(OpsMetadataArn)
 #'
 #' @param OpsMetadataArn &#91;required&#93; The Amazon Resource Name (ARN) of an OpsMetadata Object to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1562,6 +1953,9 @@ ssm_delete_ops_metadata <- function(OpsMetadataArn) {
 #'
 #' @param Name &#91;required&#93; The name of the parameter to delete.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_parameter(
@@ -1598,6 +1992,19 @@ ssm_delete_parameter <- function(Name) {
 #' ssm_delete_parameters(Names)
 #'
 #' @param Names &#91;required&#93; The names of the parameters to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DeletedParameters = list(
+#'     "string"
+#'   ),
+#'   InvalidParameters = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1638,6 +2045,14 @@ ssm_delete_parameters <- function(Names) {
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to delete.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BaselineId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_patch_baseline(
@@ -1677,6 +2092,9 @@ ssm_delete_patch_baseline <- function(BaselineId) {
 #'
 #' @param SyncName &#91;required&#93; The name of the configuration to delete.
 #' @param SyncType Specify the type of resource data sync to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1721,6 +2139,9 @@ ssm_delete_resource_data_sync <- function(SyncName, SyncType = NULL) {
 #' @param InstanceId &#91;required&#93; The ID assigned to the managed instance when you registered it using the
 #' activation process.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_managed_instance(
@@ -1759,6 +2180,15 @@ ssm_deregister_managed_instance <- function(InstanceId) {
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to deregister the patch group from.
 #' @param PatchGroup &#91;required&#93; The name of the patch group that should be deregistered from the patch
 #' baseline.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BaselineId = "string",
+#'   PatchGroup = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1803,6 +2233,15 @@ ssm_deregister_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup
 #' target is being referenced, the system returns an error and does not
 #' deregister the target from the maintenance window.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowId = "string",
+#'   WindowTargetId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_target_from_maintenance_window(
@@ -1842,6 +2281,15 @@ ssm_deregister_target_from_maintenance_window <- function(WindowId, WindowTarget
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window the task should be removed from.
 #' @param WindowTaskId &#91;required&#93; The ID of the task to remove from the maintenance window.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowId = "string",
+#'   WindowTaskId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1891,6 +2339,37 @@ ssm_deregister_task_from_maintenance_window <- function(WindowId, WindowTaskId) 
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ActivationList = list(
+#'     list(
+#'       ActivationId = "string",
+#'       Description = "string",
+#'       DefaultInstanceName = "string",
+#'       IamRole = "string",
+#'       RegistrationLimit = 123,
+#'       RegistrationsCount = 123,
+#'       ExpirationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Expired = TRUE|FALSE,
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1947,9 +2426,92 @@ ssm_describe_activations <- function(Filters = NULL, MaxResults = NULL, NextToke
 #' @param AssociationId The association ID for which you want information.
 #' @param AssociationVersion Specify the association version to retrieve. To view the latest version,
 #' either specify `$LATEST` for this parameter, or omit this parameter. To
-#' view a list of all associations for an instance, use ListAssociations.
-#' To get a list of versions for a specific association, use
-#' ListAssociationVersions.
+#' view a list of all associations for an instance, use
+#' [`list_associations`][ssm_list_associations]. To get a list of versions
+#' for a specific association, use
+#' [`list_association_versions`][ssm_list_association_versions].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociationDescription = list(
+#'     Name = "string",
+#'     InstanceId = "string",
+#'     AssociationVersion = "string",
+#'     Date = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdateAssociationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = list(
+#'       Date = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "Pending"|"Success"|"Failed",
+#'       Message = "string",
+#'       AdditionalInfo = "string"
+#'     ),
+#'     Overview = list(
+#'       Status = "string",
+#'       DetailedStatus = "string",
+#'       AssociationStatusAggregatedCount = list(
+#'         123
+#'       )
+#'     ),
+#'     DocumentVersion = "string",
+#'     AutomationTargetParameterName = "string",
+#'     Parameters = list(
+#'       list(
+#'         "string"
+#'       )
+#'     ),
+#'     AssociationId = "string",
+#'     Targets = list(
+#'       list(
+#'         Key = "string",
+#'         Values = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     ScheduleExpression = "string",
+#'     OutputLocation = list(
+#'       S3Location = list(
+#'         OutputS3Region = "string",
+#'         OutputS3BucketName = "string",
+#'         OutputS3KeyPrefix = "string"
+#'       )
+#'     ),
+#'     LastExecutionDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastSuccessfulExecutionDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AssociationName = "string",
+#'     MaxErrors = "string",
+#'     MaxConcurrency = "string",
+#'     ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
+#'     SyncCompliance = "AUTO"|"MANUAL",
+#'     ApplyOnlyAtCronInterval = TRUE|FALSE,
+#'     TargetLocations = list(
+#'       list(
+#'         Accounts = list(
+#'           "string"
+#'         ),
+#'         Regions = list(
+#'           "string"
+#'         ),
+#'         TargetLocationMaxConcurrency = "string",
+#'         TargetLocationMaxErrors = "string",
+#'         ExecutionRoleName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2009,6 +2571,32 @@ ssm_describe_association <- function(Name = NULL, InstanceId = NULL, Association
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociationExecutionTargets = list(
+#'     list(
+#'       AssociationId = "string",
+#'       AssociationVersion = "string",
+#'       ExecutionId = "string",
+#'       ResourceId = "string",
+#'       ResourceType = "string",
+#'       Status = "string",
+#'       DetailedStatus = "string",
+#'       LastExecutionDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       OutputSource = list(
+#'         OutputSourceId = "string",
+#'         OutputSourceType = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_association_execution_targets(
@@ -2063,12 +2651,36 @@ ssm_describe_association_execution_targets <- function(AssociationId, ExecutionI
 #' 
 #' Status (EQUAL)
 #' 
-#' CreatedTime (EQUAL, GREATER\\_THAN, LESS\\_THAN)
+#' CreatedTime (EQUAL, GREATER_THAN, LESS_THAN)
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociationExecutions = list(
+#'     list(
+#'       AssociationId = "string",
+#'       AssociationVersion = "string",
+#'       ExecutionId = "string",
+#'       Status = "string",
+#'       DetailedStatus = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastExecutionDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ResourceCountByStatus = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2120,6 +2732,108 @@ ssm_describe_association_executions <- function(AssociationId, Filters = NULL, M
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutomationExecutionMetadataList = list(
+#'     list(
+#'       AutomationExecutionId = "string",
+#'       DocumentName = "string",
+#'       DocumentVersion = "string",
+#'       AutomationExecutionStatus = "Pending"|"InProgress"|"Waiting"|"Success"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"PendingApproval"|"Approved"|"Rejected"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"CompletedWithSuccess"|"CompletedWithFailure",
+#'       ExecutionStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExecutionEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExecutedBy = "string",
+#'       LogFile = "string",
+#'       Outputs = list(
+#'         list(
+#'           "string"
+#'         )
+#'       ),
+#'       Mode = "Auto"|"Interactive",
+#'       ParentAutomationExecutionId = "string",
+#'       CurrentStepName = "string",
+#'       CurrentAction = "string",
+#'       FailureMessage = "string",
+#'       TargetParameterName = "string",
+#'       Targets = list(
+#'         list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       TargetMaps = list(
+#'         list(
+#'           list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ResolvedTargets = list(
+#'         ParameterValues = list(
+#'           "string"
+#'         ),
+#'         Truncated = TRUE|FALSE
+#'       ),
+#'       MaxConcurrency = "string",
+#'       MaxErrors = "string",
+#'       Target = "string",
+#'       AutomationType = "CrossAccount"|"Local",
+#'       AutomationSubtype = "ChangeRequest",
+#'       ScheduledTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Runbooks = list(
+#'         list(
+#'           DocumentName = "string",
+#'           DocumentVersion = "string",
+#'           Parameters = list(
+#'             list(
+#'               "string"
+#'             )
+#'           ),
+#'           TargetParameterName = "string",
+#'           Targets = list(
+#'             list(
+#'               Key = "string",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           MaxConcurrency = "string",
+#'           MaxErrors = "string",
+#'           TargetLocations = list(
+#'             list(
+#'               Accounts = list(
+#'                 "string"
+#'               ),
+#'               Regions = list(
+#'                 "string"
+#'               ),
+#'               TargetLocationMaxConcurrency = "string",
+#'               TargetLocationMaxErrors = "string",
+#'               ExecutionRoleName = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       OpsItemId = "string",
+#'       AssociationId = "string",
+#'       ChangeRequestName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2180,6 +2894,81 @@ ssm_describe_automation_executions <- function(Filters = NULL, MaxResults = NULL
 #' @param ReverseOrder A boolean that indicates whether to list step executions in reverse
 #' order by start time. The default value is false.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StepExecutions = list(
+#'     list(
+#'       StepName = "string",
+#'       Action = "string",
+#'       TimeoutSeconds = 123,
+#'       OnFailure = "string",
+#'       MaxAttempts = 123,
+#'       ExecutionStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExecutionEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StepStatus = "Pending"|"InProgress"|"Waiting"|"Success"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"PendingApproval"|"Approved"|"Rejected"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"CompletedWithSuccess"|"CompletedWithFailure",
+#'       ResponseCode = "string",
+#'       Inputs = list(
+#'         "string"
+#'       ),
+#'       Outputs = list(
+#'         list(
+#'           "string"
+#'         )
+#'       ),
+#'       Response = "string",
+#'       FailureMessage = "string",
+#'       FailureDetails = list(
+#'         FailureStage = "string",
+#'         FailureType = "string",
+#'         Details = list(
+#'           list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       StepExecutionId = "string",
+#'       OverriddenParameters = list(
+#'         list(
+#'           "string"
+#'         )
+#'       ),
+#'       IsEnd = TRUE|FALSE,
+#'       NextStep = "string",
+#'       IsCritical = TRUE|FALSE,
+#'       ValidNextSteps = list(
+#'         "string"
+#'       ),
+#'       Targets = list(
+#'         list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       TargetLocation = list(
+#'         Accounts = list(
+#'           "string"
+#'         ),
+#'         Regions = list(
+#'           "string"
+#'         ),
+#'         TargetLocationMaxConcurrency = "string",
+#'         TargetLocationMaxErrors = "string",
+#'         ExecutionRoleName = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_automation_step_executions(
@@ -2230,6 +3019,49 @@ ssm_describe_automation_step_executions <- function(AutomationExecutionId, Filte
 #' @param MaxResults The maximum number of patches to return (per page).
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Patches = list(
+#'     list(
+#'       Id = "string",
+#'       ReleaseDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Title = "string",
+#'       Description = "string",
+#'       ContentUrl = "string",
+#'       Vendor = "string",
+#'       ProductFamily = "string",
+#'       Product = "string",
+#'       Classification = "string",
+#'       MsrcSeverity = "string",
+#'       KbNumber = "string",
+#'       MsrcNumber = "string",
+#'       Language = "string",
+#'       AdvisoryIds = list(
+#'         "string"
+#'       ),
+#'       BugzillaIds = list(
+#'         "string"
+#'       ),
+#'       CVEIds = list(
+#'         "string"
+#'       ),
+#'       Name = "string",
+#'       Epoch = 123,
+#'       Version = "string",
+#'       Release = "string",
+#'       Arch = "string",
+#'       Severity = "string",
+#'       Repository = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2282,6 +3114,75 @@ ssm_describe_available_patches <- function(Filters = NULL, MaxResults = NULL, Ne
 #' the document. For example, "Release 12, Update 6". This value is unique
 #' across all versions of a document, and cannot be changed.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Document = list(
+#'     Sha1 = "string",
+#'     Hash = "string",
+#'     HashType = "Sha256"|"Sha1",
+#'     Name = "string",
+#'     VersionName = "string",
+#'     Owner = "string",
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
+#'     StatusInformation = "string",
+#'     DocumentVersion = "string",
+#'     Description = "string",
+#'     Parameters = list(
+#'       list(
+#'         Name = "string",
+#'         Type = "String"|"StringList",
+#'         Description = "string",
+#'         DefaultValue = "string"
+#'       )
+#'     ),
+#'     PlatformTypes = list(
+#'       "Windows"|"Linux"
+#'     ),
+#'     DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+#'     SchemaVersion = "string",
+#'     LatestVersion = "string",
+#'     DefaultVersion = "string",
+#'     DocumentFormat = "YAML"|"JSON"|"TEXT",
+#'     TargetType = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     AttachmentsInformation = list(
+#'       list(
+#'         Name = "string"
+#'       )
+#'     ),
+#'     Requires = list(
+#'       list(
+#'         Name = "string",
+#'         Version = "string"
+#'       )
+#'     ),
+#'     Author = "string",
+#'     ReviewInformation = list(
+#'       list(
+#'         ReviewedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Status = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED",
+#'         Reviewer = "string"
+#'       )
+#'     ),
+#'     ApprovedVersion = "string",
+#'     PendingReviewVersion = "string",
+#'     ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_document(
@@ -2326,6 +3227,22 @@ ssm_describe_document <- function(Name, DocumentVersion = NULL, VersionName = NU
 #' @param PermissionType &#91;required&#93; The permission type for the document. The permission type can be
 #' *Share*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountIds = list(
+#'     "string"
+#'   ),
+#'   AccountSharingInfoList = list(
+#'     list(
+#'       AccountId = "string",
+#'       SharedDocumentVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_document_permission(
@@ -2369,6 +3286,22 @@ ssm_describe_document_permission <- function(Name, PermissionType) {
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Associations = list(
+#'     list(
+#'       AssociationId = "string",
+#'       InstanceId = "string",
+#'       Content = "string",
+#'       AssociationVersion = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2416,6 +3349,58 @@ ssm_describe_effective_instance_associations <- function(InstanceId, MaxResults 
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EffectivePatches = list(
+#'     list(
+#'       Patch = list(
+#'         Id = "string",
+#'         ReleaseDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Title = "string",
+#'         Description = "string",
+#'         ContentUrl = "string",
+#'         Vendor = "string",
+#'         ProductFamily = "string",
+#'         Product = "string",
+#'         Classification = "string",
+#'         MsrcSeverity = "string",
+#'         KbNumber = "string",
+#'         MsrcNumber = "string",
+#'         Language = "string",
+#'         AdvisoryIds = list(
+#'           "string"
+#'         ),
+#'         BugzillaIds = list(
+#'           "string"
+#'         ),
+#'         CVEIds = list(
+#'           "string"
+#'         ),
+#'         Name = "string",
+#'         Epoch = 123,
+#'         Version = "string",
+#'         Release = "string",
+#'         Arch = "string",
+#'         Severity = "string",
+#'         Repository = "string"
+#'       ),
+#'       PatchStatus = list(
+#'         DeploymentStatus = "APPROVED"|"PENDING_APPROVAL"|"EXPLICIT_APPROVED"|"EXPLICIT_REJECTED",
+#'         ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+#'         ApprovalDate = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_effective_patches_for_patch_baseline(
@@ -2460,6 +3445,36 @@ ssm_describe_effective_patches_for_patch_baseline <- function(BaselineId, MaxRes
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceAssociationStatusInfos = list(
+#'     list(
+#'       AssociationId = "string",
+#'       Name = "string",
+#'       DocumentVersion = "string",
+#'       AssociationVersion = "string",
+#'       InstanceId = "string",
+#'       ExecutionDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "string",
+#'       DetailedStatus = "string",
+#'       ExecutionSummary = "string",
+#'       ErrorCode = "string",
+#'       OutputUrl = list(
+#'         S3OutputUrl = list(
+#'           OutputUrl = "string"
+#'         )
+#'       ),
+#'       AssociationName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2529,6 +3544,50 @@ ssm_describe_instance_associations_status <- function(InstanceId, MaxResults = N
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceInformationList = list(
+#'     list(
+#'       InstanceId = "string",
+#'       PingStatus = "Online"|"ConnectionLost"|"Inactive",
+#'       LastPingDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AgentVersion = "string",
+#'       IsLatestVersion = TRUE|FALSE,
+#'       PlatformType = "Windows"|"Linux",
+#'       PlatformName = "string",
+#'       PlatformVersion = "string",
+#'       ActivationId = "string",
+#'       IamRole = "string",
+#'       RegistrationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ResourceType = "ManagedInstance"|"Document"|"EC2Instance",
+#'       Name = "string",
+#'       IPAddress = "string",
+#'       ComputerName = "string",
+#'       AssociationStatus = "string",
+#'       LastAssociationExecutionDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastSuccessfulAssociationExecutionDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AssociationOverview = list(
+#'         DetailedStatus = "string",
+#'         InstanceAssociationStatusAggregatedCount = list(
+#'           123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_instance_information(
@@ -2587,6 +3646,43 @@ ssm_describe_instance_information <- function(InstanceInformationFilterList = NU
 #' from a previous call.)
 #' @param MaxResults The maximum number of instances to return (per page).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstancePatchStates = list(
+#'     list(
+#'       InstanceId = "string",
+#'       PatchGroup = "string",
+#'       BaselineId = "string",
+#'       SnapshotId = "string",
+#'       InstallOverrideList = "string",
+#'       OwnerInformation = "string",
+#'       InstalledCount = 123,
+#'       InstalledOtherCount = 123,
+#'       InstalledPendingRebootCount = 123,
+#'       InstalledRejectedCount = 123,
+#'       MissingCount = 123,
+#'       FailedCount = 123,
+#'       UnreportedNotApplicableCount = 123,
+#'       NotApplicableCount = 123,
+#'       OperationStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       OperationEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Operation = "Scan"|"Install",
+#'       LastNoRebootInstallOperationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RebootOption = "RebootIfNeeded"|"NoReboot"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_instance_patch_states(
@@ -2641,6 +3737,43 @@ ssm_describe_instance_patch_states <- function(InstanceIds, NextToken = NULL, Ma
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param MaxResults The maximum number of patches to return (per page).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstancePatchStates = list(
+#'     list(
+#'       InstanceId = "string",
+#'       PatchGroup = "string",
+#'       BaselineId = "string",
+#'       SnapshotId = "string",
+#'       InstallOverrideList = "string",
+#'       OwnerInformation = "string",
+#'       InstalledCount = 123,
+#'       InstalledOtherCount = 123,
+#'       InstalledPendingRebootCount = 123,
+#'       InstalledRejectedCount = 123,
+#'       MissingCount = 123,
+#'       FailedCount = 123,
+#'       UnreportedNotApplicableCount = 123,
+#'       NotApplicableCount = 123,
+#'       OperationStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       OperationEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Operation = "Scan"|"Install",
+#'       LastNoRebootInstallOperationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RebootOption = "RebootIfNeeded"|"NoReboot"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2700,6 +3833,27 @@ ssm_describe_instance_patch_states_for_patch_group <- function(PatchGroup, Filte
 #' from a previous call.)
 #' @param MaxResults The maximum number of patches to return (per page).
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Patches = list(
+#'     list(
+#'       Title = "string",
+#'       KBId = "string",
+#'       Classification = "string",
+#'       Severity = "string",
+#'       State = "INSTALLED"|"INSTALLED_OTHER"|"INSTALLED_PENDING_REBOOT"|"INSTALLED_REJECTED"|"MISSING"|"NOT_APPLICABLE"|"FAILED",
+#'       InstalledTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CVEIds = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_instance_patches(
@@ -2746,12 +3900,45 @@ ssm_describe_instance_patches <- function(InstanceId, Filters = NULL, NextToken 
 #' ssm_describe_inventory_deletions(DeletionId, NextToken, MaxResults)
 #'
 #' @param DeletionId Specify the delete inventory ID for which you want information. This ID
-#' was returned by the `DeleteInventory` action.
+#' was returned by the [`delete_inventory`][ssm_delete_inventory] action.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InventoryDeletions = list(
+#'     list(
+#'       DeletionId = "string",
+#'       TypeName = "string",
+#'       DeletionStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastStatus = "InProgress"|"Complete",
+#'       LastStatusMessage = "string",
+#'       DeletionSummary = list(
+#'         TotalCount = 123,
+#'         RemainingCount = 123,
+#'         SummaryItems = list(
+#'           list(
+#'             Version = "string",
+#'             Count = 123,
+#'             RemainingCount = 123
+#'           )
+#'         )
+#'       ),
+#'       LastStatusUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2798,12 +3985,40 @@ ssm_describe_inventory_deletions <- function(DeletionId = NULL, NextToken = NULL
 #' be retrieved.
 #' @param Filters Optional filters used to scope down the returned task invocations. The
 #' supported filter key is STATUS with the corresponding values PENDING,
-#' IN\\_PROGRESS, SUCCESS, FAILED, TIMED\\_OUT, CANCELLING, and CANCELLED.
+#' IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowExecutionTaskInvocationIdentities = list(
+#'     list(
+#'       WindowExecutionId = "string",
+#'       TaskExecutionId = "string",
+#'       InvocationId = "string",
+#'       ExecutionId = "string",
+#'       TaskType = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
+#'       Parameters = "string",
+#'       Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
+#'       StatusDetails = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       OwnerInformation = "string",
+#'       WindowTargetId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2856,12 +4071,36 @@ ssm_describe_maintenance_window_execution_task_invocations <- function(WindowExe
 #' be retrieved.
 #' @param Filters Optional filters used to scope down the returned tasks. The supported
 #' filter key is STATUS with the corresponding values PENDING,
-#' IN\\_PROGRESS, SUCCESS, FAILED, TIMED\\_OUT, CANCELLING, and CANCELLED.
+#' IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowExecutionTaskIdentities = list(
+#'     list(
+#'       WindowExecutionId = "string",
+#'       TaskExecutionId = "string",
+#'       Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
+#'       StatusDetails = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TaskArn = "string",
+#'       TaskType = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2926,6 +4165,28 @@ ssm_describe_maintenance_window_execution_tasks <- function(WindowExecutionId, F
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowExecutions = list(
+#'     list(
+#'       WindowId = "string",
+#'       WindowExecutionId = "string",
+#'       Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
+#'       StatusDetails = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_maintenance_window_executions(
@@ -2984,6 +4245,21 @@ ssm_describe_maintenance_window_executions <- function(WindowId, Filters = NULL,
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ScheduledWindowExecutions = list(
+#'     list(
+#'       WindowId = "string",
+#'       Name = "string",
+#'       ExecutionTime = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3050,6 +4326,32 @@ ssm_describe_maintenance_window_schedule <- function(WindowId = NULL, Targets = 
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Targets = list(
+#'     list(
+#'       WindowId = "string",
+#'       WindowTargetId = "string",
+#'       ResourceType = "INSTANCE"|"RESOURCE_GROUP",
+#'       Targets = list(
+#'         list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       OwnerInformation = "string",
+#'       Name = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_maintenance_window_targets(
@@ -3112,6 +4414,48 @@ ssm_describe_maintenance_window_targets <- function(WindowId, Filters = NULL, Ma
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tasks = list(
+#'     list(
+#'       WindowId = "string",
+#'       WindowTaskId = "string",
+#'       TaskArn = "string",
+#'       Type = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
+#'       Targets = list(
+#'         list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       TaskParameters = list(
+#'         list(
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       Priority = 123,
+#'       LoggingInfo = list(
+#'         S3BucketName = "string",
+#'         S3KeyPrefix = "string",
+#'         S3Region = "string"
+#'       ),
+#'       ServiceRoleArn = "string",
+#'       MaxConcurrency = "string",
+#'       MaxErrors = "string",
+#'       Name = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_maintenance_window_tasks(
@@ -3164,6 +4508,30 @@ ssm_describe_maintenance_window_tasks <- function(WindowId, Filters = NULL, MaxR
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowIdentities = list(
+#'     list(
+#'       WindowId = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Enabled = TRUE|FALSE,
+#'       Duration = 123,
+#'       Cutoff = 123,
+#'       Schedule = "string",
+#'       ScheduleTimezone = "string",
+#'       ScheduleOffset = 123,
+#'       EndDate = "string",
+#'       StartDate = "string",
+#'       NextExecutionTime = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3220,6 +4588,20 @@ ssm_describe_maintenance_windows <- function(Filters = NULL, MaxResults = NULL, 
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowIdentities = list(
+#'     list(
+#'       WindowId = "string",
+#'       Name = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3333,12 +4715,58 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' 
 #' *If you filter the response by using the OperationalData operator,
 #' specify a key-value pair by using the following JSON format:
-#' \{"key":"key\\_name","value":"a\\_value"\}
+#' \{"key":"key_name","value":"a_value"\}
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   OpsItemSummaries = list(
+#'     list(
+#'       CreatedBy = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedBy = "string",
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Priority = 123,
+#'       Source = "string",
+#'       Status = "Open"|"InProgress"|"Resolved"|"Pending"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"CompletedWithSuccess"|"CompletedWithFailure"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"PendingApproval"|"Approved"|"Rejected",
+#'       OpsItemId = "string",
+#'       Title = "string",
+#'       OperationalData = list(
+#'         list(
+#'           Value = "string",
+#'           Type = "SearchableString"|"String"
+#'         )
+#'       ),
+#'       Category = "string",
+#'       Severity = "string",
+#'       OpsItemType = "string",
+#'       ActualStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ActualEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PlannedStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PlannedEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3402,6 +4830,37 @@ ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, Nex
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Parameters = list(
+#'     list(
+#'       Name = "string",
+#'       Type = "String"|"StringList"|"SecureString",
+#'       KeyId = "string",
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedUser = "string",
+#'       Description = "string",
+#'       AllowedPattern = "string",
+#'       Version = 123,
+#'       Tier = "Standard"|"Advanced"|"Intelligent-Tiering",
+#'       Policies = list(
+#'         list(
+#'           PolicyText = "string",
+#'           PolicyType = "string",
+#'           PolicyStatus = "string"
+#'         )
+#'       ),
+#'       DataType = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_parameters(
@@ -3457,12 +4916,29 @@ ssm_describe_parameters <- function(Filters = NULL, ParameterFilters = NULL, Max
 #'
 #' @param Filters Each element in the array is a structure containing:
 #' 
-#' Key: (string, "NAME\\_PREFIX" or "OWNER")
+#' Key: (string, "NAME_PREFIX" or "OWNER")
 #' 
 #' Value: (array of strings, exactly 1 entry, between 1 and 255 characters)
 #' @param MaxResults The maximum number of patch baselines to return (per page).
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BaselineIdentities = list(
+#'     list(
+#'       BaselineId = "string",
+#'       BaselineName = "string",
+#'       OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
+#'       BaselineDescription = "string",
+#'       DefaultBaseline = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3510,6 +4986,22 @@ ssm_describe_patch_baselines <- function(Filters = NULL, MaxResults = NULL, Next
 #'
 #' @param PatchGroup &#91;required&#93; The name of the patch group whose patch snapshot should be retrieved.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Instances = 123,
+#'   InstancesWithInstalledPatches = 123,
+#'   InstancesWithInstalledOtherPatches = 123,
+#'   InstancesWithInstalledPendingRebootPatches = 123,
+#'   InstancesWithInstalledRejectedPatches = 123,
+#'   InstancesWithMissingPatches = 123,
+#'   InstancesWithFailedPatches = 123,
+#'   InstancesWithNotApplicablePatches = 123,
+#'   InstancesWithUnreportedNotApplicablePatches = 123
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_patch_group_state(
@@ -3549,7 +5041,8 @@ ssm_describe_patch_group_state <- function(PatchGroup) {
 #' @param Filters One or more filters. Use a filter to return a more specific list of
 #' results.
 #' 
-#' For `DescribePatchGroups`,valid filter keys include the following:
+#' For [`describe_patch_groups`][ssm_describe_patch_groups],valid filter
+#' keys include the following:
 #' 
 #' -   `NAME_PREFIX`: The name of the patch group. Wildcards (*) are
 #'     accepted.
@@ -3557,7 +5050,7 @@ ssm_describe_patch_group_state <- function(PatchGroup) {
 #' -   `OPERATING_SYSTEM`: The supported operating system type to return
 #'     results for. For valid operating system values, see
 #'     GetDefaultPatchBaselineRequest$OperatingSystem in
-#'     CreatePatchBaseline.
+#'     [`create_patch_baseline`][ssm_create_patch_baseline].
 #' 
 #'     Examples:
 #' 
@@ -3566,6 +5059,26 @@ ssm_describe_patch_group_state <- function(PatchGroup) {
 #'     -   `--filters Key=OPERATING_SYSTEM,Values=AMAZON_LINUX_2`
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Mappings = list(
+#'     list(
+#'       PatchGroup = "string",
+#'       BaselineIdentity = list(
+#'         BaselineId = "string",
+#'         BaselineName = "string",
+#'         OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
+#'         BaselineDescription = "string",
+#'         DefaultBaseline = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3611,18 +5124,20 @@ ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextTok
 #' Lists the properties of available patches organized by product, product
 #' family, classification, severity, and other properties of available
 #' patches. You can use the reported properties in the filters you specify
-#' in requests for actions such as CreatePatchBaseline,
-#' UpdatePatchBaseline, DescribeAvailablePatches, and
-#' DescribePatchBaselines.
+#' in requests for actions such as
+#' [`create_patch_baseline`][ssm_create_patch_baseline],
+#' [`update_patch_baseline`][ssm_update_patch_baseline],
+#' [`describe_available_patches`][ssm_describe_available_patches], and
+#' [`describe_patch_baselines`][ssm_describe_patch_baselines].
 #' 
 #' The following section lists the properties that can be used in filters
 #' for each major operating system type:
 #' 
-#' ### AMAZON\\_LINUX
+#' ### AMAZON_LINUX
 #' 
 #' Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 #' 
-#' ### AMAZON\\_LINUX\\_2
+#' ### AMAZON_LINUX_2
 #' 
 #' Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 #' 
@@ -3638,11 +5153,11 @@ ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextTok
 #' 
 #' Valid properties: PRODUCT, CLASSIFICATION
 #' 
-#' ### ORACLE\\_LINUX
+#' ### ORACLE_LINUX
 #' 
 #' Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 #' 
-#' ### REDHAT\\_ENTERPRISE\\_LINUX
+#' ### REDHAT_ENTERPRISE_LINUX
 #' 
 #' Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 #' 
@@ -3656,8 +5171,8 @@ ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextTok
 #' 
 #' ### WINDOWS
 #' 
-#' Valid properties: PRODUCT, PRODUCT\\_FAMILY, CLASSIFICATION,
-#' MSRC\\_SEVERITY
+#' Valid properties: PRODUCT, PRODUCT_FAMILY, CLASSIFICATION,
+#' MSRC_SEVERITY
 #'
 #' @usage
 #' ssm_describe_patch_properties(OperatingSystem, Property, PatchSet,
@@ -3673,6 +5188,19 @@ ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextTok
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Properties = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3725,6 +5253,34 @@ ssm_describe_patch_properties <- function(OperatingSystem, Property, PatchSet = 
 #' @param Filters One or more filters to limit the type of sessions returned by the
 #' request.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Sessions = list(
+#'     list(
+#'       SessionId = "string",
+#'       Target = "string",
+#'       Status = "Connected"|"Connecting"|"Disconnected"|"Terminated"|"Terminating"|"Failed",
+#'       StartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DocumentName = "string",
+#'       Owner = "string",
+#'       Details = "string",
+#'       OutputUrl = list(
+#'         S3OutputUrl = "string",
+#'         CloudWatchOutputUrl = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_sessions(
@@ -3772,6 +5328,196 @@ ssm_describe_sessions <- function(State, MaxResults = NULL, NextToken = NULL, Fi
 #' The execution ID is returned by StartAutomationExecution when the
 #' execution of an Automation document is initiated.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutomationExecution = list(
+#'     AutomationExecutionId = "string",
+#'     DocumentName = "string",
+#'     DocumentVersion = "string",
+#'     ExecutionStartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExecutionEndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AutomationExecutionStatus = "Pending"|"InProgress"|"Waiting"|"Success"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"PendingApproval"|"Approved"|"Rejected"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"CompletedWithSuccess"|"CompletedWithFailure",
+#'     StepExecutions = list(
+#'       list(
+#'         StepName = "string",
+#'         Action = "string",
+#'         TimeoutSeconds = 123,
+#'         OnFailure = "string",
+#'         MaxAttempts = 123,
+#'         ExecutionStartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ExecutionEndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         StepStatus = "Pending"|"InProgress"|"Waiting"|"Success"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"PendingApproval"|"Approved"|"Rejected"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"CompletedWithSuccess"|"CompletedWithFailure",
+#'         ResponseCode = "string",
+#'         Inputs = list(
+#'           "string"
+#'         ),
+#'         Outputs = list(
+#'           list(
+#'             "string"
+#'           )
+#'         ),
+#'         Response = "string",
+#'         FailureMessage = "string",
+#'         FailureDetails = list(
+#'           FailureStage = "string",
+#'           FailureType = "string",
+#'           Details = list(
+#'             list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         StepExecutionId = "string",
+#'         OverriddenParameters = list(
+#'           list(
+#'             "string"
+#'           )
+#'         ),
+#'         IsEnd = TRUE|FALSE,
+#'         NextStep = "string",
+#'         IsCritical = TRUE|FALSE,
+#'         ValidNextSteps = list(
+#'           "string"
+#'         ),
+#'         Targets = list(
+#'           list(
+#'             Key = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         TargetLocation = list(
+#'           Accounts = list(
+#'             "string"
+#'           ),
+#'           Regions = list(
+#'             "string"
+#'           ),
+#'           TargetLocationMaxConcurrency = "string",
+#'           TargetLocationMaxErrors = "string",
+#'           ExecutionRoleName = "string"
+#'         )
+#'       )
+#'     ),
+#'     StepExecutionsTruncated = TRUE|FALSE,
+#'     Parameters = list(
+#'       list(
+#'         "string"
+#'       )
+#'     ),
+#'     Outputs = list(
+#'       list(
+#'         "string"
+#'       )
+#'     ),
+#'     FailureMessage = "string",
+#'     Mode = "Auto"|"Interactive",
+#'     ParentAutomationExecutionId = "string",
+#'     ExecutedBy = "string",
+#'     CurrentStepName = "string",
+#'     CurrentAction = "string",
+#'     TargetParameterName = "string",
+#'     Targets = list(
+#'       list(
+#'         Key = "string",
+#'         Values = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     TargetMaps = list(
+#'       list(
+#'         list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     ResolvedTargets = list(
+#'       ParameterValues = list(
+#'         "string"
+#'       ),
+#'       Truncated = TRUE|FALSE
+#'     ),
+#'     MaxConcurrency = "string",
+#'     MaxErrors = "string",
+#'     Target = "string",
+#'     TargetLocations = list(
+#'       list(
+#'         Accounts = list(
+#'           "string"
+#'         ),
+#'         Regions = list(
+#'           "string"
+#'         ),
+#'         TargetLocationMaxConcurrency = "string",
+#'         TargetLocationMaxErrors = "string",
+#'         ExecutionRoleName = "string"
+#'       )
+#'     ),
+#'     ProgressCounters = list(
+#'       TotalSteps = 123,
+#'       SuccessSteps = 123,
+#'       FailedSteps = 123,
+#'       CancelledSteps = 123,
+#'       TimedOutSteps = 123
+#'     ),
+#'     AutomationSubtype = "ChangeRequest",
+#'     ScheduledTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Runbooks = list(
+#'       list(
+#'         DocumentName = "string",
+#'         DocumentVersion = "string",
+#'         Parameters = list(
+#'           list(
+#'             "string"
+#'           )
+#'         ),
+#'         TargetParameterName = "string",
+#'         Targets = list(
+#'           list(
+#'             Key = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         MaxConcurrency = "string",
+#'         MaxErrors = "string",
+#'         TargetLocations = list(
+#'           list(
+#'             Accounts = list(
+#'               "string"
+#'             ),
+#'             Regions = list(
+#'               "string"
+#'             ),
+#'             TargetLocationMaxConcurrency = "string",
+#'             TargetLocationMaxErrors = "string",
+#'             ExecutionRoleName = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     OpsItemId = "string",
+#'     AssociationId = "string",
+#'     ChangeRequestName = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_automation_execution(
@@ -3804,11 +5550,12 @@ ssm_get_automation_execution <- function(AutomationExecutionId) {
 #'
 #' @description
 #' Gets the state of the AWS Systems Manager Change Calendar at an
-#' optional, specified time. If you specify a time, `GetCalendarState`
-#' returns the state of the calendar at a specific time, and returns the
-#' next time that the Change Calendar state will transition. If you do not
-#' specify a time, `GetCalendarState` assumes the current time. Change
-#' Calendar entries have two possible states: `OPEN` or `CLOSED`.
+#' optional, specified time. If you specify a time,
+#' [`get_calendar_state`][ssm_get_calendar_state] returns the state of the
+#' calendar at a specific time, and returns the next time that the Change
+#' Calendar state will transition. If you do not specify a time,
+#' [`get_calendar_state`][ssm_get_calendar_state] assumes the current time.
+#' Change Calendar entries have two possible states: `OPEN` or `CLOSED`.
 #' 
 #' If you specify more than one calendar in a request, the command returns
 #' the status of `OPEN` only if all calendars in the request are open. If
@@ -3829,6 +5576,16 @@ ssm_get_automation_execution <- function(AutomationExecutionId) {
 #' @param AtTime (Optional) The specific time for which you want to get calendar state
 #' information, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
 #' format. If you do not add `AtTime`, the current time is assumed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   State = "OPEN"|"CLOSED",
+#'   AtTime = "string",
+#'   NextTransitionTime = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3881,6 +5638,33 @@ ssm_get_calendar_state <- function(CalendarNames, AtTime = NULL) {
 #' Plugin names are also referred to as step names in Systems Manager
 #' documents.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CommandId = "string",
+#'   InstanceId = "string",
+#'   Comment = "string",
+#'   DocumentName = "string",
+#'   DocumentVersion = "string",
+#'   PluginName = "string",
+#'   ResponseCode = 123,
+#'   ExecutionStartDateTime = "string",
+#'   ExecutionElapsedTime = "string",
+#'   ExecutionEndDateTime = "string",
+#'   Status = "Pending"|"InProgress"|"Delayed"|"Success"|"Cancelled"|"TimedOut"|"Failed"|"Cancelling",
+#'   StatusDetails = "string",
+#'   StandardOutputContent = "string",
+#'   StandardOutputUrl = "string",
+#'   StandardErrorContent = "string",
+#'   StandardErrorUrl = "string",
+#'   CloudWatchOutputConfig = list(
+#'     CloudWatchLogGroupName = "string",
+#'     CloudWatchOutputEnabled = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_command_invocation(
@@ -3924,6 +5708,15 @@ ssm_get_command_invocation <- function(CommandId, InstanceId, PluginName = NULL)
 #'
 #' @param Target &#91;required&#93; The ID of the instance.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Target = "string",
+#'   Status = "Connected"|"NotConnected"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_connection_status(
@@ -3966,6 +5759,15 @@ ssm_get_connection_status <- function(Target) {
 #'
 #' @param OperatingSystem Returns the default patch baseline for the specified operating system.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BaselineId = "string",
+#'   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_default_patch_baseline(
@@ -4006,6 +5808,17 @@ ssm_get_default_patch_baseline <- function(OperatingSystem = NULL) {
 #' @param InstanceId &#91;required&#93; The ID of the instance for which the appropriate patch snapshot should
 #' be retrieved.
 #' @param SnapshotId &#91;required&#93; The user-defined snapshot ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceId = "string",
+#'   SnapshotId = "string",
+#'   SnapshotDownloadUrl = "string",
+#'   Product = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4050,6 +5863,37 @@ ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotI
 #' @param DocumentVersion The document version for which you want information.
 #' @param DocumentFormat Returns the document in the specified format. The document format can be
 #' either JSON or YAML. JSON is the default format.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   VersionName = "string",
+#'   DocumentVersion = "string",
+#'   Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
+#'   StatusInformation = "string",
+#'   Content = "string",
+#'   DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+#'   DocumentFormat = "YAML"|"JSON"|"TEXT",
+#'   Requires = list(
+#'     list(
+#'       Name = "string",
+#'       Version = "string"
+#'     )
+#'   ),
+#'   AttachmentsContent = list(
+#'     list(
+#'       Name = "string",
+#'       Size = 123,
+#'       Hash = "string",
+#'       HashType = "Sha256",
+#'       Url = "string"
+#'     )
+#'   ),
+#'   ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4102,6 +5946,32 @@ ssm_get_document <- function(Name, VersionName = NULL, DocumentVersion = NULL, D
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entities = list(
+#'     list(
+#'       Id = "string",
+#'       Data = list(
+#'         list(
+#'           TypeName = "string",
+#'           SchemaVersion = "string",
+#'           CaptureTime = "string",
+#'           ContentHash = "string",
+#'           Content = list(
+#'             list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4188,6 +6058,27 @@ ssm_get_inventory <- function(Filters = NULL, Aggregators = NULL, ResultAttribut
 #' `PlatformVersion` attributes.
 #' @param SubType Returns the sub-type schema for a specified inventory type.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Schemas = list(
+#'     list(
+#'       TypeName = "string",
+#'       Version = "string",
+#'       Attributes = list(
+#'         list(
+#'           Name = "string",
+#'           DataType = "string"|"number"
+#'         )
+#'       ),
+#'       DisplayName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_inventory_schema(
@@ -4230,6 +6121,32 @@ ssm_get_inventory_schema <- function(TypeName = NULL, NextToken = NULL, MaxResul
 #' @param WindowId &#91;required&#93; The ID of the maintenance window for which you want to retrieve
 #' information.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowId = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   StartDate = "string",
+#'   EndDate = "string",
+#'   Schedule = "string",
+#'   ScheduleTimezone = "string",
+#'   ScheduleOffset = 123,
+#'   NextExecutionTime = "string",
+#'   Duration = 123,
+#'   Cutoff = 123,
+#'   AllowUnassociatedTargets = TRUE|FALSE,
+#'   Enabled = TRUE|FALSE,
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_maintenance_window(
@@ -4266,6 +6183,25 @@ ssm_get_maintenance_window <- function(WindowId) {
 #' ssm_get_maintenance_window_execution(WindowExecutionId)
 #'
 #' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution that includes the task.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowExecutionId = "string",
+#'   TaskIds = list(
+#'     "string"
+#'   ),
+#'   Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
+#'   StatusDetails = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4307,6 +6243,38 @@ ssm_get_maintenance_window_execution <- function(WindowExecutionId) {
 #' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution that includes the task.
 #' @param TaskId &#91;required&#93; The ID of the specific task execution in the maintenance window task
 #' that should be retrieved.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowExecutionId = "string",
+#'   TaskExecutionId = "string",
+#'   TaskArn = "string",
+#'   ServiceRole = "string",
+#'   Type = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
+#'   TaskParameters = list(
+#'     list(
+#'       list(
+#'         Values = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Priority = 123,
+#'   MaxConcurrency = "string",
+#'   MaxErrors = "string",
+#'   Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
+#'   StatusDetails = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4350,6 +6318,29 @@ ssm_get_maintenance_window_execution_task <- function(WindowExecutionId, TaskId)
 #' @param TaskId &#91;required&#93; The ID of the specific task in the maintenance window task that should
 #' be retrieved.
 #' @param InvocationId &#91;required&#93; The invocation ID to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowExecutionId = "string",
+#'   TaskExecutionId = "string",
+#'   InvocationId = "string",
+#'   ExecutionId = "string",
+#'   TaskType = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
+#'   Parameters = "string",
+#'   Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
+#'   StatusDetails = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   OwnerInformation = "string",
+#'   WindowTargetId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4396,6 +6387,88 @@ ssm_get_maintenance_window_execution_task_invocation <- function(WindowExecution
 #'
 #' @param WindowId &#91;required&#93; The maintenance window ID that includes the task to retrieve.
 #' @param WindowTaskId &#91;required&#93; The maintenance window task ID to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowId = "string",
+#'   WindowTaskId = "string",
+#'   Targets = list(
+#'     list(
+#'       Key = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   TaskArn = "string",
+#'   ServiceRoleArn = "string",
+#'   TaskType = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
+#'   TaskParameters = list(
+#'     list(
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   TaskInvocationParameters = list(
+#'     RunCommand = list(
+#'       Comment = "string",
+#'       CloudWatchOutputConfig = list(
+#'         CloudWatchLogGroupName = "string",
+#'         CloudWatchOutputEnabled = TRUE|FALSE
+#'       ),
+#'       DocumentHash = "string",
+#'       DocumentHashType = "Sha256"|"Sha1",
+#'       DocumentVersion = "string",
+#'       NotificationConfig = list(
+#'         NotificationArn = "string",
+#'         NotificationEvents = list(
+#'           "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
+#'         ),
+#'         NotificationType = "Command"|"Invocation"
+#'       ),
+#'       OutputS3BucketName = "string",
+#'       OutputS3KeyPrefix = "string",
+#'       Parameters = list(
+#'         list(
+#'           "string"
+#'         )
+#'       ),
+#'       ServiceRoleArn = "string",
+#'       TimeoutSeconds = 123
+#'     ),
+#'     Automation = list(
+#'       DocumentVersion = "string",
+#'       Parameters = list(
+#'         list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     StepFunctions = list(
+#'       Input = "string",
+#'       Name = "string"
+#'     ),
+#'     Lambda = list(
+#'       ClientContext = "string",
+#'       Qualifier = "string",
+#'       Payload = raw
+#'     )
+#'   ),
+#'   Priority = 123,
+#'   MaxConcurrency = "string",
+#'   MaxErrors = "string",
+#'   LoggingInfo = list(
+#'     S3BucketName = "string",
+#'     S3KeyPrefix = "string",
+#'     S3Region = "string"
+#'   ),
+#'   Name = "string",
+#'   Description = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4447,6 +6520,61 @@ ssm_get_maintenance_window_task <- function(WindowId, WindowTaskId) {
 #'
 #' @param OpsItemId &#91;required&#93; The ID of the OpsItem that you want to get.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OpsItem = list(
+#'     CreatedBy = "string",
+#'     OpsItemType = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Description = "string",
+#'     LastModifiedBy = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Notifications = list(
+#'       list(
+#'         Arn = "string"
+#'       )
+#'     ),
+#'     Priority = 123,
+#'     RelatedOpsItems = list(
+#'       list(
+#'         OpsItemId = "string"
+#'       )
+#'     ),
+#'     Status = "Open"|"InProgress"|"Resolved"|"Pending"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"CompletedWithSuccess"|"CompletedWithFailure"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"PendingApproval"|"Approved"|"Rejected",
+#'     OpsItemId = "string",
+#'     Version = "string",
+#'     Title = "string",
+#'     Source = "string",
+#'     OperationalData = list(
+#'       list(
+#'         Value = "string",
+#'         Type = "SearchableString"|"String"
+#'       )
+#'     ),
+#'     Category = "string",
+#'     Severity = "string",
+#'     ActualStartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ActualEndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PlannedStartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     PlannedEndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_ops_item(
@@ -4490,6 +6618,20 @@ ssm_get_ops_item <- function(OpsItemId) {
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceId = "string",
+#'   Metadata = list(
+#'     list(
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4539,6 +6681,29 @@ ssm_get_ops_metadata <- function(OpsMetadataArn, MaxResults = NULL, NextToken = 
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entities = list(
+#'     list(
+#'       Id = "string",
+#'       Data = list(
+#'         list(
+#'           CaptureTime = "string",
+#'           Content = list(
+#'             list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4607,7 +6772,8 @@ ssm_get_ops_summary <- function(SyncName = NULL, Filters = NULL, Aggregators = N
 #'
 #' @description
 #' Get information about a parameter by using the parameter name. Don't
-#' confuse this API action with the GetParameters API action.
+#' confuse this API action with the [`get_parameters`][ssm_get_parameters]
+#' API action.
 #'
 #' @usage
 #' ssm_get_parameter(Name, WithDecryption)
@@ -4615,6 +6781,26 @@ ssm_get_ops_summary <- function(SyncName = NULL, Filters = NULL, Aggregators = N
 #' @param Name &#91;required&#93; The name of the parameter you want to query.
 #' @param WithDecryption Return decrypted values for secure string parameters. This flag is
 #' ignored for String and StringList parameter types.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Parameter = list(
+#'     Name = "string",
+#'     Type = "String"|"StringList"|"SecureString",
+#'     Value = "string",
+#'     Version = 123,
+#'     Selector = "string",
+#'     SourceResult = "string",
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ARN = "string",
+#'     DataType = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4661,6 +6847,41 @@ ssm_get_parameter <- function(Name, WithDecryption = NULL) {
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Parameters = list(
+#'     list(
+#'       Name = "string",
+#'       Type = "String"|"StringList"|"SecureString",
+#'       KeyId = "string",
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedUser = "string",
+#'       Description = "string",
+#'       Value = "string",
+#'       AllowedPattern = "string",
+#'       Version = 123,
+#'       Labels = list(
+#'         "string"
+#'       ),
+#'       Tier = "Standard"|"Advanced"|"Intelligent-Tiering",
+#'       Policies = list(
+#'         list(
+#'           PolicyText = "string",
+#'           PolicyType = "string",
+#'           PolicyStatus = "string"
+#'         )
+#'       ),
+#'       DataType = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_parameter_history(
@@ -4695,7 +6916,7 @@ ssm_get_parameter_history <- function(Name, WithDecryption = NULL, MaxResults = 
 #'
 #' @description
 #' Get details of a parameter. Don't confuse this API action with the
-#' GetParameter API action.
+#' [`get_parameter`][ssm_get_parameter] API action.
 #'
 #' @usage
 #' ssm_get_parameters(Names, WithDecryption)
@@ -4704,6 +6925,31 @@ ssm_get_parameter_history <- function(Name, WithDecryption = NULL, MaxResults = 
 #' @param WithDecryption Return decrypted secure string value. Return decrypted values for secure
 #' string parameters. This flag is ignored for String and StringList
 #' parameter types.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Parameters = list(
+#'     list(
+#'       Name = "string",
+#'       Type = "String"|"StringList"|"SecureString",
+#'       Value = "string",
+#'       Version = 123,
+#'       Selector = "string",
+#'       SourceResult = "string",
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ARN = "string",
+#'       DataType = "string"
+#'     )
+#'   ),
+#'   InvalidParameters = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4767,17 +7013,42 @@ ssm_get_parameters <- function(Names, WithDecryption = NULL) {
 #' GetParametersByPath API action recursively for `/a` and view `/a/b`.
 #' @param ParameterFilters Filters to limit the request results.
 #' 
-#' For `GetParametersByPath`, the following filter `Key` names are
-#' supported: `Type`, `KeyId`, `Label`, and `DataType`.
+#' For [`get_parameters_by_path`][ssm_get_parameters_by_path], the
+#' following filter `Key` names are supported: `Type`, `KeyId`, `Label`,
+#' and `DataType`.
 #' 
-#' The following `Key` values are not supported for `GetParametersByPath`:
-#' `tag`, `Name`, `Path`, and `Tier`.
+#' The following `Key` values are not supported for
+#' [`get_parameters_by_path`][ssm_get_parameters_by_path]: `tag`, `Name`,
+#' `Path`, and `Tier`.
 #' @param WithDecryption Retrieve all parameters in a hierarchy with their value decrypted.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Parameters = list(
+#'     list(
+#'       Name = "string",
+#'       Type = "String"|"StringList"|"SecureString",
+#'       Value = "string",
+#'       Version = 123,
+#'       Selector = "string",
+#'       SourceResult = "string",
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ARN = "string",
+#'       DataType = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4829,6 +7100,74 @@ ssm_get_parameters_by_path <- function(Path, Recursive = NULL, ParameterFilters 
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to retrieve.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BaselineId = "string",
+#'   Name = "string",
+#'   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
+#'   GlobalFilters = list(
+#'     PatchFilters = list(
+#'       list(
+#'         Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
+#'         Values = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ApprovalRules = list(
+#'     PatchRules = list(
+#'       list(
+#'         PatchFilterGroup = list(
+#'           PatchFilters = list(
+#'             list(
+#'               Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+#'         ApproveAfterDays = 123,
+#'         ApproveUntilDate = "string",
+#'         EnableNonSecurity = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   ApprovedPatches = list(
+#'     "string"
+#'   ),
+#'   ApprovedPatchesComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+#'   ApprovedPatchesEnableNonSecurity = TRUE|FALSE,
+#'   RejectedPatches = list(
+#'     "string"
+#'   ),
+#'   RejectedPatchesAction = "ALLOW_AS_DEPENDENCY"|"BLOCK",
+#'   PatchGroups = list(
+#'     "string"
+#'   ),
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Description = "string",
+#'   Sources = list(
+#'     list(
+#'       Name = "string",
+#'       Products = list(
+#'         "string"
+#'       ),
+#'       Configuration = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_patch_baseline(
@@ -4869,6 +7208,16 @@ ssm_get_patch_baseline <- function(BaselineId) {
 #' @param PatchGroup &#91;required&#93; The name of the patch group whose patch baseline should be retrieved.
 #' @param OperatingSystem Returns he operating system rule specified for patch groups using the
 #' patch baseline.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BaselineId = "string",
+#'   PatchGroup = "string",
+#'   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4913,9 +7262,10 @@ ssm_get_patch_baseline_for_patch_group <- function(PatchGroup, OperatingSystem =
 #' define the default value for a `SettingId`. You can't create a new
 #' `SettingId`, but you can overwrite the default value if you have the
 #' `ssm:UpdateServiceSetting` permission for the setting. Use the
-#' UpdateServiceSetting API action to change the default setting. Or use
-#' the ResetServiceSetting to change the value back to the original value
-#' defined by the AWS service team.
+#' [`update_service_setting`][ssm_update_service_setting] API action to
+#' change the default setting. Or use the
+#' [`reset_service_setting`][ssm_reset_service_setting] to change the value
+#' back to the original value defined by the AWS service team.
 #' 
 #' Query the current service setting for the account.
 #'
@@ -4926,6 +7276,23 @@ ssm_get_patch_baseline_for_patch_group <- function(PatchGroup, OperatingSystem =
 #' `/ssm/parameter-store/default-parameter-tier`,
 #' `/ssm/parameter-store/high-throughput-enabled`, or
 #' `/ssm/managed-instance/activation-tier`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceSetting = list(
+#'     SettingId = "string",
+#'     SettingValue = "string",
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedUser = "string",
+#'     ARN = "string",
+#'     Status = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4984,7 +7351,7 @@ ssm_get_service_setting <- function(SettingId) {
 #' -   A label can have a maximum of 100 characters.
 #' 
 #' -   Labels can contain letters (case sensitive), numbers, periods (.),
-#'     hyphens (-), or underscores (\\_).
+#'     hyphens (-), or underscores (_).
 #' 
 #' -   Labels can't begin with a number, "aws," or "ssm" (not case
 #'     sensitive). If a label fails to meet these requirements, then the
@@ -4999,6 +7366,17 @@ ssm_get_service_setting <- function(SettingId) {
 #' more labels. If no version is specified, the system attaches the label
 #' to the latest version.
 #' @param Labels &#91;required&#93; One or more labels to attach to the specified parameter version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InvalidLabels = list(
+#'     "string"
+#'   ),
+#'   ParameterVersion = 123
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5045,6 +7423,65 @@ ssm_label_parameter_version <- function(Name, ParameterVersion = NULL, Labels) {
 #' next set of results.
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociationVersions = list(
+#'     list(
+#'       AssociationId = "string",
+#'       AssociationVersion = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "string",
+#'       DocumentVersion = "string",
+#'       Parameters = list(
+#'         list(
+#'           "string"
+#'         )
+#'       ),
+#'       Targets = list(
+#'         list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ScheduleExpression = "string",
+#'       OutputLocation = list(
+#'         S3Location = list(
+#'           OutputS3Region = "string",
+#'           OutputS3BucketName = "string",
+#'           OutputS3KeyPrefix = "string"
+#'         )
+#'       ),
+#'       AssociationName = "string",
+#'       MaxErrors = "string",
+#'       MaxConcurrency = "string",
+#'       ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
+#'       SyncCompliance = "AUTO"|"MANUAL",
+#'       ApplyOnlyAtCronInterval = TRUE|FALSE,
+#'       TargetLocations = list(
+#'         list(
+#'           Accounts = list(
+#'             "string"
+#'           ),
+#'           Regions = list(
+#'             "string"
+#'           ),
+#'           TargetLocationMaxConcurrency = "string",
+#'           TargetLocationMaxErrors = "string",
+#'           ExecutionRoleName = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5098,6 +7535,43 @@ ssm_list_association_versions <- function(AssociationId, MaxResults = NULL, Next
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Associations = list(
+#'     list(
+#'       Name = "string",
+#'       InstanceId = "string",
+#'       AssociationId = "string",
+#'       AssociationVersion = "string",
+#'       DocumentVersion = "string",
+#'       Targets = list(
+#'         list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       LastExecutionDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Overview = list(
+#'         Status = "string",
+#'         DetailedStatus = "string",
+#'         AssociationStatusAggregatedCount = list(
+#'           123
+#'         )
+#'       ),
+#'       ScheduleExpression = "string",
+#'       AssociationName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5159,6 +7633,64 @@ ssm_list_associations <- function(AssociationFilterList = NULL, MaxResults = NUL
 #' @param Details (Optional) If set this returns the response of the command executions
 #' and any command output. By default this is set to False.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CommandInvocations = list(
+#'     list(
+#'       CommandId = "string",
+#'       InstanceId = "string",
+#'       InstanceName = "string",
+#'       Comment = "string",
+#'       DocumentName = "string",
+#'       DocumentVersion = "string",
+#'       RequestedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "Pending"|"InProgress"|"Delayed"|"Success"|"Cancelled"|"TimedOut"|"Failed"|"Cancelling",
+#'       StatusDetails = "string",
+#'       TraceOutput = "string",
+#'       StandardOutputUrl = "string",
+#'       StandardErrorUrl = "string",
+#'       CommandPlugins = list(
+#'         list(
+#'           Name = "string",
+#'           Status = "Pending"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed",
+#'           StatusDetails = "string",
+#'           ResponseCode = 123,
+#'           ResponseStartDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ResponseFinishDateTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Output = "string",
+#'           StandardOutputUrl = "string",
+#'           StandardErrorUrl = "string",
+#'           OutputS3Region = "string",
+#'           OutputS3BucketName = "string",
+#'           OutputS3KeyPrefix = "string"
+#'         )
+#'       ),
+#'       ServiceRole = "string",
+#'       NotificationConfig = list(
+#'         NotificationArn = "string",
+#'         NotificationEvents = list(
+#'           "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
+#'         ),
+#'         NotificationType = "Command"|"Invocation"
+#'       ),
+#'       CloudWatchOutputConfig = list(
+#'         CloudWatchLogGroupName = "string",
+#'         CloudWatchOutputEnabled = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_command_invocations(
@@ -5217,6 +7749,68 @@ ssm_list_command_invocations <- function(CommandId = NULL, InstanceId = NULL, Ma
 #' this token from a previous call.)
 #' @param Filters (Optional) One or more filters. Use a filter to return a more specific
 #' list of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Commands = list(
+#'     list(
+#'       CommandId = "string",
+#'       DocumentName = "string",
+#'       DocumentVersion = "string",
+#'       Comment = "string",
+#'       ExpiresAfter = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Parameters = list(
+#'         list(
+#'           "string"
+#'         )
+#'       ),
+#'       InstanceIds = list(
+#'         "string"
+#'       ),
+#'       Targets = list(
+#'         list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       RequestedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "Pending"|"InProgress"|"Success"|"Cancelled"|"Failed"|"TimedOut"|"Cancelling",
+#'       StatusDetails = "string",
+#'       OutputS3Region = "string",
+#'       OutputS3BucketName = "string",
+#'       OutputS3KeyPrefix = "string",
+#'       MaxConcurrency = "string",
+#'       MaxErrors = "string",
+#'       TargetCount = 123,
+#'       CompletedCount = 123,
+#'       ErrorCount = 123,
+#'       DeliveryTimedOutCount = 123,
+#'       ServiceRole = "string",
+#'       NotificationConfig = list(
+#'         NotificationArn = "string",
+#'         NotificationEvents = list(
+#'           "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
+#'         ),
+#'         NotificationType = "Command"|"Invocation"
+#'       ),
+#'       CloudWatchOutputConfig = list(
+#'         CloudWatchLogGroupName = "string",
+#'         CloudWatchOutputEnabled = TRUE|FALSE
+#'       ),
+#'       TimeoutSeconds = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5278,6 +7872,35 @@ ssm_list_commands <- function(CommandId = NULL, InstanceId = NULL, MaxResults = 
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ComplianceItems = list(
+#'     list(
+#'       ComplianceType = "string",
+#'       ResourceType = "string",
+#'       ResourceId = "string",
+#'       Id = "string",
+#'       Title = "string",
+#'       Status = "COMPLIANT"|"NON_COMPLIANT",
+#'       Severity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+#'       ExecutionSummary = list(
+#'         ExecutionTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ExecutionId = "string",
+#'         ExecutionType = "string"
+#'       ),
+#'       Details = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5342,6 +7965,41 @@ ssm_list_compliance_items <- function(Filters = NULL, ResourceIds = NULL, Resour
 #' specify null or 50. The call also returns a token that you can specify
 #' in a subsequent call to get the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ComplianceSummaryItems = list(
+#'     list(
+#'       ComplianceType = "string",
+#'       CompliantSummary = list(
+#'         CompliantCount = 123,
+#'         SeveritySummary = list(
+#'           CriticalCount = 123,
+#'           HighCount = 123,
+#'           MediumCount = 123,
+#'           LowCount = 123,
+#'           InformationalCount = 123,
+#'           UnspecifiedCount = 123
+#'         )
+#'       ),
+#'       NonCompliantSummary = list(
+#'         NonCompliantCount = 123,
+#'         SeveritySummary = list(
+#'           CriticalCount = 123,
+#'           HighCount = 123,
+#'           MediumCount = 123,
+#'           LowCount = 123,
+#'           InformationalCount = 123,
+#'           UnspecifiedCount = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_compliance_summaries(
@@ -5398,6 +8056,37 @@ ssm_list_compliance_summaries <- function(Filters = NULL, NextToken = NULL, MaxR
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   DocumentVersion = "string",
+#'   Author = "string",
+#'   Metadata = list(
+#'     ReviewerResponse = list(
+#'       list(
+#'         CreateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED",
+#'         Comment = list(
+#'           list(
+#'             Type = "Comment",
+#'             Content = "string"
+#'           )
+#'         ),
+#'         Reviewer = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_document_metadata_history(
@@ -5443,6 +8132,29 @@ ssm_list_document_metadata_history <- function(Name, DocumentVersion = NULL, Met
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentVersions = list(
+#'     list(
+#'       Name = "string",
+#'       DocumentVersion = "string",
+#'       VersionName = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       IsDefaultVersion = TRUE|FALSE,
+#'       DocumentFormat = "YAML"|"JSON"|"TEXT",
+#'       Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
+#'       StatusInformation = "string",
+#'       ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5496,6 +8208,43 @@ ssm_list_document_versions <- function(Name, MaxResults = NULL, NextToken = NULL
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentIdentifiers = list(
+#'     list(
+#'       Name = "string",
+#'       Owner = "string",
+#'       VersionName = "string",
+#'       PlatformTypes = list(
+#'         "Windows"|"Linux"
+#'       ),
+#'       DocumentVersion = "string",
+#'       DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+#'       SchemaVersion = "string",
+#'       DocumentFormat = "YAML"|"JSON"|"TEXT",
+#'       TargetType = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       Requires = list(
+#'         list(
+#'           Name = "string",
+#'           Version = "string"
+#'         )
+#'       ),
+#'       ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED",
+#'       Author = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5558,6 +8307,23 @@ ssm_list_documents <- function(DocumentFilterList = NULL, Filters = NULL, MaxRes
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TypeName = "string",
+#'   InstanceId = "string",
+#'   SchemaVersion = "string",
+#'   CaptureTime = "string",
+#'   Entries = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_inventory_entries(
@@ -5616,6 +8382,29 @@ ssm_list_inventory_entries <- function(InstanceId, TypeName, Filters = NULL, Nex
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Summaries = list(
+#'     list(
+#'       OpsItemId = "string",
+#'       EventId = "string",
+#'       Source = "string",
+#'       DetailType = "string",
+#'       Detail = "string",
+#'       CreatedBy = list(
+#'         Arn = "string"
+#'       ),
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_ops_item_events(
@@ -5671,6 +8460,27 @@ ssm_list_ops_item_events <- function(Filters = NULL, MaxResults = NULL, NextToke
 #' @param NextToken A token to start the list. Use this token to get the next set of
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OpsMetadataList = list(
+#'     list(
+#'       ResourceId = "string",
+#'       OpsMetadataArn = "string",
+#'       LastModifiedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedUser = "string",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_ops_metadata(
@@ -5725,6 +8535,52 @@ ssm_list_ops_metadata <- function(Filters = NULL, MaxResults = NULL, NextToken =
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceComplianceSummaryItems = list(
+#'     list(
+#'       ComplianceType = "string",
+#'       ResourceType = "string",
+#'       ResourceId = "string",
+#'       Status = "COMPLIANT"|"NON_COMPLIANT",
+#'       OverallSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+#'       ExecutionSummary = list(
+#'         ExecutionTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ExecutionId = "string",
+#'         ExecutionType = "string"
+#'       ),
+#'       CompliantSummary = list(
+#'         CompliantCount = 123,
+#'         SeveritySummary = list(
+#'           CriticalCount = 123,
+#'           HighCount = 123,
+#'           MediumCount = 123,
+#'           LowCount = 123,
+#'           InformationalCount = 123,
+#'           UnspecifiedCount = 123
+#'         )
+#'       ),
+#'       NonCompliantSummary = list(
+#'         NonCompliantCount = 123,
+#'         SeveritySummary = list(
+#'           CriticalCount = 123,
+#'           HighCount = 123,
+#'           MediumCount = 123,
+#'           LowCount = 123,
+#'           InformationalCount = 123,
+#'           UnspecifiedCount = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_resource_compliance_summaries(
@@ -5770,12 +8626,13 @@ ssm_list_resource_compliance_summaries <- function(Filters = NULL, NextToken = N
 #' last time a sync successfully completed.
 #' 
 #' The number of sync configurations might be too large to return using a
-#' single call to `ListResourceDataSync`. You can limit the number of sync
-#' configurations returned by using the `MaxResults` parameter. To
-#' determine whether there are more sync configurations to list, check the
-#' value of `NextToken` in the output. If there are more sync
-#' configurations to list, you can request them by specifying the
-#' `NextToken` returned in the call to the parameter of a subsequent call.
+#' single call to [`list_resource_data_sync`][ssm_list_resource_data_sync].
+#' You can limit the number of sync configurations returned by using the
+#' `MaxResults` parameter. To determine whether there are more sync
+#' configurations to list, check the value of `NextToken` in the output. If
+#' there are more sync configurations to list, you can request them by
+#' specifying the `NextToken` returned in the call to the parameter of a
+#' subsequent call.
 #'
 #' @usage
 #' ssm_list_resource_data_sync(SyncType, NextToken, MaxResults)
@@ -5789,6 +8646,60 @@ ssm_list_resource_compliance_summaries <- function(Filters = NULL, NextToken = N
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceDataSyncItems = list(
+#'     list(
+#'       SyncName = "string",
+#'       SyncType = "string",
+#'       SyncSource = list(
+#'         SourceType = "string",
+#'         AwsOrganizationsSource = list(
+#'           OrganizationSourceType = "string",
+#'           OrganizationalUnits = list(
+#'             list(
+#'               OrganizationalUnitId = "string"
+#'             )
+#'           )
+#'         ),
+#'         SourceRegions = list(
+#'           "string"
+#'         ),
+#'         IncludeFutureRegions = TRUE|FALSE,
+#'         State = "string"
+#'       ),
+#'       S3Destination = list(
+#'         BucketName = "string",
+#'         Prefix = "string",
+#'         SyncFormat = "JsonSerDe",
+#'         Region = "string",
+#'         AWSKMSKeyARN = "string",
+#'         DestinationDataSharing = list(
+#'           DestinationDataSharingType = "string"
+#'         )
+#'       ),
+#'       LastSyncTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastSuccessfulSyncTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SyncLastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastStatus = "Successful"|"Failed"|"InProgress",
+#'       SyncCreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastSyncStatusMessage = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5829,6 +8740,19 @@ ssm_list_resource_data_sync <- function(SyncType = NULL, NextToken = NULL, MaxRe
 #'
 #' @param ResourceType &#91;required&#93; Returns a list of tags for a specific resource type.
 #' @param ResourceId &#91;required&#93; The resource ID for which you want to see a list of tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TagList = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -5882,6 +8806,9 @@ ssm_list_tags_for_resource <- function(ResourceType, ResourceId) {
 #' to the document.
 #' @param SharedDocumentVersion (Optional) The version of the document to share. If it's not specified,
 #' the system choose the `Default` version to share.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -6000,6 +8927,9 @@ ssm_modify_document_permission <- function(Name, PermissionType, AccountIdsToAdd
 #' 
 #' This attribute is only valid for association compliance.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_compliance_items(
@@ -6061,6 +8991,14 @@ ssm_put_compliance_items <- function(ResourceId, ResourceType, ComplianceType, E
 #'
 #' @param InstanceId &#91;required&#93; An instance ID where you want to add or update inventory items.
 #' @param Items &#91;required&#93; The inventory items that you want to add or update on instances.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Message = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6158,8 +9096,8 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' limit of 8 KB.
 #' 
 #' Parameters can't be referenced or nested in the values of other
-#' parameters. You can't include `\{\{\}\}` or `\{\{ssm:<i>parameter-name</i>\}\}`
-#' in a parameter value.
+#' parameters. You can't include `{{}}` or `{{ssm:parameter-name}}` in a
+#' parameter value.
 #' @param Type The type of parameter that you want to add to the system.
 #' 
 #' `SecureString` is not currently supported for AWS CloudFormation
@@ -6191,7 +9129,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' "false".
 #' @param AllowedPattern A regular expression used to validate the parameter value. For example,
 #' for String types with values restricted to numbers, you can specify the
-#' following: AllowedPattern=^`\\d`+$
+#' following: AllowedPattern=^\\d+$
 #' @param Tags Optional metadata that you assign to a resource. Tags enable you to
 #' categorize a resource in different ways, such as by purpose, owner, or
 #' environment. For example, you might want to tag a Systems Manager
@@ -6207,7 +9145,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' -   `Key=ParameterType,Value=LicenseKey`
 #' 
 #' To add tags to an existing Systems Manager parameter, use the
-#' AddTagsToResource action.
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
 #' @param Tier The parameter tier to assign to a parameter.
 #' 
 #' Parameter Store offers a standard tier and an advanced tier for
@@ -6238,12 +9176,12 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' 
 #' **Using the Default Tier Configuration**
 #' 
-#' In `PutParameter` requests, you can specify the tier to create the
-#' parameter in. Whenever you specify a tier in the request, Parameter
-#' Store creates or updates the parameter according to that request.
-#' However, if you do not specify a tier in a request, Parameter Store
-#' assigns the tier based on the current Parameter Store default tier
-#' configuration.
+#' In [`put_parameter`][ssm_put_parameter] requests, you can specify the
+#' tier to create the parameter in. Whenever you specify a tier in the
+#' request, Parameter Store creates or updates the parameter according to
+#' that request. However, if you do not specify a tier in a request,
+#' Parameter Store assigns the tier based on the current Parameter Store
+#' default tier configuration.
 #' 
 #' The default tier when you begin using Parameter Store is the
 #' standard-parameter tier. If you use the advanced-parameter tier, you can
@@ -6318,6 +9256,15 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' IDs](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html)
 #' in the *AWS Systems Manager User Guide*.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Version = 123,
+#'   Tier = "Standard"|"Advanced"|"Intelligent-Tiering"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_parameter(
@@ -6376,6 +9323,14 @@ ssm_put_parameter <- function(Name, Description = NULL, Value, Type = NULL, KeyI
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline that should be the default patch baseline.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BaselineId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_default_patch_baseline(
@@ -6414,6 +9369,15 @@ ssm_register_default_patch_baseline <- function(BaselineId) {
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to register the patch group with.
 #' @param PatchGroup &#91;required&#93; The name of the patch group that should be registered with the patch
 #' baseline.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BaselineId = "string",
+#'   PatchGroup = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6462,28 +9426,28 @@ ssm_register_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup) 
 #' 
 #' **Example 1**: Specify instance IDs
 #' 
-#' `Key=InstanceIds,Values=<i>instance-id-1</i>,<i>instance-id-2</i>,<i>instance-id-3</i> `
+#' `Key=InstanceIds,Values=instance-id-1,instance-id-2,instance-id-3 `
 #' 
 #' **Example 2**: Use tag key-pairs applied to instances
 #' 
-#' `Key=tag:<i>my-tag-key</i>,Values=<i>my-tag-value-1</i>,<i>my-tag-value-2</i> `
+#' `Key=tag:my-tag-key,Values=my-tag-value-1,my-tag-value-2 `
 #' 
 #' **Example 3**: Use tag-keys applied to instances
 #' 
-#' `Key=tag-key,Values=<i>my-tag-key-1</i>,<i>my-tag-key-2</i> `
+#' `Key=tag-key,Values=my-tag-key-1,my-tag-key-2 `
 #' 
 #' **Example 4**: Use resource group names
 #' 
-#' `Key=resource-groups:Name,Values=<i>resource-group-name</i> `
+#' `Key=resource-groups:Name,Values=resource-group-name `
 #' 
 #' **Example 5**: Use filters for resource group types
 #' 
-#' `Key=resource-groups:ResourceTypeFilters,Values=<i>resource-type-1</i>,<i>resource-type-2</i> `
+#' `Key=resource-groups:ResourceTypeFilters,Values=resource-type-1,resource-type-2 `
 #' 
 #' For `Key=resource-groups:ResourceTypeFilters`, specify resource types in
 #' the following format
 #' 
-#' `Key=resource-groups:ResourceTypeFilters,Values=<i>AWS::EC2::INSTANCE</i>,<i>AWS::EC2::VPC</i> `
+#' `Key=resource-groups:ResourceTypeFilters,Values=AWS::EC2::INSTANCE,AWS::EC2::VPC `
 #' 
 #' For more information about these examples formats, including the best
 #' use case for each one, see [Examples: Register targets with a
@@ -6495,6 +9459,14 @@ ssm_register_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup) 
 #' @param Name An optional name for the target.
 #' @param Description An optional description for the target.
 #' @param ClientToken User-provided idempotency token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowTargetId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6560,17 +9532,18 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' 
 #' Specify instances using the following format:
 #' 
-#' `Key=InstanceIds,Values=&lt;instance-id-1&gt;,&lt;instance-id-2&gt;`
+#' `Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>`
 #' 
 #' Specify maintenance window targets using the following format:
 #' 
-#' `Key=WindowTargetIds,Values=&lt;window-target-id-1&gt;,&lt;window-target-id-2&gt;`
+#' `Key=WindowTargetIds,Values=<window-target-id-1>,<window-target-id-2>`
 #' @param TaskArn &#91;required&#93; The ARN of the task to run.
 #' @param ServiceRoleArn The ARN of the IAM service role for Systems Manager to assume when
 #' running a maintenance window task. If you do not specify a service role
 #' ARN, Systems Manager uses your account's service-linked role. If no
 #' service-linked role for Systems Manager exists in your account, it is
-#' created when you run `RegisterTaskWithMaintenanceWindow`.
+#' created when you run
+#' [`register_task_with_maintenance_window`][ssm_register_task_with_maintenance_window].
 #' 
 #' For more information, see the following topics in the in the *AWS
 #' Systems Manager User Guide*:
@@ -6620,6 +9593,14 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' @param Name An optional name for the task.
 #' @param Description An optional description for the task.
 #' @param ClientToken User-provided idempotency token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowTaskId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6734,7 +9715,7 @@ ssm_register_task_with_maintenance_window <- function(WindowId, Targets = NULL, 
 #' 
 #' The ManagedInstance type for this API action is only for on-premises
 #' managed instances. Specify the name of the managed instance in the
-#' following format: mi-ID\\_number. For example, mi-1a2b3c4d5e6f.
+#' following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
 #' @param ResourceId &#91;required&#93; The ID of the resource from which you want to remove tags. For example:
 #' 
 #' ManagedInstance: mi-012345abcde
@@ -6747,8 +9728,11 @@ ssm_register_task_with_maintenance_window <- function(WindowId, Targets = NULL, 
 #' 
 #' The ManagedInstance type for this API action is only for on-premises
 #' managed instances. Specify the name of the managed instance in the
-#' following format: mi-ID\\_number. For example, mi-1a2b3c4d5e6f.
+#' following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
 #' @param TagKeys &#91;required&#93; Tag keys that you want to remove from the specified resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -6796,8 +9780,10 @@ ssm_remove_tags_from_resource <- function(ResourceType, ResourceId, TagKeys) {
 #' define the default value for a `SettingId`. You can't create a new
 #' `SettingId`, but you can overwrite the default value if you have the
 #' `ssm:UpdateServiceSetting` permission for the setting. Use the
-#' GetServiceSetting API action to view the current value. Use the
-#' UpdateServiceSetting API action to change the default setting.
+#' [`get_service_setting`][ssm_get_service_setting] API action to view the
+#' current value. Use the
+#' [`update_service_setting`][ssm_update_service_setting] API action to
+#' change the default setting.
 #' 
 #' Reset the service setting for the account to the default value as
 #' provisioned by the AWS service team.
@@ -6810,6 +9796,23 @@ ssm_remove_tags_from_resource <- function(ResourceType, ResourceId, TagKeys) {
 #' `/ssm/parameter-store/high-throughput-enabled`, or
 #' `/ssm/managed-instance/activation-tier`. For example,
 #' `arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceSetting = list(
+#'     SettingId = "string",
+#'     SettingValue = "string",
+#'     LastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedUser = "string",
+#'     ARN = "string",
+#'     Status = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6853,6 +9856,16 @@ ssm_reset_service_setting <- function(SettingId) {
 #' ssm_resume_session(SessionId)
 #'
 #' @param SessionId &#91;required&#93; The ID of the disconnected session to resume.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SessionId = "string",
+#'   TokenValue = "string",
+#'   StreamUrl = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -6911,6 +9924,9 @@ ssm_resume_session <- function(SessionId) {
 #' the payload. For example:
 #' 
 #' `StepExecutionId="97fff367-fc5a-4299-aed8-0123456789ab"`
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -7036,6 +10052,65 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' @param CloudWatchOutputConfig Enables Systems Manager to send Run Command output to Amazon CloudWatch
 #' Logs.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Command = list(
+#'     CommandId = "string",
+#'     DocumentName = "string",
+#'     DocumentVersion = "string",
+#'     Comment = "string",
+#'     ExpiresAfter = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Parameters = list(
+#'       list(
+#'         "string"
+#'       )
+#'     ),
+#'     InstanceIds = list(
+#'       "string"
+#'     ),
+#'     Targets = list(
+#'       list(
+#'         Key = "string",
+#'         Values = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     RequestedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "Pending"|"InProgress"|"Success"|"Cancelled"|"Failed"|"TimedOut"|"Cancelling",
+#'     StatusDetails = "string",
+#'     OutputS3Region = "string",
+#'     OutputS3BucketName = "string",
+#'     OutputS3KeyPrefix = "string",
+#'     MaxConcurrency = "string",
+#'     MaxErrors = "string",
+#'     TargetCount = 123,
+#'     CompletedCount = 123,
+#'     ErrorCount = 123,
+#'     DeliveryTimedOutCount = 123,
+#'     ServiceRole = "string",
+#'     NotificationConfig = list(
+#'       NotificationArn = "string",
+#'       NotificationEvents = list(
+#'         "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
+#'       ),
+#'       NotificationType = "Command"|"Invocation"
+#'     ),
+#'     CloudWatchOutputConfig = list(
+#'       CloudWatchLogGroupName = "string",
+#'       CloudWatchOutputEnabled = TRUE|FALSE
+#'     ),
+#'     TimeoutSeconds = 123
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$send_command(
@@ -7111,6 +10186,9 @@ ssm_send_command <- function(InstanceIds = NULL, Targets = NULL, DocumentName, D
 #' ssm_start_associations_once(AssociationIds)
 #'
 #' @param AssociationIds &#91;required&#93; The association IDs that you want to run immediately and only one time.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -7200,8 +10278,16 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' 
 #' -   `Key=OS,Value=Windows`
 #' 
-#' To add tags to an existing patch baseline, use the AddTagsToResource
-#' action.
+#' To add tags to an existing patch baseline, use the
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutomationExecutionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7318,6 +10404,14 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 #' 
 #' -   `Key=Region,Value=us-east-2`
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutomationExecutionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$start_change_request_execution(
@@ -7421,10 +10515,20 @@ ssm_start_change_request_execution <- function(ScheduledTime = NULL, DocumentNam
 #' @param Target &#91;required&#93; The instance to connect to for the session.
 #' @param DocumentName The name of the SSM document to define the parameters and plugin
 #' settings for the session. For example, `SSM-SessionManagerRunShell`. You
-#' can call the GetDocument API to verify the document exists before
-#' attempting to start a session. If no document name is provided, a shell
-#' to the instance is launched by default.
+#' can call the [`get_document`][ssm_get_document] API to verify the
+#' document exists before attempting to start a session. If no document
+#' name is provided, a shell to the instance is launched by default.
 #' @param Parameters Reserved for future use.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SessionId = "string",
+#'   TokenValue = "string",
+#'   StreamUrl = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7471,6 +10575,9 @@ ssm_start_session <- function(Target, DocumentName = NULL, Parameters = NULL) {
 #' @param Type The stop request type. Valid types include the following: Cancel and
 #' Complete. The default type is Cancel.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$stop_automation_execution(
@@ -7512,6 +10619,14 @@ ssm_stop_automation_execution <- function(AutomationExecutionId, Type = NULL) {
 #'
 #' @param SessionId &#91;required&#93; The ID of the session to terminate.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SessionId = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$terminate_session(
@@ -7546,10 +10661,11 @@ ssm_terminate_session <- function(SessionId) {
 #' the document version, schedule, parameters, and Amazon S3 output.
 #' 
 #' In order to call this API action, your IAM user account, group, or role
-#' must be configured with permission to call the DescribeAssociation API
-#' action. If you don't have permission to call DescribeAssociation, then
-#' you receive the following error:
-#' `An error occurred (AccessDeniedException) when calling the UpdateAssociation operation: User: &lt;user_arn&gt; is not authorized to perform: ssm:DescribeAssociation on resource: &lt;resource_arn&gt;`
+#' must be configured with permission to call the
+#' [`describe_association`][ssm_describe_association] API action. If you
+#' don't have permission to call DescribeAssociation, then you receive the
+#' following error:
+#' `An error occurred (AccessDeniedException) when calling the UpdateAssociation operation: User: <user_arn> is not authorized to perform: ssm:DescribeAssociation on resource: <resource_arn>`
 #' 
 #' When you update an association, the association immediately runs against
 #' the specified targets.
@@ -7578,7 +10694,7 @@ ssm_terminate_session <- function(SessionId) {
 #' For SSM documents that are shared with you from other AWS accounts, you
 #' must specify the complete SSM document ARN, in the following format:
 #' 
-#' `arn:aws:ssm:<i>region</i>:<i>account-id</i>:document/<i>document-name</i> `
+#' `arn:aws:ssm:region:account-id:document/document-name `
 #' 
 #' For example:
 #' 
@@ -7630,9 +10746,10 @@ ssm_terminate_session <- function(SessionId) {
 #' association is `NON-COMPLIANT`.
 #' 
 #' In `MANUAL` mode, you must specify the `AssociationId` as a parameter
-#' for the PutComplianceItems API action. In this case, compliance data is
-#' not managed by State Manager. It is managed by your direct call to the
-#' PutComplianceItems API action.
+#' for the [`put_compliance_items`][ssm_put_compliance_items] API action.
+#' In this case, compliance data is not managed by State Manager. It is
+#' managed by your direct call to the
+#' [`put_compliance_items`][ssm_put_compliance_items] API action.
 #' 
 #' By default, all associations use `AUTO` mode.
 #' @param ApplyOnlyAtCronInterval By default, when you update an association, the system runs it
@@ -7649,6 +10766,88 @@ ssm_terminate_session <- function(SessionId) {
 #' @param TargetLocations A location is a combination of AWS Regions and AWS accounts where you
 #' want to run the association. Use this action to update an association in
 #' multiple Regions and multiple accounts.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociationDescription = list(
+#'     Name = "string",
+#'     InstanceId = "string",
+#'     AssociationVersion = "string",
+#'     Date = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdateAssociationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = list(
+#'       Date = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "Pending"|"Success"|"Failed",
+#'       Message = "string",
+#'       AdditionalInfo = "string"
+#'     ),
+#'     Overview = list(
+#'       Status = "string",
+#'       DetailedStatus = "string",
+#'       AssociationStatusAggregatedCount = list(
+#'         123
+#'       )
+#'     ),
+#'     DocumentVersion = "string",
+#'     AutomationTargetParameterName = "string",
+#'     Parameters = list(
+#'       list(
+#'         "string"
+#'       )
+#'     ),
+#'     AssociationId = "string",
+#'     Targets = list(
+#'       list(
+#'         Key = "string",
+#'         Values = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     ScheduleExpression = "string",
+#'     OutputLocation = list(
+#'       S3Location = list(
+#'         OutputS3Region = "string",
+#'         OutputS3BucketName = "string",
+#'         OutputS3KeyPrefix = "string"
+#'       )
+#'     ),
+#'     LastExecutionDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastSuccessfulExecutionDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AssociationName = "string",
+#'     MaxErrors = "string",
+#'     MaxConcurrency = "string",
+#'     ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
+#'     SyncCompliance = "AUTO"|"MANUAL",
+#'     ApplyOnlyAtCronInterval = TRUE|FALSE,
+#'     TargetLocations = list(
+#'       list(
+#'         Accounts = list(
+#'           "string"
+#'         ),
+#'         Regions = list(
+#'           "string"
+#'         ),
+#'         TargetLocationMaxConcurrency = "string",
+#'         TargetLocationMaxErrors = "string",
+#'         ExecutionRoleName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -7735,6 +10934,88 @@ ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVer
 #' @param InstanceId &#91;required&#93; The ID of the instance.
 #' @param AssociationStatus &#91;required&#93; The association status.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociationDescription = list(
+#'     Name = "string",
+#'     InstanceId = "string",
+#'     AssociationVersion = "string",
+#'     Date = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdateAssociationDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = list(
+#'       Date = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Name = "Pending"|"Success"|"Failed",
+#'       Message = "string",
+#'       AdditionalInfo = "string"
+#'     ),
+#'     Overview = list(
+#'       Status = "string",
+#'       DetailedStatus = "string",
+#'       AssociationStatusAggregatedCount = list(
+#'         123
+#'       )
+#'     ),
+#'     DocumentVersion = "string",
+#'     AutomationTargetParameterName = "string",
+#'     Parameters = list(
+#'       list(
+#'         "string"
+#'       )
+#'     ),
+#'     AssociationId = "string",
+#'     Targets = list(
+#'       list(
+#'         Key = "string",
+#'         Values = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     ScheduleExpression = "string",
+#'     OutputLocation = list(
+#'       S3Location = list(
+#'         OutputS3Region = "string",
+#'         OutputS3BucketName = "string",
+#'         OutputS3KeyPrefix = "string"
+#'       )
+#'     ),
+#'     LastExecutionDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastSuccessfulExecutionDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AssociationName = "string",
+#'     MaxErrors = "string",
+#'     MaxConcurrency = "string",
+#'     ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
+#'     SyncCompliance = "AUTO"|"MANUAL",
+#'     ApplyOnlyAtCronInterval = TRUE|FALSE,
+#'     TargetLocations = list(
+#'       list(
+#'         Accounts = list(
+#'           "string"
+#'         ),
+#'         Regions = list(
+#'           "string"
+#'         ),
+#'         TargetLocationMaxConcurrency = "string",
+#'         TargetLocationMaxErrors = "string",
+#'         ExecutionRoleName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_association_status(
@@ -7796,6 +11077,75 @@ ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
 #' Manager supports JSON and YAML documents. JSON is the default format.
 #' @param TargetType Specify a new target type for the document.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentDescription = list(
+#'     Sha1 = "string",
+#'     Hash = "string",
+#'     HashType = "Sha256"|"Sha1",
+#'     Name = "string",
+#'     VersionName = "string",
+#'     Owner = "string",
+#'     CreatedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
+#'     StatusInformation = "string",
+#'     DocumentVersion = "string",
+#'     Description = "string",
+#'     Parameters = list(
+#'       list(
+#'         Name = "string",
+#'         Type = "String"|"StringList",
+#'         Description = "string",
+#'         DefaultValue = "string"
+#'       )
+#'     ),
+#'     PlatformTypes = list(
+#'       "Windows"|"Linux"
+#'     ),
+#'     DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
+#'     SchemaVersion = "string",
+#'     LatestVersion = "string",
+#'     DefaultVersion = "string",
+#'     DocumentFormat = "YAML"|"JSON"|"TEXT",
+#'     TargetType = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     AttachmentsInformation = list(
+#'       list(
+#'         Name = "string"
+#'       )
+#'     ),
+#'     Requires = list(
+#'       list(
+#'         Name = "string",
+#'         Version = "string"
+#'       )
+#'     ),
+#'     Author = "string",
+#'     ReviewInformation = list(
+#'       list(
+#'         ReviewedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Status = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED",
+#'         Reviewer = "string"
+#'       )
+#'     ),
+#'     ApprovedVersion = "string",
+#'     PendingReviewVersion = "string",
+#'     ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_document(
@@ -7850,6 +11200,18 @@ ssm_update_document <- function(Content, Attachments = NULL, Name, VersionName =
 #' @param DocumentVersion &#91;required&#93; The version of a custom document that you want to set as the default
 #' version.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Description = list(
+#'     Name = "string",
+#'     DefaultVersion = "string",
+#'     DefaultVersionName = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_document_default_version(
@@ -7891,6 +11253,9 @@ ssm_update_document_default_version <- function(Name, DocumentVersion) {
 #' @param Name &#91;required&#93; The name of the document for which a version is to be updated.
 #' @param DocumentVersion The version of a document to update.
 #' @param DocumentReviews &#91;required&#93; The document review details to update.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -7953,7 +11318,7 @@ ssm_update_document_metadata <- function(Name, DocumentVersion = NULL, DocumentR
 #' @param Description An optional description for the update request.
 #' @param StartDate The time zone that the scheduled maintenance window executions are based
 #' on, in Internet Assigned Numbers Authority (IANA) format. For example:
-#' "America/Los\\_Angeles", "UTC", or "Asia/Seoul". For more information,
+#' "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information,
 #' see the [Time Zone Database](https://www.iana.org/time-zones) on the
 #' IANA website.
 #' @param EndDate The date and time, in ISO-8601 Extended format, for when you want the
@@ -7963,7 +11328,7 @@ ssm_update_document_metadata <- function(Name, DocumentVersion = NULL, DocumentR
 #' expression.
 #' @param ScheduleTimezone The time zone that the scheduled maintenance window executions are based
 #' on, in Internet Assigned Numbers Authority (IANA) format. For example:
-#' "America/Los\\_Angeles", "UTC", or "Asia/Seoul". For more information,
+#' "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information,
 #' see the [Time Zone Database](https://www.iana.org/time-zones) on the
 #' IANA website.
 #' @param ScheduleOffset The number of days to wait after the date and time specified by a CRON
@@ -7985,6 +11350,25 @@ ssm_update_document_metadata <- function(Name, DocumentVersion = NULL, DocumentR
 #' @param Replace If True, then all fields that are required by the
 #' CreateMaintenanceWindow action are also required for this API request.
 #' Optional fields that are not specified are set to null.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowId = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   StartDate = "string",
+#'   EndDate = "string",
+#'   Schedule = "string",
+#'   ScheduleTimezone = "string",
+#'   ScheduleOffset = 123,
+#'   Duration = 123,
+#'   Cutoff = 123,
+#'   AllowUnassociatedTargets = TRUE|FALSE,
+#'   Enabled = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8062,6 +11446,26 @@ ssm_update_maintenance_window <- function(WindowId, Name = NULL, Description = N
 #' RegisterTargetWithMaintenanceWindow action are also required for this
 #' API request. Optional fields that are not specified are set to null.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowId = "string",
+#'   WindowTargetId = "string",
+#'   Targets = list(
+#'     list(
+#'       Key = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   OwnerInformation = "string",
+#'   Name = "string",
+#'   Description = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_maintenance_window_target(
@@ -8108,7 +11512,7 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' Modifies a task assigned to a maintenance window. You can't change the
 #' task type, but you can change the following values:
 #' 
-#' -   TaskARN. For example, you can change a RUN\\_COMMAND task from
+#' -   TaskARN. For example, you can change a RUN_COMMAND task from
 #'     AWS-RunPowerShellScript to AWS-RunShellScript.
 #' 
 #' -   ServiceRoleArn
@@ -8129,9 +11533,11 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' targets](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
 #' in the *AWS Systems Manager User Guide*.
 #' 
-#' If the value for a parameter in `UpdateMaintenanceWindowTask` is null,
-#' then the corresponding field is not modified. If you set `Replace` to
-#' true, then all fields required by the RegisterTaskWithMaintenanceWindow
+#' If the value for a parameter in
+#' [`update_maintenance_window_task`][ssm_update_maintenance_window_task]
+#' is null, then the corresponding field is not modified. If you set
+#' `Replace` to true, then all fields required by the
+#' [`register_task_with_maintenance_window`][ssm_register_task_with_maintenance_window]
 #' action are required for this request. Optional fields that aren't
 #' specified are set to null.
 #' 
@@ -8154,8 +11560,8 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' @param WindowId &#91;required&#93; The maintenance window ID that contains the task to modify.
 #' @param WindowTaskId &#91;required&#93; The task ID to modify.
 #' @param Targets The targets (either instances or tags) to modify. Instances are
-#' specified using Key=instanceids,Values=instanceID\\_1,instanceID\\_2. Tags
-#' are specified using Key=tag\\_name,Values=tag\\_value.
+#' specified using Key=instanceids,Values=instanceID_1,instanceID_2. Tags
+#' are specified using Key=tag_name,Values=tag_value.
 #' 
 #' One or more targets must be specified for maintenance window Run
 #' Command-type tasks. Depending on the task, targets are optional for
@@ -8169,7 +11575,8 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' running a maintenance window task. If you do not specify a service role
 #' ARN, Systems Manager uses your account's service-linked role. If no
 #' service-linked role for Systems Manager exists in your account, it is
-#' created when you run `RegisterTaskWithMaintenanceWindow`.
+#' created when you run
+#' [`register_task_with_maintenance_window`][ssm_register_task_with_maintenance_window].
 #' 
 #' For more information, see the following topics in the in the *AWS
 #' Systems Manager User Guide*:
@@ -8236,6 +11643,87 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' @param Replace If True, then all fields that are required by the
 #' RegisterTaskWithMaintenanceWindow action are also required for this API
 #' request. Optional fields that are not specified are set to null.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WindowId = "string",
+#'   WindowTaskId = "string",
+#'   Targets = list(
+#'     list(
+#'       Key = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   TaskArn = "string",
+#'   ServiceRoleArn = "string",
+#'   TaskParameters = list(
+#'     list(
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   TaskInvocationParameters = list(
+#'     RunCommand = list(
+#'       Comment = "string",
+#'       CloudWatchOutputConfig = list(
+#'         CloudWatchLogGroupName = "string",
+#'         CloudWatchOutputEnabled = TRUE|FALSE
+#'       ),
+#'       DocumentHash = "string",
+#'       DocumentHashType = "Sha256"|"Sha1",
+#'       DocumentVersion = "string",
+#'       NotificationConfig = list(
+#'         NotificationArn = "string",
+#'         NotificationEvents = list(
+#'           "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
+#'         ),
+#'         NotificationType = "Command"|"Invocation"
+#'       ),
+#'       OutputS3BucketName = "string",
+#'       OutputS3KeyPrefix = "string",
+#'       Parameters = list(
+#'         list(
+#'           "string"
+#'         )
+#'       ),
+#'       ServiceRoleArn = "string",
+#'       TimeoutSeconds = 123
+#'     ),
+#'     Automation = list(
+#'       DocumentVersion = "string",
+#'       Parameters = list(
+#'         list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     StepFunctions = list(
+#'       Input = "string",
+#'       Name = "string"
+#'     ),
+#'     Lambda = list(
+#'       ClientContext = "string",
+#'       Qualifier = "string",
+#'       Payload = raw
+#'     )
+#'   ),
+#'   Priority = 123,
+#'   MaxConcurrency = "string",
+#'   MaxErrors = "string",
+#'   LoggingInfo = list(
+#'     S3BucketName = "string",
+#'     S3KeyPrefix = "string",
+#'     S3Region = "string"
+#'   ),
+#'   Name = "string",
+#'   Description = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8345,13 +11833,17 @@ ssm_update_maintenance_window_task <- function(WindowId, WindowTaskId, Targets =
 #' Changes the Amazon Identity and Access Management (IAM) role that is
 #' assigned to the on-premises instance or virtual machines (VM). IAM roles
 #' are first assigned to these hybrid instances during the activation
-#' process. For more information, see CreateActivation.
+#' process. For more information, see
+#' [`create_activation`][ssm_create_activation].
 #'
 #' @usage
 #' ssm_update_managed_instance_role(InstanceId, IamRole)
 #'
 #' @param InstanceId &#91;required&#93; The ID of the managed instance where you want to update the role.
 #' @param IamRole &#91;required&#93; The IAM role you want to assign or change.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -8420,9 +11912,10 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' You can choose to make the data searchable by other users in the account
 #' or you can restrict search access. Searchable data means that all users
 #' with access to the OpsItem Overview page (as provided by the
-#' DescribeOpsItems API action) can view and search on the specified data.
-#' Operational data that is not searchable is only viewable by users who
-#' have access to the OpsItem (as provided by the GetOpsItem API action).
+#' [`describe_ops_items`][ssm_describe_ops_items] API action) can view and
+#' search on the specified data. Operational data that is not searchable is
+#' only viewable by users who have access to the OpsItem (as provided by
+#' the [`get_ops_item`][ssm_get_ops_item] API action).
 #' 
 #' Use the `/aws/resources` key in OperationalData to specify a related
 #' resource in the request. Use the `/aws/automations` key in
@@ -8457,6 +11950,9 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' Currently supported only for the OpsItem type `/aws/changerequest`.
 #' @param PlannedEndTime The time specified in a change request for a runbook workflow to end.
 #' Currently supported only for the OpsItem type `/aws/changerequest`.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -8536,6 +12032,14 @@ ssm_update_ops_item <- function(Description = NULL, OperationalData = NULL, Oper
 #' @param MetadataToUpdate Metadata to add to an OpsMetadata object.
 #' @param KeysToDelete The metadata keys to delete from the OpsMetadata object.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OpsMetadataArn = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_ops_metadata(
@@ -8612,7 +12116,7 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
 #' @param RejectedPatchesAction The action for Patch Manager to take on patches included in the
 #' RejectedPackages list.
 #' 
-#' -   **ALLOW\\_AS\\_DEPENDENCY**: A package in the Rejected patches list is
+#' -   **ALLOW_AS_DEPENDENCY**: A package in the Rejected patches list is
 #'     installed only if it is a dependency of another package. It is
 #'     considered compliant with the patch baseline, and its status is
 #'     reported as *InstalledOther*. This is the default action if no
@@ -8630,6 +12134,71 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
 #' @param Replace If True, then all fields that are required by the CreatePatchBaseline
 #' action are also required for this API request. Optional fields that are
 #' not specified are set to null.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BaselineId = "string",
+#'   Name = "string",
+#'   OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
+#'   GlobalFilters = list(
+#'     PatchFilters = list(
+#'       list(
+#'         Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
+#'         Values = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ApprovalRules = list(
+#'     PatchRules = list(
+#'       list(
+#'         PatchFilterGroup = list(
+#'           PatchFilters = list(
+#'             list(
+#'               Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+#'         ApproveAfterDays = 123,
+#'         ApproveUntilDate = "string",
+#'         EnableNonSecurity = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   ApprovedPatches = list(
+#'     "string"
+#'   ),
+#'   ApprovedPatchesComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
+#'   ApprovedPatchesEnableNonSecurity = TRUE|FALSE,
+#'   RejectedPatches = list(
+#'     "string"
+#'   ),
+#'   RejectedPatchesAction = "ALLOW_AS_DEPENDENCY"|"BLOCK",
+#'   CreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ModifiedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Description = "string",
+#'   Sources = list(
+#'     list(
+#'       Name = "string",
+#'       Products = list(
+#'         "string"
+#'       ),
+#'       Configuration = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -8731,6 +12300,9 @@ ssm_update_patch_baseline <- function(BaselineId, Name = NULL, GlobalFilters = N
 #' SyncFromSource.
 #' @param SyncSource &#91;required&#93; Specify information about the data sources to synchronize.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$update_resource_data_sync(
@@ -8789,9 +12361,10 @@ ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
 #' define the default value for a `SettingId`. You can't create a new
 #' `SettingId`, but you can overwrite the default value if you have the
 #' `ssm:UpdateServiceSetting` permission for the setting. Use the
-#' GetServiceSetting API action to view the current value. Or, use the
-#' ResetServiceSetting to change the value back to the original value
-#' defined by the AWS service team.
+#' [`get_service_setting`][ssm_get_service_setting] API action to view the
+#' current value. Or, use the
+#' [`reset_service_setting`][ssm_reset_service_setting] to change the value
+#' back to the original value defined by the AWS service team.
 #' 
 #' Update the service setting for the account.
 #'
@@ -8821,6 +12394,9 @@ ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
 #' For the `/ssm/parameter-store/high-throughput-enabled`, and
 #' `/ssm/managed-instance/activation-tier` setting IDs, the setting value
 #' can be true or false.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

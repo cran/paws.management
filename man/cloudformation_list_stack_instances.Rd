@@ -14,10 +14,11 @@ instances for.}
 
 \item{NextToken}{If the previous request didn't return all of the remaining results, the
 response's \code{NextToken} parameter value is set to a token. To retrieve
-the next set of results, call \code{ListStackInstances} again and assign that
-token to the request object's \code{NextToken} parameter. If there are no
-remaining results, the previous response object's \code{NextToken} parameter
-is set to \code{null}.}
+the next set of results, call
+\code{\link[=cloudformation_list_stack_instances]{list_stack_instances}} again and
+assign that token to the request object's \code{NextToken} parameter. If
+there are no remaining results, the previous response object's
+\code{NextToken} parameter is set to \code{null}.}
 
 \item{MaxResults}{The maximum number of results to be returned with a single call. If the
 number of available results exceeds this maximum, the response includes
@@ -29,6 +30,30 @@ parameter to get the next set of results.}
 \item{StackInstanceAccount}{The name of the AWS account that you want to list stack instances for.}
 
 \item{StackInstanceRegion}{The name of the Region where you want to list stack instances.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Summaries = list(
+    list(
+      StackSetId = "string",
+      Region = "string",
+      Account = "string",
+      StackId = "string",
+      Status = "CURRENT"|"OUTDATED"|"INOPERABLE",
+      StatusReason = "string",
+      StackInstanceStatus = list(
+        DetailedStatus = "PENDING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED"|"INOPERABLE"
+      ),
+      OrganizationalUnitId = "string",
+      DriftStatus = "DRIFTED"|"IN_SYNC"|"UNKNOWN"|"NOT_CHECKED",
+      LastDriftCheckTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Returns summary information about stack instances that are associated

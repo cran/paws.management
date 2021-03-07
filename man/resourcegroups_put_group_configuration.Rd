@@ -21,10 +21,14 @@ For information about the syntax of a service configuration, see
 A resource group can contain either a \code{Configuration} or a
 \code{ResourceQuery}, but not both.}
 }
+\value{
+An empty list.
+}
 \description{
 Attaches a service configuration to the specified group. This occurs
 asynchronously, and can take time to complete. You can use
-GetGroupConfiguration to check the status of the update.
+\code{\link[=resourcegroups_get_group_configuration]{get_group_configuration}} to
+check the status of the update.
 
 \strong{Minimum permissions}
 

@@ -30,6 +30,9 @@ For the \verb{/ssm/parameter-store/high-throughput-enabled}, and
 \verb{/ssm/managed-instance/activation-tier} setting IDs, the setting value
 can be true or false.}
 }
+\value{
+An empty list.
+}
 \description{
 \code{ServiceSetting} is an account-level setting for an AWS service. This
 setting defines how a user interacts with or uses a service or a feature
@@ -43,9 +46,10 @@ Services map a \code{SettingId} object to a setting value. AWS services teams
 define the default value for a \code{SettingId}. You can't create a new
 \code{SettingId}, but you can overwrite the default value if you have the
 \code{ssm:UpdateServiceSetting} permission for the setting. Use the
-GetServiceSetting API action to view the current value. Or, use the
-ResetServiceSetting to change the value back to the original value
-defined by the AWS service team.
+\code{\link[=ssm_get_service_setting]{get_service_setting}} API action to view the
+current value. Or, use the
+\code{\link[=ssm_reset_service_setting]{reset_service_setting}} to change the value
+back to the original value defined by the AWS service team.
 
 Update the service setting for the account.
 }

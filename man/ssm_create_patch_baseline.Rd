@@ -42,7 +42,7 @@ in the \emph{AWS Systems Manager User Guide}.}
 \item{RejectedPatchesAction}{The action for Patch Manager to take on patches included in the
 RejectedPackages list.
 \itemize{
-\item \strong{ALLOW\\_AS\\_DEPENDENCY}: A package in the Rejected patches list is
+\item \strong{ALLOW_AS_DEPENDENCY}: A package in the Rejected patches list is
 installed only if it is a dependency of another package. It is
 considered compliant with the patch baseline, and its status is
 reported as \emph{InstalledOther}. This is the default action if no
@@ -73,8 +73,14 @@ following key name/value pairs:
 \item \verb{Key=OS,Value=Windows}
 }
 
-To add tags to an existing patch baseline, use the AddTagsToResource
-action.}
+To add tags to an existing patch baseline, use the
+\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  BaselineId = "string"
+)
+}
 }
 \description{
 Creates a patch baseline.

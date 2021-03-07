@@ -105,6 +105,9 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/capacity-rebalance.html}{Amazon EC2 Auto Scaling Capacity Rebalancing}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
+\value{
+An empty list.
+}
 \description{
 \strong{We strongly recommend that all Auto Scaling groups use launch
 templates to ensure full functionality for Amazon EC2 Auto Scaling and
@@ -149,9 +152,11 @@ to the new \code{MaxSize} value.
 }
 
 To see which parameters have been set, call the
-DescribeAutoScalingGroups API. To view the scaling policies for an Auto
-Scaling group, call the DescribePolicies API. If the group has scaling
-policies, you can update them by calling the PutScalingPolicy API.
+\code{\link[=autoscaling_describe_auto_scaling_groups]{describe_auto_scaling_groups}}
+API. To view the scaling policies for an Auto Scaling group, call the
+\code{\link[=autoscaling_describe_policies]{describe_policies}} API. If the group
+has scaling policies, you can update them by calling the
+\code{\link[=autoscaling_put_scaling_policy]{put_scaling_policy}} API.
 }
 \section{Request syntax}{
 \preformatted{svc$update_auto_scaling_group(

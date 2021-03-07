@@ -16,8 +16,8 @@ autoscaling_put_lifecycle_hook(LifecycleHookName, AutoScalingGroupName,
 \item{LifecycleTransition}{The instance state to which you want to attach the lifecycle hook. The
 valid values are:
 \itemize{
-\item autoscaling:EC2\\_INSTANCE\\_LAUNCHING
-\item autoscaling:EC2\\_INSTANCE\\_TERMINATING
+\item autoscaling:EC2_INSTANCE_LAUNCHING
+\item autoscaling:EC2_INSTANCE_TERMINATING
 }
 
 Required for new lifecycle hooks, but optional when updating existing
@@ -54,11 +54,15 @@ is \code{3600} seconds (1 hour).
 If the lifecycle hook times out, Amazon EC2 Auto Scaling performs the
 action that you specified in the \code{DefaultResult} parameter. You can
 prevent the lifecycle hook from timing out by calling the
-RecordLifecycleActionHeartbeat API.}
+\code{\link[=autoscaling_record_lifecycle_action_heartbeat]{record_lifecycle_action_heartbeat}}
+API.}
 
 \item{DefaultResult}{Defines the action the Auto Scaling group should take when the lifecycle
 hook timeout elapses or if an unexpected failure occurs. This parameter
 can be either \code{CONTINUE} or \code{ABANDON}. The default value is \code{ABANDON}.}
+}
+\value{
+An empty list.
 }
 \description{
 Creates or updates a lifecycle hook for the specified Auto Scaling
@@ -82,9 +86,12 @@ the target.
 the instances launch or terminate.}
 \item If you need more time, record the lifecycle action heartbeat to keep
 the instance in a pending state using the
-RecordLifecycleActionHeartbeat API call.
+\code{\link[=autoscaling_record_lifecycle_action_heartbeat]{record_lifecycle_action_heartbeat}}
+API call.
 \item If you finish before the timeout period ends, complete the lifecycle
-action using the CompleteLifecycleAction API call.
+action using the
+\code{\link[=autoscaling_complete_lifecycle_action]{complete_lifecycle_action}}
+API call.
 }
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html}{Amazon EC2 Auto Scaling lifecycle hooks}
@@ -94,8 +101,10 @@ If you exceed your maximum limit of lifecycle hooks, which by default is
 50 per Auto Scaling group, the call fails.
 
 You can view the lifecycle hooks for an Auto Scaling group using the
-DescribeLifecycleHooks API call. If you are no longer using a lifecycle
-hook, you can delete it by calling the DeleteLifecycleHook API.
+\code{\link[=autoscaling_describe_lifecycle_hooks]{describe_lifecycle_hooks}} API
+call. If you are no longer using a lifecycle hook, you can delete it by
+calling the \code{\link[=autoscaling_delete_lifecycle_hook]{delete_lifecycle_hook}}
+API.
 }
 \section{Request syntax}{
 \preformatted{svc$put_lifecycle_hook(

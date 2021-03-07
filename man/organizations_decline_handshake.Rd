@@ -8,20 +8,53 @@ organizations_decline_handshake(HandshakeId)
 }
 \arguments{
 \item{HandshakeId}{[required] The unique identifier (ID) of the handshake that you want to decline.
-You can get the ID from the ListHandshakesForAccount operation.
+You can get the ID from the
+\code{\link[=organizations_list_handshakes_for_account]{list_handshakes_for_account}}
+operation.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for handshake
 ID string requires "h-" followed by from 8 to 32 lowercase letters or
 digits.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Handshake = list(
+    Id = "string",
+    Arn = "string",
+    Parties = list(
+      list(
+        Id = "string",
+        Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
+      )
+    ),
+    State = "REQUESTED"|"OPEN"|"CANCELED"|"ACCEPTED"|"DECLINED"|"EXPIRED",
+    RequestedTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    ExpirationTimestamp = as.POSIXct(
+      "2015-01-01"
+    ),
+    Action = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
+    Resources = list(
+      list(
+        Value = "string",
+        Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATION_FEATURE_SET"|"EMAIL"|"MASTER_EMAIL"|"MASTER_NAME"|"NOTES"|"PARENT_HANDSHAKE",
+        Resources = list()
+      )
+    )
+  )
+)
+}
 }
 \description{
 Declines a handshake request. This sets the handshake state to
 \code{DECLINED} and effectively deactivates the request.
 
 This operation can be called only from the account that received the
-handshake. The originator of the handshake can use CancelHandshake
-instead. The originator can't reactivate a declined request, but can
-reinitiate the process with a new handshake request.
+handshake. The originator of the handshake can use
+\code{\link[=organizations_cancel_handshake]{cancel_handshake}} instead. The
+originator can't reactivate a declined request, but can reinitiate the
+process with a new handshake request.
 
 After you decline a handshake, it continues to appear in the results of
 relevant APIs for only 30 days. After that, it's deleted.

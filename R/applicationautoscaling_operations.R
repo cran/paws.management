@@ -145,6 +145,9 @@ NULL
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_scaling_policy(
@@ -323,6 +326,9 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_scheduled_action(
@@ -359,7 +365,7 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' @description
 #' Deregisters an Application Auto Scaling scalable target when you have
 #' finished using it. To see which resources have been registered, use
-#' [DescribeScalableTargets](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html).
+#' [`describe_scalable_targets`][applicationautoscaling_describe_scalable_targets].
 #' 
 #' Deregistering a scalable target deletes the scaling policies and the
 #' scheduled actions that are associated with it.
@@ -487,6 +493,9 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' 
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -670,6 +679,32 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' parameter is not used, the operation returns up to 50 results and a
 #' `NextToken` value, if applicable.
 #' @param NextToken The token for the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ScalableTargets = list(
+#'     list(
+#'       ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
+#'       ResourceId = "string",
+#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
+#'       MinCapacity = 123,
+#'       MaxCapacity = 123,
+#'       RoleARN = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SuspendedState = list(
+#'         DynamicScalingInSuspended = TRUE|FALSE,
+#'         DynamicScalingOutSuspended = TRUE|FALSE,
+#'         ScheduledScalingSuspended = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -856,6 +891,33 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' parameter is not used, the operation returns up to 50 results and a
 #' `NextToken` value, if applicable.
 #' @param NextToken The token for the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ScalingActivities = list(
+#'     list(
+#'       ActivityId = "string",
+#'       ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
+#'       ResourceId = "string",
+#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
+#'       Description = "string",
+#'       Cause = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusCode = "Pending"|"InProgress"|"Successful"|"Overridden"|"Unfulfilled"|"Failed",
+#'       StatusMessage = "string",
+#'       Details = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1051,6 +1113,68 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' `NextToken` value, if applicable.
 #' @param NextToken The token for the next set of results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ScalingPolicies = list(
+#'     list(
+#'       PolicyARN = "string",
+#'       PolicyName = "string",
+#'       ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
+#'       ResourceId = "string",
+#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
+#'       PolicyType = "StepScaling"|"TargetTrackingScaling",
+#'       StepScalingPolicyConfiguration = list(
+#'         AdjustmentType = "ChangeInCapacity"|"PercentChangeInCapacity"|"ExactCapacity",
+#'         StepAdjustments = list(
+#'           list(
+#'             MetricIntervalLowerBound = 123.0,
+#'             MetricIntervalUpperBound = 123.0,
+#'             ScalingAdjustment = 123
+#'           )
+#'         ),
+#'         MinAdjustmentMagnitude = 123,
+#'         Cooldown = 123,
+#'         MetricAggregationType = "Average"|"Minimum"|"Maximum"
+#'       ),
+#'       TargetTrackingScalingPolicyConfiguration = list(
+#'         TargetValue = 123.0,
+#'         PredefinedMetricSpecification = list(
+#'           PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"AppStreamAverageCapacityUtilization"|"ComprehendInferenceUtilization"|"LambdaProvisionedConcurrencyUtilization"|"CassandraReadCapacityUtilization"|"CassandraWriteCapacityUtilization"|"KafkaBrokerStorageUtilization",
+#'           ResourceLabel = "string"
+#'         ),
+#'         CustomizedMetricSpecification = list(
+#'           MetricName = "string",
+#'           Namespace = "string",
+#'           Dimensions = list(
+#'             list(
+#'               Name = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
+#'           Unit = "string"
+#'         ),
+#'         ScaleOutCooldown = 123,
+#'         ScaleInCooldown = 123,
+#'         DisableScaleIn = TRUE|FALSE
+#'       ),
+#'       Alarms = list(
+#'         list(
+#'           AlarmName = "string",
+#'           AlarmARN = "string"
+#'         )
+#'       ),
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_scaling_policies(
@@ -1243,6 +1367,37 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' parameter is not used, the operation returns up to 50 results and a
 #' `NextToken` value, if applicable.
 #' @param NextToken The token for the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ScheduledActions = list(
+#'     list(
+#'       ScheduledActionName = "string",
+#'       ScheduledActionARN = "string",
+#'       ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
+#'       Schedule = "string",
+#'       ResourceId = "string",
+#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ScalableTargetAction = list(
+#'         MinCapacity = 123,
+#'         MaxCapacity = 123
+#'       ),
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1470,6 +1625,20 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' This parameter is required if you are creating a policy and the policy
 #' type is `TargetTrackingScaling`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyARN = "string",
+#'   Alarms = list(
+#'     list(
+#'       AlarmName = "string",
+#'       AlarmARN = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_scaling_policy(
@@ -1599,12 +1768,11 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' `custom-resource` instead.
 #' @param Schedule The schedule for this action. The following formats are supported:
 #' 
-#' -   At expressions -
-#'     "`at(<i>yyyy</i>-<i>mm</i>-<i>dd</i>T<i>hh</i>:<i>mm</i>:<i>ss</i>)`"
+#' -   At expressions - "`at(yyyy-mm-ddThh:mm:ss)`"
 #' 
-#' -   Rate expressions - "`rate(<i>value</i> <i>unit</i>)`"
+#' -   Rate expressions - "`rate(value unit)`"
 #' 
-#' -   Cron expressions - "`cron(<i>fields</i>)`"
+#' -   Cron expressions - "`cron(fields)`"
 #' 
 #' At expressions are useful for one-time schedules. Specify the time in
 #' UTC.
@@ -1614,7 +1782,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' 
 #' For cron expressions, *fields* is a cron expression. The supported cron
 #' format consists of six fields separated by white spaces: \[Minutes\]
-#' \[Hours\] \[Day\\_of\\_Month\] \[Month\] \[Day\\_of\\_Week\] \[Year\].
+#' \[Hours\] \[Day_of_Month\] \[Month\] \[Day_of_Week\] \[Year\].
 #' 
 #' For more information and examples, see [Scheduled
 #' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html)
@@ -1745,6 +1913,9 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' If the current capacity is above the maximum capacity, Application Auto
 #' Scaling scales in to the maximum capacity.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_scheduled_action(
@@ -1804,11 +1975,11 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' After you register a scalable target, you do not need to register it
 #' again to use other Application Auto Scaling operations. To see which
 #' resources have been registered, use
-#' [DescribeScalableTargets](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html).
+#' [`describe_scalable_targets`][applicationautoscaling_describe_scalable_targets].
 #' You can also view the scaling policies for a service namespace by using
-#' [DescribeScalableTargets](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html).
+#' [`describe_scalable_targets`][applicationautoscaling_describe_scalable_targets].
 #' If you no longer need a scalable target, you can deregister it by using
-#' [DeregisterScalableTarget](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DeregisterScalableTarget.html).
+#' [`deregister_scalable_target`][applicationautoscaling_deregister_scalable_target].
 #' 
 #' To update a scalable target, specify the parameters that you want to
 #' change. Include the parameters that identify the scalable target:
@@ -1992,6 +2163,9 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' For more information, see [Suspending and Resuming
 #' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html)
 #' in the *Application Auto Scaling User Guide*.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

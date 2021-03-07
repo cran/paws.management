@@ -37,19 +37,66 @@ Conditional: You must specify only one of the following parameters:
 Conditional: You must specify only one of the following parameters:
 \code{StackName}, \code{StackSetName}, \code{TemplateBody}, or \code{TemplateURL}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Parameters = list(
+    list(
+      ParameterKey = "string",
+      DefaultValue = "string",
+      ParameterType = "string",
+      NoEcho = TRUE|FALSE,
+      Description = "string",
+      ParameterConstraints = list(
+        AllowedValues = list(
+          "string"
+        )
+      )
+    )
+  ),
+  Description = "string",
+  Capabilities = list(
+    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
+  ),
+  CapabilitiesReason = "string",
+  ResourceTypes = list(
+    "string"
+  ),
+  Version = "string",
+  Metadata = "string",
+  DeclaredTransforms = list(
+    "string"
+  ),
+  ResourceIdentifierSummaries = list(
+    list(
+      ResourceType = "string",
+      LogicalResourceIds = list(
+        "string"
+      ),
+      ResourceIdentifiers = list(
+        "string"
+      )
+    )
+  )
+)
+}
+}
 \description{
 Returns information about a new or existing template. The
-\code{GetTemplateSummary} action is useful for viewing parameter information,
-such as default parameter values and parameter types, before you create
-or update a stack or stack set.
+\code{\link[=cloudformation_get_template_summary]{get_template_summary}} action is
+useful for viewing parameter information, such as default parameter
+values and parameter types, before you create or update a stack or stack
+set.
 
-You can use the \code{GetTemplateSummary} action when you submit a template,
-or you can get template information for a stack set, or a running or
-deleted stack.
+You can use the
+\code{\link[=cloudformation_get_template_summary]{get_template_summary}} action
+when you submit a template, or you can get template information for a
+stack set, or a running or deleted stack.
 
-For deleted stacks, \code{GetTemplateSummary} returns the template
-information for up to 90 days after the stack has been deleted. If the
-template does not exist, a \code{ValidationError} is returned.
+For deleted stacks,
+\code{\link[=cloudformation_get_template_summary]{get_template_summary}} returns
+the template information for up to 90 days after the stack has been
+deleted. If the template does not exist, a \code{ValidationError} is
+returned.
 }
 \section{Request syntax}{
 \preformatted{svc$get_template_summary(

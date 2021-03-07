@@ -12,14 +12,15 @@ ssm_describe_patch_groups(MaxResults, Filters, NextToken)
 \item{Filters}{One or more filters. Use a filter to return a more specific list of
 results.
 
-For \code{DescribePatchGroups},valid filter keys include the following:
+For \code{\link[=ssm_describe_patch_groups]{describe_patch_groups}},valid filter
+keys include the following:
 \itemize{
 \item \code{NAME_PREFIX}: The name of the patch group. Wildcards (*) are
 accepted.
 \item \code{OPERATING_SYSTEM}: The supported operating system type to return
 results for. For valid operating system values, see
 GetDefaultPatchBaselineRequest$OperatingSystem in
-CreatePatchBaseline.
+\code{\link[=ssm_create_patch_baseline]{create_patch_baseline}}.
 
 Examples:
 \itemize{
@@ -30,6 +31,24 @@ Examples:
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Mappings = list(
+    list(
+      PatchGroup = "string",
+      BaselineIdentity = list(
+        BaselineId = "string",
+        BaselineName = "string",
+        OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
+        BaselineDescription = "string",
+        DefaultBaseline = TRUE|FALSE
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Lists all patch groups that have been registered with patch baselines.

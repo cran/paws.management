@@ -20,7 +20,7 @@ opsworks_update_layer(LayerId, Name, Shortname, Attributes,
 name, which is used internally by AWS OpsWorks Stacks and by Chef. The
 short name is also used as the name for the directory where your app
 files are installed. It can have a maximum of 200 characters and must be
-in the following format: /\verb{\\\\A}[a-z0-9\\-\\\_\\.]+\verb{\\\\Z}/.
+in the following format: /\\A[a-z0-9\\-\\_\\.]+\\Z/.
 
 The built-in layers' short names are defined by AWS OpsWorks Stacks. For
 more information, see the \href{https://docs.aws.amazon.com/opsworks/latest/userguide/layers.html}{Layer Reference}}
@@ -59,7 +59,8 @@ public IP address to the layer's instances. For more information, see
 \item{InstallUpdatesOnBoot}{Whether to install operating system and package updates when the
 instance boots. The default value is \code{true}. To control when updates are
 installed, set this value to \code{false}. You must then update your
-instances manually by using CreateDeployment to run the
+instances manually by using
+\code{\link[=opsworks_create_deployment]{create_deployment}} to run the
 \code{update_dependencies} stack command or manually running \code{yum} (Amazon
 Linux) or \code{apt-get} (Ubuntu) on the instances.
 
@@ -69,6 +70,9 @@ your instances have the latest security updates.}
 \item{UseEbsOptimizedInstances}{Whether to use Amazon EBS-optimized instances.}
 
 \item{LifecycleEventConfiguration}{}
+}
+\value{
+An empty list.
 }
 \description{
 Updates a specified layer.

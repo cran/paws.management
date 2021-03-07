@@ -176,6 +176,9 @@ or a number equal to or greater than 86,400 seconds (1 day). For more
 information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance-lifetime.html}{Replacing Auto Scaling instances based on maximum instance lifetime}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
+\value{
+An empty list.
+}
 \description{
 \strong{We strongly recommend using a launch template when calling this
 operation to ensure full functionality for Amazon EC2 Auto Scaling and
@@ -184,8 +187,9 @@ Amazon EC2.}
 Creates an Auto Scaling group with the specified name and attributes.
 
 If you exceed your maximum limit of Auto Scaling groups, the call fails.
-To query this limit, call the DescribeAccountLimits API. For information
-about updating this limit, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling service quotas}
+To query this limit, call the
+\code{\link[=autoscaling_describe_account_limits]{describe_account_limits}} API.
+For information about updating this limit, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling service quotas}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 For introductory exercises for creating an Auto Scaling group, see
@@ -313,7 +317,7 @@ svc$create_auto_scaling_group(
   MaxSize = 3L,
   MinSize = 1L,
   TargetGroupARNs = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
+    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-tar..."
   ),
   VPCZoneIdentifier = "subnet-057fa0918fEXAMPLE, subnet-610acd08EXAMPLE"
 )

@@ -12,7 +12,7 @@ cloudtrail_put_event_selectors(TrailName, EventSelectors,
 name, the string must meet the following requirements:
 \itemize{
 \item Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-underscores (\\_), or dashes (-)
+underscores (_), or dashes (-)
 \item Start with a letter or number, and end with a letter or number
 \item Be between 3 and 128 characters
 \item Have no adjacent periods, underscores or dashes. Names like
@@ -26,8 +26,9 @@ If you specify a trail ARN, it must be in the format:
 
 \item{EventSelectors}{Specifies the settings for your event selectors. You can configure up to
 five event selectors for a trail. You can use either \code{EventSelectors} or
-\code{AdvancedEventSelectors} in a \code{PutEventSelectors} request, but not both.
-If you apply \code{EventSelectors} to a trail, any existing
+\code{AdvancedEventSelectors} in a
+\code{\link[=cloudtrail_put_event_selectors]{put_event_selectors}} request, but not
+both. If you apply \code{EventSelectors} to a trail, any existing
 \code{AdvancedEventSelectors} are overwritten.}
 
 \item{AdvancedEventSelectors}{Specifies the settings for advanced event selectors. You can add
@@ -38,6 +39,57 @@ selectors on a trail. You can use either \code{AdvancedEventSelectors} or
 a trail, any existing \code{EventSelectors} are overwritten. For more
 information about advanced event selectors, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html}{Logging data events for trails}
 in the \emph{AWS CloudTrail User Guide}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  TrailARN = "string",
+  EventSelectors = list(
+    list(
+      ReadWriteType = "ReadOnly"|"WriteOnly"|"All",
+      IncludeManagementEvents = TRUE|FALSE,
+      DataResources = list(
+        list(
+          Type = "string",
+          Values = list(
+            "string"
+          )
+        )
+      ),
+      ExcludeManagementEventSources = list(
+        "string"
+      )
+    )
+  ),
+  AdvancedEventSelectors = list(
+    list(
+      Name = "string",
+      FieldSelectors = list(
+        list(
+          Field = "string",
+          Equals = list(
+            "string"
+          ),
+          StartsWith = list(
+            "string"
+          ),
+          EndsWith = list(
+            "string"
+          ),
+          NotEquals = list(
+            "string"
+          ),
+          NotStartsWith = list(
+            "string"
+          ),
+          NotEndsWith = list(
+            "string"
+          )
+        )
+      )
+    )
+  )
+)
+}
 }
 \description{
 Configures an event selector or advanced event selectors for your trail.
@@ -65,9 +117,9 @@ selector. The trail logs the event.
 event selector. The trail doesn't log the event.
 }
 
-The \code{PutEventSelectors} operation must be called from the region in
-which the trail was created; otherwise, an \code{InvalidHomeRegionException}
-exception is thrown.
+The \code{\link[=cloudtrail_put_event_selectors]{put_event_selectors}} operation
+must be called from the region in which the trail was created;
+otherwise, an \code{InvalidHomeRegionException} exception is thrown.
 
 You can configure up to five event selectors for each trail. For more
 information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/}{Logging data and management events for trails} and

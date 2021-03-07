@@ -14,7 +14,7 @@ NULL
 #' 
 #' Before you can call this operation, you must first enable AWS Health to
 #' work with AWS Organizations. To do this, call the
-#' [EnableHealthServiceAccessForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html)
+#' [`enable_health_service_access_for_organization`][health_enable_health_service_access_for_organization]
 #' operation from your organization's master account.
 #' 
 #' This API operation uses pagination. Specify the `nextToken` parameter in
@@ -25,7 +25,7 @@ NULL
 #'   maxResults)
 #'
 #' @param eventArn &#91;required&#93; The unique identifier for the event. Format:
-#' `arn:aws:health:<i>event-region</i>::event/<i>SERVICE</i>/<i>EVENT_TYPE_CODE</i>/<i>EVENT_TYPE_PLUS_ID</i> `.
+#' `arn:aws:health:event-region::event/SERVICE/EVENT_TYPE_CODE/EVENT_TYPE_PLUS_ID `.
 #' Example:
 #' `Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456`
 #' @param nextToken If the results of a search are large, only a portion of the results are
@@ -35,6 +35,18 @@ NULL
 #' returned, the response does not contain a pagination token value.
 #' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
 #' inclusive.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   affectedAccounts = list(
+#'     "string"
+#'   ),
+#'   eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE",
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -96,6 +108,30 @@ health_describe_affected_accounts_for_organization <- function(eventArn, nextTok
 #' returned, the response does not contain a pagination token value.
 #' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
 #' inclusive.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   entities = list(
+#'     list(
+#'       entityArn = "string",
+#'       eventArn = "string",
+#'       entityValue = "string",
+#'       entityUrl = "string",
+#'       awsAccountId = "string",
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       statusCode = "IMPAIRED"|"UNIMPAIRED"|"UNKNOWN",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -172,7 +208,7 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
 #' 
 #' Before you can call this operation, you must first enable AWS Health to
 #' work with AWS Organizations. To do this, call the
-#' [EnableHealthServiceAccessForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html)
+#' [`enable_health_service_access_for_organization`][health_enable_health_service_access_for_organization]
 #' operation from your organization's master account.
 #' 
 #' This API operation uses pagination. Specify the `nextToken` parameter in
@@ -192,6 +228,38 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
 #' returned, the response does not contain a pagination token value.
 #' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
 #' inclusive.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   entities = list(
+#'     list(
+#'       entityArn = "string",
+#'       eventArn = "string",
+#'       entityValue = "string",
+#'       entityUrl = "string",
+#'       awsAccountId = "string",
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       statusCode = "IMPAIRED"|"UNIMPAIRED"|"UNKNOWN",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   failedSet = list(
+#'     list(
+#'       awsAccountId = "string",
+#'       eventArn = "string",
+#'       errorName = "string",
+#'       errorMessage = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -241,6 +309,19 @@ health_describe_affected_entities_for_organization <- function(organizationEntit
 #'
 #' @param eventArns A list of event ARNs (unique identifiers). For example:
 #' `"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   entityAggregates = list(
+#'     list(
+#'       eventArn = "string",
+#'       count = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -295,6 +376,20 @@ health_describe_entity_aggregates <- function(eventArns = NULL) {
 #' response. To retrieve the next batch of results, reissue the search
 #' request and include the returned token. When all results have been
 #' returned, the response does not contain a pagination token value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   eventAggregates = list(
+#'     list(
+#'       aggregateValue = "string",
+#'       count = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -394,12 +489,11 @@ health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxR
 #' @description
 #' Returns detailed information about one or more specified events.
 #' Information includes standard event data (Region, service, and so on, as
-#' returned by
-#' [DescribeEvents](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEvents.html)),
-#' a detailed event description, and possible additional metadata that
-#' depends upon the nature of the event. Affected entities are not
-#' included. To retrieve those, use the
-#' [DescribeAffectedEntities](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntities.html)
+#' returned by [`describe_events`][health_describe_events]), a detailed
+#' event description, and possible additional metadata that depends upon
+#' the nature of the event. Affected entities are not included. To retrieve
+#' those, use the
+#' [`describe_affected_entities`][health_describe_affected_entities]
 #' operation.
 #' 
 #' If a specified event cannot be retrieved, an error message is returned
@@ -412,6 +506,49 @@ health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxR
 #' `"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"`
 #' @param locale The locale (language) to return information in. English (en) is the
 #' default and the only supported value at this time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   successfulSet = list(
+#'     list(
+#'       event = list(
+#'         arn = "string",
+#'         service = "string",
+#'         eventTypeCode = "string",
+#'         eventTypeCategory = "issue"|"accountNotification"|"scheduledChange"|"investigation",
+#'         region = "string",
+#'         availabilityZone = "string",
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         statusCode = "open"|"closed"|"upcoming",
+#'         eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE"
+#'       ),
+#'       eventDescription = list(
+#'         latestDescription = "string"
+#'       ),
+#'       eventMetadata = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   failedSet = list(
+#'     list(
+#'       eventArn = "string",
+#'       errorName = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -450,21 +587,23 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
 #' Returns detailed information about one or more specified events for one
 #' or more accounts in your organization. Information includes standard
 #' event data (Region, service, and so on, as returned by
-#' [DescribeEventsForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventsForOrganization.html)),
+#' [`describe_events_for_organization`][health_describe_events_for_organization]),
 #' a detailed event description, and possible additional metadata that
 #' depends upon the nature of the event. Affected entities are not
 #' included; to retrieve those, use the
-#' [DescribeAffectedEntitiesForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntitiesForOrganization.html)
+#' [`describe_affected_entities_for_organization`][health_describe_affected_entities_for_organization]
 #' operation.
 #' 
 #' Before you can call this operation, you must first enable AWS Health to
 #' work with AWS Organizations. To do this, call the
-#' [EnableHealthServiceAccessForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html)
+#' [`enable_health_service_access_for_organization`][health_enable_health_service_access_for_organization]
 #' operation from your organization's master account.
 #' 
-#' When you call the `DescribeEventDetailsForOrganization` operation, you
-#' specify the `organizationEventDetailFilters` object in the request.
-#' Depending on the AWS Health event type, note the following differences:
+#' When you call the
+#' [`describe_event_details_for_organization`][health_describe_event_details_for_organization]
+#' operation, you specify the `organizationEventDetailFilters` object in
+#' the request. Depending on the AWS Health event type, note the following
+#' differences:
 #' 
 #' -   If the event is public, the `awsAccountId` parameter must be empty.
 #'     If you specify an account ID for a public event, then an error
@@ -487,6 +626,51 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
 #' `eventArn`.
 #' @param locale The locale (language) to return information in. English (en) is the
 #' default and the only supported value at this time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   successfulSet = list(
+#'     list(
+#'       awsAccountId = "string",
+#'       event = list(
+#'         arn = "string",
+#'         service = "string",
+#'         eventTypeCode = "string",
+#'         eventTypeCategory = "issue"|"accountNotification"|"scheduledChange"|"investigation",
+#'         region = "string",
+#'         availabilityZone = "string",
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         statusCode = "open"|"closed"|"upcoming",
+#'         eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE"
+#'       ),
+#'       eventDescription = list(
+#'         latestDescription = "string"
+#'       ),
+#'       eventMetadata = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   failedSet = list(
+#'     list(
+#'       awsAccountId = "string",
+#'       eventArn = "string",
+#'       errorName = "string",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -545,6 +729,21 @@ health_describe_event_details_for_organization <- function(organizationEventDeta
 #' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
 #' inclusive.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   eventTypes = list(
+#'     list(
+#'       service = "string",
+#'       code = "string",
+#'       category = "issue"|"accountNotification"|"scheduledChange"|"investigation"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_event_types(
@@ -592,22 +791,22 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
 #' criteria. Events are returned in a summary form and do not include the
 #' detailed description, any additional metadata that depends on the event
 #' type, or any affected resources. To retrieve that information, use the
-#' [DescribeEventDetails](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventDetails.html)
-#' and
-#' [DescribeAffectedEntities](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntities.html)
+#' [`describe_event_details`][health_describe_event_details] and
+#' [`describe_affected_entities`][health_describe_affected_entities]
 #' operations.
 #' 
 #' If no filter criteria are specified, all events are returned. Results
 #' are sorted by `lastModifiedTime`, starting with the most recent event.
 #' 
-#' -   When you call the `DescribeEvents` operation and specify an entity
-#'     for the `entityValues` parameter, AWS Health might return public
-#'     events that aren't specific to that resource. For example, if you
-#'     call `DescribeEvents` and specify an ID for an Amazon Elastic
-#'     Compute Cloud (Amazon EC2) instance, AWS Health might return events
-#'     that aren't specific to that resource or service. To get events that
-#'     are specific to a service, use the `services` parameter in the
-#'     `filter` object. For more information, see
+#' -   When you call the [`describe_events`][health_describe_events]
+#'     operation and specify an entity for the `entityValues` parameter,
+#'     AWS Health might return public events that aren't specific to that
+#'     resource. For example, if you call
+#'     [`describe_events`][health_describe_events] and specify an ID for an
+#'     Amazon Elastic Compute Cloud (Amazon EC2) instance, AWS Health might
+#'     return events that aren't specific to that resource or service. To
+#'     get events that are specific to a service, use the `services`
+#'     parameter in the `filter` object. For more information, see
 #'     [Event](https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html).
 #' 
 #' -   This API operation uses pagination. Specify the `nextToken`
@@ -626,6 +825,35 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
 #' inclusive.
 #' @param locale The locale (language) to return information in. English (en) is the
 #' default and the only supported value at this time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   events = list(
+#'     list(
+#'       arn = "string",
+#'       service = "string",
+#'       eventTypeCode = "string",
+#'       eventTypeCategory = "issue"|"accountNotification"|"scheduledChange"|"investigation",
+#'       region = "string",
+#'       availabilityZone = "string",
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       statusCode = "open"|"closed"|"upcoming",
+#'       eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -731,11 +959,11 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
 #' metadata that depends on the event type, or any affected resources. To
 #' retrieve that information, use the following operations:
 #' 
-#' -   [DescribeAffectedAccountsForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedAccountsForOrganization.html)
+#' -   [`describe_affected_accounts_for_organization`][health_describe_affected_accounts_for_organization]
 #' 
-#' -   [DescribeEventDetailsForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventDetailsForOrganization.html)
+#' -   [`describe_event_details_for_organization`][health_describe_event_details_for_organization]
 #' 
-#' -   [DescribeAffectedEntitiesForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntitiesForOrganization.html)
+#' -   [`describe_affected_entities_for_organization`][health_describe_affected_entities_for_organization]
 #' 
 #' If you don't specify a `filter`, the `DescribeEventsForOrganizations`
 #' returns all events across your organization. Results are sorted by
@@ -746,7 +974,7 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
 #' 
 #' Before you can call this operation, you must first enable AWS Health to
 #' work with AWS Organizations. To do this, call the
-#' [EnableHealthServiceAccessForOrganization](https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html)
+#' [`enable_health_service_access_for_organization`][health_enable_health_service_access_for_organization]
 #' operation from your organization's master AWS account.
 #' 
 #' This API operation uses pagination. Specify the `nextToken` parameter in
@@ -766,6 +994,34 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
 #' inclusive.
 #' @param locale The locale (language) to return information in. English (en) is the
 #' default and the only supported value at this time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   events = list(
+#'     list(
+#'       arn = "string",
+#'       service = "string",
+#'       eventTypeCode = "string",
+#'       eventTypeCategory = "issue"|"accountNotification"|"scheduledChange"|"investigation",
+#'       eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE",
+#'       region = "string",
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       statusCode = "open"|"closed"|"upcoming"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -860,6 +1116,14 @@ health_describe_events_for_organization <- function(filter = NULL, nextToken = N
 #'
 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   healthServiceAccessStatusForOrganization = "string"
+#' )
+#' ```
+#'
 
 #'
 #' @keywords internal
@@ -914,6 +1178,9 @@ health_describe_health_service_status_for_organization <- function() {
 #'
 
 #'
+#' @return
+#' An empty list.
+#'
 
 #'
 #' @keywords internal
@@ -953,6 +1220,9 @@ health_disable_health_service_access_for_organization <- function() {
 #' health_enable_health_service_access_for_organization()
 #'
 
+#'
+#' @return
+#' An empty list.
 #'
 
 #'

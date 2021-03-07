@@ -30,13 +30,45 @@ of a resource supported by AWS CloudFormation.
 
 For example, for an Amazon Elastic Compute Cloud (EC2) instance,
 \code{PhysicalResourceId} corresponds to the \code{InstanceId}. You can pass the
-EC2 \code{InstanceId} to \code{DescribeStackResources} to find which stack the
-instance belongs to and what other resources are part of the stack.
+EC2 \code{InstanceId} to
+\code{\link[=cloudformation_describe_stack_resources]{describe_stack_resources}} to
+find which stack the instance belongs to and what other resources are
+part of the stack.
 
 Required: Conditional. If you do not specify \code{PhysicalResourceId}, you
 must specify \code{StackName}.
 
 Default: There is no default value.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  StackResources = list(
+    list(
+      StackName = "string",
+      StackId = "string",
+      LogicalResourceId = "string",
+      PhysicalResourceId = "string",
+      ResourceType = "string",
+      Timestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      ResourceStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"DELETE_SKIPPED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"|"UPDATE_COMPLETE"|"IMPORT_FAILED"|"IMPORT_COMPLETE"|"IMPORT_IN_PROGRESS"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE",
+      ResourceStatusReason = "string",
+      Description = "string",
+      DriftInformation = list(
+        StackResourceDriftStatus = "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED",
+        LastCheckTimestamp = as.POSIXct(
+          "2015-01-01"
+        )
+      ),
+      ModuleInfo = list(
+        TypeHierarchy = "string",
+        LogicalIdHierarchy = "string"
+      )
+    )
+  )
+)
+}
 }
 \description{
 Returns AWS resource descriptions for running and deleted stacks. If
@@ -46,10 +78,13 @@ associated resources of the stack that the resource belongs to are
 returned.
 
 Only the first 100 resources will be returned. If your stack has more
-resources than this, you should use \code{ListStackResources} instead.
+resources than this, you should use
+\code{\link[=cloudformation_list_stack_resources]{list_stack_resources}} instead.
 
-For deleted stacks, \code{DescribeStackResources} returns resource
-information for up to 90 days after the stack has been deleted.
+For deleted stacks,
+\code{\link[=cloudformation_describe_stack_resources]{describe_stack_resources}}
+returns resource information for up to 90 days after the stack has been
+deleted.
 
 You must specify either \code{StackName} or \code{PhysicalResourceId}, but not
 both. In addition, you can specify \code{LogicalResourceId} to filter the

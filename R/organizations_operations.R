@@ -50,6 +50,38 @@ NULL
 #' ID string requires "h-" followed by from 8 to 32 lowercase letters or
 #' digits.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Handshake = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Parties = list(
+#'       list(
+#'         Id = "string",
+#'         Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
+#'       )
+#'     ),
+#'     State = "REQUESTED"|"OPEN"|"CANCELED"|"ACCEPTED"|"DECLINED"|"EXPIRED",
+#'     RequestedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExpirationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Action = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
+#'     Resources = list(
+#'       list(
+#'         Value = "string",
+#'         Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATION_FEATURE_SET"|"EMAIL"|"MASTER_EMAIL"|"MASTER_NAME"|"NOTES"|"PARENT_HANDSHAKE",
+#'         Resources = list()
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$accept_handshake(
@@ -97,13 +129,13 @@ organizations_accept_handshake <- function(HandshakeId) {
 #' of policy. Refer to the *AWS Organizations User Guide* for information
 #' about each policy type:
 #' 
-#' -   [AISERVICES\\_OPT\\_OUT\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
 #' 
-#' -   [BACKUP\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
+#' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
-#' -   [SERVICE\\_CONTROL\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
 #' 
-#' -   [TAG\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' -   [TAG_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
 #' 
 #' This operation can be called only from the organization's management
 #' account.
@@ -112,15 +144,17 @@ organizations_accept_handshake <- function(HandshakeId) {
 #' organizations_attach_policy(PolicyId, TargetId)
 #'
 #' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy that you want to attach to the
-#' target. You can get the ID for the policy by calling the ListPolicies
-#' operation.
+#' target. You can get the ID for the policy by calling the
+#' [`list_policies`][organizations_list_policies] operation.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a policy ID
 #' string requires "p-" followed by from 8 to 128 lowercase or uppercase
-#' letters, digits, or the underscore character (\\_).
+#' letters, digits, or the underscore character (_).
 #' @param TargetId &#91;required&#93; The unique identifier (ID) of the root, OU, or account that you want to
-#' attach the policy to. You can get the ID by calling the ListRoots,
-#' ListOrganizationalUnitsForParent, or ListAccounts operations.
+#' attach the policy to. You can get the ID by calling the
+#' [`list_roots`][organizations_list_roots],
+#' [`list_organizational_units_for_parent`][organizations_list_organizational_units_for_parent],
+#' or [`list_accounts`][organizations_list_accounts] operations.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a target ID
 #' string requires one of the following:
@@ -134,6 +168,9 @@ organizations_accept_handshake <- function(HandshakeId) {
 #'     followed by from 4 to 32 lowercase letters or digits (the ID of the
 #'     root that the OU is in). This string is followed by a second "-"
 #'     dash and from 8 to 32 additional lowercase letters or digits.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -190,8 +227,9 @@ organizations_attach_policy <- function(PolicyId, TargetId) {
 #' 
 #' This operation can be called only from the account that originated the
 #' handshake. The recipient of the handshake can't cancel it, but can use
-#' DeclineHandshake instead. After a handshake is canceled, the recipient
-#' can no longer respond to that handshake.
+#' [`decline_handshake`][organizations_decline_handshake] instead. After a
+#' handshake is canceled, the recipient can no longer respond to that
+#' handshake.
 #' 
 #' After you cancel a handshake, it continues to appear in the results of
 #' relevant APIs for only 30 days. After that, it's deleted.
@@ -200,11 +238,45 @@ organizations_attach_policy <- function(PolicyId, TargetId) {
 #' organizations_cancel_handshake(HandshakeId)
 #'
 #' @param HandshakeId &#91;required&#93; The unique identifier (ID) of the handshake that you want to cancel. You
-#' can get the ID from the ListHandshakesForOrganization operation.
+#' can get the ID from the
+#' [`list_handshakes_for_organization`][organizations_list_handshakes_for_organization]
+#' operation.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for handshake
 #' ID string requires "h-" followed by from 8 to 32 lowercase letters or
 #' digits.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Handshake = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Parties = list(
+#'       list(
+#'         Id = "string",
+#'         Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
+#'       )
+#'     ),
+#'     State = "REQUESTED"|"OPEN"|"CANCELED"|"ACCEPTED"|"DECLINED"|"EXPIRED",
+#'     RequestedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExpirationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Action = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
+#'     Resources = list(
+#'       list(
+#'         Value = "string",
+#'         Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATION_FEATURE_SET"|"EMAIL"|"MASTER_EMAIL"|"MASTER_NAME"|"NOTES"|"PARENT_HANDSHAKE",
+#'         Resources = list()
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -251,15 +323,17 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #' @description
 #' Creates an AWS account that is automatically a member of the
 #' organization whose credentials made the request. This is an asynchronous
-#' request that AWS performs in the background. Because `CreateAccount`
-#' operates asynchronously, it can return a successful completion message
-#' even though account initialization might still be in progress. You might
-#' need to wait a few minutes before you can successfully access the
-#' account. To check the status of the request, do one of the following:
+#' request that AWS performs in the background. Because
+#' [`create_account`][organizations_create_account] operates
+#' asynchronously, it can return a successful completion message even
+#' though account initialization might still be in progress. You might need
+#' to wait a few minutes before you can successfully access the account. To
+#' check the status of the request, do one of the following:
 #' 
 #' -   Use the `Id` member of the `CreateAccountStatus` response element
 #'     from this operation to provide as a parameter to the
-#'     DescribeCreateAccountStatus operation.
+#'     [`describe_create_account_status`][organizations_describe_create_account_status]
+#'     operation.
 #' 
 #' -   Check the AWS CloudTrail log for the `CreateAccountResult` event.
 #'     For information on using AWS CloudTrail with AWS Organizations, see
@@ -311,11 +385,11 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #'     because your organization is still initializing, wait one hour and
 #'     then try again. If the error persists, contact AWS Support.
 #' 
-#' -   Using `CreateAccount` to create multiple temporary accounts isn't
-#'     recommended. You can only close an account from the Billing and Cost
-#'     Management Console, and you must be signed in as the root user. For
-#'     information on the requirements and process for closing an account,
-#'     see [Closing an AWS
+#' -   Using [`create_account`][organizations_create_account] to create
+#'     multiple temporary accounts isn't recommended. You can only close an
+#'     account from the Billing and Cost Management Console, and you must
+#'     be signed in as the root user. For information on the requirements
+#'     and process for closing an account, see [Closing an AWS
 #'     Account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
 #'     in the *AWS Organizations User Guide*.
 #' 
@@ -387,6 +461,27 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #' tags for an account, then the entire request fails and the account is
 #' not created.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreateAccountStatus = list(
+#'     Id = "string",
+#'     AccountName = "string",
+#'     State = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'     RequestedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CompletedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AccountId = "string",
+#'     GovCloudAccountId = "string",
+#'     FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_account(
@@ -440,8 +535,7 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 }
 .organizations$operations$create_account <- organizations_create_account
 
-#' This action is available if all of the following are true: - You're
-#' authorized to create accounts in the AWS GovCloud (US) Region
+#' This action is available if all of the following are true:
 #'
 #' @description
 #' This action is available if all of the following are true:
@@ -481,8 +575,8 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' `organizations:TagResource` permission. The tags are attached to the
 #' commercial account associated with the GovCloud account, rather than the
 #' GovCloud account itself. To add tags to the GovCloud account, call the
-#' TagResource operation in the GovCloud Region after the new GovCloud
-#' account exists.
+#' [`tag_resource`][organizations_tag_resource] operation in the GovCloud
+#' Region after the new GovCloud account exists.
 #' 
 #' You call this action from the management account of your organization in
 #' the commercial Region to create a standalone AWS account in the AWS
@@ -493,15 +587,19 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' Organizations](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html)
 #' in the *AWS GovCloud User Guide.*
 #' 
-#' Calling `CreateGovCloudAccount` is an asynchronous request that AWS
-#' performs in the background. Because `CreateGovCloudAccount` operates
-#' asynchronously, it can return a successful completion message even
-#' though account initialization might still be in progress. You might need
-#' to wait a few minutes before you can successfully access the account. To
-#' check the status of the request, do one of the following:
+#' Calling
+#' [`create_gov_cloud_account`][organizations_create_gov_cloud_account] is
+#' an asynchronous request that AWS performs in the background. Because
+#' [`create_gov_cloud_account`][organizations_create_gov_cloud_account]
+#' operates asynchronously, it can return a successful completion message
+#' even though account initialization might still be in progress. You might
+#' need to wait a few minutes before you can successfully access the
+#' account. To check the status of the request, do one of the following:
 #' 
 #' -   Use the `OperationId` response element from this operation to
-#'     provide as a parameter to the DescribeCreateAccountStatus operation.
+#'     provide as a parameter to the
+#'     [`describe_create_account_status`][organizations_describe_create_account_status]
+#'     operation.
 #' 
 #' -   Check the AWS CloudTrail log for the `CreateAccountResult` event.
 #'     For information on using AWS CloudTrail with Organizations, see
@@ -509,12 +607,13 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #'     Organization](https://docs.aws.amazon.com/organizations/latest/userguide/)
 #'     in the *AWS Organizations User Guide.*
 #' 
-#' When you call the `CreateGovCloudAccount` action, you create two
-#' accounts: a standalone account in the AWS GovCloud (US) Region and an
-#' associated account in the commercial Region for billing and support
-#' purposes. The account in the commercial Region is automatically a member
-#' of the organization whose credentials made the request. Both accounts
-#' are associated with the same email address.
+#' When you call the
+#' [`create_gov_cloud_account`][organizations_create_gov_cloud_account]
+#' action, you create two accounts: a standalone account in the AWS
+#' GovCloud (US) Region and an associated account in the commercial Region
+#' for billing and support purposes. The account in the commercial Region
+#' is automatically a member of the organization whose credentials made the
+#' request. Both accounts are associated with the same email address.
 #' 
 #' A role is created in the new account in the commercial Region that
 #' allows the management account in the organization in the commercial
@@ -550,11 +649,13 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #'     because your organization is still initializing, wait one hour and
 #'     then try again. If the error persists, contact AWS Support.
 #' 
-#' -   Using `CreateGovCloudAccount` to create multiple temporary accounts
-#'     isn't recommended. You can only close an account from the AWS
-#'     Billing and Cost Management console, and you must be signed in as
-#'     the root user. For information on the requirements and process for
-#'     closing an account, see [Closing an AWS
+#' -   Using
+#'     [`create_gov_cloud_account`][organizations_create_gov_cloud_account]
+#'     to create multiple temporary accounts isn't recommended. You can
+#'     only close an account from the AWS Billing and Cost Management
+#'     console, and you must be signed in as the root user. For information
+#'     on the requirements and process for closing an account, see [Closing
+#'     an AWS
 #'     Account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
 #'     in the *AWS Organizations User Guide*.
 #' 
@@ -576,9 +677,11 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' with another AWS account. You must use a valid email address to complete
 #' account creation. You can't access the root user of the account or
 #' remove an account that was created with an invalid email address. Like
-#' all request parameters for `CreateGovCloudAccount`, the request for the
-#' email address for the AWS GovCloud (US) account originates from the
-#' commercial Region, not from the AWS GovCloud (US) Region.
+#' all request parameters for
+#' [`create_gov_cloud_account`][organizations_create_gov_cloud_account],
+#' the request for the email address for the AWS GovCloud (US) account
+#' originates from the commercial Region, not from the AWS GovCloud (US)
+#' Region.
 #' @param AccountName &#91;required&#93; The friendly name of the member account.
 #' @param RoleName (Optional)
 #' 
@@ -618,8 +721,9 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' @param Tags A list of tags that you want to attach to the newly created account.
 #' These tags are attached to the commercial account associated with the
 #' GovCloud account, and not to the GovCloud account itself. To add tags to
-#' the actual GovCloud account, call the TagResource operation in the
-#' GovCloud region after the new GovCloud account exists.
+#' the actual GovCloud account, call the
+#' [`tag_resource`][organizations_tag_resource] operation in the GovCloud
+#' region after the new GovCloud account exists.
 #' 
 #' For each tag in the list, you must specify both a tag key and a value.
 #' You can set the value to an empty string, but you can't set it to
@@ -631,6 +735,27 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' If any one of the tags is invalid or if you exceed the allowed number of
 #' tags for an account, then the entire request fails and the account is
 #' not created.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreateAccountStatus = list(
+#'     Id = "string",
+#'     AccountName = "string",
+#'     State = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'     RequestedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CompletedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AccountId = "string",
+#'     GovCloudAccountId = "string",
+#'     FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -672,7 +797,8 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 #'
 #' @description
 #' Creates an AWS organization. The account whose user is calling the
-#' `CreateOrganization` operation automatically becomes the [management
+#' [`create_organization`][organizations_create_organization] operation
+#' automatically becomes the [management
 #' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
 #' of the new organization.
 #' 
@@ -709,6 +835,27 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 #'     information, see [All
 #'     features](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all)
 #'     in the *AWS Organizations User Guide.*
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Organization = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     FeatureSet = "ALL"|"CONSOLIDATED_BILLING",
+#'     MasterAccountArn = "string",
+#'     MasterAccountId = "string",
+#'     MasterAccountEmail = "string",
+#'     AvailablePolicyTypes = list(
+#'       list(
+#'         Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'         Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -804,6 +951,18 @@ organizations_create_organization <- function(FeatureSet = NULL) {
 #' If any one of the tags is invalid or if you exceed the allowed number of
 #' tags for an OU, then the entire request fails and the OU is not created.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationalUnit = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Name = "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$create_organizational_unit(
@@ -882,13 +1041,13 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #' @param Type &#91;required&#93; The type of policy to create. You can specify one of the following
 #' values:
 #' 
-#' -   [AISERVICES\\_OPT\\_OUT\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
 #' 
-#' -   [BACKUP\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
+#' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
-#' -   [SERVICE\\_CONTROL\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
 #' 
-#' -   [TAG\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' -   [TAG_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
 #' @param Tags A list of tags that you want to attach to the newly created policy. For
 #' each tag in the list, you must specify both a tag key and a value. You
 #' can set the value to an empty string, but you can't set it to `null`.
@@ -899,6 +1058,24 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #' If any one of the tags is invalid or if you exceed the allowed number of
 #' tags for a policy, then the entire request fails and the policy is not
 #' created.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = list(
+#'     PolicySummary = list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'       AwsManaged = TRUE|FALSE
+#'     ),
+#'     Content = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -927,7 +1104,7 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #' # 
 #' # 
 #' svc$create_policy(
-#'   Content = "\{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":\{\\\"Effect\\\":...",
+#'   Content = "{"Version":"2012-10-17","Statement":{"Effect":"Allow","Action":"s3:*"}}",
 #'   Description = "Enables admins of attached accounts to delegate all S3 permissions",
 #'   Name = "AllowAllS3Actions",
 #'   Type = "SERVICE_CONTROL_POLICY"
@@ -961,9 +1138,10 @@ organizations_create_policy <- function(Content, Description, Name, Type, Tags =
 #' `DECLINED` and effectively deactivates the request.
 #' 
 #' This operation can be called only from the account that received the
-#' handshake. The originator of the handshake can use CancelHandshake
-#' instead. The originator can't reactivate a declined request, but can
-#' reinitiate the process with a new handshake request.
+#' handshake. The originator of the handshake can use
+#' [`cancel_handshake`][organizations_cancel_handshake] instead. The
+#' originator can't reactivate a declined request, but can reinitiate the
+#' process with a new handshake request.
 #' 
 #' After you decline a handshake, it continues to appear in the results of
 #' relevant APIs for only 30 days. After that, it's deleted.
@@ -972,11 +1150,45 @@ organizations_create_policy <- function(Content, Description, Name, Type, Tags =
 #' organizations_decline_handshake(HandshakeId)
 #'
 #' @param HandshakeId &#91;required&#93; The unique identifier (ID) of the handshake that you want to decline.
-#' You can get the ID from the ListHandshakesForAccount operation.
+#' You can get the ID from the
+#' [`list_handshakes_for_account`][organizations_list_handshakes_for_account]
+#' operation.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for handshake
 #' ID string requires "h-" followed by from 8 to 32 lowercase letters or
 #' digits.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Handshake = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Parties = list(
+#'       list(
+#'         Id = "string",
+#'         Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
+#'       )
+#'     ),
+#'     State = "REQUESTED"|"OPEN"|"CANCELED"|"ACCEPTED"|"DECLINED"|"EXPIRED",
+#'     RequestedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExpirationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Action = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
+#'     Resources = list(
+#'       list(
+#'         Value = "string",
+#'         Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATION_FEATURE_SET"|"EMAIL"|"MASTER_EMAIL"|"MASTER_NAME"|"NOTES"|"PARENT_HANDSHAKE",
+#'         Resources = list()
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1027,6 +1239,9 @@ organizations_decline_handshake <- function(HandshakeId) {
 #'
 
 #'
+#' @return
+#' An empty list.
+#'
 
 #'
 #' @keywords internal
@@ -1063,7 +1278,8 @@ organizations_delete_organization <- function() {
 #' organizations_delete_organizational_unit(OrganizationalUnitId)
 #'
 #' @param OrganizationalUnitId &#91;required&#93; The unique identifier (ID) of the organizational unit that you want to
-#' delete. You can get the ID from the ListOrganizationalUnitsForParent
+#' delete. You can get the ID from the
+#' [`list_organizational_units_for_parent`][organizations_list_organizational_units_for_parent]
 #' operation.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for an
@@ -1071,6 +1287,9 @@ organizations_delete_organization <- function() {
 #' lowercase letters or digits (the ID of the root that contains the OU).
 #' This string is followed by a second "-" dash and from 8 to 32 additional
 #' lowercase letters or digits.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1124,12 +1343,16 @@ organizations_delete_organizational_unit <- function(OrganizationalUnitId) {
 #' organizations_delete_policy(PolicyId)
 #'
 #' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy that you want to delete. You
-#' can get the ID from the ListPolicies or ListPoliciesForTarget
+#' can get the ID from the [`list_policies`][organizations_list_policies]
+#' or [`list_policies_for_target`][organizations_list_policies_for_target]
 #' operations.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a policy ID
 #' string requires "p-" followed by from 8 to 128 lowercase or uppercase
-#' letters, digits, or the underscore character (\\_).
+#' letters, digits, or the underscore character (_).
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1206,6 +1429,9 @@ organizations_delete_policy <- function(PolicyId) {
 #' only service for which the member account is a delegated administrator,
 #' the operation also revokes Organizations read action permissions.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_delegated_administrator(
@@ -1249,11 +1475,31 @@ organizations_deregister_delegated_administrator <- function(AccountId, ServiceP
 #' organizations_describe_account(AccountId)
 #'
 #' @param AccountId &#91;required&#93; The unique identifier (ID) of the AWS account that you want information
-#' about. You can get the ID from the ListAccounts or ListAccountsForParent
+#' about. You can get the ID from the
+#' [`list_accounts`][organizations_list_accounts] or
+#' [`list_accounts_for_parent`][organizations_list_accounts_for_parent]
 #' operations.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for an account
 #' ID string requires exactly 12 digits.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Account = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Email = "string",
+#'     Name = "string",
+#'     Status = "ACTIVE"|"SUSPENDED",
+#'     JoinedMethod = "INVITED"|"CREATED",
+#'     JoinedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1305,14 +1551,37 @@ organizations_describe_account <- function(AccountId) {
 #' @usage
 #' organizations_describe_create_account_status(CreateAccountRequestId)
 #'
-#' @param CreateAccountRequestId &#91;required&#93; Specifies the `Id` value that uniquely identifies the `CreateAccount`
-#' request. You can get the value from the `CreateAccountStatus.Id`
-#' response in an earlier CreateAccount request, or from the
-#' ListCreateAccountStatus operation.
+#' @param CreateAccountRequestId &#91;required&#93; Specifies the `Id` value that uniquely identifies the
+#' [`create_account`][organizations_create_account] request. You can get
+#' the value from the `CreateAccountStatus.Id` response in an earlier
+#' [`create_account`][organizations_create_account] request, or from the
+#' [`list_create_account_status`][organizations_list_create_account_status]
+#' operation.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a create
 #' account request ID string requires "car-" followed by from 8 to 32
 #' lowercase letters or digits.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreateAccountStatus = list(
+#'     Id = "string",
+#'     AccountName = "string",
+#'     State = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'     RequestedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CompletedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AccountId = "string",
+#'     GovCloudAccountId = "string",
+#'     FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1380,14 +1649,29 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #' @param PolicyType &#91;required&#93; The type of policy that you want information about. You can specify one
 #' of the following values:
 #' 
-#' -   [AISERVICES\\_OPT\\_OUT\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
 #' 
-#' -   [BACKUP\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
+#' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
-#' -   [TAG\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' -   [TAG_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
 #' @param TargetId When you're signed in as the management account, specify the ID of the
 #' account that you want details about. Specifying an organization root or
 #' organizational unit (OU) as the target is not supported.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EffectivePolicy = list(
+#'     PolicyContent = "string",
+#'     LastUpdatedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TargetId = "string",
+#'     PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1422,7 +1706,8 @@ organizations_describe_effective_policy <- function(PolicyType, TargetId = NULL)
 #' @description
 #' Retrieves information about a previously requested handshake. The
 #' handshake ID comes from the response to the original
-#' InviteAccountToOrganization operation that generated the handshake.
+#' [`invite_account_to_organization`][organizations_invite_account_to_organization]
+#' operation that generated the handshake.
 #' 
 #' You can access handshakes that are `ACCEPTED`, `DECLINED`, or `CANCELED`
 #' for only 30 days after they change to that state. They're then deleted
@@ -1435,12 +1720,47 @@ organizations_describe_effective_policy <- function(PolicyType, TargetId = NULL)
 #'
 #' @param HandshakeId &#91;required&#93; The unique identifier (ID) of the handshake that you want information
 #' about. You can get the ID from the original call to
-#' InviteAccountToOrganization, or from a call to ListHandshakesForAccount
-#' or ListHandshakesForOrganization.
+#' [`invite_account_to_organization`][organizations_invite_account_to_organization],
+#' or from a call to
+#' [`list_handshakes_for_account`][organizations_list_handshakes_for_account]
+#' or
+#' [`list_handshakes_for_organization`][organizations_list_handshakes_for_organization].
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for handshake
 #' ID string requires "h-" followed by from 8 to 32 lowercase letters or
 #' digits.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Handshake = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Parties = list(
+#'       list(
+#'         Id = "string",
+#'         Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
+#'       )
+#'     ),
+#'     State = "REQUESTED"|"OPEN"|"CANCELED"|"ACCEPTED"|"DECLINED"|"EXPIRED",
+#'     RequestedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExpirationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Action = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
+#'     Resources = list(
+#'       list(
+#'         Value = "string",
+#'         Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATION_FEATURE_SET"|"EMAIL"|"MASTER_EMAIL"|"MASTER_NAME"|"NOTES"|"PARENT_HANDSHAKE",
+#'         Resources = list()
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1490,13 +1810,36 @@ organizations_describe_handshake <- function(HandshakeId) {
 #' This operation can be called from any account in the organization.
 #' 
 #' Even if a policy type is shown as available in the organization, you can
-#' disable it separately at the root level with DisablePolicyType. Use
-#' ListRoots to see the status of policy types for a specified root.
+#' disable it separately at the root level with
+#' [`disable_policy_type`][organizations_disable_policy_type]. Use
+#' [`list_roots`][organizations_list_roots] to see the status of policy
+#' types for a specified root.
 #'
 #' @usage
 #' organizations_describe_organization()
 #'
 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Organization = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     FeatureSet = "ALL"|"CONSOLIDATED_BILLING",
+#'     MasterAccountArn = "string",
+#'     MasterAccountId = "string",
+#'     MasterAccountEmail = "string",
+#'     AvailablePolicyTypes = list(
+#'       list(
+#'         Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'         Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 
 #'
@@ -1541,13 +1884,26 @@ organizations_describe_organization <- function() {
 #'
 #' @param OrganizationalUnitId &#91;required&#93; The unique identifier (ID) of the organizational unit that you want
 #' details about. You can get the ID from the
-#' ListOrganizationalUnitsForParent operation.
+#' [`list_organizational_units_for_parent`][organizations_list_organizational_units_for_parent]
+#' operation.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for an
 #' organizational unit ID string requires "ou-" followed by from 4 to 32
 #' lowercase letters or digits (the ID of the root that contains the OU).
 #' This string is followed by a second "-" dash and from 8 to 32 additional
 #' lowercase letters or digits.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationalUnit = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Name = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1597,12 +1953,32 @@ organizations_describe_organizational_unit <- function(OrganizationalUnitId) {
 #' organizations_describe_policy(PolicyId)
 #'
 #' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy that you want details about.
-#' You can get the ID from the ListPolicies or ListPoliciesForTarget
+#' You can get the ID from the
+#' [`list_policies`][organizations_list_policies] or
+#' [`list_policies_for_target`][organizations_list_policies_for_target]
 #' operations.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a policy ID
 #' string requires "p-" followed by from 8 to 128 lowercase or uppercase
-#' letters, digits, or the underscore character (\\_).
+#' letters, digits, or the underscore character (_).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = list(
+#'     PolicySummary = list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'       AwsManaged = TRUE|FALSE
+#'     ),
+#'     Content = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1670,14 +2046,18 @@ organizations_describe_policy <- function(PolicyId) {
 #' organizations_detach_policy(PolicyId, TargetId)
 #'
 #' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy you want to detach. You can get
-#' the ID from the ListPolicies or ListPoliciesForTarget operations.
+#' the ID from the [`list_policies`][organizations_list_policies] or
+#' [`list_policies_for_target`][organizations_list_policies_for_target]
+#' operations.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a policy ID
 #' string requires "p-" followed by from 8 to 128 lowercase or uppercase
-#' letters, digits, or the underscore character (\\_).
+#' letters, digits, or the underscore character (_).
 #' @param TargetId &#91;required&#93; The unique identifier (ID) of the root, OU, or account that you want to
-#' detach the policy from. You can get the ID from the ListRoots,
-#' ListOrganizationalUnitsForParent, or ListAccounts operations.
+#' detach the policy from. You can get the ID from the
+#' [`list_roots`][organizations_list_roots],
+#' [`list_organizational_units_for_parent`][organizations_list_organizational_units_for_parent],
+#' or [`list_accounts`][organizations_list_accounts] operations.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a target ID
 #' string requires one of the following:
@@ -1691,6 +2071,9 @@ organizations_describe_policy <- function(PolicyId) {
 #'     followed by from 4 to 32 lowercase letters or digits (the ID of the
 #'     root that the OU is in). This string is followed by a second "-"
 #'     dash and from 8 to 32 additional lowercase letters or digits.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1751,10 +2134,11 @@ organizations_detach_policy <- function(PolicyId, TargetId) {
 #' organization's accounts depends on that service. For more information,
 #' see the documentation for the other AWS service.
 #' 
-#' After you perform the `DisableAWSServiceAccess` operation, the specified
-#' service can no longer perform operations in your organization's accounts
-#' unless the operations are explicitly permitted by the IAM policies that
-#' are attached to your roles.
+#' After you perform the
+#' [`disable_aws_service_access`][organizations_disable_aws_service_access]
+#' operation, the specified service can no longer perform operations in
+#' your organization's accounts unless the operations are explicitly
+#' permitted by the IAM policies that are attached to your roles.
 #' 
 #' For more information about integrating other services with AWS
 #' Organizations, including the list of services that work with
@@ -1770,7 +2154,10 @@ organizations_detach_policy <- function(PolicyId, TargetId) {
 #'
 #' @param ServicePrincipal &#91;required&#93; The service principal name of the AWS service for which you want to
 #' disable integration with your organization. This is typically in the
-#' form of a URL, such as ` <i>service-abbreviation</i>.amazonaws.com`.
+#' form of a URL, such as ` service-abbreviation.amazonaws.com`.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1807,27 +2194,28 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #' in the root. After you perform this operation, you no longer can attach
 #' policies of the specified type to that root or to any organizational
 #' unit (OU) or account in that root. You can undo this by using the
-#' EnablePolicyType operation.
+#' [`enable_policy_type`][organizations_enable_policy_type] operation.
 #' 
 #' This is an asynchronous request that AWS performs in the background. If
 #' you disable a policy type for a root, it still appears enabled for the
 #' organization if [all
 #' features](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
 #' are enabled for the organization. AWS recommends that you first use
-#' ListRoots to see the status of policy types for a specified root, and
-#' then use this operation.
+#' [`list_roots`][organizations_list_roots] to see the status of policy
+#' types for a specified root, and then use this operation.
 #' 
 #' This operation can be called only from the organization's management
 #' account.
 #' 
 #' To view the status of available policy types in the organization, use
-#' DescribeOrganization.
+#' [`describe_organization`][organizations_describe_organization].
 #'
 #' @usage
 #' organizations_disable_policy_type(RootId, PolicyType)
 #'
 #' @param RootId &#91;required&#93; The unique identifier (ID) of the root in which you want to disable a
-#' policy type. You can get the ID from the ListRoots operation.
+#' policy type. You can get the ID from the
+#' [`list_roots`][organizations_list_roots] operation.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a root ID
 #' string requires "r-" followed by from 4 to 32 lowercase letters or
@@ -1835,13 +2223,31 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #' @param PolicyType &#91;required&#93; The policy type that you want to disable in this root. You can specify
 #' one of the following values:
 #' 
-#' -   [AISERVICES\\_OPT\\_OUT\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
 #' 
-#' -   [BACKUP\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
+#' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
-#' -   [SERVICE\\_CONTROL\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
 #' 
-#' -   [TAG\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' -   [TAG_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Root = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     PolicyTypes = list(
+#'       list(
+#'         Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'         Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1915,7 +2321,10 @@ organizations_disable_policy_type <- function(RootId, PolicyType) {
 #'
 #' @param ServicePrincipal &#91;required&#93; The service principal name of the AWS service for which you want to
 #' enable integration with your organization. This is typically in the form
-#' of a URL, such as ` <i>service-abbreviation</i>.amazonaws.com`.
+#' of a URL, such as ` service-abbreviation.amazonaws.com`.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1964,9 +2373,11 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
 #' approve the change by accepting the handshake.
 #' 
 #' After you enable all features, you can separately enable or disable
-#' individual policy types in a root using EnablePolicyType and
-#' DisablePolicyType. To see the status of policy types in a root, use
-#' ListRoots.
+#' individual policy types in a root using
+#' [`enable_policy_type`][organizations_enable_policy_type] and
+#' [`disable_policy_type`][organizations_disable_policy_type]. To see the
+#' status of policy types in a root, use
+#' [`list_roots`][organizations_list_roots].
 #' 
 #' After all invited member accounts accept the handshake, you finalize the
 #' feature set change by accepting the handshake that contains
@@ -1984,6 +2395,38 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
 #'
 #' @usage
 #' organizations_enable_all_features()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Handshake = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Parties = list(
+#'       list(
+#'         Id = "string",
+#'         Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
+#'       )
+#'     ),
+#'     State = "REQUESTED"|"OPEN"|"CANCELED"|"ACCEPTED"|"DECLINED"|"EXPIRED",
+#'     RequestedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExpirationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Action = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
+#'     Resources = list(
+#'       list(
+#'         Value = "string",
+#'         Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATION_FEATURE_SET"|"EMAIL"|"MASTER_EMAIL"|"MASTER_NAME"|"NOTES"|"PARENT_HANDSHAKE",
+#'         Resources = list()
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2029,24 +2472,28 @@ organizations_enable_all_features <- function() {
 #' Enables a policy type in a root. After you enable a policy type in a
 #' root, you can attach policies of that type to the root, any
 #' organizational unit (OU), or account in that root. You can undo this by
-#' using the DisablePolicyType operation.
+#' using the [`disable_policy_type`][organizations_disable_policy_type]
+#' operation.
 #' 
 #' This is an asynchronous request that AWS performs in the background. AWS
-#' recommends that you first use ListRoots to see the status of policy
-#' types for a specified root, and then use this operation.
+#' recommends that you first use [`list_roots`][organizations_list_roots]
+#' to see the status of policy types for a specified root, and then use
+#' this operation.
 #' 
 #' This operation can be called only from the organization's management
 #' account.
 #' 
 #' You can enable a policy type in a root only if that policy type is
 #' available in the organization. To view the status of available policy
-#' types in the organization, use DescribeOrganization.
+#' types in the organization, use
+#' [`describe_organization`][organizations_describe_organization].
 #'
 #' @usage
 #' organizations_enable_policy_type(RootId, PolicyType)
 #'
 #' @param RootId &#91;required&#93; The unique identifier (ID) of the root in which you want to enable a
-#' policy type. You can get the ID from the ListRoots operation.
+#' policy type. You can get the ID from the
+#' [`list_roots`][organizations_list_roots] operation.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a root ID
 #' string requires "r-" followed by from 4 to 32 lowercase letters or
@@ -2054,13 +2501,31 @@ organizations_enable_all_features <- function() {
 #' @param PolicyType &#91;required&#93; The policy type that you want to enable. You can specify one of the
 #' following values:
 #' 
-#' -   [AISERVICES\\_OPT\\_OUT\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
 #' 
-#' -   [BACKUP\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
+#' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
-#' -   [SERVICE\\_CONTROL\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
 #' 
-#' -   [TAG\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' -   [TAG_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Root = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     PolicyTypes = list(
+#'       list(
+#'         Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'         Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2139,7 +2604,7 @@ organizations_enable_policy_type <- function(RootId, PolicyType) {
 #' your organization. This is a JSON object that contains the following
 #' elements:
 #' 
-#' `\{ "Type": "ACCOUNT", "Id": "&lt;<i> <b>account id number</b> </i>&gt;" \}`
+#' `{ "Type": "ACCOUNT", "Id": "< account id number >" }`
 #' 
 #' If you use the AWS CLI, you can submit this as a single string, similar
 #' to the following example:
@@ -2173,6 +2638,38 @@ organizations_enable_policy_type <- function(RootId, PolicyType) {
 #' If any one of the tags is invalid or if you exceed the allowed number of
 #' tags for an account, then the entire request fails and invitations are
 #' not sent.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Handshake = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Parties = list(
+#'       list(
+#'         Id = "string",
+#'         Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
+#'       )
+#'     ),
+#'     State = "REQUESTED"|"OPEN"|"CANCELED"|"ACCEPTED"|"DECLINED"|"EXPIRED",
+#'     RequestedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExpirationTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Action = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
+#'     Resources = list(
+#'       list(
+#'         Value = "string",
+#'         Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATION_FEATURE_SET"|"EMAIL"|"MASTER_EMAIL"|"MASTER_NAME"|"NOTES"|"PARENT_HANDSHAKE",
+#'         Resources = list()
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2231,7 +2728,8 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL, T
 #' Removes a member account from its parent organization. This version of
 #' the operation is performed by the account that wants to leave. To remove
 #' a member account as a user in the management account, use
-#' RemoveAccountFromOrganization instead.
+#' [`remove_account_from_organization`][organizations_remove_account_from_organization]
+#' instead.
 #' 
 #' This operation can be called only from a member account in the
 #' organization.
@@ -2239,8 +2737,9 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL, T
 #' -   The management account in an organization with all features enabled
 #'     can set service control policies (SCPs) that can restrict what
 #'     administrators of member accounts can do. This includes preventing
-#'     them from successfully calling `LeaveOrganization` and leaving the
-#'     organization.
+#'     them from successfully calling
+#'     [`leave_organization`][organizations_leave_organization] and leaving
+#'     the organization.
 #' 
 #' -   You can leave an organization as a member account only if the
 #'     account is configured with the information required to operate as a
@@ -2278,6 +2777,9 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL, T
 #' organizations_leave_organization()
 #'
 
+#'
+#' @return
+#' An empty list.
 #'
 
 #'
@@ -2347,6 +2849,22 @@ organizations_leave_organization <- function() {
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EnabledServicePrincipals = list(
+#'     list(
+#'       ServicePrincipal = "string",
+#'       DateEnabled = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_aws_service_access_for_organization(
@@ -2380,7 +2898,8 @@ organizations_list_aws_service_access_for_organization <- function(NextToken = N
 #' @description
 #' Lists all the accounts in the organization. To request only the accounts
 #' in a specified root or organizational unit (OU), use the
-#' ListAccountsForParent operation instead.
+#' [`list_accounts_for_parent`][organizations_list_accounts_for_parent]
+#' operation instead.
 #' 
 #' Always check the `NextToken` response parameter for a `null` value when
 #' calling a `List*` operation. These operations can occasionally return an
@@ -2410,6 +2929,27 @@ organizations_list_aws_service_access_for_organization <- function(NextToken = N
 #' maximum even when there are more results available. You should check
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Accounts = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       Email = "string",
+#'       Name = "string",
+#'       Status = "ACTIVE"|"SUSPENDED",
+#'       JoinedMethod = "INVITED"|"CREATED",
+#'       JoinedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2455,7 +2995,7 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #' root, you get a list of all the accounts that aren't in any OU. If you
 #' specify an OU, you get a list of all the accounts in only that OU and
 #' not in any child OUs. To get a list of all accounts in the organization,
-#' use the ListAccounts operation.
+#' use the [`list_accounts`][organizations_list_accounts] operation.
 #' 
 #' Always check the `NextToken` response parameter for a `null` value when
 #' calling a `List*` operation. These operations can occasionally return an
@@ -2487,6 +3027,27 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #' maximum even when there are more results available. You should check
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Accounts = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       Email = "string",
+#'       Name = "string",
+#'       Status = "ACTIVE"|"SUSPENDED",
+#'       JoinedMethod = "INVITED"|"CREATED",
+#'       JoinedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2532,8 +3093,8 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
 #' @description
 #' Lists all of the organizational units (OUs) or accounts that are
 #' contained in the specified parent OU or root. This operation, along with
-#' ListParents enables you to traverse the tree structure that makes up
-#' this root.
+#' [`list_parents`][organizations_list_parents] enables you to traverse the
+#' tree structure that makes up this root.
 #' 
 #' Always check the `NextToken` response parameter for a `null` value when
 #' calling a `List*` operation. These operations can occasionally return an
@@ -2577,6 +3138,20 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
 #' maximum even when there are more results available. You should check
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Children = list(
+#'     list(
+#'       Id = "string",
+#'       Type = "ACCOUNT"|"ORGANIZATIONAL_UNIT"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2655,6 +3230,30 @@ organizations_list_children <- function(ParentId, ChildType, NextToken = NULL, M
 #' maximum even when there are more results available. You should check
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CreateAccountStatuses = list(
+#'     list(
+#'       Id = "string",
+#'       AccountName = "string",
+#'       State = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'       RequestedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CompletedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AccountId = "string",
+#'       GovCloudAccountId = "string",
+#'       FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2742,6 +3341,30 @@ organizations_list_create_account_status <- function(States = NULL, NextToken = 
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DelegatedAdministrators = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       Email = "string",
+#'       Name = "string",
+#'       Status = "ACTIVE"|"SUSPENDED",
+#'       JoinedMethod = "INVITED"|"CREATED",
+#'       JoinedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DelegationEnabledDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_delegated_administrators(
@@ -2803,6 +3426,22 @@ organizations_list_delegated_administrators <- function(ServicePrincipal = NULL,
 #' maximum even when there are more results available. You should check
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DelegatedServices = list(
+#'     list(
+#'       ServicePrincipal = "string",
+#'       DelegationEnabledDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2878,6 +3517,41 @@ organizations_list_delegated_services_for_account <- function(AccountId, NextTok
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Handshakes = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       Parties = list(
+#'         list(
+#'           Id = "string",
+#'           Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
+#'         )
+#'       ),
+#'       State = "REQUESTED"|"OPEN"|"CANCELED"|"ACCEPTED"|"DECLINED"|"EXPIRED",
+#'       RequestedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExpirationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Action = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
+#'       Resources = list(
+#'         list(
+#'           Value = "string",
+#'           Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATION_FEATURE_SET"|"EMAIL"|"MASTER_EMAIL"|"MASTER_NAME"|"NOTES"|"PARENT_HANDSHAKE",
+#'           Resources = list()
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_handshakes_for_account(
@@ -2923,7 +3597,8 @@ organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken =
 #'
 #' @description
 #' Lists the handshakes that are associated with the organization that the
-#' requesting user is part of. The `ListHandshakesForOrganization`
+#' requesting user is part of. The
+#' [`list_handshakes_for_organization`][organizations_list_handshakes_for_organization]
 #' operation returns a list of handshake structures. Each structure
 #' contains details and status about a handshake.
 #' 
@@ -2967,6 +3642,41 @@ organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken =
 #' maximum even when there are more results available. You should check
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Handshakes = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       Parties = list(
+#'         list(
+#'           Id = "string",
+#'           Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
+#'         )
+#'       ),
+#'       State = "REQUESTED"|"OPEN"|"CANCELED"|"ACCEPTED"|"DECLINED"|"EXPIRED",
+#'       RequestedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExpirationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Action = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
+#'       Resources = list(
+#'         list(
+#'           Value = "string",
+#'           Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATION_FEATURE_SET"|"EMAIL"|"MASTER_EMAIL"|"MASTER_NAME"|"NOTES"|"PARENT_HANDSHAKE",
+#'           Resources = list()
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3057,6 +3767,21 @@ organizations_list_handshakes_for_organization <- function(Filter = NULL, NextTo
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationalUnits = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       Name = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_organizational_units_for_parent(
@@ -3101,8 +3826,8 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
 #' @description
 #' Lists the root or organizational units (OUs) that serve as the immediate
 #' parent of the specified child OU or account. This operation, along with
-#' ListChildren enables you to traverse the tree structure that makes up
-#' this root.
+#' [`list_children`][organizations_list_children] enables you to traverse
+#' the tree structure that makes up this root.
 #' 
 #' Always check the `NextToken` response parameter for a `null` value when
 #' calling a `List*` operation. These operations can occasionally return an
@@ -3146,6 +3871,20 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
 #' maximum even when there are more results available. You should check
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Parents = list(
+#'     list(
+#'       Id = "string",
+#'       Type = "ROOT"|"ORGANIZATIONAL_UNIT"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3208,13 +3947,13 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #' @param Filter &#91;required&#93; Specifies the type of policy that you want to include in the response.
 #' You must specify one of the following values:
 #' 
-#' -   [AISERVICES\\_OPT\\_OUT\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
 #' 
-#' -   [BACKUP\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
+#' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
-#' -   [SERVICE\\_CONTROL\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
 #' 
-#' -   [TAG\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' -   [TAG_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
@@ -3230,6 +3969,24 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #' maximum even when there are more results available. You should check
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policies = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'       AwsManaged = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3309,13 +4066,13 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #' @param Filter &#91;required&#93; The type of policy that you want to include in the returned list. You
 #' must specify one of the following values:
 #' 
-#' -   [AISERVICES\\_OPT\\_OUT\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
 #' 
-#' -   [BACKUP\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
+#' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
-#' -   [SERVICE\\_CONTROL\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
 #' 
-#' -   [TAG\\_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' -   [TAG_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
@@ -3331,6 +4088,24 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #' maximum even when there are more results available. You should check
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policies = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'       AwsManaged = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3395,7 +4170,7 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
 #' features, you make policy types available for use in that organization.
 #' Individual policy types can then be enabled and disabled in a root. To
 #' see the availability of a policy type in an organization, use
-#' DescribeOrganization.
+#' [`describe_organization`][organizations_describe_organization].
 #'
 #' @usage
 #' organizations_list_roots(NextToken, MaxResults)
@@ -3415,6 +4190,27 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
 #' maximum even when there are more results available. You should check
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Roots = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       Name = "string",
+#'       PolicyTypes = list(
+#'         list(
+#'           Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'           Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3480,18 +4276,32 @@ organizations_list_roots <- function(NextToken = NULL, MaxResults = NULL) {
 #' -   AWS account – specify the account ID number.
 #' 
 #' -   Organizational unit – specify the OU ID that begins with `ou-` and
-#'     looks similar to: `ou-<i>1a2b-34uvwxyz</i> `
+#'     looks similar to: `ou-1a2b-34uvwxyz `
 #' 
 #' -   Root – specify the root ID that begins with `r-` and looks similar
-#'     to: `r-<i>1a2b</i> `
+#'     to: `r-1a2b `
 #' 
 #' -   Policy – specify the policy ID that begins with `p-` andlooks
-#'     similar to: `p-<i>12abcdefg3</i> `
+#'     similar to: `p-12abcdefg3 `
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
 #' should continue from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3546,7 +4356,7 @@ organizations_list_tags_for_resource <- function(ResourceId, NextToken = NULL) {
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a policy ID
 #' string requires "p-" followed by from 8 to 128 lowercase or uppercase
-#' letters, digits, or the underscore character (\\_).
+#' letters, digits, or the underscore character (_).
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
@@ -3562,6 +4372,22 @@ organizations_list_tags_for_resource <- function(ResourceId, NextToken = NULL) {
 #' maximum even when there are more results available. You should check
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Targets = list(
+#'     list(
+#'       TargetId = "string",
+#'       Arn = "string",
+#'       Name = "string",
+#'       Type = "ACCOUNT"|"ORGANIZATIONAL_UNIT"|"ROOT"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -3646,6 +4472,9 @@ organizations_list_targets_for_policy <- function(PolicyId, NextToken = NULL, Ma
 #'     root that the OU is in). This string is followed by a second "-"
 #'     dash and from 8 to 32 additional lowercase letters or digits.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$move_account(
@@ -3714,6 +4543,9 @@ organizations_move_account <- function(AccountId, SourceParentId, DestinationPar
 #' @param ServicePrincipal &#91;required&#93; The service principal of the AWS service for which you want to make the
 #' member account a delegated administrator.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$register_delegated_administrator(
@@ -3754,8 +4586,8 @@ organizations_register_delegated_administrator <- function(AccountId, ServicePri
 #' account after it's removed from the organization.
 #' 
 #' This operation can be called only from the organization's management
-#' account. Member accounts can remove themselves with LeaveOrganization
-#' instead.
+#' account. Member accounts can remove themselves with
+#' [`leave_organization`][organizations_leave_organization] instead.
 #' 
 #' -   You can remove an account from your organization only if the account
 #'     is configured with the information required to operate as a
@@ -3786,6 +4618,9 @@ organizations_register_delegated_administrator <- function(AccountId, ServicePri
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for an account
 #' ID string requires exactly 12 digits.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3853,13 +4688,13 @@ organizations_remove_account_from_organization <- function(AccountId) {
 #' -   AWS account – specify the account ID number.
 #' 
 #' -   Organizational unit – specify the OU ID that begins with `ou-` and
-#'     looks similar to: `ou-<i>1a2b-34uvwxyz</i> `
+#'     looks similar to: `ou-1a2b-34uvwxyz `
 #' 
 #' -   Root – specify the root ID that begins with `r-` and looks similar
-#'     to: `r-<i>1a2b</i> `
+#'     to: `r-1a2b `
 #' 
 #' -   Policy – specify the policy ID that begins with `p-` andlooks
-#'     similar to: `p-<i>12abcdefg3</i> `
+#'     similar to: `p-12abcdefg3 `
 #' 
 #' For each tag in the list, you must specify both a tag key and a value.
 #' You can set the value to an empty string, but you can't set it to
@@ -3868,6 +4703,9 @@ organizations_remove_account_from_organization <- function(AccountId) {
 #' If any one of the tags is invalid or if you exceed the allowed number of
 #' tags for an account user, then the entire request fails and the account
 #' is not created.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3930,14 +4768,17 @@ organizations_tag_resource <- function(ResourceId, Tags) {
 #' -   AWS account – specify the account ID number.
 #' 
 #' -   Organizational unit – specify the OU ID that begins with `ou-` and
-#'     looks similar to: `ou-<i>1a2b-34uvwxyz</i> `
+#'     looks similar to: `ou-1a2b-34uvwxyz `
 #' 
 #' -   Root – specify the root ID that begins with `r-` and looks similar
-#'     to: `r-<i>1a2b</i> `
+#'     to: `r-1a2b `
 #' 
 #' -   Policy – specify the policy ID that begins with `p-` andlooks
-#'     similar to: `p-<i>12abcdefg3</i> `
+#'     similar to: `p-12abcdefg3 `
 #' @param TagKeys &#91;required&#93; The list of keys for tags to remove from the specified resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -3983,7 +4824,9 @@ organizations_untag_resource <- function(ResourceId, TagKeys) {
 #' organizations_update_organizational_unit(OrganizationalUnitId, Name)
 #'
 #' @param OrganizationalUnitId &#91;required&#93; The unique identifier (ID) of the OU that you want to rename. You can
-#' get the ID from the ListOrganizationalUnitsForParent operation.
+#' get the ID from the
+#' [`list_organizational_units_for_parent`][organizations_list_organizational_units_for_parent]
+#' operation.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for an
 #' organizational unit ID string requires "ou-" followed by from 4 to 32
@@ -3995,6 +4838,18 @@ organizations_untag_resource <- function(ResourceId, TagKeys) {
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) that is used to
 #' validate this parameter is a string of any of the characters in the
 #' ASCII character range.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationalUnit = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Name = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4051,7 +4906,7 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) for a policy ID
 #' string requires "p-" followed by from 8 to 128 lowercase or uppercase
-#' letters, digits, or the underscore character (\\_).
+#' letters, digits, or the underscore character (_).
 #' @param Name If provided, the new name for the policy.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) that is used to
@@ -4063,6 +4918,24 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' more information, see [Service Control Policy
 #' Syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html)
 #' in the *AWS Organizations User Guide.*
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = list(
+#'     PolicySummary = list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'       AwsManaged = TRUE|FALSE
+#'     ),
+#'     Content = "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -4089,7 +4962,7 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' # the preceding example with a new JSON policy text string that allows S3
 #' # actions instead of EC2 actions:/n/n
 #' svc$update_policy(
-#'   Content = "\{ \\\"Version\\\": \\\"2012-10-17\\\", \\\"Statement\\\": \{\\\"Effect\\\": ...",
+#'   Content = "\{ \"Version\": \"2012-10-17\", \"Statement\": \{\"Effect\": \"Allow\", \"A...",
 #'   PolicyId = "p-examplepolicyid111"
 #' )
 #' }

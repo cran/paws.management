@@ -23,6 +23,32 @@ inclusive.}
 \item{locale}{The locale (language) to return information in. English (en) is the
 default and the only supported value at this time.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  events = list(
+    list(
+      arn = "string",
+      service = "string",
+      eventTypeCode = "string",
+      eventTypeCategory = "issue"|"accountNotification"|"scheduledChange"|"investigation",
+      eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE",
+      region = "string",
+      startTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      endTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      lastUpdatedTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      statusCode = "open"|"closed"|"upcoming"
+    )
+  ),
+  nextToken = "string"
+)
+}
+}
 \description{
 Returns information about events across your organization in AWS
 Organizations. You can use the\code{filters} parameter to specify the events
@@ -31,9 +57,9 @@ include the affected accounts, detailed description, any additional
 metadata that depends on the event type, or any affected resources. To
 retrieve that information, use the following operations:
 \itemize{
-\item \href{https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedAccountsForOrganization.html}{DescribeAffectedAccountsForOrganization}
-\item \href{https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventDetailsForOrganization.html}{DescribeEventDetailsForOrganization}
-\item \href{https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntitiesForOrganization.html}{DescribeAffectedEntitiesForOrganization}
+\item \code{\link[=health_describe_affected_accounts_for_organization]{describe_affected_accounts_for_organization}}
+\item \code{\link[=health_describe_event_details_for_organization]{describe_event_details_for_organization}}
+\item \code{\link[=health_describe_affected_entities_for_organization]{describe_affected_entities_for_organization}}
 }
 
 If you don't specify a \code{filter}, the \code{DescribeEventsForOrganizations}
@@ -45,7 +71,7 @@ For more information about the different types of AWS Health events, see
 
 Before you can call this operation, you must first enable AWS Health to
 work with AWS Organizations. To do this, call the
-\href{https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html}{EnableHealthServiceAccessForOrganization}
+\code{\link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization}}
 operation from your organization's master AWS account.
 
 This API operation uses pagination. Specify the \code{nextToken} parameter in

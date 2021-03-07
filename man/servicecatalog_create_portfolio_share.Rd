@@ -30,6 +30,12 @@ order for the administrator to monitor the status of the
 \item{ShareTagOptions}{Enables or disables \code{TagOptions } sharing when creating the portfolio
 share. If this flag is not provided, TagOptions sharing is disabled.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PortfolioShareToken = "string"
+)
+}
+}
 \description{
 Shares the specified portfolio with the specified account or
 organization node. Shares to an organization node can only be created by
@@ -49,7 +55,8 @@ shared product.
 If the portfolio share with the specified account or organization node
 already exists, this action will have no effect and will not return an
 error. To update an existing share, you must use the
-\code{ UpdatePortfolioShare} API instead.
+\code{\link[=servicecatalog_update_portfolio_share]{update_portfolio_share}} API
+instead.
 }
 \section{Request syntax}{
 \preformatted{svc$create_portfolio_share(

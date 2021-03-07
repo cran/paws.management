@@ -28,13 +28,32 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Accounts = list(
+    list(
+      Id = "string",
+      Arn = "string",
+      Email = "string",
+      Name = "string",
+      Status = "ACTIVE"|"SUSPENDED",
+      JoinedMethod = "INVITED"|"CREATED",
+      JoinedTimestamp = as.POSIXct(
+        "2015-01-01"
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the accounts in an organization that are contained by the
 specified target root or organizational unit (OU). If you specify the
 root, you get a list of all the accounts that aren't in any OU. If you
 specify an OU, you get a list of all the accounts in only that OU and
 not in any child OUs. To get a list of all accounts in the organization,
-use the ListAccounts operation.
+use the \code{\link[=organizations_list_accounts]{list_accounts}} operation.
 
 Always check the \code{NextToken} response parameter for a \code{null} value when
 calling a \verb{List*} operation. These operations can occasionally return an

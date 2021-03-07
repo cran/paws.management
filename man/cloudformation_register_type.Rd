@@ -15,7 +15,7 @@ Currently, the only valid value is \code{RESOURCE}.}
 \item{TypeName}{[required] The name of the type being registered.
 
 We recommend that type names adhere to the following pattern:
-\emph{company\\_or\\_organization}::\emph{service}::\emph{type}.
+\emph{company_or_organization}::\emph{service}::\emph{type}.
 
 The following organization namespaces are reserved and cannot be used in
 your resource type names:
@@ -63,6 +63,12 @@ CloudFormation from generating more than one version of a type from the
 same registeration request, even if the request is submitted multiple
 times.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RegistrationToken = "string"
+)
+}
+}
 \description{
 Registers a type with the CloudFormation service. Registering a type
 makes it available for use in CloudFormation templates in your AWS
@@ -79,11 +85,12 @@ in the \emph{CloudFormation CLI User Guide}.
 
 You can have a maximum of 50 resource type versions registered at a
 time. This maximum is per account and per region. Use
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeregisterType.html}{DeregisterType}
-to deregister specific resource type versions if necessary.
+\code{\link[=cloudformation_deregister_type]{deregister_type}} to deregister
+specific resource type versions if necessary.
 
 Once you have initiated a registration request using
-\verb{<a>RegisterType</a>}, you can use \verb{<a>DescribeTypeRegistration</a>}
+\code{\link[=cloudformation_register_type]{register_type}}, you can use
+\code{\link[=cloudformation_describe_type_registration]{describe_type_registration}}
 to monitor the progress of the registration request.
 }
 \section{Request syntax}{

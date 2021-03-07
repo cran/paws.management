@@ -26,6 +26,9 @@ provide a value for \code{SyncSource}. The default value is
 \item{SyncSource}{Specify information about the data sources to synchronize. This
 parameter is required if the \code{SyncType} value is SyncFromSource.}
 }
+\value{
+An empty list.
+}
 \description{
 A resource data sync helps you view data from multiple sources in a
 single location. Systems Manager offers two types of resource data sync:
@@ -47,7 +50,7 @@ in the \emph{AWS Systems Manager User Guide}.
 A resource data sync is an asynchronous operation that returns
 immediately. After a successful initial sync is completed, the system
 continuously syncs data. To check the status of a sync, use the
-ListResourceDataSync.
+\code{\link[=ssm_list_resource_data_sync]{list_resource_data_sync}}.
 
 By default, data is not encrypted in Amazon S3. We strongly recommend
 that you enable encryption in Amazon S3 to ensure secure data storage.

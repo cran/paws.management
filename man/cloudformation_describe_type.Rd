@@ -25,16 +25,46 @@ Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{A
 the end of the Amazon Resource Name (ARN) assigned to the type version
 when it is registered.
 
-If you specify a \code{VersionId}, \code{DescribeType} returns information about
-that specific type version. Otherwise, it returns information about the
-default type version.}
+If you specify a \code{VersionId},
+\code{\link[=cloudformation_describe_type]{describe_type}} returns information
+about that specific type version. Otherwise, it returns information
+about the default type version.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Arn = "string",
+  Type = "RESOURCE"|"MODULE",
+  TypeName = "string",
+  DefaultVersionId = "string",
+  IsDefaultVersion = TRUE|FALSE,
+  Description = "string",
+  Schema = "string",
+  ProvisioningType = "NON_PROVISIONABLE"|"IMMUTABLE"|"FULLY_MUTABLE",
+  DeprecatedStatus = "LIVE"|"DEPRECATED",
+  LoggingConfig = list(
+    LogRoleArn = "string",
+    LogGroupName = "string"
+  ),
+  ExecutionRoleArn = "string",
+  Visibility = "PUBLIC"|"PRIVATE",
+  SourceUrl = "string",
+  DocumentationUrl = "string",
+  LastUpdated = as.POSIXct(
+    "2015-01-01"
+  ),
+  TimeCreated = as.POSIXct(
+    "2015-01-01"
+  )
+)
+}
 }
 \description{
 Returns detailed information about a type that has been registered.
 
-If you specify a \code{VersionId}, \code{DescribeType} returns information about
-that specific type version. Otherwise, it returns information about the
-default type version.
+If you specify a \code{VersionId},
+\code{\link[=cloudformation_describe_type]{describe_type}} returns information
+about that specific type version. Otherwise, it returns information
+about the default type version.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_type(

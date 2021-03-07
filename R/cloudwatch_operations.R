@@ -34,6 +34,9 @@ NULL
 #'
 #' @param AlarmNames &#91;required&#93; The alarms to be deleted.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_alarms(
@@ -77,6 +80,9 @@ cloudwatch_delete_alarms <- function(AlarmNames) {
 #' @param Dimensions The metric dimensions associated with the anomaly detection model to
 #' delete.
 #' @param Stat &#91;required&#93; The statistic associated with the anomaly detection model to delete.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -125,6 +131,9 @@ cloudwatch_delete_anomaly_detector <- function(Namespace, MetricName, Dimensions
 #'
 #' @param DashboardNames &#91;required&#93; The dashboards to be deleted. This parameter is required.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_dashboards(
@@ -168,7 +177,22 @@ cloudwatch_delete_dashboards <- function(DashboardNames) {
 #'
 #' @param RuleNames &#91;required&#93; An array of the rule names to delete. If you need to find out the names
 #' of your rules, use
-#' [DescribeInsightRules](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html).
+#' [`describe_insight_rules`][cloudwatch_describe_insight_rules].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Failures = list(
+#'     list(
+#'       FailureResource = "string",
+#'       ExceptionType = "string",
+#'       FailureCode = "string",
+#'       FailureDescription = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -227,6 +251,26 @@ cloudwatch_delete_insight_rules <- function(RuleNames) {
 #' Specify `TimestampDescending` to have the newest event history returned
 #' first, and specify `TimestampAscending` to have the oldest history
 #' returned first.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AlarmHistoryItems = list(
+#'     list(
+#'       AlarmName = "string",
+#'       AlarmType = "CompositeAlarm"|"MetricAlarm",
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       HistoryItemType = "ConfigurationUpdate"|"StateUpdate"|"Action",
+#'       HistorySummary = "string",
+#'       HistoryData = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -301,11 +345,11 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NUL
 #' you do so, you receive a validation error.
 #' 
 #' Only the `Alarm Name`, `ARN`, `StateValue`
-#' (OK/ALARM/INSUFFICIENT\\_DATA), and `StateUpdatedTimestamp` information
+#' (OK/ALARM/INSUFFICIENT_DATA), and `StateUpdatedTimestamp` information
 #' are returned by this operation when you use this parameter. To get
 #' complete information about these alarms, perform another
-#' `DescribeAlarms` operation and specify the parent alarm names in the
-#' `AlarmNames` parameter.
+#' [`describe_alarms`][cloudwatch_describe_alarms] operation and specify
+#' the parent alarm names in the `AlarmNames` parameter.
 #' @param ParentsOfAlarmName If you use this parameter and specify the name of a metric or composite
 #' alarm, the operation returns information about the "parent" alarms of
 #' the alarm you specify. These are the composite alarms that have
@@ -319,8 +363,8 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NUL
 #' 
 #' Only the Alarm Name and ARN are returned by this operation when you use
 #' this parameter. To get complete information about these alarms, perform
-#' another `DescribeAlarms` operation and specify the parent alarm names in
-#' the `AlarmNames` parameter.
+#' another [`describe_alarms`][cloudwatch_describe_alarms] operation and
+#' specify the parent alarm names in the `AlarmNames` parameter.
 #' @param StateValue Specify this parameter to receive information only about alarms that are
 #' currently in the state that you specify.
 #' @param ActionPrefix Use this parameter to filter the results of the operation to only those
@@ -330,6 +374,110 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NUL
 #' @param MaxRecords The maximum number of alarm descriptions to retrieve.
 #' @param NextToken The token returned by a previous call to indicate that there is more
 #' data available.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CompositeAlarms = list(
+#'     list(
+#'       ActionsEnabled = TRUE|FALSE,
+#'       AlarmActions = list(
+#'         "string"
+#'       ),
+#'       AlarmArn = "string",
+#'       AlarmConfigurationUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AlarmDescription = "string",
+#'       AlarmName = "string",
+#'       AlarmRule = "string",
+#'       InsufficientDataActions = list(
+#'         "string"
+#'       ),
+#'       OKActions = list(
+#'         "string"
+#'       ),
+#'       StateReason = "string",
+#'       StateReasonData = "string",
+#'       StateUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA"
+#'     )
+#'   ),
+#'   MetricAlarms = list(
+#'     list(
+#'       AlarmName = "string",
+#'       AlarmArn = "string",
+#'       AlarmDescription = "string",
+#'       AlarmConfigurationUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ActionsEnabled = TRUE|FALSE,
+#'       OKActions = list(
+#'         "string"
+#'       ),
+#'       AlarmActions = list(
+#'         "string"
+#'       ),
+#'       InsufficientDataActions = list(
+#'         "string"
+#'       ),
+#'       StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
+#'       StateReason = "string",
+#'       StateReasonData = "string",
+#'       StateUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       MetricName = "string",
+#'       Namespace = "string",
+#'       Statistic = "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum",
+#'       ExtendedStatistic = "string",
+#'       Dimensions = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       Period = 123,
+#'       Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
+#'       EvaluationPeriods = 123,
+#'       DatapointsToAlarm = 123,
+#'       Threshold = 123.0,
+#'       ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold"|"LessThanLowerOrGreaterThanUpperThreshold"|"LessThanLowerThreshold"|"GreaterThanUpperThreshold",
+#'       TreatMissingData = "string",
+#'       EvaluateLowSampleCountPercentile = "string",
+#'       Metrics = list(
+#'         list(
+#'           Id = "string",
+#'           MetricStat = list(
+#'             Metric = list(
+#'               Namespace = "string",
+#'               MetricName = "string",
+#'               Dimensions = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             ),
+#'             Period = 123,
+#'             Stat = "string",
+#'             Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
+#'           ),
+#'           Expression = "string",
+#'           Label = "string",
+#'           ReturnData = TRUE|FALSE,
+#'           Period = 123
+#'         )
+#'       ),
+#'       ThresholdMetricId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -396,6 +544,82 @@ cloudwatch_describe_alarms <- function(AlarmNames = NULL, AlarmNamePrefix = NULL
 #' succeed.
 #' @param Period The period, in seconds, over which the statistic is applied.
 #' @param Unit The unit for the metric.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MetricAlarms = list(
+#'     list(
+#'       AlarmName = "string",
+#'       AlarmArn = "string",
+#'       AlarmDescription = "string",
+#'       AlarmConfigurationUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ActionsEnabled = TRUE|FALSE,
+#'       OKActions = list(
+#'         "string"
+#'       ),
+#'       AlarmActions = list(
+#'         "string"
+#'       ),
+#'       InsufficientDataActions = list(
+#'         "string"
+#'       ),
+#'       StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
+#'       StateReason = "string",
+#'       StateReasonData = "string",
+#'       StateUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       MetricName = "string",
+#'       Namespace = "string",
+#'       Statistic = "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum",
+#'       ExtendedStatistic = "string",
+#'       Dimensions = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       Period = 123,
+#'       Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
+#'       EvaluationPeriods = 123,
+#'       DatapointsToAlarm = 123,
+#'       Threshold = 123.0,
+#'       ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold"|"LessThanLowerOrGreaterThanUpperThreshold"|"LessThanLowerThreshold"|"GreaterThanUpperThreshold",
+#'       TreatMissingData = "string",
+#'       EvaluateLowSampleCountPercentile = "string",
+#'       Metrics = list(
+#'         list(
+#'           Id = "string",
+#'           MetricStat = list(
+#'             Metric = list(
+#'               Namespace = "string",
+#'               MetricName = "string",
+#'               Dimensions = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             ),
+#'             Period = 123,
+#'             Stat = "string",
+#'             Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
+#'           ),
+#'           Expression = "string",
+#'           Label = "string",
+#'           ReturnData = TRUE|FALSE,
+#'           Period = 123
+#'         )
+#'       ),
+#'       ThresholdMetricId = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -465,6 +689,41 @@ cloudwatch_describe_alarms_for_metric <- function(MetricName, Namespace, Statist
 #' metrics that have these dimensions and have anomaly detection models
 #' associated, they're all returned.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AnomalyDetectors = list(
+#'     list(
+#'       Namespace = "string",
+#'       MetricName = "string",
+#'       Dimensions = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       Stat = "string",
+#'       Configuration = list(
+#'         ExcludedTimeRanges = list(
+#'           list(
+#'             StartTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             EndTime = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         MetricTimezone = "string"
+#'       ),
+#'       StateValue = "PENDING_TRAINING"|"TRAINED_INSUFFICIENT_DATA"|"TRAINED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_anomaly_detectors(
@@ -518,6 +777,22 @@ cloudwatch_describe_anomaly_detectors <- function(NextToken = NULL, MaxResults =
 #' @param MaxResults The maximum number of results to return in one operation. If you omit
 #' this parameter, the default of 500 is used.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   InsightRules = list(
+#'     list(
+#'       Name = "string",
+#'       State = "string",
+#'       Schema = "string",
+#'       Definition = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_insight_rules(
@@ -557,6 +832,9 @@ cloudwatch_describe_insight_rules <- function(NextToken = NULL, MaxResults = NUL
 #' cloudwatch_disable_alarm_actions(AlarmNames)
 #'
 #' @param AlarmNames &#91;required&#93; The names of the alarms.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -598,7 +876,22 @@ cloudwatch_disable_alarm_actions <- function(AlarmNames) {
 #'
 #' @param RuleNames &#91;required&#93; An array of the rule names to disable. If you need to find out the names
 #' of your rules, use
-#' [DescribeInsightRules](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html).
+#' [`describe_insight_rules`][cloudwatch_describe_insight_rules].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Failures = list(
+#'     list(
+#'       FailureResource = "string",
+#'       ExceptionType = "string",
+#'       FailureCode = "string",
+#'       FailureDescription = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -638,6 +931,9 @@ cloudwatch_disable_insight_rules <- function(RuleNames) {
 #' cloudwatch_enable_alarm_actions(AlarmNames)
 #'
 #' @param AlarmNames &#91;required&#93; The names of the alarms.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -679,7 +975,22 @@ cloudwatch_enable_alarm_actions <- function(AlarmNames) {
 #'
 #' @param RuleNames &#91;required&#93; An array of the rule names to enable. If you need to find out the names
 #' of your rules, use
-#' [DescribeInsightRules](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html).
+#' [`describe_insight_rules`][cloudwatch_describe_insight_rules].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Failures = list(
+#'     list(
+#'       FailureResource = "string",
+#'       ExceptionType = "string",
+#'       FailureCode = "string",
+#'       FailureDescription = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -715,14 +1026,26 @@ cloudwatch_enable_insight_rules <- function(RuleNames) {
 #' @description
 #' Displays the details of the dashboard that you specify.
 #' 
-#' To copy an existing dashboard, use `GetDashboard`, and then use the data
+#' To copy an existing dashboard, use
+#' [`get_dashboard`][cloudwatch_get_dashboard], and then use the data
 #' returned within `DashboardBody` as the template for the new dashboard
-#' when you call `PutDashboard` to create the copy.
+#' when you call [`put_dashboard`][cloudwatch_put_dashboard] to create the
+#' copy.
 #'
 #' @usage
 #' cloudwatch_get_dashboard(DashboardName)
 #'
 #' @param DashboardName &#91;required&#93; The name of the dashboard to be described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DashboardArn = "string",
+#'   DashboardBody = "string",
+#'   DashboardName = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -836,6 +1159,49 @@ cloudwatch_get_dashboard <- function(DashboardName) {
 #' @param OrderBy Determines what statistic to use to rank the contributors. Valid values
 #' are SUM and MAXIMUM.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyLabels = list(
+#'     "string"
+#'   ),
+#'   AggregationStatistic = "string",
+#'   AggregateValue = 123.0,
+#'   ApproximateUniqueCount = 123,
+#'   Contributors = list(
+#'     list(
+#'       Keys = list(
+#'         "string"
+#'       ),
+#'       ApproximateAggregateValue = 123.0,
+#'       Datapoints = list(
+#'         list(
+#'           Timestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ApproximateValue = 123.0
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   MetricDatapoints = list(
+#'     list(
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UniqueContributors = 123.0,
+#'       MaxContributorValue = 123.0,
+#'       SampleCount = 123.0,
+#'       Average = 123.0,
+#'       Sum = 123.0,
+#'       Minimum = 123.0,
+#'       Maximum = 123.0
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_insight_rule_report(
@@ -880,20 +1246,22 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
 #' points
 #'
 #' @description
-#' You can use the `GetMetricData` API to retrieve as many as 500 different
-#' metrics in a single request, with a total of as many as 100,800 data
-#' points. You can also optionally perform math expressions on the values
-#' of the returned statistics, to create new time series that represent new
-#' insights into your data. For example, using Lambda metrics, you could
-#' divide the Errors metric by the Invocations metric to get an error rate
-#' time series. For more information about metric math expressions, see
-#' [Metric Math Syntax and
+#' You can use the [`get_metric_data`][cloudwatch_get_metric_data] API to
+#' retrieve as many as 500 different metrics in a single request, with a
+#' total of as many as 100,800 data points. You can also optionally perform
+#' math expressions on the values of the returned statistics, to create new
+#' time series that represent new insights into your data. For example,
+#' using Lambda metrics, you could divide the Errors metric by the
+#' Invocations metric to get an error rate time series. For more
+#' information about metric math expressions, see [Metric Math Syntax and
 #' Functions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax)
 #' in the *Amazon CloudWatch User Guide*.
 #' 
-#' Calls to the `GetMetricData` API have a different pricing structure than
-#' calls to `GetMetricStatistics`. For more information about pricing, see
-#' [Amazon CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
+#' Calls to the [`get_metric_data`][cloudwatch_get_metric_data] API have a
+#' different pricing structure than calls to
+#' [`get_metric_statistics`][cloudwatch_get_metric_statistics]. For more
+#' information about pricing, see [Amazon CloudWatch
+#' Pricing](https://aws.amazon.com/cloudwatch/pricing/).
 #' 
 #' Amazon CloudWatch retains metric data as follows:
 #' 
@@ -931,10 +1299,11 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
 #' cloudwatch_get_metric_data(MetricDataQueries, StartTime, EndTime,
 #'   NextToken, ScanBy, MaxDatapoints)
 #'
-#' @param MetricDataQueries &#91;required&#93; The metric queries to be returned. A single `GetMetricData` call can
-#' include as many as 500 `MetricDataQuery` structures. Each of these
-#' structures can specify either a metric to retrieve, or a math expression
-#' to perform on retrieved data.
+#' @param MetricDataQueries &#91;required&#93; The metric queries to be returned. A single
+#' [`get_metric_data`][cloudwatch_get_metric_data] call can include as many
+#' as 500 `MetricDataQuery` structures. Each of these structures can
+#' specify either a metric to retrieve, or a math expression to perform on
+#' retrieved data.
 #' @param StartTime &#91;required&#93; The time stamp indicating the earliest data to be returned.
 #' 
 #' The value specified is inclusive; results include data points with the
@@ -977,14 +1346,50 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
 #' beginning and end of an hour. For example, if the `Period` of a metric
 #' is 5 minutes, specifying 12:05 or 12:30 as `EndTime` can get a faster
 #' response from CloudWatch than setting 12:07 or 12:29 as the `EndTime`.
-#' @param NextToken Include this value, if it was returned by the previous `GetMetricData`
-#' operation, to get the next set of data points.
+#' @param NextToken Include this value, if it was returned by the previous
+#' [`get_metric_data`][cloudwatch_get_metric_data] operation, to get the
+#' next set of data points.
 #' @param ScanBy The order in which data points should be returned. `TimestampDescending`
 #' returns the newest data first and paginates when the `MaxDatapoints`
 #' limit is reached. `TimestampAscending` returns the oldest data first and
 #' paginates when the `MaxDatapoints` limit is reached.
 #' @param MaxDatapoints The maximum number of data points the request should return before
 #' paginating. If you omit this, the default of 100,800 is used.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MetricDataResults = list(
+#'     list(
+#'       Id = "string",
+#'       Label = "string",
+#'       Timestamps = list(
+#'         as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       Values = list(
+#'         123.0
+#'       ),
+#'       StatusCode = "Complete"|"InternalError"|"PartialData",
+#'       Messages = list(
+#'         list(
+#'           Code = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   Messages = list(
+#'     list(
+#'       Code = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1163,8 +1568,8 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
 #' seconds) and must be a multiple of 60. For high-resolution metrics that
 #' are collected at intervals of less than one minute, the period can be 1,
 #' 5, 10, 30, 60, or any multiple of 60. High-resolution metrics are those
-#' metrics stored by a `PutMetricData` call that includes a
-#' `StorageResolution` of 1 second.
+#' metrics stored by a [`put_metric_data`][cloudwatch_put_metric_data] call
+#' that includes a `StorageResolution` of 1 second.
 #' 
 #' If the `StartTime` parameter specifies a time stamp that is greater than
 #' 3 hours ago, you must specify the period as follows or no data points in
@@ -1179,13 +1584,14 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
 #' -   Start time greater than 63 days ago - Use a multiple of 3600 seconds
 #'     (1 hour).
 #' @param Statistics The metric statistics, other than percentile. For percentile statistics,
-#' use `ExtendedStatistics`. When calling `GetMetricStatistics`, you must
+#' use `ExtendedStatistics`. When calling
+#' [`get_metric_statistics`][cloudwatch_get_metric_statistics], you must
 #' specify either `Statistics` or `ExtendedStatistics`, but not both.
 #' @param ExtendedStatistics The percentile statistics. Specify values between p0.0 and p100. When
-#' calling `GetMetricStatistics`, you must specify either `Statistics` or
-#' `ExtendedStatistics`, but not both. Percentile statistics are not
-#' available for metrics when any of the metric values are negative
-#' numbers.
+#' calling [`get_metric_statistics`][cloudwatch_get_metric_statistics], you
+#' must specify either `Statistics` or `ExtendedStatistics`, but not both.
+#' Percentile statistics are not available for metrics when any of the
+#' metric values are negative numbers.
 #' @param Unit The unit for a given metric. If you omit `Unit`, all data that was
 #' collected with any unit is returned, along with the corresponding units
 #' that were specified when the data was reported to CloudWatch. If you
@@ -1193,6 +1599,30 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
 #' that unit specified. If you specify a unit that does not match the data
 #' collected, the results of the operation are null. CloudWatch does not
 #' perform unit conversions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Label = "string",
+#'   Datapoints = list(
+#'     list(
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SampleCount = 123.0,
+#'       Average = 123.0,
+#'       Sum = 123.0,
+#'       Minimum = 123.0,
+#'       Maximum = 123.0,
+#'       Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
+#'       ExtendedStatistics = list(
+#'         123.0
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1246,17 +1676,20 @@ cloudwatch_get_metric_statistics <- function(Namespace, MetricName, Dimensions =
 #' one or more Amazon CloudWatch metrics as a bitmap image
 #'
 #' @description
-#' You can use the `GetMetricWidgetImage` API to retrieve a snapshot graph
-#' of one or more Amazon CloudWatch metrics as a bitmap image. You can then
-#' embed this image into your services and products, such as wiki pages,
-#' reports, and documents. You could also retrieve images regularly, such
-#' as every minute, and create your own custom live dashboard.
+#' You can use the
+#' [`get_metric_widget_image`][cloudwatch_get_metric_widget_image] API to
+#' retrieve a snapshot graph of one or more Amazon CloudWatch metrics as a
+#' bitmap image. You can then embed this image into your services and
+#' products, such as wiki pages, reports, and documents. You could also
+#' retrieve images regularly, such as every minute, and create your own
+#' custom live dashboard.
 #' 
 #' The graph you retrieve can include all CloudWatch metric graph features,
 #' including metric math and horizontal and vertical annotations.
 #' 
 #' There is a limit of 20 transactions per second for this API. Each
-#' `GetMetricWidgetImage` action has the following limits:
+#' [`get_metric_widget_image`][cloudwatch_get_metric_widget_image] action
+#' has the following limits:
 #' 
 #' -   As many as 100 metrics in the graph.
 #' 
@@ -1268,7 +1701,8 @@ cloudwatch_get_metric_statistics <- function(Namespace, MetricName, Dimensions =
 #' @param MetricWidget &#91;required&#93; A JSON string that defines the bitmap graph to be retrieved. The string
 #' includes the metrics to include in the graph, statistics, annotations,
 #' title, axis limits, and so on. You can include only one `MetricWidget`
-#' parameter in each `GetMetricWidgetImage` call.
+#' parameter in each
+#' [`get_metric_widget_image`][cloudwatch_get_metric_widget_image] call.
 #' 
 #' For more information about the syntax of `MetricWidget` see
 #' [GetMetricWidgetImage: Metric Widget Structure and
@@ -1283,30 +1717,38 @@ cloudwatch_get_metric_statistics <- function(Namespace, MetricName, Dimensions =
 #' response with the content-type set to `text/xml`. The image data is in a
 #' `MetricWidgetImage` field. For example:
 #' 
-#' ` &lt;GetMetricWidgetImageResponse xmlns=&lt;URLstring&gt;&gt;`
+#' ` <GetMetricWidgetImageResponse xmlns=<URLstring>>`
 #' 
-#' ` &lt;GetMetricWidgetImageResult&gt;`
+#' ` <GetMetricWidgetImageResult>`
 #' 
-#' ` &lt;MetricWidgetImage&gt;`
+#' ` <MetricWidgetImage>`
 #' 
 #' ` iVBORw0KGgoAAAANSUhEUgAAAlgAAAGQEAYAAAAip...`
 #' 
-#' ` &lt;/MetricWidgetImage&gt;`
+#' ` </MetricWidgetImage>`
 #' 
-#' ` &lt;/GetMetricWidgetImageResult&gt;`
+#' ` </GetMetricWidgetImageResult>`
 #' 
-#' ` &lt;ResponseMetadata&gt;`
+#' ` <ResponseMetadata>`
 #' 
-#' ` &lt;RequestId&gt;6f0d4192-4d42-11e8-82c1-f539a07e0e3b&lt;/RequestId&gt;`
+#' ` <RequestId>6f0d4192-4d42-11e8-82c1-f539a07e0e3b</RequestId>`
 #' 
-#' ` &lt;/ResponseMetadata&gt;`
+#' ` </ResponseMetadata>`
 #' 
-#' `&lt;/GetMetricWidgetImageResponse&gt;`
+#' `</GetMetricWidgetImageResponse>`
 #' 
 #' The `image/png` setting is intended only for custom HTTP requests. For
 #' most use cases, and all actions using an AWS SDK, you should use `png`.
 #' If you specify `image/png`, the HTTP response has a content-type set to
 #' `image/png`, and the body of the response is a PNG image.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MetricWidgetImage = raw
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1344,19 +1786,38 @@ cloudwatch_get_metric_widget_image <- function(MetricWidget, OutputFormat = NULL
 #' the prefix are listed. Otherwise, all dashboards in your account are
 #' listed.
 #' 
-#' `ListDashboards` returns up to 1000 results on one page. If there are
-#' more than 1000 dashboards, you can call `ListDashboards` again and
-#' include the value you received for `NextToken` in the first call, to
-#' receive the next 1000 results.
+#' [`list_dashboards`][cloudwatch_list_dashboards] returns up to 1000
+#' results on one page. If there are more than 1000 dashboards, you can
+#' call [`list_dashboards`][cloudwatch_list_dashboards] again and include
+#' the value you received for `NextToken` in the first call, to receive the
+#' next 1000 results.
 #'
 #' @usage
 #' cloudwatch_list_dashboards(DashboardNamePrefix, NextToken)
 #'
 #' @param DashboardNamePrefix If you specify this parameter, only the dashboards with names starting
 #' with the specified string are listed. The maximum length is 255, and
-#' valid characters are A-Z, a-z, 0-9, ".", "-", and "\\_".
+#' valid characters are A-Z, a-z, 0-9, ".", "-", and "_".
 #' @param NextToken The token returned by a previous call to indicate that there is more
 #' data available.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DashboardEntries = list(
+#'     list(
+#'       DashboardName = "string",
+#'       DashboardArn = "string",
+#'       LastModified = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Size = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1390,26 +1851,23 @@ cloudwatch_list_dashboards <- function(DashboardNamePrefix = NULL, NextToken = N
 #'
 #' @description
 #' List the specified metrics. You can use the returned metrics with
-#' [GetMetricData](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html)
-#' or
-#' [GetMetricStatistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html)
-#' to obtain statistical data.
+#' [`get_metric_data`][cloudwatch_get_metric_data] or
+#' [`get_metric_statistics`][cloudwatch_get_metric_statistics] to obtain
+#' statistical data.
 #' 
 #' Up to 500 results are returned for any one call. To retrieve additional
 #' results, use the returned token with subsequent calls.
 #' 
 #' After you create a metric, allow up to 15 minutes before the metric
 #' appears. You can see statistics about the metric sooner by using
-#' [GetMetricData](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html)
-#' or
-#' [GetMetricStatistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html).
+#' [`get_metric_data`][cloudwatch_get_metric_data] or
+#' [`get_metric_statistics`][cloudwatch_get_metric_statistics].
 #' 
-#' `ListMetrics` doesn't return information about metrics if those metrics
-#' haven't reported data in the past two weeks. To retrieve those metrics,
-#' use
-#' [GetMetricData](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html)
-#' or
-#' [GetMetricStatistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html).
+#' [`list_metrics`][cloudwatch_list_metrics] doesn't return information
+#' about metrics if those metrics haven't reported data in the past two
+#' weeks. To retrieve those metrics, use
+#' [`get_metric_data`][cloudwatch_get_metric_data] or
+#' [`get_metric_statistics`][cloudwatch_get_metric_statistics].
 #'
 #' @usage
 #' cloudwatch_list_metrics(Namespace, MetricName, Dimensions, NextToken,
@@ -1431,6 +1889,26 @@ cloudwatch_list_dashboards <- function(DashboardNamePrefix = NULL, NextToken = N
 #' specify. There is a low probability that the returned results include
 #' metrics with last published data as much as 40 minutes more than the
 #' specified time interval.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Metrics = list(
+#'     list(
+#'       Namespace = "string",
+#'       MetricName = "string",
+#'       Dimensions = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1480,15 +1958,28 @@ cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensi
 #' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch resource that you want to view tags for.
 #' 
 #' The ARN format of an alarm is
-#' `arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:alarm:<i>alarm-name</i> `
+#' `arn:aws:cloudwatch:Region:account-id:alarm:alarm-name `
 #' 
 #' The ARN format of a Contributor Insights rule is
-#' `arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:insight-rule:<i>insight-rule-name</i> `
+#' `arn:aws:cloudwatch:Region:account-id:insight-rule:insight-rule-name `
 #' 
 #' For more information about ARN format, see [Resource Types Defined by
 #' Amazon
 #' CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies)
 #' in the *Amazon Web Services General Reference*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1540,6 +2031,9 @@ cloudwatch_list_tags_for_resource <- function(ResourceARN) {
 #' and updating the model. You can specify as many as 10 time ranges.
 #' 
 #' The configuration can also include the time zone to use for the metric.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1648,16 +2142,15 @@ cloudwatch_put_anomaly_detector <- function(Namespace, MetricName, Dimensions = 
 #' from any other state. Each action is specified as an Amazon Resource
 #' Name (ARN).
 #' 
-#' Valid Values:
-#' `arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> ` |
-#' `arn:aws:ssm:<i>region</i>:<i>account-id</i>:opsitem:<i>severity</i> `
+#' Valid Values: `arn:aws:sns:region:account-id:sns-topic-name ` |
+#' `arn:aws:ssm:region:account-id:opsitem:severity `
 #' @param AlarmDescription The description for the composite alarm.
 #' @param AlarmName &#91;required&#93; The name for the composite alarm. This name must be unique within the
 #' Region.
 #' @param AlarmRule &#91;required&#93; An expression that specifies which other alarms are to be evaluated to
 #' determine this composite alarm's state. For each alarm that you
 #' reference, you designate a function that specifies whether that alarm
-#' needs to be in ALARM state, OK state, or INSUFFICIENT\\_DATA state. You
+#' needs to be in ALARM state, OK state, or INSUFFICIENT_DATA state. You
 #' can use operators (AND, OR and NOT) to combine multiple functions in a
 #' single expression. You can use parenthesis to logically group the
 #' functions in your expression.
@@ -1667,14 +2160,14 @@ cloudwatch_put_anomaly_detector <- function(Namespace, MetricName, Dimensions = 
 #' 
 #' Functions can include the following:
 #' 
-#' -   `ALARM("<i>alarm-name</i> or <i>alarm-ARN</i>")` is TRUE if the
-#'     named alarm is in ALARM state.
+#' -   `ALARM("alarm-name or alarm-ARN")` is TRUE if the named alarm is in
+#'     ALARM state.
 #' 
-#' -   `OK("<i>alarm-name</i> or <i>alarm-ARN</i>")` is TRUE if the named
-#'     alarm is in OK state.
+#' -   `OK("alarm-name or alarm-ARN")` is TRUE if the named alarm is in OK
+#'     state.
 #' 
-#' -   `INSUFFICIENT_DATA("<i>alarm-name</i> or <i>alarm-ARN</i>")` is TRUE
-#'     if the named alarm is in INSUFFICIENT\\_DATA state.
+#' -   `INSUFFICIENT_DATA("alarm-name or alarm-ARN")` is TRUE if the named
+#'     alarm is in INSUFFICIENT_DATA state.
 #' 
 #' -   `TRUE` always evaluates to TRUE.
 #' 
@@ -1714,20 +2207,21 @@ cloudwatch_put_anomaly_detector <- function(Namespace, MetricName, Dimensions = 
 #' `INSUFFICIENT_DATA` state from any other state. Each action is specified
 #' as an Amazon Resource Name (ARN).
 #' 
-#' Valid Values:
-#' `arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> `
+#' Valid Values: `arn:aws:sns:region:account-id:sns-topic-name `
 #' @param OKActions The actions to execute when this alarm transitions to an `OK` state from
 #' any other state. Each action is specified as an Amazon Resource Name
 #' (ARN).
 #' 
-#' Valid Values:
-#' `arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> `
+#' Valid Values: `arn:aws:sns:region:account-id:sns-topic-name `
 #' @param Tags A list of key-value pairs to associate with the composite alarm. You can
 #' associate as many as 50 tags with an alarm.
 #' 
 #' Tags can help you organize and categorize your resources. You can also
 #' use them to scope user permissions, by granting a user permission to
 #' access or change only resources with certain tag values.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1784,16 +2278,19 @@ cloudwatch_put_composite_alarm <- function(ActionsEnabled = NULL, AlarmActions =
 #' 
 #' All dashboards in your account are global, not region-specific.
 #' 
-#' A simple way to create a dashboard using `PutDashboard` is to copy an
-#' existing dashboard. To copy an existing dashboard using the console, you
-#' can load the dashboard and then use the View/edit source command in the
-#' Actions menu to display the JSON block for that dashboard. Another way
-#' to copy a dashboard is to use `GetDashboard`, and then use the data
-#' returned within `DashboardBody` as the template for the new dashboard
-#' when you call `PutDashboard`.
+#' A simple way to create a dashboard using
+#' [`put_dashboard`][cloudwatch_put_dashboard] is to copy an existing
+#' dashboard. To copy an existing dashboard using the console, you can load
+#' the dashboard and then use the View/edit source command in the Actions
+#' menu to display the JSON block for that dashboard. Another way to copy a
+#' dashboard is to use [`get_dashboard`][cloudwatch_get_dashboard], and
+#' then use the data returned within `DashboardBody` as the template for
+#' the new dashboard when you call
+#' [`put_dashboard`][cloudwatch_put_dashboard].
 #' 
-#' When you create a dashboard with `PutDashboard`, a good practice is to
-#' add a text widget at the top of the dashboard with a message that the
+#' When you create a dashboard with
+#' [`put_dashboard`][cloudwatch_put_dashboard], a good practice is to add a
+#' text widget at the top of the dashboard with a message that the
 #' dashboard was created by script and should not be changed in the
 #' console. This message could also point console users to the location of
 #' the `DashboardBody` script or the CloudFormation template used to create
@@ -1805,7 +2302,7 @@ cloudwatch_put_composite_alarm <- function(ActionsEnabled = NULL, AlarmActions =
 #' @param DashboardName &#91;required&#93; The name of the dashboard. If a dashboard with this name already exists,
 #' this call modifies that dashboard, replacing its current contents.
 #' Otherwise, a new dashboard is created. The maximum length is 255, and
-#' valid characters are A-Z, a-z, 0-9, "-", and "\\_". This parameter is
+#' valid characters are A-Z, a-z, 0-9, "-", and "_". This parameter is
 #' required.
 #' @param DashboardBody &#91;required&#93; The detailed information about the dashboard in JSON format, including
 #' the widgets to include and their location on the dashboard. This
@@ -1813,6 +2310,19 @@ cloudwatch_put_composite_alarm <- function(ActionsEnabled = NULL, AlarmActions =
 #' 
 #' For more information about the syntax, see [Dashboard Body Structure and
 #' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DashboardValidationMessages = list(
+#'     list(
+#'       DataPath = "string",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1877,7 +2387,10 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' If you are using this operation to update an existing Contributor
 #' Insights rule, any tags you specify in this parameter are ignored. To
 #' change the tags of an existing rule, use
-#' [TagResource](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_TagResource.html).
+#' [`tag_resource`][cloudwatch_tag_resource].
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1964,57 +2477,57 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' any other state. Each action is specified as an Amazon Resource Name
 #' (ARN).
 #' 
-#' Valid Values: `arn:aws:automate:<i>region</i>:ec2:stop` |
-#' `arn:aws:automate:<i>region</i>:ec2:terminate` |
-#' `arn:aws:automate:<i>region</i>:ec2:recover` |
-#' `arn:aws:automate:<i>region</i>:ec2:reboot` |
-#' `arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> ` |
-#' `arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>:autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> `
+#' Valid Values: `arn:aws:automate:region:ec2:stop` |
+#' `arn:aws:automate:region:ec2:terminate` |
+#' `arn:aws:automate:region:ec2:recover` |
+#' `arn:aws:automate:region:ec2:reboot` |
+#' `arn:aws:sns:region:account-id:sns-topic-name ` |
+#' `arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
 #' 
 #' Valid Values (for use with IAM roles):
-#' `arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Stop/1.0`
+#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0`
 #' |
-#' `arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Terminate/1.0`
+#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0`
 #' |
-#' `arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Reboot/1.0`
+#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0`
 #' @param AlarmActions The actions to execute when this alarm transitions to the `ALARM` state
 #' from any other state. Each action is specified as an Amazon Resource
 #' Name (ARN).
 #' 
-#' Valid Values: `arn:aws:automate:<i>region</i>:ec2:stop` |
-#' `arn:aws:automate:<i>region</i>:ec2:terminate` |
-#' `arn:aws:automate:<i>region</i>:ec2:recover` |
-#' `arn:aws:automate:<i>region</i>:ec2:reboot` |
-#' `arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> ` |
-#' `arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>:autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> `
-#' | `arn:aws:ssm:<i>region</i>:<i>account-id</i>:opsitem:<i>severity</i> `
+#' Valid Values: `arn:aws:automate:region:ec2:stop` |
+#' `arn:aws:automate:region:ec2:terminate` |
+#' `arn:aws:automate:region:ec2:recover` |
+#' `arn:aws:automate:region:ec2:reboot` |
+#' `arn:aws:sns:region:account-id:sns-topic-name ` |
+#' `arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
+#' | `arn:aws:ssm:region:account-id:opsitem:severity `
 #' 
 #' Valid Values (for use with IAM roles):
-#' `arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Stop/1.0`
+#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0`
 #' |
-#' `arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Terminate/1.0`
+#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0`
 #' |
-#' `arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Reboot/1.0`
+#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0`
 #' @param InsufficientDataActions The actions to execute when this alarm transitions to the
 #' `INSUFFICIENT_DATA` state from any other state. Each action is specified
 #' as an Amazon Resource Name (ARN).
 #' 
-#' Valid Values: `arn:aws:automate:<i>region</i>:ec2:stop` |
-#' `arn:aws:automate:<i>region</i>:ec2:terminate` |
-#' `arn:aws:automate:<i>region</i>:ec2:recover` |
-#' `arn:aws:automate:<i>region</i>:ec2:reboot` |
-#' `arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> ` |
-#' `arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>:autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> `
+#' Valid Values: `arn:aws:automate:region:ec2:stop` |
+#' `arn:aws:automate:region:ec2:terminate` |
+#' `arn:aws:automate:region:ec2:recover` |
+#' `arn:aws:automate:region:ec2:reboot` |
+#' `arn:aws:sns:region:account-id:sns-topic-name ` |
+#' `arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
 #' 
 #' Valid Values (for use with IAM roles):
-#' `&gt;arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Stop/1.0`
+#' `>arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0`
 #' |
-#' `arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Terminate/1.0`
+#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0`
 #' |
-#' `arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Reboot/1.0`
+#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0`
 #' @param MetricName The name for the metric associated with the alarm. For each
-#' `PutMetricAlarm` operation, you must specify either `MetricName` or a
-#' `Metrics` array.
+#' [`put_metric_alarm`][cloudwatch_put_metric_alarm] operation, you must
+#' specify either `MetricName` or a `Metrics` array.
 #' 
 #' If you are creating an alarm based on a math expression, you cannot
 #' specify this parameter, or any of the `Dimensions`, `Period`,
@@ -2023,11 +2536,13 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' @param Namespace The namespace for the metric associated specified in `MetricName`.
 #' @param Statistic The statistic for the metric specified in `MetricName`, other than
 #' percentile. For percentile statistics, use `ExtendedStatistic`. When you
-#' call `PutMetricAlarm` and specify a `MetricName`, you must specify
-#' either `Statistic` or `ExtendedStatistic,` but not both.
+#' call [`put_metric_alarm`][cloudwatch_put_metric_alarm] and specify a
+#' `MetricName`, you must specify either `Statistic` or
+#' `ExtendedStatistic,` but not both.
 #' @param ExtendedStatistic The percentile statistic for the metric specified in `MetricName`.
-#' Specify a value between p0.0 and p100. When you call `PutMetricAlarm`
-#' and specify a `MetricName`, you must specify either `Statistic` or
+#' Specify a value between p0.0 and p100. When you call
+#' [`put_metric_alarm`][cloudwatch_put_metric_alarm] and specify a
+#' `MetricName`, you must specify either `Statistic` or
 #' `ExtendedStatistic,` but not both.
 #' @param Dimensions The dimensions for the metric specified in `MetricName`.
 #' @param Period The length, in seconds, used each time the metric specified in
@@ -2039,15 +2554,16 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' period for each metric within the objects in the `Metrics` array.
 #' 
 #' Be sure to specify 10 or 30 only for metrics that are stored by a
-#' `PutMetricData` call with a `StorageResolution` of 1. If you specify a
-#' period of 10 or 30 for a metric that does not have sub-minute
-#' resolution, the alarm still attempts to gather data at the period rate
-#' that you specify. In this case, it does not receive data for the
-#' attempts that do not correspond to a one-minute data resolution, and the
-#' alarm might often lapse into INSUFFICENT\\_DATA status. Specifying 10 or
-#' 30 also sets this alarm as a high-resolution alarm, which has a higher
-#' charge than other alarms. For more information about pricing, see
-#' [Amazon CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
+#' [`put_metric_data`][cloudwatch_put_metric_data] call with a
+#' `StorageResolution` of 1. If you specify a period of 10 or 30 for a
+#' metric that does not have sub-minute resolution, the alarm still
+#' attempts to gather data at the period rate that you specify. In this
+#' case, it does not receive data for the attempts that do not correspond
+#' to a one-minute data resolution, and the alarm might often lapse into
+#' INSUFFICENT_DATA status. Specifying 10 or 30 also sets this alarm as a
+#' high-resolution alarm, which has a higher charge than other alarms. For
+#' more information about pricing, see [Amazon CloudWatch
+#' Pricing](https://aws.amazon.com/cloudwatch/pricing/).
 #' 
 #' An alarm's total current evaluation period can be no longer than one
 #' day, so `Period` multiplied by `EvaluationPeriods` cannot be more than
@@ -2114,8 +2630,8 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' Valid Values: `evaluate | ignore`
 #' @param Metrics An array of `MetricDataQuery` structures that enable you to create an
 #' alarm based on the result of a metric math expression. For each
-#' `PutMetricAlarm` operation, you must specify either `MetricName` or a
-#' `Metrics` array.
+#' [`put_metric_alarm`][cloudwatch_put_metric_alarm] operation, you must
+#' specify either `MetricName` or a `Metrics` array.
 #' 
 #' Each item in the `Metrics` array either retrieves a metric or performs a
 #' math expression.
@@ -2127,9 +2643,9 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' 
 #' If you use the `Metrics` parameter, you cannot include the `MetricName`,
 #' `Dimensions`, `Period`, `Namespace`, `Statistic`, or `ExtendedStatistic`
-#' parameters of `PutMetricAlarm` in the same operation. Instead, you
-#' retrieve the metrics you are using in your math expression as part of
-#' the `Metrics` array.
+#' parameters of [`put_metric_alarm`][cloudwatch_put_metric_alarm] in the
+#' same operation. Instead, you retrieve the metrics you are using in your
+#' math expression as part of the `Metrics` array.
 #' @param Tags A list of key-value pairs to associate with the alarm. You can associate
 #' as many as 50 tags with an alarm.
 #' 
@@ -2139,10 +2655,8 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' 
 #' If you are using this operation to update an existing alarm, any tags
 #' you specify in this parameter are ignored. To change the tags of an
-#' existing alarm, use
-#' [TagResource](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_TagResource.html)
-#' or
-#' [UntagResource](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_UntagResource.html).
+#' existing alarm, use [`tag_resource`][cloudwatch_tag_resource] or
+#' [`untag_resource`][cloudwatch_untag_resource].
 #' @param ThresholdMetricId If this is an alarm based on an anomaly detection model, make this value
 #' match the ID of the `ANOMALY_DETECTION_BAND` function.
 #' 
@@ -2150,6 +2664,9 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' Model Alarm** example on this page.
 #' 
 #' If your alarm uses this parameter, it cannot have Auto Scaling actions.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2245,19 +2762,20 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
 #' the data points with the specified metric. If the specified metric does
 #' not exist, CloudWatch creates the metric. When CloudWatch creates a
 #' metric, it can take up to fifteen minutes for the metric to appear in
-#' calls to
-#' [ListMetrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_ListMetrics.html).
+#' calls to [`list_metrics`][cloudwatch_list_metrics].
 #' 
 #' You can publish either individual data points in the `Value` field, or
 #' arrays of values and the number of times each value occurred during the
 #' period by using the `Values` and `Counts` fields in the `MetricDatum`
 #' structure. Using the `Values` and `Counts` method enables you to publish
-#' up to 150 values per metric with one `PutMetricData` request, and
-#' supports retrieving percentile statistics on this data.
+#' up to 150 values per metric with one
+#' [`put_metric_data`][cloudwatch_put_metric_data] request, and supports
+#' retrieving percentile statistics on this data.
 #' 
-#' Each `PutMetricData` request is limited to 40 KB in size for HTTP POST
-#' requests. You can send a payload compressed by gzip. Each request is
-#' also limited to no more than 20 different metrics.
+#' Each [`put_metric_data`][cloudwatch_put_metric_data] request is limited
+#' to 40 KB in size for HTTP POST requests. You can send a payload
+#' compressed by gzip. Each request is also limited to no more than 20
+#' different metrics.
 #' 
 #' Although the `Value` parameter accepts numbers of type `Double`,
 #' CloudWatch rejects values that are either too small or too large. Values
@@ -2276,14 +2794,12 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
 #' 
 #' Data points with time stamps from 24 hours ago or longer can take at
 #' least 48 hours to become available for
-#' [GetMetricData](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html)
-#' or
-#' [GetMetricStatistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html)
-#' from the time they are submitted. Data points with time stamps between 3
-#' and 24 hours ago can take as much as 2 hours to become available for for
-#' [GetMetricData](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html)
-#' or
-#' [GetMetricStatistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html).
+#' [`get_metric_data`][cloudwatch_get_metric_data] or
+#' [`get_metric_statistics`][cloudwatch_get_metric_statistics] from the
+#' time they are submitted. Data points with time stamps between 3 and 24
+#' hours ago can take as much as 2 hours to become available for for
+#' [`get_metric_data`][cloudwatch_get_metric_data] or
+#' [`get_metric_statistics`][cloudwatch_get_metric_statistics].
 #' 
 #' CloudWatch needs raw data points to calculate percentile statistics. If
 #' you publish data using a statistic set instead, you can only retrieve
@@ -2305,6 +2821,9 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
 #' namespace that begins with `AWS/`
 #' @param MetricData &#91;required&#93; The data for the metric. The array can include no more than 20 metrics
 #' per call.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2375,12 +2894,13 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #' seconds. Because the metric alarm state change happens quickly, it is
 #' typically only visible in the alarm's **History** tab in the Amazon
 #' CloudWatch console or through
-#' [DescribeAlarmHistory](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarmHistory.html).
+#' [`describe_alarm_history`][cloudwatch_describe_alarm_history].
 #' 
-#' If you use `SetAlarmState` on a composite alarm, the composite alarm is
-#' not guaranteed to return to its actual state. It returns to its actual
-#' state only once any of its children alarms change state. It is also
-#' reevaluated if you update its configuration.
+#' If you use [`set_alarm_state`][cloudwatch_set_alarm_state] on a
+#' composite alarm, the composite alarm is not guaranteed to return to its
+#' actual state. It returns to its actual state only once any of its
+#' children alarms change state. It is also reevaluated if you update its
+#' configuration.
 #' 
 #' If an alarm triggers EC2 Auto Scaling policies or application Auto
 #' Scaling policies, you must include information in the `StateReasonData`
@@ -2400,6 +2920,9 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #' For SNS or EC2 alarm actions, this is just informational. But for EC2
 #' Auto Scaling or application Auto Scaling alarm actions, the Auto Scaling
 #' policy uses the information in this field to take the correct action.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2446,11 +2969,11 @@ cloudwatch_set_alarm_state <- function(AlarmName, StateValue, StateReason, State
 #' Tags don't have any semantic meaning to AWS and are interpreted strictly
 #' as strings of characters.
 #' 
-#' You can use the `TagResource` action with an alarm that already has
-#' tags. If you specify a new tag key for the alarm, this tag is appended
-#' to the list of tags associated with the alarm. If you specify a tag key
-#' that is already associated with the alarm, the new tag value that you
-#' specify replaces the previous value for that tag.
+#' You can use the [`tag_resource`][cloudwatch_tag_resource] action with an
+#' alarm that already has tags. If you specify a new tag key for the alarm,
+#' this tag is appended to the list of tags associated with the alarm. If
+#' you specify a tag key that is already associated with the alarm, the new
+#' tag value that you specify replaces the previous value for that tag.
 #' 
 #' You can associate as many as 50 tags with a CloudWatch resource.
 #'
@@ -2460,16 +2983,19 @@ cloudwatch_set_alarm_state <- function(AlarmName, StateValue, StateReason, State
 #' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch resource that you're adding tags to.
 #' 
 #' The ARN format of an alarm is
-#' `arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:alarm:<i>alarm-name</i> `
+#' `arn:aws:cloudwatch:Region:account-id:alarm:alarm-name `
 #' 
 #' The ARN format of a Contributor Insights rule is
-#' `arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:insight-rule:<i>insight-rule-name</i> `
+#' `arn:aws:cloudwatch:Region:account-id:insight-rule:insight-rule-name `
 #' 
 #' For more information about ARN format, see [Resource Types Defined by
 #' Amazon
 #' CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies)
 #' in the *Amazon Web Services General Reference*.
 #' @param Tags &#91;required&#93; The list of key-value pairs to associate with the alarm.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2515,16 +3041,19 @@ cloudwatch_tag_resource <- function(ResourceARN, Tags) {
 #' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch resource that you're removing tags from.
 #' 
 #' The ARN format of an alarm is
-#' `arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:alarm:<i>alarm-name</i> `
+#' `arn:aws:cloudwatch:Region:account-id:alarm:alarm-name `
 #' 
 #' The ARN format of a Contributor Insights rule is
-#' `arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:insight-rule:<i>insight-rule-name</i> `
+#' `arn:aws:cloudwatch:Region:account-id:insight-rule:insight-rule-name `
 #' 
 #' For more information about ARN format, see [Resource Types Defined by
 #' Amazon
 #' CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies)
 #' in the *Amazon Web Services General Reference*.
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

@@ -11,11 +11,18 @@ opsworks_register_elastic_ip(ElasticIp, StackId)
 
 \item{StackId}{[required] The stack ID.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ElasticIp = "string"
+)
+}
+}
 \description{
 Registers an Elastic IP address with a specified stack. An address can
 be registered with only one stack at a time. If the address is already
-registered, you must first deregister it by calling DeregisterElasticIp.
-For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
+registered, you must first deregister it by calling
+\code{\link[=opsworks_deregister_elastic_ip]{deregister_elastic_ip}}. For more
+information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that

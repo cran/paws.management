@@ -25,22 +25,35 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Properties = list(
+    list(
+      "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists the properties of available patches organized by product, product
 family, classification, severity, and other properties of available
 patches. You can use the reported properties in the filters you specify
-in requests for actions such as CreatePatchBaseline,
-UpdatePatchBaseline, DescribeAvailablePatches, and
-DescribePatchBaselines.
+in requests for actions such as
+\code{\link[=ssm_create_patch_baseline]{create_patch_baseline}},
+\code{\link[=ssm_update_patch_baseline]{update_patch_baseline}},
+\code{\link[=ssm_describe_available_patches]{describe_available_patches}}, and
+\code{\link[=ssm_describe_patch_baselines]{describe_patch_baselines}}.
 
 The following section lists the properties that can be used in filters
 for each major operating system type:
-\subsection{AMAZON\\_LINUX}{
+\subsection{AMAZON_LINUX}{
 
 Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 }
 
-\subsection{AMAZON\\_LINUX\\_2}{
+\subsection{AMAZON_LINUX_2}{
 
 Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 }
@@ -60,12 +73,12 @@ Valid properties: PRODUCT, PRIORITY
 Valid properties: PRODUCT, CLASSIFICATION
 }
 
-\subsection{ORACLE\\_LINUX}{
+\subsection{ORACLE_LINUX}{
 
 Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 }
 
-\subsection{REDHAT\\_ENTERPRISE\\_LINUX}{
+\subsection{REDHAT_ENTERPRISE_LINUX}{
 
 Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 }
@@ -82,8 +95,8 @@ Valid properties: PRODUCT, PRIORITY
 
 \subsection{WINDOWS}{
 
-Valid properties: PRODUCT, PRODUCT\\_FAMILY, CLASSIFICATION,
-MSRC\\_SEVERITY
+Valid properties: PRODUCT, PRODUCT_FAMILY, CLASSIFICATION,
+MSRC_SEVERITY
 }
 }
 \section{Request syntax}{

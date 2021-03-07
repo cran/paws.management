@@ -28,6 +28,25 @@ specify 0, AWS Config uses the default.}
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  ComplianceByResources = list(
+    list(
+      ResourceType = "string",
+      ResourceId = "string",
+      Compliance = list(
+        ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
+        ComplianceContributorCount = list(
+          CappedCount = 123,
+          CapExceeded = TRUE|FALSE
+        )
+      )
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Indicates whether the specified AWS resources are compliant. If a
 resource is noncompliant, this action returns the number of AWS Config
@@ -42,8 +61,9 @@ returns \code{INSUFFICIENT_DATA}. This result might indicate one of the
 following conditions about the rules that evaluate the resource:
 \itemize{
 \item AWS Config has never invoked an evaluation for the rule. To check
-whether it has, use the \code{DescribeConfigRuleEvaluationStatus} action
-to get the \code{LastSuccessfulInvocationTime} and
+whether it has, use the
+\code{\link[=configservice_describe_config_rule_evaluation_status]{describe_config_rule_evaluation_status}}
+action to get the \code{LastSuccessfulInvocationTime} and
 \code{LastFailedInvocationTime}.
 \item The rule's AWS Lambda function is failing to send evaluation results
 to AWS Config. Verify that the role that you assigned to your

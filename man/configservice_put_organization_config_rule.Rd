@@ -20,6 +20,12 @@ configservice_put_organization_config_rule(OrganizationConfigRuleName,
 \item{ExcludedAccounts}{A comma-separated list of accounts that you want to exclude from an
 organization config rule.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  OrganizationConfigRuleArn = "string"
+)
+}
+}
 \description{
 Adds or updates organization config rule for your entire organization
 evaluating whether your AWS resources comply with your desired
@@ -46,10 +52,11 @@ You can use this action to create both custom AWS Config rules and AWS
 managed Config rules. If you are adding a new custom AWS Config rule,
 you must first create AWS Lambda function in the master account or a
 delegated administrator that the rule invokes to evaluate your
-resources. When you use the \code{PutOrganizationConfigRule} action to add
-the rule to AWS Config, you must specify the Amazon Resource Name (ARN)
-that AWS Lambda assigns to the function. If you are adding an AWS
-managed Config rule, specify the rule's identifier for the
+resources. When you use the
+\code{\link[=configservice_put_organization_config_rule]{put_organization_config_rule}}
+action to add the rule to AWS Config, you must specify the Amazon
+Resource Name (ARN) that AWS Lambda assigns to the function. If you are
+adding an AWS managed Config rule, specify the rule's identifier for the
 \code{RuleIdentifier} key.
 
 The maximum number of organization config rules that AWS Config supports

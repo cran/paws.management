@@ -30,10 +30,70 @@ but not both.}
 
 \item{PathId}{The path identifier of the product. This value is optional if the
 product has a default path, and required if the product has more than
-one path. To list the paths for a product, use ListLaunchPaths. You must
+one path. To list the paths for a product, use
+\code{\link[=servicecatalog_list_launch_paths]{list_launch_paths}}. You must
 provide the name or ID, but not both.}
 
 \item{PathName}{The name of the path. You must provide the name or ID, but not both.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ProvisioningArtifactParameters = list(
+    list(
+      ParameterKey = "string",
+      DefaultValue = "string",
+      ParameterType = "string",
+      IsNoEcho = TRUE|FALSE,
+      Description = "string",
+      ParameterConstraints = list(
+        AllowedValues = list(
+          "string"
+        ),
+        AllowedPattern = "string",
+        ConstraintDescription = "string",
+        MaxLength = "string",
+        MinLength = "string",
+        MaxValue = "string",
+        MinValue = "string"
+      )
+    )
+  ),
+  ConstraintSummaries = list(
+    list(
+      Type = "string",
+      Description = "string"
+    )
+  ),
+  UsageInstructions = list(
+    list(
+      Type = "string",
+      Value = "string"
+    )
+  ),
+  TagOptions = list(
+    list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  ProvisioningArtifactPreferences = list(
+    StackSetAccounts = list(
+      "string"
+    ),
+    StackSetRegions = list(
+      "string"
+    )
+  ),
+  ProvisioningArtifactOutputs = list(
+    list(
+      Key = "string",
+      Description = "string"
+    )
+  )
+)
+}
 }
 \description{
 Gets information about the configuration required to provision the
@@ -42,10 +102,11 @@ specified product using the specified provisioning artifact.
 If the output contains a TagOption key with an empty list of values,
 there is a TagOption conflict for that key. The end user cannot take
 action to fix the conflict, and launch is not blocked. In subsequent
-calls to ProvisionProduct, do not include conflicted TagOption keys as
-tags, or this causes the error "Parameter validation failed: Missing
-required parameter in Tags[\emph{N}]:\emph{Value}". Tag the provisioned product
-with the value \code{sc-tagoption-conflict-portfolioId-productId}.
+calls to \code{\link[=servicecatalog_provision_product]{provision_product}}, do not
+include conflicted TagOption keys as tags, or this causes the error
+"Parameter validation failed: Missing required parameter in
+Tags[\emph{N}]:\emph{Value}". Tag the provisioned product with the value
+\code{sc-tagoption-conflict-portfolioId-productId}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_provisioning_parameters(

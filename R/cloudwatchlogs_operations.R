@@ -39,6 +39,9 @@ NULL
 #' and [Using Symmetric and Asymmetric
 #' Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html).
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$associate_kms_key(
@@ -79,6 +82,9 @@ cloudwatchlogs_associate_kms_key <- function(logGroupName, kmsKeyId) {
 #'
 #' @param taskId &#91;required&#93; The ID of the export task.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$cancel_export_task(
@@ -112,18 +118,17 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #' @description
 #' Creates an export task, which allows you to efficiently export data from
 #' a log group to an Amazon S3 bucket. When you perform a
-#' `CreateExportTask` operation, you must use credentials that have
-#' permission to write to the S3 bucket that you specify as the
-#' destination.
+#' [`create_export_task`][cloudwatchlogs_create_export_task] operation, you
+#' must use credentials that have permission to write to the S3 bucket that
+#' you specify as the destination.
 #' 
 #' This is an asynchronous call. If all the required information is
 #' provided, this operation initiates an export task and responds with the
 #' ID of the task. After the task has started, you can use
-#' [DescribeExportTasks](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeExportTasks.html)
-#' to get the status of the export task. Each account can only have one
-#' active (`RUNNING` or `PENDING`) export task at a time. To cancel an
-#' export task, use
-#' [CancelExportTask](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_CancelExportTask.html).
+#' [`describe_export_tasks`][cloudwatchlogs_describe_export_tasks] to get
+#' the status of the export task. Each account can only have one active
+#' (`RUNNING` or `PENDING`) export task at a time. To cancel an export
+#' task, use [`cancel_export_task`][cloudwatchlogs_cancel_export_task].
 #' 
 #' You can export logs from multiple log groups or multiple time ranges to
 #' the same S3 bucket. To separate out log data for each export task, you
@@ -151,6 +156,14 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #' the same AWS region.
 #' @param destinationPrefix The prefix used as the start of the key for every object exported. If
 #' you don't specify a value, the default is `exportedlogs`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   taskId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -198,13 +211,13 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #' -   Log group names can be between 1 and 512 characters long.
 #' 
 #' -   Log group names consist of the following characters: a-z, A-Z, 0-9,
-#'     '\\_' (underscore), '-' (hyphen), '/' (forward slash), '.' (period),
-#'     and '\\#' (number sign)
+#'     '_' (underscore), '-' (hyphen), '/' (forward slash), '.' (period),
+#'     and '\#' (number sign)
 #' 
 #' When you create a log group, by default the log events in the log group
 #' never expire. To set a retention policy so that events expire and are
 #' deleted after a specified time, use
-#' [PutRetentionPolicy](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutRetentionPolicy.html).
+#' [`put_retention_policy`][cloudwatchlogs_put_retention_policy].
 #' 
 #' If you associate a AWS Key Management Service (AWS KMS) customer master
 #' key (CMK) with the log group, ingested data is encrypted using the CMK.
@@ -230,6 +243,9 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #' Management Service (AWS
 #' KMS)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms).
 #' @param tags The key-value pairs to use for the tags.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -270,7 +286,8 @@ cloudwatchlogs_create_log_group <- function(logGroupName, kmsKeyId = NULL, tags 
 #' application instance or a resource that is being monitored.
 #' 
 #' There is no limit on the number of log streams that you can create for a
-#' log group. There is a limit of 50 TPS on `CreateLogStream` operations,
+#' log group. There is a limit of 50 TPS on
+#' [`create_log_stream`][cloudwatchlogs_create_log_stream] operations,
 #' after which transactions are throttled.
 #' 
 #' You must use the following guidelines when naming a log stream:
@@ -286,6 +303,9 @@ cloudwatchlogs_create_log_group <- function(logGroupName, kmsKeyId = NULL, tags 
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #' @param logStreamName &#91;required&#93; The name of the log stream.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -328,6 +348,9 @@ cloudwatchlogs_create_log_stream <- function(logGroupName, logStreamName) {
 #'
 #' @param destinationName &#91;required&#93; The name of the destination.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_destination(
@@ -366,6 +389,9 @@ cloudwatchlogs_delete_destination <- function(destinationName) {
 #' cloudwatchlogs_delete_log_group(logGroupName)
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -407,6 +433,9 @@ cloudwatchlogs_delete_log_group <- function(logGroupName) {
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #' @param logStreamName &#91;required&#93; The name of the log stream.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_log_stream(
@@ -446,6 +475,9 @@ cloudwatchlogs_delete_log_stream <- function(logGroupName, logStreamName) {
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #' @param filterName &#91;required&#93; The name of the metric filter.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_metric_filter(
@@ -481,7 +513,8 @@ cloudwatchlogs_delete_metric_filter <- function(logGroupName, filterName) {
 #' definition contains details about a saved CloudWatch Logs Insights
 #' query.
 #' 
-#' Each `DeleteQueryDefinition` operation can delete one query definition.
+#' Each [`delete_query_definition`][cloudwatchlogs_delete_query_definition]
+#' operation can delete one query definition.
 #' 
 #' You must have the `logs:DeleteQueryDefinition` permission to be able to
 #' perform this operation.
@@ -490,8 +523,16 @@ cloudwatchlogs_delete_metric_filter <- function(logGroupName, filterName) {
 #' cloudwatchlogs_delete_query_definition(queryDefinitionId)
 #'
 #' @param queryDefinitionId &#91;required&#93; The ID of the query definition that you want to delete. You can use
-#' [DescribeQueryDefinitions](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeQueryDefinitions.html)
+#' [`describe_query_definitions`][cloudwatchlogs_describe_query_definitions]
 #' to retrieve the IDs of your saved query definitions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   success = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -530,6 +571,9 @@ cloudwatchlogs_delete_query_definition <- function(queryDefinitionId) {
 #' cloudwatchlogs_delete_resource_policy(policyName)
 #'
 #' @param policyName The name of the policy to be revoked. This parameter is required.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -571,6 +615,9 @@ cloudwatchlogs_delete_resource_policy <- function(policyName = NULL) {
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$delete_retention_policy(
@@ -608,6 +655,9 @@ cloudwatchlogs_delete_retention_policy <- function(logGroupName) {
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #' @param filterName &#91;required&#93; The name of the subscription filter.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -653,6 +703,24 @@ cloudwatchlogs_delete_subscription_filter <- function(logGroupName, filterName) 
 #' from a previous call.)
 #' @param limit The maximum number of items returned. If you don't specify a value, the
 #' default is up to 50 items.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   destinations = list(
+#'     list(
+#'       destinationName = "string",
+#'       targetArn = "string",
+#'       roleArn = "string",
+#'       accessPolicy = "string",
+#'       arn = "string",
+#'       creationTime = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -702,6 +770,33 @@ cloudwatchlogs_describe_destinations <- function(DestinationNamePrefix = NULL, n
 #' @param limit The maximum number of items returned. If you don't specify a value, the
 #' default is up to 50 items.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   exportTasks = list(
+#'     list(
+#'       taskId = "string",
+#'       taskName = "string",
+#'       logGroupName = "string",
+#'       from = 123,
+#'       to = 123,
+#'       destination = "string",
+#'       destinationPrefix = "string",
+#'       status = list(
+#'         code = "CANCELLED"|"COMPLETED"|"FAILED"|"PENDING"|"PENDING_CANCEL"|"RUNNING",
+#'         message = "string"
+#'       ),
+#'       executionInfo = list(
+#'         creationTime = 123,
+#'         completionTime = 123
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_export_tasks(
@@ -747,6 +842,25 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
 #' from a previous call.)
 #' @param limit The maximum number of items returned. If you don't specify a value, the
 #' default is up to 50 items.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   logGroups = list(
+#'     list(
+#'       logGroupName = "string",
+#'       creationTime = 123,
+#'       retentionInDays = 123,
+#'       metricFilterCount = 123,
+#'       arn = "string",
+#'       storedBytes = 123,
+#'       kmsKeyId = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -816,6 +930,26 @@ cloudwatchlogs_describe_log_groups <- function(logGroupNamePrefix = NULL, nextTo
 #' @param limit The maximum number of items returned. If you don't specify a value, the
 #' default is up to 50 items.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   logStreams = list(
+#'     list(
+#'       logStreamName = "string",
+#'       creationTime = 123,
+#'       firstEventTimestamp = 123,
+#'       lastEventTimestamp = 123,
+#'       lastIngestionTime = 123,
+#'       uploadSequenceToken = "string",
+#'       arn = "string",
+#'       storedBytes = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_log_streams(
@@ -873,6 +1007,30 @@ cloudwatchlogs_describe_log_streams <- function(logGroupName, logStreamNamePrefi
 #' include this parameter in your request, you must also include the
 #' `metricName` parameter.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   metricFilters = list(
+#'     list(
+#'       filterName = "string",
+#'       filterPattern = "string",
+#'       metricTransformations = list(
+#'         list(
+#'           metricName = "string",
+#'           metricNamespace = "string",
+#'           metricValue = "string",
+#'           defaultValue = 123.0
+#'         )
+#'       ),
+#'       creationTime = 123,
+#'       logGroupName = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_metric_filters(
@@ -925,6 +1083,23 @@ cloudwatchlogs_describe_metric_filters <- function(logGroupName = NULL, filterNa
 #' @param maxResults Limits the number of returned queries to the specified number.
 #' @param nextToken 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   queries = list(
+#'     list(
+#'       queryId = "string",
+#'       queryString = "string",
+#'       status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled",
+#'       createTime = 123,
+#'       logGroupName = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_queries(
@@ -975,6 +1150,25 @@ cloudwatchlogs_describe_queries <- function(logGroupName = NULL, status = NULL, 
 #' @param maxResults Limits the number of returned query definitions to the specified number.
 #' @param nextToken 
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   queryDefinitions = list(
+#'     list(
+#'       queryDefinitionId = "string",
+#'       name = "string",
+#'       queryString = "string",
+#'       lastModified = 123,
+#'       logGroupNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_query_definitions(
@@ -1015,6 +1209,21 @@ cloudwatchlogs_describe_query_definitions <- function(queryDefinitionNamePrefix 
 #' @param nextToken 
 #' @param limit The maximum number of resource policies to be displayed with one call of
 #' this API.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourcePolicies = list(
+#'     list(
+#'       policyName = "string",
+#'       policyDocument = "string",
+#'       lastUpdatedTime = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1062,6 +1271,25 @@ cloudwatchlogs_describe_resource_policies <- function(nextToken = NULL, limit = 
 #' from a previous call.)
 #' @param limit The maximum number of items returned. If you don't specify a value, the
 #' default is up to 50 items.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   subscriptionFilters = list(
+#'     list(
+#'       filterName = "string",
+#'       logGroupName = "string",
+#'       filterPattern = "string",
+#'       destinationArn = "string",
+#'       roleArn = "string",
+#'       distribution = "Random"|"ByLogStream",
+#'       creationTime = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1113,6 +1341,9 @@ cloudwatchlogs_describe_subscription_filters <- function(logGroupName, filterNam
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_kms_key(
@@ -1156,7 +1387,7 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName) {
 #' 
 #' The returned log events are sorted by event timestamp, the timestamp
 #' when the event was ingested by CloudWatch Logs, and the ID of the
-#' `PutLogEvents` request.
+#' [`put_log_events`][cloudwatchlogs_put_log_events] request.
 #'
 #' @usage
 #' cloudwatchlogs_filter_log_events(logGroupName, logStreamNames,
@@ -1201,6 +1432,29 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName) {
 #' **Important:** Starting on June 17, 2019, this parameter is ignored and
 #' the value is assumed to be true. The response from this operation always
 #' interleaves events from multiple log streams within a log group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   events = list(
+#'     list(
+#'       logStreamName = "string",
+#'       timestamp = 123,
+#'       message = "string",
+#'       ingestionTime = 123,
+#'       eventId = "string"
+#'     )
+#'   ),
+#'   searchedLogStreams = list(
+#'     list(
+#'       logStreamName = "string",
+#'       searchedCompletely = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1278,6 +1532,22 @@ cloudwatchlogs_filter_log_events <- function(logGroupName, logStreamNames = NULL
 #' If you are using `nextToken` in this operation, you must specify `true`
 #' for `startFromHead`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   events = list(
+#'     list(
+#'       timestamp = 123,
+#'       message = "string",
+#'       ingestionTime = 123
+#'     )
+#'   ),
+#'   nextForwardToken = "string",
+#'   nextBackwardToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_log_events(
@@ -1341,6 +1611,19 @@ cloudwatchlogs_get_log_events <- function(logGroupName, logStreamName, startTime
 #' The `time` value is specified as epoch time, the number of seconds since
 #' January 1, 1970, 00:00:00 UTC.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   logGroupFields = list(
+#'     list(
+#'       name = "string",
+#'       percent = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$get_log_group_fields(
@@ -1383,9 +1666,21 @@ cloudwatchlogs_get_log_group_fields <- function(logGroupName, time = NULL) {
 #' cloudwatchlogs_get_log_record(logRecordPointer)
 #'
 #' @param logRecordPointer &#91;required&#93; The pointer corresponding to the log event record you want to retrieve.
-#' You get this from the response of a `GetQueryResults` operation. In that
-#' response, the value of the `@@ptr` field for a log event is the value to
-#' use as `logRecordPointer` to retrieve that complete log event record.
+#' You get this from the response of a
+#' [`get_query_results`][cloudwatchlogs_get_query_results] operation. In
+#' that response, the value of the `@@ptr` field for a log event is the
+#' value to use as `logRecordPointer` to retrieve that complete log event
+#' record.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   logRecord = list(
+#'     "string"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1421,12 +1716,12 @@ cloudwatchlogs_get_log_record <- function(logRecordPointer) {
 #' 
 #' Only the fields requested in the query are returned, along with a `@@ptr`
 #' field, which is the identifier for the log record. You can use the value
-#' of `@@ptr` in a
-#' [GetLogRecord](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetLogRecord.html)
+#' of `@@ptr` in a [`get_log_record`][cloudwatchlogs_get_log_record]
 #' operation to get the full log record.
 #' 
-#' `GetQueryResults` does not start a query execution. To run a query, use
-#' [StartQuery](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_StartQuery.html).
+#' [`get_query_results`][cloudwatchlogs_get_query_results] does not start a
+#' query execution. To run a query, use
+#' [`start_query`][cloudwatchlogs_start_query].
 #' 
 #' If the value of the `Status` field in the output is `Running`, this
 #' operation returns only partial results. If you see a value of
@@ -1437,6 +1732,27 @@ cloudwatchlogs_get_log_record <- function(logRecordPointer) {
 #' cloudwatchlogs_get_query_results(queryId)
 #'
 #' @param queryId &#91;required&#93; The ID number of the query.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   results = list(
+#'     list(
+#'       list(
+#'         field = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   ),
+#'   statistics = list(
+#'     recordsMatched = 123.0,
+#'     recordsScanned = 123.0,
+#'     bytesScanned = 123.0
+#'   ),
+#'   status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1475,6 +1791,16 @@ cloudwatchlogs_get_query_results <- function(queryId) {
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$list_tags_log_group(
@@ -1511,19 +1837,19 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #' A destination encapsulates a physical resource (such as an Amazon
 #' Kinesis stream) and enables you to subscribe to a real-time stream of
 #' log events for a different account, ingested using
-#' [PutLogEvents](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html).
+#' [`put_log_events`][cloudwatchlogs_put_log_events].
 #' 
 #' Through an access policy, a destination controls what is written to it.
-#' By default, `PutDestination` does not set any access policy with the
-#' destination, which means a cross-account user cannot call
-#' [PutSubscriptionFilter](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutSubscriptionFilter.html)
+#' By default, [`put_destination`][cloudwatchlogs_put_destination] does not
+#' set any access policy with the destination, which means a cross-account
+#' user cannot call
+#' [`put_subscription_filter`][cloudwatchlogs_put_subscription_filter]
 #' against this destination. To enable this, the destination owner must
-#' call
-#' [PutDestinationPolicy](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDestinationPolicy.html)
-#' after `PutDestination`.
+#' call [`put_destination_policy`][cloudwatchlogs_put_destination_policy]
+#' after [`put_destination`][cloudwatchlogs_put_destination].
 #' 
-#' To perform a `PutDestination` operation, you must also have the
-#' `iam:PassRole` permission.
+#' To perform a [`put_destination`][cloudwatchlogs_put_destination]
+#' operation, you must also have the `iam:PassRole` permission.
 #'
 #' @usage
 #' cloudwatchlogs_put_destination(destinationName, targetArn, roleArn)
@@ -1533,6 +1859,21 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #' events.
 #' @param roleArn &#91;required&#93; The ARN of an IAM role that grants CloudWatch Logs permissions to call
 #' the Amazon Kinesis `PutRecord` operation on the destination stream.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   destination = list(
+#'     destinationName = "string",
+#'     targetArn = "string",
+#'     roleArn = "string",
+#'     accessPolicy = "string",
+#'     arn = "string",
+#'     creationTime = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1581,6 +1922,9 @@ cloudwatchlogs_put_destination <- function(destinationName, targetArn, roleArn) 
 #' their log events to the associated destination. This can be up to 5120
 #' bytes.
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_destination_policy(
@@ -1618,9 +1962,9 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy)
 #' previous call. An upload in a newly created log stream does not require
 #' a sequence token. You can also get the sequence token in the
 #' `expectedSequenceToken` field from `InvalidSequenceTokenException`. If
-#' you call `PutLogEvents` twice within a narrow time period using the same
-#' value for `sequenceToken`, both calls might be successful or one might
-#' be rejected.
+#' you call [`put_log_events`][cloudwatchlogs_put_log_events] twice within
+#' a narrow time period using the same value for `sequenceToken`, both
+#' calls might be successful or one might be rejected.
 #' 
 #' The batch of events must satisfy the following constraints:
 #' 
@@ -1649,8 +1993,9 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy)
 #' -   There is a quota of 5 requests per second per log stream. Additional
 #'     requests are throttled. This quota can't be changed.
 #' 
-#' If a call to `PutLogEvents` returns "UnrecognizedClientException" the
-#' most likely cause is an invalid AWS access key ID or secret key.
+#' If a call to [`put_log_events`][cloudwatchlogs_put_log_events] returns
+#' "UnrecognizedClientException" the most likely cause is an invalid AWS
+#' access key ID or secret key.
 #'
 #' @usage
 #' cloudwatchlogs_put_log_events(logGroupName, logStreamName, logEvents,
@@ -1660,12 +2005,26 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy)
 #' @param logStreamName &#91;required&#93; The name of the log stream.
 #' @param logEvents &#91;required&#93; The log events.
 #' @param sequenceToken The sequence token obtained from the response of the previous
-#' `PutLogEvents` call. An upload in a newly created log stream does not
-#' require a sequence token. You can also get the sequence token using
-#' [DescribeLogStreams](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogStreams.html).
-#' If you call `PutLogEvents` twice within a narrow time period using the
-#' same value for `sequenceToken`, both calls might be successful or one
-#' might be rejected.
+#' [`put_log_events`][cloudwatchlogs_put_log_events] call. An upload in a
+#' newly created log stream does not require a sequence token. You can also
+#' get the sequence token using
+#' [`describe_log_streams`][cloudwatchlogs_describe_log_streams]. If you
+#' call [`put_log_events`][cloudwatchlogs_put_log_events] twice within a
+#' narrow time period using the same value for `sequenceToken`, both calls
+#' might be successful or one might be rejected.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextSequenceToken = "string",
+#'   rejectedLogEventsInfo = list(
+#'     tooNewLogEventStartIndex = 123,
+#'     tooOldLogEventEndIndex = 123,
+#'     expiredLogEventEndIndex = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1709,7 +2068,7 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
 #' Creates or updates a metric filter and associates it with the specified
 #' log group. Metric filters allow you to configure rules to extract metric
 #' data from log events ingested through
-#' [PutLogEvents](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html).
+#' [`put_log_events`][cloudwatchlogs_put_log_events].
 #' 
 #' The maximum number of metric filters that can be associated with a log
 #' group is 100.
@@ -1722,6 +2081,9 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
 #' @param filterName &#91;required&#93; A name for the metric filter.
 #' @param filterPattern &#91;required&#93; A filter pattern for extracting metric data out of ingested log events.
 #' @param metricTransformations &#91;required&#93; A collection of information that defines how metric data gets emitted.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1786,10 +2148,10 @@ cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPat
 #' definitions, we recommend that you name them so that you can easily find
 #' the ones you want by using the first part of the name as a filter in the
 #' `queryDefinitionNamePrefix` parameter of
-#' [DescribeQueryDefinitions](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeQueryDefinitions.html).
+#' [`describe_query_definitions`][cloudwatchlogs_describe_query_definitions].
 #' @param queryDefinitionId If you are updating a query definition, use this parameter to specify
 #' the ID of the query definition that you want to update. You can use
-#' [DescribeQueryDefinitions](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeQueryDefinitions.html)
+#' [`describe_query_definitions`][cloudwatchlogs_describe_query_definitions]
 #' to retrieve the IDs of your saved query definitions.
 #' 
 #' If you are creating a query definition, do not specify this parameter.
@@ -1803,6 +2165,14 @@ cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPat
 #' @param queryString &#91;required&#93; The query string to use for this definition. For more information, see
 #' [CloudWatch Logs Insights Query
 #' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   queryDefinitionId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1857,7 +2227,19 @@ cloudwatchlogs_put_query_definition <- function(name, queryDefinitionId = NULL, 
 #' `"logArn"` with the ARN of your CloudWatch Logs resource, such as a log
 #' group or log stream.
 #' 
-#' `\{ "Version": "2012-10-17", "Statement": \\[ \{ "Sid": "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": \{ "Service": \\[ "route53.amazonaws.com" \\] \}, "Action":"logs:PutLogEvents", "Resource": "logArn" \} \\] \} `
+#' `{ "Version": "2012-10-17", "Statement": [ { "Sid": "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": { "Service": [ "route53.amazonaws.com" ] }, "Action":"logs:PutLogEvents", "Resource": "logArn" } ] } `
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourcePolicy = list(
+#'     policyName = "string",
+#'     policyDocument = "string",
+#'     lastUpdatedTime = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1900,6 +2282,9 @@ cloudwatchlogs_put_resource_policy <- function(policyName = NULL, policyDocument
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #' @param retentionInDays &#91;required&#93; 
 #'
+#' @return
+#' An empty list.
+#'
 #' @section Request syntax:
 #' ```
 #' svc$put_retention_policy(
@@ -1935,10 +2320,10 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #' Creates or updates a subscription filter and associates it with the
 #' specified log group. Subscription filters allow you to subscribe to a
 #' real-time stream of log events ingested through
-#' [PutLogEvents](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html)
-#' and have them delivered to a specific destination. When log events are
-#' sent to the receiving service, they are Base64 encoded and compressed
-#' with the gzip format.
+#' [`put_log_events`][cloudwatchlogs_put_log_events] and have them
+#' delivered to a specific destination. When log events are sent to the
+#' receiving service, they are Base64 encoded and compressed with the gzip
+#' format.
 #' 
 #' The following destinations are supported for subscription filters:
 #' 
@@ -1959,8 +2344,9 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #' name in `filterName`. Otherwise, the call fails because you cannot
 #' associate a second filter with a log group.
 #' 
-#' To perform a `PutSubscriptionFilter` operation, you must also have the
-#' `iam:PassRole` permission.
+#' To perform a
+#' [`put_subscription_filter`][cloudwatchlogs_put_subscription_filter]
+#' operation, you must also have the `iam:PassRole` permission.
 #'
 #' @usage
 #' cloudwatchlogs_put_subscription_filter(logGroupName, filterName,
@@ -1972,7 +2358,7 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #' the call fails because you cannot associate a second filter with a log
 #' group. To find the name of the filter currently associated with a log
 #' group, use
-#' [DescribeSubscriptionFilters](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeSubscriptionFilters.html).
+#' [`describe_subscription_filters`][cloudwatchlogs_describe_subscription_filters].
 #' @param filterPattern &#91;required&#93; A filter pattern for subscribing to a filtered stream of log events.
 #' @param destinationArn &#91;required&#93; The ARN of the destination to deliver matching log events to. Currently,
 #' the supported destinations are:
@@ -1996,6 +2382,9 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #' log data is grouped by log stream, but the grouping can be set to random
 #' for a more even distribution. This property is only applicable when the
 #' destination is an Amazon Kinesis stream.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2049,13 +2438,13 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
 #'
 #' @param logGroupName The log group on which to perform the query.
 #' 
-#' A `StartQuery` operation must include a `logGroupNames` or a
-#' `logGroupName` parameter, but not both.
+#' A [`start_query`][cloudwatchlogs_start_query] operation must include a
+#' `logGroupNames` or a `logGroupName` parameter, but not both.
 #' @param logGroupNames The list of log groups to be queried. You can include up to 20 log
 #' groups.
 #' 
-#' A `StartQuery` operation must include a `logGroupNames` or a
-#' `logGroupName` parameter, but not both.
+#' A [`start_query`][cloudwatchlogs_start_query] operation must include a
+#' `logGroupNames` or a `logGroupName` parameter, but not both.
 #' @param startTime &#91;required&#93; The beginning of the time range to query. The range is inclusive, so the
 #' specified start time is included in the query. Specified as epoch time,
 #' the number of seconds since January 1, 1970, 00:00:00 UTC.
@@ -2068,6 +2457,14 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
 #' @param limit The maximum number of log events to return in the query. If the query
 #' string uses the `fields` command, only the specified fields and their
 #' values are returned. The default is 1000.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   queryId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2114,7 +2511,15 @@ cloudwatchlogs_start_query <- function(logGroupName = NULL, logGroupNames = NULL
 #' cloudwatchlogs_stop_query(queryId)
 #'
 #' @param queryId &#91;required&#93; The ID number of the query to stop. To find this ID number, use
-#' `DescribeQueries`.
+#' [`describe_queries`][cloudwatchlogs_describe_queries].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   success = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -2149,9 +2554,8 @@ cloudwatchlogs_stop_query <- function(queryId) {
 #' Adds or updates the specified tags for the specified log group.
 #' 
 #' To list the tags for a log group, use
-#' [ListTagsLogGroup](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_ListTagsLogGroup.html).
-#' To remove tags, use
-#' [UntagLogGroup](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_UntagLogGroup.html).
+#' [`list_tags_log_group`][cloudwatchlogs_list_tags_log_group]. To remove
+#' tags, use [`untag_log_group`][cloudwatchlogs_untag_log_group].
 #' 
 #' For more information about tags, see [Tag Log Groups in Amazon
 #' CloudWatch
@@ -2163,6 +2567,9 @@ cloudwatchlogs_stop_query <- function(queryId) {
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #' @param tags &#91;required&#93; The key-value pairs to use for the tags.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```
@@ -2208,6 +2615,22 @@ cloudwatchlogs_tag_log_group <- function(logGroupName, tags) {
 #' @param filterPattern &#91;required&#93; 
 #' @param logEventMessages &#91;required&#93; The log event messages to test.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   matches = list(
+#'     list(
+#'       eventNumber = 123,
+#'       eventMessage = "string",
+#'       extractedValues = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$test_metric_filter(
@@ -2244,15 +2667,17 @@ cloudwatchlogs_test_metric_filter <- function(filterPattern, logEventMessages) {
 #' Removes the specified tags from the specified log group.
 #' 
 #' To list the tags for a log group, use
-#' [ListTagsLogGroup](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_ListTagsLogGroup.html).
-#' To add tags, use
-#' [TagLogGroup](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_TagLogGroup.html).
+#' [`list_tags_log_group`][cloudwatchlogs_list_tags_log_group]. To add
+#' tags, use [`tag_log_group`][cloudwatchlogs_tag_log_group].
 #'
 #' @usage
 #' cloudwatchlogs_untag_log_group(logGroupName, tags)
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #' @param tags &#91;required&#93; The tag keys. The corresponding tags are removed from the log group.
+#'
+#' @return
+#' An empty list.
 #'
 #' @section Request syntax:
 #' ```

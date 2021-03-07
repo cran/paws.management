@@ -10,6 +10,14 @@ cloudwatchevents_describe_event_bus(Name)
 \item{Name}{The name or ARN of the event bus to show details for. If you omit this,
 the default event bus is displayed.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Name = "string",
+  Arn = "string",
+  Policy = "string"
+)
+}
+}
 \description{
 Displays details about an event bus in your account. This can include
 the external AWS accounts that are permitted to write events to your
@@ -18,9 +26,11 @@ partner event buses, it displays the name, ARN, policy, state, and
 creation time.
 
 To enable your account to receive events from other accounts on its
-default event bus, use PutPermission.
+default event bus, use
+\code{\link[=cloudwatchevents_put_permission]{put_permission}}.
 
-For more information about partner event buses, see CreateEventBus.
+For more information about partner event buses, see
+\code{\link[=cloudwatchevents_create_event_bus]{create_event_bus}}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_event_bus(

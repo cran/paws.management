@@ -51,7 +51,7 @@ NULL
 #' 
 #' -   Suspend and resume scaling - Temporarily suspend and later resume
 #'     automatic scaling by calling the
-#'     [RegisterScalableTarget](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html)
+#'     [`register_scalable_target`][applicationautoscaling_register_scalable_target]
 #'     API action for any Application Auto Scaling scalable target. You can
 #'     suspend and resume (individually or in combination) scale-out
 #'     activities that are triggered by a scaling policy, scale-in
@@ -127,7 +127,7 @@ applicationautoscaling <- function(config = list()) {
 
 .applicationautoscaling$metadata <- list(
   service_name = "autoscaling",
-  endpoints = list("*" = list(endpoint = "autoscaling.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "autoscaling.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "autoscaling.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "autoscaling.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "application-autoscaling.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "application-autoscaling.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "application-autoscaling.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "application-autoscaling.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Application Auto Scaling",
   api_version = "2016-02-06",
   signing_name = "application-autoscaling",

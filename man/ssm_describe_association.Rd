@@ -16,9 +16,90 @@ ssm_describe_association(Name, InstanceId, AssociationId,
 
 \item{AssociationVersion}{Specify the association version to retrieve. To view the latest version,
 either specify \verb{$LATEST} for this parameter, or omit this parameter. To
-view a list of all associations for an instance, use ListAssociations.
-To get a list of versions for a specific association, use
-ListAssociationVersions.}
+view a list of all associations for an instance, use
+\code{\link[=ssm_list_associations]{list_associations}}. To get a list of versions
+for a specific association, use
+\code{\link[=ssm_list_association_versions]{list_association_versions}}.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  AssociationDescription = list(
+    Name = "string",
+    InstanceId = "string",
+    AssociationVersion = "string",
+    Date = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastUpdateAssociationDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    Status = list(
+      Date = as.POSIXct(
+        "2015-01-01"
+      ),
+      Name = "Pending"|"Success"|"Failed",
+      Message = "string",
+      AdditionalInfo = "string"
+    ),
+    Overview = list(
+      Status = "string",
+      DetailedStatus = "string",
+      AssociationStatusAggregatedCount = list(
+        123
+      )
+    ),
+    DocumentVersion = "string",
+    AutomationTargetParameterName = "string",
+    Parameters = list(
+      list(
+        "string"
+      )
+    ),
+    AssociationId = "string",
+    Targets = list(
+      list(
+        Key = "string",
+        Values = list(
+          "string"
+        )
+      )
+    ),
+    ScheduleExpression = "string",
+    OutputLocation = list(
+      S3Location = list(
+        OutputS3Region = "string",
+        OutputS3BucketName = "string",
+        OutputS3KeyPrefix = "string"
+      )
+    ),
+    LastExecutionDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    LastSuccessfulExecutionDate = as.POSIXct(
+      "2015-01-01"
+    ),
+    AssociationName = "string",
+    MaxErrors = "string",
+    MaxConcurrency = "string",
+    ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
+    SyncCompliance = "AUTO"|"MANUAL",
+    ApplyOnlyAtCronInterval = TRUE|FALSE,
+    TargetLocations = list(
+      list(
+        Accounts = list(
+          "string"
+        ),
+        Regions = list(
+          "string"
+        ),
+        TargetLocationMaxConcurrency = "string",
+        TargetLocationMaxErrors = "string",
+        ExecutionRoleName = "string"
+      )
+    )
+  )
+)
+}
 }
 \description{
 Describes the association for the specified target or instance. If you

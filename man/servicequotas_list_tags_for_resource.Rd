@@ -12,8 +12,19 @@ to list tags. You can get this information by using the Service Quotas
 console, or by listing the quotas using the
 \href{https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html}{list-service-quotas}
 AWS CLI command or the
-\href{https://docs.aws.amazon.com/servicequotas/2019-06-24/apireference/API_ListServiceQuotas.html}{ListServiceQuotas}
-AWS API operation.}
+\code{\link[=servicequotas_list_service_quotas]{list_service_quotas}} AWS API
+operation.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
+)
+}
 }
 \description{
 Returns a list of the tags assigned to the specified applied quota.

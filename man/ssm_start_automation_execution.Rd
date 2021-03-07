@@ -68,8 +68,14 @@ following key name/value pairs:
 \item \verb{Key=OS,Value=Windows}
 }
 
-To add tags to an existing patch baseline, use the AddTagsToResource
-action.}
+To add tags to an existing patch baseline, use the
+\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  AutomationExecutionId = "string"
+)
+}
 }
 \description{
 Initiates execution of an Automation document.

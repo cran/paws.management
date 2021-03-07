@@ -17,12 +17,32 @@ results.}
 
 \item{Limit}{The maximum number of results to return.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Rules = list(
+    list(
+      Name = "string",
+      Arn = "string",
+      EventPattern = "string",
+      State = "ENABLED"|"DISABLED",
+      Description = "string",
+      ScheduleExpression = "string",
+      RoleArn = "string",
+      ManagedBy = "string",
+      EventBusName = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists your Amazon EventBridge rules. You can either list all the rules
 or you can provide a prefix to match to the rule names.
 
 ListRules does not list the targets of a rule. To see the targets
-associated with a rule, use ListTargetsByRule.
+associated with a rule, use
+\code{\link[=cloudwatchevents_list_targets_by_rule]{list_targets_by_rule}}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_rules(

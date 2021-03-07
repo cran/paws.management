@@ -25,7 +25,8 @@ stack-related events.}
 
 \item{PathId}{The path identifier of the product. This value is optional if the
 product has a default path, and required if the product has more than
-one path. To list the paths for a product, use ListLaunchPaths.}
+one path. To list the paths for a product, use
+\code{\link[=servicecatalog_list_launch_paths]{list_launch_paths}}.}
 
 \item{ProductId}{[required] The product identifier.}
 
@@ -48,6 +49,16 @@ If the plan is for an existing provisioned product, the product must
 have a \code{RESOURCE_UPDATE} constraint with
 \code{TagUpdatesOnProvisionedProduct} set to \code{ALLOWED} to allow tag updates.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  PlanName = "string",
+  PlanId = "string",
+  ProvisionProductId = "string",
+  ProvisionedProductName = "string",
+  ProvisioningArtifactId = "string"
+)
+}
+}
 \description{
 Creates a plan. A plan includes the list of resources to be created
 (when provisioning a new product) or modified (when updating a
@@ -58,8 +69,9 @@ existing provisioned product, the product status must be AVAILBLE or
 TAINTED.
 
 To view the resource changes in the change set, use
-DescribeProvisionedProductPlan. To create or modify the provisioned
-product, use ExecuteProvisionedProductPlan.
+\code{\link[=servicecatalog_describe_provisioned_product_plan]{describe_provisioned_product_plan}}.
+To create or modify the provisioned product, use
+\code{\link[=servicecatalog_execute_provisioned_product_plan]{execute_provisioned_product_plan}}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_provisioned_product_plan(

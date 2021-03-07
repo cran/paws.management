@@ -24,11 +24,13 @@ GetParametersByPath API action recursively for \verb{/a} and view \verb{/a/b}.}
 
 \item{ParameterFilters}{Filters to limit the request results.
 
-For \code{GetParametersByPath}, the following filter \code{Key} names are
-supported: \code{Type}, \code{KeyId}, \code{Label}, and \code{DataType}.
+For \code{\link[=ssm_get_parameters_by_path]{get_parameters_by_path}}, the
+following filter \code{Key} names are supported: \code{Type}, \code{KeyId}, \code{Label},
+and \code{DataType}.
 
-The following \code{Key} values are not supported for \code{GetParametersByPath}:
-\code{tag}, \code{Name}, \code{Path}, and \code{Tier}.}
+The following \code{Key} values are not supported for
+\code{\link[=ssm_get_parameters_by_path]{get_parameters_by_path}}: \code{tag}, \code{Name},
+\code{Path}, and \code{Tier}.}
 
 \item{WithDecryption}{Retrieve all parameters in a hierarchy with their value decrypted.}
 
@@ -38,6 +40,27 @@ next set of results.}
 
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Parameters = list(
+    list(
+      Name = "string",
+      Type = "String"|"StringList"|"SecureString",
+      Value = "string",
+      Version = 123,
+      Selector = "string",
+      SourceResult = "string",
+      LastModifiedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      ARN = "string",
+      DataType = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Retrieve information about one or more parameters in a specific

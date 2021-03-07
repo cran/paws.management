@@ -13,9 +13,32 @@ ssm_get_parameters(Names, WithDecryption)
 string parameters. This flag is ignored for String and StringList
 parameter types.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Parameters = list(
+    list(
+      Name = "string",
+      Type = "String"|"StringList"|"SecureString",
+      Value = "string",
+      Version = 123,
+      Selector = "string",
+      SourceResult = "string",
+      LastModifiedDate = as.POSIXct(
+        "2015-01-01"
+      ),
+      ARN = "string",
+      DataType = "string"
+    )
+  ),
+  InvalidParameters = list(
+    "string"
+  )
+)
+}
+}
 \description{
 Get details of a parameter. Don't confuse this API action with the
-GetParameter API action.
+\code{\link[=ssm_get_parameter]{get_parameter}} API action.
 }
 \section{Request syntax}{
 \preformatted{svc$get_parameters(

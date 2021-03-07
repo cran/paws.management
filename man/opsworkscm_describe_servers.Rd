@@ -10,9 +10,56 @@ opsworkscm_describe_servers(ServerName, NextToken, MaxResults)
 \arguments{
 \item{ServerName}{Describes the server with the specified ServerName.}
 
-\item{NextToken}{This is not currently implemented for \code{DescribeServers} requests.}
+\item{NextToken}{This is not currently implemented for
+\code{\link[=opsworkscm_describe_servers]{describe_servers}} requests.}
 
-\item{MaxResults}{This is not currently implemented for \code{DescribeServers} requests.}
+\item{MaxResults}{This is not currently implemented for
+\code{\link[=opsworkscm_describe_servers]{describe_servers}} requests.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Servers = list(
+    list(
+      AssociatePublicIpAddress = TRUE|FALSE,
+      BackupRetentionCount = 123,
+      ServerName = "string",
+      CreatedAt = as.POSIXct(
+        "2015-01-01"
+      ),
+      CloudFormationStackArn = "string",
+      CustomDomain = "string",
+      DisableAutomatedBackup = TRUE|FALSE,
+      Endpoint = "string",
+      Engine = "string",
+      EngineModel = "string",
+      EngineAttributes = list(
+        list(
+          Name = "string",
+          Value = "string"
+        )
+      ),
+      EngineVersion = "string",
+      InstanceProfileArn = "string",
+      InstanceType = "string",
+      KeyPair = "string",
+      MaintenanceStatus = "SUCCESS"|"FAILED",
+      PreferredMaintenanceWindow = "string",
+      PreferredBackupWindow = "string",
+      SecurityGroupIds = list(
+        "string"
+      ),
+      ServiceRoleArn = "string",
+      Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
+      StatusReason = "string",
+      SubnetIds = list(
+        "string"
+      ),
+      ServerArn = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Lists all configuration management servers that are identified with your

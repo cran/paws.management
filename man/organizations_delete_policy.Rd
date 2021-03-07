@@ -8,12 +8,16 @@ organizations_delete_policy(PolicyId)
 }
 \arguments{
 \item{PolicyId}{[required] The unique identifier (ID) of the policy that you want to delete. You
-can get the ID from the ListPolicies or ListPoliciesForTarget
+can get the ID from the \code{\link[=organizations_list_policies]{list_policies}}
+or \code{\link[=organizations_list_policies_for_target]{list_policies_for_target}}
 operations.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a policy ID
 string requires "p-" followed by from 8 to 128 lowercase or uppercase
-letters, digits, or the underscore character (\\_).}
+letters, digits, or the underscore character (_).}
+}
+\value{
+An empty list.
 }
 \description{
 Deletes the specified policy from your organization. Before you perform

@@ -10,11 +10,15 @@ configservice_delete_evaluation_results(ConfigRuleName)
 \item{ConfigRuleName}{[required] The name of the AWS Config rule for which you want to delete the
 evaluation results.}
 }
+\value{
+An empty list.
+}
 \description{
 Deletes the evaluation results for the specified AWS Config rule. You
 can specify one AWS Config rule per request. After you delete the
-evaluation results, you can call the StartConfigRulesEvaluation API to
-start evaluating your AWS resources against the rule.
+evaluation results, you can call the
+\code{\link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation}}
+API to start evaluating your AWS resources against the rule.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_evaluation_results(

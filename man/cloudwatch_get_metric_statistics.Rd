@@ -62,8 +62,8 @@ with regular resolution, a period can be as short as one minute (60
 seconds) and must be a multiple of 60. For high-resolution metrics that
 are collected at intervals of less than one minute, the period can be 1,
 5, 10, 30, 60, or any multiple of 60. High-resolution metrics are those
-metrics stored by a \code{PutMetricData} call that includes a
-\code{StorageResolution} of 1 second.
+metrics stored by a \code{\link[=cloudwatch_put_metric_data]{put_metric_data}} call
+that includes a \code{StorageResolution} of 1 second.
 
 If the \code{StartTime} parameter specifies a time stamp that is greater than
 3 hours ago, you must specify the period as follows or no data points in
@@ -78,14 +78,15 @@ seconds (5 minutes).
 }}
 
 \item{Statistics}{The metric statistics, other than percentile. For percentile statistics,
-use \code{ExtendedStatistics}. When calling \code{GetMetricStatistics}, you must
+use \code{ExtendedStatistics}. When calling
+\code{\link[=cloudwatch_get_metric_statistics]{get_metric_statistics}}, you must
 specify either \code{Statistics} or \code{ExtendedStatistics}, but not both.}
 
 \item{ExtendedStatistics}{The percentile statistics. Specify values between p0.0 and p100. When
-calling \code{GetMetricStatistics}, you must specify either \code{Statistics} or
-\code{ExtendedStatistics}, but not both. Percentile statistics are not
-available for metrics when any of the metric values are negative
-numbers.}
+calling \code{\link[=cloudwatch_get_metric_statistics]{get_metric_statistics}}, you
+must specify either \code{Statistics} or \code{ExtendedStatistics}, but not both.
+Percentile statistics are not available for metrics when any of the
+metric values are negative numbers.}
 
 \item{Unit}{The unit for a given metric. If you omit \code{Unit}, all data that was
 collected with any unit is returned, along with the corresponding units
@@ -94,6 +95,28 @@ specify a unit, the operation returns only data that was collected with
 that unit specified. If you specify a unit that does not match the data
 collected, the results of the operation are null. CloudWatch does not
 perform unit conversions.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Label = "string",
+  Datapoints = list(
+    list(
+      Timestamp = as.POSIXct(
+        "2015-01-01"
+      ),
+      SampleCount = 123.0,
+      Average = 123.0,
+      Sum = 123.0,
+      Minimum = 123.0,
+      Maximum = 123.0,
+      Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
+      ExtendedStatistics = list(
+        123.0
+      )
+    )
+  )
+)
+}
 }
 \description{
 Gets statistics for the specified metric.

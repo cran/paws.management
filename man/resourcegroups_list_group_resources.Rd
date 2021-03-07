@@ -15,22 +15,25 @@ instead.}}}
 \item{Group}{The name or the ARN of the resource group}
 
 \item{Filters}{Filters, formatted as ResourceFilter objects, that you want to apply to
-a \code{ListGroupResources} operation. Filters the results to include only
-those of the specified resource types.
+a \code{\link[=resourcegroups_list_group_resources]{list_group_resources}}
+operation. Filters the results to include only those of the specified
+resource types.
 \itemize{
 \item \code{resource-type} - Filter resources by their type. Specify up to five
 resource types in the format \verb{AWS::ServiceCode::ResourceType}. For
 example, \verb{AWS::EC2::Instance}, or \verb{AWS::S3::Bucket}.
 }
 
-When you specify a \code{resource-type} filter for \code{ListGroupResources}, AWS
+When you specify a \code{resource-type} filter for
+\code{\link[=resourcegroups_list_group_resources]{list_group_resources}}, AWS
 Resource Groups validates your filter resource types against the types
 that are defined in the query associated with the group. For example, if
 a group contains only S3 buckets because its query specifies only that
 resource type, but your \code{resource-type} filter includes EC2 instances,
 AWS Resource Groups does not filter for EC2 instances. In this case, a
-\code{ListGroupResources} request returns a \code{BadRequestException} error with
-a message similar to the following:
+\code{\link[=resourcegroups_list_group_resources]{list_group_resources}} request
+returns a \code{BadRequestException} error with a message similar to the
+following:
 
 \verb{The resource types specified as filters in the request are not valid.}
 
@@ -57,6 +60,35 @@ results.}
 indicates that more output is available. Set this parameter to the value
 provided by a previous call's \code{NextToken} response to indicate where the
 output should continue from.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Resources = list(
+    list(
+      Identifier = list(
+        ResourceArn = "string",
+        ResourceType = "string"
+      ),
+      Status = list(
+        Name = "PENDING"
+      )
+    )
+  ),
+  ResourceIdentifiers = list(
+    list(
+      ResourceArn = "string",
+      ResourceType = "string"
+    )
+  ),
+  NextToken = "string",
+  QueryErrors = list(
+    list(
+      ErrorCode = "CLOUDFORMATION_STACK_INACTIVE"|"CLOUDFORMATION_STACK_NOT_EXISTING",
+      Message = "string"
+    )
+  )
+)
+}
 }
 \description{
 Returns a list of ARNs of the resources that are members of a specified

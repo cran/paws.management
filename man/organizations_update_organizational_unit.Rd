@@ -8,7 +8,9 @@ organizations_update_organizational_unit(OrganizationalUnitId, Name)
 }
 \arguments{
 \item{OrganizationalUnitId}{[required] The unique identifier (ID) of the OU that you want to rename. You can
-get the ID from the ListOrganizationalUnitsForParent operation.
+get the ID from the
+\code{\link[=organizations_list_organizational_units_for_parent]{list_organizational_units_for_parent}}
+operation.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for an
 organizational unit ID string requires "ou-" followed by from 4 to 32
@@ -21,6 +23,16 @@ lowercase letters or digits.}
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
 validate this parameter is a string of any of the characters in the
 ASCII character range.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  OrganizationalUnit = list(
+    Id = "string",
+    Arn = "string",
+    Name = "string"
+  )
+)
+}
 }
 \description{
 Renames the specified organizational unit (OU). The ID and ARN don't

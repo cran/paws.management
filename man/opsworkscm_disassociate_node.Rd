@@ -22,12 +22,18 @@ associated. By default only one organization named \code{default} can
 exist.
 }}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  NodeAssociationStatusToken = "string"
+)
+}
+}
 \description{
 Disassociates a node from an AWS OpsWorks CM server, and removes the
 node from the server's managed nodes. After a node is disassociated, the
 node key pair is no longer valid for accessing the configuration
 manager's API. For more information about how to associate a node, see
-AssociateNode.
+\code{\link[=opsworkscm_associate_node]{associate_node}}.
 
 A node can can only be disassociated from a server that is in a
 \code{HEALTHY} state. Otherwise, an \code{InvalidStateException} is thrown. A

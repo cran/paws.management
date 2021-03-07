@@ -138,7 +138,7 @@ override the corresponding default stack configuration attribute values
 or to pass data to recipes. The string should be in the following
 format:
 
-\verb{"\\\{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...\\\}"}
+\verb{"\{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...\}"}
 
 For more information about custom JSON, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html}{Use Custom JSON to Modify the Stack Configuration Attributes}.}
 
@@ -207,11 +207,18 @@ installs that version on the stack's instances.
 The default setting is the most recent release of the agent. To specify
 an agent version, you must use the complete version number, not the
 abbreviated number shown on the console. For a list of available agent
-version numbers, call DescribeAgentVersions. AgentVersion cannot be set
-to Chef 12.2.
+version numbers, call
+\code{\link[=opsworks_describe_agent_versions]{describe_agent_versions}}.
+AgentVersion cannot be set to Chef 12.2.
 
 You can also specify an agent version when you create or update an
 instance, which overrides the stack's default setting.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  StackId = "string"
+)
+}
 }
 \description{
 Creates a new stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html}{Create a New Stack}.

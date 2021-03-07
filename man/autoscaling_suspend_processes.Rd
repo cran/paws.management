@@ -25,6 +25,9 @@ autoscaling_suspend_processes(AutoScalingGroupName, ScalingProcesses)
 
 If you omit this parameter, all processes are specified.}
 }
+\value{
+An empty list.
+}
 \description{
 Suspends the specified auto scaling processes, or all processes, for the
 specified Auto Scaling group.
@@ -34,8 +37,8 @@ prevent other process types from functioning properly. For more
 information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html}{Suspending and resuming scaling processes}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
-To resume processes that have been suspended, call the ResumeProcesses
-API.
+To resume processes that have been suspended, call the
+\code{\link[=autoscaling_resume_processes]{resume_processes}} API.
 }
 \section{Request syntax}{
 \preformatted{svc$suspend_processes(

@@ -41,11 +41,23 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  Children = list(
+    list(
+      Id = "string",
+      Type = "ACCOUNT"|"ORGANIZATIONAL_UNIT"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Lists all of the organizational units (OUs) or accounts that are
 contained in the specified parent OU or root. This operation, along with
-ListParents enables you to traverse the tree structure that makes up
-this root.
+\code{\link[=organizations_list_parents]{list_parents}} enables you to traverse the
+tree structure that makes up this root.
 
 Always check the \code{NextToken} response parameter for a \code{null} value when
 calling a \verb{List*} operation. These operations can occasionally return an

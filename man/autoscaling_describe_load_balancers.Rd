@@ -16,12 +16,26 @@ from a previous call.)}
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
 is \code{100} and the maximum value is \code{100}.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  LoadBalancers = list(
+    list(
+      LoadBalancerName = "string",
+      State = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
+}
 \description{
 Describes the load balancers for the specified Auto Scaling group.
 
 This operation describes only Classic Load Balancers. If you have
 Application Load Balancers, Network Load Balancers, or Gateway Load
-Balancers, use the DescribeLoadBalancerTargetGroups API instead.
+Balancers, use the
+\code{\link[=autoscaling_describe_load_balancer_target_groups]{describe_load_balancer_target_groups}}
+API instead.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_load_balancers(

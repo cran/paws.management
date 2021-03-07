@@ -10,7 +10,10 @@ organizations_enable_aws_service_access(ServicePrincipal)
 \arguments{
 \item{ServicePrincipal}{[required] The service principal name of the AWS service for which you want to
 enable integration with your organization. This is typically in the form
-of a URL, such as \verb{ <i>service-abbreviation</i>.amazonaws.com}.}
+of a URL, such as \code{ service-abbreviation.amazonaws.com}.}
+}
+\value{
+An empty list.
 }
 \description{
 Enables the integration of an AWS service (the service that is specified

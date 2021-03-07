@@ -38,6 +38,15 @@ NULL
 #' base64-encoded string. The value for `fileName` is the name of the
 #' attachment, such as `troubleshoot-screenshot.png`.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   attachmentSetId = "string",
+#'   expiryTime = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$add_attachments_to_set(
@@ -100,7 +109,16 @@ support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) 
 #' @param ccEmailAddresses The email addresses in the CC line of an email to be added to the
 #' support case.
 #' @param attachmentSetId The ID of a set of one or more attachments for the communication to add
-#' to the case. Create the set by calling AddAttachmentsToSet
+#' to the case. Create the set by calling
+#' [`add_attachments_to_set`][support_add_attachments_to_set]
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   result = TRUE|FALSE
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -149,14 +167,17 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #'     [RequestServiceQuotaIncrease](https://docs.aws.amazon.com/servicequotas/2019-06-24/apireference/API_RequestServiceQuotaIncrease.html)
 #'     operation.
 #' 
-#' A successful `CreateCase` request returns an AWS Support case number.
-#' You can use the DescribeCases operation and specify the case number to
-#' get existing AWS Support cases. After you create a case, use the
-#' AddCommunicationToCase operation to add additional communication or
-#' attachments to an existing case.
+#' A successful [`create_case`][support_create_case] request returns an AWS
+#' Support case number. You can use the
+#' [`describe_cases`][support_describe_cases] operation and specify the
+#' case number to get existing AWS Support cases. After you create a case,
+#' use the [`add_communication_to_case`][support_add_communication_to_case]
+#' operation to add additional communication or attachments to an existing
+#' case.
 #' 
 #' The `caseId` is separate from the `displayId` that appears in the AWS
-#' Support Center. Use the DescribeCases operation to get the `displayId`.
+#' Support Center. Use the [`describe_cases`][support_describe_cases]
+#' operation to get the `displayId`.
 #' 
 #' -   You must have a Business or Enterprise support plan to use the AWS
 #'     Support API.
@@ -174,12 +195,14 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #'
 #' @param subject &#91;required&#93; The title of the AWS Support case. The title appears in the **Subject**
 #' field on the AWS Support Center Create Case page.
-#' @param serviceCode The code for the AWS service. You can use the DescribeServices operation
-#' to get the possible `serviceCode` values.
+#' @param serviceCode The code for the AWS service. You can use the
+#' [`describe_services`][support_describe_services] operation to get the
+#' possible `serviceCode` values.
 #' @param severityCode A value that indicates the urgency of the case. This value determines
 #' the response time according to your service level agreement with AWS
-#' Support. You can use the DescribeSeverityLevels operation to get the
-#' possible values for `severityCode`.
+#' Support. You can use the
+#' [`describe_severity_levels`][support_describe_severity_levels] operation
+#' to get the possible values for `severityCode`.
 #' 
 #' For more information, see SeverityLevel and [Choosing a
 #' Severity](https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity)
@@ -188,8 +211,9 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' The availability of severity levels depends on the support plan for the
 #' AWS account.
 #' @param categoryCode The category of problem for the AWS Support case. You also use the
-#' DescribeServices operation to get the category code for a service. Each
-#' AWS service defines its own set of category codes.
+#' [`describe_services`][support_describe_services] operation to get the
+#' category code for a service. Each AWS service defines its own set of
+#' category codes.
 #' @param communicationBody &#91;required&#93; The communication body text that describes the issue. This text appears
 #' in the **Description** field on the AWS Support Center Create Case page.
 #' @param ccEmailAddresses A list of email addresses that AWS Support copies on case
@@ -202,7 +226,16 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' @param issueType The type of issue for the case. You can specify `customer-service` or
 #' `technical`. If you don't specify a value, the default is `technical`.
 #' @param attachmentSetId The ID of a set of one or more attachments for the case. Create the set
-#' by using the AddAttachmentsToSet operation.
+#' by using the [`add_attachments_to_set`][support_add_attachments_to_set]
+#' operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   caseId = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -249,7 +282,7 @@ support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL
 #' issue. Attachment IDs are generated by the case management system when
 #' you add an attachment to a case or case communication. Attachment IDs
 #' are returned in the AttachmentDetails objects that are returned by the
-#' DescribeCommunications operation.
+#' [`describe_communications`][support_describe_communications] operation.
 #' 
 #' -   You must have a Business or Enterprise support plan to use the AWS
 #'     Support API.
@@ -264,7 +297,18 @@ support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL
 #' support_describe_attachment(attachmentId)
 #'
 #' @param attachmentId &#91;required&#93; The ID of the attachment to return. Attachment IDs are returned by the
-#' DescribeCommunications operation.
+#' [`describe_communications`][support_describe_communications] operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   attachment = list(
+#'     fileName = "string",
+#'     data = raw
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -337,14 +381,58 @@ support_describe_attachment <- function(attachmentId) {
 #' @param beforeTime The end date for a filtered date search on support case communications.
 #' Case communications are available for 12 months after creation.
 #' @param includeResolvedCases Specifies whether to include resolved support cases in the
-#' `DescribeCases` response. By default, resolved cases aren't included.
+#' [`describe_cases`][support_describe_cases] response. By default,
+#' resolved cases aren't included.
 #' @param nextToken A resumption point for pagination.
 #' @param maxResults The maximum number of results to return before paginating.
 #' @param language The ISO 639-1 code for the language in which AWS provides support. AWS
 #' Support currently supports English ("en") and Japanese ("ja"). Language
 #' parameters must be passed explicitly for operations that take them.
-#' @param includeCommunications Specifies whether to include communications in the `DescribeCases`
-#' response. By default, communications are incuded.
+#' @param includeCommunications Specifies whether to include communications in the
+#' [`describe_cases`][support_describe_cases] response. By default,
+#' communications are incuded.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   cases = list(
+#'     list(
+#'       caseId = "string",
+#'       displayId = "string",
+#'       subject = "string",
+#'       status = "string",
+#'       serviceCode = "string",
+#'       categoryCode = "string",
+#'       severityCode = "string",
+#'       submittedBy = "string",
+#'       timeCreated = "string",
+#'       recentCommunications = list(
+#'         communications = list(
+#'           list(
+#'             caseId = "string",
+#'             body = "string",
+#'             submittedBy = "string",
+#'             timeCreated = "string",
+#'             attachmentSet = list(
+#'               list(
+#'                 attachmentId = "string",
+#'                 fileName = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         nextToken = "string"
+#'       ),
+#'       ccEmailAddresses = list(
+#'         "string"
+#'       ),
+#'       language = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -424,6 +512,28 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
 #' @param nextToken A resumption point for pagination.
 #' @param maxResults The maximum number of results to return before paginating.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   communications = list(
+#'     list(
+#'       caseId = "string",
+#'       body = "string",
+#'       submittedBy = "string",
+#'       timeCreated = "string",
+#'       attachmentSet = list(
+#'         list(
+#'           attachmentId = "string",
+#'           fileName = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_communications(
@@ -461,16 +571,17 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
 #' @description
 #' Returns the current list of AWS services and a list of service
 #' categories for each service. You then use service names and categories
-#' in your CreateCase requests. Each AWS service has its own set of
-#' categories.
+#' in your [`create_case`][support_create_case] requests. Each AWS service
+#' has its own set of categories.
 #' 
 #' The service codes and category codes correspond to the values that
 #' appear in the **Service** and **Category** lists on the AWS Support
 #' Center Create Case page. The values in those fields don't necessarily
 #' match the service codes and categories returned by the
-#' `DescribeServices` operation. Always use the service codes and
-#' categories that the `DescribeServices` operation returns, so that you
-#' have the most recent set of service and category codes.
+#' [`describe_services`][support_describe_services] operation. Always use
+#' the service codes and categories that the
+#' [`describe_services`][support_describe_services] operation returns, so
+#' that you have the most recent set of service and category codes.
 #' 
 #' -   You must have a Business or Enterprise support plan to use the AWS
 #'     Support API.
@@ -488,6 +599,25 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
 #' @param language The ISO 639-1 code for the language in which AWS provides support. AWS
 #' Support currently supports English ("en") and Japanese ("ja"). Language
 #' parameters must be passed explicitly for operations that take them.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   services = list(
+#'     list(
+#'       code = "string",
+#'       name = "string",
+#'       categories = list(
+#'         list(
+#'           code = "string",
+#'           name = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -525,7 +655,8 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
 #' @description
 #' Returns the list of severity levels that you can assign to an AWS
 #' Support case. The severity level for a case is also a field in the
-#' CaseDetails data type that you include for a CreateCase request.
+#' CaseDetails data type that you include for a
+#' [`create_case`][support_create_case] request.
 #' 
 #' -   You must have a Business or Enterprise support plan to use the AWS
 #'     Support API.
@@ -542,6 +673,19 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
 #' @param language The ISO 639-1 code for the language in which AWS provides support. AWS
 #' Support currently supports English ("en") and Japanese ("ja"). Language
 #' parameters must be passed explicitly for operations that take them.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   severityLevels = list(
+#'     list(
+#'       code = "string",
+#'       name = "string"
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -576,13 +720,14 @@ support_describe_severity_levels <- function(language = NULL) {
 #' @description
 #' Returns the refresh status of the AWS Trusted Advisor checks that have
 #' the specified check IDs. You can get the check IDs by calling the
-#' DescribeTrustedAdvisorChecks operation.
+#' [`describe_trusted_advisor_checks`][support_describe_trusted_advisor_checks]
+#' operation.
 #' 
 #' Some checks are refreshed automatically, and you can't return their
 #' refresh statuses by using the
-#' `DescribeTrustedAdvisorCheckRefreshStatuses` operation. If you call this
-#' operation for these checks, you might see an `InvalidParameterValue`
-#' error.
+#' [`describe_trusted_advisor_check_refresh_statuses`][support_describe_trusted_advisor_check_refresh_statuses]
+#' operation. If you call this operation for these checks, you might see an
+#' `InvalidParameterValue` error.
 #' 
 #' -   You must have a Business or Enterprise support plan to use the AWS
 #'     Support API.
@@ -600,6 +745,20 @@ support_describe_severity_levels <- function(language = NULL) {
 #' 
 #' If you specify the check ID of a check that is automatically refreshed,
 #' you might see an `InvalidParameterValue` error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   statuses = list(
+#'     list(
+#'       checkId = "string",
+#'       status = "string",
+#'       millisUntilNextRefreshable = 123
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -636,7 +795,8 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
 #' @description
 #' Returns the results of the AWS Trusted Advisor check that has the
 #' specified check ID. You can get the check IDs by calling the
-#' DescribeTrustedAdvisorChecks operation.
+#' [`describe_trusted_advisor_checks`][support_describe_trusted_advisor_checks]
+#' operation.
 #' 
 #' The response contains a TrustedAdvisorCheckResult object, which contains
 #' these three objects:
@@ -650,13 +810,12 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
 #' In addition, the response contains these fields:
 #' 
 #' -   **status** - The alert status of the check: "ok" (green), "warning"
-#'     (yellow), "error" (red), or "not\\_available".
+#'     (yellow), "error" (red), or "not_available".
 #' 
 #' -   **timestamp** - The time of the last refresh of the check.
 #' 
 #' -   **checkId** - The unique identifier for the check.
 #' 
-#' <!-- -->
 #' 
 #' -   You must have a Business or Enterprise support plan to use the AWS
 #'     Support API.
@@ -674,6 +833,41 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
 #' @param language The ISO 639-1 code for the language in which AWS provides support. AWS
 #' Support currently supports English ("en") and Japanese ("ja"). Language
 #' parameters must be passed explicitly for operations that take them.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   result = list(
+#'     checkId = "string",
+#'     timestamp = "string",
+#'     status = "string",
+#'     resourcesSummary = list(
+#'       resourcesProcessed = 123,
+#'       resourcesFlagged = 123,
+#'       resourcesIgnored = 123,
+#'       resourcesSuppressed = 123
+#'     ),
+#'     categorySpecificSummary = list(
+#'       costOptimizing = list(
+#'         estimatedMonthlySavings = 123.0,
+#'         estimatedPercentMonthlySavings = 123.0
+#'       )
+#'     ),
+#'     flaggedResources = list(
+#'       list(
+#'         status = "string",
+#'         region = "string",
+#'         resourceId = "string",
+#'         isSuppressed = TRUE|FALSE,
+#'         metadata = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -709,7 +903,8 @@ support_describe_trusted_advisor_check_result <- function(checkId, language = NU
 #' @description
 #' Returns the results for the AWS Trusted Advisor check summaries for the
 #' check IDs that you specified. You can get the check IDs by calling the
-#' DescribeTrustedAdvisorChecks operation.
+#' [`describe_trusted_advisor_checks`][support_describe_trusted_advisor_checks]
+#' operation.
 #' 
 #' The response contains an array of TrustedAdvisorCheckSummary objects.
 #' 
@@ -726,6 +921,33 @@ support_describe_trusted_advisor_check_result <- function(checkId, language = NU
 #' support_describe_trusted_advisor_check_summaries(checkIds)
 #'
 #' @param checkIds &#91;required&#93; The IDs of the Trusted Advisor checks.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   summaries = list(
+#'     list(
+#'       checkId = "string",
+#'       timestamp = "string",
+#'       status = "string",
+#'       hasFlaggedResources = TRUE|FALSE,
+#'       resourcesSummary = list(
+#'         resourcesProcessed = 123,
+#'         resourcesFlagged = 123,
+#'         resourcesIgnored = 123,
+#'         resourcesSuppressed = 123
+#'       ),
+#'       categorySpecificSummary = list(
+#'         costOptimizing = list(
+#'           estimatedMonthlySavings = 123.0,
+#'           estimatedPercentMonthlySavings = 123.0
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -783,6 +1005,24 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
 #' Support currently supports English ("en") and Japanese ("ja"). Language
 #' parameters must be passed explicitly for operations that take them.
 #'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   checks = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       description = "string",
+#'       category = "string",
+#'       metadata = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
 #' @section Request syntax:
 #' ```
 #' svc$describe_trusted_advisor_checks(
@@ -816,11 +1056,13 @@ support_describe_trusted_advisor_checks <- function(language) {
 #' @description
 #' Refreshes the AWS Trusted Advisor check that you specify using the check
 #' ID. You can get the check IDs by calling the
-#' DescribeTrustedAdvisorChecks operation.
+#' [`describe_trusted_advisor_checks`][support_describe_trusted_advisor_checks]
+#' operation.
 #' 
 #' Some checks are refreshed automatically. If you call the
-#' `RefreshTrustedAdvisorCheck` operation to refresh them, you might see
-#' the `InvalidParameterValue` error.
+#' [`refresh_trusted_advisor_check`][support_refresh_trusted_advisor_check]
+#' operation to refresh them, you might see the `InvalidParameterValue`
+#' error.
 #' 
 #' The response contains a TrustedAdvisorCheckRefreshStatus object.
 #' 
@@ -839,6 +1081,18 @@ support_describe_trusted_advisor_checks <- function(language) {
 #' @param checkId &#91;required&#93; The unique identifier for the Trusted Advisor check to refresh.
 #' **Note:** Specifying the check ID of a check that is automatically
 #' refreshed causes an `InvalidParameterValue` error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = list(
+#'     checkId = "string",
+#'     status = "string",
+#'     millisUntilNextRefreshable = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -888,6 +1142,15 @@ support_refresh_trusted_advisor_check <- function(checkId) {
 #' @param caseId The AWS Support case ID requested or returned in the call. The case ID
 #' is an alphanumeric string formatted as shown in this example:
 #' case-*12345678910-2013-c4c1d2bf33c5cf47*
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   initialCaseStatus = "string",
+#'   finalCaseStatus = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```

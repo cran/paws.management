@@ -12,7 +12,7 @@ cloudtrail_get_insight_selectors(TrailName)
 name, the string must meet the following requirements:
 \itemize{
 \item Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-underscores (\\_), or dashes (-)
+underscores (_), or dashes (-)
 \item Start with a letter or number, and end with a letter or number
 \item Be between 3 and 128 characters
 \item Have no adjacent periods, underscores or dashes. Names like
@@ -24,11 +24,24 @@ If you specify a trail ARN, it must be in the format:
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  TrailARN = "string",
+  InsightSelectors = list(
+    list(
+      InsightType = "ApiCallRateInsight"
+    )
+  )
+)
+}
+}
 \description{
 Describes the settings for the Insights event selectors that you
-configured for your trail. \code{GetInsightSelectors} shows if CloudTrail
-Insights event logging is enabled on the trail, and if it is, which
-insight types are enabled. If you run \code{GetInsightSelectors} on a trail
+configured for your trail.
+\code{\link[=cloudtrail_get_insight_selectors]{get_insight_selectors}} shows if
+CloudTrail Insights event logging is enabled on the trail, and if it is,
+which insight types are enabled. If you run
+\code{\link[=cloudtrail_get_insight_selectors]{get_insight_selectors}} on a trail
 that does not have Insights events enabled, the operation throws the
 exception \code{InsightNotEnabledException}
 

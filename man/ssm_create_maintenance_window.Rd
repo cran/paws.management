@@ -27,7 +27,7 @@ expression.}
 
 \item{ScheduleTimezone}{The time zone that the scheduled maintenance window executions are based
 on, in Internet Assigned Numbers Authority (IANA) format. For example:
-"America/Los\\_Angeles", "UTC", or "Asia/Seoul". For more information,
+"America/Los_Angeles", "UTC", or "Asia/Seoul". For more information,
 see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the
 IANA website.}
 
@@ -70,8 +70,14 @@ following key name/value pairs:
 \item \verb{Key=Environment,Value=Production}
 }
 
-To add tags to an existing maintenance window, use the AddTagsToResource
-action.}
+To add tags to an existing maintenance window, use the
+\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  WindowId = "string"
+)
+}
 }
 \description{
 Creates a new maintenance window.

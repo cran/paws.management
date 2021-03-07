@@ -15,11 +15,11 @@ You can specify any of the following taggable resources.
 \itemize{
 \item AWS account – specify the account ID number.
 \item Organizational unit – specify the OU ID that begins with \verb{ou-} and
-looks similar to: \verb{ou-<i>1a2b-34uvwxyz</i> }
+looks similar to: \verb{ou-1a2b-34uvwxyz }
 \item Root – specify the root ID that begins with \verb{r-} and looks similar
-to: \verb{r-<i>1a2b</i> }
+to: \verb{r-1a2b }
 \item Policy – specify the policy ID that begins with \verb{p-} andlooks
-similar to: \verb{p-<i>12abcdefg3</i> }
+similar to: \verb{p-12abcdefg3 }
 }
 
 For each tag in the list, you must specify both a tag key and a value.
@@ -29,6 +29,9 @@ You can set the value to an empty string, but you can't set it to
 If any one of the tags is invalid or if you exceed the allowed number of
 tags for an account user, then the entire request fails and the account
 is not created.}
+}
+\value{
+An empty list.
 }
 \description{
 Adds one or more tags to the specified resource.

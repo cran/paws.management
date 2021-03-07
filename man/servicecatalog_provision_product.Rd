@@ -29,7 +29,8 @@ but not both.}
 
 \item{PathId}{The path identifier of the product. This value is optional if the
 product has a default path, and required if the product has more than
-one path. To list the paths for a product, use ListLaunchPaths. You must
+one path. To list the paths for a product, use
+\code{\link[=servicecatalog_list_launch_paths]{list_launch_paths}}. You must
 provide the name or ID, but not both.}
 
 \item{PathName}{The name of the path. You must provide the name or ID, but not both.}
@@ -51,13 +52,49 @@ stack-related events.}
 
 \item{ProvisionToken}{[required] An idempotency token that uniquely identifies the provisioning request.}
 }
+\value{
+A list with the following syntax:\preformatted{list(
+  RecordDetail = list(
+    RecordId = "string",
+    ProvisionedProductName = "string",
+    Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
+    CreatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    UpdatedTime = as.POSIXct(
+      "2015-01-01"
+    ),
+    ProvisionedProductType = "string",
+    RecordType = "string",
+    ProvisionedProductId = "string",
+    ProductId = "string",
+    ProvisioningArtifactId = "string",
+    PathId = "string",
+    RecordErrors = list(
+      list(
+        Code = "string",
+        Description = "string"
+      )
+    ),
+    RecordTags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    ),
+    LaunchRoleArn = "string"
+  )
+)
+}
+}
 \description{
 Provisions the specified product.
 
 A provisioned product is a resourced instance of a product. For example,
 provisioning a product based on a CloudFormation template launches a
 CloudFormation stack and its underlying resources. You can check the
-status of this request using DescribeRecord.
+status of this request using
+\code{\link[=servicecatalog_describe_record]{describe_record}}.
 
 If the request contains a tag key with an empty list of values, there is
 a tag conflict for that key. Do not include conflicted keys as tags, or

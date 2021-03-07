@@ -10,8 +10,33 @@ cloudformation_list_change_sets(StackName, NextToken)
 \item{StackName}{[required] The name or the Amazon Resource Name (ARN) of the stack for which you
 want to list change sets.}
 
-\item{NextToken}{A string (provided by the ListChangeSets response output) that
-identifies the next page of change sets that you want to retrieve.}
+\item{NextToken}{A string (provided by the
+\code{\link[=cloudformation_list_change_sets]{list_change_sets}} response output)
+that identifies the next page of change sets that you want to retrieve.}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  Summaries = list(
+    list(
+      StackId = "string",
+      StackName = "string",
+      ChangeSetId = "string",
+      ChangeSetName = "string",
+      ExecutionStatus = "UNAVAILABLE"|"AVAILABLE"|"EXECUTE_IN_PROGRESS"|"EXECUTE_COMPLETE"|"EXECUTE_FAILED"|"OBSOLETE",
+      Status = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"DELETE_PENDING"|"DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"FAILED",
+      StatusReason = "string",
+      CreationTime = as.POSIXct(
+        "2015-01-01"
+      ),
+      Description = "string",
+      IncludeNestedStacks = TRUE|FALSE,
+      ParentChangeSetId = "string",
+      RootChangeSetId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Returns the ID and status of each active change set for a stack. For

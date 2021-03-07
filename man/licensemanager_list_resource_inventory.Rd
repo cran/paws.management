@@ -26,10 +26,26 @@ are \code{EQUALS} | \code{NOT_EQUALS}. Possible values are
 \code{EQUALS} | \code{BEGINS_WITH}.
 \item \code{resource_id} - The ID of the resource. Logical operators are
 \code{EQUALS} | \code{NOT_EQUALS}.
-\item \verb{tag:&lt;key&gt;} - The key/value combination of a tag assigned to
-the resource. Logical operators are \code{EQUALS} (single account) or
+\item \verb{tag:<key>} - The key/value combination of a tag assigned to the
+resource. Logical operators are \code{EQUALS} (single account) or
 \code{EQUALS} | \code{NOT_EQUALS} (cross account).
 }}
+}
+\value{
+A list with the following syntax:\preformatted{list(
+  ResourceInventoryList = list(
+    list(
+      ResourceId = "string",
+      ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
+      ResourceArn = "string",
+      Platform = "string",
+      PlatformVersion = "string",
+      ResourceOwningAccountId = "string"
+    )
+  ),
+  NextToken = "string"
+)
+}
 }
 \description{
 Lists resources managed using Systems Manager inventory.
