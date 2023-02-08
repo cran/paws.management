@@ -4,8 +4,15 @@
 \alias{servicecatalog_create_constraint}
 \title{Creates a constraint}
 \usage{
-servicecatalog_create_constraint(AcceptLanguage, PortfolioId, ProductId,
-  Parameters, Type, Description, IdempotencyToken)
+servicecatalog_create_constraint(
+  AcceptLanguage = NULL,
+  PortfolioId,
+  ProductId,
+  Parameters,
+  Type,
+  Description = NULL,
+  IdempotencyToken
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -21,7 +28,8 @@ servicecatalog_create_constraint(AcceptLanguage, PortfolioId, ProductId,
 
 \item{Parameters}{[required] The constraint parameters, in JSON format. The syntax depends on the
 constraint type as follows:
-\subsection{LAUNCH}{
+
+\strong{LAUNCH}
 
 You are required to specify either the \code{RoleArn} or the \code{LocalRoleName}
 but can't use both.
@@ -47,16 +55,14 @@ You cannot have both a \code{LAUNCH} and a \code{STACKSET} constraint.
 
 You also cannot have more than one \code{LAUNCH} constraint on a product and
 portfolio.
-}
 
-\subsection{NOTIFICATION}{
+\strong{NOTIFICATION}
 
 Specify the \code{NotificationArns} property as follows:
 
 \verb{\{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]\}}
-}
 
-\subsection{RESOURCE_UPDATE}{
+\strong{RESOURCE_UPDATE}
 
 Specify the \code{TagUpdatesOnProvisionedProduct} property as follows:
 
@@ -64,9 +70,8 @@ Specify the \code{TagUpdatesOnProvisionedProduct} property as follows:
 
 The \code{TagUpdatesOnProvisionedProduct} property accepts a string value of
 \code{ALLOWED} or \code{NOT_ALLOWED}.
-}
 
-\subsection{STACKSET}{
+\strong{STACKSET}
 
 Specify the \code{Parameters} property as follows:
 
@@ -79,12 +84,10 @@ and portfolio.
 
 Products with a \code{STACKSET} constraint will launch an AWS CloudFormation
 stack set.
-}
 
-\subsection{TEMPLATE}{
+\strong{TEMPLATE}
 
-Specify the \code{Rules} property. For more information, see \href{https://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html}{Template Constraint Rules}.
-}}
+Specify the \code{Rules} property. For more information, see \href{https://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html}{Template Constraint Rules}.}
 
 \item{Type}{[required] The type of constraint.
 \itemize{
@@ -101,37 +104,9 @@ Specify the \code{Rules} property. For more information, see \href{https://docs.
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConstraintDetail = list(
-    ConstraintId = "string",
-    Type = "string",
-    Description = "string",
-    Owner = "string",
-    ProductId = "string",
-    PortfolioId = "string"
-  ),
-  ConstraintParameters = "string",
-  Status = "AVAILABLE"|"CREATING"|"FAILED"
-)
-}
-}
 \description{
 Creates a constraint.
 
-A delegated admin is authorized to invoke this command.
+See \url{https://paws-r.github.io/docs/servicecatalog/create_constraint.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_constraint(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  ProductId = "string",
-  Parameters = "string",
-  Type = "string",
-  Description = "string",
-  IdempotencyToken = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,14 @@
 \alias{servicecatalog_create_service_action}
 \title{Creates a self-service action}
 \usage{
-servicecatalog_create_service_action(Name, DefinitionType, Definition,
-  Description, AcceptLanguage, IdempotencyToken)
+servicecatalog_create_service_action(
+  Name,
+  DefinitionType,
+  Definition,
+  Description = NULL,
+  AcceptLanguage = NULL,
+  IdempotencyToken
+)
 }
 \arguments{
 \item{Name}{[required] The self-service action name.}
@@ -13,22 +19,21 @@ servicecatalog_create_service_action(Name, DefinitionType, Definition,
 \item{DefinitionType}{[required] The service action definition type. For example, \code{SSM_AUTOMATION}.}
 
 \item{Definition}{[required] The self-service action definition. Can be one of the following:
-\subsection{Name}{
+
+\strong{Name}
 
 The name of the AWS Systems Manager document (SSM document). For
 example, \code{AWS-RestartEC2Instance}.
 
 If you are using a shared SSM document, you must provide the ARN instead
 of the name.
-}
 
-\subsection{Version}{
+\strong{Version}
 
 The AWS Systems Manager automation document version. For example,
 \code{"Version": "1"}
-}
 
-\subsection{AssumeRole}{
+\strong{AssumeRole}
 
 The Amazon Resource Name (ARN) of the role that performs the
 self-service actions on your behalf. For example,
@@ -36,15 +41,13 @@ self-service actions on your behalf. For example,
 
 To reuse the provisioned product launch role, set to
 \code{"AssumeRole": "LAUNCH_ROLE"}.
-}
 
-\subsection{Parameters}{
+\strong{Parameters}
 
 The list of parameters in JSON format.
 
 For example: \verb{[\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TARGET\\"\}]} or
-\verb{[\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TEXT_VALUE\\"\}]}.
-}}
+\verb{[\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TEXT_VALUE\\"\}]}.}
 
 \item{Description}{The self-service action description.}
 
@@ -59,37 +62,9 @@ For example: \verb{[\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TARGET\\"\}]} or
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServiceActionDetail = list(
-    ServiceActionSummary = list(
-      Id = "string",
-      Name = "string",
-      Description = "string",
-      DefinitionType = "SSM_AUTOMATION"
-    ),
-    Definition = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
 Creates a self-service action.
-}
-\section{Request syntax}{
-\preformatted{svc$create_service_action(
-  Name = "string",
-  DefinitionType = "SSM_AUTOMATION",
-  Definition = list(
-    "string"
-  ),
-  Description = "string",
-  AcceptLanguage = "string",
-  IdempotencyToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/create_service_action.html} for full documentation.
+}
 \keyword{internal}
