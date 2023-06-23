@@ -35,8 +35,8 @@ action is needed to avoid impact.
 }}
 
 \item{relatedItems}{Add related items to the incident for other responders to use. Related
-items are AWS resources, external links, or files uploaded to an Amazon
-S3 bucket.}
+items are Amazon Web Services resources, external links, or files
+uploaded to an Amazon S3 bucket.}
 
 \item{responsePlanArn}{[required] The Amazon Resource Name (ARN) of the response plan that pre-defines
 summary, chat channels, Amazon SNS topics, runbooks, title, and impact
@@ -50,6 +50,6 @@ provided by the response plan.}
 \description{
 Used to start an incident from CloudWatch alarms, EventBridge events, or manually.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/start_incident.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_start_incident/} for full documentation.
 }
 \keyword{internal}

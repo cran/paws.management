@@ -20,7 +20,7 @@ borrow consumption configuration.}
 \item{Entitlements}{[required] License entitlements. Partial checkouts are not supported.}
 
 \item{DigitalSignatureMethod}{[required] Digital signature method. The possible value is JSON Web Signature (JWS)
-algorithm PS384. For more information, see \href{https://www.rfc-editor.org/rfc/rfc7518#section-3.5}{RFC 7518 Digital Signature with RSASSA-PSS}.}
+algorithm PS384. For more information, see \href{https://datatracker.ietf.org/doc/html/rfc7518#section-3.5}{RFC 7518 Digital Signature with RSASSA-PSS}.}
 
 \item{NodeId}{Node ID.}
 
@@ -32,6 +32,6 @@ idempotency of the request.}
 \description{
 Checks out the specified license for offline use.
 
-See \url{https://paws-r.github.io/docs/licensemanager/checkout_borrow_license.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_checkout_borrow_license/} for full documentation.
 }
 \keyword{internal}

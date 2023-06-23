@@ -11,13 +11,13 @@ servicecatalog_describe_provisioning_artifact(
   ProductId = NULL,
   ProvisioningArtifactName = NULL,
   ProductName = NULL,
-  Verbose = NULL
+  Verbose = NULL,
+  IncludeProvisioningArtifactParameters = NULL
 )
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -31,10 +31,13 @@ servicecatalog_describe_provisioning_artifact(
 \item{ProductName}{The product name.}
 
 \item{Verbose}{Indicates whether a verbose level of detail is enabled.}
+
+\item{IncludeProvisioningArtifactParameters}{Indicates if the API call response does or does not include additional
+details about the provisioning parameters.}
 }
 \description{
 Gets information about the specified provisioning artifact (also known as a version) for the specified product.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/describe_provisioning_artifact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioning_artifact/} for full documentation.
 }
 \keyword{internal}

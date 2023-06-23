@@ -6,6 +6,7 @@
 \usage{
 cloudwatchrum_update_app_monitor(
   AppMonitorConfiguration = NULL,
+  CustomEvents = NULL,
   CwLogEnabled = NULL,
   Domain = NULL,
   Name
@@ -19,6 +20,11 @@ the Amazon Cognito identity pool to use for authorization. If you don't
 include \code{AppMonitorConfiguration}, you must set up your own
 authorization method. For more information, see Authorize your
 application to send data to Amazon Web Services.}
+
+\item{CustomEvents}{Specifies whether this app monitor allows the web client to define and
+send custom events. The default is for custom events to be \code{DISABLED}.
+
+For more information about custom events, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-custom-events.html}{Send custom events}.}
 
 \item{CwLogEnabled}{Data collected by RUM is kept by RUM for 30 days and then deleted. This
 parameter specifies whether RUM sends a copy of this telemetry data to
@@ -34,6 +40,6 @@ administrative authority.}
 \description{
 Updates the configuration of an existing app monitor. When you use this operation, only the parts of the app monitor configuration that you specify in this operation are changed. For any parameters that you omit, the existing values are kept.
 
-See \url{https://paws-r.github.io/docs/cloudwatchrum/update_app_monitor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchrum_update_app_monitor/} for full documentation.
 }
 \keyword{internal}

@@ -14,7 +14,6 @@ servicecatalog_scan_provisioned_products(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -29,6 +28,6 @@ results, use null.}
 \description{
 Lists the provisioned products that are available (not terminated).
 
-See \url{https://paws-r.github.io/docs/servicecatalog/scan_provisioned_products.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_scan_provisioned_products/} for full documentation.
 }
 \keyword{internal}

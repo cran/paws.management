@@ -21,7 +21,6 @@ servicecatalog_associate_service_action_with_provisioning_artifact(
 
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -29,6 +28,6 @@ servicecatalog_associate_service_action_with_provisioning_artifact(
 \description{
 Associates a self-service action with a provisioning artifact.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/associate_service_action_with_provisioning_artifact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_associate_service_action_with_provisioning_artifact/} for full documentation.
 }
 \keyword{internal}

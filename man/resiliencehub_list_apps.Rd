@@ -12,10 +12,11 @@ resiliencehub_list_apps(
 )
 }
 \arguments{
-\item{appArn}{The Amazon Resource Name (ARN) of the application. The format for this
-ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference}.}
+\item{appArn}{The Amazon Resource Name (ARN) of the Resilience Hub application. The
+format for this ARN is:
+arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
+information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{AWS General Reference} guide.}
 
 \item{maxResults}{The maximum number of results to include in the response. If more
 results exist than the specified \code{MaxResults} value, a token is included
@@ -28,6 +29,6 @@ in the response so that the remaining results can be retrieved.}
 \description{
 Lists your Resilience Hub applications.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/list_apps.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_list_apps/} for full documentation.
 }
 \keyword{internal}

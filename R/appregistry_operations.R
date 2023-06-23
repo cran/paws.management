@@ -9,10 +9,10 @@ NULL
 #' @description
 #' Associates an attribute group with an application to augment the application's metadata with the group's attributes. This feature enables applications to be described with user-defined details that are machine-readable, such as third-party integrations.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/associate_attribute_group.html](https://paws-r.github.io/docs/appregistry/associate_attribute_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_associate_attribute_group/](https://www.paws-r-sdk.com/docs/appregistry_associate_attribute_group/) for full documentation.
 #'
-#' @param application &#91;required&#93; The name or ID of the application.
-#' @param attributeGroup &#91;required&#93; The name or ID of the attribute group that holds the attributes to
+#' @param application &#91;required&#93; The name, ID, or ARN of the application.
+#' @param attributeGroup &#91;required&#93; The name, ID, or ARN of the attribute group that holds the attributes to
 #' describe the application.
 #'
 #' @keywords internal
@@ -38,11 +38,11 @@ appregistry_associate_attribute_group <- function(application, attributeGroup) {
 #' Associates a resource with an application
 #'
 #' @description
-#' Associates a resource with an application. Both the resource and the application can be specified either by ID or name.
+#' Associates a resource with an application. The resource can be specified by its ARN or name. The application can be specified by ARN, ID, or name.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/associate_resource.html](https://paws-r.github.io/docs/appregistry/associate_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_associate_resource/](https://www.paws-r-sdk.com/docs/appregistry_associate_resource/) for full documentation.
 #'
-#' @param application &#91;required&#93; The name or ID of the application.
+#' @param application &#91;required&#93; The name, ID, or ARN of the application.
 #' @param resourceType &#91;required&#93; The type of resource of which the application will be associated.
 #' @param resource &#91;required&#93; The name or ID of the resource of which the application will be
 #' associated.
@@ -73,7 +73,7 @@ appregistry_associate_resource <- function(application, resourceType, resource) 
 #' @description
 #' Creates a new application that is the top-level node in a hierarchy of related cloud resource abstractions.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/create_application.html](https://paws-r.github.io/docs/appregistry/create_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_create_application/](https://www.paws-r-sdk.com/docs/appregistry_create_application/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the application. The name must be unique in the region in
 #' which you are creating the application.
@@ -110,7 +110,7 @@ appregistry_create_application <- function(name, description = NULL, tags = NULL
 #' @description
 #' Creates a new attribute group as a container for user-defined attributes. This feature enables users to have full control over their cloud application's metadata in a rich machine-readable format to facilitate integration with automated workflows and third-party tools.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/create_attribute_group.html](https://paws-r.github.io/docs/appregistry/create_attribute_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_create_attribute_group/](https://www.paws-r-sdk.com/docs/appregistry_create_attribute_group/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the attribute group.
 #' @param description The description of the attribute group that the user provides.
@@ -143,15 +143,15 @@ appregistry_create_attribute_group <- function(name, description = NULL, attribu
 }
 .appregistry$operations$create_attribute_group <- appregistry_create_attribute_group
 
-#' Deletes an application that is specified either by its application ID or
-#' name
+#' Deletes an application that is specified either by its application ID,
+#' name, or ARN
 #'
 #' @description
-#' Deletes an application that is specified either by its application ID or name. All associated attribute groups and resources must be disassociated from it before deleting an application.
+#' Deletes an application that is specified either by its application ID, name, or ARN. All associated attribute groups and resources must be disassociated from it before deleting an application.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/delete_application.html](https://paws-r.github.io/docs/appregistry/delete_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_delete_application/](https://www.paws-r-sdk.com/docs/appregistry_delete_application/) for full documentation.
 #'
-#' @param application &#91;required&#93; The name or ID of the application.
+#' @param application &#91;required&#93; The name, ID, or ARN of the application.
 #'
 #' @keywords internal
 #'
@@ -173,15 +173,15 @@ appregistry_delete_application <- function(application) {
 }
 .appregistry$operations$delete_application <- appregistry_delete_application
 
-#' Deletes an attribute group, specified either by its attribute group ID
-#' or name
+#' Deletes an attribute group, specified either by its attribute group ID,
+#' name, or ARN
 #'
 #' @description
-#' Deletes an attribute group, specified either by its attribute group ID or name.
+#' Deletes an attribute group, specified either by its attribute group ID, name, or ARN.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/delete_attribute_group.html](https://paws-r.github.io/docs/appregistry/delete_attribute_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_delete_attribute_group/](https://www.paws-r-sdk.com/docs/appregistry_delete_attribute_group/) for full documentation.
 #'
-#' @param attributeGroup &#91;required&#93; The name or ID of the attribute group that holds the attributes to
+#' @param attributeGroup &#91;required&#93; The name, ID, or ARN of the attribute group that holds the attributes to
 #' describe the application.
 #'
 #' @keywords internal
@@ -211,10 +211,10 @@ appregistry_delete_attribute_group <- function(attributeGroup) {
 #' @description
 #' Disassociates an attribute group from an application to remove the extra attributes contained in the attribute group from the application's metadata. This operation reverts [`associate_attribute_group`][appregistry_associate_attribute_group].
 #'
-#' See [https://paws-r.github.io/docs/appregistry/disassociate_attribute_group.html](https://paws-r.github.io/docs/appregistry/disassociate_attribute_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_disassociate_attribute_group/](https://www.paws-r-sdk.com/docs/appregistry_disassociate_attribute_group/) for full documentation.
 #'
-#' @param application &#91;required&#93; The name or ID of the application.
-#' @param attributeGroup &#91;required&#93; The name or ID of the attribute group that holds the attributes to
+#' @param application &#91;required&#93; The name, ID, or ARN of the application.
+#' @param attributeGroup &#91;required&#93; The name, ID, or ARN of the attribute group that holds the attributes to
 #' describe the application.
 #'
 #' @keywords internal
@@ -242,7 +242,7 @@ appregistry_disassociate_attribute_group <- function(application, attributeGroup
 #' @description
 #' Disassociates a resource from application. Both the resource and the application can be specified either by ID or name.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/disassociate_resource.html](https://paws-r.github.io/docs/appregistry/disassociate_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_disassociate_resource/](https://www.paws-r-sdk.com/docs/appregistry_disassociate_resource/) for full documentation.
 #'
 #' @param application &#91;required&#93; The name or ID of the application.
 #' @param resourceType &#91;required&#93; The type of the resource that is being disassociated.
@@ -271,11 +271,11 @@ appregistry_disassociate_resource <- function(application, resourceType, resourc
 #' Retrieves metadata information about one of your applications
 #'
 #' @description
-#' Retrieves metadata information about one of your applications. The application can be specified either by its unique ID or by its name (which is unique within one account in one region at a given point in time). Specify by ID in automated workflows if you want to make sure that the exact same application is returned or a `ResourceNotFoundException` is thrown, avoiding the ABA addressing problem.
+#' Retrieves metadata information about one of your applications. The application can be specified by its ARN, ID, or name (which is unique within one account in one region at a given point in time). Specify by ARN or ID in automated workflows if you want to make sure that the exact same application is returned or a `ResourceNotFoundException` is thrown, avoiding the ABA addressing problem.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/get_application.html](https://paws-r.github.io/docs/appregistry/get_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_get_application/](https://www.paws-r-sdk.com/docs/appregistry_get_application/) for full documentation.
 #'
-#' @param application &#91;required&#93; The name or ID of the application.
+#' @param application &#91;required&#93; The name, ID, or ARN of the application.
 #'
 #' @keywords internal
 #'
@@ -302,9 +302,9 @@ appregistry_get_application <- function(application) {
 #' @description
 #' Gets the resource associated with the application.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/get_associated_resource.html](https://paws-r.github.io/docs/appregistry/get_associated_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_get_associated_resource/](https://www.paws-r-sdk.com/docs/appregistry_get_associated_resource/) for full documentation.
 #'
-#' @param application &#91;required&#93; The name or ID of the application.
+#' @param application &#91;required&#93; The name, ID, or ARN of the application.
 #' @param resourceType &#91;required&#93; The type of resource associated with the application.
 #' @param resource &#91;required&#93; The name or ID of the resource associated with the application.
 #'
@@ -328,14 +328,14 @@ appregistry_get_associated_resource <- function(application, resourceType, resou
 }
 .appregistry$operations$get_associated_resource <- appregistry_get_associated_resource
 
-#' Retrieves an attribute group, either by its name or its ID
+#' Retrieves an attribute group by its ARN, ID, or name
 #'
 #' @description
-#' Retrieves an attribute group, either by its name or its ID. The attribute group can be specified either by its unique ID or by its name.
+#' Retrieves an attribute group by its ARN, ID, or name. The attribute group can be specified by its ARN, ID, or name.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/get_attribute_group.html](https://paws-r.github.io/docs/appregistry/get_attribute_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_get_attribute_group/](https://www.paws-r-sdk.com/docs/appregistry_get_attribute_group/) for full documentation.
 #'
-#' @param attributeGroup &#91;required&#93; The name or ID of the attribute group that holds the attributes to
+#' @param attributeGroup &#91;required&#93; The name, ID, or ARN of the attribute group that holds the attributes to
 #' describe the application.
 #'
 #' @keywords internal
@@ -358,12 +358,41 @@ appregistry_get_attribute_group <- function(attributeGroup) {
 }
 .appregistry$operations$get_attribute_group <- appregistry_get_attribute_group
 
+#' Retrieves a TagKey configuration from an account
+#'
+#' @description
+#' Retrieves a `TagKey` configuration from an account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appregistry_get_configuration/](https://www.paws-r-sdk.com/docs/appregistry_get_configuration/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname appregistry_get_configuration
+appregistry_get_configuration <- function() {
+  op <- new_operation(
+    name = "GetConfiguration",
+    http_method = "GET",
+    http_path = "/configuration",
+    paginator = list()
+  )
+  input <- .appregistry$get_configuration_input()
+  output <- .appregistry$get_configuration_output()
+  config <- get_config()
+  svc <- .appregistry$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appregistry$operations$get_configuration <- appregistry_get_configuration
+
 #' Retrieves a list of all of your applications
 #'
 #' @description
 #' Retrieves a list of all of your applications. Results are paginated.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/list_applications.html](https://paws-r.github.io/docs/appregistry/list_applications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_list_applications/](https://www.paws-r-sdk.com/docs/appregistry_list_applications/) for full documentation.
 #'
 #' @param nextToken The token to use to get the next page of results after a previous API
 #' call.
@@ -396,7 +425,7 @@ appregistry_list_applications <- function(nextToken = NULL, maxResults = NULL) {
 #' @description
 #' Lists all attribute groups that are associated with specified application. Results are paginated.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/list_associated_attribute_groups.html](https://paws-r.github.io/docs/appregistry/list_associated_attribute_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_list_associated_attribute_groups/](https://www.paws-r-sdk.com/docs/appregistry_list_associated_attribute_groups/) for full documentation.
 #'
 #' @param application &#91;required&#93; The name or ID of the application.
 #' @param nextToken The token to use to get the next page of results after a previous API
@@ -424,14 +453,15 @@ appregistry_list_associated_attribute_groups <- function(application, nextToken 
 }
 .appregistry$operations$list_associated_attribute_groups <- appregistry_list_associated_attribute_groups
 
-#' Lists all resources that are associated with specified application
+#' Lists all of the resources that are associated with the specified
+#' application
 #'
 #' @description
-#' Lists all resources that are associated with specified application. Results are paginated.
+#' Lists all of the resources that are associated with the specified application. Results are paginated.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/list_associated_resources.html](https://paws-r.github.io/docs/appregistry/list_associated_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_list_associated_resources/](https://www.paws-r-sdk.com/docs/appregistry_list_associated_resources/) for full documentation.
 #'
-#' @param application &#91;required&#93; The name or ID of the application.
+#' @param application &#91;required&#93; The name, ID, or ARN of the application.
 #' @param nextToken The token to use to get the next page of results after a previous API
 #' call.
 #' @param maxResults The upper bound of the number of results to return (cannot exceed 25).
@@ -462,7 +492,7 @@ appregistry_list_associated_resources <- function(application, nextToken = NULL,
 #' @description
 #' Lists all attribute groups which you have access to. Results are paginated.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/list_attribute_groups.html](https://paws-r.github.io/docs/appregistry/list_attribute_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_list_attribute_groups/](https://www.paws-r-sdk.com/docs/appregistry_list_attribute_groups/) for full documentation.
 #'
 #' @param nextToken The token to use to get the next page of results after a previous API
 #' call.
@@ -495,7 +525,7 @@ appregistry_list_attribute_groups <- function(nextToken = NULL, maxResults = NUL
 #' @description
 #' Lists the details of all attribute groups associated with a specific application. The results display in pages.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/list_attribute_groups_for_application.html](https://paws-r.github.io/docs/appregistry/list_attribute_groups_for_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_list_attribute_groups_for_application/](https://www.paws-r-sdk.com/docs/appregistry_list_attribute_groups_for_application/) for full documentation.
 #'
 #' @param application &#91;required&#93; The name or ID of the application.
 #' @param nextToken This token retrieves the next page of results after a previous API call.
@@ -528,7 +558,7 @@ appregistry_list_attribute_groups_for_application <- function(application, nextT
 #' @description
 #' Lists all of the tags on the resource.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/list_tags_for_resource.html](https://paws-r.github.io/docs/appregistry/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/appregistry_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon resource name (ARN) that specifies the resource.
 #'
@@ -552,12 +582,41 @@ appregistry_list_tags_for_resource <- function(resourceArn) {
 }
 .appregistry$operations$list_tags_for_resource <- appregistry_list_tags_for_resource
 
+#' Associates a TagKey configuration to an account
+#'
+#' @description
+#' Associates a `TagKey` configuration to an account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appregistry_put_configuration/](https://www.paws-r-sdk.com/docs/appregistry_put_configuration/) for full documentation.
+#'
+#' @param configuration &#91;required&#93; Associates a `TagKey` configuration to an account.
+#'
+#' @keywords internal
+#'
+#' @rdname appregistry_put_configuration
+appregistry_put_configuration <- function(configuration) {
+  op <- new_operation(
+    name = "PutConfiguration",
+    http_method = "PUT",
+    http_path = "/configuration",
+    paginator = list()
+  )
+  input <- .appregistry$put_configuration_input(configuration = configuration)
+  output <- .appregistry$put_configuration_output()
+  config <- get_config()
+  svc <- .appregistry$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appregistry$operations$put_configuration <- appregistry_put_configuration
+
 #' Syncs the resource with current AppRegistry records
 #'
 #' @description
 #' Syncs the resource with current AppRegistry records.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/sync_resource.html](https://paws-r.github.io/docs/appregistry/sync_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_sync_resource/](https://www.paws-r-sdk.com/docs/appregistry_sync_resource/) for full documentation.
 #'
 #' @param resourceType &#91;required&#93; The type of resource of which the application will be associated.
 #' @param resource &#91;required&#93; An entity you can work with and specify with a name or ID. Examples
@@ -589,7 +648,7 @@ appregistry_sync_resource <- function(resourceType, resource) {
 #' @description
 #' Assigns one or more tags (key-value pairs) to the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/tag_resource.html](https://paws-r.github.io/docs/appregistry/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_tag_resource/](https://www.paws-r-sdk.com/docs/appregistry_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon resource name (ARN) that specifies the resource.
 #' @param tags &#91;required&#93; The new or modified tags for the resource.
@@ -619,7 +678,7 @@ appregistry_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/untag_resource.html](https://paws-r.github.io/docs/appregistry/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_untag_resource/](https://www.paws-r-sdk.com/docs/appregistry_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon resource name (ARN) that specifies the resource.
 #' @param tagKeys &#91;required&#93; A list of the tag keys to remove from the specified resource.
@@ -649,9 +708,9 @@ appregistry_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates an existing application with new attributes.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/update_application.html](https://paws-r.github.io/docs/appregistry/update_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_update_application/](https://www.paws-r-sdk.com/docs/appregistry_update_application/) for full documentation.
 #'
-#' @param application &#91;required&#93; The name or ID of the application that will be updated.
+#' @param application &#91;required&#93; The name, ID, or ARN of the application that will be updated.
 #' @param name Deprecated: The new name of the application. The name must be unique in
 #' the region in which you are updating the application. Please do not use
 #' this field as we have stopped supporting name updates.
@@ -682,9 +741,9 @@ appregistry_update_application <- function(application, name = NULL, description
 #' @description
 #' Updates an existing attribute group with new details.
 #'
-#' See [https://paws-r.github.io/docs/appregistry/update_attribute_group.html](https://paws-r.github.io/docs/appregistry/update_attribute_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appregistry_update_attribute_group/](https://www.paws-r-sdk.com/docs/appregistry_update_attribute_group/) for full documentation.
 #'
-#' @param attributeGroup &#91;required&#93; The name or ID of the attribute group that holds the attributes to
+#' @param attributeGroup &#91;required&#93; The name, ID, or ARN of the attribute group that holds the attributes to
 #' describe the application.
 #' @param name Deprecated: The new name of the attribute group. The name must be unique
 #' in the region in which you are updating the attribute group. Please do

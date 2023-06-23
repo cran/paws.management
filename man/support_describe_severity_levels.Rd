@@ -8,14 +8,15 @@ case}
 support_describe_severity_levels(language = NULL)
 }
 \arguments{
-\item{language}{The ISO 639-1 code for the language in which Amazon Web Services
-provides support. Amazon Web Services Support currently supports English
-("en") and Japanese ("ja"). Language parameters must be passed
-explicitly for operations that take them.}
+\item{language}{The language in which Amazon Web Services Support handles the case.
+Amazon Web Services Support currently supports Chinese (“zh”), English
+("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO
+639-1 code for the \code{language} parameter if you want support in that
+language.}
 }
 \description{
 Returns the list of severity levels that you can assign to a support case. The severity level for a case is also a field in the CaseDetails data type that you include for a \code{\link[=support_create_case]{create_case}} request.
 
-See \url{https://paws-r.github.io/docs/support/describe_severity_levels.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/support_describe_severity_levels/} for full documentation.
 }
 \keyword{internal}

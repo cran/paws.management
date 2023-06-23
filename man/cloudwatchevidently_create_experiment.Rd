@@ -60,8 +60,9 @@ access or change only resources with certain tag values.
 Tags don't have any semantic meaning to Amazon Web Services and are
 interpreted strictly as strings of characters.
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{ <p>You can associate as many as 50 tags with an experiment.</p> <p>For more information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging Amazon Web Services resources</a>.</p>
-}\if{html}{\out{</div>}}}
+You can associate as many as 50 tags with an experiment.
+
+For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}.}
 
 \item{treatments}{[required] An array of structures that describe the configuration of each feature
 variation used in the experiment.}
@@ -69,6 +70,6 @@ variation used in the experiment.}
 \description{
 Creates an Evidently \emph{experiment}. Before you create an experiment, you must create the feature to use for the experiment.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/create_experiment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_create_experiment/} for full documentation.
 }
 \keyword{internal}

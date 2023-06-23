@@ -19,14 +19,29 @@ ssm_create_ops_item(
   ActualStartTime = NULL,
   ActualEndTime = NULL,
   PlannedStartTime = NULL,
-  PlannedEndTime = NULL
+  PlannedEndTime = NULL,
+  AccountId = NULL
 )
 }
 \arguments{
 \item{Description}{[required] Information about the OpsItem.}
 
-\item{OpsItemType}{The type of OpsItem to create. Currently, the only valid values are
-\verb{/aws/changerequest} and \verb{/aws/issue}.}
+\item{OpsItemType}{The type of OpsItem to create. Systems Manager supports the following
+types of OpsItems:
+\itemize{
+\item \verb{/aws/issue}
+
+This type of OpsItem is used for default OpsItems created by
+OpsCenter.
+\item \verb{/aws/changerequest}
+
+This type of OpsItem is used by Change Manager for reviewing and
+approving or rejecting change requests.
+\item \verb{/aws/insights}
+
+This type of OpsItem is used by OpsCenter for aggregating and
+reporting on duplicate OpsItems.
+}}
 
 \item{OperationalData}{Operational data is custom data that provides useful reference details
 about the OpsItem. For example, you can specify log files, error
@@ -49,7 +64,7 @@ Use the \verb{/aws/resources} key in OperationalData to specify a related
 resource in the request. Use the \verb{/aws/automations} key in
 OperationalData to associate an Automation runbook with the OpsItem. To
 view Amazon Web Services CLI example commands that use these keys, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems}{Creating OpsItems manually}
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/#OpsCenter-manually-create-OpsItems}{Creating OpsItems manually}
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{Notifications}{The Amazon Resource Name (ARN) of an SNS topic where notifications are
@@ -73,7 +88,7 @@ impacted resource.}
 
 \item{Tags}{Optional metadata that you assign to a resource. You can restrict access
 to OpsItems by using an inline IAM policy that specifies tags. For more
-information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html#OpsCenter-getting-started-user-permissions}{Getting started with OpsCenter}
+information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/#OpsCenter-getting-started-user-permissions}{Getting started with OpsCenter}
 in the \emph{Amazon Web Services Systems Manager User Guide}.
 
 Tags use a key-value pair. For example:
@@ -100,10 +115,15 @@ Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
 
 \item{PlannedEndTime}{The time specified in a change request for a runbook workflow to end.
 Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
+
+\item{AccountId}{The target Amazon Web Services account where you want to create an
+OpsItem. To make this call, your account must be configured to work with
+OpsItems across accounts. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Setting up OpsCenter to work with OpsItems across accounts}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 }
 \description{
-Creates a new OpsItem. You must have permission in Identity and Access Management (IAM) to create a new OpsItem. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting started with OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
+Creates a new OpsItem. You must have permission in Identity and Access Management (IAM) to create a new OpsItem. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Getting started with OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
 
-See \url{https://paws-r.github.io/docs/ssm/create_ops_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_create_ops_item/} for full documentation.
 }
 \keyword{internal}

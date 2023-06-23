@@ -16,7 +16,6 @@ servicecatalog_list_provisioned_product_plans(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -33,6 +32,6 @@ results, use null.}
 \description{
 Lists the plans for the specified provisioned product or all plans to which the user has access.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/list_provisioned_product_plans.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_list_provisioned_product_plans/} for full documentation.
 }
 \keyword{internal}

@@ -14,7 +14,6 @@ servicecatalog_update_provisioned_product_properties(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -35,13 +34,13 @@ or
 \code{\link[=servicecatalog_execute_provisioned_product_service_action]{execute_provisioned_product_service_action}}.
 Only a role ARN is valid. A user ARN is invalid.
 
-The \code{OWNER} key accepts user ARNs and role ARNs. The owner is the user
-that has permission to see, update, terminate, and execute service
-actions in the provisioned product.
+The \code{OWNER} key accepts user ARNs, IAM role ARNs, and STS assumed-role
+ARNs. The owner is the user that has permission to see, update,
+terminate, and execute service actions in the provisioned product.
 
 The administrator can change the owner of a provisioned product to
-another IAM user within the same account. Both end user owners and
-administrators can see ownership history of the provisioned product
+another IAM or STS entity within the same account. Both end user owners
+and administrators can see ownership history of the provisioned product
 using the \code{\link[=servicecatalog_list_record_history]{list_record_history}}
 API. The new owner can describe all past records for the provisioned
 product using the \code{\link[=servicecatalog_describe_record]{describe_record}}
@@ -63,6 +62,6 @@ update request.}
 \description{
 Requests updates to the properties of the specified provisioned product.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/update_provisioned_product_properties.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_update_provisioned_product_properties/} for full documentation.
 }
 \keyword{internal}

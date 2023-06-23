@@ -15,7 +15,6 @@ servicecatalog_list_portfolio_access(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -34,6 +33,6 @@ results, use null.}
 \description{
 Lists the account IDs that have access to the specified portfolio.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/list_portfolio_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_list_portfolio_access/} for full documentation.
 }
 \keyword{internal}

@@ -19,7 +19,8 @@ configservice_list_discovered_resources(
 
 \item{resourceIds}{The IDs of only those resources that you want Config to list in the
 response. If you do not specify this parameter, Config lists all
-resources of the specified type that it has discovered.}
+resources of the specified type that it has discovered. You can list a
+minimum of 1 resourceID and a maximum of 20 resourceIds.}
 
 \item{resourceName}{The custom name of only those resources that you want Config to list in
 the response. If you do not specify this parameter, Config lists all
@@ -38,6 +39,6 @@ the next page of results in a paginated response.}
 \description{
 Accepts a resource type and returns a list of resource identifiers for the resources of that type. A resource identifier includes the resource type, ID, and (if available) the custom resource name. The results consist of resources that Config has discovered, including those that Config is not currently recording. You can narrow the results to include only resources that have specific resource IDs or a resource name.
 
-See \url{https://paws-r.github.io/docs/configservice/list_discovered_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_list_discovered_resources/} for full documentation.
 }
 \keyword{internal}

@@ -19,7 +19,6 @@ servicecatalog_describe_service_action_execution_parameters(
 
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -27,6 +26,6 @@ servicecatalog_describe_service_action_execution_parameters(
 \description{
 Finds the default parameters for a specific self-service action on a specific provisioned product and returns a map of the results to the user.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/describe_service_action_execution_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_describe_service_action_execution_parameters/} for full documentation.
 }
 \keyword{internal}

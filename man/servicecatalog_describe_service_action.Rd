@@ -11,7 +11,6 @@ servicecatalog_describe_service_action(Id, AcceptLanguage = NULL)
 
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -19,6 +18,6 @@ servicecatalog_describe_service_action(Id, AcceptLanguage = NULL)
 \description{
 Describes a self-service action.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/describe_service_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_describe_service_action/} for full documentation.
 }
 \keyword{internal}

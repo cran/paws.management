@@ -24,7 +24,6 @@ servicecatalog_update_provisioned_product(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -66,6 +65,6 @@ request.}
 \description{
 Requests updates to the configuration of the specified provisioned product.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/update_provisioned_product.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_update_provisioned_product/} for full documentation.
 }
 \keyword{internal}

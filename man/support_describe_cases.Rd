@@ -38,10 +38,11 @@ resolved cases aren't included.}
 
 \item{maxResults}{The maximum number of results to return before paginating.}
 
-\item{language}{The ISO 639-1 code for the language in which Amazon Web Services
-provides support. Amazon Web Services Support currently supports English
-("en") and Japanese ("ja"). Language parameters must be passed
-explicitly for operations that take them.}
+\item{language}{The language in which Amazon Web Services Support handles the case.
+Amazon Web Services Support currently supports Chinese (“zh”), English
+("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO
+639-1 code for the \code{language} parameter if you want support in that
+language.}
 
 \item{includeCommunications}{Specifies whether to include communications in the
 \code{\link[=support_describe_cases]{describe_cases}} response. By default,
@@ -50,6 +51,6 @@ communications are included.}
 \description{
 Returns a list of cases that you specify by passing one or more case IDs. You can use the \code{afterTime} and \code{beforeTime} parameters to filter the cases by date. You can set values for the \code{includeResolvedCases} and \code{includeCommunications} parameters to specify how much information to return.
 
-See \url{https://paws-r.github.io/docs/support/describe_cases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/support_describe_cases/} for full documentation.
 }
 \keyword{internal}

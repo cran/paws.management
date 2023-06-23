@@ -11,7 +11,8 @@ ssmincidents_get_resource_policies(
 )
 }
 \arguments{
-\item{maxResults}{The maximum number of resource policies to display per page of results.}
+\item{maxResults}{The maximum number of resource policies to display for each page of
+results.}
 
 \item{nextToken}{The pagination token to continue to the next page of results.}
 
@@ -21,6 +22,6 @@ resource policy.}
 \description{
 Retrieves the resource policies attached to the specified response plan.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/get_resource_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_get_resource_policies/} for full documentation.
 }
 \keyword{internal}

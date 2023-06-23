@@ -15,13 +15,13 @@ servicecatalog_update_product(
   SupportEmail = NULL,
   SupportUrl = NULL,
   AddTags = NULL,
-  RemoveTags = NULL
+  RemoveTags = NULL,
+  SourceConnection = NULL
 )
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -45,10 +45,19 @@ servicecatalog_update_product(
 \item{AddTags}{The tags to add to the product.}
 
 \item{RemoveTags}{The tags to remove from the product.}
+
+\item{SourceConnection}{Specifies connection details for the updated product and syncs the
+product to the connection source artifact. This automatically manages
+the product's artifacts based on changes to the source. The
+\code{SourceConnection} parameter consists of the following sub-fields.
+\itemize{
+\item \code{Type}
+\item \code{ConnectionParamters}
+}}
 }
 \description{
 Updates the specified product.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/update_product.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_update_product/} for full documentation.
 }
 \keyword{internal}

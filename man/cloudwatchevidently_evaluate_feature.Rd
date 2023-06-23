@@ -21,8 +21,8 @@ the evaluation event sent to Evidently from the user session. Evidently
 can use this value to match user sessions with defined audience
 segments. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html}{Use segments to focus your audience}.
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{ <p>If you include this parameter, the value must be a JSON object. A JSON array is not supported.</p>
-}\if{html}{\out{</div>}}}
+If you include this parameter, the value must be a JSON object. A JSON
+array is not supported.}
 
 \item{feature}{[required] The name of the feature being evaluated.}
 
@@ -31,6 +31,6 @@ segments. For more information, see \href{https://docs.aws.amazon.com/AmazonClou
 \description{
 This operation assigns a feature variation to one given user session. You pass in an \code{entityID} that represents the user. Evidently then checks the evaluation rules and assigns the variation.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/evaluate_feature.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_evaluate_feature/} for full documentation.
 }
 \keyword{internal}

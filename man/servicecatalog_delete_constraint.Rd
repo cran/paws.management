@@ -9,7 +9,6 @@ servicecatalog_delete_constraint(AcceptLanguage = NULL, Id)
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -19,6 +18,6 @@ servicecatalog_delete_constraint(AcceptLanguage = NULL, Id)
 \description{
 Deletes the specified constraint.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/delete_constraint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_delete_constraint/} for full documentation.
 }
 \keyword{internal}

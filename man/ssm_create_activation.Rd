@@ -32,7 +32,10 @@ Don't enter personally identifiable information in this field.}
 to assign to the managed node. This IAM role must provide AssumeRole
 permissions for the Amazon Web Services Systems Manager service
 principal \code{ssm.amazonaws.com}. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-service-role.html}{Create an IAM service role for a hybrid environment}
-in the \emph{Amazon Web Services Systems Manager User Guide}.}
+in the \emph{Amazon Web Services Systems Manager User Guide}.
+
+You can't specify an IAM service-linked role for this parameter. You
+must create a unique role.}
 
 \item{RegistrationLimit}{Specify the maximum number of managed nodes you want to register. The
 default value is \code{1}.}
@@ -73,6 +76,6 @@ about how to remove tags from your managed nodes, see
 \description{
 Generates an activation code and activation ID you can use to register your on-premises servers, edge devices, or virtual machine (VM) with Amazon Web Services Systems Manager. Registering these machines with Systems Manager makes it possible to manage them using Systems Manager capabilities. You use the activation code and ID when installing SSM Agent on machines in your hybrid environment. For more information about requirements for managing on-premises machines using Systems Manager, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html}{Setting up Amazon Web Services Systems Manager for hybrid environments} in the \emph{Amazon Web Services Systems Manager User Guide}.
 
-See \url{https://paws-r.github.io/docs/ssm/create_activation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_create_activation/} for full documentation.
 }
 \keyword{internal}

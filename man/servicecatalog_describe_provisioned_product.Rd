@@ -13,7 +13,6 @@ servicecatalog_describe_provisioned_product(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -33,6 +32,6 @@ If you do not provide a name or ID, or you provide both name and ID, an
 \description{
 Gets information about the specified provisioned product.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/describe_provisioned_product.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioned_product/} for full documentation.
 }
 \keyword{internal}

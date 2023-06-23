@@ -13,7 +13,7 @@ cloudwatchlogs_describe_export_tasks(
 }
 \arguments{
 \item{taskId}{The ID of the export task. Specifying a task ID filters the results to
-zero or one export tasks.}
+one or zero export tasks.}
 
 \item{statusCode}{The status code of the export task. Specifying a status code filters the
 results to zero or more export tasks.}
@@ -27,6 +27,6 @@ default is up to 50 items.}
 \description{
 Lists the specified export tasks. You can list all your export tasks or filter the results based on task ID or task status.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_export_tasks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_export_tasks/} for full documentation.
 }
 \keyword{internal}

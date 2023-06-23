@@ -19,7 +19,8 @@ ssm_register_task_with_maintenance_window(
   Name = NULL,
   Description = NULL,
   ClientToken = NULL,
-  CutoffBehavior = NULL
+  CutoffBehavior = NULL,
+  AlarmConfiguration = NULL
 )
 }
 \arguments{
@@ -135,10 +136,12 @@ terminated and the underlying process stopped.
 
 The status for tasks that are not completed is \code{TIMED_OUT}.
 }}
+
+\item{AlarmConfiguration}{The CloudWatch alarm you want to apply to your maintenance window task.}
 }
 \description{
 Adds a new task to a maintenance window.
 
-See \url{https://paws-r.github.io/docs/ssm/register_task_with_maintenance_window.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_register_task_with_maintenance_window/} for full documentation.
 }
 \keyword{internal}

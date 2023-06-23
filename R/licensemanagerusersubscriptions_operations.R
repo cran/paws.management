@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Associates the user to an EC2 instance to utilize user-based subscriptions.
 #'
-#' See [https://paws-r.github.io/docs/licensemanagerusersubscriptions/associate_user.html](https://paws-r.github.io/docs/licensemanagerusersubscriptions/associate_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_associate_user/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_associate_user/) for full documentation.
 #'
 #' @param Domain The domain name of the user.
 #' @param IdentityProvider &#91;required&#93; The identity provider of the user.
@@ -42,7 +42,7 @@ licensemanagerusersubscriptions_associate_user <- function(Domain = NULL, Identi
 #' @description
 #' Deregisters the identity provider from providing user-based subscriptions.
 #'
-#' See [https://paws-r.github.io/docs/licensemanagerusersubscriptions/deregister_identity_provider.html](https://paws-r.github.io/docs/licensemanagerusersubscriptions/deregister_identity_provider.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_deregister_identity_provider/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_deregister_identity_provider/) for full documentation.
 #'
 #' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
 #' @param Product &#91;required&#93; The name of the user-based subscription product.
@@ -73,7 +73,7 @@ licensemanagerusersubscriptions_deregister_identity_provider <- function(Identit
 #' @description
 #' Disassociates the user from an EC2 instance providing user-based subscriptions.
 #'
-#' See [https://paws-r.github.io/docs/licensemanagerusersubscriptions/disassociate_user.html](https://paws-r.github.io/docs/licensemanagerusersubscriptions/disassociate_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_disassociate_user/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_disassociate_user/) for full documentation.
 #'
 #' @param Domain The domain name of the user.
 #' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
@@ -105,7 +105,7 @@ licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, Ide
 #' @description
 #' Lists the identity providers for user-based subscriptions.
 #'
-#' See [https://paws-r.github.io/docs/licensemanagerusersubscriptions/list_identity_providers.html](https://paws-r.github.io/docs/licensemanagerusersubscriptions/list_identity_providers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_identity_providers/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_identity_providers/) for full documentation.
 #'
 #' @param MaxResults Maximum number of results to return in a single call.
 #' @param NextToken Token for the next set of results.
@@ -135,7 +135,7 @@ licensemanagerusersubscriptions_list_identity_providers <- function(MaxResults =
 #' @description
 #' Lists the EC2 instances providing user-based subscriptions.
 #'
-#' See [https://paws-r.github.io/docs/licensemanagerusersubscriptions/list_instances.html](https://paws-r.github.io/docs/licensemanagerusersubscriptions/list_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_instances/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_instances/) for full documentation.
 #'
 #' @param Filters An array of structures that you can use to filter the results to those
 #' that match one or more sets of key-value pairs that you specify.
@@ -168,7 +168,7 @@ licensemanagerusersubscriptions_list_instances <- function(Filters = NULL, MaxRe
 #' @description
 #' Lists the user-based subscription products available from an identity provider.
 #'
-#' See [https://paws-r.github.io/docs/licensemanagerusersubscriptions/list_product_subscriptions.html](https://paws-r.github.io/docs/licensemanagerusersubscriptions/list_product_subscriptions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_product_subscriptions/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_product_subscriptions/) for full documentation.
 #'
 #' @param Filters An array of structures that you can use to filter the results to those
 #' that match one or more sets of key-value pairs that you specify.
@@ -202,7 +202,7 @@ licensemanagerusersubscriptions_list_product_subscriptions <- function(Filters =
 #' @description
 #' Lists user associations for an identity provider.
 #'
-#' See [https://paws-r.github.io/docs/licensemanagerusersubscriptions/list_user_associations.html](https://paws-r.github.io/docs/licensemanagerusersubscriptions/list_user_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_user_associations/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_user_associations/) for full documentation.
 #'
 #' @param Filters An array of structures that you can use to filter the results to those
 #' that match one or more sets of key-value pairs that you specify.
@@ -236,22 +236,24 @@ licensemanagerusersubscriptions_list_user_associations <- function(Filters = NUL
 #' @description
 #' Registers an identity provider for user-based subscriptions.
 #'
-#' See [https://paws-r.github.io/docs/licensemanagerusersubscriptions/register_identity_provider.html](https://paws-r.github.io/docs/licensemanagerusersubscriptions/register_identity_provider.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_register_identity_provider/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_register_identity_provider/) for full documentation.
 #'
 #' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
 #' @param Product &#91;required&#93; The name of the user-based subscription product.
+#' @param Settings The registered identity provider’s product related configuration
+#' settings such as the subnets to provision VPC endpoints.
 #'
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_register_identity_provider
-licensemanagerusersubscriptions_register_identity_provider <- function(IdentityProvider, Product) {
+licensemanagerusersubscriptions_register_identity_provider <- function(IdentityProvider, Product, Settings = NULL) {
   op <- new_operation(
     name = "RegisterIdentityProvider",
     http_method = "POST",
     http_path = "/identity-provider/RegisterIdentityProvider",
     paginator = list()
   )
-  input <- .licensemanagerusersubscriptions$register_identity_provider_input(IdentityProvider = IdentityProvider, Product = Product)
+  input <- .licensemanagerusersubscriptions$register_identity_provider_input(IdentityProvider = IdentityProvider, Product = Product, Settings = Settings)
   output <- .licensemanagerusersubscriptions$register_identity_provider_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config)
@@ -267,7 +269,7 @@ licensemanagerusersubscriptions_register_identity_provider <- function(IdentityP
 #' @description
 #' Starts a product subscription for a user with the specified identity provider.
 #'
-#' See [https://paws-r.github.io/docs/licensemanagerusersubscriptions/start_product_subscription.html](https://paws-r.github.io/docs/licensemanagerusersubscriptions/start_product_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_start_product_subscription/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_start_product_subscription/) for full documentation.
 #'
 #' @param Domain The domain name of the user.
 #' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
@@ -300,7 +302,7 @@ licensemanagerusersubscriptions_start_product_subscription <- function(Domain = 
 #' @description
 #' Stops a product subscription for a user with the specified identity provider.
 #'
-#' See [https://paws-r.github.io/docs/licensemanagerusersubscriptions/stop_product_subscription.html](https://paws-r.github.io/docs/licensemanagerusersubscriptions/stop_product_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_stop_product_subscription/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_stop_product_subscription/) for full documentation.
 #'
 #' @param Domain The domain name of the user.
 #' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
@@ -326,3 +328,43 @@ licensemanagerusersubscriptions_stop_product_subscription <- function(Domain = N
   return(response)
 }
 .licensemanagerusersubscriptions$operations$stop_product_subscription <- licensemanagerusersubscriptions_stop_product_subscription
+
+#' Updates additional product configuration settings for the registered
+#' identity provider
+#'
+#' @description
+#' Updates additional product configuration settings for the registered identity provider.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_update_identity_provider_settings/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_update_identity_provider_settings/) for full documentation.
+#'
+#' @param IdentityProvider &#91;required&#93; 
+#' @param Product &#91;required&#93; The name of the user-based subscription product.
+#' @param UpdateSettings &#91;required&#93; Updates the registered identity provider’s product related configuration
+#' settings. You can update any combination of settings in a single
+#' operation such as the:
+#' 
+#' -   Subnets which you want to add to provision VPC endpoints.
+#' 
+#' -   Subnets which you want to remove the VPC endpoints from.
+#' 
+#' -   Security group ID which permits traffic to the VPC endpoints.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanagerusersubscriptions_upd_ide_pro_set
+licensemanagerusersubscriptions_update_identity_provider_settings <- function(IdentityProvider, Product, UpdateSettings) {
+  op <- new_operation(
+    name = "UpdateIdentityProviderSettings",
+    http_method = "POST",
+    http_path = "/identity-provider/UpdateIdentityProviderSettings",
+    paginator = list()
+  )
+  input <- .licensemanagerusersubscriptions$update_identity_provider_settings_input(IdentityProvider = IdentityProvider, Product = Product, UpdateSettings = UpdateSettings)
+  output <- .licensemanagerusersubscriptions$update_identity_provider_settings_output()
+  config <- get_config()
+  svc <- .licensemanagerusersubscriptions$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanagerusersubscriptions$operations$update_identity_provider_settings <- licensemanagerusersubscriptions_update_identity_provider_settings

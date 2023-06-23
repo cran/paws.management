@@ -23,8 +23,8 @@ objective (RTO) and recovery point objective (RPO) in seconds.}
 \item{policyArn}{[required] The Amazon Resource Name (ARN) of the resiliency policy. The format for
 this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:resiliency-policy/\code{policy-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{AWS General Reference} guide.}
 
 \item{policyDescription}{The description for the policy.}
 
@@ -36,6 +36,6 @@ in the \emph{AWS General Reference}.}
 \description{
 Updates a resiliency policy.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/update_resiliency_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_update_resiliency_policy/} for full documentation.
 }
 \keyword{internal}

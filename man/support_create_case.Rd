@@ -50,10 +50,11 @@ case correspondence. Amazon Web Services Support identifies the account
 that creates the case when you specify your Amazon Web Services
 credentials in an HTTP POST method or use the \href{https://aws.amazon.com/developer/tools/}{Amazon Web Services SDKs}.}
 
-\item{language}{The language in which Amazon Web Services Support handles the case. You
-must specify the ISO 639-1 code for the \code{language} parameter if you want
-support in that language. Currently, English ("en") and Japanese ("ja")
-are supported.}
+\item{language}{The language in which Amazon Web Services Support handles the case.
+Amazon Web Services Support currently supports Chinese (“zh”), English
+("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO
+639-1 code for the \code{language} parameter if you want support in that
+language.}
 
 \item{issueType}{The type of issue for the case. You can specify \code{customer-service} or
 \code{technical}. If you don't specify a value, the default is \code{technical}.}
@@ -65,6 +66,6 @@ operation.}
 \description{
 Creates a case in the Amazon Web Services Support Center. This operation is similar to how you create a case in the Amazon Web Services Support Center Create Case page.
 
-See \url{https://paws-r.github.io/docs/support/create_case.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/support_create_case/} for full documentation.
 }
 \keyword{internal}

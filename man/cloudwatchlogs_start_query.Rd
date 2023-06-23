@@ -7,6 +7,7 @@
 cloudwatchlogs_start_query(
   logGroupName = NULL,
   logGroupNames = NULL,
+  logGroupIdentifiers = NULL,
   startTime,
   endTime,
   queryString,
@@ -16,22 +17,37 @@ cloudwatchlogs_start_query(
 \arguments{
 \item{logGroupName}{The log group on which to perform the query.
 
-A \code{\link[=cloudwatchlogs_start_query]{start_query}} operation must include a
-\code{logGroupNames} or a \code{logGroupName} parameter, but not both.}
+A \code{\link[=cloudwatchlogs_start_query]{start_query}} operation must include
+exactly one of the following parameters: \code{logGroupName}, \code{logGroupNames}
+or \code{logGroupIdentifiers}.}
 
-\item{logGroupNames}{The list of log groups to be queried. You can include up to 20 log
+\item{logGroupNames}{The list of log groups to be queried. You can include up to 50 log
 groups.
 
-A \code{\link[=cloudwatchlogs_start_query]{start_query}} operation must include a
-\code{logGroupNames} or a \code{logGroupName} parameter, but not both.}
+A \code{\link[=cloudwatchlogs_start_query]{start_query}} operation must include
+exactly one of the following parameters: \code{logGroupName}, \code{logGroupNames}
+or \code{logGroupIdentifiers}.}
+
+\item{logGroupIdentifiers}{The list of log groups to query. You can include up to 50 log groups.
+
+You can specify them by the log group name or ARN. If a log group that
+you're querying is in a source account and you're using a monitoring
+account, you must specify the ARN of the log group here. The query
+definition must also be defined in the monitoring account.
+
+If you specify an ARN, the ARN can't end with an asterisk (*).
+
+A \code{\link[=cloudwatchlogs_start_query]{start_query}} operation must include
+exactly one of the following parameters: \code{logGroupName}, \code{logGroupNames}
+or \code{logGroupIdentifiers}.}
 
 \item{startTime}{[required] The beginning of the time range to query. The range is inclusive, so the
 specified start time is included in the query. Specified as epoch time,
-the number of seconds since January 1, 1970, 00:00:00 UTC.}
+the number of seconds since \verb{January 1, 1970, 00:00:00 UTC}.}
 
 \item{endTime}{[required] The end of the time range to query. The range is inclusive, so the
 specified end time is included in the query. Specified as epoch time,
-the number of seconds since January 1, 1970, 00:00:00 UTC.}
+the number of seconds since \verb{January 1, 1970, 00:00:00 UTC}.}
 
 \item{queryString}{[required] The query string to use. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html}{CloudWatch Logs Insights Query Syntax}.}
 
@@ -42,6 +58,6 @@ values are returned. The default is 1000.}
 \description{
 Schedules a query of a log group using CloudWatch Logs Insights. You specify the log group and time range to query and the query string to use.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/start_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_start_query/} for full documentation.
 }
 \keyword{internal}

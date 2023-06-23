@@ -7,14 +7,15 @@
 resiliencehub_describe_draft_app_version_resources_import_status(appArn)
 }
 \arguments{
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the application. The format for this
-ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference}.}
+\item{appArn}{[required] The Amazon Resource Name (ARN) of the Resilience Hub application. The
+format for this ARN is:
+arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
+information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{AWS General Reference} guide.}
 }
 \description{
 Describes the status of importing resources to an application version.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/describe_draft_app_version_resources_import_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_describe_draft_app_version_resources_import_status/} for full documentation.
 }
 \keyword{internal}

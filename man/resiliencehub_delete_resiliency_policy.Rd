@@ -14,12 +14,12 @@ the same client token for other API requests.}
 \item{policyArn}{[required] The Amazon Resource Name (ARN) of the resiliency policy. The format for
 this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:resiliency-policy/\code{policy-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{AWS General Reference} guide.}
 }
 \description{
 Deletes a resiliency policy. This is a destructive action that can't be undone.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/delete_resiliency_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_delete_resiliency_policy/} for full documentation.
 }
 \keyword{internal}

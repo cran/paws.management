@@ -23,10 +23,7 @@ specifying \verb{AWS::::Account}.}
 information. You can specify only one resource ID. If you specify a
 resource ID, you must also specify a type for \code{ResourceType}.}
 
-\item{ComplianceTypes}{Filters the results by compliance.
-
-The allowed values are \code{COMPLIANT}, \code{NON_COMPLIANT}, and
-\code{INSUFFICIENT_DATA}.}
+\item{ComplianceTypes}{Filters the results by compliance.}
 
 \item{Limit}{The maximum number of evaluation results returned on each page. The
 default is 10. You cannot specify a number greater than 100. If you
@@ -38,6 +35,6 @@ the next page of results in a paginated response.}
 \description{
 Indicates whether the specified Amazon Web Services resources are compliant. If a resource is noncompliant, this action returns the number of Config rules that the resource does not comply with.
 
-See \url{https://paws-r.github.io/docs/configservice/describe_compliance_by_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_describe_compliance_by_resource/} for full documentation.
 }
 \keyword{internal}

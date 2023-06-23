@@ -9,14 +9,14 @@ metadata}
 appregistry_disassociate_attribute_group(application, attributeGroup)
 }
 \arguments{
-\item{application}{[required] The name or ID of the application.}
+\item{application}{[required] The name, ID, or ARN of the application.}
 
-\item{attributeGroup}{[required] The name or ID of the attribute group that holds the attributes to
+\item{attributeGroup}{[required] The name, ID, or ARN of the attribute group that holds the attributes to
 describe the application.}
 }
 \description{
 Disassociates an attribute group from an application to remove the extra attributes contained in the attribute group from the application's metadata. This operation reverts \code{\link[=appregistry_associate_attribute_group]{associate_attribute_group}}.
 
-See \url{https://paws-r.github.io/docs/appregistry/disassociate_attribute_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_disassociate_attribute_group/} for full documentation.
 }
 \keyword{internal}

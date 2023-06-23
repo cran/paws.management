@@ -23,7 +23,7 @@ ssmcontacts_accept_page(
 
 \item{Note}{Information provided by the user when the user acknowledges the page.}
 
-\item{AcceptCode}{[required] The accept code is a 6-digit code used to acknowledge the page.}
+\item{AcceptCode}{[required] A 6-digit code used to acknowledge the page.}
 
 \item{AcceptCodeValidation}{An optional field that Incident Manager uses to \code{ENFORCE} \code{AcceptCode}
 validation when acknowledging an page. Acknowledgement can occur by
@@ -39,6 +39,6 @@ entered for the \code{AcceptCode}.}
 \description{
 Used to acknowledge an engagement to a contact channel during an incident.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/accept_page.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_accept_page/} for full documentation.
 }
 \keyword{internal}

@@ -50,14 +50,14 @@ log file delivery. The maximum length is 256 characters.}
 \item{IncludeGlobalServiceEvents}{Specifies whether the trail is publishing events from global services
 such as IAM to the log files.}
 
-\item{IsMultiRegionTrail}{Specifies whether the trail applies only to the current region or to all
-regions. The default is false. If the trail exists only in the current
-region and this value is set to true, shadow trails (replications of the
-trail) will be created in the other regions. If the trail exists in all
-regions and this value is set to false, the trail will remain in the
-region where it was created, and its shadow trails in other regions will
+\item{IsMultiRegionTrail}{Specifies whether the trail applies only to the current Region or to all
+Regions. The default is false. If the trail exists only in the current
+Region and this value is set to true, shadow trails (replications of the
+trail) will be created in the other Regions. If the trail exists in all
+Regions and this value is set to false, the trail will remain in the
+Region where it was created, and its shadow trails in other Regions will
 be deleted. As a best practice, consider using trails that log events in
-all regions.}
+all Regions.}
 
 \item{EnableLogFileValidation}{Specifies whether log file validation is enabled. The default is false.
 
@@ -73,10 +73,12 @@ delete a trail.}
 
 \item{CloudWatchLogsLogGroupArn}{Specifies a log group name using an Amazon Resource Name (ARN), a unique
 identifier that represents the log group to which CloudTrail logs are
-delivered. Not required unless you specify \code{CloudWatchLogsRoleArn}.}
+delivered. You must use a log group that exists in your account.
+
+Not required unless you specify \code{CloudWatchLogsRoleArn}.}
 
 \item{CloudWatchLogsRoleArn}{Specifies the role for the CloudWatch Logs endpoint to assume to write
-to a user's log group.}
+to a user's log group. You must use a role that exists in your account.}
 
 \item{KmsKeyId}{Specifies the KMS key ID to use to encrypt the logs delivered by
 CloudTrail. The value can be an alias name prefixed by "alias/", a fully
@@ -99,16 +101,17 @@ Examples:
 organization in Organizations, or only for the current Amazon Web
 Services account. The default is false, and cannot be true unless the
 call is made on behalf of an Amazon Web Services account that is the
-management account for an organization in Organizations. If the trail is
-not an organization trail and this is set to \code{true}, the trail will be
-created in all Amazon Web Services accounts that belong to the
-organization. If the trail is an organization trail and this is set to
-\code{false}, the trail will remain in the current Amazon Web Services
-account but be deleted from all member accounts in the organization.}
+management account or delegated administrator account for an
+organization in Organizations. If the trail is not an organization trail
+and this is set to \code{true}, the trail will be created in all Amazon Web
+Services accounts that belong to the organization. If the trail is an
+organization trail and this is set to \code{false}, the trail will remain in
+the current Amazon Web Services account but be deleted from all member
+accounts in the organization.}
 }
 \description{
-Updates trail settings that control what events you are logging, and how to handle log files. Changes to a trail do not require stopping the CloudTrail service. Use this action to designate an existing bucket for log delivery. If the existing bucket has previously been a target for CloudTrail log files, an IAM policy exists for the bucket. \code{\link[=cloudtrail_update_trail]{update_trail}} must be called from the region in which the trail was created; otherwise, an \code{InvalidHomeRegionException} is thrown.
+Updates trail settings that control what events you are logging, and how to handle log files. Changes to a trail do not require stopping the CloudTrail service. Use this action to designate an existing bucket for log delivery. If the existing bucket has previously been a target for CloudTrail log files, an IAM policy exists for the bucket. \code{\link[=cloudtrail_update_trail]{update_trail}} must be called from the Region in which the trail was created; otherwise, an \code{InvalidHomeRegionException} is thrown.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/update_trail.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_update_trail/} for full documentation.
 }
 \keyword{internal}

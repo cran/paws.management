@@ -2,8 +2,8 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_associate_assessment_report_evidence_folder}
 \alias{auditmanager_associate_assessment_report_evidence_folder}
-\title{Associates an evidence folder to an assessment report in a Audit Manager
-assessment}
+\title{Associates an evidence folder to an assessment report in an Audit
+Manager assessment}
 \usage{
 auditmanager_associate_assessment_report_evidence_folder(
   assessmentId,
@@ -16,8 +16,8 @@ auditmanager_associate_assessment_report_evidence_folder(
 \item{evidenceFolderId}{[required] The identifier for the folder that the evidence is stored in.}
 }
 \description{
-Associates an evidence folder to an assessment report in a Audit Manager assessment.
+Associates an evidence folder to an assessment report in an Audit Manager assessment.
 
-See \url{https://paws-r.github.io/docs/auditmanager/associate_assessment_report_evidence_folder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_associate_assessment_report_evidence_folder/} for full documentation.
 }
 \keyword{internal}

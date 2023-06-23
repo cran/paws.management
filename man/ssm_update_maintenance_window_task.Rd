@@ -19,7 +19,8 @@ ssm_update_maintenance_window_task(
   Name = NULL,
   Description = NULL,
   Replace = NULL,
-  CutoffBehavior = NULL
+  CutoffBehavior = NULL,
+  AlarmConfiguration = NULL
 )
 }
 \arguments{
@@ -147,10 +148,12 @@ terminated and the underlying process stopped.
 
 The status for tasks that are not completed is \code{TIMED_OUT}.
 }}
+
+\item{AlarmConfiguration}{The CloudWatch alarm you want to apply to your maintenance window task.}
 }
 \description{
 Modifies a task assigned to a maintenance window. You can't change the task type, but you can change the following values:
 
-See \url{https://paws-r.github.io/docs/ssm/update_maintenance_window_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_update_maintenance_window_task/} for full documentation.
 }
 \keyword{internal}

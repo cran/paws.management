@@ -35,13 +35,13 @@ can set the value to an empty string, but you can't set it to \code{null}.
 For more information about tagging, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html}{Tagging Organizations resources}
 in the Organizations User Guide.
 
-If any one of the tags is invalid or if you exceed the allowed number of
-tags for a policy, then the entire request fails and the policy is not
-created.}
+If any one of the tags is not valid or if you exceed the allowed number
+of tags for a policy, then the entire request fails and the policy is
+not created.}
 }
 \description{
 Creates a policy of a specified type that you can attach to a root, an organizational unit (OU), or an individual Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/organizations/create_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_create_policy/} for full documentation.
 }
 \keyword{internal}

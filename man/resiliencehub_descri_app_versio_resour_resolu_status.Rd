@@ -12,10 +12,11 @@ resiliencehub_describe_app_version_resources_resolution_status(
 )
 }
 \arguments{
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the application. The format for this
-ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference}.}
+\item{appArn}{[required] The Amazon Resource Name (ARN) of the Resilience Hub application. The
+format for this ARN is:
+arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
+information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{AWS General Reference} guide.}
 
 \item{appVersion}{[required] The version of the application.}
 
@@ -24,6 +25,6 @@ in the \emph{AWS General Reference}.}
 \description{
 Returns the resolution status for the specified resolution identifier for an application version. If \code{resolutionId} is not specified, the current resolution status is returned.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/describe_app_version_resources_resolution_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_describe_app_version_resources_resolution_status/} for full documentation.
 }
 \keyword{internal}

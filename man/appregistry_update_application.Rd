@@ -7,7 +7,7 @@
 appregistry_update_application(application, name = NULL, description = NULL)
 }
 \arguments{
-\item{application}{[required] The name or ID of the application that will be updated.}
+\item{application}{[required] The name, ID, or ARN of the application that will be updated.}
 
 \item{name}{Deprecated: The new name of the application. The name must be unique in
 the region in which you are updating the application. Please do not use
@@ -18,6 +18,6 @@ this field as we have stopped supporting name updates.}
 \description{
 Updates an existing application with new attributes.
 
-See \url{https://paws-r.github.io/docs/appregistry/update_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_update_application/} for full documentation.
 }
 \keyword{internal}

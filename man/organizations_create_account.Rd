@@ -41,9 +41,7 @@ was created with an invalid email address.}
 
 \item{AccountName}{[required] The friendly name of the member account.}
 
-\item{RoleName}{(Optional)
-
-The name of an IAM role that Organizations automatically preconfigures
+\item{RoleName}{The name of an IAM role that Organizations automatically preconfigures
 in the new member account. This role trusts the management account,
 allowing users in the management account to assume the role, as
 permitted by the management account administrator. The role has
@@ -82,13 +80,13 @@ can set the value to an empty string, but you can't set it to \code{null}.
 For more information about tagging, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html}{Tagging Organizations resources}
 in the Organizations User Guide.
 
-If any one of the tags is invalid or if you exceed the maximum allowed
+If any one of the tags is not valid or if you exceed the maximum allowed
 number of tags for an account, then the entire request fails and the
 account is not created.}
 }
 \description{
 Creates an Amazon Web Services account that is automatically a member of the organization whose credentials made the request. This is an asynchronous request that Amazon Web Services performs in the background. Because \code{\link[=organizations_create_account]{create_account}} operates asynchronously, it can return a successful completion message even though account initialization might still be in progress. You might need to wait a few minutes before you can successfully access the account. To check the status of the request, do one of the following:
 
-See \url{https://paws-r.github.io/docs/organizations/create_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_create_account/} for full documentation.
 }
 \keyword{internal}

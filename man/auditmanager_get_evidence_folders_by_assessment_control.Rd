@@ -3,7 +3,7 @@
 \name{auditmanager_get_evidence_folders_by_assessment_control}
 \alias{auditmanager_get_evidence_folders_by_assessment_control}
 \title{Returns a list of evidence folders that are associated with a specified
-control of an assessment in Audit Manager}
+control in an Audit Manager assessment}
 \usage{
 auditmanager_get_evidence_folders_by_assessment_control(
   assessmentId,
@@ -26,8 +26,8 @@ auditmanager_get_evidence_folders_by_assessment_control(
 call.}
 }
 \description{
-Returns a list of evidence folders that are associated with a specified control of an assessment in Audit Manager.
+Returns a list of evidence folders that are associated with a specified control in an Audit Manager assessment.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_evidence_folders_by_assessment_control.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_evidence_folders_by_assessment_control/} for full documentation.
 }
 \keyword{internal}

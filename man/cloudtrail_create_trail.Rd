@@ -47,10 +47,10 @@ log file delivery. The maximum length is 256 characters.}
 \item{IncludeGlobalServiceEvents}{Specifies whether the trail is publishing events from global services
 such as IAM to the log files.}
 
-\item{IsMultiRegionTrail}{Specifies whether the trail is created in the current region or in all
-regions. The default is false, which creates a trail only in the region
+\item{IsMultiRegionTrail}{Specifies whether the trail is created in the current Region or in all
+Regions. The default is false, which creates a trail only in the Region
 where you are signed in. As a best practice, consider creating trails
-that log events in all regions.}
+that log events in all Regions.}
 
 \item{EnableLogFileValidation}{Specifies whether log file integrity validation is enabled. The default
 is false.
@@ -67,13 +67,15 @@ delete a trail.}
 
 \item{CloudWatchLogsLogGroupArn}{Specifies a log group name using an Amazon Resource Name (ARN), a unique
 identifier that represents the log group to which CloudTrail logs will
-be delivered. Not required unless you specify \code{CloudWatchLogsRoleArn}.}
+be delivered. You must use a log group that exists in your account.
+
+Not required unless you specify \code{CloudWatchLogsRoleArn}.}
 
 \item{CloudWatchLogsRoleArn}{Specifies the role for the CloudWatch Logs endpoint to assume to write
-to a user's log group.}
+to a user's log group. You must use a role that exists in your account.}
 
 \item{KmsKeyId}{Specifies the KMS key ID to use to encrypt the logs delivered by
-CloudTrail. The value can be an alias name prefixed by "alias/", a fully
+CloudTrail. The value can be an alias name prefixed by \verb{alias/}, a fully
 specified ARN to an alias, a fully specified ARN to a key, or a globally
 unique identifier.
 
@@ -83,23 +85,24 @@ in the \emph{Key Management Service Developer Guide}.
 
 Examples:
 \itemize{
-\item alias/MyAliasName
-\item arn:aws:kms:us-east-2:123456789012:alias/MyAliasName
-\item arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012
-\item 12345678-1234-1234-1234-123456789012
+\item \code{alias/MyAliasName}
+\item \code{arn:aws:kms:us-east-2:123456789012:alias/MyAliasName}
+\item \code{arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012}
+\item \code{12345678-1234-1234-1234-123456789012}
 }}
 
 \item{IsOrganizationTrail}{Specifies whether the trail is created for all accounts in an
 organization in Organizations, or only for the current Amazon Web
 Services account. The default is false, and cannot be true unless the
 call is made on behalf of an Amazon Web Services account that is the
-management account for an organization in Organizations.}
+management account or delegated administrator account for an
+organization in Organizations.}
 
 \item{TagsList}{}
 }
 \description{
 Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/create_trail.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_create_trail/} for full documentation.
 }
 \keyword{internal}

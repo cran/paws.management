@@ -4,9 +4,23 @@
 \alias{cloudwatchevidently_update_project}
 \title{Updates the description of an existing project}
 \usage{
-cloudwatchevidently_update_project(description = NULL, project)
+cloudwatchevidently_update_project(
+  appConfigResource = NULL,
+  description = NULL,
+  project
+)
 }
 \arguments{
+\item{appConfigResource}{Use this parameter if the project will use client-side evaluation
+powered by AppConfig. Client-side evaluation allows your application to
+assign variations to user sessions locally instead of by calling the
+\code{\link[=cloudwatchevidently_evaluate_feature]{evaluate_feature}} operation.
+This mitigates the latency and availability risks that come with an API
+call. allows you to
+
+This parameter is a structure that contains information about the
+AppConfig application that will be used for client-side evaluation.}
+
 \item{description}{An optional description of the project.}
 
 \item{project}{[required] The name or ARN of the project to update.}
@@ -14,6 +28,6 @@ cloudwatchevidently_update_project(description = NULL, project)
 \description{
 Updates the description of an existing project.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/update_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_update_project/} for full documentation.
 }
 \keyword{internal}

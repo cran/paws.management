@@ -11,7 +11,7 @@ resourcegroupstaggingapi_untag_resources(ResourceARNList, TagKeys)
 from.
 
 An ARN (Amazon Resource Name) uniquely identifies a resource. For more
-information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}
+information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{TagKeys}{[required] Specifies a list of tag keys that you want to remove from the specified
@@ -20,6 +20,6 @@ resources.}
 \description{
 Removes the specified tags from the specified resources. When you specify a tag key, the action removes both that key and its associated value. The operation succeeds even if you attempt to remove tags from a resource that were already removed. Note the following:
 
-See \url{https://paws-r.github.io/docs/resourcegroupstaggingapi/untag_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_untag_resources/} for full documentation.
 }
 \keyword{internal}

@@ -13,10 +13,11 @@ resiliencehub_list_app_version_resource_mappings(
 )
 }
 \arguments{
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the application. The format for this
-ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference}.}
+\item{appArn}{[required] The Amazon Resource Name (ARN) of the Resilience Hub application. The
+format for this ARN is:
+arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
+information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{AWS General Reference} guide.}
 
 \item{appVersion}{[required] The version of the application.}
 
@@ -29,6 +30,6 @@ in the response so that the remaining results can be retrieved.}
 \description{
 Lists how the resources in an application version are mapped/sourced from. Mappings can be physical resource identifiers, CloudFormation stacks, resource-groups, or an application registry app.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/list_app_version_resource_mappings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_list_app_version_resource_mappings/} for full documentation.
 }
 \keyword{internal}

@@ -14,7 +14,6 @@ servicecatalog_describe_product_as_admin(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -35,6 +34,6 @@ only local TagOptions will be returned.}
 \description{
 Gets information about the specified product. This operation is run with administrator access.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/describe_product_as_admin.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_describe_product_as_admin/} for full documentation.
 }
 \keyword{internal}

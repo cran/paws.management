@@ -17,7 +17,6 @@ servicecatalog_update_portfolio(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -37,6 +36,6 @@ servicecatalog_update_portfolio(
 \description{
 Updates the specified portfolio.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/update_portfolio.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_update_portfolio/} for full documentation.
 }
 \keyword{internal}

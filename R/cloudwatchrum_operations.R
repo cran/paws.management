@@ -3,13 +3,142 @@
 #' @include cloudwatchrum_service.R
 NULL
 
+#' Specifies the extended metrics and custom metrics that you want a
+#' CloudWatch RUM app monitor to send to a destination
+#'
+#' @description
+#' Specifies the extended metrics and custom metrics that you want a CloudWatch RUM app monitor to send to a destination. Valid destinations include CloudWatch and Evidently.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_batch_create_rum_metric_definitions/](https://www.paws-r-sdk.com/docs/cloudwatchrum_batch_create_rum_metric_definitions/) for full documentation.
+#'
+#' @param AppMonitorName &#91;required&#93; The name of the CloudWatch RUM app monitor that is to send the metrics.
+#' @param Destination &#91;required&#93; The destination to send the metrics to. Valid values are `CloudWatch`
+#' and `Evidently`. If you specify `Evidently`, you must also specify the
+#' ARN of the CloudWatchEvidently experiment that will receive the metrics
+#' and an IAM role that has permission to write to the experiment.
+#' @param DestinationArn This parameter is required if `Destination` is `Evidently`. If
+#' `Destination` is `CloudWatch`, do not use this parameter.
+#' 
+#' This parameter specifies the ARN of the Evidently experiment that is to
+#' receive the metrics. You must have already defined this experiment as a
+#' valid destination. For more information, see
+#' [`put_rum_metrics_destination`][cloudwatchrum_put_rum_metrics_destination].
+#' @param MetricDefinitions &#91;required&#93; An array of structures which define the metrics that you want to send.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchrum_batch_create_rum_metric_definitions
+cloudwatchrum_batch_create_rum_metric_definitions <- function(AppMonitorName, Destination, DestinationArn = NULL, MetricDefinitions) {
+  op <- new_operation(
+    name = "BatchCreateRumMetricDefinitions",
+    http_method = "POST",
+    http_path = "/rummetrics/{AppMonitorName}/metrics",
+    paginator = list()
+  )
+  input <- .cloudwatchrum$batch_create_rum_metric_definitions_input(AppMonitorName = AppMonitorName, Destination = Destination, DestinationArn = DestinationArn, MetricDefinitions = MetricDefinitions)
+  output <- .cloudwatchrum$batch_create_rum_metric_definitions_output()
+  config <- get_config()
+  svc <- .cloudwatchrum$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchrum$operations$batch_create_rum_metric_definitions <- cloudwatchrum_batch_create_rum_metric_definitions
+
+#' Removes the specified metrics from being sent to an extended metrics
+#' destination
+#'
+#' @description
+#' Removes the specified metrics from being sent to an extended metrics destination.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_batch_delete_rum_metric_definitions/](https://www.paws-r-sdk.com/docs/cloudwatchrum_batch_delete_rum_metric_definitions/) for full documentation.
+#'
+#' @param AppMonitorName &#91;required&#93; The name of the CloudWatch RUM app monitor that is sending these
+#' metrics.
+#' @param Destination &#91;required&#93; Defines the destination where you want to stop sending the specified
+#' metrics. Valid values are `CloudWatch` and `Evidently`. If you specify
+#' `Evidently`, you must also specify the ARN of the CloudWatchEvidently
+#' experiment that is to be the destination and an IAM role that has
+#' permission to write to the experiment.
+#' @param DestinationArn This parameter is required if `Destination` is `Evidently`. If
+#' `Destination` is `CloudWatch`, do not use this parameter.
+#' 
+#' This parameter specifies the ARN of the Evidently experiment that was
+#' receiving the metrics that are being deleted.
+#' @param MetricDefinitionIds &#91;required&#93; An array of structures which define the metrics that you want to stop
+#' sending.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchrum_batch_delete_rum_metric_definitions
+cloudwatchrum_batch_delete_rum_metric_definitions <- function(AppMonitorName, Destination, DestinationArn = NULL, MetricDefinitionIds) {
+  op <- new_operation(
+    name = "BatchDeleteRumMetricDefinitions",
+    http_method = "DELETE",
+    http_path = "/rummetrics/{AppMonitorName}/metrics",
+    paginator = list()
+  )
+  input <- .cloudwatchrum$batch_delete_rum_metric_definitions_input(AppMonitorName = AppMonitorName, Destination = Destination, DestinationArn = DestinationArn, MetricDefinitionIds = MetricDefinitionIds)
+  output <- .cloudwatchrum$batch_delete_rum_metric_definitions_output()
+  config <- get_config()
+  svc <- .cloudwatchrum$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchrum$operations$batch_delete_rum_metric_definitions <- cloudwatchrum_batch_delete_rum_metric_definitions
+
+#' Retrieves the list of metrics and dimensions that a RUM app monitor is
+#' sending to a single destination
+#'
+#' @description
+#' Retrieves the list of metrics and dimensions that a RUM app monitor is sending to a single destination.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_batch_get_rum_metric_definitions/](https://www.paws-r-sdk.com/docs/cloudwatchrum_batch_get_rum_metric_definitions/) for full documentation.
+#'
+#' @param AppMonitorName &#91;required&#93; The name of the CloudWatch RUM app monitor that is sending the metrics.
+#' @param Destination &#91;required&#93; The type of destination that you want to view metrics for. Valid values
+#' are `CloudWatch` and `Evidently`.
+#' @param DestinationArn This parameter is required if `Destination` is `Evidently`. If
+#' `Destination` is `CloudWatch`, do not use this parameter.
+#' 
+#' This parameter specifies the ARN of the Evidently experiment that
+#' corresponds to the destination.
+#' @param MaxResults The maximum number of results to return in one operation. The default is
+#' 50. The maximum that you can specify is 100.
+#' 
+#' To retrieve the remaining results, make another call with the returned
+#' `NextToken` value.
+#' @param NextToken Use the token returned by the previous operation to request the next
+#' page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchrum_batch_get_rum_metric_definitions
+cloudwatchrum_batch_get_rum_metric_definitions <- function(AppMonitorName, Destination, DestinationArn = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "BatchGetRumMetricDefinitions",
+    http_method = "GET",
+    http_path = "/rummetrics/{AppMonitorName}/metrics",
+    paginator = list()
+  )
+  input <- .cloudwatchrum$batch_get_rum_metric_definitions_input(AppMonitorName = AppMonitorName, Destination = Destination, DestinationArn = DestinationArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .cloudwatchrum$batch_get_rum_metric_definitions_output()
+  config <- get_config()
+  svc <- .cloudwatchrum$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchrum$operations$batch_get_rum_metric_definitions <- cloudwatchrum_batch_get_rum_metric_definitions
+
 #' Creates a Amazon CloudWatch RUM app monitor, which collects telemetry
 #' data from your application and sends that data to RUM
 #'
 #' @description
 #' Creates a Amazon CloudWatch RUM app monitor, which collects telemetry data from your application and sends that data to RUM. The data includes performance and reliability information such as page load time, client-side errors, and user behavior.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchrum/create_app_monitor.html](https://paws-r.github.io/docs/cloudwatchrum/create_app_monitor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_create_app_monitor/](https://www.paws-r-sdk.com/docs/cloudwatchrum_create_app_monitor/) for full documentation.
 #'
 #' @param AppMonitorConfiguration A structure that contains much of the configuration data for the app
 #' monitor. If you are using Amazon Cognito for authorization, you must
@@ -21,6 +150,12 @@ NULL
 #' 
 #' If you omit this argument, the sample rate used for RUM is set to 10% of
 #' the user sessions.
+#' @param CustomEvents Specifies whether this app monitor allows the web client to define and
+#' send custom events. If you omit this parameter, custom events are
+#' `DISABLED`.
+#' 
+#' For more information about custom events, see [Send custom
+#' events](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-custom-events.html).
 #' @param CwLogEnabled Data collected by RUM is kept by RUM for 30 days and then deleted. This
 #' parameter specifies whether RUM sends a copy of this telemetry data to
 #' Amazon CloudWatch Logs in your account. This enables you to keep the
@@ -40,19 +175,22 @@ NULL
 #' Tags don't have any semantic meaning to Amazon Web Services and are
 #' interpreted strictly as strings of characters.
 #' 
-#'      <p>You can associate as many as 50 tags with an app monitor.</p> <p>For more information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging Amazon Web Services resources</a>.</p> 
+#' You can associate as many as 50 tags with an app monitor.
+#' 
+#' For more information, see [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_create_app_monitor
-cloudwatchrum_create_app_monitor <- function(AppMonitorConfiguration = NULL, CwLogEnabled = NULL, Domain, Name, Tags = NULL) {
+cloudwatchrum_create_app_monitor <- function(AppMonitorConfiguration = NULL, CustomEvents = NULL, CwLogEnabled = NULL, Domain, Name, Tags = NULL) {
   op <- new_operation(
     name = "CreateAppMonitor",
     http_method = "POST",
     http_path = "/appmonitor",
     paginator = list()
   )
-  input <- .cloudwatchrum$create_app_monitor_input(AppMonitorConfiguration = AppMonitorConfiguration, CwLogEnabled = CwLogEnabled, Domain = Domain, Name = Name, Tags = Tags)
+  input <- .cloudwatchrum$create_app_monitor_input(AppMonitorConfiguration = AppMonitorConfiguration, CustomEvents = CustomEvents, CwLogEnabled = CwLogEnabled, Domain = Domain, Name = Name, Tags = Tags)
   output <- .cloudwatchrum$create_app_monitor_output()
   config <- get_config()
   svc <- .cloudwatchrum$service(config)
@@ -67,7 +205,7 @@ cloudwatchrum_create_app_monitor <- function(AppMonitorConfiguration = NULL, CwL
 #' @description
 #' Deletes an existing app monitor. This immediately stops the collection of data.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchrum/delete_app_monitor.html](https://paws-r.github.io/docs/cloudwatchrum/delete_app_monitor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_delete_app_monitor/](https://www.paws-r-sdk.com/docs/cloudwatchrum_delete_app_monitor/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the app monitor to delete.
 #'
@@ -91,12 +229,49 @@ cloudwatchrum_delete_app_monitor <- function(Name) {
 }
 .cloudwatchrum$operations$delete_app_monitor <- cloudwatchrum_delete_app_monitor
 
+#' Deletes a destination for CloudWatch RUM extended metrics, so that the
+#' specified app monitor stops sending extended metrics to that destination
+#'
+#' @description
+#' Deletes a destination for CloudWatch RUM extended metrics, so that the specified app monitor stops sending extended metrics to that destination.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_delete_rum_metrics_destination/](https://www.paws-r-sdk.com/docs/cloudwatchrum_delete_rum_metrics_destination/) for full documentation.
+#'
+#' @param AppMonitorName &#91;required&#93; The name of the app monitor that is sending metrics to the destination
+#' that you want to delete.
+#' @param Destination &#91;required&#93; The type of destination to delete. Valid values are `CloudWatch` and
+#' `Evidently`.
+#' @param DestinationArn This parameter is required if `Destination` is `Evidently`. If
+#' `Destination` is `CloudWatch`, do not use this parameter. This parameter
+#' specifies the ARN of the Evidently experiment that corresponds to the
+#' destination to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchrum_delete_rum_metrics_destination
+cloudwatchrum_delete_rum_metrics_destination <- function(AppMonitorName, Destination, DestinationArn = NULL) {
+  op <- new_operation(
+    name = "DeleteRumMetricsDestination",
+    http_method = "DELETE",
+    http_path = "/rummetrics/{AppMonitorName}/metricsdestination",
+    paginator = list()
+  )
+  input <- .cloudwatchrum$delete_rum_metrics_destination_input(AppMonitorName = AppMonitorName, Destination = Destination, DestinationArn = DestinationArn)
+  output <- .cloudwatchrum$delete_rum_metrics_destination_output()
+  config <- get_config()
+  svc <- .cloudwatchrum$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchrum$operations$delete_rum_metrics_destination <- cloudwatchrum_delete_rum_metrics_destination
+
 #' Retrieves the complete configuration information for one app monitor
 #'
 #' @description
 #' Retrieves the complete configuration information for one app monitor.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchrum/get_app_monitor.html](https://paws-r.github.io/docs/cloudwatchrum/get_app_monitor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_get_app_monitor/](https://www.paws-r-sdk.com/docs/cloudwatchrum_get_app_monitor/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The app monitor to retrieve information for.
 #'
@@ -127,7 +302,7 @@ cloudwatchrum_get_app_monitor <- function(Name) {
 #' @description
 #' Retrieves the raw performance events that RUM has collected from your web application, so that you can do your own processing or analysis of this data.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchrum/get_app_monitor_data.html](https://paws-r.github.io/docs/cloudwatchrum/get_app_monitor_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_get_app_monitor_data/](https://www.paws-r-sdk.com/docs/cloudwatchrum_get_app_monitor_data/) for full documentation.
 #'
 #' @param Filters An array of structures that you can use to filter the results to those
 #' that match one or more sets of key-value pairs that you specify.
@@ -164,9 +339,10 @@ cloudwatchrum_get_app_monitor_data <- function(Filters = NULL, MaxResults = NULL
 #' @description
 #' Returns a list of the Amazon CloudWatch RUM app monitors in the account.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchrum/list_app_monitors.html](https://paws-r.github.io/docs/cloudwatchrum/list_app_monitors.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_list_app_monitors/](https://www.paws-r-sdk.com/docs/cloudwatchrum_list_app_monitors/) for full documentation.
 #'
-#' @param MaxResults The maximum number of results to return in one operation.
+#' @param MaxResults The maximum number of results to return in one operation. The default is
+#' 50. The maximum that you can specify is 100.
 #' @param NextToken Use the token returned by the previous operation to request the next
 #' page of results.
 #'
@@ -190,12 +366,50 @@ cloudwatchrum_list_app_monitors <- function(MaxResults = NULL, NextToken = NULL)
 }
 .cloudwatchrum$operations$list_app_monitors <- cloudwatchrum_list_app_monitors
 
+#' Returns a list of destinations that you have created to receive RUM
+#' extended metrics, for the specified app monitor
+#'
+#' @description
+#' Returns a list of destinations that you have created to receive RUM extended metrics, for the specified app monitor.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_list_rum_metrics_destinations/](https://www.paws-r-sdk.com/docs/cloudwatchrum_list_rum_metrics_destinations/) for full documentation.
+#'
+#' @param AppMonitorName &#91;required&#93; The name of the app monitor associated with the destinations that you
+#' want to retrieve.
+#' @param MaxResults The maximum number of results to return in one operation. The default is
+#' 50. The maximum that you can specify is 100.
+#' 
+#' To retrieve the remaining results, make another call with the returned
+#' `NextToken` value.
+#' @param NextToken Use the token returned by the previous operation to request the next
+#' page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchrum_list_rum_metrics_destinations
+cloudwatchrum_list_rum_metrics_destinations <- function(AppMonitorName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRumMetricsDestinations",
+    http_method = "GET",
+    http_path = "/rummetrics/{AppMonitorName}/metricsdestination",
+    paginator = list()
+  )
+  input <- .cloudwatchrum$list_rum_metrics_destinations_input(AppMonitorName = AppMonitorName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .cloudwatchrum$list_rum_metrics_destinations_output()
+  config <- get_config()
+  svc <- .cloudwatchrum$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchrum$operations$list_rum_metrics_destinations <- cloudwatchrum_list_rum_metrics_destinations
+
 #' Displays the tags associated with a CloudWatch RUM resource
 #'
 #' @description
 #' Displays the tags associated with a CloudWatch RUM resource.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchrum/list_tags_for_resource.html](https://paws-r.github.io/docs/cloudwatchrum/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/cloudwatchrum_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource that you want to see the tags of.
 #'
@@ -225,7 +439,7 @@ cloudwatchrum_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Sends telemetry events about your application performance and user behavior to CloudWatch RUM. The code snippet that RUM generates for you to add to your application includes [`put_rum_events`][cloudwatchrum_put_rum_events] operations to send this data to RUM.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchrum/put_rum_events.html](https://paws-r.github.io/docs/cloudwatchrum/put_rum_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_put_rum_events/](https://www.paws-r-sdk.com/docs/cloudwatchrum_put_rum_events/) for full documentation.
 #'
 #' @param AppMonitorDetails &#91;required&#93; A structure that contains information about the app monitor that
 #' collected this telemetry information.
@@ -255,13 +469,57 @@ cloudwatchrum_put_rum_events <- function(AppMonitorDetails, BatchId, Id, RumEven
 }
 .cloudwatchrum$operations$put_rum_events <- cloudwatchrum_put_rum_events
 
+#' Creates or updates a destination to receive extended metrics from
+#' CloudWatch RUM
+#'
+#' @description
+#' Creates or updates a destination to receive extended metrics from CloudWatch RUM. You can send extended metrics to CloudWatch or to a CloudWatch Evidently experiment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_put_rum_metrics_destination/](https://www.paws-r-sdk.com/docs/cloudwatchrum_put_rum_metrics_destination/) for full documentation.
+#'
+#' @param AppMonitorName &#91;required&#93; The name of the CloudWatch RUM app monitor that will send the metrics.
+#' @param Destination &#91;required&#93; Defines the destination to send the metrics to. Valid values are
+#' `CloudWatch` and `Evidently`. If you specify `Evidently`, you must also
+#' specify the ARN of the CloudWatchEvidently experiment that is to be the
+#' destination and an IAM role that has permission to write to the
+#' experiment.
+#' @param DestinationArn Use this parameter only if `Destination` is `Evidently`. This parameter
+#' specifies the ARN of the Evidently experiment that will receive the
+#' extended metrics.
+#' @param IamRoleArn This parameter is required if `Destination` is `Evidently`. If
+#' `Destination` is `CloudWatch`, do not use this parameter.
+#' 
+#' This parameter specifies the ARN of an IAM role that RUM will assume to
+#' write to the Evidently experiment that you are sending metrics to. This
+#' role must have permission to write to that experiment.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchrum_put_rum_metrics_destination
+cloudwatchrum_put_rum_metrics_destination <- function(AppMonitorName, Destination, DestinationArn = NULL, IamRoleArn = NULL) {
+  op <- new_operation(
+    name = "PutRumMetricsDestination",
+    http_method = "POST",
+    http_path = "/rummetrics/{AppMonitorName}/metricsdestination",
+    paginator = list()
+  )
+  input <- .cloudwatchrum$put_rum_metrics_destination_input(AppMonitorName = AppMonitorName, Destination = Destination, DestinationArn = DestinationArn, IamRoleArn = IamRoleArn)
+  output <- .cloudwatchrum$put_rum_metrics_destination_output()
+  config <- get_config()
+  svc <- .cloudwatchrum$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchrum$operations$put_rum_metrics_destination <- cloudwatchrum_put_rum_metrics_destination
+
 #' Assigns one or more tags (key-value pairs) to the specified CloudWatch
 #' RUM resource
 #'
 #' @description
 #' Assigns one or more tags (key-value pairs) to the specified CloudWatch RUM resource. Currently, the only resources that can be tagged app monitors.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchrum/tag_resource.html](https://paws-r.github.io/docs/cloudwatchrum/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_tag_resource/](https://www.paws-r-sdk.com/docs/cloudwatchrum_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the CloudWatch RUM resource that you're adding tags to.
 #' @param Tags &#91;required&#93; The list of key-value pairs to associate with the resource.
@@ -291,7 +549,7 @@ cloudwatchrum_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes one or more tags from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchrum/untag_resource.html](https://paws-r.github.io/docs/cloudwatchrum/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_untag_resource/](https://www.paws-r-sdk.com/docs/cloudwatchrum_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the CloudWatch RUM resource that you're removing tags from.
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
@@ -321,7 +579,7 @@ cloudwatchrum_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates the configuration of an existing app monitor. When you use this operation, only the parts of the app monitor configuration that you specify in this operation are changed. For any parameters that you omit, the existing values are kept.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchrum/update_app_monitor.html](https://paws-r.github.io/docs/cloudwatchrum/update_app_monitor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_update_app_monitor/](https://www.paws-r-sdk.com/docs/cloudwatchrum_update_app_monitor/) for full documentation.
 #'
 #' @param AppMonitorConfiguration A structure that contains much of the configuration data for the app
 #' monitor. If you are using Amazon Cognito for authorization, you must
@@ -330,6 +588,11 @@ cloudwatchrum_untag_resource <- function(ResourceArn, TagKeys) {
 #' include `AppMonitorConfiguration`, you must set up your own
 #' authorization method. For more information, see Authorize your
 #' application to send data to Amazon Web Services.
+#' @param CustomEvents Specifies whether this app monitor allows the web client to define and
+#' send custom events. The default is for custom events to be `DISABLED`.
+#' 
+#' For more information about custom events, see [Send custom
+#' events](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-custom-events.html).
 #' @param CwLogEnabled Data collected by RUM is kept by RUM for 30 days and then deleted. This
 #' parameter specifies whether RUM sends a copy of this telemetry data to
 #' Amazon CloudWatch Logs in your account. This enables you to keep the
@@ -342,14 +605,14 @@ cloudwatchrum_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_update_app_monitor
-cloudwatchrum_update_app_monitor <- function(AppMonitorConfiguration = NULL, CwLogEnabled = NULL, Domain = NULL, Name) {
+cloudwatchrum_update_app_monitor <- function(AppMonitorConfiguration = NULL, CustomEvents = NULL, CwLogEnabled = NULL, Domain = NULL, Name) {
   op <- new_operation(
     name = "UpdateAppMonitor",
     http_method = "PATCH",
     http_path = "/appmonitor/{Name}",
     paginator = list()
   )
-  input <- .cloudwatchrum$update_app_monitor_input(AppMonitorConfiguration = AppMonitorConfiguration, CwLogEnabled = CwLogEnabled, Domain = Domain, Name = Name)
+  input <- .cloudwatchrum$update_app_monitor_input(AppMonitorConfiguration = AppMonitorConfiguration, CustomEvents = CustomEvents, CwLogEnabled = CwLogEnabled, Domain = Domain, Name = Name)
   output <- .cloudwatchrum$update_app_monitor_output()
   config <- get_config()
   svc <- .cloudwatchrum$service(config)
@@ -358,3 +621,47 @@ cloudwatchrum_update_app_monitor <- function(AppMonitorConfiguration = NULL, CwL
   return(response)
 }
 .cloudwatchrum$operations$update_app_monitor <- cloudwatchrum_update_app_monitor
+
+#' Modifies one existing metric definition for CloudWatch RUM extended
+#' metrics
+#'
+#' @description
+#' Modifies one existing metric definition for CloudWatch RUM extended metrics. For more information about extended metrics, see [BatchCreateRumMetricsDefinitions](https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/).
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_update_rum_metric_definition/](https://www.paws-r-sdk.com/docs/cloudwatchrum_update_rum_metric_definition/) for full documentation.
+#'
+#' @param AppMonitorName &#91;required&#93; The name of the CloudWatch RUM app monitor that sends these metrics.
+#' @param Destination &#91;required&#93; The destination to send the metrics to. Valid values are `CloudWatch`
+#' and `Evidently`. If you specify `Evidently`, you must also specify the
+#' ARN of the CloudWatchEvidently experiment that will receive the metrics
+#' and an IAM role that has permission to write to the experiment.
+#' @param DestinationArn This parameter is required if `Destination` is `Evidently`. If
+#' `Destination` is `CloudWatch`, do not use this parameter.
+#' 
+#' This parameter specifies the ARN of the Evidently experiment that is to
+#' receive the metrics. You must have already defined this experiment as a
+#' valid destination. For more information, see
+#' [`put_rum_metrics_destination`][cloudwatchrum_put_rum_metrics_destination].
+#' @param MetricDefinition &#91;required&#93; A structure that contains the new definition that you want to use for
+#' this metric.
+#' @param MetricDefinitionId &#91;required&#93; The ID of the metric definition to update.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchrum_update_rum_metric_definition
+cloudwatchrum_update_rum_metric_definition <- function(AppMonitorName, Destination, DestinationArn = NULL, MetricDefinition, MetricDefinitionId) {
+  op <- new_operation(
+    name = "UpdateRumMetricDefinition",
+    http_method = "PATCH",
+    http_path = "/rummetrics/{AppMonitorName}/metrics",
+    paginator = list()
+  )
+  input <- .cloudwatchrum$update_rum_metric_definition_input(AppMonitorName = AppMonitorName, Destination = Destination, DestinationArn = DestinationArn, MetricDefinition = MetricDefinition, MetricDefinitionId = MetricDefinitionId)
+  output <- .cloudwatchrum$update_rum_metric_definition_output()
+  config <- get_config()
+  svc <- .cloudwatchrum$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchrum$operations$update_rum_metric_definition <- cloudwatchrum_update_rum_metric_definition

@@ -9,11 +9,11 @@ resourcegroups_group_resources(Group, ResourceArns)
 \arguments{
 \item{Group}{[required] The name or the ARN of the resource group to add resources to.}
 
-\item{ResourceArns}{[required] The list of ARNs for resources to be added to the group.}
+\item{ResourceArns}{[required] The list of ARNs of the resources to be added to the group.}
 }
 \description{
 Adds the specified resources to the specified group.
 
-See \url{https://paws-r.github.io/docs/resourcegroups/group_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroups_group_resources/} for full documentation.
 }
 \keyword{internal}

@@ -4,7 +4,12 @@
 \alias{cloudwatchlogs_put_destination}
 \title{Creates or updates a destination}
 \usage{
-cloudwatchlogs_put_destination(destinationName, targetArn, roleArn)
+cloudwatchlogs_put_destination(
+  destinationName,
+  targetArn,
+  roleArn,
+  tags = NULL
+)
 }
 \arguments{
 \item{destinationName}{[required] A name for the destination.}
@@ -14,10 +19,14 @@ events.}
 
 \item{roleArn}{[required] The ARN of an IAM role that grants CloudWatch Logs permissions to call
 the Amazon Kinesis \code{PutRecord} operation on the destination stream.}
+
+\item{tags}{An optional list of key-value pairs to associate with the resource.
+
+For more information about tagging, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}}
 }
 \description{
 Creates or updates a destination. This operation is used only to create destinations for cross-account subscriptions.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/put_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_destination/} for full documentation.
 }
 \keyword{internal}

@@ -10,11 +10,11 @@ ssmincidents_tag_resource(resourceArn, tags)
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the response plan you're adding the
 tags to.}
 
-\item{tags}{[required] A list of tags that you are adding to the response plan.}
+\item{tags}{[required] A list of tags to add to the response plan.}
 }
 \description{
 Adds a tag to a response plan.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_tag_resource/} for full documentation.
 }
 \keyword{internal}

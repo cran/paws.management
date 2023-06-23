@@ -22,7 +22,6 @@ servicecatalog_disassociate_service_action_from_provisioning_artifact(
 
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -30,6 +29,6 @@ servicecatalog_disassociate_service_action_from_provisioning_artifact(
 \description{
 Disassociates the specified self-service action association from the specified provisioning artifact.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/disassociate_service_action_from_provisioning_artifact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_service_action_from_provisioning_artifact/} for full documentation.
 }
 \keyword{internal}

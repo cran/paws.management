@@ -94,13 +94,13 @@ You can set the value to an empty string, but you can't set it to
 \code{null}. For more information about tagging, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html}{Tagging Organizations resources}
 in the Organizations User Guide.
 
-If any one of the tags is invalid or if you exceed the maximum allowed
+If any one of the tags is not valid or if you exceed the maximum allowed
 number of tags for an account, then the entire request fails and the
 account is not created.}
 }
 \description{
 This action is available if all of the following are true:
 
-See \url{https://paws-r.github.io/docs/organizations/create_gov_cloud_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_create_gov_cloud_account/} for full documentation.
 }
 \keyword{internal}

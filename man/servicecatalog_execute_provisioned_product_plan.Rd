@@ -14,7 +14,6 @@ servicecatalog_execute_provisioned_product_plan(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -28,6 +27,6 @@ returned for each repeated request.}
 \description{
 Provisions or modifies a product based on the resource changes for the specified plan.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/execute_provisioned_product_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_execute_provisioned_product_plan/} for full documentation.
 }
 \keyword{internal}

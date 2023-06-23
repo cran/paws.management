@@ -9,11 +9,11 @@ resiliencehub_untag_resource(resourceArn, tagKeys)
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 
-\item{tagKeys}{[required] The keys of the tags to remove.}
+\item{tagKeys}{[required] The keys of the tags you want to remove.}
 }
 \description{
 Removes one or more tags from a resource.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_untag_resource/} for full documentation.
 }
 \keyword{internal}

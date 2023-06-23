@@ -7,7 +7,7 @@
 appregistry_get_associated_resource(application, resourceType, resource)
 }
 \arguments{
-\item{application}{[required] The name or ID of the application.}
+\item{application}{[required] The name, ID, or ARN of the application.}
 
 \item{resourceType}{[required] The type of resource associated with the application.}
 
@@ -16,6 +16,6 @@ appregistry_get_associated_resource(application, resourceType, resource)
 \description{
 Gets the resource associated with the application.
 
-See \url{https://paws-r.github.io/docs/appregistry/get_associated_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_get_associated_resource/} for full documentation.
 }
 \keyword{internal}

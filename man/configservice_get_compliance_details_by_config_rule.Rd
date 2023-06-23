@@ -16,8 +16,9 @@ configservice_get_compliance_details_by_config_rule(
 
 \item{ComplianceTypes}{Filters the results by compliance.
 
-The allowed values are \code{COMPLIANT}, \code{NON_COMPLIANT}, and
-\code{NOT_APPLICABLE}.}
+\code{INSUFFICIENT_DATA} is a valid \code{ComplianceType} that is returned when an
+Config rule cannot be evaluated. However, \code{INSUFFICIENT_DATA} cannot be
+used as a \code{ComplianceType} for filtering results.}
 
 \item{Limit}{The maximum number of evaluation results returned on each page. The
 default is 10. You cannot specify a number greater than 100. If you
@@ -29,6 +30,6 @@ the next page of results in a paginated response.}
 \description{
 Returns the evaluation results for the specified Config rule. The results indicate which Amazon Web Services resources were evaluated by the rule, when each resource was last evaluated, and whether each resource complies with the rule.
 
-See \url{https://paws-r.github.io/docs/configservice/get_compliance_details_by_config_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_get_compliance_details_by_config_rule/} for full documentation.
 }
 \keyword{internal}

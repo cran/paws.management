@@ -18,7 +18,6 @@ servicecatalog_search_provisioned_products(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -49,6 +48,6 @@ results, use null.}
 \description{
 Gets information about the provisioned products that meet the specified criteria.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/search_provisioned_products.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_search_provisioned_products/} for full documentation.
 }
 \keyword{internal}

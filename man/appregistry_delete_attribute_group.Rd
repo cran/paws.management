@@ -2,18 +2,18 @@
 % Please edit documentation in R/appregistry_operations.R
 \name{appregistry_delete_attribute_group}
 \alias{appregistry_delete_attribute_group}
-\title{Deletes an attribute group, specified either by its attribute group ID
-or name}
+\title{Deletes an attribute group, specified either by its attribute group ID,
+name, or ARN}
 \usage{
 appregistry_delete_attribute_group(attributeGroup)
 }
 \arguments{
-\item{attributeGroup}{[required] The name or ID of the attribute group that holds the attributes to
+\item{attributeGroup}{[required] The name, ID, or ARN of the attribute group that holds the attributes to
 describe the application.}
 }
 \description{
-Deletes an attribute group, specified either by its attribute group ID or name.
+Deletes an attribute group, specified either by its attribute group ID, name, or ARN.
 
-See \url{https://paws-r.github.io/docs/appregistry/delete_attribute_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_delete_attribute_group/} for full documentation.
 }
 \keyword{internal}

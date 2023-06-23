@@ -22,16 +22,16 @@ servicecatalog_create_service_action(
 
 \strong{Name}
 
-The name of the AWS Systems Manager document (SSM document). For
-example, \code{AWS-RestartEC2Instance}.
+The name of the Amazon Web Services Systems Manager document (SSM
+document). For example, \code{AWS-RestartEC2Instance}.
 
 If you are using a shared SSM document, you must provide the ARN instead
 of the name.
 
 \strong{Version}
 
-The AWS Systems Manager automation document version. For example,
-\code{"Version": "1"}
+The Amazon Web Services Systems Manager automation document version. For
+example, \code{"Version": "1"}
 
 \strong{AssumeRole}
 
@@ -53,7 +53,6 @@ For example: \verb{[\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TARGET\\"\}]} or
 
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -65,6 +64,6 @@ returned for each repeated request.}
 \description{
 Creates a self-service action.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/create_service_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_create_service_action/} for full documentation.
 }
 \keyword{internal}

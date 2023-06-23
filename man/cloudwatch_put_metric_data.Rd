@@ -7,7 +7,8 @@
 cloudwatch_put_metric_data(Namespace, MetricData)
 }
 \arguments{
-\item{Namespace}{[required] The namespace for the metric data.
+\item{Namespace}{[required] The namespace for the metric data. You can use ASCII characters for the
+namespace, except for control characters which are not supported.
 
 To avoid conflicts with Amazon Web Services service namespaces, you
 should not specify a namespace that begins with \verb{AWS/}}
@@ -18,6 +19,6 @@ per call.}
 \description{
 Publishes metric data points to Amazon CloudWatch. CloudWatch associates the data points with the specified metric. If the specified metric does not exist, CloudWatch creates the metric. When CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to \code{\link[=cloudwatch_list_metrics]{list_metrics}}.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/put_metric_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_put_metric_data/} for full documentation.
 }
 \keyword{internal}

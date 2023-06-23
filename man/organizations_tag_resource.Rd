@@ -25,12 +25,12 @@ similar to: \verb{p-12abcdefg3 }
 For each tag in the list, you must specify both a tag key and a value.
 The value can be an empty string, but you can't set it to \code{null}.
 
-If any one of the tags is invalid or if you exceed the maximum allowed
+If any one of the tags is not valid or if you exceed the maximum allowed
 number of tags for a resource, then the entire request fails.}
 }
 \description{
 Adds one or more tags to the specified resource.
 
-See \url{https://paws-r.github.io/docs/organizations/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_tag_resource/} for full documentation.
 }
 \keyword{internal}

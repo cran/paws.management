@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Create an alert manager definition.
 #'
-#' See [https://paws-r.github.io/docs/prometheusservice/create_alert_manager_definition.html](https://paws-r.github.io/docs/prometheusservice/create_alert_manager_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_create_alert_manager_definition/](https://www.paws-r-sdk.com/docs/prometheusservice_create_alert_manager_definition/) for full documentation.
 #'
 #' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
 #' idempotency of the request.
@@ -35,12 +35,45 @@ prometheusservice_create_alert_manager_definition <- function(clientToken = NULL
 }
 .prometheusservice$operations$create_alert_manager_definition <- prometheusservice_create_alert_manager_definition
 
+#' Create logging configuration
+#'
+#' @description
+#' Create logging configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_create_logging_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_create_logging_configuration/) for full documentation.
+#'
+#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
+#' idempotency of the request.
+#' @param logGroupArn &#91;required&#93; The ARN of the CW log group to which the vended log data will be
+#' published.
+#' @param workspaceId &#91;required&#93; The ID of the workspace to vend logs to.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_create_logging_configuration
+prometheusservice_create_logging_configuration <- function(clientToken = NULL, logGroupArn, workspaceId) {
+  op <- new_operation(
+    name = "CreateLoggingConfiguration",
+    http_method = "POST",
+    http_path = "/workspaces/{workspaceId}/logging",
+    paginator = list()
+  )
+  input <- .prometheusservice$create_logging_configuration_input(clientToken = clientToken, logGroupArn = logGroupArn, workspaceId = workspaceId)
+  output <- .prometheusservice$create_logging_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$create_logging_configuration <- prometheusservice_create_logging_configuration
+
 #' Create a rule group namespace
 #'
 #' @description
 #' Create a rule group namespace.
 #'
-#' See [https://paws-r.github.io/docs/prometheusservice/create_rule_groups_namespace.html](https://paws-r.github.io/docs/prometheusservice/create_rule_groups_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_create_rule_groups_namespace/](https://www.paws-r-sdk.com/docs/prometheusservice_create_rule_groups_namespace/) for full documentation.
 #'
 #' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
 #' idempotency of the request.
@@ -74,7 +107,7 @@ prometheusservice_create_rule_groups_namespace <- function(clientToken = NULL, d
 #' @description
 #' Creates a new AMP workspace.
 #'
-#' See [https://paws-r.github.io/docs/prometheusservice/create_workspace.html](https://paws-r.github.io/docs/prometheusservice/create_workspace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_create_workspace/](https://www.paws-r-sdk.com/docs/prometheusservice_create_workspace/) for full documentation.
 #'
 #' @param alias An optional user-assigned alias for this workspace. This alias is for
 #' user reference and does not need to be unique.
@@ -107,7 +140,7 @@ prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL,
 #' @description
 #' Deletes an alert manager definition.
 #'
-#' See [https://paws-r.github.io/docs/prometheusservice/delete_alert_manager_definition.html](https://paws-r.github.io/docs/prometheusservice/delete_alert_manager_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_delete_alert_manager_definition/](https://www.paws-r-sdk.com/docs/prometheusservice_delete_alert_manager_definition/) for full documentation.
 #'
 #' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
 #' idempotency of the request.
@@ -133,12 +166,43 @@ prometheusservice_delete_alert_manager_definition <- function(clientToken = NULL
 }
 .prometheusservice$operations$delete_alert_manager_definition <- prometheusservice_delete_alert_manager_definition
 
+#' Delete logging configuration
+#'
+#' @description
+#' Delete logging configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_delete_logging_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_delete_logging_configuration/) for full documentation.
+#'
+#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
+#' idempotency of the request.
+#' @param workspaceId &#91;required&#93; The ID of the workspace to vend logs to.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_delete_logging_configuration
+prometheusservice_delete_logging_configuration <- function(clientToken = NULL, workspaceId) {
+  op <- new_operation(
+    name = "DeleteLoggingConfiguration",
+    http_method = "DELETE",
+    http_path = "/workspaces/{workspaceId}/logging",
+    paginator = list()
+  )
+  input <- .prometheusservice$delete_logging_configuration_input(clientToken = clientToken, workspaceId = workspaceId)
+  output <- .prometheusservice$delete_logging_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$delete_logging_configuration <- prometheusservice_delete_logging_configuration
+
 #' Delete a rule groups namespace
 #'
 #' @description
 #' Delete a rule groups namespace.
 #'
-#' See [https://paws-r.github.io/docs/prometheusservice/delete_rule_groups_namespace.html](https://paws-r.github.io/docs/prometheusservice/delete_rule_groups_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_delete_rule_groups_namespace/](https://www.paws-r-sdk.com/docs/prometheusservice_delete_rule_groups_namespace/) for full documentation.
 #'
 #' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
 #' idempotency of the request.
@@ -170,7 +234,7 @@ prometheusservice_delete_rule_groups_namespace <- function(clientToken = NULL, n
 #' @description
 #' Deletes an AMP workspace.
 #'
-#' See [https://paws-r.github.io/docs/prometheusservice/delete_workspace.html](https://paws-r.github.io/docs/prometheusservice/delete_workspace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_delete_workspace/](https://www.paws-r-sdk.com/docs/prometheusservice_delete_workspace/) for full documentation.
 #'
 #' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
 #' idempotency of the request.
@@ -201,7 +265,7 @@ prometheusservice_delete_workspace <- function(clientToken = NULL, workspaceId) 
 #' @description
 #' Describes an alert manager definition.
 #'
-#' See [https://paws-r.github.io/docs/prometheusservice/describe_alert_manager_definition.html](https://paws-r.github.io/docs/prometheusservice/describe_alert_manager_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_describe_alert_manager_definition/](https://www.paws-r-sdk.com/docs/prometheusservice_describe_alert_manager_definition/) for full documentation.
 #'
 #' @param workspaceId &#91;required&#93; The ID of the workspace to describe.
 #'
@@ -225,12 +289,41 @@ prometheusservice_describe_alert_manager_definition <- function(workspaceId) {
 }
 .prometheusservice$operations$describe_alert_manager_definition <- prometheusservice_describe_alert_manager_definition
 
+#' Describes logging configuration
+#'
+#' @description
+#' Describes logging configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_describe_logging_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_describe_logging_configuration/) for full documentation.
+#'
+#' @param workspaceId &#91;required&#93; The ID of the workspace to vend logs to.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_describe_logging_configuration
+prometheusservice_describe_logging_configuration <- function(workspaceId) {
+  op <- new_operation(
+    name = "DescribeLoggingConfiguration",
+    http_method = "GET",
+    http_path = "/workspaces/{workspaceId}/logging",
+    paginator = list()
+  )
+  input <- .prometheusservice$describe_logging_configuration_input(workspaceId = workspaceId)
+  output <- .prometheusservice$describe_logging_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$describe_logging_configuration <- prometheusservice_describe_logging_configuration
+
 #' Describe a rule groups namespace
 #'
 #' @description
 #' Describe a rule groups namespace.
 #'
-#' See [https://paws-r.github.io/docs/prometheusservice/describe_rule_groups_namespace.html](https://paws-r.github.io/docs/prometheusservice/describe_rule_groups_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_describe_rule_groups_namespace/](https://www.paws-r-sdk.com/docs/prometheusservice_describe_rule_groups_namespace/) for full documentation.
 #'
 #' @param name &#91;required&#93; The rule groups namespace.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to describe.
@@ -260,7 +353,7 @@ prometheusservice_describe_rule_groups_namespace <- function(name, workspaceId) 
 #' @description
 #' Describes an existing AMP workspace.
 #'
-#' See [https://paws-r.github.io/docs/prometheusservice/describe_workspace.html](https://paws-r.github.io/docs/prometheusservice/describe_workspace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_describe_workspace/](https://www.paws-r-sdk.com/docs/prometheusservice_describe_workspace/) for full documentation.
 #'
 #' @param workspaceId &#91;required&#93; The ID of the workspace to describe.
 #'
@@ -289,7 +382,7 @@ prometheusservice_describe_workspace <- function(workspaceId) {
 #' @description
 #' Lists rule groups namespaces.
 #'
-#' See [https://paws-r.github.io/docs/prometheusservice/list_rule_groups_namespaces.html](https://paws-r.github.io/docs/prometheusservice/list_rule_groups_namespaces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_list_rule_groups_namespaces/](https://www.paws-r-sdk.com/docs/prometheusservice_list_rule_groups_namespaces/) for full documentation.
 #'
 #' @param maxResults Maximum results to return in response (default=100, maximum=1000).
 #' @param name Optional filter for rule groups namespace name. Only the rule groups
@@ -324,7 +417,7 @@ prometheusservice_list_rule_groups_namespaces <- function(maxResults = NULL, nam
 #' @description
 #' Lists the tags you have assigned to the resource.
 #'
-#' See [https://paws-r.github.io/docs/prometheusservice/list_tags_for_resource.html](https://paws-r.github.io/docs/prometheusservice/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/prometheusservice_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
 #'
@@ -353,7 +446,7 @@ prometheusservice_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Lists all AMP workspaces, including workspaces being created or deleted.
 #'
-#' See [https://paws-r.github.io/docs/prometheusservice/list_workspaces.html](https://paws-r.github.io/docs/prometheusservice/list_workspaces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_list_workspaces/](https://www.paws-r-sdk.com/docs/prometheusservice_list_workspaces/) for full documentation.
 #'
 #' @param alias Optional filter for workspace alias. Only the workspaces with aliases
 #' that begin with this value will be returned.
@@ -387,7 +480,7 @@ prometheusservice_list_workspaces <- function(alias = NULL, maxResults = NULL, n
 #' @description
 #' Update an alert manager definition.
 #'
-#' See [https://paws-r.github.io/docs/prometheusservice/put_alert_manager_definition.html](https://paws-r.github.io/docs/prometheusservice/put_alert_manager_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_put_alert_manager_definition/](https://www.paws-r-sdk.com/docs/prometheusservice_put_alert_manager_definition/) for full documentation.
 #'
 #' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
 #' idempotency of the request.
@@ -419,7 +512,7 @@ prometheusservice_put_alert_manager_definition <- function(clientToken = NULL, d
 #' @description
 #' Update a rule groups namespace.
 #'
-#' See [https://paws-r.github.io/docs/prometheusservice/put_rule_groups_namespace.html](https://paws-r.github.io/docs/prometheusservice/put_rule_groups_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_put_rule_groups_namespace/](https://www.paws-r-sdk.com/docs/prometheusservice_put_rule_groups_namespace/) for full documentation.
 #'
 #' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
 #' idempotency of the request.
@@ -452,7 +545,7 @@ prometheusservice_put_rule_groups_namespace <- function(clientToken = NULL, data
 #' @description
 #' Creates tags for the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/prometheusservice/tag_resource.html](https://paws-r.github.io/docs/prometheusservice/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_tag_resource/](https://www.paws-r-sdk.com/docs/prometheusservice_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
 #' @param tags &#91;required&#93; 
@@ -482,7 +575,7 @@ prometheusservice_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Deletes tags from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/prometheusservice/untag_resource.html](https://paws-r.github.io/docs/prometheusservice/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_untag_resource/](https://www.paws-r-sdk.com/docs/prometheusservice_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
 #' @param tagKeys &#91;required&#93; One or more tag keys
@@ -507,12 +600,45 @@ prometheusservice_untag_resource <- function(resourceArn, tagKeys) {
 }
 .prometheusservice$operations$untag_resource <- prometheusservice_untag_resource
 
+#' Update logging configuration
+#'
+#' @description
+#' Update logging configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_update_logging_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_update_logging_configuration/) for full documentation.
+#'
+#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
+#' idempotency of the request.
+#' @param logGroupArn &#91;required&#93; The ARN of the CW log group to which the vended log data will be
+#' published.
+#' @param workspaceId &#91;required&#93; The ID of the workspace to vend logs to.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_update_logging_configuration
+prometheusservice_update_logging_configuration <- function(clientToken = NULL, logGroupArn, workspaceId) {
+  op <- new_operation(
+    name = "UpdateLoggingConfiguration",
+    http_method = "PUT",
+    http_path = "/workspaces/{workspaceId}/logging",
+    paginator = list()
+  )
+  input <- .prometheusservice$update_logging_configuration_input(clientToken = clientToken, logGroupArn = logGroupArn, workspaceId = workspaceId)
+  output <- .prometheusservice$update_logging_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$update_logging_configuration <- prometheusservice_update_logging_configuration
+
 #' Updates an AMP workspace alias
 #'
 #' @description
 #' Updates an AMP workspace alias.
 #'
-#' See [https://paws-r.github.io/docs/prometheusservice/update_workspace_alias.html](https://paws-r.github.io/docs/prometheusservice/update_workspace_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_update_workspace_alias/](https://www.paws-r-sdk.com/docs/prometheusservice_update_workspace_alias/) for full documentation.
 #'
 #' @param alias The new alias of the workspace.
 #' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the

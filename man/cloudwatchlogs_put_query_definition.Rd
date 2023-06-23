@@ -12,9 +12,9 @@ cloudwatchlogs_put_query_definition(
 )
 }
 \arguments{
-\item{name}{[required] A name for the query definition. If you are saving a lot of query
-definitions, we recommend that you name them so that you can easily find
-the ones you want by using the first part of the name as a filter in the
+\item{name}{[required] A name for the query definition. If you are saving numerous query
+definitions, we recommend that you name them. This way, you can find the
+ones you want by using the first part of the name as a filter in the
 \code{queryDefinitionNamePrefix} parameter of
 \code{\link[=cloudwatchlogs_describe_query_definitions]{describe_query_definitions}}.}
 
@@ -39,6 +39,6 @@ the updated definition will contain no log groups.}
 \description{
 Creates or updates a query definition for CloudWatch Logs Insights. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html}{Analyzing Log Data with CloudWatch Logs Insights}.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/put_query_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_query_definition/} for full documentation.
 }
 \keyword{internal}

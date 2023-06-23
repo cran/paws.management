@@ -25,12 +25,11 @@ This token is only valid during the termination process. After the
 provisioned product is terminated, subsequent requests to terminate the
 same provisioned product always return \strong{ResourceNotFound}.}
 
-\item{IgnoreErrors}{If set to true, AWS Service Catalog stops managing the specified
-provisioned product even if it cannot delete the underlying resources.}
+\item{IgnoreErrors}{If set to true, Service Catalog stops managing the specified provisioned
+product even if it cannot delete the underlying resources.}
 
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -45,6 +44,6 @@ false.}
 \description{
 Terminates the specified provisioned product.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/terminate_provisioned_product.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_terminate_provisioned_product/} for full documentation.
 }
 \keyword{internal}

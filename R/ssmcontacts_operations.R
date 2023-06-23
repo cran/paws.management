@@ -9,13 +9,13 @@ NULL
 #' @description
 #' Used to acknowledge an engagement to a contact channel during an incident.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/accept_page.html](https://paws-r.github.io/docs/ssmcontacts/accept_page.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_accept_page/](https://www.paws-r-sdk.com/docs/ssmcontacts_accept_page/) for full documentation.
 #'
 #' @param PageId &#91;required&#93; The Amazon Resource Name (ARN) of the engagement to a contact channel.
 #' @param ContactChannelId The ARN of the contact channel.
 #' @param AcceptType &#91;required&#93; The type indicates if the page was `DELIVERED` or `READ`.
 #' @param Note Information provided by the user when the user acknowledges the page.
-#' @param AcceptCode &#91;required&#93; The accept code is a 6-digit code used to acknowledge the page.
+#' @param AcceptCode &#91;required&#93; A 6-digit code used to acknowledge the page.
 #' @param AcceptCodeValidation An optional field that Incident Manager uses to `ENFORCE` `AcceptCode`
 #' validation when acknowledging an page. Acknowledgement can occur by
 #' replying to a page, or when entering the AcceptCode in the console.
@@ -52,7 +52,7 @@ ssmcontacts_accept_page <- function(PageId, ContactChannelId = NULL, AcceptType,
 #' @description
 #' Activates a contact's contact channel. Incident Manager can't engage a contact until the contact channel has been activated.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/activate_contact_channel.html](https://paws-r.github.io/docs/ssmcontacts/activate_contact_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_activate_contact_channel/](https://www.paws-r-sdk.com/docs/ssmcontacts_activate_contact_channel/) for full documentation.
 #'
 #' @param ContactChannelId &#91;required&#93; The Amazon Resource Name (ARN) of the contact channel.
 #' @param ActivationCode &#91;required&#93; The code sent to the contact channel when it was created in the contact.
@@ -84,7 +84,7 @@ ssmcontacts_activate_contact_channel <- function(ContactChannelId, ActivationCod
 #' @description
 #' Contacts are either the contacts that Incident Manager engages during an incident or the escalation plans that Incident Manager uses to engage contacts in phases during an incident.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/create_contact.html](https://paws-r.github.io/docs/ssmcontacts/create_contact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_create_contact/](https://www.paws-r-sdk.com/docs/ssmcontacts_create_contact/) for full documentation.
 #'
 #' @param Alias &#91;required&#93; The short name to quickly identify a contact or escalation plan. The
 #' contact alias must be unique and identifiable.
@@ -125,7 +125,7 @@ ssmcontacts_create_contact <- function(Alias, DisplayName = NULL, Type, Plan, Ta
 #' @description
 #' A contact channel is the method that Incident Manager uses to engage your contact.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/create_contact_channel.html](https://paws-r.github.io/docs/ssmcontacts/create_contact_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_create_contact_channel/](https://www.paws-r-sdk.com/docs/ssmcontacts_create_contact_channel/) for full documentation.
 #'
 #' @param ContactId &#91;required&#93; The Amazon Resource Name (ARN) of the contact you are adding the contact
 #' channel to.
@@ -172,13 +172,104 @@ ssmcontacts_create_contact_channel <- function(ContactId, Name, Type, DeliveryAd
 }
 .ssmcontacts$operations$create_contact_channel <- ssmcontacts_create_contact_channel
 
+#' Creates a rotation in an on-call schedule
+#'
+#' @description
+#' Creates a rotation in an on-call schedule.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_create_rotation/](https://www.paws-r-sdk.com/docs/ssmcontacts_create_rotation/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the rotation.
+#' @param ContactIds &#91;required&#93; The Amazon Resource Names (ARNs) of the contacts to add to the rotation.
+#' 
+#' The order that you list the contacts in is their shift order in the
+#' rotation schedule. To change the order of the contact's shifts, use the
+#' [`update_rotation`][ssmcontacts_update_rotation] operation.
+#' @param StartTime The date and time that the rotation goes into effect.
+#' @param TimeZoneId &#91;required&#93; The time zone to base the rotation’s activity on in Internet Assigned
+#' Numbers Authority (IANA) format. For example: "America/Los_Angeles",
+#' "UTC", or "Asia/Seoul". For more information, see the [Time Zone
+#' Database](https://www.iana.org/time-zones) on the IANA website.
+#' 
+#' Designators for time zones that don’t support Daylight Savings Time
+#' rules, such as Pacific Standard Time (PST) and Pacific Daylight Time
+#' (PDT), are not supported.
+#' @param Recurrence &#91;required&#93; Information about the rule that specifies when a shift's team members
+#' rotate.
+#' @param Tags Optional metadata to assign to the rotation. Tags enable you to
+#' categorize a resource in different ways, such as by purpose, owner, or
+#' environment. For more information, see [Tagging Incident Manager
+#' resources](https://docs.aws.amazon.com/incident-manager/latest/userguide/tagging.html)
+#' in the *Incident Manager User Guide*.
+#' @param IdempotencyToken A token that ensures that the operation is called only once with the
+#' specified details.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_create_rotation
+ssmcontacts_create_rotation <- function(Name, ContactIds, StartTime = NULL, TimeZoneId, Recurrence, Tags = NULL, IdempotencyToken = NULL) {
+  op <- new_operation(
+    name = "CreateRotation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$create_rotation_input(Name = Name, ContactIds = ContactIds, StartTime = StartTime, TimeZoneId = TimeZoneId, Recurrence = Recurrence, Tags = Tags, IdempotencyToken = IdempotencyToken)
+  output <- .ssmcontacts$create_rotation_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$create_rotation <- ssmcontacts_create_rotation
+
+#' Creates an override for a rotation in an on-call schedule
+#'
+#' @description
+#' Creates an override for a rotation in an on-call schedule.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_create_rotation_override/](https://www.paws-r-sdk.com/docs/ssmcontacts_create_rotation_override/) for full documentation.
+#'
+#' @param RotationId &#91;required&#93; The Amazon Resource Name (ARN) of the rotation to create an override
+#' for.
+#' @param NewContactIds &#91;required&#93; The Amazon Resource Names (ARNs) of the contacts to replace those in the
+#' current on-call rotation with.
+#' 
+#' If you want to include any current team members in the override shift,
+#' you must include their ARNs in the new contact ID list.
+#' @param StartTime &#91;required&#93; The date and time when the override goes into effect.
+#' @param EndTime &#91;required&#93; The date and time when the override ends.
+#' @param IdempotencyToken A token that ensures that the operation is called only once with the
+#' specified details.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_create_rotation_override
+ssmcontacts_create_rotation_override <- function(RotationId, NewContactIds, StartTime, EndTime, IdempotencyToken = NULL) {
+  op <- new_operation(
+    name = "CreateRotationOverride",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$create_rotation_override_input(RotationId = RotationId, NewContactIds = NewContactIds, StartTime = StartTime, EndTime = EndTime, IdempotencyToken = IdempotencyToken)
+  output <- .ssmcontacts$create_rotation_override_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$create_rotation_override <- ssmcontacts_create_rotation_override
+
 #' To no longer receive Incident Manager engagements to a contact channel,
 #' you can deactivate the channel
 #'
 #' @description
 #' To no longer receive Incident Manager engagements to a contact channel, you can deactivate the channel.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/deactivate_contact_channel.html](https://paws-r.github.io/docs/ssmcontacts/deactivate_contact_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_deactivate_contact_channel/](https://www.paws-r-sdk.com/docs/ssmcontacts_deactivate_contact_channel/) for full documentation.
 #'
 #' @param ContactChannelId &#91;required&#93; The Amazon Resource Name (ARN) of the contact channel you're
 #' deactivating.
@@ -208,7 +299,7 @@ ssmcontacts_deactivate_contact_channel <- function(ContactChannelId) {
 #' @description
 #' To remove a contact from Incident Manager, you can delete the contact. Deleting a contact removes them from all escalation plans and related response plans. Deleting an escalation plan removes it from all related response plans. You will have to recreate the contact and its contact channels before you can use it again.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/delete_contact.html](https://paws-r.github.io/docs/ssmcontacts/delete_contact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_delete_contact/](https://www.paws-r-sdk.com/docs/ssmcontacts_delete_contact/) for full documentation.
 #'
 #' @param ContactId &#91;required&#93; The Amazon Resource Name (ARN) of the contact that you're deleting.
 #'
@@ -238,7 +329,7 @@ ssmcontacts_delete_contact <- function(ContactId) {
 #' @description
 #' To no longer receive engagements on a contact channel, you can delete the channel from a contact. Deleting the contact channel removes it from the contact's engagement plan. If you delete the only contact channel for a contact, you won't be able to engage that contact during an incident.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/delete_contact_channel.html](https://paws-r.github.io/docs/ssmcontacts/delete_contact_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_delete_contact_channel/](https://www.paws-r-sdk.com/docs/ssmcontacts_delete_contact_channel/) for full documentation.
 #'
 #' @param ContactChannelId &#91;required&#93; The Amazon Resource Name (ARN) of the contact channel.
 #'
@@ -262,13 +353,73 @@ ssmcontacts_delete_contact_channel <- function(ContactChannelId) {
 }
 .ssmcontacts$operations$delete_contact_channel <- ssmcontacts_delete_contact_channel
 
+#' Deletes a rotation from the system
+#'
+#' @description
+#' Deletes a rotation from the system. If a rotation belongs to more than one on-call schedule, this operation deletes it from all of them.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_delete_rotation/](https://www.paws-r-sdk.com/docs/ssmcontacts_delete_rotation/) for full documentation.
+#'
+#' @param RotationId &#91;required&#93; The Amazon Resource Name (ARN) of the on-call rotation to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_delete_rotation
+ssmcontacts_delete_rotation <- function(RotationId) {
+  op <- new_operation(
+    name = "DeleteRotation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$delete_rotation_input(RotationId = RotationId)
+  output <- .ssmcontacts$delete_rotation_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$delete_rotation <- ssmcontacts_delete_rotation
+
+#' Deletes an existing override for an on-call rotation
+#'
+#' @description
+#' Deletes an existing override for an on-call rotation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_delete_rotation_override/](https://www.paws-r-sdk.com/docs/ssmcontacts_delete_rotation_override/) for full documentation.
+#'
+#' @param RotationId &#91;required&#93; The Amazon Resource Name (ARN) of the rotation that was overridden.
+#' @param RotationOverrideId &#91;required&#93; The Amazon Resource Name (ARN) of the on-call rotation override to
+#' delete.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_delete_rotation_override
+ssmcontacts_delete_rotation_override <- function(RotationId, RotationOverrideId) {
+  op <- new_operation(
+    name = "DeleteRotationOverride",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$delete_rotation_override_input(RotationId = RotationId, RotationOverrideId = RotationOverrideId)
+  output <- .ssmcontacts$delete_rotation_override_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$delete_rotation_override <- ssmcontacts_delete_rotation_override
+
 #' Incident Manager uses engagements to engage contacts and escalation
 #' plans during an incident
 #'
 #' @description
 #' Incident Manager uses engagements to engage contacts and escalation plans during an incident. Use this command to describe the engagement that occurred during an incident.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/describe_engagement.html](https://paws-r.github.io/docs/ssmcontacts/describe_engagement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_describe_engagement/](https://www.paws-r-sdk.com/docs/ssmcontacts_describe_engagement/) for full documentation.
 #'
 #' @param EngagementId &#91;required&#93; The Amazon Resource Name (ARN) of the engagement you want the details
 #' of.
@@ -298,7 +449,7 @@ ssmcontacts_describe_engagement <- function(EngagementId) {
 #' @description
 #' Lists details of the engagement to a contact channel.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/describe_page.html](https://paws-r.github.io/docs/ssmcontacts/describe_page.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_describe_page/](https://www.paws-r-sdk.com/docs/ssmcontacts_describe_page/) for full documentation.
 #'
 #' @param PageId &#91;required&#93; The ID of the engagement to a contact channel.
 #'
@@ -327,7 +478,7 @@ ssmcontacts_describe_page <- function(PageId) {
 #' @description
 #' Retrieves information about the specified contact or escalation plan.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/get_contact.html](https://paws-r.github.io/docs/ssmcontacts/get_contact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_get_contact/](https://www.paws-r-sdk.com/docs/ssmcontacts_get_contact/) for full documentation.
 #'
 #' @param ContactId &#91;required&#93; The Amazon Resource Name (ARN) of the contact or escalation plan.
 #'
@@ -356,7 +507,7 @@ ssmcontacts_get_contact <- function(ContactId) {
 #' @description
 #' List details about a specific contact channel.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/get_contact_channel.html](https://paws-r.github.io/docs/ssmcontacts/get_contact_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_get_contact_channel/](https://www.paws-r-sdk.com/docs/ssmcontacts_get_contact_channel/) for full documentation.
 #'
 #' @param ContactChannelId &#91;required&#93; The Amazon Resource Name (ARN) of the contact channel you want
 #' information about.
@@ -387,7 +538,7 @@ ssmcontacts_get_contact_channel <- function(ContactChannelId) {
 #' @description
 #' Retrieves the resource policies attached to the specified contact or escalation plan.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/get_contact_policy.html](https://paws-r.github.io/docs/ssmcontacts/get_contact_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_get_contact_policy/](https://www.paws-r-sdk.com/docs/ssmcontacts_get_contact_policy/) for full documentation.
 #'
 #' @param ContactArn &#91;required&#93; The Amazon Resource Name (ARN) of the contact or escalation plan.
 #'
@@ -411,12 +562,74 @@ ssmcontacts_get_contact_policy <- function(ContactArn) {
 }
 .ssmcontacts$operations$get_contact_policy <- ssmcontacts_get_contact_policy
 
+#' Retrieves information about an on-call rotation
+#'
+#' @description
+#' Retrieves information about an on-call rotation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_get_rotation/](https://www.paws-r-sdk.com/docs/ssmcontacts_get_rotation/) for full documentation.
+#'
+#' @param RotationId &#91;required&#93; The Amazon Resource Name (ARN) of the on-call rotation to retrieve
+#' information about.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_get_rotation
+ssmcontacts_get_rotation <- function(RotationId) {
+  op <- new_operation(
+    name = "GetRotation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$get_rotation_input(RotationId = RotationId)
+  output <- .ssmcontacts$get_rotation_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$get_rotation <- ssmcontacts_get_rotation
+
+#' Retrieves information about an override to an on-call rotation
+#'
+#' @description
+#' Retrieves information about an override to an on-call rotation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_get_rotation_override/](https://www.paws-r-sdk.com/docs/ssmcontacts_get_rotation_override/) for full documentation.
+#'
+#' @param RotationId &#91;required&#93; The Amazon Resource Name (ARN) of the overridden rotation to retrieve
+#' information about.
+#' @param RotationOverrideId &#91;required&#93; The Amazon Resource Name (ARN) of the on-call rotation override to
+#' retrieve information about.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_get_rotation_override
+ssmcontacts_get_rotation_override <- function(RotationId, RotationOverrideId) {
+  op <- new_operation(
+    name = "GetRotationOverride",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$get_rotation_override_input(RotationId = RotationId, RotationOverrideId = RotationOverrideId)
+  output <- .ssmcontacts$get_rotation_override_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$get_rotation_override <- ssmcontacts_get_rotation_override
+
 #' Lists all contact channels for the specified contact
 #'
 #' @description
 #' Lists all contact channels for the specified contact.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/list_contact_channels.html](https://paws-r.github.io/docs/ssmcontacts/list_contact_channels.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_list_contact_channels/](https://www.paws-r-sdk.com/docs/ssmcontacts_list_contact_channels/) for full documentation.
 #'
 #' @param ContactId &#91;required&#93; The Amazon Resource Name (ARN) of the contact.
 #' @param NextToken The pagination token to continue to the next page of results.
@@ -447,7 +660,7 @@ ssmcontacts_list_contact_channels <- function(ContactId, NextToken = NULL, MaxRe
 #' @description
 #' Lists all contacts and escalation plans in Incident Manager.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/list_contacts.html](https://paws-r.github.io/docs/ssmcontacts/list_contacts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_list_contacts/](https://www.paws-r-sdk.com/docs/ssmcontacts_list_contacts/) for full documentation.
 #'
 #' @param NextToken The pagination token to continue to the next page of results.
 #' @param MaxResults The maximum number of contacts and escalation plans per page of results.
@@ -481,7 +694,7 @@ ssmcontacts_list_contacts <- function(NextToken = NULL, MaxResults = NULL, Alias
 #' @description
 #' Lists all engagements that have happened in an incident.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/list_engagements.html](https://paws-r.github.io/docs/ssmcontacts/list_engagements.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_list_engagements/](https://www.paws-r-sdk.com/docs/ssmcontacts_list_engagements/) for full documentation.
 #'
 #' @param NextToken The pagination token to continue to the next page of results.
 #' @param MaxResults The maximum number of engagements per page of results.
@@ -515,7 +728,7 @@ ssmcontacts_list_engagements <- function(NextToken = NULL, MaxResults = NULL, In
 #' @description
 #' Lists all of the engagements to contact channels that have been acknowledged.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/list_page_receipts.html](https://paws-r.github.io/docs/ssmcontacts/list_page_receipts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_list_page_receipts/](https://www.paws-r-sdk.com/docs/ssmcontacts_list_page_receipts/) for full documentation.
 #'
 #' @param PageId &#91;required&#93; The Amazon Resource Name (ARN) of the engagement to a specific contact
 #' channel.
@@ -542,12 +755,43 @@ ssmcontacts_list_page_receipts <- function(PageId, NextToken = NULL, MaxResults 
 }
 .ssmcontacts$operations$list_page_receipts <- ssmcontacts_list_page_receipts
 
+#' Returns the resolution path of an engagement
+#'
+#' @description
+#' Returns the resolution path of an engagement. For example, the escalation plan engaged in an incident might target an on-call schedule that includes several contacts in a rotation, but just one contact on-call when the incident starts. The resolution path indicates the hierarchy of *escalation plan \> on-call schedule \> contact*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_list_page_resolutions/](https://www.paws-r-sdk.com/docs/ssmcontacts_list_page_resolutions/) for full documentation.
+#'
+#' @param NextToken A token to start the list. Use this token to get the next set of
+#' results.
+#' @param PageId &#91;required&#93; The Amazon Resource Name (ARN) of the contact engaged for the incident.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_list_page_resolutions
+ssmcontacts_list_page_resolutions <- function(NextToken = NULL, PageId) {
+  op <- new_operation(
+    name = "ListPageResolutions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$list_page_resolutions_input(NextToken = NextToken, PageId = PageId)
+  output <- .ssmcontacts$list_page_resolutions_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$list_page_resolutions <- ssmcontacts_list_page_resolutions
+
 #' Lists the engagements to a contact's contact channels
 #'
 #' @description
 #' Lists the engagements to a contact's contact channels.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/list_pages_by_contact.html](https://paws-r.github.io/docs/ssmcontacts/list_pages_by_contact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_list_pages_by_contact/](https://www.paws-r-sdk.com/docs/ssmcontacts_list_pages_by_contact/) for full documentation.
 #'
 #' @param ContactId &#91;required&#93; The Amazon Resource Name (ARN) of the contact you are retrieving
 #' engagements for.
@@ -581,7 +825,7 @@ ssmcontacts_list_pages_by_contact <- function(ContactId, NextToken = NULL, MaxRe
 #' @description
 #' Lists the engagements to contact channels that occurred by engaging a contact.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/list_pages_by_engagement.html](https://paws-r.github.io/docs/ssmcontacts/list_pages_by_engagement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_list_pages_by_engagement/](https://www.paws-r-sdk.com/docs/ssmcontacts_list_pages_by_engagement/) for full documentation.
 #'
 #' @param EngagementId &#91;required&#93; The Amazon Resource Name (ARN) of the engagement.
 #' @param NextToken The pagination token to continue to the next page of results.
@@ -608,12 +852,170 @@ ssmcontacts_list_pages_by_engagement <- function(EngagementId, NextToken = NULL,
 }
 .ssmcontacts$operations$list_pages_by_engagement <- ssmcontacts_list_pages_by_engagement
 
+#' Returns a list of shifts based on rotation configuration parameters
+#'
+#' @description
+#' Returns a list of shifts based on rotation configuration parameters.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_list_preview_rotation_shifts/](https://www.paws-r-sdk.com/docs/ssmcontacts_list_preview_rotation_shifts/) for full documentation.
+#'
+#' @param RotationStartTime The date and time a rotation would begin. The first shift is calculated
+#' from this date and time.
+#' @param StartTime Used to filter the range of calculated shifts before sending the
+#' response back to the user.
+#' @param EndTime &#91;required&#93; The date and time a rotation shift would end.
+#' @param Members &#91;required&#93; The contacts that would be assigned to a rotation.
+#' @param TimeZoneId &#91;required&#93; The time zone the rotation’s activity would be based on, in Internet
+#' Assigned Numbers Authority (IANA) format. For example:
+#' "America/Los_Angeles", "UTC", or "Asia/Seoul".
+#' @param Recurrence &#91;required&#93; Information about how long a rotation would last before restarting at
+#' the beginning of the shift order.
+#' @param Overrides Information about changes that would be made in a rotation override.
+#' @param NextToken A token to start the list. This token is used to get the next set of
+#' results.
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that can be specified in a subsequent call to get the
+#' next set of results.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_list_preview_rotation_shifts
+ssmcontacts_list_preview_rotation_shifts <- function(RotationStartTime = NULL, StartTime = NULL, EndTime, Members, TimeZoneId, Recurrence, Overrides = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListPreviewRotationShifts",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$list_preview_rotation_shifts_input(RotationStartTime = RotationStartTime, StartTime = StartTime, EndTime = EndTime, Members = Members, TimeZoneId = TimeZoneId, Recurrence = Recurrence, Overrides = Overrides, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .ssmcontacts$list_preview_rotation_shifts_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$list_preview_rotation_shifts <- ssmcontacts_list_preview_rotation_shifts
+
+#' Retrieves a list of overrides currently specified for an on-call
+#' rotation
+#'
+#' @description
+#' Retrieves a list of overrides currently specified for an on-call rotation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_list_rotation_overrides/](https://www.paws-r-sdk.com/docs/ssmcontacts_list_rotation_overrides/) for full documentation.
+#'
+#' @param RotationId &#91;required&#93; The Amazon Resource Name (ARN) of the rotation to retrieve information
+#' about.
+#' @param StartTime &#91;required&#93; The date and time for the beginning of a time range for listing
+#' overrides.
+#' @param EndTime &#91;required&#93; The date and time for the end of a time range for listing overrides.
+#' @param NextToken A token to start the list. Use this token to get the next set of
+#' results.
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_list_rotation_overrides
+ssmcontacts_list_rotation_overrides <- function(RotationId, StartTime, EndTime, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListRotationOverrides",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$list_rotation_overrides_input(RotationId = RotationId, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .ssmcontacts$list_rotation_overrides_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$list_rotation_overrides <- ssmcontacts_list_rotation_overrides
+
+#' Returns a list of shifts generated by an existing rotation in the system
+#'
+#' @description
+#' Returns a list of shifts generated by an existing rotation in the system.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_list_rotation_shifts/](https://www.paws-r-sdk.com/docs/ssmcontacts_list_rotation_shifts/) for full documentation.
+#'
+#' @param RotationId &#91;required&#93; The Amazon Resource Name (ARN) of the rotation to retrieve shift
+#' information about.
+#' @param StartTime The date and time for the beginning of the time range to list shifts
+#' for.
+#' @param EndTime &#91;required&#93; The date and time for the end of the time range to list shifts for.
+#' @param NextToken A token to start the list. Use this token to get the next set of
+#' results.
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_list_rotation_shifts
+ssmcontacts_list_rotation_shifts <- function(RotationId, StartTime = NULL, EndTime, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListRotationShifts",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$list_rotation_shifts_input(RotationId = RotationId, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .ssmcontacts$list_rotation_shifts_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$list_rotation_shifts <- ssmcontacts_list_rotation_shifts
+
+#' Retrieves a list of on-call rotations
+#'
+#' @description
+#' Retrieves a list of on-call rotations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_list_rotations/](https://www.paws-r-sdk.com/docs/ssmcontacts_list_rotations/) for full documentation.
+#'
+#' @param RotationNamePrefix A filter to include rotations in list results based on their common
+#' prefix. For example, entering prod returns a list of all rotation names
+#' that begin with `prod`, such as `production` and `prod-1`.
+#' @param NextToken A token to start the list. Use this token to get the next set of
+#' results.
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_list_rotations
+ssmcontacts_list_rotations <- function(RotationNamePrefix = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListRotations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$list_rotations_input(RotationNamePrefix = RotationNamePrefix, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .ssmcontacts$list_rotations_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$list_rotations <- ssmcontacts_list_rotations
+
 #' Lists the tags of an escalation plan or contact
 #'
 #' @description
 #' Lists the tags of an escalation plan or contact.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/list_tags_for_resource.html](https://paws-r.github.io/docs/ssmcontacts/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/ssmcontacts_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the contact or escalation plan.
 #'
@@ -642,7 +1044,7 @@ ssmcontacts_list_tags_for_resource <- function(ResourceARN) {
 #' @description
 #' Adds a resource policy to the specified contact or escalation plan. The resource policy is used to share the contact or escalation plan using Resource Access Manager (RAM). For more information about cross-account sharing, see [Setting up cross-account functionality](https://docs.aws.amazon.com/incident-manager/latest/userguide/).
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/put_contact_policy.html](https://paws-r.github.io/docs/ssmcontacts/put_contact_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_put_contact_policy/](https://www.paws-r-sdk.com/docs/ssmcontacts_put_contact_policy/) for full documentation.
 #'
 #' @param ContactArn &#91;required&#93; The Amazon Resource Name (ARN) of the contact or escalation plan.
 #' @param Policy &#91;required&#93; Details of the resource policy.
@@ -672,7 +1074,7 @@ ssmcontacts_put_contact_policy <- function(ContactArn, Policy) {
 #' @description
 #' Sends an activation code to a contact channel. The contact can use this code to activate the contact channel in the console or with the `ActivateChannel` operation. Incident Manager can't engage a contact channel until it has been activated.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/send_activation_code.html](https://paws-r.github.io/docs/ssmcontacts/send_activation_code.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_send_activation_code/](https://www.paws-r-sdk.com/docs/ssmcontacts_send_activation_code/) for full documentation.
 #'
 #' @param ContactChannelId &#91;required&#93; The Amazon Resource Name (ARN) of the contact channel.
 #'
@@ -701,7 +1103,7 @@ ssmcontacts_send_activation_code <- function(ContactChannelId) {
 #' @description
 #' Starts an engagement to a contact or escalation plan. The engagement engages each contact specified in the incident.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/start_engagement.html](https://paws-r.github.io/docs/ssmcontacts/start_engagement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_start_engagement/](https://www.paws-r-sdk.com/docs/ssmcontacts_start_engagement/) for full documentation.
 #'
 #' @param ContactId &#91;required&#93; The Amazon Resource Name (ARN) of the contact being engaged.
 #' @param Sender &#91;required&#93; The user that started the engagement.
@@ -743,7 +1145,7 @@ ssmcontacts_start_engagement <- function(ContactId, Sender, Subject, Content, Pu
 #' @description
 #' Stops an engagement before it finishes the final stage of the escalation plan or engagement plan. Further contacts aren't engaged.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/stop_engagement.html](https://paws-r.github.io/docs/ssmcontacts/stop_engagement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_stop_engagement/](https://www.paws-r-sdk.com/docs/ssmcontacts_stop_engagement/) for full documentation.
 #'
 #' @param EngagementId &#91;required&#93; The Amazon Resource Name (ARN) of the engagement.
 #' @param Reason The reason that you're stopping the engagement.
@@ -773,7 +1175,7 @@ ssmcontacts_stop_engagement <- function(EngagementId, Reason = NULL) {
 #' @description
 #' Tags a contact or escalation plan. You can tag only contacts and escalation plans in the first region of your replication set.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/tag_resource.html](https://paws-r.github.io/docs/ssmcontacts/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_tag_resource/](https://www.paws-r-sdk.com/docs/ssmcontacts_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the contact or escalation plan.
 #' @param Tags &#91;required&#93; A list of tags that you are adding to the contact or escalation plan.
@@ -803,7 +1205,7 @@ ssmcontacts_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Removes tags from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/untag_resource.html](https://paws-r.github.io/docs/ssmcontacts/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_untag_resource/](https://www.paws-r-sdk.com/docs/ssmcontacts_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the contact or escalation plan.
 #' @param TagKeys &#91;required&#93; The key of the tag that you want to remove.
@@ -833,7 +1235,7 @@ ssmcontacts_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Updates the contact or escalation plan specified.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/update_contact.html](https://paws-r.github.io/docs/ssmcontacts/update_contact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_update_contact/](https://www.paws-r-sdk.com/docs/ssmcontacts_update_contact/) for full documentation.
 #'
 #' @param ContactId &#91;required&#93; The Amazon Resource Name (ARN) of the contact or escalation plan you're
 #' updating.
@@ -867,7 +1269,7 @@ ssmcontacts_update_contact <- function(ContactId, DisplayName = NULL, Plan = NUL
 #' @description
 #' Updates a contact's contact channel.
 #'
-#' See [https://paws-r.github.io/docs/ssmcontacts/update_contact_channel.html](https://paws-r.github.io/docs/ssmcontacts/update_contact_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_update_contact_channel/](https://www.paws-r-sdk.com/docs/ssmcontacts_update_contact_channel/) for full documentation.
 #'
 #' @param ContactChannelId &#91;required&#93; The Amazon Resource Name (ARN) of the contact channel you want to
 #' update.
@@ -894,3 +1296,49 @@ ssmcontacts_update_contact_channel <- function(ContactChannelId, Name = NULL, De
   return(response)
 }
 .ssmcontacts$operations$update_contact_channel <- ssmcontacts_update_contact_channel
+
+#' Updates the information specified for an on-call rotation
+#'
+#' @description
+#' Updates the information specified for an on-call rotation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmcontacts_update_rotation/](https://www.paws-r-sdk.com/docs/ssmcontacts_update_rotation/) for full documentation.
+#'
+#' @param RotationId &#91;required&#93; The Amazon Resource Name (ARN) of the rotation to update.
+#' @param ContactIds The Amazon Resource Names (ARNs) of the contacts to include in the
+#' updated rotation.
+#' 
+#' The order in which you list the contacts is their shift order in the
+#' rotation schedule.
+#' @param StartTime The date and time the rotation goes into effect.
+#' @param TimeZoneId The time zone to base the updated rotation’s activity on, in Internet
+#' Assigned Numbers Authority (IANA) format. For example:
+#' "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see
+#' the [Time Zone Database](https://www.iana.org/time-zones) on the IANA
+#' website.
+#' 
+#' Designators for time zones that don’t support Daylight Savings Time
+#' Rules, such as Pacific Standard Time (PST) and Pacific Daylight Time
+#' (PDT), aren't supported.
+#' @param Recurrence &#91;required&#93; Information about how long the updated rotation lasts before restarting
+#' at the beginning of the shift order.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_update_rotation
+ssmcontacts_update_rotation <- function(RotationId, ContactIds = NULL, StartTime = NULL, TimeZoneId = NULL, Recurrence) {
+  op <- new_operation(
+    name = "UpdateRotation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$update_rotation_input(RotationId = RotationId, ContactIds = ContactIds, StartTime = StartTime, TimeZoneId = TimeZoneId, Recurrence = Recurrence)
+  output <- .ssmcontacts$update_rotation_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$update_rotation <- ssmcontacts_update_rotation

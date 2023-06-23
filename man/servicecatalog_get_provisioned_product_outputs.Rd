@@ -18,7 +18,6 @@ servicecatalog_get_provisioned_product_outputs(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -40,6 +39,6 @@ results, use null.}
 \description{
 This API takes either a \code{ProvisonedProductId} or a \code{ProvisionedProductName}, along with a list of one or more output keys, and responds with the key/value pairs of those outputs.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/get_provisioned_product_outputs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_get_provisioned_product_outputs/} for full documentation.
 }
 \keyword{internal}

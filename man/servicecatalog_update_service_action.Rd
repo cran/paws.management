@@ -23,7 +23,6 @@ servicecatalog_update_service_action(
 
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -31,6 +30,6 @@ servicecatalog_update_service_action(
 \description{
 Updates a self-service action.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/update_service_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_update_service_action/} for full documentation.
 }
 \keyword{internal}

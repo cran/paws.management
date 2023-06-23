@@ -7,11 +7,11 @@
 auditmanager_get_settings(attribute)
 }
 \arguments{
-\item{attribute}{[required] The list of \code{SettingAttribute} enum values.}
+\item{attribute}{[required] The list of setting attribute enum values.}
 }
 \description{
 Returns the settings for the specified Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_settings/} for full documentation.
 }
 \keyword{internal}
