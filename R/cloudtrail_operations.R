@@ -154,6 +154,17 @@ cloudtrail_create_channel <- function(Name, Source, Destinations, Tags = NULL) {
 #' organization in Organizations.
 #' @param RetentionPeriod The retention period of the event data store, in days. You can set a
 #' retention period of up to 2557 days, the equivalent of seven years.
+#' CloudTrail Lake determines whether to retain an event by checking if the
+#' `eventTime` of the event is within the specified retention period. For
+#' example, if you set a retention period of 90 days, CloudTrail will
+#' remove events when the `eventTime` is older than 90 days.
+#' 
+#' If you plan to copy trail events to this event data store, we recommend
+#' that you consider both the age of the events that you want to copy as
+#' well as how long you want to keep the copied events in your event data
+#' store. For example, if you copy trail events that are 5 years old and
+#' specify a retention period of 7 years, the event data store will retain
+#' those events for two years.
 #' @param TerminationProtectionEnabled Specifies whether termination protection is enabled for the event data
 #' store. If termination protection is enabled, you cannot delete the event
 #' data store until termination protection is disabled.
@@ -232,7 +243,7 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #' -   Not be in IP address format (for example, 192.168.5.4)
 #' @param S3BucketName &#91;required&#93; Specifies the name of the Amazon S3 bucket designated for publishing log
 #' files. See [Amazon S3 Bucket Naming
-#' Requirements](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html).
+#' Requirements](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
 #' @param S3KeyPrefix Specifies the Amazon S3 key prefix that comes after the name of the
 #' bucket you have designated for log file delivery. For more information,
 #' see [Finding Your CloudTrail Log
@@ -540,7 +551,7 @@ cloudtrail_describe_trails <- function(trailNameList = NULL, includeShadowTrails
     name = "DescribeTrails",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "trailList")
   )
   input <- .cloudtrail$describe_trails_input(trailNameList = trailNameList, includeShadowTrails = includeShadowTrails)
   output <- .cloudtrail$describe_trails_output()
@@ -756,7 +767,7 @@ cloudtrail_get_query_results <- function(EventDataStore = NULL, QueryId, NextTok
     name = "GetQueryResults",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken")
   )
   input <- .cloudtrail$get_query_results_input(EventDataStore = EventDataStore, QueryId = QueryId, NextToken = NextToken, MaxQueryResults = MaxQueryResults)
   output <- .cloudtrail$get_query_results_output()
@@ -886,7 +897,7 @@ cloudtrail_list_channels <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListChannels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudtrail$list_channels_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudtrail$list_channels_output()
@@ -917,7 +928,7 @@ cloudtrail_list_event_data_stores <- function(NextToken = NULL, MaxResults = NUL
     name = "ListEventDataStores",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudtrail$list_event_data_stores_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudtrail$list_event_data_stores_output()
@@ -948,7 +959,7 @@ cloudtrail_list_import_failures <- function(ImportId, MaxResults = NULL, NextTok
     name = "ListImportFailures",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Failures")
   )
   input <- .cloudtrail$list_import_failures_input(ImportId = ImportId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudtrail$list_import_failures_output()
@@ -981,7 +992,7 @@ cloudtrail_list_imports <- function(MaxResults = NULL, Destination = NULL, Impor
     name = "ListImports",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Imports")
   )
   input <- .cloudtrail$list_imports_input(MaxResults = MaxResults, Destination = Destination, ImportStatus = ImportStatus, NextToken = NextToken)
   output <- .cloudtrail$list_imports_output()
@@ -1017,7 +1028,7 @@ cloudtrail_list_public_keys <- function(StartTime = NULL, EndTime = NULL, NextTo
     name = "ListPublicKeys",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "PublicKeyList")
   )
   input <- .cloudtrail$list_public_keys_input(StartTime = StartTime, EndTime = EndTime, NextToken = NextToken)
   output <- .cloudtrail$list_public_keys_output()
@@ -1058,7 +1069,7 @@ cloudtrail_list_queries <- function(EventDataStore, NextToken = NULL, MaxResults
     name = "ListQueries",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudtrail$list_queries_input(EventDataStore = EventDataStore, NextToken = NextToken, MaxResults = MaxResults, StartTime = StartTime, EndTime = EndTime, QueryStatus = QueryStatus)
   output <- .cloudtrail$list_queries_output()
@@ -1099,7 +1110,7 @@ cloudtrail_list_tags <- function(ResourceIdList, NextToken = NULL) {
     name = "ListTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ResourceTagList")
   )
   input <- .cloudtrail$list_tags_input(ResourceIdList = ResourceIdList, NextToken = NextToken)
   output <- .cloudtrail$list_tags_output()
@@ -1132,7 +1143,7 @@ cloudtrail_list_trails <- function(NextToken = NULL) {
     name = "ListTrails",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Trails")
   )
   input <- .cloudtrail$list_trails_input(NextToken = NextToken)
   output <- .cloudtrail$list_trails_output()
@@ -1180,7 +1191,7 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
     name = "LookupEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events")
   )
   input <- .cloudtrail$lookup_events_input(LookupAttributes = LookupAttributes, StartTime = StartTime, EndTime = EndTime, EventCategory = EventCategory, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudtrail$lookup_events_output()
@@ -1729,7 +1740,18 @@ cloudtrail_update_channel <- function(Channel, Destinations = NULL, Name = NULL)
 #' or only from the Region in which it was created.
 #' @param OrganizationEnabled Specifies whether an event data store collects events logged for an
 #' organization in Organizations.
-#' @param RetentionPeriod The retention period, in days.
+#' @param RetentionPeriod The retention period of the event data store, in days. You can set a
+#' retention period of up to 2557 days, the equivalent of seven years.
+#' CloudTrail Lake determines whether to retain an event by checking if the
+#' `eventTime` of the event is within the specified retention period. For
+#' example, if you set a retention period of 90 days, CloudTrail will
+#' remove events when the `eventTime` is older than 90 days.
+#' 
+#' If you decrease the retention period of an event data store, CloudTrail
+#' will remove any events with an `eventTime` older than the new retention
+#' period. For example, if the previous retention period was 365 days and
+#' you decrease it to 100 days, CloudTrail will remove events with an
+#' `eventTime` older than 100 days.
 #' @param TerminationProtectionEnabled Indicates that termination protection is enabled and the event data
 #' store cannot be automatically deleted.
 #' @param KmsKeyId Specifies the KMS key ID to use to encrypt the events delivered by
@@ -1808,7 +1830,7 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #' @param S3BucketName Specifies the name of the Amazon S3 bucket designated for publishing log
 #' files. See [Amazon S3 Bucket Naming
-#' Requirements](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html).
+#' Requirements](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
 #' @param S3KeyPrefix Specifies the Amazon S3 key prefix that comes after the name of the
 #' bucket you have designated for log file delivery. For more information,
 #' see [Finding Your CloudTrail Log

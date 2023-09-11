@@ -4,22 +4,47 @@
 \alias{servicequotas}
 \title{Service Quotas}
 \usage{
-servicequotas(config = list())
+servicequotas(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -29,9 +54,9 @@ Operations section.
 }
 \description{
 With Service Quotas, you can view and manage your quotas easily as your
-AWS workloads grow. Quotas, also referred to as limits, are the maximum
-number of resources that you can create in your AWS account. For more
-information, see the \href{https://docs.aws.amazon.com/servicequotas/latest/userguide/}{Service Quotas User Guide}.
+Amazon Web Services workloads grow. Quotas, also referred to as limits,
+are the maximum number of resources that you can create in your Amazon
+Web Services account. For more information, see the \href{https://docs.aws.amazon.com/servicequotas/latest/userguide/}{Service Quotas User Guide}.
 }
 \section{Service syntax}{
 
@@ -51,8 +76,20 @@ information, see the \href{https://docs.aws.amazon.com/servicequotas/latest/user
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -68,12 +105,12 @@ information, see the \href{https://docs.aws.amazon.com/servicequotas/latest/user
 \link[=servicequotas_get_requested_service_quota_change]{get_requested_service_quota_change} \tab Retrieves information about the specified quota increase request\cr
 \link[=servicequotas_get_service_quota]{get_service_quota} \tab Retrieves the applied quota value for the specified quota\cr
 \link[=servicequotas_get_service_quota_increase_request_from_template]{get_service_quota_increase_request_from_template} \tab Retrieves information about the specified quota increase request in your quota request template\cr
-\link[=servicequotas_list_aws_default_service_quotas]{list_aws_default_service_quotas} \tab Lists the default values for the quotas for the specified AWS service\cr
-\link[=servicequotas_list_requested_service_quota_change_history]{list_requested_service_quota_change_history} \tab Retrieves the quota increase requests for the specified service\cr
+\link[=servicequotas_list_aws_default_service_quotas]{list_aws_default_service_quotas} \tab Lists the default values for the quotas for the specified Amazon Web Service\cr
+\link[=servicequotas_list_requested_service_quota_change_history]{list_requested_service_quota_change_history} \tab Retrieves the quota increase requests for the specified Amazon Web Service\cr
 \link[=servicequotas_list_requested_service_quota_change_history_by_quota]{list_requested_service_quota_change_history_by_quota} \tab Retrieves the quota increase requests for the specified quota\cr
 \link[=servicequotas_list_service_quota_increase_requests_in_template]{list_service_quota_increase_requests_in_template} \tab Lists the quota increase requests in the specified quota request template\cr
-\link[=servicequotas_list_service_quotas]{list_service_quotas} \tab Lists the applied quota values for the specified AWS service\cr
-\link[=servicequotas_list_services]{list_services} \tab Lists the names and codes for the services integrated with Service Quotas\cr
+\link[=servicequotas_list_service_quotas]{list_service_quotas} \tab Lists the applied quota values for the specified Amazon Web Service\cr
+\link[=servicequotas_list_services]{list_services} \tab Lists the names and codes for the Amazon Web Services integrated with Service Quotas\cr
 \link[=servicequotas_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags assigned to the specified applied quota\cr
 \link[=servicequotas_put_service_quota_increase_request_into_template]{put_service_quota_increase_request_into_template} \tab Adds a quota increase request to your quota request template\cr
 \link[=servicequotas_request_service_quota_increase]{request_service_quota_increase} \tab Submits a quota increase request for the specified quota\cr

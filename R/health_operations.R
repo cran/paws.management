@@ -34,7 +34,7 @@ health_describe_affected_accounts_for_organization <- function(eventArn, nextTok
     name = "DescribeAffectedAccountsForOrganization",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "eventScopeCode"), output_token = "nextToken", result_key = "affectedAccounts")
   )
   input <- .health$describe_affected_accounts_for_organization_input(eventArn = eventArn, nextToken = nextToken, maxResults = maxResults)
   output <- .health$describe_affected_accounts_for_organization_output()
@@ -74,7 +74,7 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
     name = "DescribeAffectedEntities",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "entities")
   )
   input <- .health$describe_affected_entities_input(filter = filter, locale = locale, nextToken = nextToken, maxResults = maxResults)
   output <- .health$describe_affected_entities_output()
@@ -95,7 +95,7 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
 #'
 #' See [https://www.paws-r-sdk.com/docs/health_describe_affected_entities_for_organization/](https://www.paws-r-sdk.com/docs/health_describe_affected_entities_for_organization/) for full documentation.
 #'
-#' @param organizationEntityFilters &#91;required&#93; A JSON set of elements including the `awsAccountId` and the `eventArn`.
+#' @param organizationEntityFilters A JSON set of elements including the `awsAccountId` and the `eventArn`.
 #' @param locale The locale (language) to return information in. English (en) is the
 #' default and the only supported value at this time.
 #' @param nextToken If the results of a search are large, only a portion of the results are
@@ -105,18 +105,20 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
 #' returned, the response does not contain a pagination token value.
 #' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
 #' inclusive.
+#' @param organizationEntityAccountFilters A JSON set of elements including the `awsAccountId`, `eventArn` and a
+#' set of `statusCodes`.
 #'
 #' @keywords internal
 #'
 #' @rdname health_describe_affected_entities_for_organization
-health_describe_affected_entities_for_organization <- function(organizationEntityFilters, locale = NULL, nextToken = NULL, maxResults = NULL) {
+health_describe_affected_entities_for_organization <- function(organizationEntityFilters = NULL, locale = NULL, nextToken = NULL, maxResults = NULL, organizationEntityAccountFilters = NULL) {
   op <- new_operation(
     name = "DescribeAffectedEntitiesForOrganization",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "failedSet"), output_token = "nextToken", result_key = "entities")
   )
-  input <- .health$describe_affected_entities_for_organization_input(organizationEntityFilters = organizationEntityFilters, locale = locale, nextToken = nextToken, maxResults = maxResults)
+  input <- .health$describe_affected_entities_for_organization_input(organizationEntityFilters = organizationEntityFilters, locale = locale, nextToken = nextToken, maxResults = maxResults, organizationEntityAccountFilters = organizationEntityAccountFilters)
   output <- .health$describe_affected_entities_for_organization_output()
   config <- get_config()
   svc <- .health$service(config)
@@ -145,7 +147,7 @@ health_describe_entity_aggregates <- function(eventArns = NULL) {
     name = "DescribeEntityAggregates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "entityAggregates")
   )
   input <- .health$describe_entity_aggregates_input(eventArns = eventArns)
   output <- .health$describe_entity_aggregates_output()
@@ -156,6 +158,39 @@ health_describe_entity_aggregates <- function(eventArns = NULL) {
   return(response)
 }
 .health$operations$describe_entity_aggregates <- health_describe_entity_aggregates
+
+#' Returns a list of entity aggregates for your Organizations that are
+#' affected by each of the specified events
+#'
+#' @description
+#' Returns a list of entity aggregates for your Organizations that are affected by each of the specified events.
+#'
+#' See [https://www.paws-r-sdk.com/docs/health_describe_entity_aggregates_for_organization/](https://www.paws-r-sdk.com/docs/health_describe_entity_aggregates_for_organization/) for full documentation.
+#'
+#' @param eventArns &#91;required&#93; A list of event ARNs (unique identifiers). For example:
+#' `"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"`
+#' @param awsAccountIds A list of 12-digit Amazon Web Services account numbers that contains the
+#' affected entities.
+#'
+#' @keywords internal
+#'
+#' @rdname health_describe_entity_aggregates_for_organization
+health_describe_entity_aggregates_for_organization <- function(eventArns, awsAccountIds = NULL) {
+  op <- new_operation(
+    name = "DescribeEntityAggregatesForOrganization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .health$describe_entity_aggregates_for_organization_input(eventArns = eventArns, awsAccountIds = awsAccountIds)
+  output <- .health$describe_entity_aggregates_for_organization_output()
+  config <- get_config()
+  svc <- .health$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.health$operations$describe_entity_aggregates_for_organization <- health_describe_entity_aggregates_for_organization
 
 #' Returns the number of events of each event type (issue, scheduled
 #' change, and account notification)
@@ -183,7 +218,7 @@ health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxR
     name = "DescribeEventAggregates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "eventAggregates")
   )
   input <- .health$describe_event_aggregates_input(filter = filter, aggregateField = aggregateField, maxResults = maxResults, nextToken = nextToken)
   output <- .health$describe_event_aggregates_output()
@@ -289,7 +324,7 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
     name = "DescribeEventTypes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "eventTypes")
   )
   input <- .health$describe_event_types_input(filter = filter, locale = locale, nextToken = nextToken, maxResults = maxResults)
   output <- .health$describe_event_types_output()
@@ -327,7 +362,7 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
     name = "DescribeEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "events")
   )
   input <- .health$describe_events_input(filter = filter, nextToken = nextToken, maxResults = maxResults, locale = locale)
   output <- .health$describe_events_output()
@@ -366,7 +401,7 @@ health_describe_events_for_organization <- function(filter = NULL, nextToken = N
     name = "DescribeEventsForOrganization",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "events")
   )
   input <- .health$describe_events_for_organization_input(filter = filter, nextToken = nextToken, maxResults = maxResults, locale = locale)
   output <- .health$describe_events_for_organization_output()

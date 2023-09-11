@@ -247,7 +247,7 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' 
 #' For more information about supported Amazon EC2 platforms, see
 #' [Supported
-#' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html).
+#' Platforms](https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/).
 #' @param Tags A map that contains tag keys and tag values to attach to an AWS OpsWorks
 #' for Chef Automate or AWS OpsWorks for Puppet Enterprise server.
 #' 
@@ -399,7 +399,7 @@ opsworkscm_describe_backups <- function(BackupId = NULL, ServerName = NULL, Next
     name = "DescribeBackups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Backups")
   )
   input <- .opsworkscm$describe_backups_input(BackupId = BackupId, ServerName = ServerName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$describe_backups_output()
@@ -442,7 +442,7 @@ opsworkscm_describe_events <- function(ServerName, NextToken = NULL, MaxResults 
     name = "DescribeEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerEvents")
   )
   input <- .opsworkscm$describe_events_input(ServerName = ServerName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$describe_events_output()
@@ -508,7 +508,7 @@ opsworkscm_describe_servers <- function(ServerName = NULL, NextToken = NULL, Max
     name = "DescribeServers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Servers")
   )
   input <- .opsworkscm$describe_servers_input(ServerName = ServerName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$describe_servers_output()
@@ -648,7 +648,7 @@ opsworkscm_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, Max
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
   )
   input <- .opsworkscm$list_tags_for_resource_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$list_tags_for_resource_output()

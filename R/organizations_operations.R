@@ -208,13 +208,13 @@ organizations_close_account <- function(AccountId) {
 #' For more information about how to use this role to access the member
 #' account, see the following links:
 #' 
-#' -   [Accessing and Administering the Member Accounts in Your
-#'     Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
+#' -   [Creating the OrganizationAccountAccessRole in an invited member
+#'     account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
 #'     in the *Organizations User Guide*
 #' 
-#' -   Steps 2 and 3 in [Tutorial: Delegate Access Across Amazon Web
-#'     Services accounts Using IAM
-#'     Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
+#' -   Steps 2 and 3 in [IAM Tutorial: Delegate access across Amazon Web
+#'     Services accounts using IAM
+#'     roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
 #'     in the *IAM User Guide*
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) that is used to
@@ -224,9 +224,9 @@ organizations_close_account <- function(AccountId) {
 #' @param IamUserAccessToBilling If set to `ALLOW`, the new account enables IAM users to access account
 #' billing information *if* they have the required permissions. If set to
 #' `DENY`, only the root user of the new account can access account billing
-#' information. For more information, see [Activating Access to the Billing
+#' information. For more information, see [About IAM access to the Billing
 #' and Cost Management
-#' Console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate)
+#' console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate)
 #' in the *Amazon Web Services Billing and Cost Management User Guide*.
 #' 
 #' If you don't specify this parameter, the value defaults to `ALLOW`, and
@@ -323,12 +323,16 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' `OrganizationAccountAccessRole`.
 #' 
 #' For more information about how to use this role to access the member
-#' account, see [Accessing and Administering the Member Accounts in Your
-#' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
-#' in the *Organizations User Guide* and steps 2 and 3 in [Tutorial:
-#' Delegate Access Across Amazon Web Services accounts Using IAM
-#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
-#' in the *IAM User Guide.*
+#' account, see the following links:
+#' 
+#' -   [Creating the OrganizationAccountAccessRole in an invited member
+#'     account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
+#'     in the *Organizations User Guide*
+#' 
+#' -   Steps 2 and 3 in [IAM Tutorial: Delegate access across Amazon Web
+#'     Services accounts using IAM
+#'     roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
+#'     in the *IAM User Guide*
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) that is used to
 #' validate this parameter. The pattern can include uppercase letters,
@@ -338,9 +342,9 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' enables IAM users to access account billing information *if* they have
 #' the required permissions. If set to `DENY`, only the root user of the
 #' new account can access account billing information. For more
-#' information, see [Activating Access to the Billing and Cost Management
-#' Console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate)
-#' in the *Amazon Web Services Billing and Cost Management User Guide.*
+#' information, see [About IAM access to the Billing and Cost Management
+#' console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate)
+#' in the *Amazon Web Services Billing and Cost Management User Guide*.
 #' 
 #' If you don't specify this parameter, the value defaults to `ALLOW`, and
 #' IAM users and roles with the required permissions can access billing
@@ -396,7 +400,7 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 #'     consolidated to and paid by the management account. For more
 #'     information, see [Consolidated
 #'     billing](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only)
-#'     in the *Organizations User Guide.*
+#'     in the *Organizations User Guide*.
 #' 
 #'     The consolidated billing feature subset isn't available for
 #'     organizations in the Amazon Web Services GovCloud (US) Region.
@@ -406,7 +410,7 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 #'     policy type to any member account in the organization. For more
 #'     information, see [All
 #'     features](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all)
-#'     in the *Organizations User Guide.*
+#'     in the *Organizations User Guide*.
 #'
 #' @keywords internal
 #'
@@ -1201,7 +1205,7 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
 #' Enables all features in an organization
 #'
 #' @description
-#' Enables all features in an organization. This enables the use of organization policies that can restrict the services and actions that can be called in each account. Until you enable all features, you have access only to consolidated billing, and you can't use any of the advanced account administration features that Organizations supports. For more information, see [Enabling All Features in Your Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html) in the *Organizations User Guide.*
+#' Enables all features in an organization. This enables the use of organization policies that can restrict the services and actions that can be called in each account. Until you enable all features, you have access only to consolidated billing, and you can't use any of the advanced account administration features that Organizations supports. For more information, see [Enabling all features in your organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html) in the *Organizations User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_enable_all_features/](https://www.paws-r-sdk.com/docs/organizations_enable_all_features/) for full documentation.
 #'
@@ -1398,7 +1402,7 @@ organizations_list_aws_service_access_for_organization <- function(NextToken = N
     name = "ListAWSServiceAccessForOrganization",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_aws_service_access_for_organization_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_aws_service_access_for_organization_output()
@@ -1441,7 +1445,7 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListAccounts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_accounts_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_accounts_output()
@@ -1487,7 +1491,7 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
     name = "ListAccountsForParent",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_accounts_for_parent_input(ParentId = ParentId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_accounts_for_parent_output()
@@ -1545,7 +1549,7 @@ organizations_list_children <- function(ParentId, ChildType, NextToken = NULL, M
     name = "ListChildren",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_children_input(ParentId = ParentId, ChildType = ChildType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_children_output()
@@ -1591,7 +1595,7 @@ organizations_list_create_account_status <- function(States = NULL, NextToken = 
     name = "ListCreateAccountStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_create_account_status_input(States = States, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_create_account_status_output()
@@ -1640,7 +1644,7 @@ organizations_list_delegated_administrators <- function(ServicePrincipal = NULL,
     name = "ListDelegatedAdministrators",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DelegatedAdministrators")
   )
   input <- .organizations$list_delegated_administrators_input(ServicePrincipal = ServicePrincipal, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_delegated_administrators_output()
@@ -1686,7 +1690,7 @@ organizations_list_delegated_services_for_account <- function(AccountId, NextTok
     name = "ListDelegatedServicesForAccount",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DelegatedServices")
   )
   input <- .organizations$list_delegated_services_for_account_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_delegated_services_for_account_output()
@@ -1737,7 +1741,7 @@ organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken =
     name = "ListHandshakesForAccount",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_handshakes_for_account_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_handshakes_for_account_output()
@@ -1788,7 +1792,7 @@ organizations_list_handshakes_for_organization <- function(Filter = NULL, NextTo
     name = "ListHandshakesForOrganization",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_handshakes_for_organization_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_handshakes_for_organization_output()
@@ -1845,7 +1849,7 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
     name = "ListOrganizationalUnitsForParent",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_organizational_units_for_parent_input(ParentId = ParentId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_organizational_units_for_parent_output()
@@ -1901,7 +1905,7 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
     name = "ListParents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_parents_input(ChildId = ChildId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_parents_output()
@@ -1955,7 +1959,7 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
     name = "ListPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_policies_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_policies_output()
@@ -2024,7 +2028,7 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
     name = "ListPoliciesForTarget",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_policies_for_target_input(TargetId = TargetId, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_policies_for_target_output()
@@ -2067,7 +2071,7 @@ organizations_list_roots <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListRoots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_roots_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_roots_output()
@@ -2114,7 +2118,7 @@ organizations_list_tags_for_resource <- function(ResourceId, NextToken = NULL) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Tags")
   )
   input <- .organizations$list_tags_for_resource_input(ResourceId = ResourceId, NextToken = NextToken)
   output <- .organizations$list_tags_for_resource_output()
@@ -2164,7 +2168,7 @@ organizations_list_targets_for_policy <- function(PolicyId, NextToken = NULL, Ma
     name = "ListTargetsForPolicy",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_targets_for_policy_input(PolicyId = PolicyId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_targets_for_policy_output()
@@ -2244,9 +2248,9 @@ organizations_move_account <- function(AccountId, SourceParentId, DestinationPar
 #'
 #' @param Content &#91;required&#93; If provided, the new content for the resource policy. The text must be
 #' correctly formatted JSON that complies with the syntax for the resource
-#' policy's type. For more information, see [Service Control Policy
-#' Syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html)
-#' in the *Organizations User Guide.*
+#' policy's type. For more information, see [SCP
+#' syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html)
+#' in the *Organizations User Guide*.
 #' @param Tags A list of tags that you want to attach to the newly created resource
 #' policy. For each tag in the list, you must specify both a tag key and a
 #' value. You can set the value to an empty string, but you can't set it to
@@ -2500,9 +2504,9 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' @param Description If provided, the new description for the policy.
 #' @param Content If provided, the new content for the policy. The text must be correctly
 #' formatted JSON that complies with the syntax for the policy's type. For
-#' more information, see [Service Control Policy
-#' Syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html)
-#' in the *Organizations User Guide.*
+#' more information, see [SCP
+#' syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html)
+#' in the *Organizations User Guide*.
 #'
 #' @keywords internal
 #'

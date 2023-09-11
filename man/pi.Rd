@@ -4,22 +4,42 @@
 \alias{pi}
 \title{AWS Performance Insights}
 \usage{
-pi(config = list())
+pi(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -74,8 +94,20 @@ clusters, go to the \emph{\href{https://docs.aws.amazon.com/documentdb/latest/de
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -83,19 +115,26 @@ clusters, go to the \emph{\href{https://docs.aws.amazon.com/documentdb/latest/de
 \section{Operations}{
 
 \tabular{ll}{
+\link[=pi_create_performance_analysis_report]{create_performance_analysis_report} \tab Creates a new performance analysis report for a specific time period for the DB instance\cr
+\link[=pi_delete_performance_analysis_report]{delete_performance_analysis_report} \tab Deletes a performance analysis report\cr
 \link[=pi_describe_dimension_keys]{describe_dimension_keys} \tab For a specific time period, retrieve the top N dimension keys for a metric\cr
 \link[=pi_get_dimension_key_details]{get_dimension_key_details} \tab Get the attributes of the specified dimension group for a DB instance or data source\cr
+\link[=pi_get_performance_analysis_report]{get_performance_analysis_report} \tab Retrieves the report including the report ID, status, time details, and the insights with recommendations\cr
 \link[=pi_get_resource_metadata]{get_resource_metadata} \tab Retrieve the metadata for different features\cr
 \link[=pi_get_resource_metrics]{get_resource_metrics} \tab Retrieve Performance Insights metrics for a set of data sources over a time period\cr
 \link[=pi_list_available_resource_dimensions]{list_available_resource_dimensions} \tab Retrieve the dimensions that can be queried for each specified metric type on a specified DB instance\cr
-\link[=pi_list_available_resource_metrics]{list_available_resource_metrics} \tab Retrieve metrics of the specified types that can be queried for a specified DB instance
+\link[=pi_list_available_resource_metrics]{list_available_resource_metrics} \tab Retrieve metrics of the specified types that can be queried for a specified DB instance\cr
+\link[=pi_list_performance_analysis_reports]{list_performance_analysis_reports} \tab Lists all the analysis reports created for the DB instance\cr
+\link[=pi_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves all the metadata tags associated with Amazon RDS Performance Insights resource\cr
+\link[=pi_tag_resource]{tag_resource} \tab Adds metadata tags to the Amazon RDS Performance Insights resource\cr
+\link[=pi_untag_resource]{untag_resource} \tab Deletes the metadata tags from the Amazon RDS Performance Insights resource
 }
 }
 
 \examples{
 \dontrun{
 svc <- pi()
-svc$describe_dimension_keys(
+svc$create_performance_analysis_report(
   Foo = 123
 )
 }
