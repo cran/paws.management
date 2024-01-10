@@ -26,7 +26,8 @@ autoscaling_update_auto_scaling_group(
   CapacityRebalance = NULL,
   Context = NULL,
   DesiredCapacityType = NULL,
-  DefaultInstanceWarmup = NULL
+  DefaultInstanceWarmup = NULL,
+  InstanceMaintenancePolicy = NULL
 )
 }
 \arguments{
@@ -132,7 +133,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 \item{DesiredCapacityType}{The unit of measurement for the value specified for desired capacity.
 Amazon EC2 Auto Scaling supports \code{DesiredCapacityType} for
 attribute-based instance type selection only. For more information, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-instance-type-requirements.html}{Creating an Auto Scaling group using attribute-based instance type selection}
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-mixed-instances-group-attribute-based-instance-type-selection.html}{Creating an Auto Scaling group using attribute-based instance type selection}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 By default, Amazon EC2 Auto Scaling specifies \code{units}, which translates
@@ -159,6 +160,9 @@ To remove a value that you previously set, include the property but
 specify \code{-1} for the value. However, we strongly recommend keeping the
 default instance warmup enabled by specifying a value of \code{0} or other
 nominal value.}
+
+\item{InstanceMaintenancePolicy}{An instance maintenance policy. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-maintenance-policy.html}{Set instance maintenance policy}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \description{
 \strong{We strongly recommend that all Auto Scaling groups use launch templates to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2.}

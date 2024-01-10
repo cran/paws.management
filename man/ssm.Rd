@@ -9,32 +9,32 @@ ssm(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
-\item{\strong{credentials}:} {\itemize{
-\item{\strong{creds}:} {\itemize{
-\item{\strong{access_key_id}:} {AWS access key ID}
-\item{\strong{secret_access_key}:} {AWS secret access key}
-\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{credentials}: \itemize{
+\item{\strong{creds}: \itemize{
+\item{\strong{access_key_id}: AWS access key ID}
+\item{\strong{secret_access_key}: AWS secret access key}
+\item{\strong{session_token}: AWS temporary session token}
 }}
-\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-\item{\strong{anonymous}:} {Set anonymous credentials.}
-\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
-\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{profile}: The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}: Set anonymous credentials.}
 }}
-\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
-\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
-\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+\item{\strong{endpoint}: The complete URL to use for the constructed client.}
+\item{\strong{region}: The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}: Immediately close all HTTP connections.}
+\item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}: Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
 
 \item{credentials}{Optional credentials shorthand for the config parameter
 \itemize{
-\item{\strong{creds}:} {\itemize{
-\item{\strong{access_key_id}:} {AWS access key ID}
-\item{\strong{secret_access_key}:} {AWS secret access key}
-\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{creds}: \itemize{
+\item{\strong{access_key_id}: AWS access key ID}
+\item{\strong{secret_access_key}: AWS secret access key}
+\item{\strong{session_token}: AWS temporary session token}
 }}
-\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{profile}: The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}: Set anonymous credentials.}
 }}
 
 \item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
@@ -59,16 +59,16 @@ To get started, see \href{https://docs.aws.amazon.com/systems-manager/latest/use
 \strong{Related resources}
 \itemize{
 \item For information about each of the capabilities that comprise Systems
-Manager, see \href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/}{Systems Manager capabilities}
+Manager, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html#systems-manager-capabilities}{Systems Manager capabilities}
 in the \emph{Amazon Web Services Systems Manager User Guide}.
 \item For details about predefined runbooks for Automation, a capability
-of Amazon Web Services Systems Manager, see the \emph{\href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html}{SystemsManager Automation runbook reference}} .
+of Amazon Web Services Systems Manager, see the \emph{\href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html}{Systems Manager Automation runbook reference}} .
 \item For information about AppConfig, a capability of Systems Manager,
-see the \emph{\href{https://docs.aws.amazon.com/appconfig/latest/userguide/}{AppConfigUser Guide}} and the \emph{
-\href{https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/}{AppConfigAPI Reference}} .
+see the \emph{\href{https://docs.aws.amazon.com/appconfig/latest/userguide/}{AppConfig User Guide}} and the *
+\href{https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/}{AppConfig API Reference}* .
 \item For information about Incident Manager, a capability of Systems
-Manager, see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest/userguide/}{SystemsManager Incident Manager User Guide}} and the \emph{
-\href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}{SystemsManager Incident Manager API Reference}} .
+Manager, see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest/userguide/}{Systems Manager Incident Manager User Guide}} and the *
+\href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}{Systems Manager Incident Manager API Reference}* .
 }
 }
 \section{Service syntax}{
@@ -128,6 +128,7 @@ Manager, see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest
 \link[=ssm_delete_document]{delete_document} \tab Deletes the Amazon Web Services Systems Manager document (SSM document) and all managed node associations to the document\cr
 \link[=ssm_delete_inventory]{delete_inventory} \tab Delete a custom inventory type or the data associated with a custom Inventory type\cr
 \link[=ssm_delete_maintenance_window]{delete_maintenance_window} \tab Deletes a maintenance window\cr
+\link[=ssm_delete_ops_item]{delete_ops_item} \tab Delete an OpsItem\cr
 \link[=ssm_delete_ops_metadata]{delete_ops_metadata} \tab Delete OpsMetadata related to an application\cr
 \link[=ssm_delete_parameter]{delete_parameter} \tab Delete a parameter from the system\cr
 \link[=ssm_delete_parameters]{delete_parameters} \tab Delete a list of parameters\cr

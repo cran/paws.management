@@ -152,8 +152,12 @@ cloudtrail_create_channel <- function(Name, Source, Destinations, Tags = NULL) {
 #' or only from the Region in which the event data store is created.
 #' @param OrganizationEnabled Specifies whether an event data store collects events logged for an
 #' organization in Organizations.
-#' @param RetentionPeriod The retention period of the event data store, in days. You can set a
-#' retention period of up to 2557 days, the equivalent of seven years.
+#' @param RetentionPeriod The retention period of the event data store, in days. If `BillingMode`
+#' is set to `EXTENDABLE_RETENTION_PRICING`, you can set a retention period
+#' of up to 3653 days, the equivalent of 10 years. If `BillingMode` is set
+#' to `FIXED_RETENTION_PRICING`, you can set a retention period of up to
+#' 2557 days, the equivalent of seven years.
+#' 
 #' CloudTrail Lake determines whether to retain an event by checking if the
 #' `eventTime` of the event is within the specified retention period. For
 #' example, if you set a retention period of 90 days, CloudTrail will
@@ -198,18 +202,40 @@ cloudtrail_create_channel <- function(Name, Source, Destinations, Tags = NULL) {
 #' -   `12345678-1234-1234-1234-123456789012`
 #' @param StartIngestion Specifies whether the event data store should start ingesting live
 #' events. The default is true.
+#' @param BillingMode The billing mode for the event data store determines the cost for
+#' ingesting events and the default and maximum retention period for the
+#' event data store.
+#' 
+#' The following are the possible values:
+#' 
+#' -   `EXTENDABLE_RETENTION_PRICING` - This billing mode is generally
+#'     recommended if you want a flexible retention period of up to 3653
+#'     days (about 10 years). The default retention period for this billing
+#'     mode is 366 days.
+#' 
+#' -   `FIXED_RETENTION_PRICING` - This billing mode is recommended if you
+#'     expect to ingest more than 25 TB of event data per month and need a
+#'     retention period of up to 2557 days (about 7 years). The default
+#'     retention period for this billing mode is 2557 days.
+#' 
+#' The default value is `EXTENDABLE_RETENTION_PRICING`.
+#' 
+#' For more information about CloudTrail pricing, see [CloudTrail
+#' Pricing](https://aws.amazon.com/cloudtrail/pricing/) and [Managing
+#' CloudTrail Lake
+#' costs](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-manage-costs.html).
 #'
 #' @keywords internal
 #'
 #' @rdname cloudtrail_create_event_data_store
-cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NULL, MultiRegionEnabled = NULL, OrganizationEnabled = NULL, RetentionPeriod = NULL, TerminationProtectionEnabled = NULL, TagsList = NULL, KmsKeyId = NULL, StartIngestion = NULL) {
+cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NULL, MultiRegionEnabled = NULL, OrganizationEnabled = NULL, RetentionPeriod = NULL, TerminationProtectionEnabled = NULL, TagsList = NULL, KmsKeyId = NULL, StartIngestion = NULL, BillingMode = NULL) {
   op <- new_operation(
     name = "CreateEventDataStore",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudtrail$create_event_data_store_input(Name = Name, AdvancedEventSelectors = AdvancedEventSelectors, MultiRegionEnabled = MultiRegionEnabled, OrganizationEnabled = OrganizationEnabled, RetentionPeriod = RetentionPeriod, TerminationProtectionEnabled = TerminationProtectionEnabled, TagsList = TagsList, KmsKeyId = KmsKeyId, StartIngestion = StartIngestion)
+  input <- .cloudtrail$create_event_data_store_input(Name = Name, AdvancedEventSelectors = AdvancedEventSelectors, MultiRegionEnabled = MultiRegionEnabled, OrganizationEnabled = OrganizationEnabled, RetentionPeriod = RetentionPeriod, TerminationProtectionEnabled = TerminationProtectionEnabled, TagsList = TagsList, KmsKeyId = KmsKeyId, StartIngestion = StartIngestion, BillingMode = BillingMode)
   output <- .cloudtrail$create_event_data_store_output()
   config <- get_config()
   svc <- .cloudtrail$service(config)
@@ -274,6 +300,9 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #' be delivered. You must use a log group that exists in your account.
 #' 
 #' Not required unless you specify `CloudWatchLogsRoleArn`.
+#' 
+#' Only the management account can configure a CloudWatch Logs log group
+#' for an organization trail.
 #' @param CloudWatchLogsRoleArn Specifies the role for the CloudWatch Logs endpoint to assume to write
 #' to a user's log group. You must use a role that exists in your account.
 #' @param KmsKeyId Specifies the KMS key ID to use to encrypt the logs delivered by
@@ -356,7 +385,7 @@ cloudtrail_delete_channel <- function(Channel) {
 #' an event data store ARN
 #'
 #' @description
-#' Disables the event data store specified by `EventDataStore`, which accepts an event data store ARN. After you run [`delete_event_data_store`][cloudtrail_delete_event_data_store], the event data store enters a `PENDING_DELETION` state, and is automatically deleted after a wait period of seven days. `TerminationProtectionEnabled` must be set to `False` on the event data store; this operation cannot work if `TerminationProtectionEnabled` is `True`.
+#' Disables the event data store specified by `EventDataStore`, which accepts an event data store ARN. After you run [`delete_event_data_store`][cloudtrail_delete_event_data_store], the event data store enters a `PENDING_DELETION` state, and is automatically deleted after a wait period of seven days. `TerminationProtectionEnabled` must be set to `False` on the event data store and the `FederationStatus` must be `DISABLED`. You cannot delete an event data store if `TerminationProtectionEnabled` is `True` or the `FederationStatus` is `ENABLED`.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_delete_event_data_store/](https://www.paws-r-sdk.com/docs/cloudtrail_delete_event_data_store/) for full documentation.
 #'
@@ -563,6 +592,71 @@ cloudtrail_describe_trails <- function(trailNameList = NULL, includeShadowTrails
 }
 .cloudtrail$operations$describe_trails <- cloudtrail_describe_trails
 
+#' Disables Lake query federation on the specified event data store
+#'
+#' @description
+#' Disables Lake query federation on the specified event data store. When you disable federation, CloudTrail removes the metadata associated with the federated event data store in the Glue Data Catalog and removes registration for the federation role ARN and event data store in Lake Formation. No CloudTrail Lake data is deleted when you disable federation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudtrail_disable_federation/](https://www.paws-r-sdk.com/docs/cloudtrail_disable_federation/) for full documentation.
+#'
+#' @param EventDataStore &#91;required&#93; The ARN (or ID suffix of the ARN) of the event data store for which you
+#' want to disable Lake query federation.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_disable_federation
+cloudtrail_disable_federation <- function(EventDataStore) {
+  op <- new_operation(
+    name = "DisableFederation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudtrail$disable_federation_input(EventDataStore = EventDataStore)
+  output <- .cloudtrail$disable_federation_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$disable_federation <- cloudtrail_disable_federation
+
+#' Enables Lake query federation on the specified event data store
+#'
+#' @description
+#' Enables Lake query federation on the specified event data store. Federating an event data store lets you view the metadata associated with the event data store in the Glue [Data Catalog](https://docs.aws.amazon.com/glue/latest/dg/components-overview.html#data-catalog-intro) and run SQL queries against your event data using Amazon Athena. The table metadata stored in the Glue Data Catalog lets the Athena query engine know how to find, read, and process the data that you want to query.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudtrail_enable_federation/](https://www.paws-r-sdk.com/docs/cloudtrail_enable_federation/) for full documentation.
+#'
+#' @param EventDataStore &#91;required&#93; The ARN (or ID suffix of the ARN) of the event data store for which you
+#' want to enable Lake query federation.
+#' @param FederationRoleArn &#91;required&#93; The ARN of the federation role to use for the event data store. Amazon
+#' Web Services services like Lake Formation use this federation role to
+#' access data for the federated event data store. The federation role must
+#' exist in your account and provide the [required minimum
+#' permissions](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-federation.html#query-federation-permissions-role).
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_enable_federation
+cloudtrail_enable_federation <- function(EventDataStore, FederationRoleArn) {
+  op <- new_operation(
+    name = "EnableFederation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudtrail$enable_federation_input(EventDataStore = EventDataStore, FederationRoleArn = FederationRoleArn)
+  output <- .cloudtrail$enable_federation_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$enable_federation <- cloudtrail_enable_federation
+
 #' Returns information about a specific channel
 #'
 #' @description
@@ -700,14 +794,14 @@ cloudtrail_get_import <- function(ImportId) {
 .cloudtrail$operations$get_import <- cloudtrail_get_import
 
 #' Describes the settings for the Insights event selectors that you
-#' configured for your trail
+#' configured for your trail or event data store
 #'
 #' @description
-#' Describes the settings for the Insights event selectors that you configured for your trail. [`get_insight_selectors`][cloudtrail_get_insight_selectors] shows if CloudTrail Insights event logging is enabled on the trail, and if it is, which insight types are enabled. If you run [`get_insight_selectors`][cloudtrail_get_insight_selectors] on a trail that does not have Insights events enabled, the operation throws the exception `InsightNotEnabledException`
+#' Describes the settings for the Insights event selectors that you configured for your trail or event data store. [`get_insight_selectors`][cloudtrail_get_insight_selectors] shows if CloudTrail Insights event logging is enabled on the trail or event data store, and if it is, which Insights types are enabled. If you run [`get_insight_selectors`][cloudtrail_get_insight_selectors] on a trail or event data store that does not have Insights events enabled, the operation throws the exception `InsightNotEnabledException`
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_get_insight_selectors/](https://www.paws-r-sdk.com/docs/cloudtrail_get_insight_selectors/) for full documentation.
 #'
-#' @param TrailName &#91;required&#93; Specifies the name of the trail or trail ARN. If you specify a trail
+#' @param TrailName Specifies the name of the trail or trail ARN. If you specify a trail
 #' name, the string must meet the following requirements:
 #' 
 #' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
@@ -725,18 +819,24 @@ cloudtrail_get_import <- function(ImportId) {
 #' If you specify a trail ARN, it must be in the format:
 #' 
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
+#' 
+#' You cannot use this parameter with the `EventDataStore` parameter.
+#' @param EventDataStore Specifies the ARN (or ID suffix of the ARN) of the event data store for
+#' which you want to get Insights selectors.
+#' 
+#' You cannot use this parameter with the `TrailName` parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudtrail_get_insight_selectors
-cloudtrail_get_insight_selectors <- function(TrailName) {
+cloudtrail_get_insight_selectors <- function(TrailName = NULL, EventDataStore = NULL) {
   op <- new_operation(
     name = "GetInsightSelectors",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudtrail$get_insight_selectors_input(TrailName = TrailName)
+  input <- .cloudtrail$get_insight_selectors_input(TrailName = TrailName, EventDataStore = EventDataStore)
   output <- .cloudtrail$get_insight_selectors_output()
   config <- get_config()
   svc <- .cloudtrail$service(config)
@@ -1159,7 +1259,7 @@ cloudtrail_list_trails <- function(NextToken = NULL) {
 #' captured by CloudTrail
 #'
 #' @description
-#' Looks up [management events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-management-events) or [CloudTrail Insights events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-insights-events) that are captured by CloudTrail. You can look up events that occurred in a Region within the last 90 days. Lookup supports the following attributes for management events:
+#' Looks up [management events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-management-events) or [CloudTrail Insights events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-insights-events) that are captured by CloudTrail. You can look up events that occurred in a Region within the last 90 days.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_lookup_events/](https://www.paws-r-sdk.com/docs/cloudtrail_lookup_events/) for full documentation.
 #'
@@ -1265,18 +1365,22 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 .cloudtrail$operations$put_event_selectors <- cloudtrail_put_event_selectors
 
 #' Lets you enable Insights event logging by specifying the Insights
-#' selectors that you want to enable on an existing trail
+#' selectors that you want to enable on an existing trail or event data
+#' store
 #'
 #' @description
-#' Lets you enable Insights event logging by specifying the Insights selectors that you want to enable on an existing trail. You also use [`put_insight_selectors`][cloudtrail_put_insight_selectors] to turn off Insights event logging, by passing an empty list of insight types. The valid Insights event types in this release are `ApiErrorRateInsight` and `ApiCallRateInsight`.
+#' Lets you enable Insights event logging by specifying the Insights selectors that you want to enable on an existing trail or event data store. You also use [`put_insight_selectors`][cloudtrail_put_insight_selectors] to turn off Insights event logging, by passing an empty list of Insights types. The valid Insights event types are `ApiErrorRateInsight` and `ApiCallRateInsight`.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_put_insight_selectors/](https://www.paws-r-sdk.com/docs/cloudtrail_put_insight_selectors/) for full documentation.
 #'
-#' @param TrailName &#91;required&#93; The name of the CloudTrail trail for which you want to change or add
+#' @param TrailName The name of the CloudTrail trail for which you want to change or add
 #' Insights selectors.
-#' @param InsightSelectors &#91;required&#93; A JSON string that contains the insight types you want to log on a
-#' trail. `ApiCallRateInsight` and `ApiErrorRateInsight` are valid Insight
-#' types.
+#' 
+#' You cannot use this parameter with the `EventDataStore` and
+#' `InsightsDestination` parameters.
+#' @param InsightSelectors &#91;required&#93; A JSON string that contains the Insights types you want to log on a
+#' trail or event data store. `ApiCallRateInsight` and
+#' `ApiErrorRateInsight` are valid Insight types.
 #' 
 #' The `ApiCallRateInsight` Insights type analyzes write-only management
 #' API calls that are aggregated per minute against a baseline API call
@@ -1285,18 +1389,30 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 #' The `ApiErrorRateInsight` Insights type analyzes management API calls
 #' that result in error codes. The error is shown if the API call is
 #' unsuccessful.
+#' @param EventDataStore The ARN (or ID suffix of the ARN) of the source event data store for
+#' which you want to change or add Insights selectors. To enable Insights
+#' on an event data store, you must provide both the `EventDataStore` and
+#' `InsightsDestination` parameters.
+#' 
+#' You cannot use this parameter with the `TrailName` parameter.
+#' @param InsightsDestination The ARN (or ID suffix of the ARN) of the destination event data store
+#' that logs Insights events. To enable Insights on an event data store,
+#' you must provide both the `EventDataStore` and `InsightsDestination`
+#' parameters.
+#' 
+#' You cannot use this parameter with the `TrailName` parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudtrail_put_insight_selectors
-cloudtrail_put_insight_selectors <- function(TrailName, InsightSelectors) {
+cloudtrail_put_insight_selectors <- function(TrailName = NULL, InsightSelectors, EventDataStore = NULL, InsightsDestination = NULL) {
   op <- new_operation(
     name = "PutInsightSelectors",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudtrail$put_insight_selectors_input(TrailName = TrailName, InsightSelectors = InsightSelectors)
+  input <- .cloudtrail$put_insight_selectors_input(TrailName = TrailName, InsightSelectors = InsightSelectors, EventDataStore = EventDataStore, InsightsDestination = InsightsDestination)
   output <- .cloudtrail$put_insight_selectors_output()
   config <- get_config()
   svc <- .cloudtrail$service(config)
@@ -1355,7 +1471,7 @@ cloudtrail_put_resource_policy <- function(ResourceArn, ResourcePolicy) {
 #' administrator
 #'
 #' @description
-#' Registers an organization’s member account as the CloudTrail delegated administrator.
+#' Registers an organization’s member account as the CloudTrail [delegated administrator](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-delegated-administrator.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_register_organization_delegated_admin/](https://www.paws-r-sdk.com/docs/cloudtrail_register_organization_delegated_admin/) for full documentation.
 #'
@@ -1726,7 +1842,7 @@ cloudtrail_update_channel <- function(Channel, Destinations = NULL, Name = NULL)
 #' Updates an event data store
 #'
 #' @description
-#' Updates an event data store. The required `EventDataStore` value is an ARN or the ID portion of the ARN. Other parameters are optional, but at least one optional parameter must be specified, or CloudTrail throws an error. `RetentionPeriod` is in days, and valid values are integers between 90 and 2557. By default, `TerminationProtection` is enabled.
+#' Updates an event data store. The required `EventDataStore` value is an ARN or the ID portion of the ARN. Other parameters are optional, but at least one optional parameter must be specified, or CloudTrail throws an error. `RetentionPeriod` is in days, and valid values are integers between 7 and 3653 if the `BillingMode` is set to `EXTENDABLE_RETENTION_PRICING`, or between 7 and 2557 if `BillingMode` is set to `FIXED_RETENTION_PRICING`. By default, `TerminationProtection` is enabled.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_update_event_data_store/](https://www.paws-r-sdk.com/docs/cloudtrail_update_event_data_store/) for full documentation.
 #'
@@ -1740,8 +1856,17 @@ cloudtrail_update_channel <- function(Channel, Destinations = NULL, Name = NULL)
 #' or only from the Region in which it was created.
 #' @param OrganizationEnabled Specifies whether an event data store collects events logged for an
 #' organization in Organizations.
-#' @param RetentionPeriod The retention period of the event data store, in days. You can set a
-#' retention period of up to 2557 days, the equivalent of seven years.
+#' 
+#' Only the management account for the organization can convert an
+#' organization event data store to a non-organization event data store, or
+#' convert a non-organization event data store to an organization event
+#' data store.
+#' @param RetentionPeriod The retention period of the event data store, in days. If `BillingMode`
+#' is set to `EXTENDABLE_RETENTION_PRICING`, you can set a retention period
+#' of up to 3653 days, the equivalent of 10 years. If `BillingMode` is set
+#' to `FIXED_RETENTION_PRICING`, you can set a retention period of up to
+#' 2557 days, the equivalent of seven years.
+#' 
 #' CloudTrail Lake determines whether to retain an event by checking if the
 #' `eventTime` of the event is within the specified retention period. For
 #' example, if you set a retention period of 90 days, CloudTrail will
@@ -1781,18 +1906,45 @@ cloudtrail_update_channel <- function(Channel, Destinations = NULL, Name = NULL)
 #' -   `arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012`
 #' 
 #' -   `12345678-1234-1234-1234-123456789012`
+#' @param BillingMode You can't change the billing mode from `EXTENDABLE_RETENTION_PRICING` to
+#' `FIXED_RETENTION_PRICING`. If `BillingMode` is set to
+#' `EXTENDABLE_RETENTION_PRICING` and you want to use
+#' `FIXED_RETENTION_PRICING` instead, you'll need to stop ingestion on the
+#' event data store and create a new event data store that uses
+#' `FIXED_RETENTION_PRICING`.
+#' 
+#' The billing mode for the event data store determines the cost for
+#' ingesting events and the default and maximum retention period for the
+#' event data store.
+#' 
+#' The following are the possible values:
+#' 
+#' -   `EXTENDABLE_RETENTION_PRICING` - This billing mode is generally
+#'     recommended if you want a flexible retention period of up to 3653
+#'     days (about 10 years). The default retention period for this billing
+#'     mode is 366 days.
+#' 
+#' -   `FIXED_RETENTION_PRICING` - This billing mode is recommended if you
+#'     expect to ingest more than 25 TB of event data per month and need a
+#'     retention period of up to 2557 days (about 7 years). The default
+#'     retention period for this billing mode is 2557 days.
+#' 
+#' For more information about CloudTrail pricing, see [CloudTrail
+#' Pricing](https://aws.amazon.com/cloudtrail/pricing/) and [Managing
+#' CloudTrail Lake
+#' costs](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-manage-costs.html).
 #'
 #' @keywords internal
 #'
 #' @rdname cloudtrail_update_event_data_store
-cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, AdvancedEventSelectors = NULL, MultiRegionEnabled = NULL, OrganizationEnabled = NULL, RetentionPeriod = NULL, TerminationProtectionEnabled = NULL, KmsKeyId = NULL) {
+cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, AdvancedEventSelectors = NULL, MultiRegionEnabled = NULL, OrganizationEnabled = NULL, RetentionPeriod = NULL, TerminationProtectionEnabled = NULL, KmsKeyId = NULL, BillingMode = NULL) {
   op <- new_operation(
     name = "UpdateEventDataStore",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudtrail$update_event_data_store_input(EventDataStore = EventDataStore, Name = Name, AdvancedEventSelectors = AdvancedEventSelectors, MultiRegionEnabled = MultiRegionEnabled, OrganizationEnabled = OrganizationEnabled, RetentionPeriod = RetentionPeriod, TerminationProtectionEnabled = TerminationProtectionEnabled, KmsKeyId = KmsKeyId)
+  input <- .cloudtrail$update_event_data_store_input(EventDataStore = EventDataStore, Name = Name, AdvancedEventSelectors = AdvancedEventSelectors, MultiRegionEnabled = MultiRegionEnabled, OrganizationEnabled = OrganizationEnabled, RetentionPeriod = RetentionPeriod, TerminationProtectionEnabled = TerminationProtectionEnabled, KmsKeyId = KmsKeyId, BillingMode = BillingMode)
   output <- .cloudtrail$update_event_data_store_output()
   config <- get_config()
   svc <- .cloudtrail$service(config)
@@ -1864,6 +2016,9 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #' delivered. You must use a log group that exists in your account.
 #' 
 #' Not required unless you specify `CloudWatchLogsRoleArn`.
+#' 
+#' Only the management account can configure a CloudWatch Logs log group
+#' for an organization trail.
 #' @param CloudWatchLogsRoleArn Specifies the role for the CloudWatch Logs endpoint to assume to write
 #' to a user's log group. You must use a role that exists in your account.
 #' @param KmsKeyId Specifies the KMS key ID to use to encrypt the logs delivered by
@@ -1889,13 +2044,16 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #' organization in Organizations, or only for the current Amazon Web
 #' Services account. The default is false, and cannot be true unless the
 #' call is made on behalf of an Amazon Web Services account that is the
-#' management account or delegated administrator account for an
-#' organization in Organizations. If the trail is not an organization trail
-#' and this is set to `true`, the trail will be created in all Amazon Web
-#' Services accounts that belong to the organization. If the trail is an
-#' organization trail and this is set to `false`, the trail will remain in
-#' the current Amazon Web Services account but be deleted from all member
-#' accounts in the organization.
+#' management account for an organization in Organizations. If the trail is
+#' not an organization trail and this is set to `true`, the trail will be
+#' created in all Amazon Web Services accounts that belong to the
+#' organization. If the trail is an organization trail and this is set to
+#' `false`, the trail will remain in the current Amazon Web Services
+#' account but be deleted from all member accounts in the organization.
+#' 
+#' Only the management account for the organization can convert an
+#' organization trail to a non-organization trail, or convert a
+#' non-organization trail to an organization trail.
 #'
 #' @keywords internal
 #'

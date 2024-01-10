@@ -23,7 +23,8 @@ cloudformation_create_change_set(
   ChangeSetType = NULL,
   ResourcesToImport = NULL,
   IncludeNestedStacks = NULL,
-  OnStackFailure = NULL
+  OnStackFailure = NULL,
+  ImportExistingResources = NULL
 )
 }
 \arguments{
@@ -79,13 +80,13 @@ If your stack template contains these resources, we suggest that you
 review all permissions associated with them and edit their
 permissions if necessary.
 \itemize{
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html}{AWS::IAM::AccessKey}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html}{AWS::IAM::Group}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html}{AWS::IAM::Group}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html}{AWS::IAM::Policy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/}{AWS::IAM::Policy}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html}{AWS::IAM::User}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html}{AWS::IAM::UserToGroupAddition}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html}{AWS::IAM::User}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM resources in CloudFormation templates}.
@@ -117,7 +118,10 @@ directly from the template using the
 this capability.
 
 For more information about macros, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using CloudFormation macros to perform custom processing on templates}.
-}}
+}
+
+Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
+specified.}
 
 \item{ResourceTypes}{The template resource types that you have permissions to work with if
 you execute this change set, such as \verb{AWS::EC2::Instance},
@@ -128,7 +132,10 @@ you're updating, the stack update fails. By default, CloudFormation
 grants permissions to all resource types. Identity and Access Management
 (IAM) uses this parameter for condition keys in IAM policies for
 CloudFormation. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html}{Controlling access with Identity and Access Management}
-in the CloudFormation User Guide.}
+in the \emph{CloudFormation User Guide}.
+
+Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
+specified.}
 
 \item{RoleARN}{The Amazon Resource Name (ARN) of an Identity and Access Management
 (IAM) role that CloudFormation assumes when executing the change set.
@@ -217,6 +224,15 @@ For nested stacks, when the \code{OnStackFailure} parameter is set to
 \code{DELETE} for the change set for the parent stack, any failure in a child
 stack will cause the parent stack creation to fail and all stacks to be
 deleted.}
+
+\item{ImportExistingResources}{Indicates if the change set imports resources that already exist.
+
+This parameter can only import resources that have custom names in
+templates. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-name.html}{name type}
+in the \emph{CloudFormation User Guide}. To import resources that do not
+accept custom names, such as EC2 instances, use the resource import
+feature instead. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import.html}{Bringing existing resources into CloudFormation management}
+in the \emph{CloudFormation User Guide}.}
 }
 \description{
 Creates a list of changes that will be applied to a stack so that you can review the changes before executing them. You can create a change set for a stack that doesn't exist or an existing stack. If you create a change set for a stack that doesn't exist, the change set shows all of the resources that CloudFormation will create. If you create a change set for an existing stack, CloudFormation compares the stack's information with the information that you submit in the change set and lists the differences. Use change sets to understand which resources CloudFormation will create or change, and how it will change resources in an existing stack, before you create or update a stack.

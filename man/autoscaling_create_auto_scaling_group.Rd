@@ -33,7 +33,8 @@ autoscaling_create_auto_scaling_group(
   Context = NULL,
   DesiredCapacityType = NULL,
   DefaultInstanceWarmup = NULL,
-  TrafficSources = NULL
+  TrafficSources = NULL,
+  InstanceMaintenancePolicy = NULL
 )
 }
 \arguments{
@@ -204,7 +205,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 \item{DesiredCapacityType}{The unit of measurement for the value specified for desired capacity.
 Amazon EC2 Auto Scaling supports \code{DesiredCapacityType} for
 attribute-based instance type selection only. For more information, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-instance-type-requirements.html}{Creating an Auto Scaling group using attribute-based instance type selection}
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-mixed-instances-group-attribute-based-instance-type-selection.html}{Creating an Auto Scaling group using attribute-based instance type selection}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 By default, Amazon EC2 Auto Scaling specifies \code{units}, which translates
@@ -238,6 +239,9 @@ Default: None}
 can use any of the following as traffic sources for an Auto Scaling
 group: Classic Load Balancer, Application Load Balancer, Gateway Load
 Balancer, Network Load Balancer, and VPC Lattice.}
+
+\item{InstanceMaintenancePolicy}{An instance maintenance policy. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-maintenance-policy.html}{Set instance maintenance policy}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \description{
 \strong{We strongly recommend using a launch template when calling this operation to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2.}

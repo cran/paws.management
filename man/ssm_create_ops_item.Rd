@@ -24,7 +24,11 @@ ssm_create_ops_item(
 )
 }
 \arguments{
-\item{Description}{[required] Information about the OpsItem.}
+\item{Description}{[required] User-defined text that contains information about the OpsItem, in
+Markdown format.
+
+Provide enough information so that users viewing this OpsItem for the
+first time understand the issue.}
 
 \item{OpsItemType}{The type of OpsItem to create. Systems Manager supports the following
 types of OpsItems:
@@ -37,7 +41,7 @@ OpsCenter.
 
 This type of OpsItem is used by Change Manager for reviewing and
 approving or rejecting change requests.
-\item \verb{/aws/insights}
+\item \verb{/aws/insight}
 
 This type of OpsItem is used by OpsCenter for aggregating and
 reporting on duplicate OpsItems.

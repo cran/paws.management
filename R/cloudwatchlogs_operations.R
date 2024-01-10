@@ -93,6 +93,40 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 }
 .cloudwatchlogs$operations$cancel_export_task <- cloudwatchlogs_cancel_export_task
 
+#' Creates a delivery
+#'
+#' @description
+#' Creates a *delivery*. A delivery is a connection between a logical *delivery source* and a logical *delivery destination* that you have already created.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_create_delivery/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_create_delivery/) for full documentation.
+#'
+#' @param deliverySourceName &#91;required&#93; The name of the delivery source to use for this delivery.
+#' @param deliveryDestinationArn &#91;required&#93; The ARN of the delivery destination to use for this delivery.
+#' @param tags An optional list of key-value pairs to associate with the resource.
+#' 
+#' For more information about tagging, see [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_create_delivery
+cloudwatchlogs_create_delivery <- function(deliverySourceName, deliveryDestinationArn, tags = NULL) {
+  op <- new_operation(
+    name = "CreateDelivery",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$create_delivery_input(deliverySourceName = deliverySourceName, deliveryDestinationArn = deliveryDestinationArn, tags = tags)
+  output <- .cloudwatchlogs$create_delivery_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$create_delivery <- cloudwatchlogs_create_delivery
+
 #' Creates an export task so that you can efficiently export data from a
 #' log group to an Amazon S3 bucket
 #'
@@ -139,14 +173,75 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 }
 .cloudwatchlogs$operations$create_export_task <- cloudwatchlogs_create_export_task
 
+#' Creates an anomaly detector that regularly scans one or more log groups
+#' and look for patterns and anomalies in the logs
+#'
+#' @description
+#' Creates an *anomaly detector* that regularly scans one or more log groups and look for patterns and anomalies in the logs.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_create_log_anomaly_detector/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_create_log_anomaly_detector/) for full documentation.
+#'
+#' @param logGroupArnList &#91;required&#93; An array containing the ARN of the log group that this anomaly detector
+#' will watch. You can specify only one log group ARN.
+#' @param detectorName A name for this anomaly detector.
+#' @param evaluationFrequency Specifies how often the anomaly detector is to run and look for
+#' anomalies. Set this value according to the frequency that the log group
+#' receives new logs. For example, if the log group receives new log events
+#' every 10 minutes, then 15 minutes might be a good setting for
+#' `evaluationFrequency` .
+#' @param filterPattern You can use this parameter to limit the anomaly detection model to
+#' examine only log events that match the pattern you specify here. For
+#' more information, see [Filter and Pattern
+#' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
+#' @param kmsKeyId Optionally assigns a KMS key to secure this anomaly detector and its
+#' findings. If a key is assigned, the anomalies found and the model used
+#' by this detector are encrypted at rest with the key. If a key is
+#' assigned to an anomaly detector, a user must have permissions for both
+#' this key and for the anomaly detector to retrieve information about the
+#' anomalies that it finds.
+#' 
+#' For more information about using a KMS key and to see the required IAM
+#' policy, see [Use a KMS key with an anomaly
+#' detector](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/LogsAnomalyDetection-KMS.html).
+#' @param anomalyVisibilityTime The number of days to have visibility on an anomaly. After this time
+#' period has elapsed for an anomaly, it will be automatically baselined
+#' and the anomaly detector will treat new occurrences of a similar anomaly
+#' as normal. Therefore, if you do not correct the cause of an anomaly
+#' during the time period specified in `anomalyVisibilityTime`, it will be
+#' considered normal going forward and will not be detected as an anomaly.
+#' @param tags An optional list of key-value pairs to associate with the resource.
+#' 
+#' For more information about tagging, see [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_create_log_anomaly_detector
+cloudwatchlogs_create_log_anomaly_detector <- function(logGroupArnList, detectorName = NULL, evaluationFrequency = NULL, filterPattern = NULL, kmsKeyId = NULL, anomalyVisibilityTime = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateLogAnomalyDetector",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$create_log_anomaly_detector_input(logGroupArnList = logGroupArnList, detectorName = detectorName, evaluationFrequency = evaluationFrequency, filterPattern = filterPattern, kmsKeyId = kmsKeyId, anomalyVisibilityTime = anomalyVisibilityTime, tags = tags)
+  output <- .cloudwatchlogs$create_log_anomaly_detector_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$create_log_anomaly_detector <- cloudwatchlogs_create_log_anomaly_detector
+
 #' Creates a log group with the specified name
 #'
 #' @description
-#' Creates a log group with the specified name. You can create up to 20,000 log groups per account.
+#' Creates a log group with the specified name. You can create up to 1,000,000 log groups per Region per account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_create_log_group/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_create_log_group/) for full documentation.
 #'
-#' @param logGroupName &#91;required&#93; The name of the log group.
+#' @param logGroupName &#91;required&#93; A name for the log group.
 #' @param kmsKeyId The Amazon Resource Name (ARN) of the KMS key to use when encrypting log
 #' data. For more information, see [Amazon Resource
 #' Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms).
@@ -162,18 +257,32 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #' For more information about using tags to control access, see
 #' [Controlling access to Amazon Web Services resources using
 #' tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html).
+#' @param logGroupClass Use this parameter to specify the log group class for this log group.
+#' There are two classes:
+#' 
+#' -   The `Standard` log class supports all CloudWatch Logs features.
+#' 
+#' -   The `Infrequent Access` log class supports a subset of CloudWatch
+#'     Logs features and incurs lower costs.
+#' 
+#' If you omit this parameter, the default of `STANDARD` is used.
+#' 
+#' After a log group is created, its class can't be changed.
+#' 
+#' For details about the features supported by each class, see [Log
+#' classes](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html)
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_create_log_group
-cloudwatchlogs_create_log_group <- function(logGroupName, kmsKeyId = NULL, tags = NULL) {
+cloudwatchlogs_create_log_group <- function(logGroupName, kmsKeyId = NULL, tags = NULL, logGroupClass = NULL) {
   op <- new_operation(
     name = "CreateLogGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchlogs$create_log_group_input(logGroupName = logGroupName, kmsKeyId = kmsKeyId, tags = tags)
+  input <- .cloudwatchlogs$create_log_group_input(logGroupName = logGroupName, kmsKeyId = kmsKeyId, tags = tags, logGroupClass = logGroupClass)
   output <- .cloudwatchlogs$create_log_group_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)
@@ -274,6 +383,128 @@ cloudwatchlogs_delete_data_protection_policy <- function(logGroupIdentifier) {
 }
 .cloudwatchlogs$operations$delete_data_protection_policy <- cloudwatchlogs_delete_data_protection_policy
 
+#' Deletes s delivery
+#'
+#' @description
+#' Deletes s *delivery*. A delivery is a connection between a logical *delivery source* and a logical *delivery destination*. Deleting a delivery only deletes the connection between the delivery source and delivery destination. It does not delete the delivery destination or the delivery source.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery/) for full documentation.
+#'
+#' @param id &#91;required&#93; The unique ID of the delivery to delete. You can find the ID of a
+#' delivery with the
+#' [`describe_deliveries`][cloudwatchlogs_describe_deliveries] operation.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_delete_delivery
+cloudwatchlogs_delete_delivery <- function(id) {
+  op <- new_operation(
+    name = "DeleteDelivery",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$delete_delivery_input(id = id)
+  output <- .cloudwatchlogs$delete_delivery_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$delete_delivery <- cloudwatchlogs_delete_delivery
+
+#' Deletes a delivery destination
+#'
+#' @description
+#' Deletes a *delivery destination*. A delivery is a connection between a logical *delivery source* and a logical *delivery destination*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery_destination/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery_destination/) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the delivery destination that you want to delete. You can
+#' find a list of delivery destionation names by using the
+#' [`describe_delivery_destinations`][cloudwatchlogs_describe_delivery_destinations]
+#' operation.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_delete_delivery_destination
+cloudwatchlogs_delete_delivery_destination <- function(name) {
+  op <- new_operation(
+    name = "DeleteDeliveryDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$delete_delivery_destination_input(name = name)
+  output <- .cloudwatchlogs$delete_delivery_destination_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$delete_delivery_destination <- cloudwatchlogs_delete_delivery_destination
+
+#' Deletes a delivery destination policy
+#'
+#' @description
+#' Deletes a delivery destination policy. For more information about these policies, see [`put_delivery_destination_policy`][cloudwatchlogs_put_delivery_destination_policy].
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery_destination_policy/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery_destination_policy/) for full documentation.
+#'
+#' @param deliveryDestinationName &#91;required&#93; The name of the delivery destination that you want to delete the policy
+#' for.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_delete_delivery_destination_policy
+cloudwatchlogs_delete_delivery_destination_policy <- function(deliveryDestinationName) {
+  op <- new_operation(
+    name = "DeleteDeliveryDestinationPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$delete_delivery_destination_policy_input(deliveryDestinationName = deliveryDestinationName)
+  output <- .cloudwatchlogs$delete_delivery_destination_policy_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$delete_delivery_destination_policy <- cloudwatchlogs_delete_delivery_destination_policy
+
+#' Deletes a delivery source
+#'
+#' @description
+#' Deletes a *delivery source*. A delivery is a connection between a logical *delivery source* and a logical *delivery destination*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery_source/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery_source/) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the delivery source that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_delete_delivery_source
+cloudwatchlogs_delete_delivery_source <- function(name) {
+  op <- new_operation(
+    name = "DeleteDeliverySource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$delete_delivery_source_input(name = name)
+  output <- .cloudwatchlogs$delete_delivery_source_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$delete_delivery_source <- cloudwatchlogs_delete_delivery_source
+
 #' Deletes the specified destination, and eventually disables all the
 #' subscription filters that publish to it
 #'
@@ -303,6 +534,38 @@ cloudwatchlogs_delete_destination <- function(destinationName) {
   return(response)
 }
 .cloudwatchlogs$operations$delete_destination <- cloudwatchlogs_delete_destination
+
+#' Deletes the specified CloudWatch Logs anomaly detector
+#'
+#' @description
+#' Deletes the specified CloudWatch Logs anomaly detector.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_log_anomaly_detector/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_log_anomaly_detector/) for full documentation.
+#'
+#' @param anomalyDetectorArn &#91;required&#93; The ARN of the anomaly detector to delete. You can find the ARNs of log
+#' anomaly detectors in your account by using the
+#' [`list_log_anomaly_detectors`][cloudwatchlogs_list_log_anomaly_detectors]
+#' operation.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_delete_log_anomaly_detector
+cloudwatchlogs_delete_log_anomaly_detector <- function(anomalyDetectorArn) {
+  op <- new_operation(
+    name = "DeleteLogAnomalyDetector",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$delete_log_anomaly_detector_input(anomalyDetectorArn = anomalyDetectorArn)
+  output <- .cloudwatchlogs$delete_log_anomaly_detector_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$delete_log_anomaly_detector <- cloudwatchlogs_delete_log_anomaly_detector
 
 #' Deletes the specified log group and permanently deletes all the archived
 #' log events associated with the log group
@@ -555,6 +818,101 @@ cloudwatchlogs_describe_account_policies <- function(policyType, policyName = NU
 }
 .cloudwatchlogs$operations$describe_account_policies <- cloudwatchlogs_describe_account_policies
 
+#' Retrieves a list of the deliveries that have been created in the account
+#'
+#' @description
+#' Retrieves a list of the deliveries that have been created in the account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_deliveries/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_deliveries/) for full documentation.
+#'
+#' @param nextToken 
+#' @param limit Optionally specify the maximum number of deliveries to return in the
+#' response.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_describe_deliveries
+cloudwatchlogs_describe_deliveries <- function(nextToken = NULL, limit = NULL) {
+  op <- new_operation(
+    name = "DescribeDeliveries",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "deliveries")
+  )
+  input <- .cloudwatchlogs$describe_deliveries_input(nextToken = nextToken, limit = limit)
+  output <- .cloudwatchlogs$describe_deliveries_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$describe_deliveries <- cloudwatchlogs_describe_deliveries
+
+#' Retrieves a list of the delivery destinations that have been created in
+#' the account
+#'
+#' @description
+#' Retrieves a list of the delivery destinations that have been created in the account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_delivery_destinations/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_delivery_destinations/) for full documentation.
+#'
+#' @param nextToken 
+#' @param limit Optionally specify the maximum number of delivery destinations to return
+#' in the response.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_describe_delivery_destinations
+cloudwatchlogs_describe_delivery_destinations <- function(nextToken = NULL, limit = NULL) {
+  op <- new_operation(
+    name = "DescribeDeliveryDestinations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "deliveryDestinations")
+  )
+  input <- .cloudwatchlogs$describe_delivery_destinations_input(nextToken = nextToken, limit = limit)
+  output <- .cloudwatchlogs$describe_delivery_destinations_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$describe_delivery_destinations <- cloudwatchlogs_describe_delivery_destinations
+
+#' Retrieves a list of the delivery sources that have been created in the
+#' account
+#'
+#' @description
+#' Retrieves a list of the delivery sources that have been created in the account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_delivery_sources/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_delivery_sources/) for full documentation.
+#'
+#' @param nextToken 
+#' @param limit Optionally specify the maximum number of delivery sources to return in
+#' the response.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_describe_delivery_sources
+cloudwatchlogs_describe_delivery_sources <- function(nextToken = NULL, limit = NULL) {
+  op <- new_operation(
+    name = "DescribeDeliverySources",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "deliverySources")
+  )
+  input <- .cloudwatchlogs$describe_delivery_sources_input(nextToken = nextToken, limit = limit)
+  output <- .cloudwatchlogs$describe_delivery_sources_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$describe_delivery_sources <- cloudwatchlogs_describe_delivery_sources
+
 #' Lists all your destinations
 #'
 #' @description
@@ -662,18 +1020,27 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
 #' null value, the operation returns all log groups in the monitoring
 #' account and all log groups in all source accounts that are linked to the
 #' monitoring account.
+#' @param logGroupClass Specifies the log group class for this log group. There are two classes:
+#' 
+#' -   The `Standard` log class supports all CloudWatch Logs features.
+#' 
+#' -   The `Infrequent Access` log class supports a subset of CloudWatch
+#'     Logs features and incurs lower costs.
+#' 
+#' For details about the features supported by each class, see [Log
+#' classes](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html)
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_describe_log_groups
-cloudwatchlogs_describe_log_groups <- function(accountIdentifiers = NULL, logGroupNamePrefix = NULL, logGroupNamePattern = NULL, nextToken = NULL, limit = NULL, includeLinkedAccounts = NULL) {
+cloudwatchlogs_describe_log_groups <- function(accountIdentifiers = NULL, logGroupNamePrefix = NULL, logGroupNamePattern = NULL, nextToken = NULL, limit = NULL, includeLinkedAccounts = NULL, logGroupClass = NULL) {
   op <- new_operation(
     name = "DescribeLogGroups",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "logGroups")
   )
-  input <- .cloudwatchlogs$describe_log_groups_input(accountIdentifiers = accountIdentifiers, logGroupNamePrefix = logGroupNamePrefix, logGroupNamePattern = logGroupNamePattern, nextToken = nextToken, limit = limit, includeLinkedAccounts = includeLinkedAccounts)
+  input <- .cloudwatchlogs$describe_log_groups_input(accountIdentifiers = accountIdentifiers, logGroupNamePrefix = logGroupNamePrefix, logGroupNamePattern = logGroupNamePattern, nextToken = nextToken, limit = limit, includeLinkedAccounts = includeLinkedAccounts, logGroupClass = logGroupClass)
   output <- .cloudwatchlogs$describe_log_groups_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)
@@ -824,7 +1191,7 @@ cloudwatchlogs_describe_queries <- function(logGroupName = NULL, status = NULL, 
 #' Insights query definitions
 #'
 #' @description
-#' This operation returns a paginated list of your saved CloudWatch Logs Insights query definitions.
+#' This operation returns a paginated list of your saved CloudWatch Logs Insights query definitions. You can retrieve query definitions from the current account or from a source account that is linked to the current account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_query_definitions/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_query_definitions/) for full documentation.
 #'
@@ -1082,6 +1449,156 @@ cloudwatchlogs_get_data_protection_policy <- function(logGroupIdentifier) {
 }
 .cloudwatchlogs$operations$get_data_protection_policy <- cloudwatchlogs_get_data_protection_policy
 
+#' Returns complete information about one delivery
+#'
+#' @description
+#' Returns complete information about one *delivery*. A delivery is a connection between a logical *delivery source* and a logical *delivery destination*
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery/) for full documentation.
+#'
+#' @param id &#91;required&#93; The ID of the delivery that you want to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_get_delivery
+cloudwatchlogs_get_delivery <- function(id) {
+  op <- new_operation(
+    name = "GetDelivery",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$get_delivery_input(id = id)
+  output <- .cloudwatchlogs$get_delivery_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$get_delivery <- cloudwatchlogs_get_delivery
+
+#' Retrieves complete information about one delivery destination
+#'
+#' @description
+#' Retrieves complete information about one delivery destination.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery_destination/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery_destination/) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the delivery destination that you want to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_get_delivery_destination
+cloudwatchlogs_get_delivery_destination <- function(name) {
+  op <- new_operation(
+    name = "GetDeliveryDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$get_delivery_destination_input(name = name)
+  output <- .cloudwatchlogs$get_delivery_destination_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$get_delivery_destination <- cloudwatchlogs_get_delivery_destination
+
+#' Retrieves the delivery destination policy assigned to the delivery
+#' destination that you specify
+#'
+#' @description
+#' Retrieves the delivery destination policy assigned to the delivery destination that you specify. For more information about delivery destinations and their policies, see [`put_delivery_destination_policy`][cloudwatchlogs_put_delivery_destination_policy].
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery_destination_policy/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery_destination_policy/) for full documentation.
+#'
+#' @param deliveryDestinationName &#91;required&#93; The name of the delivery destination that you want to retrieve the
+#' policy of.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_get_delivery_destination_policy
+cloudwatchlogs_get_delivery_destination_policy <- function(deliveryDestinationName) {
+  op <- new_operation(
+    name = "GetDeliveryDestinationPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$get_delivery_destination_policy_input(deliveryDestinationName = deliveryDestinationName)
+  output <- .cloudwatchlogs$get_delivery_destination_policy_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$get_delivery_destination_policy <- cloudwatchlogs_get_delivery_destination_policy
+
+#' Retrieves complete information about one delivery source
+#'
+#' @description
+#' Retrieves complete information about one delivery source.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery_source/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery_source/) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the delivery source that you want to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_get_delivery_source
+cloudwatchlogs_get_delivery_source <- function(name) {
+  op <- new_operation(
+    name = "GetDeliverySource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$get_delivery_source_input(name = name)
+  output <- .cloudwatchlogs$get_delivery_source_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$get_delivery_source <- cloudwatchlogs_get_delivery_source
+
+#' Retrieves information about the log anomaly detector that you specify
+#'
+#' @description
+#' Retrieves information about the log anomaly detector that you specify.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_log_anomaly_detector/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_log_anomaly_detector/) for full documentation.
+#'
+#' @param anomalyDetectorArn &#91;required&#93; The ARN of the anomaly detector to retrieve information about. You can
+#' find the ARNs of log anomaly detectors in your account by using the
+#' [`list_log_anomaly_detectors`][cloudwatchlogs_list_log_anomaly_detectors]
+#' operation.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_get_log_anomaly_detector
+cloudwatchlogs_get_log_anomaly_detector <- function(anomalyDetectorArn) {
+  op <- new_operation(
+    name = "GetLogAnomalyDetector",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$get_log_anomaly_detector_input(anomalyDetectorArn = anomalyDetectorArn)
+  output <- .cloudwatchlogs$get_log_anomaly_detector_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$get_log_anomaly_detector <- cloudwatchlogs_get_log_anomaly_detector
+
 #' Lists log events from the specified log stream
 #'
 #' @description
@@ -1256,6 +1773,74 @@ cloudwatchlogs_get_query_results <- function(queryId) {
   return(response)
 }
 .cloudwatchlogs$operations$get_query_results <- cloudwatchlogs_get_query_results
+
+#' Returns a list of anomalies that log anomaly detectors have found
+#'
+#' @description
+#' Returns a list of anomalies that log anomaly detectors have found. For details about the structure format of each anomaly object that is returned, see the example in this section.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_list_anomalies/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_list_anomalies/) for full documentation.
+#'
+#' @param anomalyDetectorArn Use this to optionally limit the results to only the anomalies found by
+#' a certain anomaly detector.
+#' @param suppressionState You can specify this parameter if you want to the operation to return
+#' only anomalies that are currently either suppressed or unsuppressed.
+#' @param limit The maximum number of items to return. If you don't specify a value, the
+#' default maximum value of 50 items is used.
+#' @param nextToken 
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_list_anomalies
+cloudwatchlogs_list_anomalies <- function(anomalyDetectorArn = NULL, suppressionState = NULL, limit = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListAnomalies",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "anomalies")
+  )
+  input <- .cloudwatchlogs$list_anomalies_input(anomalyDetectorArn = anomalyDetectorArn, suppressionState = suppressionState, limit = limit, nextToken = nextToken)
+  output <- .cloudwatchlogs$list_anomalies_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$list_anomalies <- cloudwatchlogs_list_anomalies
+
+#' Retrieves a list of the log anomaly detectors in the account
+#'
+#' @description
+#' Retrieves a list of the log anomaly detectors in the account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_list_log_anomaly_detectors/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_list_log_anomaly_detectors/) for full documentation.
+#'
+#' @param filterLogGroupArn Use this to optionally filter the results to only include anomaly
+#' detectors that are associated with the specified log group.
+#' @param limit The maximum number of items to return. If you don't specify a value, the
+#' default maximum value of 50 items is used.
+#' @param nextToken 
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_list_log_anomaly_detectors
+cloudwatchlogs_list_log_anomaly_detectors <- function(filterLogGroupArn = NULL, limit = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListLogAnomalyDetectors",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "anomalyDetectors")
+  )
+  input <- .cloudwatchlogs$list_log_anomaly_detectors_input(filterLogGroupArn = filterLogGroupArn, limit = limit, nextToken = nextToken)
+  output <- .cloudwatchlogs$list_log_anomaly_detectors_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$list_log_anomaly_detectors <- cloudwatchlogs_list_log_anomaly_detectors
 
 #' Displays the tags associated with a CloudWatch Logs resource
 #'
@@ -1468,6 +2053,114 @@ cloudwatchlogs_put_data_protection_policy <- function(logGroupIdentifier, policy
 }
 .cloudwatchlogs$operations$put_data_protection_policy <- cloudwatchlogs_put_data_protection_policy
 
+#' Creates or updates a logical delivery destination
+#'
+#' @description
+#' Creates or updates a logical *delivery destination*. A delivery destination is an Amazon Web Services resource that represents an Amazon Web Services service that logs can be sent to. CloudWatch Logs, Amazon S3, and Kinesis Data Firehose are supported as logs delivery destinations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_destination/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_destination/) for full documentation.
+#'
+#' @param name &#91;required&#93; A name for this delivery destination. This name must be unique for all
+#' delivery destinations in your account.
+#' @param outputFormat The format for the logs that this delivery destination will receive.
+#' @param deliveryDestinationConfiguration &#91;required&#93; A structure that contains the ARN of the Amazon Web Services resource
+#' that will receive the logs.
+#' @param tags An optional list of key-value pairs to associate with the resource.
+#' 
+#' For more information about tagging, see [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_put_delivery_destination
+cloudwatchlogs_put_delivery_destination <- function(name, outputFormat = NULL, deliveryDestinationConfiguration, tags = NULL) {
+  op <- new_operation(
+    name = "PutDeliveryDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$put_delivery_destination_input(name = name, outputFormat = outputFormat, deliveryDestinationConfiguration = deliveryDestinationConfiguration, tags = tags)
+  output <- .cloudwatchlogs$put_delivery_destination_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$put_delivery_destination <- cloudwatchlogs_put_delivery_destination
+
+#' Creates and assigns an IAM policy that grants permissions to CloudWatch
+#' Logs to deliver logs cross-account to a specified destination in this
+#' account
+#'
+#' @description
+#' Creates and assigns an IAM policy that grants permissions to CloudWatch Logs to deliver logs cross-account to a specified destination in this account. To configure the delivery of logs from an Amazon Web Services service in another account to a logs delivery destination in the current account, you must do the following:
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_destination_policy/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_destination_policy/) for full documentation.
+#'
+#' @param deliveryDestinationName &#91;required&#93; The name of the delivery destination to assign this policy to.
+#' @param deliveryDestinationPolicy &#91;required&#93; The contents of the policy.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_put_delivery_destination_policy
+cloudwatchlogs_put_delivery_destination_policy <- function(deliveryDestinationName, deliveryDestinationPolicy) {
+  op <- new_operation(
+    name = "PutDeliveryDestinationPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$put_delivery_destination_policy_input(deliveryDestinationName = deliveryDestinationName, deliveryDestinationPolicy = deliveryDestinationPolicy)
+  output <- .cloudwatchlogs$put_delivery_destination_policy_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$put_delivery_destination_policy <- cloudwatchlogs_put_delivery_destination_policy
+
+#' Creates or updates a logical delivery source
+#'
+#' @description
+#' Creates or updates a logical *delivery source*. A delivery source represents an Amazon Web Services resource that sends logs to an logs delivery destination. The destination can be CloudWatch Logs, Amazon S3, or Kinesis Data Firehose.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_source/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_source/) for full documentation.
+#'
+#' @param name &#91;required&#93; A name for this delivery source. This name must be unique for all
+#' delivery sources in your account.
+#' @param resourceArn &#91;required&#93; The ARN of the Amazon Web Services resource that is generating and
+#' sending logs. For example,
+#' `arn:aws:workmail:us-east-1:123456789012:organization/m-1234EXAMPLEabcd1234abcd1234abcd1234`
+#' @param logType &#91;required&#93; Defines the type of log that the source is sending. For valid values for
+#' this parameter, see the documentation for the source service.
+#' @param tags An optional list of key-value pairs to associate with the resource.
+#' 
+#' For more information about tagging, see [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_put_delivery_source
+cloudwatchlogs_put_delivery_source <- function(name, resourceArn, logType, tags = NULL) {
+  op <- new_operation(
+    name = "PutDeliverySource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$put_delivery_source_input(name = name, resourceArn = resourceArn, logType = logType, tags = tags)
+  output <- .cloudwatchlogs$put_delivery_source_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$put_delivery_source <- cloudwatchlogs_put_delivery_source
+
 #' Creates or updates a destination
 #'
 #' @description
@@ -1650,18 +2343,20 @@ cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPat
 #' @param queryString &#91;required&#93; The query string to use for this definition. For more information, see
 #' [CloudWatch Logs Insights Query
 #' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
+#' @param clientToken Used as an idempotency token, to avoid returning an exception if the
+#' service receives the same request twice because of a network error.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_put_query_definition
-cloudwatchlogs_put_query_definition <- function(name, queryDefinitionId = NULL, logGroupNames = NULL, queryString) {
+cloudwatchlogs_put_query_definition <- function(name, queryDefinitionId = NULL, logGroupNames = NULL, queryString, clientToken = NULL) {
   op <- new_operation(
     name = "PutQueryDefinition",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchlogs$put_query_definition_input(name = name, queryDefinitionId = queryDefinitionId, logGroupNames = logGroupNames, queryString = queryString)
+  input <- .cloudwatchlogs$put_query_definition_input(name = name, queryDefinitionId = queryDefinitionId, logGroupNames = logGroupNames, queryString = queryString, clientToken = clientToken)
   output <- .cloudwatchlogs$put_query_definition_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)
@@ -1814,6 +2509,63 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
   return(response)
 }
 .cloudwatchlogs$operations$put_subscription_filter <- cloudwatchlogs_put_subscription_filter
+
+#' Starts a Live Tail streaming session for one or more log groups
+#'
+#' @description
+#' Starts a Live Tail streaming session for one or more log groups. A Live Tail session returns a stream of log events that have been recently ingested in the log groups. For more information, see [Use Live Tail to view logs in near real time](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs_LiveTail.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_start_live_tail/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_start_live_tail/) for full documentation.
+#'
+#' @param logGroupIdentifiers &#91;required&#93; An array where each item in the array is a log group to include in the
+#' Live Tail session.
+#' 
+#' Specify each log group by its ARN.
+#' 
+#' If you specify an ARN, the ARN can't end with an asterisk (*).
+#' 
+#' You can include up to 10 log groups.
+#' @param logStreamNames If you specify this parameter, then only log events in the log streams
+#' that you specify here are included in the Live Tail session.
+#' 
+#' You can specify this parameter only if you specify only one log group in
+#' `logGroupIdentifiers`.
+#' @param logStreamNamePrefixes If you specify this parameter, then only log events in the log streams
+#' that have names that start with the prefixes that you specify here are
+#' included in the Live Tail session.
+#' 
+#' You can specify this parameter only if you specify only one log group in
+#' `logGroupIdentifiers`.
+#' @param logEventFilterPattern An optional pattern to use to filter the results to include only log
+#' events that match the pattern. For example, a filter pattern of
+#' `error 404` causes only log events that include both `error` and `404`
+#' to be included in the Live Tail stream.
+#' 
+#' Regular expression filter patterns are supported.
+#' 
+#' For more information about filter pattern syntax, see [Filter and
+#' Pattern
+#' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_start_live_tail
+cloudwatchlogs_start_live_tail <- function(logGroupIdentifiers, logStreamNames = NULL, logStreamNamePrefixes = NULL, logEventFilterPattern = NULL) {
+  op <- new_operation(
+    name = "StartLiveTail",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$start_live_tail_input(logGroupIdentifiers = logGroupIdentifiers, logStreamNames = logStreamNames, logStreamNamePrefixes = logStreamNamePrefixes, logEventFilterPattern = logEventFilterPattern)
+  output <- .cloudwatchlogs$start_live_tail_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$start_live_tail <- cloudwatchlogs_start_live_tail
 
 #' Schedules a query of a log group using CloudWatch Logs Insights
 #'
@@ -2079,3 +2831,85 @@ cloudwatchlogs_untag_resource <- function(resourceArn, tagKeys) {
   return(response)
 }
 .cloudwatchlogs$operations$untag_resource <- cloudwatchlogs_untag_resource
+
+#' Use this operation to suppress anomaly detection for a specified anomaly
+#' or pattern
+#'
+#' @description
+#' Use this operation to *suppress* anomaly detection for a specified anomaly or pattern. If you suppress an anomaly, CloudWatch Logs won’t report new occurrences of that anomaly and won't update that anomaly with new data. If you suppress a pattern, CloudWatch Logs won’t report any anomalies related to that pattern.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_update_anomaly/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_update_anomaly/) for full documentation.
+#'
+#' @param anomalyId If you are suppressing or unsuppressing an anomaly, specify its unique
+#' ID here. You can find anomaly IDs by using the
+#' [`list_anomalies`][cloudwatchlogs_list_anomalies] operation.
+#' @param patternId If you are suppressing or unsuppressing an pattern, specify its unique
+#' ID here. You can find pattern IDs by using the
+#' [`list_anomalies`][cloudwatchlogs_list_anomalies] operation.
+#' @param anomalyDetectorArn &#91;required&#93; The ARN of the anomaly detector that this operation is to act on.
+#' @param suppressionType Use this to specify whether the suppression to be temporary or infinite.
+#' If you specify `LIMITED`, you must also specify a `suppressionPeriod`.
+#' If you specify `INFINITE`, any value for `suppressionPeriod` is ignored.
+#' @param suppressionPeriod If you are temporarily suppressing an anomaly or pattern, use this
+#' structure to specify how long the suppression is to last.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_update_anomaly
+cloudwatchlogs_update_anomaly <- function(anomalyId = NULL, patternId = NULL, anomalyDetectorArn, suppressionType = NULL, suppressionPeriod = NULL) {
+  op <- new_operation(
+    name = "UpdateAnomaly",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$update_anomaly_input(anomalyId = anomalyId, patternId = patternId, anomalyDetectorArn = anomalyDetectorArn, suppressionType = suppressionType, suppressionPeriod = suppressionPeriod)
+  output <- .cloudwatchlogs$update_anomaly_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$update_anomaly <- cloudwatchlogs_update_anomaly
+
+#' Updates an existing log anomaly detector
+#'
+#' @description
+#' Updates an existing log anomaly detector.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_update_log_anomaly_detector/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_update_log_anomaly_detector/) for full documentation.
+#'
+#' @param anomalyDetectorArn &#91;required&#93; The ARN of the anomaly detector that you want to update.
+#' @param evaluationFrequency Specifies how often the anomaly detector runs and look for anomalies.
+#' Set this value according to the frequency that the log group receives
+#' new logs. For example, if the log group receives new log events every 10
+#' minutes, then setting `evaluationFrequency` to `FIFTEEN_MIN` might be
+#' appropriate.
+#' @param filterPattern 
+#' @param anomalyVisibilityTime The number of days to use as the life cycle of anomalies. After this
+#' time, anomalies are automatically baselined and the anomaly detector
+#' model will treat new occurrences of similar event as normal. Therefore,
+#' if you do not correct the cause of an anomaly during this time, it will
+#' be considered normal going forward and will not be detected.
+#' @param enabled &#91;required&#93; Use this parameter to pause or restart the anomaly detector.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_update_log_anomaly_detector
+cloudwatchlogs_update_log_anomaly_detector <- function(anomalyDetectorArn, evaluationFrequency = NULL, filterPattern = NULL, anomalyVisibilityTime = NULL, enabled) {
+  op <- new_operation(
+    name = "UpdateLogAnomalyDetector",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$update_log_anomaly_detector_input(anomalyDetectorArn = anomalyDetectorArn, evaluationFrequency = evaluationFrequency, filterPattern = filterPattern, anomalyVisibilityTime = anomalyVisibilityTime, enabled = enabled)
+  output <- .cloudwatchlogs$update_log_anomaly_detector_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$update_log_anomaly_detector <- cloudwatchlogs_update_log_anomaly_detector

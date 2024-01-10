@@ -1,6 +1,6 @@
 Package: paws.management
 Title: 'Amazon Web Services' Management & Governance Services
-Version: 0.4.0
+Version: 0.5.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -35,21 +35,34 @@ Collate: 'applicationautoscaling_service.R'
         'autoscalingplans_operations.R' 'cloudformation_service.R'
         'cloudformation_interfaces.R' 'cloudformation_operations.R'
         'cloudtrail_service.R' 'cloudtrail_interfaces.R'
-        'cloudtrail_operations.R' 'cloudwatch_service.R'
+        'cloudtrail_operations.R' 'cloudtraildataservice_service.R'
+        'cloudtraildataservice_interfaces.R'
+        'cloudtraildataservice_operations.R' 'cloudwatch_service.R'
         'cloudwatch_interfaces.R' 'cloudwatch_operations.R'
         'cloudwatchevents_service.R' 'cloudwatchevents_interfaces.R'
         'cloudwatchevents_operations.R' 'cloudwatchevidently_service.R'
         'cloudwatchevidently_interfaces.R'
-        'cloudwatchevidently_operations.R' 'cloudwatchlogs_service.R'
-        'cloudwatchlogs_interfaces.R' 'cloudwatchlogs_operations.R'
+        'cloudwatchevidently_operations.R'
+        'cloudwatchinternetmonitor_service.R'
+        'cloudwatchinternetmonitor_interfaces.R'
+        'cloudwatchinternetmonitor_operations.R'
+        'cloudwatchlogs_service.R' 'cloudwatchlogs_interfaces.R'
+        'cloudwatchlogs_operations.R'
+        'cloudwatchobservabilityaccessmanager_service.R'
+        'cloudwatchobservabilityaccessmanager_interfaces.R'
+        'cloudwatchobservabilityaccessmanager_operations.R'
         'cloudwatchrum_service.R' 'cloudwatchrum_interfaces.R'
         'cloudwatchrum_operations.R' 'configservice_service.R'
         'configservice_interfaces.R' 'configservice_operations.R'
-        'finspace_service.R' 'finspace_interfaces.R'
-        'finspace_operations.R' 'health_service.R'
-        'health_interfaces.R' 'health_operations.R'
+        'controltower_service.R' 'controltower_interfaces.R'
+        'controltower_operations.R' 'finspace_service.R'
+        'finspace_interfaces.R' 'finspace_operations.R'
+        'health_service.R' 'health_interfaces.R' 'health_operations.R'
         'licensemanager_service.R' 'licensemanager_interfaces.R'
         'licensemanager_operations.R'
+        'licensemanagerlinuxsubscriptions_service.R'
+        'licensemanagerlinuxsubscriptions_interfaces.R'
+        'licensemanagerlinuxsubscriptions_operations.R'
         'licensemanagerusersubscriptions_service.R'
         'licensemanagerusersubscriptions_interfaces.R'
         'licensemanagerusersubscriptions_operations.R'
@@ -75,15 +88,18 @@ Collate: 'applicationautoscaling_service.R'
         'ssmcontacts_service.R' 'ssmcontacts_interfaces.R'
         'ssmcontacts_operations.R' 'ssmincidents_service.R'
         'ssmincidents_interfaces.R' 'ssmincidents_operations.R'
+        'ssmsap_service.R' 'ssmsap_interfaces.R' 'ssmsap_operations.R'
         'support_service.R' 'support_interfaces.R'
-        'support_operations.R' 'synthetics_service.R'
-        'synthetics_interfaces.R' 'synthetics_operations.R'
+        'support_operations.R' 'supportapp_service.R'
+        'supportapp_interfaces.R' 'supportapp_operations.R'
+        'synthetics_service.R' 'synthetics_interfaces.R'
+        'synthetics_operations.R'
 NeedsCompilation: no
-Packaged: 2023-09-11 15:36:25 UTC; dyfanjones
+Packaged: 2024-01-09 17:41:51 UTC; dyfanjones
 Author: David Kretch [aut],
   Adam Banker [aut],
   Dyfan Jones [cre],
   Amazon.com, Inc. [cph]
 Maintainer: Dyfan Jones <dyfan.r.jones@gmail.com>
 Repository: CRAN
-Date/Publication: 2023-09-11 23:20:08 UTC
+Date/Publication: 2024-01-10 11:50:02 UTC

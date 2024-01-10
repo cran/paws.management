@@ -21,33 +21,33 @@ NULL
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
-#' \item{\strong{credentials}:} {\itemize{
-#' \item{\strong{creds}:} {\itemize{
-#' \item{\strong{access_key_id}:} {AWS access key ID}
-#' \item{\strong{secret_access_key}:} {AWS secret access key}
-#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{credentials}: \itemize{
+#' \item{\strong{creds}: \itemize{
+#' \item{\strong{access_key_id}: AWS access key ID}
+#' \item{\strong{secret_access_key}: AWS secret access key}
+#' \item{\strong{session_token}: AWS temporary session token}
 #' }}
-#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-#' \item{\strong{anonymous}:} {Set anonymous credentials.}
-#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
-#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{profile}: The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}: Set anonymous credentials.}
 #' }}
-#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
-#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
-#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' \item{\strong{endpoint}: The complete URL to use for the constructed client.}
+#' \item{\strong{region}: The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}: Immediately close all HTTP connections.}
+#' \item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}: Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
 #' @param
 #' credentials
 #' Optional credentials shorthand for the config parameter
 #' \itemize{
-#' \item{\strong{creds}:} {\itemize{
-#' \item{\strong{access_key_id}:} {AWS access key ID}
-#' \item{\strong{secret_access_key}:} {AWS secret access key}
-#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{creds}: \itemize{
+#' \item{\strong{access_key_id}: AWS access key ID}
+#' \item{\strong{secret_access_key}: AWS secret access key}
+#' \item{\strong{session_token}: AWS temporary session token}
 #' }}
-#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{profile}: The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}: Set anonymous credentials.}
 #' }
 #' @param
 #' endpoint
@@ -93,13 +93,14 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- ssmincidents()
-#' svc$create_replication_set(
+#' svc$batch_get_incident_findings(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=ssmincidents_batch_get_incident_findings]{batch_get_incident_findings} \tab Retrieves details about all specified findings for an incident, including descriptive details about each finding\cr
 #'  \link[=ssmincidents_create_replication_set]{create_replication_set} \tab A replication set replicates and encrypts your data to the provided Regions with the provided KMS key\cr
 #'  \link[=ssmincidents_create_response_plan]{create_response_plan} \tab Creates a response plan that automates the initial response to incidents\cr
 #'  \link[=ssmincidents_create_timeline_event]{create_timeline_event} \tab Creates a custom timeline event on the incident details page of an incident record\cr
@@ -113,11 +114,12 @@ NULL
 #'  \link[=ssmincidents_get_resource_policies]{get_resource_policies} \tab Retrieves the resource policies attached to the specified response plan\cr
 #'  \link[=ssmincidents_get_response_plan]{get_response_plan} \tab Retrieves the details of the specified response plan\cr
 #'  \link[=ssmincidents_get_timeline_event]{get_timeline_event} \tab Retrieves a timeline event based on its ID and incident record\cr
+#'  \link[=ssmincidents_list_incident_findings]{list_incident_findings} \tab Retrieves a list of the IDs of findings, plus their last modified times, that have been identified for a specified incident\cr
 #'  \link[=ssmincidents_list_incident_records]{list_incident_records} \tab Lists all incident records in your account\cr
 #'  \link[=ssmincidents_list_related_items]{list_related_items} \tab List all related items for an incident record\cr
 #'  \link[=ssmincidents_list_replication_sets]{list_replication_sets} \tab Lists details about the replication set configured in your account\cr
 #'  \link[=ssmincidents_list_response_plans]{list_response_plans} \tab Lists all response plans in your account\cr
-#'  \link[=ssmincidents_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that are attached to the specified response plan\cr
+#'  \link[=ssmincidents_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that are attached to the specified response plan or incident\cr
 #'  \link[=ssmincidents_list_timeline_events]{list_timeline_events} \tab Lists timeline events for the specified incident record\cr
 #'  \link[=ssmincidents_put_resource_policy]{put_resource_policy} \tab Adds a resource policy to the specified response plan\cr
 #'  \link[=ssmincidents_start_incident]{start_incident} \tab Used to start an incident from CloudWatch alarms, EventBridge events, or manually\cr
