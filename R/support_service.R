@@ -53,8 +53,8 @@ NULL
 #' 
 #' You can also use the Amazon Web Services Support API to call the Trusted
 #' Advisor operations. For more information, see [Trusted
-#' Advisor](https://docs.aws.amazon.com/) in the *Amazon Web Services
-#' Support User Guide*.
+#' Advisor](https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html)
+#' in the *Amazon Web Services Support User Guide*.
 #' 
 #' For authentication of requests, Amazon Web Services Support uses
 #' [Signature Version 4 Signing
@@ -203,7 +203,7 @@ support <- function(config = list(), credentials = list(), endpoint = NULL, regi
   target_prefix = "AWSSupport_20130415"
 )
 
-.support$service <- function(config = list()) {
+.support$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("jsonrpc", "v4")
-  new_service(.support$metadata, handlers, config)
+  new_service(.support$metadata, handlers, config, op)
 }

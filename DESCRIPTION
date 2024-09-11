@@ -1,6 +1,6 @@
 Package: paws.management
 Title: 'Amazon Web Services' Management & Governance Services
-Version: 0.6.1
+Version: 0.7.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -14,10 +14,10 @@ Description: Interface to 'Amazon Web Services' management and governance
 License: Apache License (>= 2.0)
 URL: https://github.com/paws-r/paws
 BugReports: https://github.com/paws-r/paws/issues
-Imports: paws.common (>= 0.6.0)
+Imports: paws.common (>= 0.7.5)
 Suggests: testthat
 Encoding: UTF-8
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Collate: 'applicationautoscaling_service.R'
         'applicationautoscaling_interfaces.R'
         'applicationautoscaling_operations.R'
@@ -95,11 +95,11 @@ Collate: 'applicationautoscaling_service.R'
         'synthetics_service.R' 'synthetics_interfaces.R'
         'synthetics_operations.R'
 NeedsCompilation: no
-Packaged: 2024-05-15 15:03:06 UTC; dyfanjones
+Packaged: 2024-09-11 08:29:29 UTC; dyfanjones
 Author: David Kretch [aut],
   Adam Banker [aut],
   Dyfan Jones [cre],
   Amazon.com, Inc. [cph]
 Maintainer: Dyfan Jones <dyfan.r.jones@gmail.com>
 Repository: CRAN
-Date/Publication: 2024-05-16 08:20:03 UTC
+Date/Publication: 2024-09-11 22:51:00 UTC

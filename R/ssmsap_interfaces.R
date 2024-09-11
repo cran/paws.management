@@ -35,7 +35,7 @@ NULL
 
 .ssmsap$get_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Application = structure(list(Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), AppRegistryArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), DiscoveryStatus = structure(logical(0), tags = list(type = "string")), Components = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(Application = structure(list(Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), AppRegistryArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), DiscoveryStatus = structure(logical(0), tags = list(type = "string")), Components = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), StatusMessage = structure(logical(0), tags = list(type = "string")), AssociatedApplicationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -59,7 +59,7 @@ NULL
 
 .ssmsap$get_database_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Database = structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), ComponentId = structure(logical(0), tags = list(type = "string")), Credentials = structure(list(structure(list(DatabaseName = structure(logical(0), tags = list(type = "string")), CredentialType = structure(logical(0), tags = list(type = "string")), SecretId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), DatabaseId = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), DatabaseType = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), PrimaryHost = structure(logical(0), tags = list(type = "string")), SQLPort = structure(logical(0), tags = list(type = "integer", box = TRUE)), LastUpdated = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(Database = structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), ComponentId = structure(logical(0), tags = list(type = "string")), Credentials = structure(list(structure(list(DatabaseName = structure(logical(0), tags = list(type = "string")), CredentialType = structure(logical(0), tags = list(type = "string")), SecretId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), DatabaseId = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), DatabaseType = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), PrimaryHost = structure(logical(0), tags = list(type = "string")), SQLPort = structure(logical(0), tags = list(type = "integer", box = TRUE)), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), ConnectedComponentArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -123,6 +123,18 @@ NULL
   return(populate(args, shape))
 }
 
+.ssmsap$list_operation_events_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Operator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$list_operation_events_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OperationEvents = structure(list(structure(list(Description = structure(logical(0), tags = list(type = "string")), Resource = structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ssmsap$list_operations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Operator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -167,7 +179,19 @@ NULL
 
 .ssmsap$register_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Application = structure(list(Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), AppRegistryArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), DiscoveryStatus = structure(logical(0), tags = list(type = "string")), Components = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Application = structure(list(Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), AppRegistryArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), DiscoveryStatus = structure(logical(0), tags = list(type = "string")), Components = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), StatusMessage = structure(logical(0), tags = list(type = "string")), AssociatedApplicationArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$start_application_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$start_application_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -178,6 +202,18 @@ NULL
 }
 
 .ssmsap$start_application_refresh_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$stop_application_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), StopConnectedEntity = structure(logical(0), tags = list(type = "string")), IncludeEc2InstanceShutdown = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmsap$stop_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))

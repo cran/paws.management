@@ -173,11 +173,11 @@ cloudwatchinternetmonitor <- function(config = list(), credentials = list(), end
   service_id = "InternetMonitor",
   api_version = "2021-06-03",
   signing_name = "internetmonitor",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 
-.cloudwatchinternetmonitor$service <- function(config = list()) {
+.cloudwatchinternetmonitor$service <- function(config = list(), op = NULL) {
   handlers <- new_handlers("restjson", "v4")
-  new_service(.cloudwatchinternetmonitor$metadata, handlers, config)
+  new_service(.cloudwatchinternetmonitor$metadata, handlers, config, op)
 }
