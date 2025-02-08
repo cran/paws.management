@@ -3,6 +3,41 @@
 #' @include configservice_service.R
 NULL
 
+#' Adds all resource types specified in the ResourceTypes list to the
+#' RecordingGroup of specified configuration recorder and includes those
+#' resource types when recording
+#'
+#' @description
+#' Adds all resource types specified in the `ResourceTypes` list to the [RecordingGroup](https://docs.aws.amazon.com/config/latest/APIReference/API_RecordingGroup.html) of specified configuration recorder and includes those resource types when recording.
+#'
+#' See [https://www.paws-r-sdk.com/docs/configservice_associate_resource_types/](https://www.paws-r-sdk.com/docs/configservice_associate_resource_types/) for full documentation.
+#'
+#' @param ConfigurationRecorderArn &#91;required&#93; The Amazon Resource Name (ARN) of the specified configuration recorder.
+#' @param ResourceTypes &#91;required&#93; The list of resource types you want to add to the recording group of the
+#' specified configuration recorder.
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_associate_resource_types
+configservice_associate_resource_types <- function(ConfigurationRecorderArn, ResourceTypes) {
+  op <- new_operation(
+    name = "AssociateResourceTypes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .configservice$associate_resource_types_input(ConfigurationRecorderArn = ConfigurationRecorderArn, ResourceTypes = ResourceTypes)
+  output <- .configservice$associate_resource_types_output()
+  config <- get_config()
+  svc <- .configservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$associate_resource_types <- configservice_associate_resource_types
+
 #' Returns the current configuration items for resources that are present
 #' in your Config aggregator
 #'
@@ -23,7 +58,8 @@ configservice_batch_get_aggregate_resource_config <- function(ConfigurationAggre
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$batch_get_aggregate_resource_config_input(ConfigurationAggregatorName = ConfigurationAggregatorName, ResourceIdentifiers = ResourceIdentifiers)
   output <- .configservice$batch_get_aggregate_resource_config_output()
@@ -54,7 +90,8 @@ configservice_batch_get_resource_config <- function(resourceKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$batch_get_resource_config_input(resourceKeys = resourceKeys)
   output <- .configservice$batch_get_resource_config_output()
@@ -86,7 +123,8 @@ configservice_delete_aggregation_authorization <- function(AuthorizedAccountId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$delete_aggregation_authorization_input(AuthorizedAccountId = AuthorizedAccountId, AuthorizedAwsRegion = AuthorizedAwsRegion)
   output <- .configservice$delete_aggregation_authorization_output()
@@ -116,7 +154,8 @@ configservice_delete_config_rule <- function(ConfigRuleName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$delete_config_rule_input(ConfigRuleName = ConfigRuleName)
   output <- .configservice$delete_config_rule_output()
@@ -147,7 +186,8 @@ configservice_delete_configuration_aggregator <- function(ConfigurationAggregato
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$delete_configuration_aggregator_input(ConfigurationAggregatorName = ConfigurationAggregatorName)
   output <- .configservice$delete_configuration_aggregator_output()
@@ -159,17 +199,18 @@ configservice_delete_configuration_aggregator <- function(ConfigurationAggregato
 }
 .configservice$operations$delete_configuration_aggregator <- configservice_delete_configuration_aggregator
 
-#' Deletes the configuration recorder
+#' Deletes the customer managed configuration recorder
 #'
 #' @description
-#' Deletes the configuration recorder.
+#' Deletes the customer managed configuration recorder.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_delete_configuration_recorder/](https://www.paws-r-sdk.com/docs/configservice_delete_configuration_recorder/) for full documentation.
 #'
-#' @param ConfigurationRecorderName &#91;required&#93; The name of the configuration recorder to be deleted. You can retrieve
-#' the name of your configuration recorder by using the
+#' @param ConfigurationRecorderName &#91;required&#93; The name of the customer managed configuration recorder that you want to
+#' delete. You can retrieve the name of your configuration recorders by
+#' using the
 #' [`describe_configuration_recorders`][configservice_describe_configuration_recorders]
-#' action.
+#' operation.
 #'
 #' @keywords internal
 #'
@@ -180,7 +221,8 @@ configservice_delete_configuration_recorder <- function(ConfigurationRecorderNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$delete_configuration_recorder_input(ConfigurationRecorderName = ConfigurationRecorderName)
   output <- .configservice$delete_configuration_recorder_output()
@@ -212,7 +254,8 @@ configservice_delete_conformance_pack <- function(ConformancePackName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$delete_conformance_pack_input(ConformancePackName = ConformancePackName)
   output <- .configservice$delete_conformance_pack_output()
@@ -231,7 +274,7 @@ configservice_delete_conformance_pack <- function(ConformancePackName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_delete_delivery_channel/](https://www.paws-r-sdk.com/docs/configservice_delete_delivery_channel/) for full documentation.
 #'
-#' @param DeliveryChannelName &#91;required&#93; The name of the delivery channel to delete.
+#' @param DeliveryChannelName &#91;required&#93; The name of the delivery channel that you want to delete.
 #'
 #' @keywords internal
 #'
@@ -242,7 +285,8 @@ configservice_delete_delivery_channel <- function(DeliveryChannelName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$delete_delivery_channel_input(DeliveryChannelName = DeliveryChannelName)
   output <- .configservice$delete_delivery_channel_output()
@@ -273,7 +317,8 @@ configservice_delete_evaluation_results <- function(ConfigRuleName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$delete_evaluation_results_input(ConfigRuleName = ConfigRuleName)
   output <- .configservice$delete_evaluation_results_output()
@@ -304,7 +349,8 @@ configservice_delete_organization_config_rule <- function(OrganizationConfigRule
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$delete_organization_config_rule_input(OrganizationConfigRuleName = OrganizationConfigRuleName)
   output <- .configservice$delete_organization_config_rule_output()
@@ -336,7 +382,8 @@ configservice_delete_organization_conformance_pack <- function(OrganizationConfo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$delete_organization_conformance_pack_input(OrganizationConformancePackName = OrganizationConformancePackName)
   output <- .configservice$delete_organization_conformance_pack_output()
@@ -368,7 +415,8 @@ configservice_delete_pending_aggregation_request <- function(RequesterAccountId,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$delete_pending_aggregation_request_input(RequesterAccountId = RequesterAccountId, RequesterAwsRegion = RequesterAwsRegion)
   output <- .configservice$delete_pending_aggregation_request_output()
@@ -400,7 +448,8 @@ configservice_delete_remediation_configuration <- function(ConfigRuleName, Resou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$delete_remediation_configuration_input(ConfigRuleName = ConfigRuleName, ResourceType = ResourceType)
   output <- .configservice$delete_remediation_configuration_output()
@@ -435,7 +484,8 @@ configservice_delete_remediation_exceptions <- function(ConfigRuleName, Resource
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$delete_remediation_exceptions_input(ConfigRuleName = ConfigRuleName, ResourceKeys = ResourceKeys)
   output <- .configservice$delete_remediation_exceptions_output()
@@ -467,7 +517,8 @@ configservice_delete_resource_config <- function(ResourceType, ResourceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$delete_resource_config_input(ResourceType = ResourceType, ResourceId = ResourceId)
   output <- .configservice$delete_resource_config_output()
@@ -497,7 +548,8 @@ configservice_delete_retention_configuration <- function(RetentionConfigurationN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$delete_retention_configuration_input(RetentionConfigurationName = RetentionConfigurationName)
   output <- .configservice$delete_retention_configuration_output()
@@ -508,6 +560,38 @@ configservice_delete_retention_configuration <- function(RetentionConfigurationN
   return(response)
 }
 .configservice$operations$delete_retention_configuration <- configservice_delete_retention_configuration
+
+#' Deletes an existing service-linked configuration recorder
+#'
+#' @description
+#' Deletes an existing service-linked configuration recorder.
+#'
+#' See [https://www.paws-r-sdk.com/docs/configservice_delete_service_linked_configuration_recorder/](https://www.paws-r-sdk.com/docs/configservice_delete_service_linked_configuration_recorder/) for full documentation.
+#'
+#' @param ServicePrincipal &#91;required&#93; The service principal of the Amazon Web Services service for the
+#' service-linked configuration recorder that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_delete_service_linked_configuration_recorder
+configservice_delete_service_linked_configuration_recorder <- function(ServicePrincipal) {
+  op <- new_operation(
+    name = "DeleteServiceLinkedConfigurationRecorder",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .configservice$delete_service_linked_configuration_recorder_input(ServicePrincipal = ServicePrincipal)
+  output <- .configservice$delete_service_linked_configuration_recorder_output()
+  config <- get_config()
+  svc <- .configservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$delete_service_linked_configuration_recorder <- configservice_delete_service_linked_configuration_recorder
 
 #' Deletes the stored query for a single Amazon Web Services account and a
 #' single Amazon Web Services Region
@@ -528,7 +612,8 @@ configservice_delete_stored_query <- function(QueryName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$delete_stored_query_input(QueryName = QueryName)
   output <- .configservice$delete_stored_query_output()
@@ -560,7 +645,8 @@ configservice_deliver_config_snapshot <- function(deliveryChannelName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$deliver_config_snapshot_input(deliveryChannelName = deliveryChannelName)
   output <- .configservice$deliver_config_snapshot_output()
@@ -596,7 +682,8 @@ configservice_describe_aggregate_compliance_by_config_rules <- function(Configur
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "AggregateComplianceByConfigRules"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_aggregate_compliance_by_config_rules_input(ConfigurationAggregatorName = ConfigurationAggregatorName, Filters = Filters, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_aggregate_compliance_by_config_rules_output()
@@ -608,12 +695,12 @@ configservice_describe_aggregate_compliance_by_config_rules <- function(Configur
 }
 .configservice$operations$describe_aggregate_compliance_by_config_rules <- configservice_describe_aggregate_compliance_by_config_rules
 
-#' Returns a list of the conformance packs and their associated compliance
-#' status with the count of compliant and noncompliant Config rules within
-#' each conformance pack
+#' Returns a list of the existing and deleted conformance packs and their
+#' associated compliance status with the count of compliant and
+#' noncompliant Config rules within each conformance pack
 #'
 #' @description
-#' Returns a list of the conformance packs and their associated compliance status with the count of compliant and noncompliant Config rules within each conformance pack. Also returns the total rule count which includes compliant rules, noncompliant rules, and rules that cannot be evaluated due to insufficient data.
+#' Returns a list of the existing and deleted conformance packs and their associated compliance status with the count of compliant and noncompliant Config rules within each conformance pack. Also returns the total rule count which includes compliant rules, noncompliant rules, and rules that cannot be evaluated due to insufficient data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_aggregate_compliance_by_conformance_packs/](https://www.paws-r-sdk.com/docs/configservice_describe_aggregate_compliance_by_conformance_packs/) for full documentation.
 #'
@@ -635,7 +722,8 @@ configservice_describe_aggregate_compliance_by_conformance_packs <- function(Con
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "AggregateComplianceByConformancePacks")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "AggregateComplianceByConformancePacks"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_aggregate_compliance_by_conformance_packs_input(ConfigurationAggregatorName = ConfigurationAggregatorName, Filters = Filters, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_aggregate_compliance_by_conformance_packs_output()
@@ -669,7 +757,8 @@ configservice_describe_aggregation_authorizations <- function(Limit = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "AggregationAuthorizations")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "AggregationAuthorizations"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_aggregation_authorizations_input(Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_aggregation_authorizations_output()
@@ -684,7 +773,7 @@ configservice_describe_aggregation_authorizations <- function(Limit = NULL, Next
 #' Indicates whether the specified Config rules are compliant
 #'
 #' @description
-#' Indicates whether the specified Config rules are compliant. If a rule is noncompliant, this action returns the number of Amazon Web Services resources that do not comply with the rule.
+#' Indicates whether the specified Config rules are compliant. If a rule is noncompliant, this operation returns the number of Amazon Web Services resources that do not comply with the rule.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_compliance_by_config_rule/](https://www.paws-r-sdk.com/docs/configservice_describe_compliance_by_config_rule/) for full documentation.
 #'
@@ -702,7 +791,8 @@ configservice_describe_compliance_by_config_rule <- function(ConfigRuleNames = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ComplianceByConfigRules")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ComplianceByConfigRules"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_compliance_by_config_rule_input(ConfigRuleNames = ConfigRuleNames, ComplianceTypes = ComplianceTypes, NextToken = NextToken)
   output <- .configservice$describe_compliance_by_config_rule_output()
@@ -718,12 +808,12 @@ configservice_describe_compliance_by_config_rule <- function(ConfigRuleNames = N
 #' compliant
 #'
 #' @description
-#' Indicates whether the specified Amazon Web Services resources are compliant. If a resource is noncompliant, this action returns the number of Config rules that the resource does not comply with.
+#' Indicates whether the specified Amazon Web Services resources are compliant. If a resource is noncompliant, this operation returns the number of Config rules that the resource does not comply with.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_compliance_by_resource/](https://www.paws-r-sdk.com/docs/configservice_describe_compliance_by_resource/) for full documentation.
 #'
 #' @param ResourceType The types of Amazon Web Services resources for which you want compliance
-#' information (for example, `AWS::EC2::Instance`). For this action, you
+#' information (for example, `AWS::EC2::Instance`). For this operation, you
 #' can specify that the resource type is an Amazon Web Services account by
 #' specifying `AWS::::Account`.
 #' @param ResourceId The ID of the Amazon Web Services resource for which you want compliance
@@ -745,7 +835,8 @@ configservice_describe_compliance_by_resource <- function(ResourceType = NULL, R
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ComplianceByResources")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ComplianceByResources", limit_key = "Limit"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_compliance_by_resource_input(ResourceType = ResourceType, ResourceId = ResourceId, ComplianceTypes = ComplianceTypes, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_compliance_by_resource_output()
@@ -787,7 +878,8 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ConfigRulesEvaluationStatus")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ConfigRulesEvaluationStatus"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_config_rule_evaluation_status_input(ConfigRuleNames = ConfigRuleNames, NextToken = NextToken, Limit = Limit)
   output <- .configservice$describe_config_rule_evaluation_status_output()
@@ -813,7 +905,7 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
 #' @param Filters Returns a list of Detective or Proactive Config rules. By default, this
 #' API returns an unfiltered list. For more information on Detective or
 #' Proactive Config rules, see [**Evaluation
-#' Mode**](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config-rules.html)
+#' Mode**](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_components.html)
 #' in the *Config Developer Guide*.
 #'
 #' @keywords internal
@@ -825,7 +917,8 @@ configservice_describe_config_rules <- function(ConfigRuleNames = NULL, NextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ConfigRules")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ConfigRules"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_config_rules_input(ConfigRuleNames = ConfigRuleNames, NextToken = NextToken, Filters = Filters)
   output <- .configservice$describe_config_rules_output()
@@ -866,7 +959,8 @@ configservice_describe_configuration_aggregator_sources_status <- function(Confi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "AggregatedSourceStatusList")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "AggregatedSourceStatusList"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_configuration_aggregator_sources_status_input(ConfigurationAggregatorName = ConfigurationAggregatorName, UpdateStatus = UpdateStatus, NextToken = NextToken, Limit = Limit)
   output <- .configservice$describe_configuration_aggregator_sources_status_output()
@@ -881,7 +975,7 @@ configservice_describe_configuration_aggregator_sources_status <- function(Confi
 #' Returns the details of one or more configuration aggregators
 #'
 #' @description
-#' Returns the details of one or more configuration aggregators. If the configuration aggregator is not specified, this action returns the details for all the configuration aggregators associated with the account.
+#' Returns the details of one or more configuration aggregators. If the configuration aggregator is not specified, this operation returns the details for all the configuration aggregators associated with the account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_configuration_aggregators/](https://www.paws-r-sdk.com/docs/configservice_describe_configuration_aggregators/) for full documentation.
 #'
@@ -900,7 +994,8 @@ configservice_describe_configuration_aggregators <- function(ConfigurationAggreg
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ConfigurationAggregators")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ConfigurationAggregators"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_configuration_aggregators_input(ConfigurationAggregatorNames = ConfigurationAggregatorNames, NextToken = NextToken, Limit = Limit)
   output <- .configservice$describe_configuration_aggregators_output()
@@ -912,30 +1007,40 @@ configservice_describe_configuration_aggregators <- function(ConfigurationAggreg
 }
 .configservice$operations$describe_configuration_aggregators <- configservice_describe_configuration_aggregators
 
-#' Returns the current status of the specified configuration recorder as
-#' well as the status of the last recording event for the recorder
+#' Returns the current status of the configuration recorder you specify as
+#' well as the status of the last recording event for the configuration
+#' recorders
 #'
 #' @description
-#' Returns the current status of the specified configuration recorder as well as the status of the last recording event for the recorder. If a configuration recorder is not specified, this action returns the status of all configuration recorders associated with the account.
+#' Returns the current status of the configuration recorder you specify as well as the status of the last recording event for the configuration recorders.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorder_status/](https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorder_status/) for full documentation.
 #'
-#' @param ConfigurationRecorderNames The name(s) of the configuration recorder. If the name is not specified,
-#' the action returns the current status of all the configuration recorders
-#' associated with the account.
+#' @param ConfigurationRecorderNames The name of the configuration recorder. If the name is not specified,
+#' the opertation returns the status for the customer managed configuration
+#' recorder configured for the account, if applicable.
+#' 
+#' When making a request to this operation, you can only specify one
+#' configuration recorder.
+#' @param ServicePrincipal For service-linked configuration recorders, you can use the service
+#' principal of the linked Amazon Web Services service to specify the
+#' configuration recorder.
+#' @param Arn The Amazon Resource Name (ARN) of the configuration recorder that you
+#' want to specify.
 #'
 #' @keywords internal
 #'
 #' @rdname configservice_describe_configuration_recorder_status
-configservice_describe_configuration_recorder_status <- function(ConfigurationRecorderNames = NULL) {
+configservice_describe_configuration_recorder_status <- function(ConfigurationRecorderNames = NULL, ServicePrincipal = NULL, Arn = NULL) {
   op <- new_operation(
     name = "DescribeConfigurationRecorderStatus",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
-  input <- .configservice$describe_configuration_recorder_status_input(ConfigurationRecorderNames = ConfigurationRecorderNames)
+  input <- .configservice$describe_configuration_recorder_status_input(ConfigurationRecorderNames = ConfigurationRecorderNames, ServicePrincipal = ServicePrincipal, Arn = Arn)
   output <- .configservice$describe_configuration_recorder_status_output()
   config <- get_config()
   svc <- .configservice$service(config, op)
@@ -945,27 +1050,33 @@ configservice_describe_configuration_recorder_status <- function(ConfigurationRe
 }
 .configservice$operations$describe_configuration_recorder_status <- configservice_describe_configuration_recorder_status
 
-#' Returns the details for the specified configuration recorders
+#' Returns details for the configuration recorder you specify
 #'
 #' @description
-#' Returns the details for the specified configuration recorders. If the configuration recorder is not specified, this action returns the details for all configuration recorders associated with the account.
+#' Returns details for the configuration recorder you specify.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorders/](https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorders/) for full documentation.
 #'
-#' @param ConfigurationRecorderNames A list of configuration recorder names.
+#' @param ConfigurationRecorderNames A list of names of the configuration recorders that you want to specify.
+#' @param ServicePrincipal For service-linked configuration recorders, you can use the service
+#' principal of the linked Amazon Web Services service to specify the
+#' configuration recorder.
+#' @param Arn The Amazon Resource Name (ARN) of the configuration recorder that you
+#' want to specify.
 #'
 #' @keywords internal
 #'
 #' @rdname configservice_describe_configuration_recorders
-configservice_describe_configuration_recorders <- function(ConfigurationRecorderNames = NULL) {
+configservice_describe_configuration_recorders <- function(ConfigurationRecorderNames = NULL, ServicePrincipal = NULL, Arn = NULL) {
   op <- new_operation(
     name = "DescribeConfigurationRecorders",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
-  input <- .configservice$describe_configuration_recorders_input(ConfigurationRecorderNames = ConfigurationRecorderNames)
+  input <- .configservice$describe_configuration_recorders_input(ConfigurationRecorderNames = ConfigurationRecorderNames, ServicePrincipal = ServicePrincipal, Arn = Arn)
   output <- .configservice$describe_configuration_recorders_output()
   config <- get_config()
   svc <- .configservice$service(config, op)
@@ -998,7 +1109,8 @@ configservice_describe_conformance_pack_compliance <- function(ConformancePackNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_conformance_pack_compliance_input(ConformancePackName = ConformancePackName, Filters = Filters, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_conformance_pack_compliance_output()
@@ -1031,7 +1143,8 @@ configservice_describe_conformance_pack_status <- function(ConformancePackNames 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ConformancePackStatusDetails")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ConformancePackStatusDetails"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_conformance_pack_status_input(ConformancePackNames = ConformancePackNames, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_conformance_pack_status_output()
@@ -1066,7 +1179,8 @@ configservice_describe_conformance_packs <- function(ConformancePackNames = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ConformancePackDetails")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ConformancePackDetails"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_conformance_packs_input(ConformancePackNames = ConformancePackNames, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_conformance_packs_output()
@@ -1081,7 +1195,7 @@ configservice_describe_conformance_packs <- function(ConformancePackNames = NULL
 #' Returns the current status of the specified delivery channel
 #'
 #' @description
-#' Returns the current status of the specified delivery channel. If a delivery channel is not specified, this action returns the current status of all delivery channels associated with the account.
+#' Returns the current status of the specified delivery channel. If a delivery channel is not specified, this operation returns the current status of all delivery channels associated with the account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_delivery_channel_status/](https://www.paws-r-sdk.com/docs/configservice_describe_delivery_channel_status/) for full documentation.
 #'
@@ -1096,7 +1210,8 @@ configservice_describe_delivery_channel_status <- function(DeliveryChannelNames 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$describe_delivery_channel_status_input(DeliveryChannelNames = DeliveryChannelNames)
   output <- .configservice$describe_delivery_channel_status_output()
@@ -1111,7 +1226,7 @@ configservice_describe_delivery_channel_status <- function(DeliveryChannelNames 
 #' Returns details about the specified delivery channel
 #'
 #' @description
-#' Returns details about the specified delivery channel. If a delivery channel is not specified, this action returns the details of all delivery channels associated with the account.
+#' Returns details about the specified delivery channel. If a delivery channel is not specified, this operation returns the details of all delivery channels associated with the account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_delivery_channels/](https://www.paws-r-sdk.com/docs/configservice_describe_delivery_channels/) for full documentation.
 #'
@@ -1126,7 +1241,8 @@ configservice_describe_delivery_channels <- function(DeliveryChannelNames = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$describe_delivery_channels_input(DeliveryChannelNames = DeliveryChannelNames)
   output <- .configservice$describe_delivery_channels_output()
@@ -1163,7 +1279,8 @@ configservice_describe_organization_config_rule_statuses <- function(Organizatio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConfigRuleStatuses")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConfigRuleStatuses"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_organization_config_rule_statuses_input(OrganizationConfigRuleNames = OrganizationConfigRuleNames, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_organization_config_rule_statuses_output()
@@ -1200,7 +1317,8 @@ configservice_describe_organization_config_rules <- function(OrganizationConfigR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConfigRules")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConfigRules"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_organization_config_rules_input(OrganizationConfigRuleNames = OrganizationConfigRuleNames, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_organization_config_rules_output()
@@ -1238,7 +1356,8 @@ configservice_describe_organization_conformance_pack_statuses <- function(Organi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConformancePackStatuses")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConformancePackStatuses"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_organization_conformance_pack_statuses_input(OrganizationConformancePackNames = OrganizationConformancePackNames, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_organization_conformance_pack_statuses_output()
@@ -1273,7 +1392,8 @@ configservice_describe_organization_conformance_packs <- function(OrganizationCo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConformancePacks")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConformancePacks"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_organization_conformance_packs_input(OrganizationConformancePackNames = OrganizationConformancePackNames, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_organization_conformance_packs_output()
@@ -1306,7 +1426,8 @@ configservice_describe_pending_aggregation_requests <- function(Limit = NULL, Ne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "PendingAggregationRequests")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "PendingAggregationRequests"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_pending_aggregation_requests_input(Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_pending_aggregation_requests_output()
@@ -1337,7 +1458,8 @@ configservice_describe_remediation_configurations <- function(ConfigRuleNames) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$describe_remediation_configurations_input(ConfigRuleNames = ConfigRuleNames)
   output <- .configservice$describe_remediation_configurations_output()
@@ -1374,7 +1496,8 @@ configservice_describe_remediation_exceptions <- function(ConfigRuleName, Resour
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_remediation_exceptions_input(ConfigRuleName = ConfigRuleName, ResourceKeys = ResourceKeys, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_remediation_exceptions_output()
@@ -1395,7 +1518,7 @@ configservice_describe_remediation_exceptions <- function(ConfigRuleName, Resour
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_remediation_execution_status/](https://www.paws-r-sdk.com/docs/configservice_describe_remediation_execution_status/) for full documentation.
 #'
-#' @param ConfigRuleName &#91;required&#93; A list of Config rule names.
+#' @param ConfigRuleName &#91;required&#93; The name of the Config rule.
 #' @param ResourceKeys A list of resource keys to be processed with the current request. Each
 #' element in the list consists of the resource type and resource ID.
 #' @param Limit The maximum number of RemediationExecutionStatuses returned on each
@@ -1412,7 +1535,8 @@ configservice_describe_remediation_execution_status <- function(ConfigRuleName, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "RemediationExecutionStatuses")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "RemediationExecutionStatuses"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_remediation_execution_status_input(ConfigRuleName = ConfigRuleName, ResourceKeys = ResourceKeys, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_remediation_execution_status_output()
@@ -1427,7 +1551,7 @@ configservice_describe_remediation_execution_status <- function(ConfigRuleName, 
 #' Returns the details of one or more retention configurations
 #'
 #' @description
-#' Returns the details of one or more retention configurations. If the retention configuration name is not specified, this action returns the details for all the retention configurations for that account.
+#' Returns the details of one or more retention configurations. If the retention configuration name is not specified, this operation returns the details for all the retention configurations for that account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_retention_configurations/](https://www.paws-r-sdk.com/docs/configservice_describe_retention_configurations/) for full documentation.
 #'
@@ -1449,7 +1573,8 @@ configservice_describe_retention_configurations <- function(RetentionConfigurati
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "RetentionConfigurations")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "RetentionConfigurations"),
+    stream_api = FALSE
   )
   input <- .configservice$describe_retention_configurations_input(RetentionConfigurationNames = RetentionConfigurationNames, NextToken = NextToken)
   output <- .configservice$describe_retention_configurations_output()
@@ -1460,6 +1585,41 @@ configservice_describe_retention_configurations <- function(RetentionConfigurati
   return(response)
 }
 .configservice$operations$describe_retention_configurations <- configservice_describe_retention_configurations
+
+#' Removes all resource types specified in the ResourceTypes list from the
+#' RecordingGroup of configuration recorder and excludes these resource
+#' types when recording
+#'
+#' @description
+#' Removes all resource types specified in the `ResourceTypes` list from the [RecordingGroup](https://docs.aws.amazon.com/config/latest/APIReference/API_RecordingGroup.html) of configuration recorder and excludes these resource types when recording.
+#'
+#' See [https://www.paws-r-sdk.com/docs/configservice_disassociate_resource_types/](https://www.paws-r-sdk.com/docs/configservice_disassociate_resource_types/) for full documentation.
+#'
+#' @param ConfigurationRecorderArn &#91;required&#93; The Amazon Resource Name (ARN) of the specified configuration recorder.
+#' @param ResourceTypes &#91;required&#93; The list of resource types you want to remove from the recording group
+#' of the specified configuration recorder.
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_disassociate_resource_types
+configservice_disassociate_resource_types <- function(ConfigurationRecorderArn, ResourceTypes) {
+  op <- new_operation(
+    name = "DisassociateResourceTypes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .configservice$disassociate_resource_types_input(ConfigurationRecorderArn = ConfigurationRecorderArn, ResourceTypes = ResourceTypes)
+  output <- .configservice$disassociate_resource_types_output()
+  config <- get_config()
+  svc <- .configservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$disassociate_resource_types <- configservice_disassociate_resource_types
 
 #' Returns the evaluation results for the specified Config rule for a
 #' specific resource in a rule
@@ -1493,7 +1653,8 @@ configservice_get_aggregate_compliance_details_by_config_rule <- function(Config
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "AggregateEvaluationResults")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "AggregateEvaluationResults"),
+    stream_api = FALSE
   )
   input <- .configservice$get_aggregate_compliance_details_by_config_rule_input(ConfigurationAggregatorName = ConfigurationAggregatorName, ConfigRuleName = ConfigRuleName, AccountId = AccountId, AwsRegion = AwsRegion, ComplianceType = ComplianceType, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_aggregate_compliance_details_by_config_rule_output()
@@ -1532,7 +1693,8 @@ configservice_get_aggregate_config_rule_compliance_summary <- function(Configura
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .configservice$get_aggregate_config_rule_compliance_summary_input(ConfigurationAggregatorName = ConfigurationAggregatorName, Filters = Filters, GroupByKey = GroupByKey, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_aggregate_config_rule_compliance_summary_output()
@@ -1572,7 +1734,8 @@ configservice_get_aggregate_conformance_pack_compliance_summary <- function(Conf
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .configservice$get_aggregate_conformance_pack_compliance_summary_input(ConfigurationAggregatorName = ConfigurationAggregatorName, Filters = Filters, GroupByKey = GroupByKey, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_aggregate_conformance_pack_compliance_summary_output()
@@ -1610,7 +1773,8 @@ configservice_get_aggregate_discovered_resource_counts <- function(Configuration
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .configservice$get_aggregate_discovered_resource_counts_input(ConfigurationAggregatorName = ConfigurationAggregatorName, Filters = Filters, GroupByKey = GroupByKey, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_aggregate_discovered_resource_counts_output()
@@ -1642,7 +1806,8 @@ configservice_get_aggregate_resource_config <- function(ConfigurationAggregatorN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$get_aggregate_resource_config_input(ConfigurationAggregatorName = ConfigurationAggregatorName, ResourceIdentifier = ResourceIdentifier)
   output <- .configservice$get_aggregate_resource_config_output()
@@ -1682,7 +1847,8 @@ configservice_get_compliance_details_by_config_rule <- function(ConfigRuleName, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "EvaluationResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "EvaluationResults", limit_key = "Limit"),
+    stream_api = FALSE
   )
   input <- .configservice$get_compliance_details_by_config_rule_input(ConfigRuleName = ConfigRuleName, ComplianceTypes = ComplianceTypes, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_compliance_details_by_config_rule_output()
@@ -1728,7 +1894,8 @@ configservice_get_compliance_details_by_resource <- function(ResourceType = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "EvaluationResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "EvaluationResults"),
+    stream_api = FALSE
   )
   input <- .configservice$get_compliance_details_by_resource_input(ResourceType = ResourceType, ResourceId = ResourceId, ComplianceTypes = ComplianceTypes, NextToken = NextToken, ResourceEvaluationId = ResourceEvaluationId)
   output <- .configservice$get_compliance_details_by_resource_output()
@@ -1759,7 +1926,8 @@ configservice_get_compliance_summary_by_config_rule <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$get_compliance_summary_by_config_rule_input()
   output <- .configservice$get_compliance_summary_by_config_rule_output()
@@ -1796,7 +1964,8 @@ configservice_get_compliance_summary_by_resource_type <- function(ResourceTypes 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$get_compliance_summary_by_resource_type_input(ResourceTypes = ResourceTypes)
   output <- .configservice$get_compliance_summary_by_resource_type_output()
@@ -1832,7 +2001,8 @@ configservice_get_conformance_pack_compliance_details <- function(ConformancePac
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .configservice$get_conformance_pack_compliance_details_input(ConformancePackName = ConformancePackName, Filters = Filters, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_conformance_pack_compliance_details_output()
@@ -1866,7 +2036,8 @@ configservice_get_conformance_pack_compliance_summary <- function(ConformancePac
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ConformancePackComplianceSummaryList")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ConformancePackComplianceSummaryList"),
+    stream_api = FALSE
   )
   input <- .configservice$get_conformance_pack_compliance_summary_input(ConformancePackNames = ConformancePackNames, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_conformance_pack_compliance_summary_output()
@@ -1897,7 +2068,8 @@ configservice_get_custom_rule_policy <- function(ConfigRuleName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$get_custom_rule_policy_input(ConfigRuleName = ConfigRuleName)
   output <- .configservice$get_custom_rule_policy_output()
@@ -1944,7 +2116,8 @@ configservice_get_discovered_resource_counts <- function(resourceTypes = NULL, l
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken")
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken"),
+    stream_api = FALSE
   )
   input <- .configservice$get_discovered_resource_counts_input(resourceTypes = resourceTypes, limit = limit, nextToken = nextToken)
   output <- .configservice$get_discovered_resource_counts_output()
@@ -1982,7 +2155,8 @@ configservice_get_organization_config_rule_detailed_status <- function(Organizat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConfigRuleDetailedStatus")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConfigRuleDetailedStatus"),
+    stream_api = FALSE
   )
   input <- .configservice$get_organization_config_rule_detailed_status_input(OrganizationConfigRuleName = OrganizationConfigRuleName, Filters = Filters, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_organization_config_rule_detailed_status_output()
@@ -2020,7 +2194,8 @@ configservice_get_organization_conformance_pack_detailed_status <- function(Orga
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConformancePackDetailedStatuses")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConformancePackDetailedStatuses"),
+    stream_api = FALSE
   )
   input <- .configservice$get_organization_conformance_pack_detailed_status_input(OrganizationConformancePackName = OrganizationConformancePackName, Filters = Filters, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_organization_conformance_pack_detailed_status_output()
@@ -2051,7 +2226,8 @@ configservice_get_organization_custom_rule_policy <- function(OrganizationConfig
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$get_organization_custom_rule_policy_input(OrganizationConfigRuleName = OrganizationConfigRuleName)
   output <- .configservice$get_organization_custom_rule_policy_output()
@@ -2096,7 +2272,8 @@ configservice_get_resource_config_history <- function(resourceType, resourceId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "configurationItems")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "configurationItems", limit_key = "limit"),
+    stream_api = FALSE
   )
   input <- .configservice$get_resource_config_history_input(resourceType = resourceType, resourceId = resourceId, laterTime = laterTime, earlierTime = earlierTime, chronologicalOrder = chronologicalOrder, limit = limit, nextToken = nextToken)
   output <- .configservice$get_resource_config_history_output()
@@ -2128,7 +2305,8 @@ configservice_get_resource_evaluation_summary <- function(ResourceEvaluationId) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$get_resource_evaluation_summary_input(ResourceEvaluationId = ResourceEvaluationId)
   output <- .configservice$get_resource_evaluation_summary_output()
@@ -2158,7 +2336,8 @@ configservice_get_stored_query <- function(QueryName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$get_stored_query_input(QueryName = QueryName)
   output <- .configservice$get_stored_query_output()
@@ -2196,7 +2375,8 @@ configservice_list_aggregate_discovered_resources <- function(ConfigurationAggre
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ResourceIdentifiers")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ResourceIdentifiers"),
+    stream_api = FALSE
   )
   input <- .configservice$list_aggregate_discovered_resources_input(ConfigurationAggregatorName = ConfigurationAggregatorName, ResourceType = ResourceType, Filters = Filters, Limit = Limit, NextToken = NextToken)
   output <- .configservice$list_aggregate_discovered_resources_output()
@@ -2207,6 +2387,42 @@ configservice_list_aggregate_discovered_resources <- function(ConfigurationAggre
   return(response)
 }
 .configservice$operations$list_aggregate_discovered_resources <- configservice_list_aggregate_discovered_resources
+
+#' Returns a list of configuration recorders depending on the filters you
+#' specify
+#'
+#' @description
+#' Returns a list of configuration recorders depending on the filters you specify.
+#'
+#' See [https://www.paws-r-sdk.com/docs/configservice_list_configuration_recorders/](https://www.paws-r-sdk.com/docs/configservice_list_configuration_recorders/) for full documentation.
+#'
+#' @param Filters Filters the results based on a list of `ConfigurationRecorderFilter`
+#' objects that you specify.
+#' @param MaxResults The maximum number of results to include in the response.
+#' @param NextToken The `NextToken` string returned on a previous page that you use to get
+#' the next page of results in a paginated response.
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_list_configuration_recorders
+configservice_list_configuration_recorders <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListConfigurationRecorders",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ConfigurationRecorderSummaries"),
+    stream_api = FALSE
+  )
+  input <- .configservice$list_configuration_recorders_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .configservice$list_configuration_recorders_output()
+  config <- get_config()
+  svc <- .configservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$list_configuration_recorders <- configservice_list_configuration_recorders
 
 #' Returns a list of conformance pack compliance scores
 #'
@@ -2252,7 +2468,8 @@ configservice_list_conformance_pack_compliance_scores <- function(Filters = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .configservice$list_conformance_pack_compliance_scores_input(Filters = Filters, SortOrder = SortOrder, SortBy = SortBy, Limit = Limit, NextToken = NextToken)
   output <- .configservice$list_conformance_pack_compliance_scores_output()
@@ -2297,7 +2514,8 @@ configservice_list_discovered_resources <- function(resourceType, resourceIds = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "resourceIdentifiers")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "resourceIdentifiers", limit_key = "limit"),
+    stream_api = FALSE
   )
   input <- .configservice$list_discovered_resources_input(resourceType = resourceType, resourceIds = resourceIds, resourceName = resourceName, limit = limit, includeDeletedResources = includeDeletedResources, nextToken = nextToken)
   output <- .configservice$list_discovered_resources_output()
@@ -2332,7 +2550,8 @@ configservice_list_resource_evaluations <- function(Filters = NULL, Limit = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ResourceEvaluations")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ResourceEvaluations"),
+    stream_api = FALSE
   )
   input <- .configservice$list_resource_evaluations_input(Filters = Filters, Limit = Limit, NextToken = NextToken)
   output <- .configservice$list_resource_evaluations_output()
@@ -2365,7 +2584,8 @@ configservice_list_stored_queries <- function(NextToken = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .configservice$list_stored_queries_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .configservice$list_stored_queries_output()
@@ -2385,8 +2605,23 @@ configservice_list_stored_queries <- function(NextToken = NULL, MaxResults = NUL
 #' See [https://www.paws-r-sdk.com/docs/configservice_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/configservice_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
-#' list the tags. Currently, the supported resources are `ConfigRule`,
-#' `ConfigurationAggregator` and `AggregatorAuthorization`.
+#' list the tags. The following resources are supported:
+#' 
+#' -   `ConfigurationRecorder`
+#' 
+#' -   `ConfigRule`
+#' 
+#' -   `OrganizationConfigRule`
+#' 
+#' -   `ConformancePack`
+#' 
+#' -   `OrganizationConformancePack`
+#' 
+#' -   `ConfigurationAggregator`
+#' 
+#' -   `AggregationAuthorization`
+#' 
+#' -   `StoredQuery`
 #' @param Limit The maximum number of tags returned on each page. The limit maximum is
 #' 50. You cannot specify a number greater than 50. If you specify 0,
 #' Config uses the default.
@@ -2402,7 +2637,8 @@ configservice_list_tags_for_resource <- function(ResourceArn, Limit = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Tags")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Tags"),
+    stream_api = FALSE
   )
   input <- .configservice$list_tags_for_resource_input(ResourceArn = ResourceArn, Limit = Limit, NextToken = NextToken)
   output <- .configservice$list_tags_for_resource_output()
@@ -2435,7 +2671,8 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$put_aggregation_authorization_input(AuthorizedAccountId = AuthorizedAccountId, AuthorizedAwsRegion = AuthorizedAwsRegion, Tags = Tags)
   output <- .configservice$put_aggregation_authorization_output()
@@ -2467,7 +2704,8 @@ configservice_put_config_rule <- function(ConfigRule, Tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$put_config_rule_input(ConfigRule = ConfigRule, Tags = Tags)
   output <- .configservice$put_config_rule_output()
@@ -2491,19 +2729,22 @@ configservice_put_config_rule <- function(ConfigRule, Tags = NULL) {
 #' @param AccountAggregationSources A list of AccountAggregationSource object.
 #' @param OrganizationAggregationSource An OrganizationAggregationSource object.
 #' @param Tags An array of tag object.
+#' @param AggregatorFilters An object to filter configuration recorders in an aggregator. Either
+#' `ResourceType` or `ServicePrincipal` is required.
 #'
 #' @keywords internal
 #'
 #' @rdname configservice_put_configuration_aggregator
-configservice_put_configuration_aggregator <- function(ConfigurationAggregatorName, AccountAggregationSources = NULL, OrganizationAggregationSource = NULL, Tags = NULL) {
+configservice_put_configuration_aggregator <- function(ConfigurationAggregatorName, AccountAggregationSources = NULL, OrganizationAggregationSource = NULL, Tags = NULL, AggregatorFilters = NULL) {
   op <- new_operation(
     name = "PutConfigurationAggregator",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
-  input <- .configservice$put_configuration_aggregator_input(ConfigurationAggregatorName = ConfigurationAggregatorName, AccountAggregationSources = AccountAggregationSources, OrganizationAggregationSource = OrganizationAggregationSource, Tags = Tags)
+  input <- .configservice$put_configuration_aggregator_input(ConfigurationAggregatorName = ConfigurationAggregatorName, AccountAggregationSources = AccountAggregationSources, OrganizationAggregationSource = OrganizationAggregationSource, Tags = Tags, AggregatorFilters = AggregatorFilters)
   output <- .configservice$put_configuration_aggregator_output()
   config <- get_config()
   svc <- .configservice$service(config, op)
@@ -2513,29 +2754,31 @@ configservice_put_configuration_aggregator <- function(ConfigurationAggregatorNa
 }
 .configservice$operations$put_configuration_aggregator <- configservice_put_configuration_aggregator
 
-#' Creates a new configuration recorder to record configuration changes for
-#' specified resource types
+#' Creates or updates the customer managed configuration recorder
 #'
 #' @description
-#' Creates a new configuration recorder to record configuration changes for specified resource types.
+#' Creates or updates the customer managed configuration recorder.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_put_configuration_recorder/](https://www.paws-r-sdk.com/docs/configservice_put_configuration_recorder/) for full documentation.
 #'
-#' @param ConfigurationRecorder &#91;required&#93; An object for the configuration recorder to record configuration changes
-#' for specified resource types.
+#' @param ConfigurationRecorder &#91;required&#93; An object for the configuration recorder. A configuration recorder
+#' records configuration changes for the resource types in scope.
+#' @param Tags The tags for the customer managed configuration recorder. Each tag
+#' consists of a key and an optional value, both of which you define.
 #'
 #' @keywords internal
 #'
 #' @rdname configservice_put_configuration_recorder
-configservice_put_configuration_recorder <- function(ConfigurationRecorder) {
+configservice_put_configuration_recorder <- function(ConfigurationRecorder, Tags = NULL) {
   op <- new_operation(
     name = "PutConfigurationRecorder",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
-  input <- .configservice$put_configuration_recorder_input(ConfigurationRecorder = ConfigurationRecorder)
+  input <- .configservice$put_configuration_recorder_input(ConfigurationRecorder = ConfigurationRecorder, Tags = Tags)
   output <- .configservice$put_configuration_recorder_output()
   config <- get_config()
   svc <- .configservice$service(config, op)
@@ -2592,7 +2835,8 @@ configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Ur
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$put_conformance_pack_input(ConformancePackName = ConformancePackName, TemplateS3Uri = TemplateS3Uri, TemplateBody = TemplateBody, DeliveryS3Bucket = DeliveryS3Bucket, DeliveryS3KeyPrefix = DeliveryS3KeyPrefix, ConformancePackInputParameters = ConformancePackInputParameters, TemplateSSMDocumentDetails = TemplateSSMDocumentDetails)
   output <- .configservice$put_conformance_pack_output()
@@ -2604,18 +2848,16 @@ configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Ur
 }
 .configservice$operations$put_conformance_pack <- configservice_put_conformance_pack
 
-#' Creates a delivery channel object to deliver configuration information
-#' and other compliance information to an Amazon S3 bucket and Amazon SNS
-#' topic
+#' Creates or updates a delivery channel to deliver configuration
+#' information and other compliance information
 #'
 #' @description
-#' Creates a delivery channel object to deliver configuration information and other compliance information to an Amazon S3 bucket and Amazon SNS topic. For more information, see [Notifications that Config Sends to an Amazon SNS topic](https://docs.aws.amazon.com/config/latest/developerguide/notifications-for-AWS-Config.html).
+#' Creates or updates a delivery channel to deliver configuration information and other compliance information.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_put_delivery_channel/](https://www.paws-r-sdk.com/docs/configservice_put_delivery_channel/) for full documentation.
 #'
-#' @param DeliveryChannel &#91;required&#93; The configuration delivery channel object that delivers the
-#' configuration information to an Amazon S3 bucket and to an Amazon SNS
-#' topic.
+#' @param DeliveryChannel &#91;required&#93; An object for the delivery channel. A delivery channel sends
+#' notifications and updated configuration states.
 #'
 #' @keywords internal
 #'
@@ -2626,7 +2868,8 @@ configservice_put_delivery_channel <- function(DeliveryChannel) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$put_delivery_channel_input(DeliveryChannel = DeliveryChannel)
   output <- .configservice$put_delivery_channel_output()
@@ -2641,7 +2884,7 @@ configservice_put_delivery_channel <- function(DeliveryChannel) {
 #' Used by an Lambda function to deliver evaluation results to Config
 #'
 #' @description
-#' Used by an Lambda function to deliver evaluation results to Config. This action is required in every Lambda function that is invoked by an Config rule.
+#' Used by an Lambda function to deliver evaluation results to Config. This operation is required in every Lambda function that is invoked by an Config rule.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_put_evaluations/](https://www.paws-r-sdk.com/docs/configservice_put_evaluations/) for full documentation.
 #'
@@ -2670,7 +2913,8 @@ configservice_put_evaluations <- function(Evaluations = NULL, ResultToken, TestM
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$put_evaluations_input(Evaluations = Evaluations, ResultToken = ResultToken, TestMode = TestMode)
   output <- .configservice$put_evaluations_output()
@@ -2701,7 +2945,8 @@ configservice_put_external_evaluation <- function(ConfigRuleName, ExternalEvalua
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$put_external_evaluation_input(ConfigRuleName = ConfigRuleName, ExternalEvaluation = ExternalEvaluation)
   output <- .configservice$put_external_evaluation_output()
@@ -2754,7 +2999,8 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$put_organization_config_rule_input(OrganizationConfigRuleName = OrganizationConfigRuleName, OrganizationManagedRuleMetadata = OrganizationManagedRuleMetadata, OrganizationCustomRuleMetadata = OrganizationCustomRuleMetadata, ExcludedAccounts = ExcludedAccounts, OrganizationCustomPolicyRuleMetadata = OrganizationCustomPolicyRuleMetadata)
   output <- .configservice$put_organization_config_rule_output()
@@ -2807,7 +3053,8 @@ configservice_put_organization_conformance_pack <- function(OrganizationConforma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$put_organization_conformance_pack_input(OrganizationConformancePackName = OrganizationConformancePackName, TemplateS3Uri = TemplateS3Uri, TemplateBody = TemplateBody, DeliveryS3Bucket = DeliveryS3Bucket, DeliveryS3KeyPrefix = DeliveryS3KeyPrefix, ConformancePackInputParameters = ConformancePackInputParameters, ExcludedAccounts = ExcludedAccounts)
   output <- .configservice$put_organization_conformance_pack_output()
@@ -2838,7 +3085,8 @@ configservice_put_remediation_configurations <- function(RemediationConfiguratio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$put_remediation_configurations_input(RemediationConfigurations = RemediationConfigurations)
   output <- .configservice$put_remediation_configurations_output()
@@ -2875,7 +3123,8 @@ configservice_put_remediation_exceptions <- function(ConfigRuleName, ResourceKey
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$put_remediation_exceptions_input(ConfigRuleName = ConfigRuleName, ResourceKeys = ResourceKeys, Message = Message, ExpirationTime = ExpirationTime)
   output <- .configservice$put_remediation_exceptions_output()
@@ -2923,7 +3172,8 @@ configservice_put_resource_config <- function(ResourceType, SchemaVersionId, Res
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$put_resource_config_input(ResourceType = ResourceType, SchemaVersionId = SchemaVersionId, ResourceId = ResourceId, ResourceName = ResourceName, Configuration = Configuration, Tags = Tags)
   output <- .configservice$put_resource_config_output()
@@ -2957,7 +3207,8 @@ configservice_put_retention_configuration <- function(RetentionPeriodInDays) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$put_retention_configuration_input(RetentionPeriodInDays = RetentionPeriodInDays)
   output <- .configservice$put_retention_configuration_output()
@@ -2968,6 +3219,42 @@ configservice_put_retention_configuration <- function(RetentionPeriodInDays) {
   return(response)
 }
 .configservice$operations$put_retention_configuration <- configservice_put_retention_configuration
+
+#' Creates a service-linked configuration recorder that is linked to a
+#' specific Amazon Web Services service based on the ServicePrincipal you
+#' specify
+#'
+#' @description
+#' Creates a service-linked configuration recorder that is linked to a specific Amazon Web Services service based on the `ServicePrincipal` you specify.
+#'
+#' See [https://www.paws-r-sdk.com/docs/configservice_put_service_linked_configuration_recorder/](https://www.paws-r-sdk.com/docs/configservice_put_service_linked_configuration_recorder/) for full documentation.
+#'
+#' @param ServicePrincipal &#91;required&#93; The service principal of the Amazon Web Services service for the
+#' service-linked configuration recorder that you want to create.
+#' @param Tags The tags for a service-linked configuration recorder. Each tag consists
+#' of a key and an optional value, both of which you define.
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_put_service_linked_configuration_recorder
+configservice_put_service_linked_configuration_recorder <- function(ServicePrincipal, Tags = NULL) {
+  op <- new_operation(
+    name = "PutServiceLinkedConfigurationRecorder",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .configservice$put_service_linked_configuration_recorder_input(ServicePrincipal = ServicePrincipal, Tags = Tags)
+  output <- .configservice$put_service_linked_configuration_recorder_output()
+  config <- get_config()
+  svc <- .configservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$put_service_linked_configuration_recorder <- configservice_put_service_linked_configuration_recorder
 
 #' Saves a new query or updates an existing saved query
 #'
@@ -2993,7 +3280,8 @@ configservice_put_stored_query <- function(StoredQuery, Tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$put_stored_query_input(StoredQuery = StoredQuery, Tags = Tags)
   output <- .configservice$put_stored_query_output()
@@ -3032,7 +3320,8 @@ configservice_select_aggregate_resource_config <- function(Expression, Configura
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", non_aggregate_keys = list( "QueryInfo"), output_token = "NextToken", result_key = "Results")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", non_aggregate_keys = list( "QueryInfo"), output_token = "NextToken", result_key = "Results"),
+    stream_api = FALSE
   )
   input <- .configservice$select_aggregate_resource_config_input(Expression = Expression, ConfigurationAggregatorName = ConfigurationAggregatorName, Limit = Limit, MaxResults = MaxResults, NextToken = NextToken)
   output <- .configservice$select_aggregate_resource_config_output()
@@ -3067,7 +3356,8 @@ configservice_select_resource_config <- function(Expression, Limit = NULL, NextT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", non_aggregate_keys = list( "QueryInfo"), output_token = "NextToken", result_key = "Results")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", non_aggregate_keys = list( "QueryInfo"), output_token = "NextToken", result_key = "Results"),
+    stream_api = FALSE
   )
   input <- .configservice$select_resource_config_input(Expression = Expression, Limit = Limit, NextToken = NextToken)
   output <- .configservice$select_resource_config_output()
@@ -3098,7 +3388,8 @@ configservice_start_config_rules_evaluation <- function(ConfigRuleNames = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$start_config_rules_evaluation_input(ConfigRuleNames = ConfigRuleNames)
   output <- .configservice$start_config_rules_evaluation_output()
@@ -3110,16 +3401,15 @@ configservice_start_config_rules_evaluation <- function(ConfigRuleNames = NULL) 
 }
 .configservice$operations$start_config_rules_evaluation <- configservice_start_config_rules_evaluation
 
-#' Starts recording configurations of the Amazon Web Services resources you
-#' have selected to record in your Amazon Web Services account
+#' Starts the customer managed configuration recorder
 #'
 #' @description
-#' Starts recording configurations of the Amazon Web Services resources you have selected to record in your Amazon Web Services account.
+#' Starts the customer managed configuration recorder. The customer managed configuration recorder will begin recording configuration changes for the resource types you specify.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_start_configuration_recorder/](https://www.paws-r-sdk.com/docs/configservice_start_configuration_recorder/) for full documentation.
 #'
-#' @param ConfigurationRecorderName &#91;required&#93; The name of the recorder object that records each configuration change
-#' made to the resources.
+#' @param ConfigurationRecorderName &#91;required&#93; The name of the customer managed configuration recorder that you want to
+#' start.
 #'
 #' @keywords internal
 #'
@@ -3130,7 +3420,8 @@ configservice_start_configuration_recorder <- function(ConfigurationRecorderName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$start_configuration_recorder_input(ConfigurationRecorderName = ConfigurationRecorderName)
   output <- .configservice$start_configuration_recorder_output()
@@ -3164,7 +3455,8 @@ configservice_start_remediation_execution <- function(ConfigRuleName, ResourceKe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$start_remediation_execution_input(ConfigRuleName = ConfigRuleName, ResourceKeys = ResourceKeys)
   output <- .configservice$start_remediation_execution_output()
@@ -3212,7 +3504,8 @@ configservice_start_resource_evaluation <- function(ResourceDetails, EvaluationC
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$start_resource_evaluation_input(ResourceDetails = ResourceDetails, EvaluationContext = EvaluationContext, EvaluationMode = EvaluationMode, EvaluationTimeout = EvaluationTimeout, ClientToken = ClientToken)
   output <- .configservice$start_resource_evaluation_output()
@@ -3224,16 +3517,15 @@ configservice_start_resource_evaluation <- function(ResourceDetails, EvaluationC
 }
 .configservice$operations$start_resource_evaluation <- configservice_start_resource_evaluation
 
-#' Stops recording configurations of the Amazon Web Services resources you
-#' have selected to record in your Amazon Web Services account
+#' Stops the customer managed configuration recorder
 #'
 #' @description
-#' Stops recording configurations of the Amazon Web Services resources you have selected to record in your Amazon Web Services account.
+#' Stops the customer managed configuration recorder. The customer managed configuration recorder will stop recording configuration changes for the resource types you have specified.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_stop_configuration_recorder/](https://www.paws-r-sdk.com/docs/configservice_stop_configuration_recorder/) for full documentation.
 #'
-#' @param ConfigurationRecorderName &#91;required&#93; The name of the recorder object that records each configuration change
-#' made to the resources.
+#' @param ConfigurationRecorderName &#91;required&#93; The name of the customer managed configuration recorder that you want to
+#' stop.
 #'
 #' @keywords internal
 #'
@@ -3244,7 +3536,8 @@ configservice_stop_configuration_recorder <- function(ConfigurationRecorderName)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$stop_configuration_recorder_input(ConfigurationRecorderName = ConfigurationRecorderName)
   output <- .configservice$stop_configuration_recorder_output()
@@ -3257,16 +3550,31 @@ configservice_stop_configuration_recorder <- function(ConfigurationRecorderName)
 .configservice$operations$stop_configuration_recorder <- configservice_stop_configuration_recorder
 
 #' Associates the specified tags to a resource with the specified
-#' resourceArn
+#' ResourceArn
 #'
 #' @description
-#' Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are not specified in the request parameters, they are not changed. If existing tags are specified, however, then their values will be updated. When a resource is deleted, the tags associated with that resource are deleted as well.
+#' Associates the specified tags to a resource with the specified `ResourceArn`. If existing tags on a resource are not specified in the request parameters, they are not changed. If existing tags are specified, however, then their values will be updated. When a resource is deleted, the tags associated with that resource are deleted as well.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_tag_resource/](https://www.paws-r-sdk.com/docs/configservice_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
-#' list the tags. Currently, the supported resources are `ConfigRule`,
-#' `ConfigurationAggregator` and `AggregatorAuthorization`.
+#' list the tags. The following resources are supported:
+#' 
+#' -   `ConfigurationRecorder`
+#' 
+#' -   `ConfigRule`
+#' 
+#' -   `OrganizationConfigRule`
+#' 
+#' -   `ConformancePack`
+#' 
+#' -   `OrganizationConformancePack`
+#' 
+#' -   `ConfigurationAggregator`
+#' 
+#' -   `AggregationAuthorization`
+#' 
+#' -   `StoredQuery`
 #' @param Tags &#91;required&#93; An array of tag object.
 #'
 #' @keywords internal
@@ -3278,7 +3586,8 @@ configservice_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .configservice$tag_resource_output()
@@ -3298,8 +3607,23 @@ configservice_tag_resource <- function(ResourceArn, Tags) {
 #' See [https://www.paws-r-sdk.com/docs/configservice_untag_resource/](https://www.paws-r-sdk.com/docs/configservice_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
-#' list the tags. Currently, the supported resources are `ConfigRule`,
-#' `ConfigurationAggregator` and `AggregatorAuthorization`.
+#' list the tags. The following resources are supported:
+#' 
+#' -   `ConfigurationRecorder`
+#' 
+#' -   `ConfigRule`
+#' 
+#' -   `OrganizationConfigRule`
+#' 
+#' -   `ConformancePack`
+#' 
+#' -   `OrganizationConformancePack`
+#' 
+#' -   `ConfigurationAggregator`
+#' 
+#' -   `AggregationAuthorization`
+#' 
+#' -   `StoredQuery`
 #' @param TagKeys &#91;required&#93; The keys of the tags to be removed.
 #'
 #' @keywords internal
@@ -3311,7 +3635,8 @@ configservice_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .configservice$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .configservice$untag_resource_output()

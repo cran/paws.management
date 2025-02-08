@@ -29,9 +29,7 @@ cloudformation_update_stack(
 \item{StackName}{[required] The name or unique stack ID of the stack to update.}
 
 \item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte
-and a maximum length of 51,200 bytes. (For more information, go to
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the \emph{CloudFormation User Guide}.)
+and a maximum length of 51,200 bytes.
 
 Conditional: You must specify only one of the following parameters:
 \code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to
@@ -39,9 +37,8 @@ Conditional: You must specify only one of the following parameters:
 
 \item{TemplateURL}{Location of file containing the template body. The URL must point to a
 template that's located in an Amazon S3 bucket or a Systems Manager
-document. For more information, go to \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the \emph{CloudFormation User Guide}. The location for an Amazon S3 bucket
-must start with \verb{https://}.
+document. The location for an Amazon S3 bucket must start with
+\verb{https://}.
 
 Conditional: You must specify only one of the following parameters:
 \code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to
@@ -87,10 +84,9 @@ stack.
 \item \code{CAPABILITY_IAM} and \code{CAPABILITY_NAMED_IAM}
 
 Some stack templates might include resources that can affect
-permissions in your Amazon Web Services account; for example, by
-creating new Identity and Access Management (IAM) users. For those
-stacks, you must explicitly acknowledge this by specifying one of
-these capabilities.
+permissions in your Amazon Web Services account, for example, by
+creating new IAM users. For those stacks, you must explicitly
+acknowledge this by specifying one of these capabilities.
 
 The following IAM resources require you to specify either the
 \code{CAPABILITY_IAM} or \code{CAPABILITY_NAMED_IAM} capability.
@@ -109,13 +105,13 @@ permissions if necessary.
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html}{AWS::IAM::Group}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/}{AWS::IAM::Policy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html}{AWS::IAM::Policy}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html}{AWS::IAM::User}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
 }
 
-For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in CloudFormation Templates}.
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#using-iam-capabilities}{Acknowledging IAM resources in CloudFormation templates}.
 \item \code{CAPABILITY_AUTO_EXPAND}
 
 Some template contain macros. Macros perform custom processing on
@@ -128,7 +124,7 @@ your stack template contains one or more macros, and you choose to
 update a stack directly from the processed template, without first
 reviewing the resulting changes in a change set, you must
 acknowledge this capability. This includes the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html}{AWS::Include}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-include.html}{AWS::Include}
 and
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
 transforms, which are macros hosted by CloudFormation.
@@ -145,7 +141,7 @@ processing stack templates. Be aware that the Lambda function owner
 can update the function operation without CloudFormation being
 notified.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using CloudFormation Macros to Perform Custom Processing on Templates}.
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Perform custom processing on CloudFormation templates with template macros}.
 }
 
 Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
@@ -157,20 +153,20 @@ or \code{Custom::MyCustomInstance}.
 
 If the list of resource types doesn't include a resource that you're
 updating, the stack update fails. By default, CloudFormation grants
-permissions to all resource types. Identity and Access Management (IAM)
-uses this parameter for CloudFormation-specific condition keys in IAM
-policies. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html}{Controlling Access with Identity and Access Management}.
+permissions to all resource types. IAM uses this parameter for
+CloudFormation-specific condition keys in IAM policies. For more
+information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html}{Control access with Identity and Access Management}.
 
 Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
 specified.}
 
-\item{RoleARN}{The Amazon Resource Name (ARN) of an Identity and Access Management
-(IAM) role that CloudFormation assumes to update the stack.
-CloudFormation uses the role's credentials to make calls on your behalf.
-CloudFormation always uses this role for all future operations on the
-stack. Provided that users have permission to operate on the stack,
-CloudFormation uses this role even if the users don't have permission to
-pass it. Ensure that the role grants least privilege.
+\item{RoleARN}{The Amazon Resource Name (ARN) of an IAM role that CloudFormation
+assumes to update the stack. CloudFormation uses the role's credentials
+to make calls on your behalf. CloudFormation always uses this role for
+all future operations on the stack. Provided that users have permission
+to operate on the stack, CloudFormation uses this role even if the users
+don't have permission to pass it. Ensure that the role grants least
+privilege.
 
 If you don't specify a value, CloudFormation uses the role that was
 previously associated with the stack. If no role is available,

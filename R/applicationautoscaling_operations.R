@@ -177,7 +177,8 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$delete_scaling_policy_input(PolicyName = PolicyName, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension)
   output <- .applicationautoscaling$delete_scaling_policy_output()
@@ -363,7 +364,8 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$delete_scheduled_action_input(ServiceNamespace = ServiceNamespace, ScheduledActionName = ScheduledActionName, ResourceId = ResourceId, ScalableDimension = ScalableDimension)
   output <- .applicationautoscaling$delete_scheduled_action_output()
@@ -548,7 +550,8 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$deregister_scalable_target_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension)
   output <- .applicationautoscaling$deregister_scalable_target_output()
@@ -743,7 +746,8 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalableTargets")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ScalableTargets"),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$describe_scalable_targets_input(ServiceNamespace = ServiceNamespace, ResourceIds = ResourceIds, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
   output <- .applicationautoscaling$describe_scalable_targets_output()
@@ -944,7 +948,8 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalingActivities")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ScalingActivities"),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$describe_scaling_activities_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken, IncludeNotScaledActivities = IncludeNotScaledActivities)
   output <- .applicationautoscaling$describe_scaling_activities_output()
@@ -1140,7 +1145,8 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalingPolicies")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ScalingPolicies"),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$describe_scaling_policies_input(PolicyNames = PolicyNames, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
   output <- .applicationautoscaling$describe_scaling_policies_output()
@@ -1336,7 +1342,8 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledActions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledActions"),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$describe_scheduled_actions_input(ScheduledActionNames = ScheduledActionNames, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
   output <- .applicationautoscaling$describe_scheduled_actions_output()
@@ -1347,6 +1354,47 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
   return(response)
 }
 .applicationautoscaling$operations$describe_scheduled_actions <- applicationautoscaling_describe_scheduled_actions
+
+#' Retrieves the forecast data for a predictive scaling policy
+#'
+#' @description
+#' Retrieves the forecast data for a predictive scaling policy.
+#'
+#' See [https://www.paws-r-sdk.com/docs/applicationautoscaling_get_predictive_scaling_forecast/](https://www.paws-r-sdk.com/docs/applicationautoscaling_get_predictive_scaling_forecast/) for full documentation.
+#'
+#' @param ServiceNamespace &#91;required&#93; The namespace of the Amazon Web Services service that provides the
+#' resource. For a resource provided by your own application or service,
+#' use `custom-resource` instead.
+#' @param ResourceId &#91;required&#93; The identifier of the resource.
+#' @param ScalableDimension &#91;required&#93; The scalable dimension.
+#' @param PolicyName &#91;required&#93; The name of the policy.
+#' @param StartTime &#91;required&#93; The inclusive start time of the time range for the forecast data to get.
+#' At most, the date and time can be one year before the current date and
+#' time
+#' @param EndTime &#91;required&#93; The exclusive end time of the time range for the forecast data to get.
+#' The maximum time duration between the start and end time is 30 days.
+#'
+#' @keywords internal
+#'
+#' @rdname applicationautoscaling_get_predictive_scaling_forecast
+applicationautoscaling_get_predictive_scaling_forecast <- function(ServiceNamespace, ResourceId, ScalableDimension, PolicyName, StartTime, EndTime) {
+  op <- new_operation(
+    name = "GetPredictiveScalingForecast",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .applicationautoscaling$get_predictive_scaling_forecast_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, PolicyName = PolicyName, StartTime = StartTime, EndTime = EndTime)
+  output <- .applicationautoscaling$get_predictive_scaling_forecast_output()
+  config <- get_config()
+  svc <- .applicationautoscaling$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationautoscaling$operations$get_predictive_scaling_forecast <- applicationautoscaling_get_predictive_scaling_forecast
 
 #' Returns all the tags on the specified Application Auto Scaling scalable
 #' target
@@ -1373,7 +1421,8 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .applicationautoscaling$list_tags_for_resource_output()
@@ -1577,19 +1626,21 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #' 
 #' This parameter is required if you are creating a policy and the policy
 #' type is `TargetTrackingScaling`.
+#' @param PredictiveScalingPolicyConfiguration The configuration of the predictive scaling policy.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_put_scaling_policy
-applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespace, ResourceId, ScalableDimension, PolicyType = NULL, StepScalingPolicyConfiguration = NULL, TargetTrackingScalingPolicyConfiguration = NULL) {
+applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespace, ResourceId, ScalableDimension, PolicyType = NULL, StepScalingPolicyConfiguration = NULL, TargetTrackingScalingPolicyConfiguration = NULL, PredictiveScalingPolicyConfiguration = NULL) {
   op <- new_operation(
     name = "PutScalingPolicy",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
-  input <- .applicationautoscaling$put_scaling_policy_input(PolicyName = PolicyName, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, PolicyType = PolicyType, StepScalingPolicyConfiguration = StepScalingPolicyConfiguration, TargetTrackingScalingPolicyConfiguration = TargetTrackingScalingPolicyConfiguration)
+  input <- .applicationautoscaling$put_scaling_policy_input(PolicyName = PolicyName, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, PolicyType = PolicyType, StepScalingPolicyConfiguration = StepScalingPolicyConfiguration, TargetTrackingScalingPolicyConfiguration = TargetTrackingScalingPolicyConfiguration, PredictiveScalingPolicyConfiguration = PredictiveScalingPolicyConfiguration)
   output <- .applicationautoscaling$put_scaling_policy_output()
   config <- get_config()
   svc <- .applicationautoscaling$service(config, op)
@@ -1813,7 +1864,8 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$put_scheduled_action_input(ServiceNamespace = ServiceNamespace, Schedule = Schedule, Timezone = Timezone, ScheduledActionName = ScheduledActionName, ResourceId = ResourceId, ScalableDimension = ScalableDimension, StartTime = StartTime, EndTime = EndTime, ScalableTargetAction = ScalableTargetAction)
   output <- .applicationautoscaling$put_scheduled_action_output()
@@ -2092,7 +2144,8 @@ applicationautoscaling_register_scalable_target <- function(ServiceNamespace, Re
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$register_scalable_target_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MinCapacity = MinCapacity, MaxCapacity = MaxCapacity, RoleARN = RoleARN, SuspendedState = SuspendedState, Tags = Tags)
   output <- .applicationautoscaling$register_scalable_target_output()
@@ -2143,7 +2196,8 @@ applicationautoscaling_tag_resource <- function(ResourceARN, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .applicationautoscaling$tag_resource_output()
@@ -2181,7 +2235,8 @@ applicationautoscaling_untag_resource <- function(ResourceARN, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .applicationautoscaling$untag_resource_output()

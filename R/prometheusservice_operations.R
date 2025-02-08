@@ -29,7 +29,8 @@ prometheusservice_create_alert_manager_definition <- function(clientToken = NULL
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/alertmanager/definition",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$create_alert_manager_definition_input(clientToken = clientToken, data = data, workspaceId = workspaceId)
   output <- .prometheusservice$create_alert_manager_definition_output()
@@ -52,7 +53,7 @@ prometheusservice_create_alert_manager_definition <- function(clientToken = NULL
 #' @param clientToken A unique identifier that you can provide to ensure the idempotency of
 #' the request. Case-sensitive.
 #' @param logGroupArn &#91;required&#93; The ARN of the CloudWatch log group to which the vended log data will be
-#' published. This log group must exist prior to calling this API.
+#' published. This log group must exist prior to calling this operation.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to create the logging configuration for.
 #'
 #' @keywords internal
@@ -64,7 +65,8 @@ prometheusservice_create_logging_configuration <- function(clientToken = NULL, l
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/logging",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$create_logging_configuration_input(clientToken = clientToken, logGroupArn = logGroupArn, workspaceId = workspaceId)
   output <- .prometheusservice$create_logging_configuration_output()
@@ -106,7 +108,8 @@ prometheusservice_create_rule_groups_namespace <- function(clientToken = NULL, d
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/rulegroupsnamespaces",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$create_rule_groups_namespace_input(clientToken = clientToken, data = data, name = name, tags = tags, workspaceId = workspaceId)
   output <- .prometheusservice$create_rule_groups_namespace_output()
@@ -121,11 +124,11 @@ prometheusservice_create_rule_groups_namespace <- function(clientToken = NULL, d
 #' The CreateScraper operation creates a scraper to collect metrics
 #'
 #' @description
-#' The [`create_scraper`][prometheusservice_create_scraper] operation creates a scraper to collect metrics. A scraper pulls metrics from Prometheus-compatible sources within an Amazon EKS cluster, and sends them to your Amazon Managed Service for Prometheus workspace. You can configure the scraper to control what metrics are collected, and what transformations are applied prior to sending them to your workspace.
+#' The [`create_scraper`][prometheusservice_create_scraper] operation creates a scraper to collect metrics. A scraper pulls metrics from Prometheus-compatible sources within an Amazon EKS cluster, and sends them to your Amazon Managed Service for Prometheus workspace. Scrapers are flexible, and can be configured to control what metrics are collected, the frequency of collection, what transformations are applied to the metrics, and more.
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_create_scraper/](https://www.paws-r-sdk.com/docs/prometheusservice_create_scraper/) for full documentation.
 #'
-#' @param alias (optional) a name to associate with the scraper. This is for your use,
+#' @param alias (optional) An alias to associate with the scraper. This is for your use,
 #' and does not need to be unique.
 #' @param clientToken (Optional) A unique, case-sensitive identifier that you can provide to
 #' ensure the idempotency of the request.
@@ -147,7 +150,8 @@ prometheusservice_create_scraper <- function(alias = NULL, clientToken = NULL, d
     http_method = "POST",
     http_path = "/scrapers",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$create_scraper_input(alias = alias, clientToken = clientToken, destination = destination, scrapeConfiguration = scrapeConfiguration, source = source, tags = tags)
   output <- .prometheusservice$create_scraper_output()
@@ -189,7 +193,8 @@ prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL,
     http_method = "POST",
     http_path = "/workspaces",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$create_workspace_input(alias = alias, clientToken = clientToken, kmsKeyArn = kmsKeyArn, tags = tags)
   output <- .prometheusservice$create_workspace_output()
@@ -221,7 +226,8 @@ prometheusservice_delete_alert_manager_definition <- function(clientToken = NULL
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}/alertmanager/definition",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$delete_alert_manager_definition_input(clientToken = clientToken, workspaceId = workspaceId)
   output <- .prometheusservice$delete_alert_manager_definition_output()
@@ -253,7 +259,8 @@ prometheusservice_delete_logging_configuration <- function(clientToken = NULL, w
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}/logging",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$delete_logging_configuration_input(clientToken = clientToken, workspaceId = workspaceId)
   output <- .prometheusservice$delete_logging_configuration_output()
@@ -288,7 +295,8 @@ prometheusservice_delete_rule_groups_namespace <- function(clientToken = NULL, n
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}/rulegroupsnamespaces/{name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$delete_rule_groups_namespace_input(clientToken = clientToken, name = name, workspaceId = workspaceId)
   output <- .prometheusservice$delete_rule_groups_namespace_output()
@@ -321,7 +329,8 @@ prometheusservice_delete_scraper <- function(clientToken = NULL, scraperId) {
     http_method = "DELETE",
     http_path = "/scrapers/{scraperId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$delete_scraper_input(clientToken = clientToken, scraperId = scraperId)
   output <- .prometheusservice$delete_scraper_output()
@@ -353,7 +362,8 @@ prometheusservice_delete_workspace <- function(clientToken = NULL, workspaceId) 
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$delete_workspace_input(clientToken = clientToken, workspaceId = workspaceId)
   output <- .prometheusservice$delete_workspace_output()
@@ -384,7 +394,8 @@ prometheusservice_describe_alert_manager_definition <- function(workspaceId) {
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/alertmanager/definition",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$describe_alert_manager_definition_input(workspaceId = workspaceId)
   output <- .prometheusservice$describe_alert_manager_definition_output()
@@ -415,7 +426,8 @@ prometheusservice_describe_logging_configuration <- function(workspaceId) {
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/logging",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$describe_logging_configuration_input(workspaceId = workspaceId)
   output <- .prometheusservice$describe_logging_configuration_output()
@@ -446,7 +458,8 @@ prometheusservice_describe_rule_groups_namespace <- function(name, workspaceId) 
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/rulegroupsnamespaces/{name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$describe_rule_groups_namespace_input(name = name, workspaceId = workspaceId)
   output <- .prometheusservice$describe_rule_groups_namespace_output()
@@ -477,7 +490,8 @@ prometheusservice_describe_scraper <- function(scraperId) {
     http_method = "GET",
     http_path = "/scrapers/{scraperId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$describe_scraper_input(scraperId = scraperId)
   output <- .prometheusservice$describe_scraper_output()
@@ -507,7 +521,8 @@ prometheusservice_describe_workspace <- function(workspaceId) {
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$describe_workspace_input(workspaceId = workspaceId)
   output <- .prometheusservice$describe_workspace_output()
@@ -538,7 +553,8 @@ prometheusservice_get_default_scraper_configuration <- function() {
     http_method = "GET",
     http_path = "/scraperconfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$get_default_scraper_configuration_input()
   output <- .prometheusservice$get_default_scraper_configuration_output()
@@ -580,7 +596,8 @@ prometheusservice_list_rule_groups_namespaces <- function(maxResults = NULL, nam
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/rulegroupsnamespaces",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ruleGroupsNamespaces")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ruleGroupsNamespaces"),
+    stream_api = FALSE
   )
   input <- .prometheusservice$list_rule_groups_namespaces_input(maxResults = maxResults, name = name, nextToken = nextToken, workspaceId = workspaceId)
   output <- .prometheusservice$list_rule_groups_namespaces_output()
@@ -633,7 +650,8 @@ prometheusservice_list_scrapers <- function(filters = NULL, maxResults = NULL, n
     http_method = "GET",
     http_path = "/scrapers",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scrapers")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scrapers"),
+    stream_api = FALSE
   )
   input <- .prometheusservice$list_scrapers_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .prometheusservice$list_scrapers_output()
@@ -649,12 +667,12 @@ prometheusservice_list_scrapers <- function(filters = NULL, maxResults = NULL, n
 #' with an Amazon Managed Service for Prometheus resource
 #'
 #' @description
-#' The [`list_tags_for_resource`][prometheusservice_list_tags_for_resource] operation returns the tags that are associated with an Amazon Managed Service for Prometheus resource. Currently, the only resources that can be tagged are workspaces and rule groups namespaces.
+#' The [`list_tags_for_resource`][prometheusservice_list_tags_for_resource] operation returns the tags that are associated with an Amazon Managed Service for Prometheus resource. Currently, the only resources that can be tagged are scrapers, workspaces, and rule groups namespaces.
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/prometheusservice_list_tags_for_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The ARN of the resource to list tages for. Must be a workspace or rule
-#' groups namespace resource.
+#' @param resourceArn &#91;required&#93; The ARN of the resource to list tages for. Must be a workspace, scraper,
+#' or rule groups namespace resource.
 #'
 #' @keywords internal
 #'
@@ -665,7 +683,8 @@ prometheusservice_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .prometheusservice$list_tags_for_resource_output()
@@ -710,7 +729,8 @@ prometheusservice_list_workspaces <- function(alias = NULL, maxResults = NULL, n
     http_method = "GET",
     http_path = "/workspaces",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workspaces")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workspaces"),
+    stream_api = FALSE
   )
   input <- .prometheusservice$list_workspaces_input(alias = alias, maxResults = maxResults, nextToken = nextToken)
   output <- .prometheusservice$list_workspaces_output()
@@ -747,7 +767,8 @@ prometheusservice_put_alert_manager_definition <- function(clientToken = NULL, d
     http_method = "PUT",
     http_path = "/workspaces/{workspaceId}/alertmanager/definition",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$put_alert_manager_definition_input(clientToken = clientToken, data = data, workspaceId = workspaceId)
   output <- .prometheusservice$put_alert_manager_definition_output()
@@ -786,7 +807,8 @@ prometheusservice_put_rule_groups_namespace <- function(clientToken = NULL, data
     http_method = "PUT",
     http_path = "/workspaces/{workspaceId}/rulegroupsnamespaces/{name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$put_rule_groups_namespace_input(clientToken = clientToken, data = data, name = name, workspaceId = workspaceId)
   output <- .prometheusservice$put_rule_groups_namespace_output()
@@ -802,14 +824,14 @@ prometheusservice_put_rule_groups_namespace <- function(clientToken = NULL, data
 #' for Prometheus resource
 #'
 #' @description
-#' The [`tag_resource`][prometheusservice_tag_resource] operation associates tags with an Amazon Managed Service for Prometheus resource. The only resources that can be tagged are workspaces and rule groups namespaces.
+#' The [`tag_resource`][prometheusservice_tag_resource] operation associates tags with an Amazon Managed Service for Prometheus resource. The only resources that can be tagged are rule groups namespaces, scrapers, and workspaces.
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_tag_resource/](https://www.paws-r-sdk.com/docs/prometheusservice_tag_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The ARN of the workspace or rule groups namespace to apply tags to.
+#' @param resourceArn &#91;required&#93; The ARN of the resource to apply tags to.
 #' @param tags &#91;required&#93; The list of tag keys and values to associate with the resource.
 #' 
-#' Keys may not begin with `aws:`.
+#' Keys must not begin with `aws:`.
 #'
 #' @keywords internal
 #'
@@ -820,7 +842,8 @@ prometheusservice_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .prometheusservice$tag_resource_output()
@@ -836,11 +859,11 @@ prometheusservice_tag_resource <- function(resourceArn, tags) {
 #' resource
 #'
 #' @description
-#' Removes the specified tags from an Amazon Managed Service for Prometheus resource. The only resources that can be tagged are workspaces and rule groups namespaces.
+#' Removes the specified tags from an Amazon Managed Service for Prometheus resource. The only resources that can be tagged are rule groups namespaces, scrapers, and workspaces.
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_untag_resource/](https://www.paws-r-sdk.com/docs/prometheusservice_untag_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The ARN of the workspace or rule groups namespace.
+#' @param resourceArn &#91;required&#93; The ARN of the resource from which to remove a tag.
 #' @param tagKeys &#91;required&#93; The keys of the tags to remove.
 #'
 #' @keywords internal
@@ -852,7 +875,8 @@ prometheusservice_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .prometheusservice$untag_resource_output()
@@ -887,7 +911,8 @@ prometheusservice_update_logging_configuration <- function(clientToken = NULL, l
     http_method = "PUT",
     http_path = "/workspaces/{workspaceId}/logging",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$update_logging_configuration_input(clientToken = clientToken, logGroupArn = logGroupArn, workspaceId = workspaceId)
   output <- .prometheusservice$update_logging_configuration_output()
@@ -898,6 +923,48 @@ prometheusservice_update_logging_configuration <- function(clientToken = NULL, l
   return(response)
 }
 .prometheusservice$operations$update_logging_configuration <- prometheusservice_update_logging_configuration
+
+#' Updates an existing scraper
+#'
+#' @description
+#' Updates an existing scraper.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_update_scraper/](https://www.paws-r-sdk.com/docs/prometheusservice_update_scraper/) for full documentation.
+#'
+#' @param alias The new alias of the scraper.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
+#' the request. Case-sensitive.
+#' @param destination The new Amazon Managed Service for Prometheus workspace to send metrics
+#' to.
+#' @param scrapeConfiguration Contains the base-64 encoded YAML configuration for the scraper.
+#' 
+#' For more information about configuring a scraper, see [Using an Amazon
+#' Web Services managed
+#' collector](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html)
+#' in the *Amazon Managed Service for Prometheus User Guide*.
+#' @param scraperId &#91;required&#93; The ID of the scraper to update.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_update_scraper
+prometheusservice_update_scraper <- function(alias = NULL, clientToken = NULL, destination = NULL, scrapeConfiguration = NULL, scraperId) {
+  op <- new_operation(
+    name = "UpdateScraper",
+    http_method = "PUT",
+    http_path = "/scrapers/{scraperId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$update_scraper_input(alias = alias, clientToken = clientToken, destination = destination, scrapeConfiguration = scrapeConfiguration, scraperId = scraperId)
+  output <- .prometheusservice$update_scraper_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$update_scraper <- prometheusservice_update_scraper
 
 #' Updates the alias of an existing workspace
 #'
@@ -923,7 +990,8 @@ prometheusservice_update_workspace_alias <- function(alias = NULL, clientToken =
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/alias",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .prometheusservice$update_workspace_alias_input(alias = alias, clientToken = clientToken, workspaceId = workspaceId)
   output <- .prometheusservice$update_workspace_alias_output()

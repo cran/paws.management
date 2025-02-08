@@ -1,5 +1,9 @@
 svc <- paws::cloudwatchlogs()
 
+test_that("describe_configuration_templates", {
+  expect_error(svc$describe_configuration_templates(), NA)
+})
+
 test_that("describe_deliveries", {
   expect_error(svc$describe_deliveries(), NA)
 })
@@ -46,6 +50,10 @@ test_that("describe_resource_policies", {
 
 test_that("list_anomalies", {
   expect_error(svc$list_anomalies(), NA)
+})
+
+test_that("list_integrations", {
+  expect_error(svc$list_integrations(), NA)
 })
 
 test_that("list_log_anomaly_detectors", {

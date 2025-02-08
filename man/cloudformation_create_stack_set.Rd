@@ -34,18 +34,14 @@ longer than 128 characters.}
 the stack set's purpose or other important information.}
 
 \item{TemplateBody}{The structure that contains the template body, with a minimum length of
-1 byte and a maximum length of 51,200 bytes. For more information, see
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the \emph{CloudFormation User Guide}.
+1 byte and a maximum length of 51,200 bytes.
 
 Conditional: You must specify either the TemplateBody or the TemplateURL
 parameter, but not both.}
 
 \item{TemplateURL}{The location of the file that contains the template body. The URL must
 point to a template (maximum size: 460,800 bytes) that's located in an
-Amazon S3 bucket or a Systems Manager document. For more information,
-see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the \emph{CloudFormation User Guide}.
+Amazon S3 bucket or a Systems Manager document.
 
 Conditional: You must specify either the TemplateBody or the TemplateURL
 parameter, but not both.}
@@ -63,9 +59,8 @@ create the stack set and related stack instances.
 
 Some stack templates might include resources that can affect
 permissions in your Amazon Web Services account; for example, by
-creating new Identity and Access Management (IAM) users. For those
-stack sets, you must explicitly acknowledge this by specifying one
-of these capabilities.
+creating new IAM users. For those stack sets, you must explicitly
+acknowledge this by specifying one of these capabilities.
 
 The following IAM resources require you to specify either the
 \code{CAPABILITY_IAM} or \code{CAPABILITY_NAMED_IAM} capability.
@@ -84,13 +79,13 @@ permissions if necessary.
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html}{AWS::IAM::Group}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/}{AWS::IAM::Policy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html}{AWS::IAM::Policy}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html}{AWS::IAM::User}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
 }
 
-For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in CloudFormation Templates}.
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#using-iam-capabilities}{Acknowledging IAM resources in CloudFormation templates}.
 \item \code{CAPABILITY_AUTO_EXPAND}
 
 Some templates reference macros. If your stack set template
@@ -102,7 +97,7 @@ you must acknowledge this capability. For more information, see
 
 Stack sets with service-managed permissions don't currently support
 the use of macros in templates. (This includes the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html}{AWS::Include}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-include.html}{AWS::Include}
 and
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
 transforms, which are macros hosted by CloudFormation.) Even if you
