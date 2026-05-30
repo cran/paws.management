@@ -13,22 +13,15 @@ ssm_get_inventory(
 )
 }
 \arguments{
-\item{Filters}{One or more filters. Use a filter to return a more specific list of
-results.}
+\item{Filters}{One or more filters. Use a filter to return a more specific list of results.}
 
-\item{Aggregators}{Returns counts of inventory types based on one or more expressions. For
-example, if you aggregate by using an expression that uses the
-\code{AWS:InstanceInformation.PlatformType} type, you can see a count of how
-many Windows and Linux managed nodes exist in your inventoried fleet.}
+\item{Aggregators}{Returns counts of inventory types based on one or more expressions. For example, if you aggregate by using an expression that uses the \code{AWS:InstanceInformation.PlatformType} type, you can see a count of how many Windows and Linux managed nodes exist in your inventoried fleet.}
 
 \item{ResultAttributes}{The list of inventory item types to return.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 }
 \description{
 Query inventory information. This includes managed node status, such as \code{Stopped} or \code{Terminated}.

@@ -19,35 +19,21 @@ resiliencehub_create_app(
 \arguments{
 \item{assessmentSchedule}{Assessment execution schedule with 'Daily' or 'Disabled' values.}
 
-\item{awsApplicationArn}{Amazon Resource Name (ARN) of Resource Groups group that is integrated
-with an AppRegistry application. For more information about ARNs, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{Amazon Web Services General Reference} guide.}
+\item{awsApplicationArn}{Amazon Resource Name (ARN) of Resource Groups group that is integrated with an AppRegistry application. For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference} guide.}
 
-\item{clientToken}{Used for an idempotency token. A client token is a unique,
-case-sensitive string of up to 64 ASCII characters. You should not reuse
-the same client token for other API requests.}
+\item{clientToken}{Used for an idempotency token. A client token is a unique, case-sensitive string of up to 64 ASCII characters. You should not reuse the same client token for other API requests.}
 
 \item{description}{The optional description for an app.}
 
-\item{eventSubscriptions}{The list of events you would like to subscribe and get notification for.
-Currently, Resilience Hub supports only \strong{Drift detected} and
-\strong{Scheduled assessment failure} events notification.}
+\item{eventSubscriptions}{The list of events you would like to subscribe and get notification for. Currently, Resilience Hub supports only \strong{Drift detected} and \strong{Scheduled assessment failure} events notification.}
 
 \item{name}{[required] Name of the application.}
 
-\item{permissionModel}{Defines the roles and credentials that Resilience Hub would use while
-creating the application, importing its resources, and running an
-assessment.}
+\item{permissionModel}{Defines the roles and credentials that Resilience Hub would use while creating the application, importing its resources, and running an assessment.}
 
-\item{policyArn}{Amazon Resource Name (ARN) of the resiliency policy. The format for this
-ARN is:
-arn:\code{partition}:resiliencehub:\code{region}:\code{account}:resiliency-policy/\code{policy-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{Amazon Web Services General Reference} guide.}
+\item{policyArn}{Amazon Resource Name (ARN) of the resiliency policy. The format for this ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:resiliency-policy/\code{policy-id}. For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference} guide.}
 
-\item{tags}{Tags assigned to the resource. A tag is a label that you assign to an
-Amazon Web Services resource. Each tag consists of a key/value pair.}
+\item{tags}{Tags assigned to the resource. A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key/value pair.}
 }
 \description{
 Creates an Resilience Hub application. An Resilience Hub application is a collection of Amazon Web Services resources structured to prevent and recover Amazon Web Services application disruptions. To describe a Resilience Hub application, you provide an application name, resources from one or more CloudFormation stacks, Resource Groups, Terraform state files, AppRegistry applications, and an appropriate resiliency policy. In addition, you can also add resources that are located on Amazon Elastic Kubernetes Service (Amazon EKS) clusters as optional resources. For more information about the number of resources supported per application, see \href{https://docs.aws.amazon.com/general/latest/gr/resiliencehub.html#limits_resiliencehub}{Service quotas}.

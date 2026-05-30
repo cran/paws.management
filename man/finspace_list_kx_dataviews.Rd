@@ -12,8 +12,7 @@ finspace_list_kx_dataviews(
 )
 }
 \arguments{
-\item{environmentId}{[required] A unique identifier for the kdb environment, for which you want to
-retrieve a list of dataviews.}
+\item{environmentId}{[required] A unique identifier for the kdb environment, for which you want to retrieve a list of dataviews.}
 
 \item{databaseName}{[required] The name of the database where the dataviews were created.}
 

@@ -15,8 +15,7 @@ applicationinsights_add_workload(
 
 \item{ComponentName}{[required] The name of the component.}
 
-\item{WorkloadConfiguration}{[required] The configuration settings of the workload. The value is the escaped
-JSON of the configuration.}
+\item{WorkloadConfiguration}{[required] The configuration settings of the workload. The value is the escaped JSON of the configuration.}
 }
 \description{
 Adds a workload to a component. Each component can have at most five workloads.

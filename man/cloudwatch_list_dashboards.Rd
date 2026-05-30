@@ -7,12 +7,9 @@
 cloudwatch_list_dashboards(DashboardNamePrefix = NULL, NextToken = NULL)
 }
 \arguments{
-\item{DashboardNamePrefix}{If you specify this parameter, only the dashboards with names starting
-with the specified string are listed. The maximum length is 255, and
-valid characters are A-Z, a-z, 0-9, ".", "-", and "_".}
+\item{DashboardNamePrefix}{If you specify this parameter, only the dashboards with names starting with the specified string are listed. The maximum length is 255, and valid characters are A-Z, a-z, 0-9, ".", "-", and "_".}
 
-\item{NextToken}{The token returned by a previous call to indicate that there is more
-data available.}
+\item{NextToken}{The token returned by a previous call to indicate that there is more data available.}
 }
 \description{
 Returns a list of the dashboards for your account. If you include \code{DashboardNamePrefix}, only those dashboards with names starting with the prefix are listed. Otherwise, all dashboards in your account are listed.

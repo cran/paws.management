@@ -13,18 +13,11 @@ autoscaling_set_instance_health(
 \arguments{
 \item{InstanceId}{[required] The ID of the instance.}
 
-\item{HealthStatus}{[required] The health status of the instance. Set to \code{Healthy} to have the instance
-remain in service. Set to \code{Unhealthy} to have the instance be out of
-service. Amazon EC2 Auto Scaling terminates and replaces the unhealthy
-instance.}
+\item{HealthStatus}{[required] The health status of the instance. Set to \code{Healthy} to have the instance remain in service. Set to \code{Unhealthy} to have the instance be out of service. Amazon EC2 Auto Scaling terminates and replaces the unhealthy instance.}
 
-\item{ShouldRespectGracePeriod}{If the Auto Scaling group of the specified instance has a
-\code{HealthCheckGracePeriod} specified for the group, by default, this call
-respects the grace period. Set this to \code{False}, to have the call not
-respect the grace period associated with the group.
+\item{ShouldRespectGracePeriod}{If the Auto Scaling group of the specified instance has a \code{HealthCheckGracePeriod} specified for the group, by default, this call respects the grace period. Set this to \code{False}, to have the call not respect the grace period associated with the group.
 
-For more information about the health check grace period, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-check-grace-period.html}{Set the health check grace period for an Auto Scaling group}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+For more information about the health check grace period, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-check-grace-period.html}{Set the health check grace period for an Auto Scaling group} in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \description{
 Sets the health status of the specified instance.

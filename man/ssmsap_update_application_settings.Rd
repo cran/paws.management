@@ -22,8 +22,7 @@ ssmsap_update_application_settings(
 
 \item{Backint}{Installation of AWS Backint Agent for SAP HANA.}
 
-\item{DatabaseArn}{The Amazon Resource Name of the SAP HANA database that replaces the
-current SAP HANA connection with the SAP_ABAP application.}
+\item{DatabaseArn}{The Amazon Resource Name of the SAP HANA database that replaces the current SAP HANA connection with the SAP_ABAP application.}
 }
 \description{
 Updates the settings of an application registered with AWS Systems Manager for SAP.

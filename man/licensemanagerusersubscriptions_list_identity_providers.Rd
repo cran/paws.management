@@ -6,22 +6,21 @@
 subscriptions}
 \usage{
 licensemanagerusersubscriptions_list_identity_providers(
-  Filters = NULL,
   MaxResults = NULL,
+  Filters = NULL,
   NextToken = NULL
 )
 }
 \arguments{
+\item{MaxResults}{The maximum number of results to return from a single request.}
+
 \item{Filters}{You can use the following filters to streamline results:
 \itemize{
 \item Product
 \item DirectoryId
 }}
 
-\item{MaxResults}{The maximum number of results to return from a single request.}
-
-\item{NextToken}{A token to specify where to start paginating. This is the nextToken from
-a previously truncated response.}
+\item{NextToken}{A token to specify where to start paginating. This is the nextToken from a previously truncated response.}
 }
 \description{
 Lists the Active Directory identity providers for user-based subscriptions.

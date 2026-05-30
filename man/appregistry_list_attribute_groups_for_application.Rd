@@ -16,9 +16,7 @@ appregistry_list_attribute_groups_for_application(
 
 \item{nextToken}{This token retrieves the next page of results after a previous API call.}
 
-\item{maxResults}{The upper bound of the number of results to return. The value cannot
-exceed 25. If you omit this parameter, it defaults to 25. This value is
-optional.}
+\item{maxResults}{The upper bound of the number of results to return. The value cannot exceed 25. If you omit this parameter, it defaults to 25. This value is optional.}
 }
 \description{
 Lists the details of all attribute groups associated with a specific application. The results display in pages.

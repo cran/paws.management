@@ -6,6 +6,7 @@
 \usage{
 cloudwatch_describe_alarm_history(
   AlarmName = NULL,
+  AlarmContributorId = NULL,
   AlarmTypes = NULL,
   HistoryItemType = NULL,
   StartDate = NULL,
@@ -18,9 +19,9 @@ cloudwatch_describe_alarm_history(
 \arguments{
 \item{AlarmName}{The name of the alarm.}
 
-\item{AlarmTypes}{Use this parameter to specify whether you want the operation to return
-metric alarms or composite alarms. If you omit this parameter, only
-metric alarms are returned.}
+\item{AlarmContributorId}{The unique identifier of a specific alarm contributor to filter the alarm history results.}
+
+\item{AlarmTypes}{Use this parameter to specify whether you want the operation to return metric alarms or composite alarms. If you omit this parameter, only metric alarms are returned.}
 
 \item{HistoryItemType}{The type of alarm histories to retrieve.}
 
@@ -30,13 +31,9 @@ metric alarms are returned.}
 
 \item{MaxRecords}{The maximum number of alarm history records to retrieve.}
 
-\item{NextToken}{The token returned by a previous call to indicate that there is more
-data available.}
+\item{NextToken}{The token returned by a previous call to indicate that there is more data available.}
 
-\item{ScanBy}{Specified whether to return the newest or oldest alarm history first.
-Specify \code{TimestampDescending} to have the newest event history returned
-first, and specify \code{TimestampAscending} to have the oldest history
-returned first.}
+\item{ScanBy}{Specified whether to return the newest or oldest alarm history first. Specify \code{TimestampDescending} to have the newest event history returned first, and specify \code{TimestampAscending} to have the oldest history returned first.}
 }
 \description{
 Retrieves the history for the specified alarm. You can filter the results by date range or item type. If an alarm name is not specified, the histories for either all metric alarms or all composite alarms are returned.

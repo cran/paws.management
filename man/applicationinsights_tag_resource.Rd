@@ -7,13 +7,9 @@
 applicationinsights_tag_resource(ResourceARN, Tags)
 }
 \arguments{
-\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the application that you want to add
-one or more tags to.}
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the application that you want to add one or more tags to.}
 
-\item{Tags}{[required] A list of tags that to add to the application. A tag consists of a
-required tag key (\code{Key}) and an associated tag value (\code{Value}). The
-maximum length of a tag key is 128 characters. The maximum length of a
-tag value is 256 characters.}
+\item{Tags}{[required] A list of tags that to add to the application. A tag consists of a required tag key (\code{Key}) and an associated tag value (\code{Value}). The maximum length of a tag key is 128 characters. The maximum length of a tag value is 256 characters.}
 }
 \description{
 Add one or more tags (keys and values) to a specified application. A \emph{tag} is a label that you optionally define and associate with an application. Tags can help you categorize and manage application in different ways, such as by purpose, owner, environment, or other criteria.

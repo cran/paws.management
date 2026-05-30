@@ -17,8 +17,7 @@ cloudformation_create_stack_refactor(
 
 \item{EnableStackCreation}{Determines if a new stack is created with the refactor.}
 
-\item{ResourceMappings}{The mappings for the stack resource \code{Source} and stack resource
-\code{Destination}.}
+\item{ResourceMappings}{The mappings for the stack resource \code{Source} and stack resource \code{Destination}.}
 
 \item{StackDefinitions}{[required] The stacks being refactored.}
 }

@@ -15,8 +15,7 @@ licensemanager_list_license_conversion_tasks(
 
 \item{MaxResults}{Maximum number of results to return in a single call.}
 
-\item{Filters}{Filters to scope the results. Valid filters are \code{ResourceArns} and
-\code{Status}.}
+\item{Filters}{Filters to scope the results. Valid filters are \code{ResourceArns} and \code{Status}.}
 }
 \description{
 Lists the license type conversion tasks for your account.

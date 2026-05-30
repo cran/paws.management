@@ -7,8 +7,7 @@
 cloudwatch_list_metric_streams(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{NextToken}{Include this value, if it was returned by the previous call, to get the
-next set of metric streams.}
+\item{NextToken}{Include this value, if it was returned by the previous call, to get the next set of metric streams.}
 
 \item{MaxResults}{The maximum number of results to return in one operation.}
 }

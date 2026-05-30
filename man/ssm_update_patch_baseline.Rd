@@ -16,6 +16,7 @@ ssm_update_patch_baseline(
   RejectedPatchesAction = NULL,
   Description = NULL,
   Sources = NULL,
+  AvailableSecurityUpdatesComplianceStatus = NULL,
   Replace = NULL
 )
 }
@@ -26,65 +27,51 @@ ssm_update_patch_baseline(
 
 \item{GlobalFilters}{A set of global filters used to include patches in the baseline.
 
-The \code{GlobalFilters} parameter can be configured only by using the CLI or
-an Amazon Web Services SDK. It can't be configured from the Patch
-Manager console, and its value isn't displayed in the console.}
+The \code{GlobalFilters} parameter can be configured only by using the CLI or an Amazon Web Services SDK. It can't be configured from the Patch Manager console, and its value isn't displayed in the console.}
 
 \item{ApprovalRules}{A set of rules used to include patches in the baseline.}
 
 \item{ApprovedPatches}{A list of explicitly approved patches for the baseline.
 
-For information about accepted formats for lists of approved patches and
-rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{Package name formats for approved and rejected patch lists}
-in the \emph{Amazon Web Services Systems Manager User Guide}.}
+For information about accepted formats for lists of approved patches and rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{Package name formats for approved and rejected patch lists} in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{ApprovedPatchesComplianceLevel}{Assigns a new compliance severity level to an existing patch baseline.}
 
-\item{ApprovedPatchesEnableNonSecurity}{Indicates whether the list of approved patches includes non-security
-updates that should be applied to the managed nodes. The default value
-is \code{false}. Applies to Linux managed nodes only.}
+\item{ApprovedPatchesEnableNonSecurity}{Indicates whether the list of approved patches includes non-security updates that should be applied to the managed nodes. The default value is \code{false}. Applies to Linux managed nodes only.}
 
 \item{RejectedPatches}{A list of explicitly rejected patches for the baseline.
 
-For information about accepted formats for lists of approved patches and
-rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{Package name formats for approved and rejected patch lists}
-in the \emph{Amazon Web Services Systems Manager User Guide}.}
+For information about accepted formats for lists of approved patches and rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{Package name formats for approved and rejected patch lists} in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
-\item{RejectedPatchesAction}{The action for Patch Manager to take on patches included in the
-\code{RejectedPackages} list.
+\item{RejectedPatchesAction}{The action for Patch Manager to take on patches included in the \code{RejectedPackages} list.
 
 \strong{ALLOW_AS_DEPENDENCY}
 
-\strong{Linux and macOS}: A package in the rejected patches list is installed
-only if it is a dependency of another package. It is considered
-compliant with the patch baseline, and its status is reported as
-\code{INSTALLED_OTHER}. This is the default action if no option is specified.
+\strong{Linux and macOS}: A package in the rejected patches list is installed only if it is a dependency of another package. It is considered compliant with the patch baseline, and its status is reported as \code{INSTALLED_OTHER}. This is the default action if no option is specified.
 
-\strong{Windows Server}: Windows Server doesn't support the concept of
-package dependencies. If a package in the rejected patches list and
-already installed on the node, its status is reported as
-\code{INSTALLED_OTHER}. Any package not already installed on the node is
-skipped. This is the default action if no option is specified.
+\strong{Windows Server}: Windows Server doesn't support the concept of package dependencies. If a package in the rejected patches list and already installed on the node, its status is reported as \code{INSTALLED_OTHER}. Any package not already installed on the node is skipped. This is the default action if no option is specified.
 
 \strong{BLOCK}
 
-\strong{All OSs}: Packages in the rejected patches list, and packages that
-include them as dependencies, aren't installed by Patch Manager under
-any circumstances. If a package was installed before it was added to the
-rejected patches list, or is installed outside of Patch Manager
-afterward, it's considered noncompliant with the patch baseline and its
-status is reported as \code{INSTALLED_REJECTED}.}
+\strong{All OSs}: Packages in the rejected patches list, and packages that include them as dependencies, aren't installed by Patch Manager under any circumstances.
+
+State value assignment for patch compliance:
+\itemize{
+\item If a package was installed before it was added to the rejected patches list, or is installed outside of Patch Manager afterward, it's considered noncompliant with the patch baseline and its status is reported as \code{INSTALLED_REJECTED}.
+\item If an update attempts to install a dependency package that is now rejected by the baseline, when previous versions of the package were not rejected, the package being updated is reported as \code{MISSING} for \code{SCAN} operations and as \code{FAILED} for \code{INSTALL} operations.
+}}
 
 \item{Description}{A description of the patch baseline.}
 
-\item{Sources}{Information about the patches to use to update the managed nodes,
-including target operating systems and source repositories. Applies to
-Linux managed nodes only.}
+\item{Sources}{Information about the patches to use to update the managed nodes, including target operating systems and source repositories. Applies to Linux managed nodes only.}
 
-\item{Replace}{If True, then all fields that are required by the
-\code{\link[=ssm_create_patch_baseline]{create_patch_baseline}} operation are also
-required for this API request. Optional fields that aren't specified are
-set to null.}
+\item{AvailableSecurityUpdatesComplianceStatus}{Indicates the status to be assigned to security patches that are available but not approved because they don't meet the installation criteria specified in the patch baseline.
+
+Example scenario: Security patches that you might want installed can be skipped if you have specified a long period to wait after a patch is released before installation. If an update to the patch is released during your specified waiting period, the waiting period for installing the patch starts over. If the waiting period is too long, multiple versions of the patch could be released but never installed.
+
+Supported for Windows Server managed nodes only.}
+
+\item{Replace}{If True, then all fields that are required by the \code{\link[=ssm_create_patch_baseline]{create_patch_baseline}} operation are also required for this API request. Optional fields that aren't specified are set to null.}
 }
 \description{
 Modifies an existing patch baseline. Fields not specified in the request are left unchanged.

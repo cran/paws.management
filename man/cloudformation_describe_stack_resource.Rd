@@ -7,19 +7,13 @@
 cloudformation_describe_stack_resource(StackName, LogicalResourceId)
 }
 \arguments{
-\item{StackName}{[required] The name or the unique stack ID that's associated with the stack, which
-aren't always interchangeable:
+\item{StackName}{[required] The name or the unique stack ID that's associated with the stack, which aren't always interchangeable:
 \itemize{
-\item Running stacks: You can specify either the stack's name or its
-unique stack ID.
+\item Running stacks: You can specify either the stack's name or its unique stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
-}
+}}
 
-Default: There is no default value.}
-
-\item{LogicalResourceId}{[required] The logical name of the resource as specified in the template.
-
-Default: There is no default value.}
+\item{LogicalResourceId}{[required] The logical name of the resource as specified in the template.}
 }
 \description{
 Returns a description of the specified resource in the specified stack.

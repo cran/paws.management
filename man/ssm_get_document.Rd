@@ -15,14 +15,11 @@ ssm_get_document(
 \arguments{
 \item{Name}{[required] The name of the SSM document.}
 
-\item{VersionName}{An optional field specifying the version of the artifact associated with
-the document. For example, 12.6. This value is unique across all
-versions of a document and can't be changed.}
+\item{VersionName}{An optional field specifying the version of the artifact associated with the document. For example, 12.6. This value is unique across all versions of a document and can't be changed.}
 
 \item{DocumentVersion}{The document version for which you want information.}
 
-\item{DocumentFormat}{Returns the document in the specified format. The document format can be
-either JSON or YAML. JSON is the default format.}
+\item{DocumentFormat}{Returns the document in the specified format. The document format can be either JSON or YAML. JSON is the default format.}
 }
 \description{
 Gets the contents of the specified Amazon Web Services Systems Manager document (SSM document).

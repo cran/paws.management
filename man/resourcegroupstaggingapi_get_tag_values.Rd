@@ -8,13 +8,9 @@ specified Amazon Web Services Region for the calling account}
 resourcegroupstaggingapi_get_tag_values(PaginationToken = NULL, Key)
 }
 \arguments{
-\item{PaginationToken}{Specifies a \code{PaginationToken} response value from a previous request to
-indicate that you want the next page of results. Leave this parameter
-empty in your initial request.}
+\item{PaginationToken}{Specifies a \code{PaginationToken} response value from a previous request to indicate that you want the next page of results. Leave this parameter empty in your initial request.}
 
-\item{Key}{[required] Specifies the tag key for which you want to list all existing values
-that are currently used in the specified Amazon Web Services Region for
-the calling account.}
+\item{Key}{[required] Specifies the tag key for which you want to list all existing values that are currently used in the specified Amazon Web Services Region for the calling account.}
 }
 \description{
 Returns all tag values for the specified key that are used in the specified Amazon Web Services Region for the calling account.

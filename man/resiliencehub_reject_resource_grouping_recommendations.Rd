@@ -7,14 +7,9 @@
 resiliencehub_reject_resource_grouping_recommendations(appArn, entries)
 }
 \arguments{
-\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format
-for this ARN is:
-arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
-information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{Amazon Web Services General Reference} guide.}
+\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format for this ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference} guide.}
 
-\item{entries}{[required] List of resource grouping recommendations you have selected to exclude
-from your application.}
+\item{entries}{[required] List of resource grouping recommendations you have selected to exclude from your application.}
 }
 \description{
 Rejects resource grouping recommendations.

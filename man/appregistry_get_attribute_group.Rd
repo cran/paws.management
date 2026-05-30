@@ -7,8 +7,7 @@
 appregistry_get_attribute_group(attributeGroup)
 }
 \arguments{
-\item{attributeGroup}{[required] The name, ID, or ARN of the attribute group that holds the attributes to
-describe the application.}
+\item{attributeGroup}{[required] The name, ID, or ARN of the attribute group that holds the attributes to describe the application.}
 }
 \description{
 Retrieves an attribute group by its ARN, ID, or name. The attribute group can be specified by its ARN, ID, or name.

@@ -18,12 +18,7 @@ ssm_describe_association(
 
 \item{AssociationId}{The association ID for which you want information.}
 
-\item{AssociationVersion}{Specify the association version to retrieve. To view the latest version,
-either specify \verb{$LATEST} for this parameter, or omit this parameter. To
-view a list of all associations for a managed node, use
-\code{\link[=ssm_list_associations]{list_associations}}. To get a list of versions
-for a specific association, use
-\code{\link[=ssm_list_association_versions]{list_association_versions}}.}
+\item{AssociationVersion}{Specify the association version to retrieve. To view the latest version, either specify \verb{$LATEST} for this parameter, or omit this parameter. To view a list of all associations for a managed node, use \code{\link[=ssm_list_associations]{list_associations}}. To get a list of versions for a specific association, use \code{\link[=ssm_list_association_versions]{list_association_versions}}.}
 }
 \description{
 Describes the association for the specified target or managed node. If you created the association by using the \code{Targets} parameter, then you must retrieve the association by using the association ID.

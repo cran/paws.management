@@ -8,43 +8,36 @@ organizational unit (OU), or an individual Amazon Web Services account}
 organizations_create_policy(Content, Description, Name, Type, Tags = NULL)
 }
 \arguments{
-\item{Content}{[required] The policy text content to add to the new policy. The text that you
-supply must adhere to the rules of the policy type you specify in the
-\code{Type} parameter.
+\item{Content}{[required] The policy text content to add to the new policy. The text that you supply must adhere to the rules of the policy type you specify in the \code{Type} parameter.
 
-The maximum size of a policy document depends on the policy's type. For
-more information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html#min-max-values}{Maximum and minimum values}
-in the \emph{Organizations User Guide}.}
+The maximum size of a policy document depends on the policy's type. For more information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html#min-max-values}{Maximum and minimum values} in the \emph{Organizations User Guide}.}
 
 \item{Description}{[required] An optional description to assign to the policy.}
 
 \item{Name}{[required] The friendly name to assign to the policy.
 
-The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
-validate this parameter is a string of any of the characters in the
-ASCII character range.}
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to validate this parameter is a string of any of the characters in the ASCII character range.}
 
-\item{Type}{[required] The type of policy to create. You can specify one of the following
-values:
+\item{Type}{[required] The type of policy to create. You can specify one of the following values:
 \itemize{
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE_CONTROL_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html}{RESOURCE_CONTROL_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html}{DECLARATIVE_POLICY_EC2}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative_policies.html}{DECLARATIVE_POLICY_EC2}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html}{CHATBOT_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES_OPT_OUT_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub.html}{SECURITYHUB_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_upgrade_rollout.html}{UPGRADE_ROLLOUT_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_inspector.html}{INSPECTOR_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_bedrock.html}{BEDROCK_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html}{S3_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html}{NETWORK_SECURITY_DIRECTOR_POLICY}
 }}
 
-\item{Tags}{A list of tags that you want to attach to the newly created policy. For
-each tag in the list, you must specify both a tag key and a value. You
-can set the value to an empty string, but you can't set it to \code{null}.
-For more information about tagging, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html}{Tagging Organizations resources}
-in the Organizations User Guide.
+\item{Tags}{A list of tags that you want to attach to the newly created policy. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to \code{null}. For more information about tagging, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html}{Tagging Organizations resources} in the Organizations User Guide.
 
-If any one of the tags is not valid or if you exceed the allowed number
-of tags for a policy, then the entire request fails and the policy is
-not created.}
+If any one of the tags is not valid or if you exceed the allowed number of tags for a policy, then the entire request fails and the policy is not created.}
 }
 \description{
 Creates a policy of a specified type that you can attach to a root, an organizational unit (OU), or an individual Amazon Web Services account.

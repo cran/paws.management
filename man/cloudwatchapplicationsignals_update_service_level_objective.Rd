@@ -10,31 +10,26 @@ cloudwatchapplicationsignals_update_service_level_objective(
   SliConfig = NULL,
   RequestBasedSliConfig = NULL,
   Goal = NULL,
-  BurnRateConfigurations = NULL
+  BurnRateConfigurations = NULL,
+  AutoInvestigationEnabled = NULL
 )
 }
 \arguments{
-\item{Id}{[required] The Amazon Resource Name (ARN) or name of the service level objective
-that you want to update.}
+\item{Id}{[required] The Amazon Resource Name (ARN) or name of the service level objective that you want to update.}
 
 \item{Description}{An optional description for the SLO.}
 
-\item{SliConfig}{If this SLO is a period-based SLO, this structure defines the
-information about what performance metric this SLO will monitor.}
+\item{SliConfig}{If this SLO is a period-based SLO, this structure defines the information about what performance metric this SLO will monitor.}
 
-\item{RequestBasedSliConfig}{If this SLO is a request-based SLO, this structure defines the
-information about what performance metric this SLO will monitor.
+\item{RequestBasedSliConfig}{If this SLO is a request-based SLO, this structure defines the information about what performance metric this SLO will monitor.
 
-You can't specify both \code{SliConfig} and \code{RequestBasedSliConfig} in the
-same operation.}
+You can't specify both \code{SliConfig} and \code{RequestBasedSliConfig} in the same operation.}
 
-\item{Goal}{A structure that contains the attributes that determine the goal of the
-SLO. This includes the time period for evaluation and the attainment
-threshold.}
+\item{Goal}{A structure that contains the attributes that determine the goal of the SLO. This includes the time period for evaluation and the attainment threshold.}
 
-\item{BurnRateConfigurations}{Use this array to create \emph{burn rates} for this SLO. Each burn rate is a
-metric that indicates how fast the service is consuming the error
-budget, relative to the attainment goal of the SLO.}
+\item{BurnRateConfigurations}{Use this array to create \emph{burn rates} for this SLO. Each burn rate is a metric that indicates how fast the service is consuming the error budget, relative to the attainment goal of the SLO.}
+
+\item{AutoInvestigationEnabled}{Indicates whether DevOps Agent will automatically investigate this SLO when it is breached}
 }
 \description{
 Updates an existing service level objective (SLO). If you omit parameters, the previous values of those parameters are retained.

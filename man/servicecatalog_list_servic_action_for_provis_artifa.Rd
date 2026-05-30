@@ -16,13 +16,11 @@ servicecatalog_list_service_actions_for_provisioning_artifact(
 \arguments{
 \item{ProductId}{[required] The product identifier. For example, \code{prod-abcdzk7xy33qa}.}
 
-\item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact. For example,
-\verb{pa-4abcdjnxjj6ne}.}
+\item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact. For example, \verb{pa-4abcdjnxjj6ne}.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 
-\item{PageToken}{The page token for the next set of results. To retrieve the first set of
-results, use null.}
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 
 \item{AcceptLanguage}{The language code.
 \itemize{

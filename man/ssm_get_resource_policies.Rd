@@ -7,15 +7,11 @@
 ssm_get_resource_policies(ResourceArn, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{ResourceArn}{[required] Amazon Resource Name (ARN) of the resource to which the policies are
-attached.}
+\item{ResourceArn}{[required] Amazon Resource Name (ARN) of the resource to which the policies are attached.}
 
-\item{NextToken}{A token to start the list. Use this token to get the next set of
-results.}
+\item{NextToken}{A token to start the list. Use this token to get the next set of results.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 }
 \description{
 Returns an array of the \code{Policy} object.

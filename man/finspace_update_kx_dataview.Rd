@@ -15,8 +15,7 @@ finspace_update_kx_dataview(
 )
 }
 \arguments{
-\item{environmentId}{[required] A unique identifier for the kdb environment, where you want to update
-the dataview.}
+\item{environmentId}{[required] A unique identifier for the kdb environment, where you want to update the dataview.}
 
 \item{databaseName}{[required] The name of the database.}
 
@@ -26,11 +25,7 @@ the dataview.}
 
 \item{changesetId}{A unique identifier for the changeset.}
 
-\item{segmentConfigurations}{The configuration that contains the database path of the data that you
-want to place on each selected volume. Each segment must have a unique
-database path for each volume. If you do not explicitly specify any
-database path for a volume, they are accessible from the cluster through
-the default S3/object store segment.}
+\item{segmentConfigurations}{The configuration that contains the database path of the data that you want to place on each selected volume. Each segment must have a unique database path for each volume. If you do not explicitly specify any database path for a volume, they are accessible from the cluster through the default S3/object store segment.}
 
 \item{clientToken}{[required] A token that ensures idempotency. This token expires in 10 minutes.}
 }

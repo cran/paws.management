@@ -15,7 +15,8 @@ licensemanager_create_license(
   Beneficiary,
   ConsumptionConfiguration,
   LicenseMetadata = NULL,
-  ClientToken
+  ClientToken,
+  Tags = NULL
 )
 }
 \arguments{
@@ -29,21 +30,19 @@ licensemanager_create_license(
 
 \item{HomeRegion}{[required] Home Region for the license.}
 
-\item{Validity}{[required] Date and time range during which the license is valid, in ISO8601-UTC
-format.}
+\item{Validity}{[required] Date and time range during which the license is valid, in ISO8601-UTC format.}
 
 \item{Entitlements}{[required] License entitlements.}
 
 \item{Beneficiary}{[required] License beneficiary.}
 
-\item{ConsumptionConfiguration}{[required] Configuration for consumption of the license. Choose a provisional
-configuration for workloads running with continuous connectivity. Choose
-a borrow configuration for workloads with offline usage.}
+\item{ConsumptionConfiguration}{[required] Configuration for consumption of the license. Choose a provisional configuration for workloads running with continuous connectivity. Choose a borrow configuration for workloads with offline usage.}
 
 \item{LicenseMetadata}{Information about the license.}
 
-\item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+\item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.}
+
+\item{Tags}{Tags to add to the license. For more information about tagging support in License Manager, see the \code{\link[=licensemanager_tag_resource]{tag_resource}} operation.}
 }
 \description{
 Creates a license.

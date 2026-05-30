@@ -22,14 +22,9 @@ servicecatalog_describe_product_as_admin(
 
 \item{Name}{The product name.}
 
-\item{SourcePortfolioId}{The unique identifier of the shared portfolio that the specified product
-is associated with.
+\item{SourcePortfolioId}{The unique identifier of the shared portfolio that the specified product is associated with.
 
-You can provide this parameter to retrieve the shared TagOptions
-associated with the product. If this parameter is provided and if
-TagOptions sharing is enabled in the portfolio share, the API returns
-both local and shared TagOptions associated with the product. Otherwise
-only local TagOptions will be returned.}
+You can provide this parameter to retrieve the shared TagOptions associated with the product. If this parameter is provided and if TagOptions sharing is enabled in the portfolio share, the API returns both local and shared TagOptions associated with the product. Otherwise only local TagOptions will be returned.}
 }
 \description{
 Gets information about the specified product. This operation is run with administrator access.

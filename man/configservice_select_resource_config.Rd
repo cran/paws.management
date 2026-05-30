@@ -17,8 +17,7 @@ configservice_select_resource_config(
 
 \item{Limit}{The maximum number of query results returned on each page.}
 
-\item{NextToken}{The \code{nextToken} string returned in a previous request that you use to
-request the next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned in a previous request that you use to request the next page of results in a paginated response.}
 }
 \description{
 Accepts a structured query language (SQL) \code{SELECT} command, performs the corresponding search, and returns resource configurations matching the properties.

@@ -49,14 +49,9 @@ servicecatalog_create_product(
 
 \item{ProvisioningArtifactParameters}{The configuration of the provisioning artifact.}
 
-\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple
-requests differ only by the idempotency token, the same response is
-returned for each repeated request.}
+\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
 
-\item{SourceConnection}{Specifies connection details for the created product and syncs the
-product to the connection source artifact. This automatically manages
-the product's artifacts based on changes to the source. The
-\code{SourceConnection} parameter consists of the following sub-fields.
+\item{SourceConnection}{Specifies connection details for the created product and syncs the product to the connection source artifact. This automatically manages the product's artifacts based on changes to the source. The \code{SourceConnection} parameter consists of the following sub-fields.
 \itemize{
 \item \code{Type}
 \item \code{ConnectionParamters}

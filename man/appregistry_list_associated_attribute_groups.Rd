@@ -14,11 +14,9 @@ appregistry_list_associated_attribute_groups(
 \arguments{
 \item{application}{[required] The name or ID of the application.}
 
-\item{nextToken}{The token to use to get the next page of results after a previous API
-call.}
+\item{nextToken}{The token to use to get the next page of results after a previous API call.}
 
-\item{maxResults}{The upper bound of the number of results to return (cannot exceed 25).
-If this parameter is omitted, it defaults to 25. This value is optional.}
+\item{maxResults}{The upper bound of the number of results to return (cannot exceed 25). If this parameter is omitted, it defaults to 25. This value is optional.}
 }
 \description{
 Lists all attribute groups that are associated with specified application. Results are paginated.

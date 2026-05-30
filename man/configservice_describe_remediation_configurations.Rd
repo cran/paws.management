@@ -7,8 +7,7 @@
 configservice_describe_remediation_configurations(ConfigRuleNames)
 }
 \arguments{
-\item{ConfigRuleNames}{[required] A list of Config rule names of remediation configurations for which you
-want details.}
+\item{ConfigRuleNames}{[required] A list of Config rule names of remediation configurations for which you want details.}
 }
 \description{
 Returns the details of one or more remediation configurations.

@@ -7,22 +7,15 @@
 resiliencehub_update_app_version(additionalInfo = NULL, appArn)
 }
 \arguments{
-\item{additionalInfo}{Additional configuration parameters for an Resilience Hub application.
-If you want to implement \code{additionalInfo} through the Resilience Hub
-console rather than using an API call, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/app-config-param.html}{Configure the application configuration parameters}.
+\item{additionalInfo}{Additional configuration parameters for an Resilience Hub application. If you want to implement \code{additionalInfo} through the Resilience Hub console rather than using an API call, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/app-config-param.html}{Configure the application configuration parameters}.
 
-Currently, this parameter accepts a key-value mapping (in a string
-format) of only one failover region and one associated account.
+Currently, this parameter accepts a key-value mapping (in a string format) of only one failover region and one associated account.
 
 Key: \code{"failover-regions"}
 
 Value: \verb{"[\{"region":"<REGION>", "accounts":[\{"id":"<ACCOUNT_ID>"\}]\}]"}}
 
-\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format
-for this ARN is:
-arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
-information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{Amazon Web Services General Reference} guide.}
+\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format for this ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference} guide.}
 }
 \description{
 Updates the Resilience Hub application version.

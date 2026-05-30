@@ -15,15 +15,11 @@ ssm_describe_document_permission(
 \arguments{
 \item{Name}{[required] The name of the document for which you are the owner.}
 
-\item{PermissionType}{[required] The permission type for the document. The permission type can be
-\emph{Share}.}
+\item{PermissionType}{[required] The permission type for the document. The permission type can be \emph{Share}.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Describes the permissions for a Amazon Web Services Systems Manager document (SSM document). If you created the document, you are the owner. If a document is shared, it can either be shared privately (by specifying a user's Amazon Web Services account ID) or publicly (\emph{All}).

@@ -11,11 +11,9 @@ health_describe_event_details_for_organization(
 )
 }
 \arguments{
-\item{organizationEventDetailFilters}{[required] A set of JSON elements that includes the \code{awsAccountId} and the
-\code{eventArn}.}
+\item{organizationEventDetailFilters}{[required] A set of JSON elements that includes the \code{awsAccountId} and the \code{eventArn}.}
 
-\item{locale}{The locale (language) to return information in. English (en) is the
-default and the only supported value at this time.}
+\item{locale}{The locale (language) to return information in. English (en) is the default and the only supported value at this time.}
 }
 \description{
 Returns detailed information about one or more specified events for one or more Amazon Web Services accounts in your organization. This information includes standard event data (such as the Amazon Web Services Region and service), an event description, and (depending on the event) possible metadata. This operation doesn't return affected entities, such as the resources related to the event. To return affected entities, use the \code{\link[=health_describe_affected_entities_for_organization]{describe_affected_entities_for_organization}} operation.

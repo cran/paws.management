@@ -20,22 +20,17 @@ ssmcontacts_start_engagement(
 
 \item{Sender}{[required] The user that started the engagement.}
 
-\item{Subject}{[required] The secure subject of the message that was sent to the contact. Use this
-field for engagements to \code{VOICE} or \code{EMAIL}.}
+\item{Subject}{[required] The secure subject of the message that was sent to the contact. Use this field for engagements to \code{VOICE} or \code{EMAIL}.}
 
-\item{Content}{[required] The secure content of the message that was sent to the contact. Use this
-field for engagements to \code{VOICE} or \code{EMAIL}.}
+\item{Content}{[required] The secure content of the message that was sent to the contact. Use this field for engagements to \code{VOICE} or \code{EMAIL}.}
 
-\item{PublicSubject}{The insecure subject of the message that was sent to the contact. Use
-this field for engagements to \code{SMS}.}
+\item{PublicSubject}{The insecure subject of the message that was sent to the contact. Use this field for engagements to \code{SMS}.}
 
-\item{PublicContent}{The insecure content of the message that was sent to the contact. Use
-this field for engagements to \code{SMS}.}
+\item{PublicContent}{The insecure content of the message that was sent to the contact. Use this field for engagements to \code{SMS}.}
 
 \item{IncidentId}{The ARN of the incident that the engagement is part of.}
 
-\item{IdempotencyToken}{A token ensuring that the operation is called only once with the
-specified details.}
+\item{IdempotencyToken}{A token ensuring that the operation is called only once with the specified details.}
 }
 \description{
 Starts an engagement to a contact or escalation plan. The engagement engages each contact specified in the incident.

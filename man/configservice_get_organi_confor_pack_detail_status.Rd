@@ -13,17 +13,13 @@ configservice_get_organization_conformance_pack_detailed_status(
 )
 }
 \arguments{
-\item{OrganizationConformancePackName}{[required] The name of organization conformance pack for which you want status
-details for member accounts.}
+\item{OrganizationConformancePackName}{[required] The name of organization conformance pack for which you want status details for member accounts.}
 
 \item{Filters}{An \code{OrganizationResourceDetailedStatusFilters} object.}
 
-\item{Limit}{The maximum number of \code{OrganizationConformancePackDetailedStatuses}
-returned on each page. If you do not specify a number, Config uses the
-default. The default is 100.}
+\item{Limit}{The maximum number of \code{OrganizationConformancePackDetailedStatuses} returned on each page. If you do not specify a number, Config uses the default. The default is 100.}
 
-\item{NextToken}{The nextToken string returned on a previous page that you use to get the
-next page of results in a paginated response.}
+\item{NextToken}{The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.}
 }
 \description{
 Returns detailed status for each member account within an organization for a given organization conformance pack.

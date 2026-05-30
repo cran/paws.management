@@ -15,18 +15,13 @@ auditmanager_list_assessment_control_insights_by_control_domain(
 \arguments{
 \item{controlDomainId}{[required] The unique identifier for the control domain.
 
-Audit Manager supports the control domains that are provided by Amazon
-Web Services Control Catalog. For information about how to find a list
-of available control domains, see
-\href{https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_ListDomains.html}{\code{ListDomains}}
-in the Amazon Web Services Control Catalog API Reference.}
+Audit Manager supports the control domains that are provided by Amazon Web Services Control Catalog. For information about how to find a list of available control domains, see \href{https://docs.aws.amazon.com/controlcatalog/latest/APIReference/API_ListDomains.html}{\code{ListDomains}} in the Amazon Web Services Control Catalog API Reference.}
 
 \item{assessmentId}{[required] The unique identifier for the active assessment.}
 
 \item{nextToken}{The pagination token that's used to fetch the next set of results.}
 
-\item{maxResults}{Represents the maximum number of results on a page or for an API request
-call.}
+\item{maxResults}{Represents the maximum number of results on a page or for an API request call.}
 }
 \description{
 Lists the latest analytics data for controls within a specific control domain and a specific active assessment.

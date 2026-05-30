@@ -13,94 +13,51 @@ organizations_create_gov_cloud_account(
 )
 }
 \arguments{
-\item{Email}{[required] Specifies the email address of the owner to assign to the new member
-account in the commercial Region. This email address must not already be
-associated with another Amazon Web Services account. You must use a
-valid email address to complete account creation.
+\item{Email}{[required] Specifies the email address of the owner to assign to the new member account in the commercial Region. This email address must not already be associated with another Amazon Web Services account. You must use a valid email address to complete account creation.
 
 The rules for a valid email address:
 \itemize{
-\item The address must be a minimum of 6 and a maximum of 64 characters
-long.
+\item The address must be a minimum of 6 and a maximum of 64 characters long.
 \item All characters must be 7-bit ASCII characters.
-\item There must be one and only one @ symbol, which separates the local
-name from the domain name.
+\item There must be one and only one @ symbol, which separates the local name from the domain name.
 \item The local name can't contain any of the following characters:
 
 whitespace, " ' ( ) \< \> [ ] : ; , \\ | \% &
 \item The local name can't begin with a dot (.)
-\item The domain name can consist of only the characters
-[a-z],[A-Z],[0-9], hyphen (-), or dot (.)
+\item The domain name can consist of only the characters [a-z],[A-Z],[0-9], hyphen (-), or dot (.)
 \item The domain name can't begin or end with a hyphen (-) or dot (.)
 \item The domain name must contain at least one dot
 }
 
-You can't access the root user of the account or remove an account that
-was created with an invalid email address. Like all request parameters
-for
-\code{\link[=organizations_create_gov_cloud_account]{create_gov_cloud_account}},
-the request for the email address for the Amazon Web Services GovCloud
-(US) account originates from the commercial Region, not from the Amazon
-Web Services GovCloud (US) Region.}
+You can't access the root user of the account or remove an account that was created with an invalid email address. Like all request parameters for \code{\link[=organizations_create_gov_cloud_account]{create_gov_cloud_account}}, the request for the email address for the Amazon Web Services GovCloud (US) account originates from the commercial Region, not from the Amazon Web Services GovCloud (US) Region.}
 
 \item{AccountName}{[required] The friendly name of the member account.
 
-The account name can consist of only the characters
-[a-z],[A-Z],[0-9], hyphen (-), or dot (.) You can't separate
-characters with a dash (–).}
+The account name can consist of only the characters [a-z],[A-Z],[0-9], hyphen (-), or dot (.) You can't separate characters with a dash (–).}
 
 \item{RoleName}{(Optional)
 
-The name of an IAM role that Organizations automatically preconfigures
-in the new member accounts in both the Amazon Web Services GovCloud (US)
-Region and in the commercial Region. This role trusts the management
-account, allowing users in the management account to assume the role, as
-permitted by the management account administrator. The role has
-administrator permissions in the new member account.
+The name of an IAM role that Organizations automatically preconfigures in the new member accounts in both the Amazon Web Services GovCloud (US) Region and in the commercial Region. This role trusts the management account, allowing users in the management account to assume the role, as permitted by the management account administrator. The role has administrator permissions in the new member account.
 
-If you don't specify this parameter, the role name defaults to
-\code{OrganizationAccountAccessRole}.
+If you don't specify this parameter, the role name defaults to \code{OrganizationAccountAccessRole}.
 
-For more information about how to use this role to access the member
-account, see the following links:
+For more information about how to use this role to access the member account, see the following links:
 \itemize{
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role}{Creating the OrganizationAccountAccessRole in an invited member account}
-in the \emph{Organizations User Guide}
-\item Steps 2 and 3 in \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html}{IAM Tutorial: Delegate access across Amazon Web Services accounts using IAM roles}
-in the \emph{IAM User Guide}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role}{Creating the OrganizationAccountAccessRole in an invited member account} in the \emph{Organizations User Guide}
+\item Steps 2 and 3 in \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html}{IAM Tutorial: Delegate access across Amazon Web Services accounts using IAM roles} in the \emph{IAM User Guide}
 }
 
-The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
-validate this parameter. The pattern can include uppercase letters,
-lowercase letters, digits with no spaces, and any of the following
-characters: =,.@-}
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to validate this parameter. The pattern can include uppercase letters, lowercase letters, digits with no spaces, and any of the following characters: =,.@-}
 
-\item{IamUserAccessToBilling}{If set to \code{ALLOW}, the new linked account in the commercial Region
-enables IAM users to access account billing information \emph{if} they have
-the required permissions. If set to \code{DENY}, only the root user of the
-new account can access account billing information. For more
-information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate}{About IAM access to the Billing and Cost Management console}
-in the \emph{Amazon Web Services Billing and Cost Management User Guide}.
+\item{IamUserAccessToBilling}{If set to \code{ALLOW}, the new linked account in the commercial Region enables IAM users to access account billing information \emph{if} they have the required permissions. If set to \code{DENY}, only the root user of the new account can access account billing information. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate}{About IAM access to the Billing and Cost Management console} in the \emph{Amazon Web Services Billing and Cost Management User Guide}.
 
-If you don't specify this parameter, the value defaults to \code{ALLOW}, and
-IAM users and roles with the required permissions can access billing
-information for the new account.}
+If you don't specify this parameter, the value defaults to \code{ALLOW}, and IAM users and roles with the required permissions can access billing information for the new account.}
 
-\item{Tags}{A list of tags that you want to attach to the newly created account.
-These tags are attached to the commercial account associated with the
-GovCloud account, and not to the GovCloud account itself. To add tags to
-the actual GovCloud account, call the
-\code{\link[=organizations_tag_resource]{tag_resource}} operation in the GovCloud
-region after the new GovCloud account exists.
+\item{Tags}{A list of tags that you want to attach to the newly created account. These tags are attached to the commercial account associated with the GovCloud account, and not to the GovCloud account itself. To add tags to the actual GovCloud account, call the \code{\link[=organizations_tag_resource]{tag_resource}} operation in the GovCloud region after the new GovCloud account exists.
 
-For each tag in the list, you must specify both a tag key and a value.
-You can set the value to an empty string, but you can't set it to
-\code{null}. For more information about tagging, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html}{Tagging Organizations resources}
-in the Organizations User Guide.
+For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to \code{null}. For more information about tagging, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html}{Tagging Organizations resources} in the Organizations User Guide.
 
-If any one of the tags is not valid or if you exceed the maximum allowed
-number of tags for an account, then the entire request fails and the
-account is not created.}
+If any one of the tags is not valid or if you exceed the maximum allowed number of tags for an account, then the entire request fails and the account is not created.}
 }
 \description{
 This action is available if all of the following are true:

@@ -12,17 +12,13 @@ autoscaling_describe_auto_scaling_instances(
 )
 }
 \arguments{
-\item{InstanceIds}{The IDs of the instances. If you omit this property, all Auto Scaling
-instances are described. If you specify an ID that does not exist, it is
-ignored with no error.
+\item{InstanceIds}{The IDs of the instances. If you omit this property, all Auto Scaling instances are described. If you specify an ID that does not exist, it is ignored with no error.
 
 Array Members: Maximum number of 50 items.}
 
-\item{MaxRecords}{The maximum number of items to return with this call. The default value
-is \code{50} and the maximum value is \code{50}.}
+\item{MaxRecords}{The maximum number of items to return with this call. The default value is \code{50} and the maximum value is \code{50}.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Gets information about the Auto Scaling instances in the account and Region.

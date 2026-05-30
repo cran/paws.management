@@ -7,8 +7,7 @@
 synthetics_delete_group(GroupIdentifier)
 }
 \arguments{
-\item{GroupIdentifier}{[required] Specifies which group to delete. You can specify the group name, the
-ARN, or the group ID as the \code{GroupIdentifier}.}
+\item{GroupIdentifier}{[required] Specifies which group to delete. You can specify the group name, the ARN, or the group ID as the \code{GroupIdentifier}.}
 }
 \description{
 Deletes a group. The group doesn't need to be empty to be deleted. If there are canaries in the group, they are not deleted when you delete the group.

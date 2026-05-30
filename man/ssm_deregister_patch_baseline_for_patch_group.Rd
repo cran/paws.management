@@ -9,8 +9,7 @@ ssm_deregister_patch_baseline_for_patch_group(BaselineId, PatchGroup)
 \arguments{
 \item{BaselineId}{[required] The ID of the patch baseline to deregister the patch group from.}
 
-\item{PatchGroup}{[required] The name of the patch group that should be deregistered from the patch
-baseline.}
+\item{PatchGroup}{[required] The name of the patch group that should be deregistered from the patch baseline.}
 }
 \description{
 Removes a patch group from a patch baseline.

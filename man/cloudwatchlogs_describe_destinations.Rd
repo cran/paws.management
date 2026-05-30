@@ -11,14 +11,11 @@ cloudwatchlogs_describe_destinations(
 )
 }
 \arguments{
-\item{DestinationNamePrefix}{The prefix to match. If you don't specify a value, no prefix filter is
-applied.}
+\item{DestinationNamePrefix}{The prefix to match. If you don't specify a value, no prefix filter is applied.}
 
-\item{nextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{nextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{limit}{The maximum number of items returned. If you don't specify a value, the
-default maximum value of 50 items is used.}
+\item{limit}{The maximum number of items returned. If you don't specify a value, the default maximum value of 50 items is used.}
 }
 \description{
 Lists all your destinations. The results are ASCII-sorted by destination name.

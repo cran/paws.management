@@ -12,8 +12,7 @@ NULL
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_batch_get_incident_findings/](https://www.paws-r-sdk.com/docs/ssmincidents_batch_get_incident_findings/) for full documentation.
 #'
 #' @param findingIds &#91;required&#93; A list of IDs of findings for which you want to view details.
-#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident for which you want to
-#' view finding details.
+#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident for which you want to view finding details.
 #'
 #' @keywords internal
 #'
@@ -45,10 +44,8 @@ ssmincidents_batch_get_incident_findings <- function(findingIds, incidentRecordA
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_create_replication_set/](https://www.paws-r-sdk.com/docs/ssmincidents_create_replication_set/) for full documentation.
 #'
-#' @param clientToken A token that ensures that the operation is called only once with the
-#' specified details.
-#' @param regions &#91;required&#93; The Regions that Incident Manager replicates your data to. You can have
-#' up to three Regions in your replication set.
+#' @param clientToken A token that ensures that the operation is called only once with the specified details.
+#' @param regions &#91;required&#93; The Regions that Incident Manager replicates your data to. You can have up to three Regions in your replication set.
 #' @param tags A list of tags to add to the replication set.
 #'
 #' @keywords internal
@@ -80,18 +77,13 @@ ssmincidents_create_replication_set <- function(clientToken = NULL, regions, tag
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_create_response_plan/](https://www.paws-r-sdk.com/docs/ssmincidents_create_response_plan/) for full documentation.
 #'
-#' @param actions The actions that the response plan starts at the beginning of an
-#' incident.
+#' @param actions The actions that the response plan starts at the beginning of an incident.
 #' @param chatChannel The Chatbot chat channel used for collaboration during an incident.
-#' @param clientToken A token ensuring that the operation is called only once with the
-#' specified details.
-#' @param displayName The long format of the response plan name. This field can contain
-#' spaces.
-#' @param engagements The Amazon Resource Name (ARN) for the contacts and escalation plans
-#' that the response plan engages during an incident.
+#' @param clientToken A token ensuring that the operation is called only once with the specified details.
+#' @param displayName The long format of the response plan name. This field can contain spaces.
+#' @param engagements The Amazon Resource Name (ARN) for the contacts and escalation plans that the response plan engages during an incident.
 #' @param incidentTemplate &#91;required&#93; Details used to create an incident when using this response plan.
-#' @param integrations Information about third-party services integrated into the response
-#' plan.
+#' @param integrations Information about third-party services integrated into the response plan.
 #' @param name &#91;required&#93; The short format name of the response plan. Can't include spaces.
 #' @param tags A list of tags that you are adding to the response plan.
 #'
@@ -125,25 +117,14 @@ ssmincidents_create_response_plan <- function(actions = NULL, chatChannel = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_create_timeline_event/](https://www.paws-r-sdk.com/docs/ssmincidents_create_timeline_event/) for full documentation.
 #'
-#' @param clientToken A token that ensures that a client calls the action only once with the
-#' specified details.
+#' @param clientToken A token that ensures that a client calls the action only once with the specified details.
 #' @param eventData &#91;required&#93; A short description of the event.
-#' @param eventReferences Adds one or more references to the `TimelineEvent`. A reference is an
-#' Amazon Web Services resource involved or associated with the incident.
-#' To specify a reference, enter its Amazon Resource Name (ARN). You can
-#' also specify a related item associated with a resource. For example, to
-#' specify an Amazon DynamoDB (DynamoDB) table as a resource, use the
-#' table's ARN. You can also specify an Amazon CloudWatch metric associated
-#' with the DynamoDB table as a related item.
+#' @param eventReferences Adds one or more references to the `TimelineEvent`. A reference is an Amazon Web Services resource involved or associated with the incident. To specify a reference, enter its Amazon Resource Name (ARN). You can also specify a related item associated with a resource. For example, to specify an Amazon DynamoDB (DynamoDB) table as a resource, use the table's ARN. You can also specify an Amazon CloudWatch metric associated with the DynamoDB table as a related item.
 #' @param eventTime &#91;required&#93; The timestamp for when the event occurred.
-#' @param eventType &#91;required&#93; The type of event. You can create timeline events of type `Custom Event`
-#' and `Note`.
+#' @param eventType &#91;required&#93; The type of event. You can create timeline events of type `Custom Event` and `Note`.
 #' 
-#' To make a Note-type event appear on the *Incident notes* panel in the
-#' console, specify `eventType` as `Note`and enter the Amazon Resource Name
-#' (ARN) of the incident as the value for `eventReference`.
-#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record that the action
-#' adds the incident to.
+#' To make a Note-type event appear on the *Incident notes* panel in the console, specify `eventType` as `Note`and enter the Amazon Resource Name (ARN) of the incident as the value for `eventReference`.
+#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record that the action adds the incident to.
 #'
 #' @keywords internal
 #'
@@ -238,8 +219,7 @@ ssmincidents_delete_replication_set <- function(arn) {
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_delete_resource_policy/](https://www.paws-r-sdk.com/docs/ssmincidents_delete_resource_policy/) for full documentation.
 #'
 #' @param policyId &#91;required&#93; The ID of the resource policy you're deleting.
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource you're deleting the
-#' policy from.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource you're deleting the policy from.
 #'
 #' @keywords internal
 #'
@@ -301,11 +281,8 @@ ssmincidents_delete_response_plan <- function(arn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_delete_timeline_event/](https://www.paws-r-sdk.com/docs/ssmincidents_delete_timeline_event/) for full documentation.
 #'
-#' @param eventId &#91;required&#93; The ID of the event to update. You can use
-#' [`list_timeline_events`][ssmincidents_list_timeline_events] to find an
-#' event's ID.
-#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident that includes the
-#' timeline event.
+#' @param eventId &#91;required&#93; The ID of the event to update. You can use [`list_timeline_events`][ssmincidents_list_timeline_events] to find an event's ID.
+#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident that includes the timeline event.
 #'
 #' @keywords internal
 #'
@@ -367,8 +344,7 @@ ssmincidents_get_incident_record <- function(arn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_get_replication_set/](https://www.paws-r-sdk.com/docs/ssmincidents_get_replication_set/) for full documentation.
 #'
-#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the replication set you want to
-#' retrieve.
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the replication set you want to retrieve.
 #'
 #' @keywords internal
 #'
@@ -399,12 +375,9 @@ ssmincidents_get_replication_set <- function(arn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_get_resource_policies/](https://www.paws-r-sdk.com/docs/ssmincidents_get_resource_policies/) for full documentation.
 #'
-#' @param maxResults The maximum number of resource policies to display for each page of
-#' results.
-#' @param nextToken The pagination token for the next set of items to return. (You received
-#' this token from a previous call.)
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan with the attached
-#' resource policy.
+#' @param maxResults The maximum number of resource policies to display for each page of results.
+#' @param nextToken The pagination token for the next set of items to return. (You received this token from a previous call.)
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan with the attached resource policy.
 #'
 #' @keywords internal
 #'
@@ -466,10 +439,8 @@ ssmincidents_get_response_plan <- function(arn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_get_timeline_event/](https://www.paws-r-sdk.com/docs/ssmincidents_get_timeline_event/) for full documentation.
 #'
-#' @param eventId &#91;required&#93; The ID of the event. You can get an event's ID when you create it, or by
-#' using [`list_timeline_events`][ssmincidents_list_timeline_events].
-#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident that includes the
-#' timeline event.
+#' @param eventId &#91;required&#93; The ID of the event. You can get an event's ID when you create it, or by using [`list_timeline_events`][ssmincidents_list_timeline_events].
+#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident that includes the timeline event.
 #'
 #' @keywords internal
 #'
@@ -501,11 +472,9 @@ ssmincidents_get_timeline_event <- function(eventId, incidentRecordArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_list_incident_findings/](https://www.paws-r-sdk.com/docs/ssmincidents_list_incident_findings/) for full documentation.
 #'
-#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident for which you want to
-#' view associated findings.
+#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident for which you want to view associated findings.
 #' @param maxResults The maximum number of findings to retrieve per call.
-#' @param nextToken The pagination token for the next set of items to return. (You received
-#' this token from a previous call.)
+#' @param nextToken The pagination token for the next set of items to return. (You received this token from a previous call.)
 #'
 #' @keywords internal
 #'
@@ -536,8 +505,7 @@ ssmincidents_list_incident_findings <- function(incidentRecordArn, maxResults = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_list_incident_records/](https://www.paws-r-sdk.com/docs/ssmincidents_list_incident_records/) for full documentation.
 #'
-#' @param filters Filters the list of incident records you want to search through. You can
-#' filter on the following keys:
+#' @param filters Filters the list of incident records you want to search through. You can filter on the following keys:
 #' 
 #' -   `creationTime`
 #' 
@@ -549,17 +517,13 @@ ssmincidents_list_incident_findings <- function(incidentRecordArn, maxResults = 
 #' 
 #' Note the following when when you use Filters:
 #' 
-#' -   If you don't specify a Filter, the response includes all incident
-#'     records.
+#' -   If you don't specify a Filter, the response includes all incident records.
 #' 
-#' -   If you specify more than one filter in a single request, the
-#'     response returns incident records that match all filters.
+#' -   If you specify more than one filter in a single request, the response returns incident records that match all filters.
 #' 
-#' -   If you specify a filter with more than one value, the response
-#'     returns incident records that match any of the values provided.
+#' -   If you specify a filter with more than one value, the response returns incident records that match any of the values provided.
 #' @param maxResults The maximum number of results per page.
-#' @param nextToken The pagination token for the next set of items to return. (You received
-#' this token from a previous call.)
+#' @param nextToken The pagination token for the next set of items to return. (You received this token from a previous call.)
 #'
 #' @keywords internal
 #'
@@ -590,11 +554,9 @@ ssmincidents_list_incident_records <- function(filters = NULL, maxResults = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_list_related_items/](https://www.paws-r-sdk.com/docs/ssmincidents_list_related_items/) for full documentation.
 #'
-#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record containing the
-#' listed related items.
+#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record containing the listed related items.
 #' @param maxResults The maximum number of related items per page.
-#' @param nextToken The pagination token for the next set of items to return. (You received
-#' this token from a previous call.)
+#' @param nextToken The pagination token for the next set of items to return. (You received this token from a previous call.)
 #'
 #' @keywords internal
 #'
@@ -626,8 +588,7 @@ ssmincidents_list_related_items <- function(incidentRecordArn, maxResults = NULL
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_list_replication_sets/](https://www.paws-r-sdk.com/docs/ssmincidents_list_replication_sets/) for full documentation.
 #'
 #' @param maxResults The maximum number of results per page.
-#' @param nextToken The pagination token for the next set of items to return. (You received
-#' this token from a previous call.)
+#' @param nextToken The pagination token for the next set of items to return. (You received this token from a previous call.)
 #'
 #' @keywords internal
 #'
@@ -659,8 +620,7 @@ ssmincidents_list_replication_sets <- function(maxResults = NULL, nextToken = NU
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_list_response_plans/](https://www.paws-r-sdk.com/docs/ssmincidents_list_response_plans/) for full documentation.
 #'
 #' @param maxResults The maximum number of response plans per page.
-#' @param nextToken The pagination token for the next set of items to return. (You received
-#' this token from a previous call.)
+#' @param nextToken The pagination token for the next set of items to return. (You received this token from a previous call.)
 #'
 #' @keywords internal
 #'
@@ -723,8 +683,7 @@ ssmincidents_list_tags_for_resource <- function(resourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_list_timeline_events/](https://www.paws-r-sdk.com/docs/ssmincidents_list_timeline_events/) for full documentation.
 #'
-#' @param filters Filters the timeline events based on the provided conditional values.
-#' You can filter timeline events with the following keys:
+#' @param filters Filters the timeline events based on the provided conditional values. You can filter timeline events with the following keys:
 #' 
 #' -   `eventReference`
 #' 
@@ -734,22 +693,16 @@ ssmincidents_list_tags_for_resource <- function(resourceArn) {
 #' 
 #' Note the following when deciding how to use Filters:
 #' 
-#' -   If you don't specify a Filter, the response includes all timeline
-#'     events.
+#' -   If you don't specify a Filter, the response includes all timeline events.
 #' 
-#' -   If you specify more than one filter in a single request, the
-#'     response returns timeline events that match all filters.
+#' -   If you specify more than one filter in a single request, the response returns timeline events that match all filters.
 #' 
-#' -   If you specify a filter with more than one value, the response
-#'     returns timeline events that match any of the values provided.
-#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident that includes the
-#' timeline event.
+#' -   If you specify a filter with more than one value, the response returns timeline events that match any of the values provided.
+#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident that includes the timeline event.
 #' @param maxResults The maximum number of results per page.
-#' @param nextToken The pagination token for the next set of items to return. (You received
-#' this token from a previous call.)
+#' @param nextToken The pagination token for the next set of items to return. (You received this token from a previous call.)
 #' @param sortBy Sort timeline events by the specified key value pair.
-#' @param sortOrder Sorts the order of timeline events by the value specified in the
-#' `sortBy` field.
+#' @param sortOrder Sorts the order of timeline events by the value specified in the `sortBy` field.
 #'
 #' @keywords internal
 #'
@@ -781,8 +734,7 @@ ssmincidents_list_timeline_events <- function(filters = NULL, incidentRecordArn,
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_put_resource_policy/](https://www.paws-r-sdk.com/docs/ssmincidents_put_resource_policy/) for full documentation.
 #'
 #' @param policy &#91;required&#93; Details of the resource policy.
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan to add the resource
-#' policy to.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan to add the resource policy to.
 #'
 #' @keywords internal
 #'
@@ -814,10 +766,8 @@ ssmincidents_put_resource_policy <- function(policy, resourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_start_incident/](https://www.paws-r-sdk.com/docs/ssmincidents_start_incident/) for full documentation.
 #'
-#' @param clientToken A token ensuring that the operation is called only once with the
-#' specified details.
-#' @param impact Defines the impact to the customers. Providing an impact overwrites the
-#' impact provided by a response plan.
+#' @param clientToken A token ensuring that the operation is called only once with the specified details.
+#' @param impact Defines the impact to the customers. Providing an impact overwrites the impact provided by a response plan.
 #' 
 #' **Supported impact codes**
 #' 
@@ -830,14 +780,9 @@ ssmincidents_put_resource_policy <- function(policy, resourceArn) {
 #' -   `4` - Low
 #' 
 #' -   `5` - No Impact
-#' @param relatedItems Add related items to the incident for other responders to use. Related
-#' items are Amazon Web Services resources, external links, or files
-#' uploaded to an Amazon S3 bucket.
-#' @param responsePlanArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan that pre-defines
-#' summary, chat channels, Amazon SNS topics, runbooks, title, and impact
-#' of the incident.
-#' @param title Provide a title for the incident. Providing a title overwrites the title
-#' provided by the response plan.
+#' @param relatedItems Add related items to the incident for other responders to use. Related items are Amazon Web Services resources, external links, or files uploaded to an Amazon S3 bucket.
+#' @param responsePlanArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan that pre-defines summary, chat channels, Amazon SNS topics, runbooks, title, and impact of the incident.
+#' @param title Provide a title for the incident. Providing a title overwrites the title provided by the response plan.
 #' @param triggerDetails Details of what created the incident record in Incident Manager.
 #'
 #' @keywords internal
@@ -869,8 +814,7 @@ ssmincidents_start_incident <- function(clientToken = NULL, impact = NULL, relat
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_tag_resource/](https://www.paws-r-sdk.com/docs/ssmincidents_tag_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan you're adding the
-#' tags to.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan you're adding the tags to.
 #' @param tags &#91;required&#93; A list of tags to add to the response plan.
 #'
 #' @keywords internal
@@ -902,8 +846,7 @@ ssmincidents_tag_resource <- function(resourceArn, tags) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_untag_resource/](https://www.paws-r-sdk.com/docs/ssmincidents_untag_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan you're removing a
-#' tag from.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan you're removing a tag from.
 #' @param tagKeys &#91;required&#93; The name of the tag to remove from the response plan.
 #'
 #' @keywords internal
@@ -937,8 +880,7 @@ ssmincidents_untag_resource <- function(resourceArn, tagKeys) {
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_update_deletion_protection/](https://www.paws-r-sdk.com/docs/ssmincidents_update_deletion_protection/) for full documentation.
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the replication set to update.
-#' @param clientToken A token that ensures that the operation is called only once with the
-#' specified details.
+#' @param clientToken A token that ensures that the operation is called only once with the specified details.
 #' @param deletionProtected &#91;required&#93; Specifies if deletion protection is turned on or off in your account.
 #'
 #' @keywords internal
@@ -972,11 +914,8 @@ ssmincidents_update_deletion_protection <- function(arn, clientToken = NULL, del
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record you are updating.
 #' @param chatChannel The Chatbot chat channel where responders can collaborate.
-#' @param clientToken A token that ensures that a client calls the operation only once with
-#' the specified details.
-#' @param impact Defines the impact of the incident to customers and applications. If you
-#' provide an impact for an incident, it overwrites the impact provided by
-#' the response plan.
+#' @param clientToken A token that ensures that a client calls the operation only once with the specified details.
+#' @param impact Defines the impact of the incident to customers and applications. If you provide an impact for an incident, it overwrites the impact provided by the response plan.
 #' 
 #' **Supported impact codes**
 #' 
@@ -989,11 +928,9 @@ ssmincidents_update_deletion_protection <- function(arn, clientToken = NULL, del
 #' -   `4` - Low
 #' 
 #' -   `5` - No Impact
-#' @param notificationTargets The Amazon SNS targets that Incident Manager notifies when a client
-#' updates an incident.
+#' @param notificationTargets The Amazon SNS targets that Incident Manager notifies when a client updates an incident.
 #' 
-#' Using multiple SNS topics creates redundancy in the event that a Region
-#' is down during the incident.
+#' Using multiple SNS topics creates redundancy in the event that a Region is down during the incident.
 #' @param status The status of the incident. Possible statuses are `Open` or `Resolved`.
 #' @param summary A longer description of what occurred during the incident.
 #' @param title A brief description of the incident.
@@ -1028,10 +965,8 @@ ssmincidents_update_incident_record <- function(arn, chatChannel = NULL, clientT
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_update_related_items/](https://www.paws-r-sdk.com/docs/ssmincidents_update_related_items/) for full documentation.
 #'
-#' @param clientToken A token that ensures that a client calls the operation only once with
-#' the specified details.
-#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record that contains the
-#' related items that you update.
+#' @param clientToken A token that ensures that a client calls the operation only once with the specified details.
+#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record that contains the related items that you update.
 #' @param relatedItemsUpdate &#91;required&#93; Details about the item that you are add to, or delete from, an incident.
 #'
 #' @keywords internal
@@ -1065,8 +1000,7 @@ ssmincidents_update_related_items <- function(clientToken = NULL, incidentRecord
 #'
 #' @param actions &#91;required&#93; An action to add or delete a Region.
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the replication set you're updating.
-#' @param clientToken A token that ensures that the operation is called only once with the
-#' specified details.
+#' @param clientToken A token that ensures that the operation is called only once with the specified details.
 #'
 #' @keywords internal
 #'
@@ -1097,23 +1031,16 @@ ssmincidents_update_replication_set <- function(actions, arn, clientToken = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_update_response_plan/](https://www.paws-r-sdk.com/docs/ssmincidents_update_response_plan/) for full documentation.
 #'
-#' @param actions The actions that this response plan takes at the beginning of an
-#' incident.
+#' @param actions The actions that this response plan takes at the beginning of an incident.
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan.
 #' @param chatChannel The Chatbot chat channel used for collaboration during an incident.
 #' 
-#' Use the empty structure to remove the chat channel from the response
-#' plan.
-#' @param clientToken A token ensuring that the operation is called only once with the
-#' specified details.
-#' @param displayName The long format name of the response plan. The display name can't
-#' contain spaces.
-#' @param engagements The Amazon Resource Name (ARN) for the contacts and escalation plans
-#' that the response plan engages during an incident.
-#' @param incidentTemplateDedupeString The string Incident Manager uses to prevent duplicate incidents from
-#' being created by the same incident in the same account.
-#' @param incidentTemplateImpact Defines the impact to the customers. Providing an impact overwrites the
-#' impact provided by a response plan.
+#' Use the empty structure to remove the chat channel from the response plan.
+#' @param clientToken A token ensuring that the operation is called only once with the specified details.
+#' @param displayName The long format name of the response plan. The display name can't contain spaces.
+#' @param engagements The Amazon Resource Name (ARN) for the contacts and escalation plans that the response plan engages during an incident.
+#' @param incidentTemplateDedupeString The string Incident Manager uses to prevent duplicate incidents from being created by the same incident in the same account.
+#' @param incidentTemplateImpact Defines the impact to the customers. Providing an impact overwrites the impact provided by a response plan.
 #' 
 #' **Supported impact codes**
 #' 
@@ -1126,19 +1053,11 @@ ssmincidents_update_replication_set <- function(actions, arn, clientToken = NULL
 #' -   `4` - Low
 #' 
 #' -   `5` - No Impact
-#' @param incidentTemplateNotificationTargets The Amazon SNS targets that are notified when updates are made to an
-#' incident.
-#' @param incidentTemplateSummary A brief summary of the incident. This typically contains what has
-#' happened, what's currently happening, and next steps.
-#' @param incidentTemplateTags Tags to assign to the template. When the
-#' [`start_incident`][ssmincidents_start_incident] API action is called,
-#' Incident Manager assigns the tags specified in the template to the
-#' incident. To call this action, you must also have permission to call the
-#' [`tag_resource`][ssmincidents_tag_resource] API action for the incident
-#' record resource.
+#' @param incidentTemplateNotificationTargets The Amazon SNS targets that are notified when updates are made to an incident.
+#' @param incidentTemplateSummary A brief summary of the incident. This typically contains what has happened, what's currently happening, and next steps.
+#' @param incidentTemplateTags Tags to assign to the template. When the [`start_incident`][ssmincidents_start_incident] API action is called, Incident Manager assigns the tags specified in the template to the incident. To call this action, you must also have permission to call the [`tag_resource`][ssmincidents_tag_resource] API action for the incident record resource.
 #' @param incidentTemplateTitle The short format name of the incident. The title can't contain spaces.
-#' @param integrations Information about third-party services integrated into the response
-#' plan.
+#' @param integrations Information about third-party services integrated into the response plan.
 #'
 #' @keywords internal
 #'
@@ -1169,29 +1088,15 @@ ssmincidents_update_response_plan <- function(actions = NULL, arn, chatChannel =
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_update_timeline_event/](https://www.paws-r-sdk.com/docs/ssmincidents_update_timeline_event/) for full documentation.
 #'
-#' @param clientToken A token that ensures that a client calls the operation only once with
-#' the specified details.
+#' @param clientToken A token that ensures that a client calls the operation only once with the specified details.
 #' @param eventData A short description of the event.
-#' @param eventId &#91;required&#93; The ID of the event to update. You can use
-#' [`list_timeline_events`][ssmincidents_list_timeline_events] to find an
-#' event's ID.
-#' @param eventReferences Updates all existing references in a `TimelineEvent`. A reference is an
-#' Amazon Web Services resource involved or associated with the incident.
-#' To specify a reference, enter its Amazon Resource Name (ARN). You can
-#' also specify a related item associated with that resource. For example,
-#' to specify an Amazon DynamoDB (DynamoDB) table as a resource, use its
-#' ARN. You can also specify an Amazon CloudWatch metric associated with
-#' the DynamoDB table as a related item.
+#' @param eventId &#91;required&#93; The ID of the event to update. You can use [`list_timeline_events`][ssmincidents_list_timeline_events] to find an event's ID.
+#' @param eventReferences Updates all existing references in a `TimelineEvent`. A reference is an Amazon Web Services resource involved or associated with the incident. To specify a reference, enter its Amazon Resource Name (ARN). You can also specify a related item associated with that resource. For example, to specify an Amazon DynamoDB (DynamoDB) table as a resource, use its ARN. You can also specify an Amazon CloudWatch metric associated with the DynamoDB table as a related item.
 #' 
-#' This update action overrides all existing references. If you want to
-#' keep existing references, you must specify them in the call. If you
-#' don't, this action removes any existing references and enters only new
-#' references.
+#' This update action overrides all existing references. If you want to keep existing references, you must specify them in the call. If you don't, this action removes any existing references and enters only new references.
 #' @param eventTime The timestamp for when the event occurred.
-#' @param eventType The type of event. You can update events of type `Custom Event` and
-#' `Note`.
-#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident that includes the
-#' timeline event.
+#' @param eventType The type of event. You can update events of type `Custom Event` and `Note`.
+#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident that includes the timeline event.
 #'
 #' @keywords internal
 #'

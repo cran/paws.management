@@ -12,8 +12,7 @@ NULL
 #' See [https://www.paws-r-sdk.com/docs/appregistry_associate_attribute_group/](https://www.paws-r-sdk.com/docs/appregistry_associate_attribute_group/) for full documentation.
 #'
 #' @param application &#91;required&#93; The name, ID, or ARN of the application.
-#' @param attributeGroup &#91;required&#93; The name, ID, or ARN of the attribute group that holds the attributes to
-#' describe the application.
+#' @param attributeGroup &#91;required&#93; The name, ID, or ARN of the attribute group that holds the attributes to describe the application.
 #'
 #' @keywords internal
 #'
@@ -46,8 +45,7 @@ appregistry_associate_attribute_group <- function(application, attributeGroup) {
 #'
 #' @param application &#91;required&#93; The name, ID, or ARN of the application.
 #' @param resourceType &#91;required&#93; The type of resource of which the application will be associated.
-#' @param resource &#91;required&#93; The name or ID of the resource of which the application will be
-#' associated.
+#' @param resource &#91;required&#93; The name or ID of the resource of which the application will be associated.
 #' @param options Determines whether an application tag is applied or skipped.
 #'
 #' @keywords internal
@@ -80,15 +78,10 @@ appregistry_associate_resource <- function(application, resourceType, resource, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/appregistry_create_application/](https://www.paws-r-sdk.com/docs/appregistry_create_application/) for full documentation.
 #'
-#' @param name &#91;required&#93; The name of the application. The name must be unique in the region in
-#' which you are creating the application.
+#' @param name &#91;required&#93; The name of the application. The name must be unique in the region in which you are creating the application.
 #' @param description The description of the application.
 #' @param tags Key-value pairs you can use to associate with the application.
-#' @param clientToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If you retry
-#' a request that completed successfully using the same client token and
-#' the same parameters, the retry succeeds without performing any further
-#' actions. If you retry a successful request using the same client token,
-#' but one or more of the parameters are different, the retry fails.
+#' @param clientToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If you retry a request that completed successfully using the same client token and the same parameters, the retry succeeds without performing any further actions. If you retry a successful request using the same client token, but one or more of the parameters are different, the retry fails.
 #'
 #' @keywords internal
 #'
@@ -121,14 +114,9 @@ appregistry_create_application <- function(name, description = NULL, tags = NULL
 #'
 #' @param name &#91;required&#93; The name of the attribute group.
 #' @param description The description of the attribute group that the user provides.
-#' @param attributes &#91;required&#93; A JSON string in the form of nested key-value pairs that represent the
-#' attributes in the group and describes an application and its components.
+#' @param attributes &#91;required&#93; A JSON string in the form of nested key-value pairs that represent the attributes in the group and describes an application and its components.
 #' @param tags Key-value pairs you can use to associate with the attribute group.
-#' @param clientToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If you retry
-#' a request that completed successfully using the same client token and
-#' the same parameters, the retry succeeds without performing any further
-#' actions. If you retry a successful request using the same client token,
-#' but one or more of the parameters are different, the retry fails.
+#' @param clientToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If you retry a request that completed successfully using the same client token and the same parameters, the retry succeeds without performing any further actions. If you retry a successful request using the same client token, but one or more of the parameters are different, the retry fails.
 #'
 #' @keywords internal
 #'
@@ -192,8 +180,7 @@ appregistry_delete_application <- function(application) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/appregistry_delete_attribute_group/](https://www.paws-r-sdk.com/docs/appregistry_delete_attribute_group/) for full documentation.
 #'
-#' @param attributeGroup &#91;required&#93; The name, ID, or ARN of the attribute group that holds the attributes to
-#' describe the application.
+#' @param attributeGroup &#91;required&#93; The name, ID, or ARN of the attribute group that holds the attributes to describe the application.
 #'
 #' @keywords internal
 #'
@@ -227,8 +214,7 @@ appregistry_delete_attribute_group <- function(attributeGroup) {
 #' See [https://www.paws-r-sdk.com/docs/appregistry_disassociate_attribute_group/](https://www.paws-r-sdk.com/docs/appregistry_disassociate_attribute_group/) for full documentation.
 #'
 #' @param application &#91;required&#93; The name, ID, or ARN of the application.
-#' @param attributeGroup &#91;required&#93; The name, ID, or ARN of the attribute group that holds the attributes to
-#' describe the application.
+#' @param attributeGroup &#91;required&#93; The name, ID, or ARN of the attribute group that holds the attributes to describe the application.
 #'
 #' @keywords internal
 #'
@@ -326,12 +312,9 @@ appregistry_get_application <- function(application) {
 #' @param application &#91;required&#93; The name, ID, or ARN of the application.
 #' @param resourceType &#91;required&#93; The type of resource associated with the application.
 #' @param resource &#91;required&#93; The name or ID of the resource associated with the application.
-#' @param nextToken A unique pagination token for each page of results. Make the call again
-#' with the returned token to retrieve the next page of results.
-#' @param resourceTagStatus States whether an application tag is applied, not applied, in the
-#' process of being applied, or skipped.
-#' @param maxResults The maximum number of results to return. If the parameter is omitted, it
-#' defaults to 25. The value is optional.
+#' @param nextToken A unique pagination token for each page of results. Make the call again with the returned token to retrieve the next page of results.
+#' @param resourceTagStatus States whether an application tag is applied, not applied, in the process of being applied, or skipped.
+#' @param maxResults The maximum number of results to return. If the parameter is omitted, it defaults to 25. The value is optional.
 #'
 #' @keywords internal
 #'
@@ -362,8 +345,7 @@ appregistry_get_associated_resource <- function(application, resourceType, resou
 #'
 #' See [https://www.paws-r-sdk.com/docs/appregistry_get_attribute_group/](https://www.paws-r-sdk.com/docs/appregistry_get_attribute_group/) for full documentation.
 #'
-#' @param attributeGroup &#91;required&#93; The name, ID, or ARN of the attribute group that holds the attributes to
-#' describe the application.
+#' @param attributeGroup &#91;required&#93; The name, ID, or ARN of the attribute group that holds the attributes to describe the application.
 #'
 #' @keywords internal
 #'
@@ -425,10 +407,8 @@ appregistry_get_configuration <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/appregistry_list_applications/](https://www.paws-r-sdk.com/docs/appregistry_list_applications/) for full documentation.
 #'
-#' @param nextToken The token to use to get the next page of results after a previous API
-#' call.
-#' @param maxResults The upper bound of the number of results to return (cannot exceed 25).
-#' If this parameter is omitted, it defaults to 25. This value is optional.
+#' @param nextToken The token to use to get the next page of results after a previous API call.
+#' @param maxResults The upper bound of the number of results to return (cannot exceed 25). If this parameter is omitted, it defaults to 25. This value is optional.
 #'
 #' @keywords internal
 #'
@@ -461,10 +441,8 @@ appregistry_list_applications <- function(nextToken = NULL, maxResults = NULL) {
 #' See [https://www.paws-r-sdk.com/docs/appregistry_list_associated_attribute_groups/](https://www.paws-r-sdk.com/docs/appregistry_list_associated_attribute_groups/) for full documentation.
 #'
 #' @param application &#91;required&#93; The name or ID of the application.
-#' @param nextToken The token to use to get the next page of results after a previous API
-#' call.
-#' @param maxResults The upper bound of the number of results to return (cannot exceed 25).
-#' If this parameter is omitted, it defaults to 25. This value is optional.
+#' @param nextToken The token to use to get the next page of results after a previous API call.
+#' @param maxResults The upper bound of the number of results to return (cannot exceed 25). If this parameter is omitted, it defaults to 25. This value is optional.
 #'
 #' @keywords internal
 #'
@@ -497,10 +475,8 @@ appregistry_list_associated_attribute_groups <- function(application, nextToken 
 #' See [https://www.paws-r-sdk.com/docs/appregistry_list_associated_resources/](https://www.paws-r-sdk.com/docs/appregistry_list_associated_resources/) for full documentation.
 #'
 #' @param application &#91;required&#93; The name, ID, or ARN of the application.
-#' @param nextToken The token to use to get the next page of results after a previous API
-#' call.
-#' @param maxResults The upper bound of the number of results to return (cannot exceed 25).
-#' If this parameter is omitted, it defaults to 25. This value is optional.
+#' @param nextToken The token to use to get the next page of results after a previous API call.
+#' @param maxResults The upper bound of the number of results to return (cannot exceed 25). If this parameter is omitted, it defaults to 25. This value is optional.
 #'
 #' @keywords internal
 #'
@@ -531,10 +507,8 @@ appregistry_list_associated_resources <- function(application, nextToken = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/appregistry_list_attribute_groups/](https://www.paws-r-sdk.com/docs/appregistry_list_attribute_groups/) for full documentation.
 #'
-#' @param nextToken The token to use to get the next page of results after a previous API
-#' call.
-#' @param maxResults The upper bound of the number of results to return (cannot exceed 25).
-#' If this parameter is omitted, it defaults to 25. This value is optional.
+#' @param nextToken The token to use to get the next page of results after a previous API call.
+#' @param maxResults The upper bound of the number of results to return (cannot exceed 25). If this parameter is omitted, it defaults to 25. This value is optional.
 #'
 #' @keywords internal
 #'
@@ -568,9 +542,7 @@ appregistry_list_attribute_groups <- function(nextToken = NULL, maxResults = NUL
 #'
 #' @param application &#91;required&#93; The name or ID of the application.
 #' @param nextToken This token retrieves the next page of results after a previous API call.
-#' @param maxResults The upper bound of the number of results to return. The value cannot
-#' exceed 25. If you omit this parameter, it defaults to 25. This value is
-#' optional.
+#' @param maxResults The upper bound of the number of results to return. The value cannot exceed 25. If you omit this parameter, it defaults to 25. This value is optional.
 #'
 #' @keywords internal
 #'
@@ -664,9 +636,7 @@ appregistry_put_configuration <- function(configuration) {
 #' See [https://www.paws-r-sdk.com/docs/appregistry_sync_resource/](https://www.paws-r-sdk.com/docs/appregistry_sync_resource/) for full documentation.
 #'
 #' @param resourceType &#91;required&#93; The type of resource of which the application will be associated.
-#' @param resource &#91;required&#93; An entity you can work with and specify with a name or ID. Examples
-#' include an Amazon EC2 instance, an Amazon Web Services CloudFormation
-#' stack, or an Amazon S3 bucket.
+#' @param resource &#91;required&#93; An entity you can work with and specify with a name or ID. Examples include an Amazon EC2 instance, an Amazon Web Services CloudFormation stack, or an Amazon S3 bucket.
 #'
 #' @keywords internal
 #'
@@ -762,9 +732,7 @@ appregistry_untag_resource <- function(resourceArn, tagKeys) {
 #' See [https://www.paws-r-sdk.com/docs/appregistry_update_application/](https://www.paws-r-sdk.com/docs/appregistry_update_application/) for full documentation.
 #'
 #' @param application &#91;required&#93; The name, ID, or ARN of the application that will be updated.
-#' @param name Deprecated: The new name of the application. The name must be unique in
-#' the region in which you are updating the application. Please do not use
-#' this field as we have stopped supporting name updates.
+#' @param name Deprecated: The new name of the application. The name must be unique in the region in which you are updating the application. Please do not use this field as we have stopped supporting name updates.
 #' @param description The new description of the application.
 #'
 #' @keywords internal
@@ -796,14 +764,10 @@ appregistry_update_application <- function(application, name = NULL, description
 #'
 #' See [https://www.paws-r-sdk.com/docs/appregistry_update_attribute_group/](https://www.paws-r-sdk.com/docs/appregistry_update_attribute_group/) for full documentation.
 #'
-#' @param attributeGroup &#91;required&#93; The name, ID, or ARN of the attribute group that holds the attributes to
-#' describe the application.
-#' @param name Deprecated: The new name of the attribute group. The name must be unique
-#' in the region in which you are updating the attribute group. Please do
-#' not use this field as we have stopped supporting name updates.
+#' @param attributeGroup &#91;required&#93; The name, ID, or ARN of the attribute group that holds the attributes to describe the application.
+#' @param name Deprecated: The new name of the attribute group. The name must be unique in the region in which you are updating the attribute group. Please do not use this field as we have stopped supporting name updates.
 #' @param description The description of the attribute group that the user provides.
-#' @param attributes A JSON string in the form of nested key-value pairs that represent the
-#' attributes in the group and describes an application and its components.
+#' @param attributes A JSON string in the form of nested key-value pairs that represent the attributes in the group and describes an application and its components.
 #'
 #' @keywords internal
 #'

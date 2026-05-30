@@ -8,8 +8,7 @@ information and other compliance information}
 configservice_put_delivery_channel(DeliveryChannel)
 }
 \arguments{
-\item{DeliveryChannel}{[required] An object for the delivery channel. A delivery channel sends
-notifications and updated configuration states.}
+\item{DeliveryChannel}{[required] An object for the delivery channel. A delivery channel sends notifications and updated configuration states.}
 }
 \description{
 Creates or updates a delivery channel to deliver configuration information and other compliance information.

@@ -9,10 +9,7 @@ cloudformation_describe_publisher(PublisherId = NULL)
 \arguments{
 \item{PublisherId}{The ID of the extension publisher.
 
-If you don't supply a \code{PublisherId}, and you have registered as an
-extension publisher,
-\code{\link[=cloudformation_describe_publisher]{describe_publisher}} returns
-information about your own publisher account.}
+If you don't supply a \code{PublisherId}, and you have registered as an extension publisher, \code{\link[=cloudformation_describe_publisher]{describe_publisher}} returns information about your own publisher account.}
 }
 \description{
 Returns information about a CloudFormation extension publisher.

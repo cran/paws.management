@@ -7,32 +7,17 @@ NULL
 #' @description
 #' Amazon RDS Performance Insights
 #' 
-#' Amazon RDS Performance Insights enables you to monitor and explore
-#' different dimensions of database load based on data captured from a
-#' running DB instance. The guide provides detailed information about
-#' Performance Insights data types, parameters and errors.
+#' Amazon RDS Performance Insights enables you to monitor and explore different dimensions of database load based on data captured from a running DB instance. The guide provides detailed information about Performance Insights data types, parameters and errors.
 #' 
-#' When Performance Insights is enabled, the Amazon RDS Performance
-#' Insights API provides visibility into the performance of your DB
-#' instance. Amazon CloudWatch provides the authoritative source for Amazon
-#' Web Services service-vended monitoring metrics. Performance Insights
-#' offers a domain-specific view of DB load.
+#' When Performance Insights is enabled, the Amazon RDS Performance Insights API provides visibility into the performance of your DB instance. Amazon CloudWatch provides the authoritative source for Amazon Web Services service-vended monitoring metrics. Performance Insights offers a domain-specific view of DB load.
 #' 
-#' DB load is measured as average active sessions. Performance Insights
-#' provides the data to API consumers as a two-dimensional time-series
-#' dataset. The time dimension provides DB load data for each time point in
-#' the queried time range. Each time point decomposes overall load in
-#' relation to the requested dimensions, measured at that time point.
-#' Examples include SQL, Wait event, User, and Host.
+#' DB load is measured as average active sessions. Performance Insights provides the data to API consumers as a two-dimensional time-series dataset. The time dimension provides DB load data for each time point in the queried time range. Each time point decomposes overall load in relation to the requested dimensions, measured at that time point. Examples include SQL, Wait event, User, and Host.
 #' 
-#' -   To learn more about Performance Insights and Amazon Aurora DB
-#'     instances, go to the *\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html}{ Amazon Aurora User Guide}* .
+#' -   To learn more about Performance Insights and Amazon Aurora DB instances, go to the *\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html}{ Amazon Aurora User Guide}* .
 #' 
-#' -   To learn more about Performance Insights and Amazon RDS DB
-#'     instances, go to the *\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{ Amazon RDS User Guide}* .
+#' -   To learn more about Performance Insights and Amazon RDS DB instances, go to the *\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{ Amazon RDS User Guide}* .
 #' 
-#' -   To learn more about Performance Insights and Amazon DocumentDB
-#'     clusters, go to the *\href{https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html}{ Amazon DocumentDB Developer Guide}* .
+#' -   To learn more about Performance Insights and Amazon DocumentDB clusters, go to the *\href{https://docs.aws.amazon.com/documentdb/latest/devguide/performance-insights.html}{ Amazon DocumentDB Developer Guide}* .
 #'
 #' @param
 #' config
@@ -126,6 +111,7 @@ NULL
 #'  \link[=pi_get_resource_metrics]{get_resource_metrics} \tab Retrieve Performance Insights metrics for a set of data sources over a time period\cr
 #'  \link[=pi_list_available_resource_dimensions]{list_available_resource_dimensions} \tab Retrieve the dimensions that can be queried for each specified metric type on a specified DB instance\cr
 #'  \link[=pi_list_available_resource_metrics]{list_available_resource_metrics} \tab Retrieve metrics of the specified types that can be queried for a specified DB instance\cr
+#'  \link[=pi_list_performance_analysis_report_recommendations]{list_performance_analysis_report_recommendations} \tab Retrieves recommendations for a performance analysis report\cr
 #'  \link[=pi_list_performance_analysis_reports]{list_performance_analysis_reports} \tab Lists all the analysis reports created for the DB instance\cr
 #'  \link[=pi_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves all the metadata tags associated with Amazon RDS Performance Insights resource\cr
 #'  \link[=pi_tag_resource]{tag_resource} \tab Adds metadata tags to the Amazon RDS Performance Insights resource\cr
@@ -161,7 +147,7 @@ pi <- function(config = list(), credentials = list(), endpoint = NULL, region = 
 
 .pi$metadata <- list(
   service_name = "pi",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "pi.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "pi.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "pi.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "pi.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "pi.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "pi.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "pi.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "pi.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "pi.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "pi.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "pi.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "pi.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "pi.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "pi.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "pi.{region}.amazonaws.eu", global = FALSE)),
   service_id = "PI",
   api_version = "2018-02-27",
   signing_name = "pi",

@@ -7,8 +7,7 @@
 cloudformation_execute_stack_refactor(StackRefactorId)
 }
 \arguments{
-\item{StackRefactorId}{[required] The ID associated with the stack refactor created from the
-\code{\link[=cloudformation_create_stack_refactor]{create_stack_refactor}} action.}
+\item{StackRefactorId}{[required] The ID associated with the stack refactor created from the \code{\link[=cloudformation_create_stack_refactor]{create_stack_refactor}} action.}
 }
 \description{
 Executes the stack refactor operation.

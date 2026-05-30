@@ -14,16 +14,11 @@ ssm_describe_maintenance_window_tasks(
 \arguments{
 \item{WindowId}{[required] The ID of the maintenance window whose tasks should be retrieved.}
 
-\item{Filters}{Optional filters used to narrow down the scope of the returned tasks.
-The supported filter keys are \code{WindowTaskId}, \code{TaskArn}, \code{Priority}, and
-\code{TaskType}.}
+\item{Filters}{Optional filters used to narrow down the scope of the returned tasks. The supported filter keys are \code{WindowTaskId}, \code{TaskArn}, \code{Priority}, and \code{TaskType}.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Lists the tasks in a maintenance window.

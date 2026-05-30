@@ -7,12 +7,9 @@
 cloudwatchlogs_put_transformer(logGroupIdentifier, transformerConfig)
 }
 \arguments{
-\item{logGroupIdentifier}{[required] Specify either the name or ARN of the log group to create the
-transformer for.}
+\item{logGroupIdentifier}{[required] Specify either the name or ARN of the log group to create the transformer for.}
 
-\item{transformerConfig}{[required] This structure contains the configuration of this log transformer. A log
-transformer is an array of processors, where each processor applies one
-type of transformation to the log events that are ingested.}
+\item{transformerConfig}{[required] This structure contains the configuration of this log transformer. A log transformer is an array of processors, where each processor applies one type of transformation to the log events that are ingested.}
 }
 \description{
 Creates or updates a \emph{log transformer} for a single log group. You use log transformers to transform log events into a different format, making them easier for you to process and analyze. You can also transform logs from different sources into standardized formats that contains relevant, source-specific information.

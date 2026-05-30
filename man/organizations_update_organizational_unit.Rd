@@ -7,22 +7,13 @@
 organizations_update_organizational_unit(OrganizationalUnitId, Name = NULL)
 }
 \arguments{
-\item{OrganizationalUnitId}{[required] The unique identifier (ID) of the OU that you want to rename. You can
-get the ID from the
-\code{\link[=organizations_list_organizational_units_for_parent]{list_organizational_units_for_parent}}
-operation.
+\item{OrganizationalUnitId}{[required] ID for the OU that you want to rename. You can get the ID from the \code{\link[=organizations_list_organizational_units_for_parent]{list_organizational_units_for_parent}} operation.
 
-The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for an
-organizational unit ID string requires "ou-" followed by from 4 to 32
-lowercase letters or digits (the ID of the root that contains the OU).
-This string is followed by a second "-" dash and from 8 to 32 additional
-lowercase letters or digits.}
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for an organizational unit ID string requires "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that contains the OU). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters or digits.}
 
 \item{Name}{The new name that you want to assign to the OU.
 
-The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
-validate this parameter is a string of any of the characters in the
-ASCII character range.}
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to validate this parameter is a string of any of the characters in the ASCII character range.}
 }
 \description{
 Renames the specified organizational unit (OU). The ID and ARN don't change. The child OUs and accounts remain in place, and any attached policies of the OU remain attached.

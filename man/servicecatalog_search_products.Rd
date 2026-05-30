@@ -20,8 +20,7 @@ servicecatalog_search_products(
 \item \code{zh} - Chinese
 }}
 
-\item{Filters}{The search filters. If no search filters are specified, the output
-includes all products to which the caller has access.}
+\item{Filters}{The search filters. If no search filters are specified, the output includes all products to which the caller has access.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 
@@ -29,8 +28,7 @@ includes all products to which the caller has access.}
 
 \item{SortOrder}{The sort order. If no value is specified, the results are not sorted.}
 
-\item{PageToken}{The page token for the next set of results. To retrieve the first set of
-results, use null.}
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 }
 \description{
 Gets information about the products to which the caller has access.

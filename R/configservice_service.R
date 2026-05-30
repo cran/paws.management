@@ -7,31 +7,9 @@ NULL
 #' @description
 #' Config
 #' 
-#' Config provides a way to keep track of the configurations of all the
-#' Amazon Web Services resources associated with your Amazon Web Services
-#' account. You can use Config to get the current and historical
-#' configurations of each Amazon Web Services resource and also to get
-#' information about the relationship between the resources. An Amazon Web
-#' Services resource can be an Amazon Compute Cloud (Amazon EC2) instance,
-#' an Elastic Block Store (EBS) volume, an elastic network Interface (ENI),
-#' or a security group. For a complete list of resources currently
-#' supported by Config, see [Supported Amazon Web Services
-#' resources](https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
+#' Config provides a way to keep track of the configurations of all the Amazon Web Services resources associated with your Amazon Web Services account. You can use Config to get the current and historical configurations of each Amazon Web Services resource and also to get information about the relationship between the resources. An Amazon Web Services resource can be an Amazon Compute Cloud (Amazon EC2) instance, an Elastic Block Store (EBS) volume, an elastic network Interface (ENI), or a security group. For a complete list of resources currently supported by Config, see [Supported Amazon Web Services resources](https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
 #' 
-#' You can access and manage Config through the Amazon Web Services
-#' Management Console, the Amazon Web Services Command Line Interface
-#' (Amazon Web Services CLI), the Config API, or the Amazon Web Services
-#' SDKs for Config. This reference guide contains documentation for the
-#' Config API and the Amazon Web Services CLI commands that you can use to
-#' manage Config. The Config API uses the Signature Version 4 protocol for
-#' signing requests. For more information about how to sign a request with
-#' this protocol, see [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
-#' For detailed information about Config features and their associated
-#' actions or commands, as well as how to work with Amazon Web Services
-#' Management Console, see [What Is
-#' Config](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html)
-#' in the *Config Developer Guide*.
+#' You can access and manage Config through the Amazon Web Services Management Console, the Amazon Web Services Command Line Interface (Amazon Web Services CLI), the Config API, or the Amazon Web Services SDKs for Config. This reference guide contains documentation for the Config API and the Amazon Web Services CLI commands that you can use to manage Config. The Config API uses the Signature Version 4 protocol for signing requests. For more information about how to sign a request with this protocol, see [Signature Version 4 Signing Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html). For detailed information about Config features and their associated actions or commands, as well as how to work with Amazon Web Services Management Console, see [What Is Config](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html) in the *Config Developer Guide*.
 #'
 #' @param
 #' config
@@ -184,7 +162,7 @@ NULL
 #'  \link[=configservice_list_aggregate_discovered_resources]{list_aggregate_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers that are aggregated for a specific resource type across accounts and regions\cr
 #'  \link[=configservice_list_configuration_recorders]{list_configuration_recorders} \tab Returns a list of configuration recorders depending on the filters you specify\cr
 #'  \link[=configservice_list_conformance_pack_compliance_scores]{list_conformance_pack_compliance_scores} \tab Returns a list of conformance pack compliance scores\cr
-#'  \link[=configservice_list_discovered_resources]{list_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers for the resources of that type\cr
+#'  \link[=configservice_list_discovered_resources]{list_discovered_resources} \tab Returns a list of resource resource identifiers for the specified resource types for the resources of that type\cr
 #'  \link[=configservice_list_resource_evaluations]{list_resource_evaluations} \tab Returns a list of proactive resource evaluations\cr
 #'  \link[=configservice_list_stored_queries]{list_stored_queries} \tab Lists the stored queries for a single Amazon Web Services account and a single Amazon Web Services Region\cr
 #'  \link[=configservice_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for Config resource\cr
@@ -244,7 +222,7 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
 
 .configservice$metadata <- list(
   service_name = "config",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "config.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "config.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "config.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "config.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "config.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "config.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "config.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "config.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "config.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "config.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "config.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "config.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "config.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "config.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "config.{region}.amazonaws.eu", global = FALSE)),
   service_id = "Config Service",
   api_version = "2014-11-12",
   signing_name = "config",

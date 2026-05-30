@@ -14,13 +14,9 @@ applicationinsights_update_problem(
 \arguments{
 \item{ProblemId}{[required] The ID of the problem.}
 
-\item{UpdateStatus}{The status of the problem. Arguments can be passed for only problems
-that show a status of \code{RECOVERING}.}
+\item{UpdateStatus}{The status of the problem. Arguments can be passed for only problems that show a status of \code{RECOVERING}.}
 
-\item{Visibility}{The visibility of a problem. When you pass a value of \code{IGNORED}, the
-problem is removed from the default view, and all notifications for the
-problem are suspended. When \code{VISIBLE} is passed, the \code{IGNORED} action is
-reversed.}
+\item{Visibility}{The visibility of a problem. When you pass a value of \code{IGNORED}, the problem is removed from the default view, and all notifications for the problem are suspended. When \code{VISIBLE} is passed, the \code{IGNORED} action is reversed.}
 }
 \description{
 Updates the visibility of the problem or specifies the problem as \code{RESOLVED}.

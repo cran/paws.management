@@ -8,11 +8,9 @@ account}
 supportapp_delete_slack_channel_configuration(channelId, teamId)
 }
 \arguments{
-\item{channelId}{[required] The channel ID in Slack. This ID identifies a channel within a Slack
-workspace.}
+\item{channelId}{[required] The channel ID in Slack. This ID identifies a channel within a Slack workspace.}
 
-\item{teamId}{[required] The team ID in Slack. This ID uniquely identifies a Slack workspace,
-such as \code{T012ABCDEFG}.}
+\item{teamId}{[required] The team ID in Slack. This ID uniquely identifies a Slack workspace, such as \code{T012ABCDEFG}.}
 }
 \description{
 Deletes a Slack channel configuration from your Amazon Web Services account. This operation doesn't delete your Slack channel.

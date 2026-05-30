@@ -5,31 +5,28 @@
 \title{Updates an existing scraper}
 \usage{
 prometheusservice_update_scraper(
+  scraperId,
   alias = NULL,
-  clientToken = NULL,
+  scrapeConfiguration = NULL,
   destination = NULL,
   roleConfiguration = NULL,
-  scrapeConfiguration = NULL,
-  scraperId
+  clientToken = NULL
 )
 }
 \arguments{
+\item{scraperId}{[required] The ID of the scraper to update.}
+
 \item{alias}{The new alias of the scraper.}
-
-\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
-the request. Case-sensitive.}
-
-\item{destination}{The new Amazon Managed Service for Prometheus workspace to send metrics
-to.}
-
-\item{roleConfiguration}{The scraper role configuration for the workspace.}
 
 \item{scrapeConfiguration}{Contains the base-64 encoded YAML configuration for the scraper.
 
-For more information about configuring a scraper, see \href{https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html}{Using an Amazon Web Services managed collector}
-in the \emph{Amazon Managed Service for Prometheus User Guide}.}
+For more information about configuring a scraper, see \href{https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html}{Using an Amazon Web Services managed collector} in the \emph{Amazon Managed Service for Prometheus User Guide}.}
 
-\item{scraperId}{[required] The ID of the scraper to update.}
+\item{destination}{The new Amazon Managed Service for Prometheus workspace to send metrics to.}
+
+\item{roleConfiguration}{Use this structure to enable cross-account access, so that you can use a target account to access Prometheus metrics from source accounts.}
+
+\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of the request. Case-sensitive.}
 }
 \description{
 Updates an existing scraper.

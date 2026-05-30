@@ -8,9 +8,7 @@ manual evidence}
 auditmanager_get_evidence_file_upload_url(fileName)
 }
 \arguments{
-\item{fileName}{[required] The file that you want to upload. For a list of supported file formats,
-see \href{https://docs.aws.amazon.com/audit-manager/latest/userguide/upload-evidence.html#supported-manual-evidence-files}{Supported file types for manual evidence}
-in the \emph{Audit Manager User Guide}.}
+\item{fileName}{[required] The file that you want to upload. For a list of supported file formats, see \href{https://docs.aws.amazon.com/audit-manager/latest/userguide/upload-evidence.html#supported-manual-evidence-files}{Supported file types for manual evidence} in the \emph{Audit Manager User Guide}.}
 }
 \description{
 Creates a presigned Amazon S3 URL that can be used to upload a file as manual evidence. For instructions on how to use this operation, see \href{https://docs.aws.amazon.com/audit-manager/latest/userguide/upload-evidence.html#how-to-upload-manual-evidence-files}{Upload a file from your browser} in the \emph{Audit Manager User Guide}.

@@ -8,8 +8,7 @@ plans during an incident}
 ssmcontacts_describe_engagement(EngagementId)
 }
 \arguments{
-\item{EngagementId}{[required] The Amazon Resource Name (ARN) of the engagement you want the details
-of.}
+\item{EngagementId}{[required] The Amazon Resource Name (ARN) of the engagement you want the details of.}
 }
 \description{
 Incident Manager uses engagements to engage contacts and escalation plans during an incident. Use this command to describe the engagement that occurred during an incident.

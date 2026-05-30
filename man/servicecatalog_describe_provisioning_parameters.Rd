@@ -22,22 +22,15 @@ servicecatalog_describe_provisioning_parameters(
 \item \code{zh} - Chinese
 }}
 
-\item{ProductId}{The product identifier. You must provide the product name or ID, but not
-both.}
+\item{ProductId}{The product identifier. You must provide the product name or ID, but not both.}
 
 \item{ProductName}{The name of the product. You must provide the name or ID, but not both.}
 
-\item{ProvisioningArtifactId}{The identifier of the provisioning artifact. You must provide the name
-or ID, but not both.}
+\item{ProvisioningArtifactId}{The identifier of the provisioning artifact. You must provide the name or ID, but not both.}
 
-\item{ProvisioningArtifactName}{The name of the provisioning artifact. You must provide the name or ID,
-but not both.}
+\item{ProvisioningArtifactName}{The name of the provisioning artifact. You must provide the name or ID, but not both.}
 
-\item{PathId}{The path identifier of the product. This value is optional if the
-product has a default path, and required if the product has more than
-one path. To list the paths for a product, use
-\code{\link[=servicecatalog_list_launch_paths]{list_launch_paths}}. You must
-provide the name or ID, but not both.}
+\item{PathId}{The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use \code{\link[=servicecatalog_list_launch_paths]{list_launch_paths}}. You must provide the name or ID, but not both.}
 
 \item{PathName}{The name of the path. You must provide the name or ID, but not both.}
 }

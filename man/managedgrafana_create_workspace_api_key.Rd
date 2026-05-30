@@ -18,8 +18,7 @@ managedgrafana_create_workspace_api_key(
 
 Valid values: \code{ADMIN}|\code{EDITOR}|\code{VIEWER}}
 
-\item{secondsToLive}{[required] Specifies the time in seconds until the key expires. Keys can be valid
-for up to 30 days.}
+\item{secondsToLive}{[required] Specifies the time in seconds until the key expires. Keys can be valid for up to 30 days.}
 
 \item{workspaceId}{[required] The ID of the workspace to create an API key.}
 }

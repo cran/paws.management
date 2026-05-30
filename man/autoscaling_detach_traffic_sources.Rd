@@ -10,8 +10,7 @@ autoscaling_detach_traffic_sources(AutoScalingGroupName, TrafficSources)
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{TrafficSources}{[required] The unique identifiers of one or more traffic sources. You can specify
-up to 10 traffic sources.}
+\item{TrafficSources}{[required] The unique identifiers of one or more traffic sources. You can specify up to 10 traffic sources.}
 }
 \description{
 Detaches one or more traffic sources from the specified Auto Scaling group.

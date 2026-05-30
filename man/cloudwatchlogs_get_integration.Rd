@@ -8,9 +8,7 @@ OpenSearch Service}
 cloudwatchlogs_get_integration(integrationName)
 }
 \arguments{
-\item{integrationName}{[required] The name of the integration that you want to find information about. To
-find the name of your integration, use
-\code{\link[=cloudwatchlogs_list_integrations]{list_integrations}}}
+\item{integrationName}{[required] The name of the integration that you want to find information about. To find the name of your integration, use \code{\link[=cloudwatchlogs_list_integrations]{list_integrations}}}
 }
 \description{
 Returns information about one integration between CloudWatch Logs and OpenSearch Service.

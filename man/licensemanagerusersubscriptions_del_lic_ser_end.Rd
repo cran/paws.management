@@ -10,8 +10,7 @@ licensemanagerusersubscriptions_delete_license_server_endpoint(
 )
 }
 \arguments{
-\item{LicenseServerEndpointArn}{[required] The Amazon Resource Name (ARN) that identifies the
-\code{LicenseServerEndpoint} resource to delete.}
+\item{LicenseServerEndpointArn}{[required] The Amazon Resource Name (ARN) that identifies the \code{LicenseServerEndpoint} resource to delete.}
 
 \item{ServerType}{[required] The type of License Server that the delete request refers to.}
 }

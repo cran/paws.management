@@ -8,13 +8,9 @@ files within the specified time range}
 cloudtrail_list_public_keys(StartTime = NULL, EndTime = NULL, NextToken = NULL)
 }
 \arguments{
-\item{StartTime}{Optionally specifies, in UTC, the start of the time range to look up
-public keys for CloudTrail digest files. If not specified, the current
-time is used, and the current public key is returned.}
+\item{StartTime}{Optionally specifies, in UTC, the start of the time range to look up public keys for CloudTrail digest files. If not specified, the current time is used, and the current public key is returned.}
 
-\item{EndTime}{Optionally specifies, in UTC, the end of the time range to look up
-public keys for CloudTrail digest files. If not specified, the current
-time is used.}
+\item{EndTime}{Optionally specifies, in UTC, the end of the time range to look up public keys for CloudTrail digest files. If not specified, the current time is used.}
 
 \item{NextToken}{Reserved for future use.}
 }

@@ -7,8 +7,7 @@
 cloudformation_get_stack_policy(StackName)
 }
 \arguments{
-\item{StackName}{[required] The name or unique stack ID that's associated with the stack whose
-policy you want to get.}
+\item{StackName}{[required] The name or unique stack ID that's associated with the stack whose policy you want to get.}
 }
 \description{
 Returns the stack policy for a specified stack. If a stack doesn't have a policy, a null value is returned.

@@ -9,9 +9,7 @@ ssm_cancel_command(CommandId, InstanceIds = NULL)
 \arguments{
 \item{CommandId}{[required] The ID of the command you want to cancel.}
 
-\item{InstanceIds}{(Optional) A list of managed node IDs on which you want to cancel the
-command. If not provided, the command is canceled on every node on which
-it was requested.}
+\item{InstanceIds}{(Optional) A list of managed node IDs on which you want to cancel the command. If not provided, the command is canceled on every node on which it was requested.}
 }
 \description{
 Attempts to cancel the command specified by the Command ID. There is no guarantee that the command will be terminated and the underlying process stopped.

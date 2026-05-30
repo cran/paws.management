@@ -7,37 +7,52 @@
 cloudwatchapplicationsignals_list_service_level_objectives(
   KeyAttributes = NULL,
   OperationName = NULL,
+  DependencyConfig = NULL,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  MetricSourceTypes = NULL,
+  IncludeLinkedAccounts = NULL,
+  SloOwnerAwsAccountId = NULL,
+  MetricSource = NULL
 )
 }
 \arguments{
-\item{KeyAttributes}{You can use this optional field to specify which services you want to
-retrieve SLO information for.
+\item{KeyAttributes}{You can use this optional field to specify which services you want to retrieve SLO information for.
 
 This is a string-to-string map. It can include the following fields.
 \itemize{
 \item \code{Type} designates the type of object this is.
-\item \code{ResourceType} specifies the type of the resource. This field is
-used only when the value of the \code{Type} field is \code{Resource} or
-\code{AWS::Resource}.
-\item \code{Name} specifies the name of the object. This is used only if the
-value of the \code{Type} field is \code{Service}, \code{RemoteService}, or
-\code{AWS::Service}.
-\item \code{Identifier} identifies the resource objects of this resource. This
-is used only if the value of the \code{Type} field is \code{Resource} or
-\code{AWS::Resource}.
-\item \code{Environment} specifies the location where this object is hosted, or
-what it belongs to.
+\item \code{ResourceType} specifies the type of the resource. This field is used only when the value of the \code{Type} field is \code{Resource} or \code{AWS::Resource}.
+\item \code{Name} specifies the name of the object. This is used only if the value of the \code{Type} field is \code{Service}, \code{RemoteService}, or \code{AWS::Service}.
+\item \code{Identifier} identifies the resource objects of this resource. This is used only if the value of the \code{Type} field is \code{Resource} or \code{AWS::Resource}.
+\item \code{Environment} specifies the location where this object is hosted, or what it belongs to.
 }}
 
 \item{OperationName}{The name of the operation that this SLO is associated with.}
 
-\item{MaxResults}{The maximum number of results to return in one operation. If you omit
-this parameter, the default of 50 is used.}
+\item{DependencyConfig}{Identifies the dependency using the \code{DependencyKeyAttributes} and \code{DependencyOperationName}.}
 
-\item{NextToken}{Include this value, if it was returned by the previous operation, to get
-the next set of service level objectives.}
+\item{MaxResults}{The maximum number of results to return in one operation. If you omit this parameter, the default of 50 is used.}
+
+\item{NextToken}{Include this value, if it was returned by the previous operation, to get the next set of service level objectives.}
+
+\item{MetricSourceTypes}{Use this optional field to only include SLOs with the specified metric source types in the output. Supported types are:
+\itemize{
+\item Service operation
+\item Service dependency
+\item Service
+\item CloudWatch metric
+\item AppMonitor
+\item Canary
+}}
+
+\item{IncludeLinkedAccounts}{If you are using this operation in a monitoring account, specify \code{true} to include SLO from source accounts in the returned data.
+
+When you are monitoring an account, you can use Amazon Web Services account ID in \code{KeyAttribute} filter for service source account and \code{SloOwnerawsaccountID} for SLO source account with \code{IncludeLinkedAccounts} to filter the returned data to only a single source account.}
+
+\item{SloOwnerAwsAccountId}{SLO's Amazon Web Services account ID.}
+
+\item{MetricSource}{Identifies the metric source to filter SLOs by.}
 }
 \description{
 Returns a list of SLOs created in this account.

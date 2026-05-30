@@ -22,16 +22,9 @@ applicationinsights_update_component_configuration(
 
 \item{Tier}{The tier of the application component.}
 
-\item{ComponentConfiguration}{The configuration settings of the component. The value is the escaped
-JSON of the configuration. For more information about the JSON format,
-see \href{https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/working-with-json.html}{Working with JSON}.
-You can send a request to
-\code{\link[=applicationinsights_describe_component_configuration_recommendation]{describe_component_configuration_recommendation}}
-to see the recommended configuration for a component. For the complete
-format of the component configuration file, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/component-config.html}{Component Configuration}.}
+\item{ComponentConfiguration}{The configuration settings of the component. The value is the escaped JSON of the configuration. For more information about the JSON format, see \href{https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/working-with-json.html}{Working with JSON}. You can send a request to \code{\link[=applicationinsights_describe_component_configuration_recommendation]{describe_component_configuration_recommendation}} to see the recommended configuration for a component. For the complete format of the component configuration file, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/component-config.html}{Component Configuration}.}
 
-\item{AutoConfigEnabled}{Automatically configures the component by applying the recommended
-configurations.}
+\item{AutoConfigEnabled}{Automatically configures the component by applying the recommended configurations.}
 }
 \description{
 Updates the monitoring configurations for the component. The configuration input parameter is an escaped JSON of the configuration and should match the schema of what is returned by \code{\link[=applicationinsights_describe_component_configuration_recommendation]{describe_component_configuration_recommendation}}.

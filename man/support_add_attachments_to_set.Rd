@@ -7,19 +7,11 @@
 support_add_attachments_to_set(attachmentSetId = NULL, attachments)
 }
 \arguments{
-\item{attachmentSetId}{The ID of the attachment set. If an \code{attachmentSetId} is not specified,
-a new attachment set is created, and the ID of the set is returned in
-the response. If an \code{attachmentSetId} is specified, the attachments are
-added to the specified set, if it exists.}
+\item{attachmentSetId}{The ID of the attachment set. If an \code{attachmentSetId} is not specified, a new attachment set is created, and the ID of the set is returned in the response. If an \code{attachmentSetId} is specified, the attachments are added to the specified set, if it exists.}
 
-\item{attachments}{[required] One or more attachments to add to the set. You can add up to three
-attachments per set. The size limit is 5 MB per attachment.
+\item{attachments}{[required] One or more attachments to add to the set. You can add up to three attachments per set. The size limit is 5 MB per attachment.
 
-In the \code{Attachment} object, use the \code{data} parameter to specify the
-contents of the attachment file. In the previous request syntax, the
-value for \code{data} appear as \code{blob}, which is represented as a
-base64-encoded string. The value for \code{fileName} is the name of the
-attachment, such as \code{troubleshoot-screenshot.png}.}
+In the \code{Attachment} object, use the \code{data} parameter to specify the contents of the attachment file. In the previous request syntax, the value for \code{data} appear as \code{blob}, which is represented as a base64-encoded string. The value for \code{fileName} is the name of the attachment, such as \code{troubleshoot-screenshot.png}.}
 }
 \description{
 Adds one or more attachments to an attachment set.

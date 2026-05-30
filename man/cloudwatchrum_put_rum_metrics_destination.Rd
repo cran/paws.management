@@ -15,28 +15,15 @@ cloudwatchrum_put_rum_metrics_destination(
 \arguments{
 \item{AppMonitorName}{[required] The name of the CloudWatch RUM app monitor that will send the metrics.}
 
-\item{Destination}{[required] Defines the destination to send the metrics to. Valid values are
-\code{CloudWatch} and \code{Evidently}. If you specify \code{Evidently}, you must also
-specify the ARN of the CloudWatchEvidently experiment that is to be the
-destination and an IAM role that has permission to write to the
-experiment.}
+\item{Destination}{[required] Defines the destination to send the metrics to. Valid values are \code{CloudWatch} and \code{Evidently}. If you specify \code{Evidently}, you must also specify the ARN of the CloudWatchEvidently experiment that is to be the destination and an IAM role that has permission to write to the experiment.}
 
-\item{DestinationArn}{Use this parameter only if \code{Destination} is \code{Evidently}. This parameter
-specifies the ARN of the Evidently experiment that will receive the
-extended metrics.}
+\item{DestinationArn}{Use this parameter only if \code{Destination} is \code{Evidently}. This parameter specifies the ARN of the Evidently experiment that will receive the extended metrics.}
 
-\item{IamRoleArn}{This parameter is required if \code{Destination} is \code{Evidently}. If
-\code{Destination} is \code{CloudWatch}, don't use this parameter.
+\item{IamRoleArn}{This parameter is required if \code{Destination} is \code{Evidently}. If \code{Destination} is \code{CloudWatch}, don't use this parameter.
 
-This parameter specifies the ARN of an IAM role that RUM will assume to
-write to the Evidently experiment that you are sending metrics to. This
-role must have permission to write to that experiment.
+This parameter specifies the ARN of an IAM role that RUM will assume to write to the Evidently experiment that you are sending metrics to. This role must have permission to write to that experiment.
 
-If you specify this parameter, you must be signed on to a role that has
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html}{PassRole}
-permissions attached to it, to allow the role to be passed. The
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/auth-and-access-control-cw.html#managed-policies-cloudwatch-RUM}{CloudWatchAmazonCloudWatchRUMFullAccess}
-policy doesn't include \code{PassRole} permissions.}
+If you specify this parameter, you must be signed on to a role that has \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html}{PassRole} permissions attached to it, to allow the role to be passed. The \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/auth-and-access-control-cw.html#managed-policies-cloudwatch-RUM}{CloudWatchAmazonCloudWatchRUMFullAccess} policy doesn't include \code{PassRole} permissions.}
 }
 \description{
 Creates or updates a destination to receive extended metrics from CloudWatch RUM. You can send extended metrics to CloudWatch or to a CloudWatch Evidently experiment.

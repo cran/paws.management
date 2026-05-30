@@ -2,8 +2,9 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_activate_type}
 \alias{cloudformation_activate_type}
-\title{Activates a public third-party extension, making it available for use in
-stack templates}
+\title{Activates a public third-party extension, such as a resource or module,
+to make it available for use in stack templates in your current account
+and Region}
 \usage{
 cloudformation_activate_type(
   Type = NULL,
@@ -21,37 +22,25 @@ cloudformation_activate_type(
 \arguments{
 \item{Type}{The extension type.
 
-Conditional: You must specify \code{PublicTypeArn}, or \code{TypeName}, \code{Type},
-and \code{PublisherId}.}
+Conditional: You must specify \code{PublicTypeArn}, or \code{TypeName}, \code{Type}, and \code{PublisherId}.}
 
 \item{PublicTypeArn}{The Amazon Resource Name (ARN) of the public extension.
 
-Conditional: You must specify \code{PublicTypeArn}, or \code{TypeName}, \code{Type},
-and \code{PublisherId}.}
+Conditional: You must specify \code{PublicTypeArn}, or \code{TypeName}, \code{Type}, and \code{PublisherId}.}
 
 \item{PublisherId}{The ID of the extension publisher.
 
-Conditional: You must specify \code{PublicTypeArn}, or \code{TypeName}, \code{Type},
-and \code{PublisherId}.}
+Conditional: You must specify \code{PublicTypeArn}, or \code{TypeName}, \code{Type}, and \code{PublisherId}.}
 
 \item{TypeName}{The name of the extension.
 
-Conditional: You must specify \code{PublicTypeArn}, or \code{TypeName}, \code{Type},
-and \code{PublisherId}.}
+Conditional: You must specify \code{PublicTypeArn}, or \code{TypeName}, \code{Type}, and \code{PublisherId}.}
 
-\item{TypeNameAlias}{An alias to assign to the public extension, in this account and Region.
-If you specify an alias for the extension, CloudFormation treats the
-alias as the extension type name within this account and Region. You
-must use the alias to refer to the extension in your templates, API
-calls, and CloudFormation console.
+\item{TypeNameAlias}{An alias to assign to the public extension in this account and Region. If you specify an alias for the extension, CloudFormation treats the alias as the extension type name within this account and Region. You must use the alias to refer to the extension in your templates, API calls, and CloudFormation console.
 
-An extension alias must be unique within a given account and Region. You
-can activate the same public resource multiple times in the same account
-and Region, using different type name aliases.}
+An extension alias must be unique within a given account and Region. You can activate the same public resource multiple times in the same account and Region, using different type name aliases.}
 
-\item{AutoUpdate}{Whether to automatically update the extension in this account and Region
-when a new \emph{minor} version is published by the extension publisher.
-Major versions released by the publisher must be manually updated.
+\item{AutoUpdate}{Whether to automatically update the extension in this account and Region when a new \emph{minor} version is published by the extension publisher. Major versions released by the publisher must be manually updated.
 
 The default is \code{true}.}
 
@@ -59,25 +48,18 @@ The default is \code{true}.}
 
 \item{ExecutionRoleArn}{The name of the IAM execution role to use to activate the extension.}
 
-\item{VersionBump}{Manually updates a previously-activated type to a new major or minor
-version, if available. You can also use this parameter to update the
-value of \code{AutoUpdate}.
+\item{VersionBump}{Manually updates a previously-activated type to a new major or minor version, if available. You can also use this parameter to update the value of \code{AutoUpdate}.
 \itemize{
-\item \code{MAJOR}: CloudFormation updates the extension to the newest major
-version, if one is available.
-\item \code{MINOR}: CloudFormation updates the extension to the newest minor
-version, if one is available.
+\item \code{MAJOR}: CloudFormation updates the extension to the newest major version, if one is available.
+\item \code{MINOR}: CloudFormation updates the extension to the newest minor version, if one is available.
 }}
 
-\item{MajorVersion}{The major version of this extension you want to activate, if multiple
-major versions are available. The default is the latest major version.
-CloudFormation uses the latest available \emph{minor} version of the major
-version selected.
+\item{MajorVersion}{The major version of this extension you want to activate, if multiple major versions are available. The default is the latest major version. CloudFormation uses the latest available \emph{minor} version of the major version selected.
 
 You can specify \code{MajorVersion} or \code{VersionBump}, but not both.}
 }
 \description{
-Activates a public third-party extension, making it available for use in stack templates. Once you have activated a public third-party extension in your account and Region, use \code{\link[=cloudformation_set_type_configuration]{set_type_configuration}} to specify configuration properties for the extension. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public.html}{Using public extensions} in the \emph{CloudFormation User Guide}.
+Activates a public third-party extension, such as a resource or module, to make it available for use in stack templates in your current account and Region. It can also create CloudFormation Hooks, which allow you to evaluate resource configurations before CloudFormation provisions them. Hooks integrate with both CloudFormation and Cloud Control API operations.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_activate_type/} for full documentation.
 }

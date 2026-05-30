@@ -33,11 +33,9 @@ ssmsap_register_application(
 
 \item{DatabaseArn}{The Amazon Resource Name of the SAP HANA database.}
 
-\item{ComponentsInfo}{This is an optional parameter for component details to which the SAP
-ABAP application is attached, such as Web Dispatcher.
+\item{ComponentsInfo}{This is an optional parameter for component details to which the SAP ABAP application is attached, such as Web Dispatcher.
 
-This is an array of ApplicationComponent objects. You may input 0 to 5
-items.}
+This is an array of ApplicationComponent objects. You may input 0 to 5 items.}
 }
 \description{
 Register an SAP application with AWS Systems Manager for SAP. You must meet the following requirements before registering.

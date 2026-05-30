@@ -9,10 +9,7 @@ autoscaling_delete_warm_pool(AutoScalingGroupName, ForceDelete = NULL)
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{ForceDelete}{Specifies that the warm pool is to be deleted along with all of its
-associated instances, without waiting for all instances to be
-terminated. This parameter also deletes any outstanding lifecycle
-actions associated with the warm pool instances.}
+\item{ForceDelete}{Specifies that the warm pool is to be deleted along with all of its associated instances, without waiting for all instances to be terminated. This parameter also deletes any outstanding lifecycle actions associated with the warm pool instances.}
 }
 \description{
 Deletes the warm pool for the specified Auto Scaling group.

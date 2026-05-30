@@ -2,7 +2,8 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_describe_log_groups}
 \alias{cloudwatchlogs_describe_log_groups}
-\title{Lists the specified log groups}
+\title{Returns information about log groups, including data sources that ingest
+into each log group}
 \usage{
 cloudwatchlogs_describe_log_groups(
   accountIdentifiers = NULL,
@@ -11,57 +12,50 @@ cloudwatchlogs_describe_log_groups(
   nextToken = NULL,
   limit = NULL,
   includeLinkedAccounts = NULL,
-  logGroupClass = NULL
+  logGroupClass = NULL,
+  logGroupIdentifiers = NULL
 )
 }
 \arguments{
-\item{accountIdentifiers}{When \code{includeLinkedAccounts} is set to \code{True}, use this parameter to
-specify the list of accounts to search. You can specify as many as 20
-account IDs in the array.}
+\item{accountIdentifiers}{When \code{includeLinkedAccounts} is set to \code{true}, use this parameter to specify the list of accounts to search. You can specify as many as 20 account IDs in the array.}
 
 \item{logGroupNamePrefix}{The prefix to match.
 
-\code{logGroupNamePrefix} and \code{logGroupNamePattern} are mutually exclusive.
-Only one of these parameters can be passed.}
+\code{logGroupNamePrefix} and \code{logGroupNamePattern} are mutually exclusive. Only one of these parameters can be passed.}
 
-\item{logGroupNamePattern}{If you specify a string for this parameter, the operation returns only
-log groups that have names that match the string based on a
-case-sensitive substring search. For example, if you specify \code{Foo}, log
-groups named \code{FooBar}, \code{aws/Foo}, and \code{GroupFoo} would match, but \code{foo},
-\code{F/o/o} and \code{Froo} would not match.
+\item{logGroupNamePattern}{If you specify a string for this parameter, the operation returns only log groups that have names that match the string based on a case-sensitive substring search. For example, if you specify \code{DataLogs}, log groups named \code{DataLogs}, \code{aws/DataLogs}, and \code{GroupDataLogs} would match, but \code{datalogs}, \code{Data/log/s} and \code{Groupdata} would not match.
 
-If you specify \code{logGroupNamePattern} in your request, then only \code{arn},
-\code{creationTime}, and \code{logGroupName} are included in the response.
+If you specify \code{logGroupNamePattern} in your request, then only \code{arn}, \code{creationTime}, and \code{logGroupName} are included in the response.
 
-\code{logGroupNamePattern} and \code{logGroupNamePrefix} are mutually exclusive.
-Only one of these parameters can be passed.}
+\code{logGroupNamePattern} and \code{logGroupNamePrefix} are mutually exclusive. Only one of these parameters can be passed.}
 
-\item{nextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{nextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{limit}{The maximum number of items returned. If you don't specify a value, the
-default is up to 50 items.}
+\item{limit}{The maximum number of items returned. If you don't specify a value, the default is up to 50 items.}
 
-\item{includeLinkedAccounts}{If you are using a monitoring account, set this to \code{True} to have the
-operation return log groups in the accounts listed in
-\code{accountIdentifiers}.
+\item{includeLinkedAccounts}{If you are using a monitoring account, set this to \code{true} to have the operation return log groups in the accounts listed in \code{accountIdentifiers}.
 
-If this parameter is set to \code{true} and \code{accountIdentifiers} contains a
-null value, the operation returns all log groups in the monitoring
-account and all log groups in all source accounts that are linked to the
-monitoring account.}
+If this parameter is set to \code{true} and \code{accountIdentifiers} contains a null value, the operation returns all log groups in the monitoring account and all log groups in all source accounts that are linked to the monitoring account.
 
-\item{logGroupClass}{Specifies the log group class for this log group. There are two classes:
+The default for this parameter is \code{false}.}
+
+\item{logGroupClass}{Use this parameter to limit the results to only those log groups in the specified log group class. If you omit this parameter, log groups of all classes can be returned.
+
+Specifies the log group class for this log group. There are three classes:
 \itemize{
 \item The \code{Standard} log class supports all CloudWatch Logs features.
-\item The \verb{Infrequent Access} log class supports a subset of CloudWatch
-Logs features and incurs lower costs.
+\item The \verb{Infrequent Access} log class supports a subset of CloudWatch Logs features and incurs lower costs.
+\item Use the \code{Delivery} log class only for delivering Lambda logs to store in Amazon S3 or Amazon Data Firehose. Log events in log groups in the Delivery class are kept in CloudWatch Logs for only one day. This log class doesn't offer rich CloudWatch Logs capabilities such as CloudWatch Logs Insights queries.
 }
 
 For details about the features supported by each class, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html}{Log classes}}
+
+\item{logGroupIdentifiers}{Use this array to filter the list of log groups returned. If you specify this parameter, the only other filter that you can choose to specify is \code{includeLinkedAccounts}.
+
+If you are using this operation in a monitoring account, you can specify the ARNs of log groups in source accounts and in the monitoring account itself. If you are using this operation in an account that is not a cross-account monitoring account, you can specify only log group names in the same account as the operation.}
 }
 \description{
-Lists the specified log groups. You can list all your log groups or filter the results by prefix. The results are ASCII-sorted by log group name.
+Returns information about log groups, including data sources that ingest into each log group. You can return all your log groups or filter the results by prefix. The results are ASCII-sorted by log group name.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_log_groups/} for full documentation.
 }

@@ -8,8 +8,7 @@ you can deactivate the channel}
 ssmcontacts_deactivate_contact_channel(ContactChannelId)
 }
 \arguments{
-\item{ContactChannelId}{[required] The Amazon Resource Name (ARN) of the contact channel you're
-deactivating.}
+\item{ContactChannelId}{[required] The Amazon Resource Name (ARN) of the contact channel you're deactivating.}
 }
 \description{
 To no longer receive Incident Manager engagements to a contact channel, you can deactivate the channel.

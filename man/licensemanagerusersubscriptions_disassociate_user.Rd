@@ -6,26 +6,23 @@
 subscriptions}
 \usage{
 licensemanagerusersubscriptions_disassociate_user(
-  Domain = NULL,
-  IdentityProvider = NULL,
+  Username = NULL,
   InstanceId = NULL,
+  IdentityProvider = NULL,
   InstanceUserArn = NULL,
-  Username = NULL
+  Domain = NULL
 )
 }
 \arguments{
-\item{Domain}{The domain name of the Active Directory that contains information for
-the user to disassociate.}
-
-\item{IdentityProvider}{An object that specifies details for the Active Directory identity
-provider.}
+\item{Username}{The user name from the Active Directory identity provider for the user.}
 
 \item{InstanceId}{The ID of the EC2 instance which provides user-based subscriptions.}
 
-\item{InstanceUserArn}{The Amazon Resource Name (ARN) of the user to disassociate from the EC2
-instance.}
+\item{IdentityProvider}{An object that specifies details for the Active Directory identity provider.}
 
-\item{Username}{The user name from the Active Directory identity provider for the user.}
+\item{InstanceUserArn}{The Amazon Resource Name (ARN) of the user to disassociate from the EC2 instance.}
+
+\item{Domain}{The domain name of the Active Directory that contains information for the user to disassociate.}
 }
 \description{
 Disassociates the user from an EC2 instance providing user-based subscriptions.

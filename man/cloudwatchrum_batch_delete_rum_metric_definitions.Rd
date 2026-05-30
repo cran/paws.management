@@ -13,23 +13,15 @@ cloudwatchrum_batch_delete_rum_metric_definitions(
 )
 }
 \arguments{
-\item{AppMonitorName}{[required] The name of the CloudWatch RUM app monitor that is sending these
-metrics.}
+\item{AppMonitorName}{[required] The name of the CloudWatch RUM app monitor that is sending these metrics.}
 
-\item{Destination}{[required] Defines the destination where you want to stop sending the specified
-metrics. Valid values are \code{CloudWatch} and \code{Evidently}. If you specify
-\code{Evidently}, you must also specify the ARN of the CloudWatchEvidently
-experiment that is to be the destination and an IAM role that has
-permission to write to the experiment.}
+\item{Destination}{[required] Defines the destination where you want to stop sending the specified metrics. Valid values are \code{CloudWatch} and \code{Evidently}. If you specify \code{Evidently}, you must also specify the ARN of the CloudWatchEvidently experiment that is to be the destination and an IAM role that has permission to write to the experiment.}
 
-\item{DestinationArn}{This parameter is required if \code{Destination} is \code{Evidently}. If
-\code{Destination} is \code{CloudWatch}, do not use this parameter.
+\item{DestinationArn}{This parameter is required if \code{Destination} is \code{Evidently}. If \code{Destination} is \code{CloudWatch}, do not use this parameter.
 
-This parameter specifies the ARN of the Evidently experiment that was
-receiving the metrics that are being deleted.}
+This parameter specifies the ARN of the Evidently experiment that was receiving the metrics that are being deleted.}
 
-\item{MetricDefinitionIds}{[required] An array of structures which define the metrics that you want to stop
-sending.}
+\item{MetricDefinitionIds}{[required] An array of structures which define the metrics that you want to stop sending.}
 }
 \description{
 Removes the specified metrics from being sent to an extended metrics destination.

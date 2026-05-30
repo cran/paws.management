@@ -53,8 +53,7 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-With License Manager, you can discover and track your commercial Linux
-subscriptions on running Amazon EC2 instances.
+With License Manager, you can discover and track your commercial Linux subscriptions on running Amazon EC2 instances.
 }
 \section{Service syntax}{
 

@@ -7,9 +7,7 @@
 cloudtrail_delete_trail(Name)
 }
 \arguments{
-\item{Name}{[required] Specifies the name or the CloudTrail ARN of the trail to be deleted. The
-following is the format of a trail ARN.
-\code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
+\item{Name}{[required] Specifies the name or the CloudTrail ARN of the trail to be deleted. The following is the format of a trail ARN. \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }
 \description{
 Deletes a trail. This operation must be called from the Region in which the trail was created. \code{\link[=cloudtrail_delete_trail]{delete_trail}} cannot be called on the shadow trails (replicated trails in other Regions) of a trail that is enabled in all Regions.

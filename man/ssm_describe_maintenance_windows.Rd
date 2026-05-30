@@ -11,16 +11,11 @@ ssm_describe_maintenance_windows(
 )
 }
 \arguments{
-\item{Filters}{Optional filters used to narrow down the scope of the returned
-maintenance windows. Supported filter keys are \code{Name} and \code{Enabled}. For
-example, \code{Name=MyMaintenanceWindow} and \code{Enabled=True}.}
+\item{Filters}{Optional filters used to narrow down the scope of the returned maintenance windows. Supported filter keys are \code{Name} and \code{Enabled}. For example, \code{Name=MyMaintenanceWindow} and \code{Enabled=True}.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Retrieves the maintenance windows in an Amazon Web Services account.

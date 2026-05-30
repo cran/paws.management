@@ -12,17 +12,11 @@ synthetics_list_group_resources(
 )
 }
 \arguments{
-\item{NextToken}{A token that indicates that there is more data available. You can use
-this token in a subsequent operation to retrieve the next set of
-results.}
+\item{NextToken}{A token that indicates that there is more data available. You can use this token in a subsequent operation to retrieve the next set of results.}
 
-\item{MaxResults}{Specify this parameter to limit how many canary ARNs are returned each
-time you use the
-\code{\link[=synthetics_list_group_resources]{list_group_resources}} operation. If
-you omit this parameter, the default of 20 is used.}
+\item{MaxResults}{Specify this parameter to limit how many canary ARNs are returned each time you use the \code{\link[=synthetics_list_group_resources]{list_group_resources}} operation. If you omit this parameter, the default of 20 is used.}
 
-\item{GroupIdentifier}{[required] Specifies the group to return information for. You can specify the group
-name, the ARN, or the group ID as the \code{GroupIdentifier}.}
+\item{GroupIdentifier}{[required] Specifies the group to return information for. You can specify the group name, the ARN, or the group ID as the \code{GroupIdentifier}.}
 }
 \description{
 This operation returns a list of the ARNs of the canaries that are associated with the specified group.

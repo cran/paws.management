@@ -7,11 +7,9 @@
 ssm_disassociate_ops_item_related_item(OpsItemId, AssociationId)
 }
 \arguments{
-\item{OpsItemId}{[required] The ID of the OpsItem for which you want to delete an association
-between the OpsItem and a related item.}
+\item{OpsItemId}{[required] The ID of the OpsItem for which you want to delete an association between the OpsItem and a related item.}
 
-\item{AssociationId}{[required] The ID of the association for which you want to delete an association
-between the OpsItem and a related item.}
+\item{AssociationId}{[required] The ID of the association for which you want to delete an association between the OpsItem and a related item.}
 }
 \description{
 Deletes the association between an OpsItem and a related item. For example, this API operation can delete an Incident Manager incident from an OpsItem. Incident Manager is a tool in Amazon Web Services Systems Manager.

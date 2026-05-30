@@ -19,18 +19,14 @@ servicecatalog_reject_portfolio_share(
 
 \item{PortfolioId}{[required] The portfolio identifier.}
 
-\item{PortfolioShareType}{The type of shared portfolios to reject. The default is to reject
-imported portfolios.
+\item{PortfolioShareType}{The type of shared portfolios to reject. The default is to reject imported portfolios.
 \itemize{
-\item \code{AWS_ORGANIZATIONS} - Reject portfolios shared by the management
-account of your organization.
+\item \code{AWS_ORGANIZATIONS} - Reject portfolios shared by the management account of your organization.
 \item \code{IMPORTED} - Reject imported portfolios.
-\item \code{AWS_SERVICECATALOG} - Not supported. (Throws
-ResourceNotFoundException.)
+\item \code{AWS_SERVICECATALOG} - Not supported. (Throws ResourceNotFoundException.)
 }
 
-For example,
-\verb{aws servicecatalog reject-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS}}
+For example, \verb{aws servicecatalog reject-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS}}
 }
 \description{
 Rejects an offer to share the specified portfolio.

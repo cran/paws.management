@@ -14,21 +14,15 @@ ssm_describe_automation_step_executions(
 )
 }
 \arguments{
-\item{AutomationExecutionId}{[required] The Automation execution ID for which you want step execution
-descriptions.}
+\item{AutomationExecutionId}{[required] The Automation execution ID for which you want step execution descriptions.}
 
-\item{Filters}{One or more filters to limit the number of step executions returned by
-the request.}
+\item{Filters}{One or more filters to limit the number of step executions returned by the request.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{ReverseOrder}{Indicates whether to list step executions in reverse order by start
-time. The default value is 'false'.}
+\item{ReverseOrder}{Indicates whether to list step executions in reverse order by start time. The default value is 'false'.}
 }
 \description{
 Information about all active and terminated step executions in an Automation workflow.

@@ -11,17 +11,11 @@ pi_delete_performance_analysis_report(
 )
 }
 \arguments{
-\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights will
-return metrics. Valid value is \code{RDS}.}
+\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights will return metrics. Valid value is \code{RDS}.}
 
-\item{Identifier}{[required] An immutable identifier for a data source that is unique for an Amazon
-Web Services Region. Performance Insights gathers metrics from this data
-source. In the console, the identifier is shown as \emph{ResourceID}. When
-you call \code{DescribeDBInstances}, the identifier is returned as
-\code{DbiResourceId}.
+\item{Identifier}{[required] An immutable identifier for a data source that is unique for an Amazon Web Services Region. Performance Insights gathers metrics from this data source. In the console, the identifier is shown as \emph{ResourceID}. When you call \code{DescribeDBInstances}, the identifier is returned as \code{DbiResourceId}.
 
-To use a DB instance as a data source, specify its \code{DbiResourceId}
-value. For example, specify \code{db-ABCDEFGHIJKLMNOPQRSTU1VW2X}.}
+To use a DB instance as a data source, specify its \code{DbiResourceId} value. For example, specify \code{db-ABCDEFGHIJKLMNOPQRSTU1VW2X}.}
 
 \item{AnalysisReportId}{[required] The unique identifier of the analysis report for deletion.}
 }

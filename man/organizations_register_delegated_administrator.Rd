@@ -8,11 +8,9 @@ features of the specified Amazon Web Services service}
 organizations_register_delegated_administrator(AccountId, ServicePrincipal)
 }
 \arguments{
-\item{AccountId}{[required] The account ID number of the member account in the organization to
-register as a delegated administrator.}
+\item{AccountId}{[required] The account ID number of the member account in the organization to register as a delegated administrator.}
 
-\item{ServicePrincipal}{[required] The service principal of the Amazon Web Services service for which you
-want to make the member account a delegated administrator.}
+\item{ServicePrincipal}{[required] The service principal of the Amazon Web Services service for which you want to make the member account a delegated administrator.}
 }
 \description{
 Enables the specified member account to administer the Organizations features of the specified Amazon Web Services service. It grants read-only access to Organizations service data. The account still requires IAM permissions to access and administer the Amazon Web Services service.

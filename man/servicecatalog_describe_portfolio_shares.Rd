@@ -13,25 +13,19 @@ servicecatalog_describe_portfolio_shares(
 )
 }
 \arguments{
-\item{PortfolioId}{[required] The unique identifier of the portfolio for which shares will be
-retrieved.}
+\item{PortfolioId}{[required] The unique identifier of the portfolio for which shares will be retrieved.}
 
-\item{Type}{[required] The type of portfolio share to summarize. This field acts as a filter on
-the type of portfolio share, which can be one of the following:
+\item{Type}{[required] The type of portfolio share to summarize. This field acts as a filter on the type of portfolio share, which can be one of the following:
 
 1\. \code{ACCOUNT} - Represents an external account to account share.
 
-2\. \code{ORGANIZATION} - Represents a share to an organization. This share
-is available to every account in the organization.
+2\. \code{ORGANIZATION} - Represents a share to an organization. This share is available to every account in the organization.
 
-3\. \code{ORGANIZATIONAL_UNIT} - Represents a share to an organizational
-unit.
+3\. \code{ORGANIZATIONAL_UNIT} - Represents a share to an organizational unit.
 
-4\. \code{ORGANIZATION_MEMBER_ACCOUNT} - Represents a share to an account in
-the organization.}
+4\. \code{ORGANIZATION_MEMBER_ACCOUNT} - Represents a share to an account in the organization.}
 
-\item{PageToken}{The page token for the next set of results. To retrieve the first set of
-results, use null.}
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 }

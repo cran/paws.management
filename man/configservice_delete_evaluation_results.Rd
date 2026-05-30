@@ -7,8 +7,7 @@
 configservice_delete_evaluation_results(ConfigRuleName)
 }
 \arguments{
-\item{ConfigRuleName}{[required] The name of the Config rule for which you want to delete the evaluation
-results.}
+\item{ConfigRuleName}{[required] The name of the Config rule for which you want to delete the evaluation results.}
 }
 \description{
 Deletes the evaluation results for the specified Config rule. You can specify one Config rule per request. After you delete the evaluation results, you can call the \code{\link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation}} API to start evaluating your Amazon Web Services resources against the rule.

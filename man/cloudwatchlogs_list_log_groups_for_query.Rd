@@ -12,10 +12,9 @@ cloudwatchlogs_list_log_groups_for_query(
 )
 }
 \arguments{
-\item{queryId}{[required] The ID of the query to use. This query ID is from the response to your
-\code{\link[=cloudwatchlogs_start_query]{start_query}} operation.}
+\item{queryId}{[required] The ID of the query to use. This query ID is from the response to your \code{\link[=cloudwatchlogs_start_query]{start_query}} operation.}
 
-\item{nextToken}{}
+\item{nextToken}{The token for the next set of items to return. The token expires after 24 hours.}
 
 \item{maxResults}{Limits the number of returned log groups to the specified number.}
 }

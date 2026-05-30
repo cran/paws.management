@@ -14,20 +14,17 @@ licensemanager_checkout_borrow_license(
 )
 }
 \arguments{
-\item{LicenseArn}{[required] Amazon Resource Name (ARN) of the license. The license must use the
-borrow consumption configuration.}
+\item{LicenseArn}{[required] Amazon Resource Name (ARN) of the license. The license must use the borrow consumption configuration.}
 
 \item{Entitlements}{[required] License entitlements. Partial checkouts are not supported.}
 
-\item{DigitalSignatureMethod}{[required] Digital signature method. The possible value is JSON Web Signature (JWS)
-algorithm PS384. For more information, see \href{https://datatracker.ietf.org/doc/html/rfc7518#section-3.5}{RFC 7518 Digital Signature with RSASSA-PSS}.}
+\item{DigitalSignatureMethod}{[required] Digital signature method. The possible value is JSON Web Signature (JWS) algorithm PS384. For more information, see \href{https://datatracker.ietf.org/doc/html/rfc7518#section-3.5}{RFC 7518 Digital Signature with RSASSA-PSS}.}
 
 \item{NodeId}{Node ID.}
 
 \item{CheckoutMetadata}{Information about constraints.}
 
-\item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+\item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.}
 }
 \description{
 Checks out the specified license for offline use.

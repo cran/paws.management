@@ -7,8 +7,7 @@
 synthetics_disassociate_resource(GroupIdentifier, ResourceArn)
 }
 \arguments{
-\item{GroupIdentifier}{[required] Specifies the group. You can specify the group name, the ARN, or the
-group ID as the \code{GroupIdentifier}.}
+\item{GroupIdentifier}{[required] Specifies the group. You can specify the group name, the ARN, or the group ID as the \code{GroupIdentifier}.}
 
 \item{ResourceArn}{[required] The ARN of the canary that you want to remove from the specified group.}
 }

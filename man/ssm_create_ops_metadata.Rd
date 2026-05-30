@@ -13,12 +13,7 @@ ssm_create_ops_metadata(ResourceId, Metadata = NULL, Tags = NULL)
 
 \item{Metadata}{Metadata for a new Application Manager application.}
 
-\item{Tags}{Optional metadata that you assign to a resource. You can specify a
-maximum of five tags for an OpsMetadata object. Tags enable you to
-categorize a resource in different ways, such as by purpose, owner, or
-environment. For example, you might want to tag an OpsMetadata object to
-identify an environment or target Amazon Web Services Region. In this
-case, you could specify the following key-value pairs:
+\item{Tags}{Optional metadata that you assign to a resource. You can specify a maximum of five tags for an OpsMetadata object. Tags enable you to categorize a resource in different ways, such as by purpose, owner, or environment. For example, you might want to tag an OpsMetadata object to identify an environment or target Amazon Web Services Region. In this case, you could specify the following key-value pairs:
 \itemize{
 \item \verb{Key=Environment,Value=Production}
 \item \verb{Key=Region,Value=us-east-2}

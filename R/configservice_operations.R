@@ -13,8 +13,7 @@ NULL
 #' See [https://www.paws-r-sdk.com/docs/configservice_associate_resource_types/](https://www.paws-r-sdk.com/docs/configservice_associate_resource_types/) for full documentation.
 #'
 #' @param ConfigurationRecorderArn &#91;required&#93; The Amazon Resource Name (ARN) of the specified configuration recorder.
-#' @param ResourceTypes &#91;required&#93; The list of resource types you want to add to the recording group of the
-#' specified configuration recorder.
+#' @param ResourceTypes &#91;required&#93; The list of resource types you want to add to the recording group of the specified configuration recorder.
 #'
 #' @keywords internal
 #'
@@ -78,8 +77,7 @@ configservice_batch_get_aggregate_resource_config <- function(ConfigurationAggre
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_batch_get_resource_config/](https://www.paws-r-sdk.com/docs/configservice_batch_get_resource_config/) for full documentation.
 #'
-#' @param resourceKeys &#91;required&#93; A list of resource keys to be processed with the current request. Each
-#' element in the list consists of the resource type and resource ID.
+#' @param resourceKeys &#91;required&#93; A list of resource keys to be processed with the current request. Each element in the list consists of the resource type and resource ID.
 #'
 #' @keywords internal
 #'
@@ -206,11 +204,7 @@ configservice_delete_configuration_aggregator <- function(ConfigurationAggregato
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_delete_configuration_recorder/](https://www.paws-r-sdk.com/docs/configservice_delete_configuration_recorder/) for full documentation.
 #'
-#' @param ConfigurationRecorderName &#91;required&#93; The name of the customer managed configuration recorder that you want to
-#' delete. You can retrieve the name of your configuration recorders by
-#' using the
-#' [`describe_configuration_recorders`][configservice_describe_configuration_recorders]
-#' operation.
+#' @param ConfigurationRecorderName &#91;required&#93; The name of the customer managed configuration recorder that you want to delete. You can retrieve the name of your configuration recorders by using the [`describe_configuration_recorders`][configservice_describe_configuration_recorders] operation.
 #'
 #' @keywords internal
 #'
@@ -305,8 +299,7 @@ configservice_delete_delivery_channel <- function(DeliveryChannelName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_delete_evaluation_results/](https://www.paws-r-sdk.com/docs/configservice_delete_evaluation_results/) for full documentation.
 #'
-#' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want to delete the evaluation
-#' results.
+#' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want to delete the evaluation results.
 #'
 #' @keywords internal
 #'
@@ -435,8 +428,7 @@ configservice_delete_pending_aggregation_request <- function(RequesterAccountId,
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_delete_remediation_configuration/](https://www.paws-r-sdk.com/docs/configservice_delete_remediation_configuration/) for full documentation.
 #'
-#' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want to delete remediation
-#' configuration.
+#' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want to delete remediation configuration.
 #' @param ResourceType The type of a resource.
 #'
 #' @keywords internal
@@ -469,11 +461,8 @@ configservice_delete_remediation_configuration <- function(ConfigRuleName, Resou
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_delete_remediation_exceptions/](https://www.paws-r-sdk.com/docs/configservice_delete_remediation_exceptions/) for full documentation.
 #'
-#' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want to delete remediation
-#' exception configuration.
-#' @param ResourceKeys &#91;required&#93; An exception list of resource exception keys to be processed with the
-#' current request. Config adds exception for each resource key. For
-#' example, Config adds 3 exceptions for 3 resource keys.
+#' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want to delete remediation exception configuration.
+#' @param ResourceKeys &#91;required&#93; An exception list of resource exception keys to be processed with the current request. Config adds exception for each resource key. For example, Config adds 3 exceptions for 3 resource keys.
 #'
 #' @keywords internal
 #'
@@ -568,8 +557,7 @@ configservice_delete_retention_configuration <- function(RetentionConfigurationN
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_delete_service_linked_configuration_recorder/](https://www.paws-r-sdk.com/docs/configservice_delete_service_linked_configuration_recorder/) for full documentation.
 #'
-#' @param ServicePrincipal &#91;required&#93; The service principal of the Amazon Web Services service for the
-#' service-linked configuration recorder that you want to delete.
+#' @param ServicePrincipal &#91;required&#93; The service principal of the Amazon Web Services service for the service-linked configuration recorder that you want to delete.
 #'
 #' @keywords internal
 #'
@@ -633,8 +621,7 @@ configservice_delete_stored_query <- function(QueryName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_deliver_config_snapshot/](https://www.paws-r-sdk.com/docs/configservice_deliver_config_snapshot/) for full documentation.
 #'
-#' @param deliveryChannelName &#91;required&#93; The name of the delivery channel through which the snapshot is
-#' delivered.
+#' @param deliveryChannelName &#91;required&#93; The name of the delivery channel through which the snapshot is delivered.
 #'
 #' @keywords internal
 #'
@@ -668,10 +655,8 @@ configservice_deliver_config_snapshot <- function(deliveryChannelName) {
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param Filters Filters the results by ConfigRuleComplianceFilters object.
-#' @param Limit The maximum number of evaluation results returned on each page. The
-#' default is maximum. If you specify 0, Config uses the default.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param Limit The maximum number of evaluation results returned on each page. The default is maximum. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -705,13 +690,9 @@ configservice_describe_aggregate_compliance_by_config_rules <- function(Configur
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_aggregate_compliance_by_conformance_packs/](https://www.paws-r-sdk.com/docs/configservice_describe_aggregate_compliance_by_conformance_packs/) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
-#' @param Filters Filters the result by `AggregateConformancePackComplianceFilters`
-#' object.
-#' @param Limit The maximum number of conformance packs compliance details returned on
-#' each page. The default is maximum. If you specify 0, Config uses the
-#' default.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param Filters Filters the result by `AggregateConformancePackComplianceFilters` object.
+#' @param Limit The maximum number of conformance packs compliance details returned on each page. The default is maximum. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -743,10 +724,8 @@ configservice_describe_aggregate_compliance_by_conformance_packs <- function(Con
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_aggregation_authorizations/](https://www.paws-r-sdk.com/docs/configservice_describe_aggregation_authorizations/) for full documentation.
 #'
-#' @param Limit The maximum number of AggregationAuthorizations returned on each page.
-#' The default is maximum. If you specify 0, Config uses the default.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param Limit The maximum number of AggregationAuthorizations returned on each page. The default is maximum. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -779,8 +758,7 @@ configservice_describe_aggregation_authorizations <- function(Limit = NULL, Next
 #'
 #' @param ConfigRuleNames Specify one or more Config rule names to filter the results by rule.
 #' @param ComplianceTypes Filters the results by compliance.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -812,19 +790,11 @@ configservice_describe_compliance_by_config_rule <- function(ConfigRuleNames = N
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_compliance_by_resource/](https://www.paws-r-sdk.com/docs/configservice_describe_compliance_by_resource/) for full documentation.
 #'
-#' @param ResourceType The types of Amazon Web Services resources for which you want compliance
-#' information (for example, `AWS::EC2::Instance`). For this operation, you
-#' can specify that the resource type is an Amazon Web Services account by
-#' specifying `AWS::::Account`.
-#' @param ResourceId The ID of the Amazon Web Services resource for which you want compliance
-#' information. You can specify only one resource ID. If you specify a
-#' resource ID, you must also specify a type for `ResourceType`.
+#' @param ResourceType The types of Amazon Web Services resources for which you want compliance information (for example, `AWS::EC2::Instance`). For this operation, you can specify that the resource type is an Amazon Web Services account by specifying `AWS::::Account`.
+#' @param ResourceId The ID of the Amazon Web Services resource for which you want compliance information. You can specify only one resource ID. If you specify a resource ID, you must also specify a type for `ResourceType`.
 #' @param ComplianceTypes Filters the results by compliance.
-#' @param Limit The maximum number of evaluation results returned on each page. The
-#' default is 10. You cannot specify a number greater than 100. If you
-#' specify 0, Config uses the default.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param Limit The maximum number of evaluation results returned on each page. The default is 10. You cannot specify a number greater than 100. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -855,19 +825,13 @@ configservice_describe_compliance_by_resource <- function(ResourceType = NULL, R
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_config_rule_evaluation_status/](https://www.paws-r-sdk.com/docs/configservice_describe_config_rule_evaluation_status/) for full documentation.
 #'
-#' @param ConfigRuleNames The name of the Config managed rules for which you want status
-#' information. If you do not specify any names, Config returns status
-#' information for all Config managed rules that you use.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param ConfigRuleNames The name of the Config managed rules for which you want status information. If you do not specify any names, Config returns status information for all Config managed rules that you use.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #' @param Limit The number of rule evaluation results that you want returned.
 #' 
-#' This parameter is required if the rule limit for your account is more
-#' than the default of 1000 rules.
+#' This parameter is required if the rule limit for your account is more than the default of 1000 rules.
 #' 
-#' For information about requesting a rule limit increase, see [Config
-#' Limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config)
-#' in the *Amazon Web Services General Reference Guide*.
+#' For information about requesting a rule limit increase, see [Config Limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config) in the *Amazon Web Services General Reference Guide*.
 #'
 #' @keywords internal
 #'
@@ -898,15 +862,9 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_config_rules/](https://www.paws-r-sdk.com/docs/configservice_describe_config_rules/) for full documentation.
 #'
-#' @param ConfigRuleNames The names of the Config rules for which you want details. If you do not
-#' specify any names, Config returns details for all your rules.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
-#' @param Filters Returns a list of Detective or Proactive Config rules. By default, this
-#' API returns an unfiltered list. For more information on Detective or
-#' Proactive Config rules, see [**Evaluation
-#' Mode**](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_components.html)
-#' in the *Config Developer Guide*.
+#' @param ConfigRuleNames The names of the Config rules for which you want details. If you do not specify any names, Config returns details for all your rules.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
+#' @param Filters Returns a list of Detective or Proactive Config rules. By default, this API returns an unfiltered list. For more information on Detective or Proactive Config rules, see [**Evaluation Mode**](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_components.html) in the *Config Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -945,10 +903,8 @@ configservice_describe_config_rules <- function(ConfigRuleNames = NULL, NextToke
 #' -   Valid value SUCCEEDED indicates the data was successfully moved.
 #' 
 #' -   Valid value OUTDATED indicates the data is not the most recent.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
-#' @param Limit The maximum number of AggregatorSourceStatus returned on each page. The
-#' default is maximum. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
+#' @param Limit The maximum number of AggregatorSourceStatus returned on each page. The default is maximum. If you specify 0, Config uses the default.
 #'
 #' @keywords internal
 #'
@@ -980,10 +936,8 @@ configservice_describe_configuration_aggregator_sources_status <- function(Confi
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_configuration_aggregators/](https://www.paws-r-sdk.com/docs/configservice_describe_configuration_aggregators/) for full documentation.
 #'
 #' @param ConfigurationAggregatorNames The name of the configuration aggregators.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
-#' @param Limit The maximum number of configuration aggregators returned on each page.
-#' The default is maximum. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
+#' @param Limit The maximum number of configuration aggregators returned on each page. The default is maximum. If you specify 0, Config uses the default.
 #'
 #' @keywords internal
 #'
@@ -1016,17 +970,11 @@ configservice_describe_configuration_aggregators <- function(ConfigurationAggreg
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorder_status/](https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorder_status/) for full documentation.
 #'
-#' @param ConfigurationRecorderNames The name of the configuration recorder. If the name is not specified,
-#' the opertation returns the status for the customer managed configuration
-#' recorder configured for the account, if applicable.
+#' @param ConfigurationRecorderNames The name of the configuration recorder. If the name is not specified, the operation returns the status for the customer managed configuration recorder configured for the account, if applicable.
 #' 
-#' When making a request to this operation, you can only specify one
-#' configuration recorder.
-#' @param ServicePrincipal For service-linked configuration recorders, you can use the service
-#' principal of the linked Amazon Web Services service to specify the
-#' configuration recorder.
-#' @param Arn The Amazon Resource Name (ARN) of the configuration recorder that you
-#' want to specify.
+#' When making a request to this operation, you can only specify one configuration recorder.
+#' @param ServicePrincipal For service-linked configuration recorders, you can use the service principal of the linked Amazon Web Services service to specify the configuration recorder.
+#' @param Arn The Amazon Resource Name (ARN) of the configuration recorder that you want to specify.
 #'
 #' @keywords internal
 #'
@@ -1058,11 +1006,10 @@ configservice_describe_configuration_recorder_status <- function(ConfigurationRe
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorders/](https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorders/) for full documentation.
 #'
 #' @param ConfigurationRecorderNames A list of names of the configuration recorders that you want to specify.
-#' @param ServicePrincipal For service-linked configuration recorders, you can use the service
-#' principal of the linked Amazon Web Services service to specify the
-#' configuration recorder.
-#' @param Arn The Amazon Resource Name (ARN) of the configuration recorder that you
-#' want to specify.
+#' 
+#' When making a request to this operation, you can only specify one configuration recorder.
+#' @param ServicePrincipal For service-linked configuration recorders, you can use the service principal of the linked Amazon Web Services service to specify the configuration recorder.
+#' @param Arn The Amazon Resource Name (ARN) of the configuration recorder that you want to specify.
 #'
 #' @keywords internal
 #'
@@ -1095,10 +1042,8 @@ configservice_describe_configuration_recorders <- function(ConfigurationRecorder
 #'
 #' @param ConformancePackName &#91;required&#93; Name of the conformance pack.
 #' @param Filters A `ConformancePackComplianceFilters` object.
-#' @param Limit The maximum number of Config rules within a conformance pack are
-#' returned on each page.
-#' @param NextToken The `nextToken` string returned in a previous request that you use to
-#' request the next page of results in a paginated response.
+#' @param Limit The maximum number of Config rules within a conformance pack are returned on each page.
+#' @param NextToken The `nextToken` string returned in a previous request that you use to request the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1131,8 +1076,7 @@ configservice_describe_conformance_pack_compliance <- function(ConformancePackNa
 #'
 #' @param ConformancePackNames Comma-separated list of conformance pack names.
 #' @param Limit The maximum number of conformance packs status returned on each page.
-#' @param NextToken The `nextToken` string returned in a previous request that you use to
-#' request the next page of results in a paginated response.
+#' @param NextToken The `nextToken` string returned in a previous request that you use to request the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1163,12 +1107,9 @@ configservice_describe_conformance_pack_status <- function(ConformancePackNames 
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_conformance_packs/](https://www.paws-r-sdk.com/docs/configservice_describe_conformance_packs/) for full documentation.
 #'
-#' @param ConformancePackNames Comma-separated list of conformance pack names for which you want
-#' details. If you do not specify any names, Config returns details for all
-#' your conformance packs.
+#' @param ConformancePackNames Comma-separated list of conformance pack names for which you want details. If you do not specify any names, Config returns details for all your conformance packs.
 #' @param Limit The maximum number of conformance packs returned on each page.
-#' @param NextToken The `nextToken` string returned in a previous request that you use to
-#' request the next page of results in a paginated response.
+#' @param NextToken The `nextToken` string returned in a previous request that you use to request the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1261,14 +1202,9 @@ configservice_describe_delivery_channels <- function(DeliveryChannelNames = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_organization_config_rule_statuses/](https://www.paws-r-sdk.com/docs/configservice_describe_organization_config_rule_statuses/) for full documentation.
 #'
-#' @param OrganizationConfigRuleNames The names of organization Config rules for which you want status
-#' details. If you do not specify any names, Config returns details for all
-#' your organization Config rules.
-#' @param Limit The maximum number of `OrganizationConfigRuleStatuses` returned on each
-#' page. If you do no specify a number, Config uses the default. The
-#' default is 100.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param OrganizationConfigRuleNames The names of organization Config rules for which you want status details. If you do not specify any names, Config returns details for all your organization Config rules.
+#' @param Limit The maximum number of `OrganizationConfigRuleStatuses` returned on each page. If you do no specify a number, Config uses the default. The default is 100.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1299,14 +1235,9 @@ configservice_describe_organization_config_rule_statuses <- function(Organizatio
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_organization_config_rules/](https://www.paws-r-sdk.com/docs/configservice_describe_organization_config_rules/) for full documentation.
 #'
-#' @param OrganizationConfigRuleNames The names of organization Config rules for which you want details. If
-#' you do not specify any names, Config returns details for all your
-#' organization Config rules.
-#' @param Limit The maximum number of organization Config rules returned on each page.
-#' If you do no specify a number, Config uses the default. The default is
-#' 100.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param OrganizationConfigRuleNames The names of organization Config rules for which you want details. If you do not specify any names, Config returns details for all your organization Config rules.
+#' @param Limit The maximum number of organization Config rules returned on each page. If you do no specify a number, Config uses the default. The default is 100.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1338,14 +1269,9 @@ configservice_describe_organization_config_rules <- function(OrganizationConfigR
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_organization_conformance_pack_statuses/](https://www.paws-r-sdk.com/docs/configservice_describe_organization_conformance_pack_statuses/) for full documentation.
 #'
-#' @param OrganizationConformancePackNames The names of organization conformance packs for which you want status
-#' details. If you do not specify any names, Config returns details for all
-#' your organization conformance packs.
-#' @param Limit The maximum number of OrganizationConformancePackStatuses returned on
-#' each page. If you do no specify a number, Config uses the default. The
-#' default is 100.
-#' @param NextToken The nextToken string returned on a previous page that you use to get the
-#' next page of results in a paginated response.
+#' @param OrganizationConformancePackNames The names of organization conformance packs for which you want status details. If you do not specify any names, Config returns details for all your organization conformance packs.
+#' @param Limit The maximum number of OrganizationConformancePackStatuses returned on each page. If you do no specify a number, Config uses the default. The default is 100.
+#' @param NextToken The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1377,11 +1303,8 @@ configservice_describe_organization_conformance_pack_statuses <- function(Organi
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_organization_conformance_packs/](https://www.paws-r-sdk.com/docs/configservice_describe_organization_conformance_packs/) for full documentation.
 #'
 #' @param OrganizationConformancePackNames The name that you assign to an organization conformance pack.
-#' @param Limit The maximum number of organization config packs returned on each page.
-#' If you do no specify a number, Config uses the default. The default is
-#' 100.
-#' @param NextToken The nextToken string returned on a previous page that you use to get the
-#' next page of results in a paginated response.
+#' @param Limit The maximum number of organization config packs returned on each page. If you do no specify a number, Config uses the default. The default is 100.
+#' @param NextToken The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1412,10 +1335,8 @@ configservice_describe_organization_conformance_packs <- function(OrganizationCo
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_pending_aggregation_requests/](https://www.paws-r-sdk.com/docs/configservice_describe_pending_aggregation_requests/) for full documentation.
 #'
-#' @param Limit The maximum number of evaluation results returned on each page. The
-#' default is maximum. If you specify 0, Config uses the default.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param Limit The maximum number of evaluation results returned on each page. The default is maximum. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1446,8 +1367,7 @@ configservice_describe_pending_aggregation_requests <- function(Limit = NULL, Ne
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_remediation_configurations/](https://www.paws-r-sdk.com/docs/configservice_describe_remediation_configurations/) for full documentation.
 #'
-#' @param ConfigRuleNames &#91;required&#93; A list of Config rule names of remediation configurations for which you
-#' want details.
+#' @param ConfigRuleNames &#91;required&#93; A list of Config rule names of remediation configurations for which you want details.
 #'
 #' @keywords internal
 #'
@@ -1479,13 +1399,9 @@ configservice_describe_remediation_configurations <- function(ConfigRuleNames) {
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_remediation_exceptions/](https://www.paws-r-sdk.com/docs/configservice_describe_remediation_exceptions/) for full documentation.
 #'
 #' @param ConfigRuleName &#91;required&#93; The name of the Config rule.
-#' @param ResourceKeys An exception list of resource exception keys to be processed with the
-#' current request. Config adds exception for each resource key. For
-#' example, Config adds 3 exceptions for 3 resource keys.
-#' @param Limit The maximum number of RemediationExceptionResourceKey returned on each
-#' page. The default is 25. If you specify 0, Config uses the default.
-#' @param NextToken The `nextToken` string returned in a previous request that you use to
-#' request the next page of results in a paginated response.
+#' @param ResourceKeys An exception list of resource exception keys to be processed with the current request. Config adds exception for each resource key. For example, Config adds 3 exceptions for 3 resource keys.
+#' @param Limit The maximum number of RemediationExceptionResourceKey returned on each page. The default is 25. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned in a previous request that you use to request the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1519,12 +1435,9 @@ configservice_describe_remediation_exceptions <- function(ConfigRuleName, Resour
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_remediation_execution_status/](https://www.paws-r-sdk.com/docs/configservice_describe_remediation_execution_status/) for full documentation.
 #'
 #' @param ConfigRuleName &#91;required&#93; The name of the Config rule.
-#' @param ResourceKeys A list of resource keys to be processed with the current request. Each
-#' element in the list consists of the resource type and resource ID.
-#' @param Limit The maximum number of RemediationExecutionStatuses returned on each
-#' page. The default is maximum. If you specify 0, Config uses the default.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param ResourceKeys A list of resource keys to be processed with the current request. Each element in the list consists of the resource type and resource ID.
+#' @param Limit The maximum number of RemediationExecutionStatuses returned on each page. The default is maximum. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1555,14 +1468,10 @@ configservice_describe_remediation_execution_status <- function(ConfigRuleName, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_describe_retention_configurations/](https://www.paws-r-sdk.com/docs/configservice_describe_retention_configurations/) for full documentation.
 #'
-#' @param RetentionConfigurationNames A list of names of retention configurations for which you want details.
-#' If you do not specify a name, Config returns details for all the
-#' retention configurations for that account.
+#' @param RetentionConfigurationNames A list of names of retention configurations for which you want details. If you do not specify a name, Config returns details for all the retention configurations for that account.
 #' 
-#' Currently, Config supports only one retention configuration per region
-#' in your account.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' Currently, Config supports only one retention configuration per region in your account.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1596,8 +1505,7 @@ configservice_describe_retention_configurations <- function(RetentionConfigurati
 #' See [https://www.paws-r-sdk.com/docs/configservice_disassociate_resource_types/](https://www.paws-r-sdk.com/docs/configservice_disassociate_resource_types/) for full documentation.
 #'
 #' @param ConfigurationRecorderArn &#91;required&#93; The Amazon Resource Name (ARN) of the specified configuration recorder.
-#' @param ResourceTypes &#91;required&#93; The list of resource types you want to remove from the recording group
-#' of the specified configuration recorder.
+#' @param ResourceTypes &#91;required&#93; The list of resource types you want to remove from the recording group of the specified configuration recorder.
 #'
 #' @keywords internal
 #'
@@ -1635,14 +1543,9 @@ configservice_disassociate_resource_types <- function(ConfigurationRecorderArn, 
 #' @param AwsRegion &#91;required&#93; The source region from where the data is aggregated.
 #' @param ComplianceType The resource compliance status.
 #' 
-#' For the `GetAggregateComplianceDetailsByConfigRuleRequest` data type,
-#' Config supports only the `COMPLIANT` and `NON_COMPLIANT`. Config does
-#' not support the `NOT_APPLICABLE` and `INSUFFICIENT_DATA` values.
-#' @param Limit The maximum number of evaluation results returned on each page. The
-#' default is 50. You cannot specify a number greater than 100. If you
-#' specify 0, Config uses the default.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' For the `GetAggregateComplianceDetailsByConfigRuleRequest` data type, Config supports only the `COMPLIANT` and `NON_COMPLIANT`. Config does not support the `NOT_APPLICABLE` and `INSUFFICIENT_DATA` values.
+#' @param Limit The maximum number of evaluation results returned on each page. The default is 50. You cannot specify a number greater than 100. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1675,14 +1578,10 @@ configservice_get_aggregate_compliance_details_by_config_rule <- function(Config
 #' See [https://www.paws-r-sdk.com/docs/configservice_get_aggregate_config_rule_compliance_summary/](https://www.paws-r-sdk.com/docs/configservice_get_aggregate_config_rule_compliance_summary/) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
-#' @param Filters Filters the results based on the ConfigRuleComplianceSummaryFilters
-#' object.
+#' @param Filters Filters the results based on the ConfigRuleComplianceSummaryFilters object.
 #' @param GroupByKey Groups the result based on ACCOUNT_ID or AWS_REGION.
-#' @param Limit The maximum number of evaluation results returned on each page. The
-#' default is 1000. You cannot specify a number greater than 1000. If you
-#' specify 0, Config uses the default.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param Limit The maximum number of evaluation results returned on each page. The default is 1000. You cannot specify a number greater than 1000. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1716,14 +1615,10 @@ configservice_get_aggregate_config_rule_compliance_summary <- function(Configura
 #' See [https://www.paws-r-sdk.com/docs/configservice_get_aggregate_conformance_pack_compliance_summary/](https://www.paws-r-sdk.com/docs/configservice_get_aggregate_conformance_pack_compliance_summary/) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
-#' @param Filters Filters the results based on the
-#' `AggregateConformancePackComplianceSummaryFilters` object.
-#' @param GroupByKey Groups the result based on Amazon Web Services account ID or Amazon Web
-#' Services Region.
-#' @param Limit The maximum number of results returned on each page. The default is
-#' maximum. If you specify 0, Config uses the default.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param Filters Filters the results based on the `AggregateConformancePackComplianceSummaryFilters` object.
+#' @param GroupByKey Groups the result based on Amazon Web Services account ID or Amazon Web Services Region.
+#' @param Limit The maximum number of results returned on each page. The default is maximum. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1758,11 +1653,8 @@ configservice_get_aggregate_conformance_pack_compliance_summary <- function(Conf
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param Filters Filters the results based on the `ResourceCountFilters` object.
 #' @param GroupByKey The key to group the resource counts.
-#' @param Limit The maximum number of GroupedResourceCount objects returned on each
-#' page. The default is 1000. You cannot specify a number greater than
-#' 1000. If you specify 0, Config uses the default.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param Limit The maximum number of GroupedResourceCount objects returned on each page. The default is 1000. You cannot specify a number greater than 1000. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1829,14 +1721,9 @@ configservice_get_aggregate_resource_config <- function(ConfigurationAggregatorN
 #' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want compliance information.
 #' @param ComplianceTypes Filters the results by compliance.
 #' 
-#' `INSUFFICIENT_DATA` is a valid `ComplianceType` that is returned when an
-#' Config rule cannot be evaluated. However, `INSUFFICIENT_DATA` cannot be
-#' used as a `ComplianceType` for filtering results.
-#' @param Limit The maximum number of evaluation results returned on each page. The
-#' default is 10. You cannot specify a number greater than 100. If you
-#' specify 0, Config uses the default.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' `INSUFFICIENT_DATA` is a valid `ComplianceType` that is returned when an Config rule cannot be evaluated. However, `INSUFFICIENT_DATA` cannot be used as a `ComplianceType` for filtering results.
+#' @param Limit The maximum number of evaluation results returned on each page. The default is 10. You cannot specify a number greater than 100. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -1868,22 +1755,15 @@ configservice_get_compliance_details_by_config_rule <- function(ConfigRuleName, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_get_compliance_details_by_resource/](https://www.paws-r-sdk.com/docs/configservice_get_compliance_details_by_resource/) for full documentation.
 #'
-#' @param ResourceType The type of the Amazon Web Services resource for which you want
-#' compliance information.
-#' @param ResourceId The ID of the Amazon Web Services resource for which you want compliance
-#' information.
+#' @param ResourceType The type of the Amazon Web Services resource for which you want compliance information.
+#' @param ResourceId The ID of the Amazon Web Services resource for which you want compliance information.
 #' @param ComplianceTypes Filters the results by compliance.
 #' 
-#' `INSUFFICIENT_DATA` is a valid `ComplianceType` that is returned when an
-#' Config rule cannot be evaluated. However, `INSUFFICIENT_DATA` cannot be
-#' used as a `ComplianceType` for filtering results.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
-#' @param ResourceEvaluationId The unique ID of Amazon Web Services resource execution for which you
-#' want to retrieve evaluation results.
+#' `INSUFFICIENT_DATA` is a valid `ComplianceType` that is returned when an Config rule cannot be evaluated. However, `INSUFFICIENT_DATA` cannot be used as a `ComplianceType` for filtering results.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
+#' @param ResourceEvaluationId The unique ID of Amazon Web Services resource execution for which you want to retrieve evaluation results.
 #' 
-#' You need to only provide either a `ResourceEvaluationID` or a
-#' `ResourceID `and `ResourceType`.
+#' You need to only provide either a `ResourceEvaluationID` or a `ResourceID `and `ResourceType`.
 #'
 #' @keywords internal
 #'
@@ -1947,13 +1827,9 @@ configservice_get_compliance_summary_by_config_rule <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_get_compliance_summary_by_resource_type/](https://www.paws-r-sdk.com/docs/configservice_get_compliance_summary_by_resource_type/) for full documentation.
 #'
-#' @param ResourceTypes Specify one or more resource types to get the number of resources that
-#' are compliant and the number that are noncompliant for each resource
-#' type.
+#' @param ResourceTypes Specify one or more resource types to get the number of resources that are compliant and the number that are noncompliant for each resource type.
 #' 
-#' For this request, you can specify an Amazon Web Services resource type
-#' such as `AWS::EC2::Instance`. You can specify that the resource type is
-#' an Amazon Web Services account by specifying `AWS::::Account`.
+#' For this request, you can specify an Amazon Web Services resource type such as `AWS::EC2::Instance`. You can specify that the resource type is an Amazon Web Services account by specifying `AWS::::Account`.
 #'
 #' @keywords internal
 #'
@@ -1987,10 +1863,8 @@ configservice_get_compliance_summary_by_resource_type <- function(ResourceTypes 
 #'
 #' @param ConformancePackName &#91;required&#93; Name of the conformance pack.
 #' @param Filters A `ConformancePackEvaluationFilters` object.
-#' @param Limit The maximum number of evaluation results returned on each page. If you
-#' do no specify a number, Config uses the default. The default is 100.
-#' @param NextToken The `nextToken` string returned in a previous request that you use to
-#' request the next page of results in a paginated response.
+#' @param Limit The maximum number of evaluation results returned on each page. If you do no specify a number, Config uses the default. The default is 100.
+#' @param NextToken The `nextToken` string returned in a previous request that you use to request the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -2024,8 +1898,7 @@ configservice_get_conformance_pack_compliance_details <- function(ConformancePac
 #'
 #' @param ConformancePackNames &#91;required&#93; Names of conformance packs.
 #' @param Limit The maximum number of conformance packs returned on each page.
-#' @param NextToken The nextToken string returned on a previous page that you use to get the
-#' next page of results in a paginated response.
+#' @param NextToken The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -2090,22 +1963,13 @@ configservice_get_custom_rule_policy <- function(ConfigRuleName = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_get_discovered_resource_counts/](https://www.paws-r-sdk.com/docs/configservice_get_discovered_resource_counts/) for full documentation.
 #'
-#' @param resourceTypes The comma-separated list that specifies the resource types that you want
-#' Config to return (for example, `"AWS::EC2::Instance"`,
-#' `"AWS::IAM::User"`).
+#' @param resourceTypes The comma-separated list that specifies the resource types that you want Config to return (for example, `"AWS::EC2::Instance"`, `"AWS::IAM::User"`).
 #' 
-#' If a value for `resourceTypes` is not specified, Config returns all
-#' resource types that Config is recording in the region for your account.
+#' If a value for `resourceTypes` is not specified, Config returns all resource types that Config is recording in the region for your account.
 #' 
-#' If the configuration recorder is turned off, Config returns an empty
-#' list of ResourceCount objects. If the configuration recorder is not
-#' recording a specific resource type (for example, S3 buckets), that
-#' resource type is not returned in the list of ResourceCount objects.
-#' @param limit The maximum number of ResourceCount objects returned on each page. The
-#' default is 100. You cannot specify a number greater than 100. If you
-#' specify 0, Config uses the default.
-#' @param nextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' If the configuration recorder is turned off, Config returns an empty list of ResourceCount objects. If the configuration recorder is not recording a specific resource type (for example, S3 buckets), that resource type is not returned in the list of ResourceCount objects.
+#' @param limit The maximum number of ResourceCount objects returned on each page. The default is 100. You cannot specify a number greater than 100. If you specify 0, Config uses the default.
+#' @param nextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -2137,14 +2001,10 @@ configservice_get_discovered_resource_counts <- function(resourceTypes = NULL, l
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_get_organization_config_rule_detailed_status/](https://www.paws-r-sdk.com/docs/configservice_get_organization_config_rule_detailed_status/) for full documentation.
 #'
-#' @param OrganizationConfigRuleName &#91;required&#93; The name of your organization Config rule for which you want status
-#' details for member accounts.
+#' @param OrganizationConfigRuleName &#91;required&#93; The name of your organization Config rule for which you want status details for member accounts.
 #' @param Filters A `StatusDetailFilters` object.
-#' @param Limit The maximum number of `OrganizationConfigRuleDetailedStatus` returned on
-#' each page. If you do not specify a number, Config uses the default. The
-#' default is 100.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param Limit The maximum number of `OrganizationConfigRuleDetailedStatus` returned on each page. If you do not specify a number, Config uses the default. The default is 100.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -2176,14 +2036,10 @@ configservice_get_organization_config_rule_detailed_status <- function(Organizat
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_get_organization_conformance_pack_detailed_status/](https://www.paws-r-sdk.com/docs/configservice_get_organization_conformance_pack_detailed_status/) for full documentation.
 #'
-#' @param OrganizationConformancePackName &#91;required&#93; The name of organization conformance pack for which you want status
-#' details for member accounts.
+#' @param OrganizationConformancePackName &#91;required&#93; The name of organization conformance pack for which you want status details for member accounts.
 #' @param Filters An `OrganizationResourceDetailedStatusFilters` object.
-#' @param Limit The maximum number of `OrganizationConformancePackDetailedStatuses`
-#' returned on each page. If you do not specify a number, Config uses the
-#' default. The default is 100.
-#' @param NextToken The nextToken string returned on a previous page that you use to get the
-#' next page of results in a paginated response.
+#' @param Limit The maximum number of `OrganizationConformancePackDetailedStatuses` returned on each page. If you do not specify a number, Config uses the default. The default is 100.
+#' @param NextToken The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -2243,25 +2099,17 @@ configservice_get_organization_custom_rule_policy <- function(OrganizationConfig
 #' AWS::Config::ResourceCompliance resource type
 #'
 #' @description
-#' For accurate reporting on the compliance status, you must record the `AWS::Config::ResourceCompliance` resource type. For more information, see [Selecting Which Resources Config Records](https://docs.aws.amazon.com/config/latest/developerguide/select-resources.html).
+#' For accurate reporting on the compliance status, you must record the `AWS::Config::ResourceCompliance` resource type.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_get_resource_config_history/](https://www.paws-r-sdk.com/docs/configservice_get_resource_config_history/) for full documentation.
 #'
 #' @param resourceType &#91;required&#93; The resource type.
 #' @param resourceId &#91;required&#93; The ID of the resource (for example., `sg-xxxxxx`).
-#' @param laterTime The chronologically latest time in the time range for which the history
-#' requested. If not specified, current time is taken.
-#' @param earlierTime The chronologically earliest time in the time range for which the
-#' history requested. If not specified, the action returns paginated
-#' results that contain configuration items that start when the first
-#' configuration item was recorded.
-#' @param chronologicalOrder The chronological order for configuration items listed. By default, the
-#' results are listed in reverse chronological order.
-#' @param limit The maximum number of configuration items returned on each page. The
-#' default is 10. You cannot specify a number greater than 100. If you
-#' specify 0, Config uses the default.
-#' @param nextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param laterTime The chronologically latest time in the time range for which the history requested. If not specified, current time is taken.
+#' @param earlierTime The chronologically earliest time in the time range for which the history requested. If not specified, the action returns paginated results that contain configuration items that start when the first configuration item was recorded.
+#' @param chronologicalOrder The chronological order for configuration items listed. By default, the results are listed in reverse chronological order.
+#' @param limit The maximum number of configuration items returned on each page. The default is 10. You cannot specify a number greater than 100. If you specify 0, Config uses the default.
+#' @param nextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -2293,8 +2141,7 @@ configservice_get_resource_config_history <- function(resourceType, resourceId, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_get_resource_evaluation_summary/](https://www.paws-r-sdk.com/docs/configservice_get_resource_evaluation_summary/) for full documentation.
 #'
-#' @param ResourceEvaluationId &#91;required&#93; The unique `ResourceEvaluationId` of Amazon Web Services resource
-#' execution for which you want to retrieve the evaluation summary.
+#' @param ResourceEvaluationId &#91;required&#93; The unique `ResourceEvaluationId` of Amazon Web Services resource execution for which you want to retrieve the evaluation summary.
 #'
 #' @keywords internal
 #'
@@ -2360,11 +2207,8 @@ configservice_get_stored_query <- function(QueryName) {
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param ResourceType &#91;required&#93; The type of resources that you want Config to list in the response.
 #' @param Filters Filters the results based on the `ResourceFilters` object.
-#' @param Limit The maximum number of resource identifiers returned on each page. You
-#' cannot specify a number greater than 100. If you specify 0, Config uses
-#' the default.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param Limit The maximum number of resource identifiers returned on each page. You cannot specify a number greater than 100. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -2396,11 +2240,9 @@ configservice_list_aggregate_discovered_resources <- function(ConfigurationAggre
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_list_configuration_recorders/](https://www.paws-r-sdk.com/docs/configservice_list_configuration_recorders/) for full documentation.
 #'
-#' @param Filters Filters the results based on a list of `ConfigurationRecorderFilter`
-#' objects that you specify.
+#' @param Filters Filters the results based on a list of `ConfigurationRecorderFilter` objects that you specify.
 #' @param MaxResults The maximum number of results to include in the response.
-#' @param NextToken The `NextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param NextToken The `NextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -2431,33 +2273,17 @@ configservice_list_configuration_recorders <- function(Filters = NULL, MaxResult
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_list_conformance_pack_compliance_scores/](https://www.paws-r-sdk.com/docs/configservice_list_conformance_pack_compliance_scores/) for full documentation.
 #'
-#' @param Filters Filters the results based on the
-#' `ConformancePackComplianceScoresFilters`.
-#' @param SortOrder Determines the order in which conformance pack compliance scores are
-#' sorted. Either in ascending or descending order.
+#' @param Filters Filters the results based on the `ConformancePackComplianceScoresFilters`.
+#' @param SortOrder Determines the order in which conformance pack compliance scores are sorted. Either in ascending or descending order.
 #' 
-#' By default, conformance pack compliance scores are sorted in
-#' alphabetical order by name of the conformance pack. Conformance pack
-#' compliance scores are sorted in reverse alphabetical order if you enter
-#' `DESCENDING`.
+#' By default, conformance pack compliance scores are sorted in alphabetical order by name of the conformance pack. Conformance pack compliance scores are sorted in reverse alphabetical order if you enter `DESCENDING`.
 #' 
-#' You can sort conformance pack compliance scores by the numerical value
-#' of the compliance score by entering `SCORE` in the `SortBy` action. When
-#' compliance scores are sorted by `SCORE`, conformance packs with a
-#' compliance score of `INSUFFICIENT_DATA` will be last when sorting by
-#' ascending order and first when sorting by descending order.
-#' @param SortBy Sorts your conformance pack compliance scores in either ascending or
-#' descending order, depending on `SortOrder`.
+#' You can sort conformance pack compliance scores by the numerical value of the compliance score by entering `SCORE` in the `SortBy` action. When compliance scores are sorted by `SCORE`, conformance packs with a compliance score of `INSUFFICIENT_DATA` will be last when sorting by ascending order and first when sorting by descending order.
+#' @param SortBy Sorts your conformance pack compliance scores in either ascending or descending order, depending on `SortOrder`.
 #' 
-#' By default, conformance pack compliance scores are sorted in
-#' alphabetical order by name of the conformance pack. Enter `SCORE`, to
-#' sort conformance pack compliance scores by the numerical value of the
-#' compliance score.
-#' @param Limit The maximum number of conformance pack compliance scores returned on
-#' each page.
-#' @param NextToken The `nextToken` string in a prior request that you can use to get the
-#' paginated response for the next set of conformance pack compliance
-#' scores.
+#' By default, conformance pack compliance scores are sorted in alphabetical order by name of the conformance pack. Enter `SCORE`, to sort conformance pack compliance scores by the numerical value of the compliance score.
+#' @param Limit The maximum number of conformance pack compliance scores returned on each page.
+#' @param NextToken The `nextToken` string in a prior request that you can use to get the paginated response for the next set of conformance pack compliance scores.
 #'
 #' @keywords internal
 #'
@@ -2481,29 +2307,20 @@ configservice_list_conformance_pack_compliance_scores <- function(Filters = NULL
 }
 .configservice$operations$list_conformance_pack_compliance_scores <- configservice_list_conformance_pack_compliance_scores
 
-#' Accepts a resource type and returns a list of resource identifiers for
-#' the resources of that type
+#' Returns a list of resource resource identifiers for the specified
+#' resource types for the resources of that type
 #'
 #' @description
-#' Accepts a resource type and returns a list of resource identifiers for the resources of that type. A resource identifier includes the resource type, ID, and (if available) the custom resource name. The results consist of resources that Config has discovered, including those that Config is not currently recording. You can narrow the results to include only resources that have specific resource IDs or a resource name.
+#' Returns a list of resource resource identifiers for the specified resource types for the resources of that type. A *resource identifier* includes the resource type, ID, and (if available) the custom resource name.
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_list_discovered_resources/](https://www.paws-r-sdk.com/docs/configservice_list_discovered_resources/) for full documentation.
 #'
 #' @param resourceType &#91;required&#93; The type of resources that you want Config to list in the response.
-#' @param resourceIds The IDs of only those resources that you want Config to list in the
-#' response. If you do not specify this parameter, Config lists all
-#' resources of the specified type that it has discovered. You can list a
-#' minimum of 1 resourceID and a maximum of 20 resourceIds.
-#' @param resourceName The custom name of only those resources that you want Config to list in
-#' the response. If you do not specify this parameter, Config lists all
-#' resources of the specified type that it has discovered.
-#' @param limit The maximum number of resource identifiers returned on each page. The
-#' default is 100. You cannot specify a number greater than 100. If you
-#' specify 0, Config uses the default.
-#' @param includeDeletedResources Specifies whether Config includes deleted resources in the results. By
-#' default, deleted resources are not included.
-#' @param nextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param resourceIds The IDs of only those resources that you want Config to list in the response. If you do not specify this parameter, Config lists all resources of the specified type that it has discovered. You can list a minimum of 1 resourceID and a maximum of 20 resourceIds.
+#' @param resourceName The custom name of only those resources that you want Config to list in the response. If you do not specify this parameter, Config lists all resources of the specified type that it has discovered.
+#' @param limit The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a number greater than 100. If you specify 0, Config uses the default.
+#' @param includeDeletedResources Specifies whether Config includes deleted resources in the results. By default, deleted resources are not included.
+#' @param nextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -2535,11 +2352,8 @@ configservice_list_discovered_resources <- function(resourceType, resourceIds = 
 #' See [https://www.paws-r-sdk.com/docs/configservice_list_resource_evaluations/](https://www.paws-r-sdk.com/docs/configservice_list_resource_evaluations/) for full documentation.
 #'
 #' @param Filters Returns a `ResourceEvaluationFilters` object.
-#' @param Limit The maximum number of evaluations returned on each page. The default is
-#' 10. You cannot specify a number greater than 100. If you specify 0,
-#' Config uses the default.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param Limit The maximum number of evaluations returned on each page. The default is 10. You cannot specify a number greater than 100. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -2571,8 +2385,7 @@ configservice_list_resource_evaluations <- function(Filters = NULL, Limit = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_list_stored_queries/](https://www.paws-r-sdk.com/docs/configservice_list_stored_queries/) for full documentation.
 #'
-#' @param NextToken The nextToken string returned in a previous request that you use to
-#' request the next page of results in a paginated response.
+#' @param NextToken The nextToken string returned in a previous request that you use to request the next page of results in a paginated response.
 #' @param MaxResults The maximum number of results to be returned with a single call.
 #'
 #' @keywords internal
@@ -2604,8 +2417,7 @@ configservice_list_stored_queries <- function(NextToken = NULL, MaxResults = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/configservice_list_tags_for_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
-#' list the tags. The following resources are supported:
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to list the tags. The following resources are supported:
 #' 
 #' -   `ConfigurationRecorder`
 #' 
@@ -2622,11 +2434,8 @@ configservice_list_stored_queries <- function(NextToken = NULL, MaxResults = NUL
 #' -   `AggregationAuthorization`
 #' 
 #' -   `StoredQuery`
-#' @param Limit The maximum number of tags returned on each page. The limit maximum is
-#' 50. You cannot specify a number greater than 50. If you specify 0,
-#' Config uses the default.
-#' @param NextToken The `nextToken` string returned on a previous page that you use to get
-#' the next page of results in a paginated response.
+#' @param Limit The maximum number of tags returned on each page. The limit maximum is 50. You cannot specify a number greater than 50. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -2729,8 +2538,7 @@ configservice_put_config_rule <- function(ConfigRule, Tags = NULL) {
 #' @param AccountAggregationSources A list of AccountAggregationSource object.
 #' @param OrganizationAggregationSource An OrganizationAggregationSource object.
 #' @param Tags An array of tag object.
-#' @param AggregatorFilters An object to filter configuration recorders in an aggregator. Either
-#' `ResourceType` or `ServicePrincipal` is required.
+#' @param AggregatorFilters An object to filter configuration recorders in an aggregator. Either `ResourceType` or `ServicePrincipal` is required.
 #'
 #' @keywords internal
 #'
@@ -2761,10 +2569,8 @@ configservice_put_configuration_aggregator <- function(ConfigurationAggregatorNa
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_put_configuration_recorder/](https://www.paws-r-sdk.com/docs/configservice_put_configuration_recorder/) for full documentation.
 #'
-#' @param ConfigurationRecorder &#91;required&#93; An object for the configuration recorder. A configuration recorder
-#' records configuration changes for the resource types in scope.
-#' @param Tags The tags for the customer managed configuration recorder. Each tag
-#' consists of a key and an optional value, both of which you define.
+#' @param ConfigurationRecorder &#91;required&#93; An object for the configuration recorder. A configuration recorder records configuration changes for the resource types in scope.
+#' @param Tags The tags for the customer managed configuration recorder. Each tag consists of a key and an optional value, both of which you define.
 #'
 #' @keywords internal
 #'
@@ -2796,40 +2602,26 @@ configservice_put_configuration_recorder <- function(ConfigurationRecorder, Tags
 #' See [https://www.paws-r-sdk.com/docs/configservice_put_conformance_pack/](https://www.paws-r-sdk.com/docs/configservice_put_conformance_pack/) for full documentation.
 #'
 #' @param ConformancePackName &#91;required&#93; The unique name of the conformance pack you want to deploy.
-#' @param TemplateS3Uri The location of the file containing the template body
-#' (`s3://bucketname/prefix`). The uri must point to a conformance pack
-#' template (max size: 300 KB) that is located in an Amazon S3 bucket in
-#' the same Region as the conformance pack.
+#' @param TemplateS3Uri The location of the file containing the template body (`s3://bucketname/prefix`). The uri must point to a conformance pack template (max size: 300 KB) that is located in an Amazon S3 bucket in the same Region as the conformance pack.
 #' 
-#' You must have access to read Amazon S3 bucket. In addition, in order to
-#' ensure a successful deployment, the template object must not be in an
-#' [archived storage
-#' class](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
-#' if this parameter is passed.
-#' @param TemplateBody A string containing the full conformance pack template body. The
-#' structure containing the template body has a minimum length of 1 byte
-#' and a maximum length of 51,200 bytes.
+#' You must have access to read Amazon S3 bucket. In addition, in order to ensure a successful deployment, the template object must not be in an [archived storage class](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) if this parameter is passed.
+#' @param TemplateBody A string that contains the full conformance pack template body. The structure containing the template body has a minimum length of 1 byte and a maximum length of 51,200 bytes.
 #' 
-#' You can use a YAML template with two resource types: Config rule
-#' (`AWS::Config::ConfigRule`) and remediation action
-#' (`AWS::Config::RemediationConfiguration`).
-#' @param DeliveryS3Bucket The name of the Amazon S3 bucket where Config stores conformance pack
-#' templates.
+#' You can use a YAML template with two resource types: Config rule (`AWS::Config::ConfigRule`) and remediation action (`AWS::Config::RemediationConfiguration`).
+#' @param DeliveryS3Bucket The name of the Amazon S3 bucket where Config stores conformance pack templates.
 #' 
 #' This field is optional.
 #' @param DeliveryS3KeyPrefix The prefix for the Amazon S3 bucket.
 #' 
 #' This field is optional.
 #' @param ConformancePackInputParameters A list of `ConformancePackInputParameter` objects.
-#' @param TemplateSSMDocumentDetails An object of type `TemplateSSMDocumentDetails`, which contains the name
-#' or the Amazon Resource Name (ARN) of the Amazon Web Services Systems
-#' Manager document (SSM document) and the version of the SSM document that
-#' is used to create a conformance pack.
+#' @param TemplateSSMDocumentDetails An object of type `TemplateSSMDocumentDetails`, which contains the name or the Amazon Resource Name (ARN) of the Amazon Web Services Systems Manager document (SSM document) and the version of the SSM document that is used to create a conformance pack.
+#' @param Tags The tags for the conformance pack. Each tag consists of a key and an optional value, both of which you define.
 #'
 #' @keywords internal
 #'
 #' @rdname configservice_put_conformance_pack
-configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Uri = NULL, TemplateBody = NULL, DeliveryS3Bucket = NULL, DeliveryS3KeyPrefix = NULL, ConformancePackInputParameters = NULL, TemplateSSMDocumentDetails = NULL) {
+configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Uri = NULL, TemplateBody = NULL, DeliveryS3Bucket = NULL, DeliveryS3KeyPrefix = NULL, ConformancePackInputParameters = NULL, TemplateSSMDocumentDetails = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PutConformancePack",
     http_method = "POST",
@@ -2838,7 +2630,7 @@ configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Ur
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .configservice$put_conformance_pack_input(ConformancePackName = ConformancePackName, TemplateS3Uri = TemplateS3Uri, TemplateBody = TemplateBody, DeliveryS3Bucket = DeliveryS3Bucket, DeliveryS3KeyPrefix = DeliveryS3KeyPrefix, ConformancePackInputParameters = ConformancePackInputParameters, TemplateSSMDocumentDetails = TemplateSSMDocumentDetails)
+  input <- .configservice$put_conformance_pack_input(ConformancePackName = ConformancePackName, TemplateS3Uri = TemplateS3Uri, TemplateBody = TemplateBody, DeliveryS3Bucket = DeliveryS3Bucket, DeliveryS3KeyPrefix = DeliveryS3KeyPrefix, ConformancePackInputParameters = ConformancePackInputParameters, TemplateSSMDocumentDetails = TemplateSSMDocumentDetails, Tags = Tags)
   output <- .configservice$put_conformance_pack_output()
   config <- get_config()
   svc <- .configservice$service(config, op)
@@ -2856,8 +2648,7 @@ configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Ur
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_put_delivery_channel/](https://www.paws-r-sdk.com/docs/configservice_put_delivery_channel/) for full documentation.
 #'
-#' @param DeliveryChannel &#91;required&#93; An object for the delivery channel. A delivery channel sends
-#' notifications and updated configuration states.
+#' @param DeliveryChannel &#91;required&#93; An object for the delivery channel. A delivery channel sends notifications and updated configuration states.
 #'
 #' @keywords internal
 #'
@@ -2888,21 +2679,11 @@ configservice_put_delivery_channel <- function(DeliveryChannel) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_put_evaluations/](https://www.paws-r-sdk.com/docs/configservice_put_evaluations/) for full documentation.
 #'
-#' @param Evaluations The assessments that the Lambda function performs. Each evaluation
-#' identifies an Amazon Web Services resource and indicates whether it
-#' complies with the Config rule that invokes the Lambda function.
-#' @param ResultToken &#91;required&#93; An encrypted token that associates an evaluation with an Config rule.
-#' Identifies the rule and the event that triggered the evaluation.
-#' @param TestMode Use this parameter to specify a test run for
-#' [`put_evaluations`][configservice_put_evaluations]. You can verify
-#' whether your Lambda function will deliver evaluation results to Config.
-#' No updates occur to your existing evaluations, and evaluation results
-#' are not sent to Config.
+#' @param Evaluations The assessments that the Lambda function performs. Each evaluation identifies an Amazon Web Services resource and indicates whether it complies with the Config rule that invokes the Lambda function.
+#' @param ResultToken &#91;required&#93; An encrypted token that associates an evaluation with an Config rule. Identifies the rule and the event that triggered the evaluation.
+#' @param TestMode Use this parameter to specify a test run for [`put_evaluations`][configservice_put_evaluations]. You can verify whether your Lambda function will deliver evaluation results to Config. No updates occur to your existing evaluations, and evaluation results are not sent to Config.
 #' 
-#' When `TestMode` is `true`,
-#' [`put_evaluations`][configservice_put_evaluations] doesn't require a
-#' valid value for the `ResultToken` parameter, but the value cannot be
-#' null.
+#' When `TestMode` is `true`, [`put_evaluations`][configservice_put_evaluations] doesn't require a valid value for the `ResultToken` parameter, but the value cannot be null.
 #'
 #' @keywords internal
 #'
@@ -2968,27 +2749,10 @@ configservice_put_external_evaluation <- function(ConfigRuleName, ExternalEvalua
 #' See [https://www.paws-r-sdk.com/docs/configservice_put_organization_config_rule/](https://www.paws-r-sdk.com/docs/configservice_put_organization_config_rule/) for full documentation.
 #'
 #' @param OrganizationConfigRuleName &#91;required&#93; The name that you assign to an organization Config rule.
-#' @param OrganizationManagedRuleMetadata An `OrganizationManagedRuleMetadata` object. This object specifies
-#' organization managed rule metadata such as resource type and ID of
-#' Amazon Web Services resource along with the rule identifier. It also
-#' provides the frequency with which you want Config to run evaluations for
-#' the rule if the trigger type is periodic.
-#' @param OrganizationCustomRuleMetadata An `OrganizationCustomRuleMetadata` object. This object specifies
-#' organization custom rule metadata such as resource type, resource ID of
-#' Amazon Web Services resource, Lambda function ARN, and organization
-#' trigger types that trigger Config to evaluate your Amazon Web Services
-#' resources against a rule. It also provides the frequency with which you
-#' want Config to run evaluations for the rule if the trigger type is
-#' periodic.
-#' @param ExcludedAccounts A comma-separated list of accounts that you want to exclude from an
-#' organization Config rule.
-#' @param OrganizationCustomPolicyRuleMetadata An `OrganizationCustomPolicyRuleMetadata` object. This object specifies
-#' metadata for your organization's Config Custom Policy rule. The metadata
-#' includes the runtime system in use, which accounts have debug logging
-#' enabled, and other custom rule metadata, such as resource type, resource
-#' ID of Amazon Web Services resource, and organization trigger types that
-#' initiate Config to evaluate Amazon Web Services resources against a
-#' rule.
+#' @param OrganizationManagedRuleMetadata An `OrganizationManagedRuleMetadata` object. This object specifies organization managed rule metadata such as resource type and ID of Amazon Web Services resource along with the rule identifier. It also provides the frequency with which you want Config to run evaluations for the rule if the trigger type is periodic.
+#' @param OrganizationCustomRuleMetadata An `OrganizationCustomRuleMetadata` object. This object specifies organization custom rule metadata such as resource type, resource ID of Amazon Web Services resource, Lambda function ARN, and organization trigger types that trigger Config to evaluate your Amazon Web Services resources against a rule. It also provides the frequency with which you want Config to run evaluations for the rule if the trigger type is periodic.
+#' @param ExcludedAccounts A comma-separated list of accounts that you want to exclude from an organization Config rule.
+#' @param OrganizationCustomPolicyRuleMetadata An `OrganizationCustomPolicyRuleMetadata` object. This object specifies metadata for your organization's Config Custom Policy rule. The metadata includes the runtime system in use, which accounts have debug logging enabled, and other custom rule metadata, such as resource type, resource ID of Amazon Web Services resource, and organization trigger types that initiate Config to evaluate Amazon Web Services resources against a rule.
 #'
 #' @keywords internal
 #'
@@ -3021,28 +2785,18 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 #' See [https://www.paws-r-sdk.com/docs/configservice_put_organization_conformance_pack/](https://www.paws-r-sdk.com/docs/configservice_put_organization_conformance_pack/) for full documentation.
 #'
 #' @param OrganizationConformancePackName &#91;required&#93; Name of the organization conformance pack you want to create.
-#' @param TemplateS3Uri Location of file containing the template body. The uri must point to the
-#' conformance pack template (max size: 300 KB).
+#' @param TemplateS3Uri Location of file containing the template body. The uri must point to the conformance pack template (max size: 300 KB).
 #' 
-#' You must have access to read Amazon S3 bucket. In addition, in order to
-#' ensure a successful deployment, the template object must not be in an
-#' [archived storage
-#' class](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
-#' if this parameter is passed.
-#' @param TemplateBody A string containing full conformance pack template body. Structure
-#' containing the template body with a minimum length of 1 byte and a
-#' maximum length of 51,200 bytes.
-#' @param DeliveryS3Bucket The name of the Amazon S3 bucket where Config stores conformance pack
-#' templates.
+#' You must have access to read Amazon S3 bucket. In addition, in order to ensure a successful deployment, the template object must not be in an [archived storage class](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) if this parameter is passed.
+#' @param TemplateBody A string that contains the full conformance pack template body. Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes.
+#' @param DeliveryS3Bucket The name of the Amazon S3 bucket where Config stores conformance pack templates.
 #' 
-#' This field is optional. If used, it must be prefixed with
-#' `awsconfigconforms`.
+#' This field is optional. If used, it must be prefixed with `awsconfigconforms`.
 #' @param DeliveryS3KeyPrefix The prefix for the Amazon S3 bucket.
 #' 
 #' This field is optional.
 #' @param ConformancePackInputParameters A list of `ConformancePackInputParameter` objects.
-#' @param ExcludedAccounts A list of Amazon Web Services accounts to be excluded from an
-#' organization conformance pack while deploying a conformance pack.
+#' @param ExcludedAccounts A list of Amazon Web Services accounts to be excluded from an organization conformance pack while deploying a conformance pack.
 #'
 #' @keywords internal
 #'
@@ -3106,11 +2860,8 @@ configservice_put_remediation_configurations <- function(RemediationConfiguratio
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_put_remediation_exceptions/](https://www.paws-r-sdk.com/docs/configservice_put_remediation_exceptions/) for full documentation.
 #'
-#' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want to create remediation
-#' exception.
-#' @param ResourceKeys &#91;required&#93; An exception list of resource exception keys to be processed with the
-#' current request. Config adds exception for each resource key. For
-#' example, Config adds 3 exceptions for 3 resource keys.
+#' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want to create remediation exception.
+#' @param ResourceKeys &#91;required&#93; An exception list of resource exception keys to be processed with the current request. Config adds exception for each resource key. For example, Config adds 3 exceptions for 3 resource keys.
 #' @param Message The message contains an explanation of the exception.
 #' @param ExpirationTime The exception is automatically deleted after the expiration date.
 #'
@@ -3143,25 +2894,18 @@ configservice_put_remediation_exceptions <- function(ConfigRuleName, ResourceKey
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_put_resource_config/](https://www.paws-r-sdk.com/docs/configservice_put_resource_config/) for full documentation.
 #'
-#' @param ResourceType &#91;required&#93; The type of the resource. The custom resource type must be registered
-#' with CloudFormation.
+#' @param ResourceType &#91;required&#93; The type of the resource. The custom resource type must be registered with CloudFormation.
 #' 
-#' You cannot use the organization names “amzn”, “amazon”, “alexa”,
-#' “custom” with custom resource types. It is the first part of the
-#' ResourceType up to the first ::.
+#' You cannot use the organization names “amzn”, “amazon”, “alexa”, “custom” with custom resource types. It is the first part of the ResourceType up to the first ::.
 #' @param SchemaVersionId &#91;required&#93; Version of the schema registered for the ResourceType in CloudFormation.
 #' @param ResourceId &#91;required&#93; Unique identifier of the resource.
 #' @param ResourceName Name of the resource.
-#' @param Configuration &#91;required&#93; The configuration object of the resource in valid JSON format. It must
-#' match the schema registered with CloudFormation.
+#' @param Configuration &#91;required&#93; The configuration object of the resource in valid JSON format. It must match the schema registered with CloudFormation.
 #' 
 #' The configuration JSON must not exceed 64 KB.
 #' @param Tags Tags associated with the resource.
 #' 
-#' This field is not to be confused with the Amazon Web Services-wide tag
-#' feature for Amazon Web Services resources. Tags for
-#' [`put_resource_config`][configservice_put_resource_config] are tags that
-#' you supply for the configuration items of your custom resources.
+#' This field is not to be confused with the Amazon Web Services-wide tag feature for Amazon Web Services resources. Tags for [`put_resource_config`][configservice_put_resource_config] are tags that you supply for the configuration items of your custom resources.
 #'
 #' @keywords internal
 #'
@@ -3229,10 +2973,8 @@ configservice_put_retention_configuration <- function(RetentionPeriodInDays) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_put_service_linked_configuration_recorder/](https://www.paws-r-sdk.com/docs/configservice_put_service_linked_configuration_recorder/) for full documentation.
 #'
-#' @param ServicePrincipal &#91;required&#93; The service principal of the Amazon Web Services service for the
-#' service-linked configuration recorder that you want to create.
-#' @param Tags The tags for a service-linked configuration recorder. Each tag consists
-#' of a key and an optional value, both of which you define.
+#' @param ServicePrincipal &#91;required&#93; The service principal of the Amazon Web Services service for the service-linked configuration recorder that you want to create.
+#' @param Tags The tags for a service-linked configuration recorder. Each tag consists of a key and an optional value, both of which you define.
 #'
 #' @keywords internal
 #'
@@ -3263,12 +3005,9 @@ configservice_put_service_linked_configuration_recorder <- function(ServicePrinc
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_put_stored_query/](https://www.paws-r-sdk.com/docs/configservice_put_stored_query/) for full documentation.
 #'
-#' @param StoredQuery &#91;required&#93; A list of `StoredQuery` objects. The mandatory fields are `QueryName`
-#' and `Expression`.
+#' @param StoredQuery &#91;required&#93; A list of `StoredQuery` objects. The mandatory fields are `QueryName` and `Expression`.
 #' 
-#' When you are creating a query, you must provide a query name and an
-#' expression. When you are updating a query, you must provide a query name
-#' but updating the description is optional.
+#' When you are creating a query, you must provide a query name and an expression. When you are updating a query, you must provide a query name but updating the description is optional.
 #' @param Tags A list of `Tags` object.
 #'
 #' @keywords internal
@@ -3306,10 +3045,8 @@ configservice_put_stored_query <- function(StoredQuery, Tags = NULL) {
 #' @param Expression &#91;required&#93; The SQL query SELECT command.
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param Limit The maximum number of query results returned on each page.
-#' @param MaxResults The maximum number of query results returned on each page. Config also
-#' allows the Limit request parameter.
-#' @param NextToken The nextToken string returned in a previous request that you use to
-#' request the next page of results in a paginated response.
+#' @param MaxResults The maximum number of query results returned on each page. Config also allows the Limit request parameter.
+#' @param NextToken The nextToken string returned in a previous request that you use to request the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -3344,8 +3081,7 @@ configservice_select_aggregate_resource_config <- function(Expression, Configura
 #'
 #' @param Expression &#91;required&#93; The SQL query `SELECT` command.
 #' @param Limit The maximum number of query results returned on each page.
-#' @param NextToken The `nextToken` string returned in a previous request that you use to
-#' request the next page of results in a paginated response.
+#' @param NextToken The `nextToken` string returned in a previous request that you use to request the next page of results in a paginated response.
 #'
 #' @keywords internal
 #'
@@ -3408,8 +3144,7 @@ configservice_start_config_rules_evaluation <- function(ConfigRuleNames = NULL) 
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_start_configuration_recorder/](https://www.paws-r-sdk.com/docs/configservice_start_configuration_recorder/) for full documentation.
 #'
-#' @param ConfigurationRecorderName &#91;required&#93; The name of the customer managed configuration recorder that you want to
-#' start.
+#' @param ConfigurationRecorderName &#91;required&#93; The name of the customer managed configuration recorder that you want to start.
 #'
 #' @keywords internal
 #'
@@ -3441,10 +3176,8 @@ configservice_start_configuration_recorder <- function(ConfigurationRecorderName
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_start_remediation_execution/](https://www.paws-r-sdk.com/docs/configservice_start_remediation_execution/) for full documentation.
 #'
-#' @param ConfigRuleName &#91;required&#93; The list of names of Config rules that you want to run remediation
-#' execution for.
-#' @param ResourceKeys &#91;required&#93; A list of resource keys to be processed with the current request. Each
-#' element in the list consists of the resource type and resource ID.
+#' @param ConfigRuleName &#91;required&#93; The list of names of Config rules that you want to run remediation execution for.
+#' @param ResourceKeys &#91;required&#93; A list of resource keys to be processed with the current request. Each element in the list consists of the resource type and resource ID.
 #'
 #' @keywords internal
 #'
@@ -3478,22 +3211,13 @@ configservice_start_remediation_execution <- function(ConfigRuleName, ResourceKe
 #'
 #' @param ResourceDetails &#91;required&#93; Returns a `ResourceDetails` object.
 #' @param EvaluationContext Returns an `EvaluationContext` object.
-#' @param EvaluationMode &#91;required&#93; The mode of an evaluation. The valid values for this API are `DETECTIVE`
-#' and `PROACTIVE`.
-#' @param EvaluationTimeout The timeout for an evaluation. The default is 900 seconds. You cannot
-#' specify a number greater than 3600. If you specify 0, Config uses the
-#' default.
-#' @param ClientToken A client token is a unique, case-sensitive string of up to 64 ASCII
-#' characters. To make an idempotent API request using one of these
-#' actions, specify a client token in the request.
+#' @param EvaluationMode &#91;required&#93; The mode of an evaluation.
 #' 
-#' Avoid reusing the same client token for other API requests. If you retry
-#' a request that completed successfully using the same client token and
-#' the same parameters, the retry succeeds without performing any further
-#' actions. If you retry a successful request using the same client token,
-#' but one or more of the parameters are different, other than the Region
-#' or Availability Zone, the retry fails with an
-#' IdempotentParameterMismatch error.
+#' The only valid value for this API is `PROACTIVE`.
+#' @param EvaluationTimeout The timeout for an evaluation. The default is 900 seconds. You cannot specify a number greater than 3600. If you specify 0, Config uses the default.
+#' @param ClientToken A client token is a unique, case-sensitive string of up to 64 ASCII characters. To make an idempotent API request using one of these actions, specify a client token in the request.
+#' 
+#' Avoid reusing the same client token for other API requests. If you retry a request that completed successfully using the same client token and the same parameters, the retry succeeds without performing any further actions. If you retry a successful request using the same client token, but one or more of the parameters are different, other than the Region or Availability Zone, the retry fails with an IdempotentParameterMismatch error.
 #'
 #' @keywords internal
 #'
@@ -3524,8 +3248,7 @@ configservice_start_resource_evaluation <- function(ResourceDetails, EvaluationC
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_stop_configuration_recorder/](https://www.paws-r-sdk.com/docs/configservice_stop_configuration_recorder/) for full documentation.
 #'
-#' @param ConfigurationRecorderName &#91;required&#93; The name of the customer managed configuration recorder that you want to
-#' stop.
+#' @param ConfigurationRecorderName &#91;required&#93; The name of the customer managed configuration recorder that you want to stop.
 #'
 #' @keywords internal
 #'
@@ -3557,8 +3280,7 @@ configservice_stop_configuration_recorder <- function(ConfigurationRecorderName)
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_tag_resource/](https://www.paws-r-sdk.com/docs/configservice_tag_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
-#' list the tags. The following resources are supported:
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to list the tags. The following resources are supported:
 #' 
 #' -   `ConfigurationRecorder`
 #' 
@@ -3606,8 +3328,7 @@ configservice_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_untag_resource/](https://www.paws-r-sdk.com/docs/configservice_untag_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
-#' list the tags. The following resources are supported:
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to list the tags. The following resources are supported:
 #' 
 #' -   `ConfigurationRecorder`
 #' 

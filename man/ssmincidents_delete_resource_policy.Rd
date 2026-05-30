@@ -10,8 +10,7 @@ ssmincidents_delete_resource_policy(policyId, resourceArn)
 \arguments{
 \item{policyId}{[required] The ID of the resource policy you're deleting.}
 
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource you're deleting the
-policy from.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource you're deleting the policy from.}
 }
 \description{
 Deletes the resource policy that Resource Access Manager uses to share your Incident Manager resource.

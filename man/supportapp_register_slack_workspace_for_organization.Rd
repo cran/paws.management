@@ -7,9 +7,7 @@
 supportapp_register_slack_workspace_for_organization(teamId)
 }
 \arguments{
-\item{teamId}{[required] The team ID in Slack. This ID uniquely identifies a Slack workspace,
-such as \code{T012ABCDEFG}. Specify the Slack workspace that you want to use
-for your organization.}
+\item{teamId}{[required] The team ID in Slack. This ID uniquely identifies a Slack workspace, such as \code{T012ABCDEFG}. Specify the Slack workspace that you want to use for your organization.}
 }
 \description{
 Registers a Slack workspace for your Amazon Web Services account. To call this API, your account must be part of an organization in Organizations.

@@ -19,16 +19,11 @@ licensemanager_list_usage_for_license_configuration(
 
 \item{NextToken}{Token for the next set of results.}
 
-\item{Filters}{Filters to scope the results. The following filters and logical
-operators are supported:
+\item{Filters}{Filters to scope the results. The following filters and logical operators are supported:
 \itemize{
 \item \code{resourceArn} - The ARN of the license configuration resource.
-Logical operators are \code{EQUALS} | \code{NOT_EQUALS}.
-\item \code{resourceType} - The resource type (\code{EC2_INSTANCE} | \code{EC2_HOST} |
-\code{EC2_AMI} | \code{SYSTEMS_MANAGER_MANAGED_INSTANCE}). Logical operators
-are \code{EQUALS} | \code{NOT_EQUALS}.
+\item \code{resourceType} - The resource type (\code{EC2_INSTANCE} | \code{EC2_HOST} | \code{EC2_AMI} | \code{SYSTEMS_MANAGER_MANAGED_INSTANCE}).
 \item \code{resourceAccount} - The ID of the account that owns the resource.
-Logical operators are \code{EQUALS} | \code{NOT_EQUALS}.
 }}
 }
 \description{

@@ -11,20 +11,13 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/health_describe_affected_accounts_for_organization/](https://www.paws-r-sdk.com/docs/health_describe_affected_accounts_for_organization/) for full documentation.
 #'
-#' @param eventArn &#91;required&#93; The unique identifier for the event. The event ARN has the
-#' `arn:aws:health:event-region::event/SERVICE/EVENT_TYPE_CODE/EVENT_TYPE_PLUS_ID `
-#' format.
+#' @param eventArn &#91;required&#93; The unique identifier for the event. The event ARN has the `arn:aws:health:event-region::event/SERVICE/EVENT_TYPE_CODE/EVENT_TYPE_PLUS_ID ` format.
 #' 
 #' For example, an event ARN might look like the following:
 #' 
 #' `arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456`
-#' @param nextToken If the results of a search are large, only a portion of the results are
-#' returned, and a `nextToken` pagination token is returned in the
-#' response. To retrieve the next batch of results, reissue the search
-#' request and include the returned token. When all results have been
-#' returned, the response does not contain a pagination token value.
-#' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
-#' inclusive.
+#' @param nextToken If the results of a search are large, only a portion of the results are returned, and a `nextToken` pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.
+#' @param maxResults The maximum number of items to return in one batch, between 10 and 100, inclusive.
 #'
 #' @keywords internal
 #'
@@ -56,17 +49,10 @@ health_describe_affected_accounts_for_organization <- function(eventArn, nextTok
 #'
 #' See [https://www.paws-r-sdk.com/docs/health_describe_affected_entities/](https://www.paws-r-sdk.com/docs/health_describe_affected_entities/) for full documentation.
 #'
-#' @param filter &#91;required&#93; Values to narrow the results returned. At least one event ARN is
-#' required.
-#' @param locale The locale (language) to return information in. English (en) is the
-#' default and the only supported value at this time.
-#' @param nextToken If the results of a search are large, only a portion of the results are
-#' returned, and a `nextToken` pagination token is returned in the
-#' response. To retrieve the next batch of results, reissue the search
-#' request and include the returned token. When all results have been
-#' returned, the response does not contain a pagination token value.
-#' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
-#' inclusive.
+#' @param filter &#91;required&#93; Values to narrow the results returned. At least one event ARN is required.
+#' @param locale The locale (language) to return information in. English (en) is the default and the only supported value at this time.
+#' @param nextToken If the results of a search are large, only a portion of the results are returned, and a `nextToken` pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.
+#' @param maxResults The maximum number of items to return in one batch, between 1 and 100, inclusive.
 #'
 #' @keywords internal
 #'
@@ -100,17 +86,10 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
 #' See [https://www.paws-r-sdk.com/docs/health_describe_affected_entities_for_organization/](https://www.paws-r-sdk.com/docs/health_describe_affected_entities_for_organization/) for full documentation.
 #'
 #' @param organizationEntityFilters A JSON set of elements including the `awsAccountId` and the `eventArn`.
-#' @param locale The locale (language) to return information in. English (en) is the
-#' default and the only supported value at this time.
-#' @param nextToken If the results of a search are large, only a portion of the results are
-#' returned, and a `nextToken` pagination token is returned in the
-#' response. To retrieve the next batch of results, reissue the search
-#' request and include the returned token. When all results have been
-#' returned, the response does not contain a pagination token value.
-#' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
-#' inclusive.
-#' @param organizationEntityAccountFilters A JSON set of elements including the `awsAccountId`, `eventArn` and a
-#' set of `statusCodes`.
+#' @param locale The locale (language) to return information in. English (en) is the default and the only supported value at this time.
+#' @param nextToken If the results of a search are large, only a portion of the results are returned, and a `nextToken` pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.
+#' @param maxResults The maximum number of items to return in one batch, between 1 and 100, inclusive.
+#' @param organizationEntityAccountFilters A JSON set of elements including the `awsAccountId`, `eventArn` and a set of `statusCodes`.
 #'
 #' @keywords internal
 #'
@@ -142,8 +121,7 @@ health_describe_affected_entities_for_organization <- function(organizationEntit
 #'
 #' See [https://www.paws-r-sdk.com/docs/health_describe_entity_aggregates/](https://www.paws-r-sdk.com/docs/health_describe_entity_aggregates/) for full documentation.
 #'
-#' @param eventArns A list of event ARNs (unique identifiers). For example:
-#' `"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"`
+#' @param eventArns A list of event ARNs (unique identifiers). For example: `"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"`
 #'
 #' @keywords internal
 #'
@@ -175,10 +153,8 @@ health_describe_entity_aggregates <- function(eventArns = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/health_describe_entity_aggregates_for_organization/](https://www.paws-r-sdk.com/docs/health_describe_entity_aggregates_for_organization/) for full documentation.
 #'
-#' @param eventArns &#91;required&#93; A list of event ARNs (unique identifiers). For example:
-#' `"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"`
-#' @param awsAccountIds A list of 12-digit Amazon Web Services account numbers that contains the
-#' affected entities.
+#' @param eventArns &#91;required&#93; A list of event ARNs (unique identifiers). For example: `"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"`
+#' @param awsAccountIds A list of 12-digit Amazon Web Services account numbers that contains the affected entities.
 #'
 #' @keywords internal
 #'
@@ -212,13 +188,8 @@ health_describe_entity_aggregates_for_organization <- function(eventArns, awsAcc
 #'
 #' @param filter Values to narrow the results returned.
 #' @param aggregateField &#91;required&#93; The only currently supported value is `eventTypeCategory`.
-#' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
-#' inclusive.
-#' @param nextToken If the results of a search are large, only a portion of the results are
-#' returned, and a `nextToken` pagination token is returned in the
-#' response. To retrieve the next batch of results, reissue the search
-#' request and include the returned token. When all results have been
-#' returned, the response does not contain a pagination token value.
+#' @param maxResults The maximum number of items to return in one batch, between 10 and 100, inclusive.
+#' @param nextToken If the results of a search are large, only a portion of the results are returned, and a `nextToken` pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.
 #'
 #' @keywords internal
 #'
@@ -249,10 +220,8 @@ health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxR
 #'
 #' See [https://www.paws-r-sdk.com/docs/health_describe_event_details/](https://www.paws-r-sdk.com/docs/health_describe_event_details/) for full documentation.
 #'
-#' @param eventArns &#91;required&#93; A list of event ARNs (unique identifiers). For example:
-#' `"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"`
-#' @param locale The locale (language) to return information in. English (en) is the
-#' default and the only supported value at this time.
+#' @param eventArns &#91;required&#93; A list of event ARNs (unique identifiers). For example: `"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"`
+#' @param locale The locale (language) to return information in. English (en) is the default and the only supported value at this time.
 #'
 #' @keywords internal
 #'
@@ -284,10 +253,8 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/health_describe_event_details_for_organization/](https://www.paws-r-sdk.com/docs/health_describe_event_details_for_organization/) for full documentation.
 #'
-#' @param organizationEventDetailFilters &#91;required&#93; A set of JSON elements that includes the `awsAccountId` and the
-#' `eventArn`.
-#' @param locale The locale (language) to return information in. English (en) is the
-#' default and the only supported value at this time.
+#' @param organizationEventDetailFilters &#91;required&#93; A set of JSON elements that includes the `awsAccountId` and the `eventArn`.
+#' @param locale The locale (language) to return information in. English (en) is the default and the only supported value at this time.
 #'
 #' @keywords internal
 #'
@@ -319,18 +286,11 @@ health_describe_event_details_for_organization <- function(organizationEventDeta
 #' See [https://www.paws-r-sdk.com/docs/health_describe_event_types/](https://www.paws-r-sdk.com/docs/health_describe_event_types/) for full documentation.
 #'
 #' @param filter Values to narrow the results returned.
-#' @param locale The locale (language) to return information in. English (en) is the
-#' default and the only supported value at this time.
-#' @param nextToken If the results of a search are large, only a portion of the results are
-#' returned, and a `nextToken` pagination token is returned in the
-#' response. To retrieve the next batch of results, reissue the search
-#' request and include the returned token. When all results have been
-#' returned, the response does not contain a pagination token value.
-#' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
-#' inclusive.
+#' @param locale The locale (language) to return information in. English (en) is the default and the only supported value at this time.
+#' @param nextToken If the results of a search are large, only a portion of the results are returned, and a `nextToken` pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.
+#' @param maxResults The maximum number of items to return in one batch, between 10 and 100, inclusive.
 #' 
-#' If you don't specify the `maxResults` parameter, this operation returns
-#' a maximum of 30 items by default.
+#' If you don't specify the `maxResults` parameter, this operation returns a maximum of 30 items by default.
 #'
 #' @keywords internal
 #'
@@ -362,15 +322,9 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
 #' See [https://www.paws-r-sdk.com/docs/health_describe_events/](https://www.paws-r-sdk.com/docs/health_describe_events/) for full documentation.
 #'
 #' @param filter Values to narrow the results returned.
-#' @param nextToken If the results of a search are large, only a portion of the results are
-#' returned, and a `nextToken` pagination token is returned in the
-#' response. To retrieve the next batch of results, reissue the search
-#' request and include the returned token. When all results have been
-#' returned, the response does not contain a pagination token value.
-#' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
-#' inclusive.
-#' @param locale The locale (language) to return information in. English (en) is the
-#' default and the only supported value at this time.
+#' @param nextToken If the results of a search are large, only a portion of the results are returned, and a `nextToken` pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.
+#' @param maxResults The maximum number of items to return in one batch, between 1 and 100, inclusive.
+#' @param locale The locale (language) to return information in. English (en) is the default and the only supported value at this time.
 #'
 #' @keywords internal
 #'
@@ -403,15 +357,9 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
 #' See [https://www.paws-r-sdk.com/docs/health_describe_events_for_organization/](https://www.paws-r-sdk.com/docs/health_describe_events_for_organization/) for full documentation.
 #'
 #' @param filter Values to narrow the results returned.
-#' @param nextToken If the results of a search are large, only a portion of the results are
-#' returned, and a `nextToken` pagination token is returned in the
-#' response. To retrieve the next batch of results, reissue the search
-#' request and include the returned token. When all results have been
-#' returned, the response does not contain a pagination token value.
-#' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
-#' inclusive.
-#' @param locale The locale (language) to return information in. English (en) is the
-#' default and the only supported value at this time.
+#' @param nextToken If the results of a search are large, only a portion of the results are returned, and a `nextToken` pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.
+#' @param maxResults The maximum number of items to return in one batch, between 1 and 100, inclusive.
+#' @param locale The locale (language) to return information in. English (en) is the default and the only supported value at this time.
 #'
 #' @keywords internal
 #'

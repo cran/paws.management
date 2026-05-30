@@ -8,9 +8,7 @@ delivery for the specified trail}
 cloudtrail_stop_logging(Name)
 }
 \arguments{
-\item{Name}{[required] Specifies the name or the CloudTrail ARN of the trail for which
-CloudTrail will stop logging Amazon Web Services API calls. The
-following is the format of a trail ARN.
+\item{Name}{[required] Specifies the name or the CloudTrail ARN of the trail for which CloudTrail will stop logging Amazon Web Services API calls. The following is the format of a trail ARN.
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }

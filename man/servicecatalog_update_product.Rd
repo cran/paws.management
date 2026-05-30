@@ -46,10 +46,7 @@ servicecatalog_update_product(
 
 \item{RemoveTags}{The tags to remove from the product.}
 
-\item{SourceConnection}{Specifies connection details for the updated product and syncs the
-product to the connection source artifact. This automatically manages
-the product's artifacts based on changes to the source. The
-\code{SourceConnection} parameter consists of the following sub-fields.
+\item{SourceConnection}{Specifies connection details for the updated product and syncs the product to the connection source artifact. This automatically manages the product's artifacts based on changes to the source. The \code{SourceConnection} parameter consists of the following sub-fields.
 \itemize{
 \item \code{Type}
 \item \code{ConnectionParamters}

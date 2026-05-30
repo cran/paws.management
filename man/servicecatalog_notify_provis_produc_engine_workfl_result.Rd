@@ -15,9 +15,7 @@ servicecatalog_notify_provision_product_engine_workflow_result(
 )
 }
 \arguments{
-\item{WorkflowToken}{[required] The encrypted contents of the provisioning engine execution payload that
-Service Catalog sends after the Terraform product provisioning workflow
-starts.}
+\item{WorkflowToken}{[required] The encrypted contents of the provisioning engine execution payload that Service Catalog sends after the Terraform product provisioning workflow starts.}
 
 \item{RecordId}{[required] The identifier of the record.}
 
@@ -25,8 +23,7 @@ starts.}
 
 \item{FailureReason}{The reason why the provisioning engine execution failed.}
 
-\item{ResourceIdentifier}{The ID for the provisioned product resources that are part of a resource
-group.}
+\item{ResourceIdentifier}{The ID for the provisioned product resources that are part of a resource group.}
 
 \item{Outputs}{The output of the provisioning engine execution.}
 

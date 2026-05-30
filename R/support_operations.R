@@ -10,18 +10,10 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/support_add_attachments_to_set/](https://www.paws-r-sdk.com/docs/support_add_attachments_to_set/) for full documentation.
 #'
-#' @param attachmentSetId The ID of the attachment set. If an `attachmentSetId` is not specified,
-#' a new attachment set is created, and the ID of the set is returned in
-#' the response. If an `attachmentSetId` is specified, the attachments are
-#' added to the specified set, if it exists.
-#' @param attachments &#91;required&#93; One or more attachments to add to the set. You can add up to three
-#' attachments per set. The size limit is 5 MB per attachment.
+#' @param attachmentSetId The ID of the attachment set. If an `attachmentSetId` is not specified, a new attachment set is created, and the ID of the set is returned in the response. If an `attachmentSetId` is specified, the attachments are added to the specified set, if it exists.
+#' @param attachments &#91;required&#93; One or more attachments to add to the set. You can add up to three attachments per set. The size limit is 5 MB per attachment.
 #' 
-#' In the `Attachment` object, use the `data` parameter to specify the
-#' contents of the attachment file. In the previous request syntax, the
-#' value for `data` appear as `blob`, which is represented as a
-#' base64-encoded string. The value for `fileName` is the name of the
-#' attachment, such as `troubleshoot-screenshot.png`.
+#' In the `Attachment` object, use the `data` parameter to specify the contents of the attachment file. In the previous request syntax, the value for `data` appear as `blob`, which is represented as a base64-encoded string. The value for `fileName` is the name of the attachment, such as `troubleshoot-screenshot.png`.
 #'
 #' @keywords internal
 #'
@@ -53,15 +45,10 @@ support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) 
 #'
 #' See [https://www.paws-r-sdk.com/docs/support_add_communication_to_case/](https://www.paws-r-sdk.com/docs/support_add_communication_to_case/) for full documentation.
 #'
-#' @param caseId The support case ID requested or returned in the call. The case ID is an
-#' alphanumeric string formatted as shown in this example:
-#' case-*12345678910-2013-c4c1d2bf33c5cf47*
+#' @param caseId The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-*12345678910-2013-c4c1d2bf33c5cf47*
 #' @param communicationBody &#91;required&#93; The body of an email communication to add to the support case.
-#' @param ccEmailAddresses The email addresses in the CC line of an email to be added to the
-#' support case.
-#' @param attachmentSetId The ID of a set of one or more attachments for the communication to add
-#' to the case. Create the set by calling
-#' [`add_attachments_to_set`][support_add_attachments_to_set]
+#' @param ccEmailAddresses The email addresses in the CC line of an email to be added to the support case.
+#' @param attachmentSetId The ID of a set of one or more attachments for the communication to add to the case. Create the set by calling [`add_attachments_to_set`][support_add_attachments_to_set]
 #'
 #' @keywords internal
 #'
@@ -92,45 +79,19 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/support_create_case/](https://www.paws-r-sdk.com/docs/support_create_case/) for full documentation.
 #'
-#' @param subject &#91;required&#93; The title of the support case. The title appears in the **Subject**
-#' field on the Amazon Web Services Support Center Create Case page.
-#' @param serviceCode The code for the Amazon Web Services service. You can use the
-#' [`describe_services`][support_describe_services] operation to get the
-#' possible `serviceCode` values.
-#' @param severityCode A value that indicates the urgency of the case. This value determines
-#' the response time according to your service level agreement with Amazon
-#' Web Services Support. You can use the
-#' [`describe_severity_levels`][support_describe_severity_levels] operation
-#' to get the possible values for `severityCode`.
+#' @param subject &#91;required&#93; The title of the support case. The title appears in the **Subject** field on the Amazon Web Services Support Center Create Case page.
+#' @param serviceCode The code for the Amazon Web Services service. You can use the [`describe_services`][support_describe_services] operation to get the possible `serviceCode` values.
+#' @param severityCode A value that indicates the urgency of the case. This value determines the response time according to your service level agreement with Amazon Web Services Support. You can use the [`describe_severity_levels`][support_describe_severity_levels] operation to get the possible values for `severityCode`.
 #' 
-#' For more information, see SeverityLevel and [Choosing a
-#' Severity](https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity)
-#' in the *Amazon Web Services Support User Guide*.
+#' For more information, see SeverityLevel and [Choosing a Severity](https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity) in the *Amazon Web Services Support User Guide*.
 #' 
-#' The availability of severity levels depends on the support plan for the
-#' Amazon Web Services account.
-#' @param categoryCode The category of problem for the support case. You also use the
-#' [`describe_services`][support_describe_services] operation to get the
-#' category code for a service. Each Amazon Web Services service defines
-#' its own set of category codes.
-#' @param communicationBody &#91;required&#93; The communication body text that describes the issue. This text appears
-#' in the **Description** field on the Amazon Web Services Support Center
-#' Create Case page.
-#' @param ccEmailAddresses A list of email addresses that Amazon Web Services Support copies on
-#' case correspondence. Amazon Web Services Support identifies the account
-#' that creates the case when you specify your Amazon Web Services
-#' credentials in an HTTP POST method or use the [Amazon Web Services
-#' SDKs](https://aws.amazon.com/developer/tools/).
-#' @param language The language in which Amazon Web Services Support handles the case.
-#' Amazon Web Services Support currently supports Chinese (“zh”), English
-#' ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO
-#' 639-1 code for the `language` parameter if you want support in that
-#' language.
-#' @param issueType The type of issue for the case. You can specify `customer-service` or
-#' `technical`. If you don't specify a value, the default is `technical`.
-#' @param attachmentSetId The ID of a set of one or more attachments for the case. Create the set
-#' by using the [`add_attachments_to_set`][support_add_attachments_to_set]
-#' operation.
+#' The availability of severity levels depends on the support plan for the Amazon Web Services account.
+#' @param categoryCode The category of problem for the support case. You also use the [`describe_services`][support_describe_services] operation to get the category code for a service. Each Amazon Web Services service defines its own set of category codes.
+#' @param communicationBody &#91;required&#93; The communication body text that describes the issue. This text appears in the **Description** field on the Amazon Web Services Support Center Create Case page.
+#' @param ccEmailAddresses A list of email addresses that Amazon Web Services Support copies on case correspondence. Amazon Web Services Support identifies the account that creates the case when you specify your Amazon Web Services credentials in an HTTP POST method or use the [Amazon Web Services SDKs](https://builder.aws.com/build/tools).
+#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
+#' @param issueType The type of issue for the case. You can specify `customer-service` or `technical`. If you don't specify a value, the default is `technical`.
+#' @param attachmentSetId The ID of a set of one or more attachments for the case. Create the set by using the [`add_attachments_to_set`][support_add_attachments_to_set] operation.
 #'
 #' @keywords internal
 #'
@@ -161,8 +122,7 @@ support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/support_describe_attachment/](https://www.paws-r-sdk.com/docs/support_describe_attachment/) for full documentation.
 #'
-#' @param attachmentId &#91;required&#93; The ID of the attachment to return. Attachment IDs are returned by the
-#' [`describe_communications`][support_describe_communications] operation.
+#' @param attachmentId &#91;required&#93; The ID of the attachment to return. Attachment IDs are returned by the [`describe_communications`][support_describe_communications] operation.
 #'
 #' @keywords internal
 #'
@@ -193,28 +153,15 @@ support_describe_attachment <- function(attachmentId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/support_describe_cases/](https://www.paws-r-sdk.com/docs/support_describe_cases/) for full documentation.
 #'
-#' @param caseIdList A list of ID numbers of the support cases you want returned. The maximum
-#' number of cases is 100.
-#' @param displayId The ID displayed for a case in the Amazon Web Services Support Center
-#' user interface.
-#' @param afterTime The start date for a filtered date search on support case
-#' communications. Case communications are available for 12 months after
-#' creation.
-#' @param beforeTime The end date for a filtered date search on support case communications.
-#' Case communications are available for 12 months after creation.
-#' @param includeResolvedCases Specifies whether to include resolved support cases in the
-#' [`describe_cases`][support_describe_cases] response. By default,
-#' resolved cases aren't included.
+#' @param caseIdList A list of ID numbers of the support cases you want returned. The maximum number of cases is 100.
+#' @param displayId The ID displayed for a case in the Amazon Web Services Support Center user interface.
+#' @param afterTime The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.
+#' @param beforeTime The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.
+#' @param includeResolvedCases Specifies whether to include resolved support cases in the [`describe_cases`][support_describe_cases] response. By default, resolved cases aren't included.
 #' @param nextToken A resumption point for pagination.
 #' @param maxResults The maximum number of results to return before paginating.
-#' @param language The language in which Amazon Web Services Support handles the case.
-#' Amazon Web Services Support currently supports Chinese (“zh”), English
-#' ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO
-#' 639-1 code for the `language` parameter if you want support in that
-#' language.
-#' @param includeCommunications Specifies whether to include communications in the
-#' [`describe_cases`][support_describe_cases] response. By default,
-#' communications are included.
+#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
+#' @param includeCommunications Specifies whether to include communications in the [`describe_cases`][support_describe_cases] response. By default, communications are included.
 #'
 #' @keywords internal
 #'
@@ -245,14 +192,9 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
 #'
 #' See [https://www.paws-r-sdk.com/docs/support_describe_communications/](https://www.paws-r-sdk.com/docs/support_describe_communications/) for full documentation.
 #'
-#' @param caseId &#91;required&#93; The support case ID requested or returned in the call. The case ID is an
-#' alphanumeric string formatted as shown in this example:
-#' case-*12345678910-2013-c4c1d2bf33c5cf47*
-#' @param beforeTime The end date for a filtered date search on support case communications.
-#' Case communications are available for 12 months after creation.
-#' @param afterTime The start date for a filtered date search on support case
-#' communications. Case communications are available for 12 months after
-#' creation.
+#' @param caseId &#91;required&#93; The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-*12345678910-2013-c4c1d2bf33c5cf47*
+#' @param beforeTime The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.
+#' @param afterTime The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.
 #' @param nextToken A resumption point for pagination.
 #' @param maxResults The maximum number of results to return before paginating.
 #'
@@ -286,20 +228,10 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
 #'
 #' See [https://www.paws-r-sdk.com/docs/support_describe_create_case_options/](https://www.paws-r-sdk.com/docs/support_describe_create_case_options/) for full documentation.
 #'
-#' @param issueType &#91;required&#93; The type of issue for the case. You can specify `customer-service` or
-#' `technical`. If you don't specify a value, the default is `technical`.
-#' @param serviceCode &#91;required&#93; The code for the Amazon Web Services service. You can use the
-#' [`describe_services`][support_describe_services] operation to get the
-#' possible `serviceCode` values.
-#' @param language &#91;required&#93; The language in which Amazon Web Services Support handles the case.
-#' Amazon Web Services Support currently supports Chinese (“zh”), English
-#' ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO
-#' 639-1 code for the `language` parameter if you want support in that
-#' language.
-#' @param categoryCode &#91;required&#93; The category of problem for the support case. You also use the
-#' [`describe_services`][support_describe_services] operation to get the
-#' category code for a service. Each Amazon Web Services service defines
-#' its own set of category codes.
+#' @param issueType &#91;required&#93; The type of issue for the case. You can specify `customer-service` or `technical`. If you don't specify a value, the default is `technical`.
+#' @param serviceCode &#91;required&#93; The code for the Amazon Web Services service. You can use the [`describe_services`][support_describe_services] operation to get the possible `serviceCode` values.
+#' @param language &#91;required&#93; The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
+#' @param categoryCode &#91;required&#93; The category of problem for the support case. You also use the [`describe_services`][support_describe_services] operation to get the category code for a service. Each Amazon Web Services service defines its own set of category codes.
 #'
 #' @keywords internal
 #'
@@ -331,13 +263,8 @@ support_describe_create_case_options <- function(issueType, serviceCode, languag
 #'
 #' See [https://www.paws-r-sdk.com/docs/support_describe_services/](https://www.paws-r-sdk.com/docs/support_describe_services/) for full documentation.
 #'
-#' @param serviceCodeList A JSON-formatted list of service codes available for Amazon Web Services
-#' services.
-#' @param language The language in which Amazon Web Services Support handles the case.
-#' Amazon Web Services Support currently supports Chinese (“zh”), English
-#' ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO
-#' 639-1 code for the `language` parameter if you want support in that
-#' language.
+#' @param serviceCodeList A JSON-formatted list of service codes available for Amazon Web Services services.
+#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
 #'
 #' @keywords internal
 #'
@@ -369,11 +296,7 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/support_describe_severity_levels/](https://www.paws-r-sdk.com/docs/support_describe_severity_levels/) for full documentation.
 #'
-#' @param language The language in which Amazon Web Services Support handles the case.
-#' Amazon Web Services Support currently supports Chinese (“zh”), English
-#' ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO
-#' 639-1 code for the `language` parameter if you want support in that
-#' language.
+#' @param language The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the `language` parameter if you want support in that language.
 #'
 #' @keywords internal
 #'
@@ -405,15 +328,9 @@ support_describe_severity_levels <- function(language = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/support_describe_supported_languages/](https://www.paws-r-sdk.com/docs/support_describe_supported_languages/) for full documentation.
 #'
-#' @param issueType &#91;required&#93; The type of issue for the case. You can specify `customer-service` or
-#' `technical`.
-#' @param serviceCode &#91;required&#93; The code for the Amazon Web Services service. You can use the
-#' [`describe_services`][support_describe_services] operation to get the
-#' possible `serviceCode` values.
-#' @param categoryCode &#91;required&#93; The category of problem for the support case. You also use the
-#' [`describe_services`][support_describe_services] operation to get the
-#' category code for a service. Each Amazon Web Services service defines
-#' its own set of category codes.
+#' @param issueType &#91;required&#93; The type of issue for the case. You can specify `customer-service` or `technical`.
+#' @param serviceCode &#91;required&#93; The code for the Amazon Web Services service. You can use the [`describe_services`][support_describe_services] operation to get the possible `serviceCode` values.
+#' @param categoryCode &#91;required&#93; The category of problem for the support case. You also use the [`describe_services`][support_describe_services] operation to get the category code for a service. Each Amazon Web Services service defines its own set of category codes.
 #'
 #' @keywords internal
 #'
@@ -447,8 +364,7 @@ support_describe_supported_languages <- function(issueType, serviceCode, categor
 #'
 #' @param checkIds &#91;required&#93; The IDs of the Trusted Advisor checks to get the status.
 #' 
-#' If you specify the check ID of a check that is automatically refreshed,
-#' you might see an `InvalidParameterValue` error.
+#' If you specify the check ID of a check that is automatically refreshed, you might see an `InvalidParameterValue` error.
 #'
 #' @keywords internal
 #'
@@ -481,11 +397,9 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
 #' See [https://www.paws-r-sdk.com/docs/support_describe_trusted_advisor_check_result/](https://www.paws-r-sdk.com/docs/support_describe_trusted_advisor_check_result/) for full documentation.
 #'
 #' @param checkId &#91;required&#93; The unique identifier for the Trusted Advisor check.
-#' @param language The ISO 639-1 code for the language that you want your check results to
-#' appear in.
+#' @param language The ISO 639-1 code for the language that you want your check results to appear in.
 #' 
-#' The Amazon Web Services Support API currently supports the following
-#' languages for Trusted Advisor:
+#' The Amazon Web Services Support API currently supports the following languages for Trusted Advisor:
 #' 
 #' -   Chinese, Simplified - `zh`
 #' 
@@ -571,11 +485,9 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/support_describe_trusted_advisor_checks/](https://www.paws-r-sdk.com/docs/support_describe_trusted_advisor_checks/) for full documentation.
 #'
-#' @param language &#91;required&#93; The ISO 639-1 code for the language that you want your checks to appear
-#' in.
+#' @param language &#91;required&#93; The ISO 639-1 code for the language that you want your checks to appear in.
 #' 
-#' The Amazon Web Services Support API currently supports the following
-#' languages for Trusted Advisor:
+#' The Amazon Web Services Support API currently supports the following languages for Trusted Advisor:
 #' 
 #' -   Chinese, Simplified - `zh`
 #' 
@@ -630,8 +542,7 @@ support_describe_trusted_advisor_checks <- function(language) {
 #'
 #' @param checkId &#91;required&#93; The unique identifier for the Trusted Advisor check to refresh.
 #' 
-#' Specifying the check ID of a check that is automatically refreshed
-#' causes an `InvalidParameterValue` error.
+#' Specifying the check ID of a check that is automatically refreshed causes an `InvalidParameterValue` error.
 #'
 #' @keywords internal
 #'
@@ -662,9 +573,7 @@ support_refresh_trusted_advisor_check <- function(checkId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/support_resolve_case/](https://www.paws-r-sdk.com/docs/support_resolve_case/) for full documentation.
 #'
-#' @param caseId The support case ID requested or returned in the call. The case ID is an
-#' alphanumeric string formatted as shown in this example:
-#' case-*12345678910-2013-c4c1d2bf33c5cf47*
+#' @param caseId The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-*12345678910-2013-c4c1d2bf33c5cf47*
 #'
 #' @keywords internal
 #'

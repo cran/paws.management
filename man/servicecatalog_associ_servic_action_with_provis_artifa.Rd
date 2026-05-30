@@ -15,8 +15,7 @@ servicecatalog_associate_service_action_with_provisioning_artifact(
 \arguments{
 \item{ProductId}{[required] The product identifier. For example, \code{prod-abcdzk7xy33qa}.}
 
-\item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact. For example,
-\verb{pa-4abcdjnxjj6ne}.}
+\item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact. For example, \verb{pa-4abcdjnxjj6ne}.}
 
 \item{ServiceActionId}{[required] The self-service action identifier. For example, \code{act-fs7abcd89wxyz}.}
 
@@ -26,10 +25,7 @@ servicecatalog_associate_service_action_with_provisioning_artifact(
 \item \code{zh} - Chinese
 }}
 
-\item{IdempotencyToken}{A unique identifier that you provide to ensure idempotency. If multiple
-requests from the same Amazon Web Services account use the same
-idempotency token, the same response is returned for each repeated
-request.}
+\item{IdempotencyToken}{A unique identifier that you provide to ensure idempotency. If multiple requests from the same Amazon Web Services account use the same idempotency token, the same response is returned for each repeated request.}
 }
 \description{
 Associates a self-service action with a provisioning artifact.

@@ -21,18 +21,13 @@ ssm_update_maintenance_window_target(
 
 \item{Targets}{The targets to add or replace.}
 
-\item{OwnerInformation}{User-provided value that will be included in any Amazon CloudWatch
-Events events raised while running tasks for these targets in this
-maintenance window.}
+\item{OwnerInformation}{User-provided value that will be included in any Amazon CloudWatch Events events raised while running tasks for these targets in this maintenance window.}
 
 \item{Name}{A name for the update.}
 
 \item{Description}{An optional description for the update.}
 
-\item{Replace}{If \code{True}, then all fields that are required by the
-\code{\link[=ssm_register_target_with_maintenance_window]{register_target_with_maintenance_window}}
-operation are also required for this API request. Optional fields that
-aren't specified are set to null.}
+\item{Replace}{If \code{True}, then all fields that are required by the \code{\link[=ssm_register_target_with_maintenance_window]{register_target_with_maintenance_window}} operation are also required for this API request. Optional fields that aren't specified are set to null.}
 }
 \description{
 Modifies the target of an existing maintenance window. You can change the following:

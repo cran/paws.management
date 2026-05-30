@@ -15,8 +15,7 @@ ssmcontacts_create_contact_channel(
 )
 }
 \arguments{
-\item{ContactId}{[required] The Amazon Resource Name (ARN) of the contact you are adding the contact
-channel to.}
+\item{ContactId}{[required] The Amazon Resource Name (ARN) of the contact you are adding the contact channel to.}
 
 \item{Name}{[required] The name of the contact channel.}
 
@@ -27,21 +26,16 @@ channel to.}
 \item \code{EMAIL}
 }}
 
-\item{DeliveryAddress}{[required] The details that Incident Manager uses when trying to engage the contact
-channel. The format is dependent on the type of the contact channel. The
-following are the expected formats:
+\item{DeliveryAddress}{[required] The details that Incident Manager uses when trying to engage the contact channel. The format is dependent on the type of the contact channel. The following are the expected formats:
 \itemize{
 \item SMS - '+' followed by the country code and phone number
 \item VOICE - '+' followed by the country code and phone number
 \item EMAIL - any standard email format
 }}
 
-\item{DeferActivation}{If you want to activate the channel at a later time, you can choose to
-defer activation. Incident Manager can't engage your contact channel
-until it has been activated.}
+\item{DeferActivation}{If you want to activate the channel at a later time, you can choose to defer activation. Incident Manager can't engage your contact channel until it has been activated.}
 
-\item{IdempotencyToken}{A token ensuring that the operation is called only once with the
-specified details.}
+\item{IdempotencyToken}{A token ensuring that the operation is called only once with the specified details.}
 }
 \description{
 A contact channel is the method that Incident Manager uses to engage your contact.

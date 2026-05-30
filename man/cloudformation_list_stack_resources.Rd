@@ -7,18 +7,13 @@
 cloudformation_list_stack_resources(StackName, NextToken = NULL)
 }
 \arguments{
-\item{StackName}{[required] The name or the unique stack ID that is associated with the stack, which
-aren't always interchangeable:
+\item{StackName}{[required] The name or the unique stack ID that is associated with the stack, which aren't always interchangeable:
 \itemize{
-\item Running stacks: You can specify either the stack's name or its
-unique stack ID.
+\item Running stacks: You can specify either the stack's name or its unique stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
-}
+}}
 
-Default: There is no default value.}
-
-\item{NextToken}{A string that identifies the next page of stack resources that you want
-to retrieve.}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Returns descriptions of all resources of the specified stack.

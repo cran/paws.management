@@ -8,9 +8,7 @@ log group}
 cloudwatchlogs_get_transformer(logGroupIdentifier)
 }
 \arguments{
-\item{logGroupIdentifier}{[required] Specify either the name or ARN of the log group to return transformer
-information for. If the log group is in a source account and you are
-using a monitoring account, you must use the log group ARN.}
+\item{logGroupIdentifier}{[required] Specify either the name or ARN of the log group to return transformer information for. If the log group is in a source account and you are using a monitoring account, you must use the log group ARN.}
 }
 \description{
 Returns the information about the log transformer associated with this log group.

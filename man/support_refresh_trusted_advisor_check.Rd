@@ -9,8 +9,7 @@ support_refresh_trusted_advisor_check(checkId)
 \arguments{
 \item{checkId}{[required] The unique identifier for the Trusted Advisor check to refresh.
 
-Specifying the check ID of a check that is automatically refreshed
-causes an \code{InvalidParameterValue} error.}
+Specifying the check ID of a check that is automatically refreshed causes an \code{InvalidParameterValue} error.}
 }
 \description{
 Refreshes the Trusted Advisor check that you specify using the check ID. You can get the check IDs by calling the \code{\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks}} operation.

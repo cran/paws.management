@@ -11,13 +11,11 @@ ssmcontacts_update_contact_channel(
 )
 }
 \arguments{
-\item{ContactChannelId}{[required] The Amazon Resource Name (ARN) of the contact channel you want to
-update.}
+\item{ContactChannelId}{[required] The Amazon Resource Name (ARN) of the contact channel you want to update.}
 
 \item{Name}{The name of the contact channel.}
 
-\item{DeliveryAddress}{The details that Incident Manager uses when trying to engage the contact
-channel.}
+\item{DeliveryAddress}{The details that Incident Manager uses when trying to engage the contact channel.}
 }
 \description{
 Updates a contact's contact channel.

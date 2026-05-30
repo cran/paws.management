@@ -19,19 +19,15 @@ licensemanager_create_license_manager_report_generator(
 
 \item{Type}{[required] Type of reports to generate. The following report types an be generated:
 \itemize{
-\item License configuration report - Reports the number and details of
-consumed licenses for a license configuration.
-\item Resource report - Reports the tracked licenses and resource
-consumption for a license configuration.
+\item License configuration report - Reports the number and details of consumed licenses for a license configuration.
+\item Resource report - Reports the tracked licenses and resource consumption for a license configuration.
 }}
 
 \item{ReportContext}{[required] Defines the type of license configuration the report generator tracks.}
 
-\item{ReportFrequency}{[required] Frequency by which reports are generated. Reports can be generated
-daily, monthly, or weekly.}
+\item{ReportFrequency}{[required] Frequency by which reports are generated. Reports can be generated daily, monthly, or weekly.}
 
-\item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+\item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.}
 
 \item{Description}{Description of the report generator.}
 

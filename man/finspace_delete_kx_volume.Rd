@@ -7,8 +7,7 @@
 finspace_delete_kx_volume(environmentId, volumeName, clientToken = NULL)
 }
 \arguments{
-\item{environmentId}{[required] A unique identifier for the kdb environment, whose clusters can attach
-to the volume.}
+\item{environmentId}{[required] A unique identifier for the kdb environment, whose clusters can attach to the volume.}
 
 \item{volumeName}{[required] The name of the volume that you want to delete.}
 

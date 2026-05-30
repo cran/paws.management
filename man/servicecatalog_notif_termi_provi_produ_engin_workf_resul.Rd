@@ -13,9 +13,7 @@ servicecatalog_notify_terminate_provisioned_product_engine_workflow_result(
 )
 }
 \arguments{
-\item{WorkflowToken}{[required] The encrypted contents of the terminate engine execution payload that
-Service Catalog sends after the Terraform product terminate workflow
-starts.}
+\item{WorkflowToken}{[required] The encrypted contents of the terminate engine execution payload that Service Catalog sends after the Terraform product terminate workflow starts.}
 
 \item{RecordId}{[required] The identifier of the record.}
 

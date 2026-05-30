@@ -8,15 +8,11 @@ Region and Amazon Web Services account}
 ssm_list_ops_item_events(Filters = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
-\item{Filters}{One or more OpsItem filters. Use a filter to return a more specific list
-of results.}
+\item{Filters}{One or more OpsItem filters. Use a filter to return a more specific list of results.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{A token to start the list. Use this token to get the next set of
-results.}
+\item{NextToken}{A token to start the list. Use this token to get the next set of results.}
 }
 \description{
 Returns a list of all OpsItem events in the current Amazon Web Services Region and Amazon Web Services account. You can limit the results to events associated with specific OpsItems by specifying a filter.

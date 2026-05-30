@@ -13,11 +13,7 @@ autoscaling_attach_load_balancer_target_groups(
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{TargetGroupARNs}{[required] The Amazon Resource Names (ARNs) of the target groups. You can specify
-up to 10 target groups. To get the ARN of a target group, use the
-Elastic Load Balancing
-\href{https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeTargetGroups.html}{DescribeTargetGroups}
-API operation.}
+\item{TargetGroupARNs}{[required] The Amazon Resource Names (ARNs) of the target groups. You can specify up to 10 target groups. To get the ARN of a target group, use the Elastic Load Balancing \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeTargetGroups.html}{DescribeTargetGroups} API operation.}
 }
 \description{
 This API operation is superseded by \code{\link[=autoscaling_attach_traffic_sources]{attach_traffic_sources}}, which can attach multiple traffic sources types. We recommend using \code{\link[=autoscaling_attach_traffic_sources]{attach_traffic_sources}} to simplify how you manage traffic sources. However, we continue to support \code{\link[=autoscaling_attach_load_balancer_target_groups]{attach_load_balancer_target_groups}}. You can use both the original \code{\link[=autoscaling_attach_load_balancer_target_groups]{attach_load_balancer_target_groups}} API operation and \code{\link[=autoscaling_attach_traffic_sources]{attach_traffic_sources}} on the same Auto Scaling group.

@@ -9,8 +9,7 @@ cloudtrail_update_channel(Channel, Destinations = NULL, Name = NULL)
 \arguments{
 \item{Channel}{[required] The ARN or ID (the ARN suffix) of the channel that you want to update.}
 
-\item{Destinations}{The ARNs of event data stores that you want to log events arriving
-through the channel.}
+\item{Destinations}{The ARNs of event data stores that you want to log events arriving through the channel.}
 
 \item{Name}{Changes the name of the channel.}
 }

@@ -14,23 +14,15 @@ configservice_describe_compliance_by_resource(
 )
 }
 \arguments{
-\item{ResourceType}{The types of Amazon Web Services resources for which you want compliance
-information (for example, \verb{AWS::EC2::Instance}). For this operation, you
-can specify that the resource type is an Amazon Web Services account by
-specifying \verb{AWS::::Account}.}
+\item{ResourceType}{The types of Amazon Web Services resources for which you want compliance information (for example, \verb{AWS::EC2::Instance}). For this operation, you can specify that the resource type is an Amazon Web Services account by specifying \verb{AWS::::Account}.}
 
-\item{ResourceId}{The ID of the Amazon Web Services resource for which you want compliance
-information. You can specify only one resource ID. If you specify a
-resource ID, you must also specify a type for \code{ResourceType}.}
+\item{ResourceId}{The ID of the Amazon Web Services resource for which you want compliance information. You can specify only one resource ID. If you specify a resource ID, you must also specify a type for \code{ResourceType}.}
 
 \item{ComplianceTypes}{Filters the results by compliance.}
 
-\item{Limit}{The maximum number of evaluation results returned on each page. The
-default is 10. You cannot specify a number greater than 100. If you
-specify 0, Config uses the default.}
+\item{Limit}{The maximum number of evaluation results returned on each page. The default is 10. You cannot specify a number greater than 100. If you specify 0, Config uses the default.}
 
-\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
-the next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get the next page of results in a paginated response.}
 }
 \description{
 Indicates whether the specified Amazon Web Services resources are compliant. If a resource is noncompliant, this operation returns the number of Config rules that the resource does not comply with.

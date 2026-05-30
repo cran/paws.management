@@ -9,11 +9,9 @@ cloudwatchlogs_list_tags_for_resource(resourceArn)
 \arguments{
 \item{resourceArn}{[required] The ARN of the resource that you want to view tags for.
 
-The ARN format of a log group is
-\code{arn:aws:logs:Region:account-id:log-group:log-group-name }
+The ARN format of a log group is \code{arn:aws:logs:Region:account-id:log-group:log-group-name }
 
-The ARN format of a destination is
-\code{arn:aws:logs:Region:account-id:destination:destination-name }
+The ARN format of a destination is \code{arn:aws:logs:Region:account-id:destination:destination-name }
 
 For more information about ARN format, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/iam-access-control-overview-cwl.html}{CloudWatch Logs resources and operations}.}
 }

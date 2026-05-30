@@ -12,37 +12,21 @@ cloudformation_describe_stack_resources(
 )
 }
 \arguments{
-\item{StackName}{The name or the unique stack ID that is associated with the stack, which
-aren't always interchangeable:
+\item{StackName}{The name or the unique stack ID that is associated with the stack, which aren't always interchangeable:
 \itemize{
-\item Running stacks: You can specify either the stack's name or its
-unique stack ID.
+\item Running stacks: You can specify either the stack's name or its unique stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
 }
 
-Default: There is no default value.
+Required: Conditional. If you don't specify \code{StackName}, you must specify \code{PhysicalResourceId}.}
 
-Required: Conditional. If you don't specify \code{StackName}, you must
-specify \code{PhysicalResourceId}.}
+\item{LogicalResourceId}{The logical name of the resource as specified in the template.}
 
-\item{LogicalResourceId}{The logical name of the resource as specified in the template.
+\item{PhysicalResourceId}{The name or unique identifier that corresponds to a physical instance ID of a resource supported by CloudFormation.
 
-Default: There is no default value.}
+For example, for an Amazon Elastic Compute Cloud (EC2) instance, \code{PhysicalResourceId} corresponds to the \code{InstanceId}. You can pass the EC2 \code{InstanceId} to \code{\link[=cloudformation_describe_stack_resources]{describe_stack_resources}} to find which stack the instance belongs to and what other resources are part of the stack.
 
-\item{PhysicalResourceId}{The name or unique identifier that corresponds to a physical instance ID
-of a resource supported by CloudFormation.
-
-For example, for an Amazon Elastic Compute Cloud (EC2) instance,
-\code{PhysicalResourceId} corresponds to the \code{InstanceId}. You can pass the
-EC2 \code{InstanceId} to
-\code{\link[=cloudformation_describe_stack_resources]{describe_stack_resources}} to
-find which stack the instance belongs to and what other resources are
-part of the stack.
-
-Required: Conditional. If you don't specify \code{PhysicalResourceId}, you
-must specify \code{StackName}.
-
-Default: There is no default value.}
+Required: Conditional. If you don't specify \code{PhysicalResourceId}, you must specify \code{StackName}.}
 }
 \description{
 Returns Amazon Web Services resource descriptions for running and deleted stacks. If \code{StackName} is specified, all the associated resources that are part of the stack are returned. If \code{PhysicalResourceId} is specified, the associated resources of the stack that the resource belongs to are returned.

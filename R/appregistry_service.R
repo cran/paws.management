@@ -5,11 +5,7 @@ NULL
 #' AWS Service Catalog App Registry
 #'
 #' @description
-#' Amazon Web Services Service Catalog AppRegistry enables organizations to
-#' understand the application context of their Amazon Web Services
-#' resources. AppRegistry provides a repository of your applications, their
-#' resources, and the application metadata that you use within your
-#' enterprise.
+#' Amazon Web Services Service Catalog AppRegistry enables organizations to understand the application context of their Amazon Web Services resources. AppRegistry provides a repository of your applications, their resources, and the application metadata that you use within your enterprise.
 #'
 #' @param
 #' config
@@ -149,7 +145,7 @@ appregistry <- function(config = list(), credentials = list(), endpoint = NULL, 
 
 .appregistry$metadata <- list(
   service_name = "appregistry",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "servicecatalog-appregistry.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "servicecatalog-appregistry.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "servicecatalog-appregistry.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "servicecatalog-appregistry.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "servicecatalog-appregistry.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "servicecatalog-appregistry.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "servicecatalog-appregistry.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "servicecatalog-appregistry.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "servicecatalog-appregistry.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "servicecatalog-appregistry.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "servicecatalog-appregistry.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "servicecatalog-appregistry.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "servicecatalog-appregistry.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "servicecatalog-appregistry.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "servicecatalog-appregistry.{region}.amazonaws.eu", global = FALSE)),
   service_id = "Service Catalog AppRegistry",
   api_version = "2020-06-24",
   signing_name = "servicecatalog",

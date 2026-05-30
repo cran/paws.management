@@ -8,8 +8,7 @@ administrator}
 cloudtrail_register_organization_delegated_admin(MemberAccountId)
 }
 \arguments{
-\item{MemberAccountId}{[required] An organization member account ID that you want to designate as a
-delegated administrator.}
+\item{MemberAccountId}{[required] An organization member account ID that you want to designate as a delegated administrator.}
 }
 \description{
 Registers an organization’s member account as the CloudTrail \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-delegated-administrator.html}{delegated administrator}.

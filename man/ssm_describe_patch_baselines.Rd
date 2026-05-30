@@ -13,9 +13,7 @@ ssm_describe_patch_baselines(
 \arguments{
 \item{Filters}{Each element in the array is a structure containing a key-value pair.
 
-Supported keys for
-\code{\link[=ssm_describe_patch_baselines]{describe_patch_baselines}} include the
-following:
+Supported keys for \code{\link[=ssm_describe_patch_baselines]{describe_patch_baselines}} include the following:
 \itemize{
 \item \strong{\code{NAME_PREFIX}}
 
@@ -30,8 +28,7 @@ Sample values: \code{AMAZON_LINUX} | \code{SUSE} | \code{WINDOWS}
 
 \item{MaxResults}{The maximum number of patch baselines to return (per page).}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Lists the patch baselines in your Amazon Web Services account.

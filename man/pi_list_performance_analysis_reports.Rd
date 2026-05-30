@@ -13,25 +13,15 @@ pi_list_performance_analysis_reports(
 )
 }
 \arguments{
-\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights returns
-metrics. Valid value is \code{RDS}.}
+\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights returns metrics. Valid value is \code{RDS}.}
 
-\item{Identifier}{[required] An immutable identifier for a data source that is unique for an Amazon
-Web Services Region. Performance Insights gathers metrics from this data
-source. In the console, the identifier is shown as \emph{ResourceID}. When
-you call \code{DescribeDBInstances}, the identifier is returned as
-\code{DbiResourceId}.
+\item{Identifier}{[required] An immutable identifier for a data source that is unique for an Amazon Web Services Region. Performance Insights gathers metrics from this data source. In the console, the identifier is shown as \emph{ResourceID}. When you call \code{DescribeDBInstances}, the identifier is returned as \code{DbiResourceId}.
 
-To use a DB instance as a data source, specify its \code{DbiResourceId}
-value. For example, specify \code{db-ABCDEFGHIJKLMNOPQRSTU1VW2X}.}
+To use a DB instance as a data source, specify its \code{DbiResourceId} value. For example, specify \code{db-ABCDEFGHIJKLMNOPQRSTU1VW2X}.}
 
-\item{NextToken}{An optional pagination token provided by a previous request. If this
-parameter is specified, the response includes only records beyond the
-token, up to the value specified by \code{MaxResults}.}
+\item{NextToken}{An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the token, up to the value specified by \code{MaxResults}.}
 
-\item{MaxResults}{The maximum number of items to return in the response. If more items
-exist than the specified \code{MaxResults} value, a pagination token is
-included in the response so that the remaining results can be retrieved.}
+\item{MaxResults}{The maximum number of items to return in the response. If more items exist than the specified \code{MaxResults} value, a pagination token is included in the response so that the remaining results can be retrieved.}
 
 \item{ListTags}{Specifies whether or not to include the list of tags in the response.}
 }

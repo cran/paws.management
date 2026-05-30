@@ -25,9 +25,7 @@ Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{A
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{VersionId}{The ID of a specific version of the extension. The version ID is the
-value at the end of the Amazon Resource Name (ARN) assigned to the
-extension version when it is registered.}
+\item{VersionId}{The ID of a specific version of the extension. The version ID is the value at the end of the Amazon Resource Name (ARN) assigned to the extension version when it is registered.}
 }
 \description{
 Marks an extension or extension version as \code{DEPRECATED} in the CloudFormation registry, removing it from active use. Deprecated extensions or extension versions cannot be used in CloudFormation operations.

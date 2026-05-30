@@ -7,63 +7,27 @@ NULL
 #' @description
 #' Amazon Web Services Support
 #' 
-#' The *Amazon Web Services Support API Reference* is intended for
-#' programmers who need detailed information about the Amazon Web Services
-#' Support operations and data types. You can use the API to manage your
-#' support cases programmatically. The Amazon Web Services Support API uses
-#' HTTP methods that return results in JSON format.
+#' The *Amazon Web Services Support API Reference* is intended for programmers who need detailed information about the Amazon Web Services Support operations and data types. You can use the API to manage your support cases programmatically. The Amazon Web Services Support API uses HTTP methods that return results in JSON format.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan to use the Amazon Web Services Support API.
+#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that
-#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan, the `SubscriptionRequiredException` error message appears. For
-#'     information about changing your support plan, see [Amazon Web
-#'     Services Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
 #' 
-#' You can also use the Amazon Web Services Support API to access features
-#' for [Trusted
-#' Advisor](https://aws.amazon.com/premiumsupport/technology/trusted-advisor/).
-#' You can return a list of checks and their descriptions, get check
-#' results, specify checks to refresh, and get the refresh status of
-#' checks.
+#' You can also use the Amazon Web Services Support API to access features for [Trusted Advisor](https://aws.amazon.com/premiumsupport/technology/trusted-advisor/). You can return a list of checks and their descriptions, get check results, specify checks to refresh, and get the refresh status of checks.
 #' 
-#' You can manage your support cases with the following Amazon Web Services
-#' Support API operations:
+#' You can manage your support cases with the following Amazon Web Services Support API operations:
 #' 
-#' -   The [`create_case`][support_create_case],
-#'     [`describe_cases`][support_describe_cases],
-#'     [`describe_attachment`][support_describe_attachment], and
-#'     [`resolve_case`][support_resolve_case] operations create Amazon Web
-#'     Services Support cases, retrieve information about cases, and
-#'     resolve cases.
+#' -   The [`create_case`][support_create_case], [`describe_cases`][support_describe_cases], [`describe_attachment`][support_describe_attachment], and [`resolve_case`][support_resolve_case] operations create Amazon Web Services Support cases, retrieve information about cases, and resolve cases.
 #' 
-#' -   The [`describe_communications`][support_describe_communications],
-#'     [`add_communication_to_case`][support_add_communication_to_case],
-#'     and [`add_attachments_to_set`][support_add_attachments_to_set]
-#'     operations retrieve and add communications and attachments to Amazon
-#'     Web Services Support cases.
+#' -   The [`describe_communications`][support_describe_communications], [`add_communication_to_case`][support_add_communication_to_case], and [`add_attachments_to_set`][support_add_attachments_to_set] operations retrieve and add communications and attachments to Amazon Web Services Support cases.
 #' 
-#' -   The [`describe_services`][support_describe_services] and
-#'     [`describe_severity_levels`][support_describe_severity_levels]
-#'     operations return Amazon Web Service names, service codes, service
-#'     categories, and problem severity levels. You use these values when
-#'     you call the [`create_case`][support_create_case] operation.
+#' -   The [`describe_services`][support_describe_services] and [`describe_severity_levels`][support_describe_severity_levels] operations return Amazon Web Services service names, service codes, service categories, and problem severity levels. You use these values when you call the [`create_case`][support_create_case] operation.
 #' 
-#' You can also use the Amazon Web Services Support API to call the Trusted
-#' Advisor operations. For more information, see [Trusted
-#' Advisor](https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html)
-#' in the *Amazon Web Services Support User Guide*.
+#' You can also use the Amazon Web Services Support API to call the Trusted Advisor operations. For more information, see [Trusted Advisor](https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html) in the *Amazon Web Services Support User Guide*.
 #' 
-#' For authentication of requests, Amazon Web Services Support uses
-#' [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
+#' For authentication of requests, Amazon Web Services Support uses [Signature Version 4 Signing Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' 
-#' For more information about this service and the endpoints to use, see
-#' [About the Amazon Web Services Support
-#' API](https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html)
-#' in the *Amazon Web Services Support User Guide*.
+#' For more information about this service and the endpoints to use, see [About the Amazon Web Services Support API](https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html) in the *Amazon Web Services Support User Guide*.
 #'
 #' @param
 #' config
@@ -195,7 +159,7 @@ support <- function(config = list(), credentials = list(), endpoint = NULL, regi
 
 .support$metadata <- list(
   service_name = "support",
-  endpoints = list("aws-global" = list(endpoint = "support.us-east-1.amazonaws.com", global = TRUE, signing_region = "us-east-1"), "us-east-1" = list(endpoint = "support.us-east-1.amazonaws.com", global = TRUE), "aws-cn-global" = list(endpoint = "support.cn-north-1.amazonaws.com.cn", global = TRUE, signing_region = "cn-north-1"), "cn-north-1" = list(endpoint = "support.cn-north-1.amazonaws.com.cn", global = TRUE), "aws-us-gov-global" = list(endpoint = "support.us-gov-west-1.amazonaws.com", global = TRUE, signing_region = "us-gov-west-1"), "us-gov-west-1" = list(endpoint = "support.us-gov-west-1.amazonaws.com", global = TRUE), "aws-iso-global" = list(endpoint = "support.us-iso-east-1.c2s.ic.gov", global = TRUE, signing_region = "us-iso-east-1"), "us-iso-east-1" = list(endpoint = "support.us-iso-east-1.c2s.ic.gov", global = TRUE), "aws-iso-b-global" = list(endpoint = "support.us-isob-east-1.sc2s.sgov.gov", global = TRUE, signing_region = "us-isob-east-1"), "us-isob-east-1" = list(endpoint = "support.us-isob-east-1.sc2s.sgov.gov", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "support.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "support.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "support.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "support.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "support.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "support.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "support.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("aws-global" = list(endpoint = "support.us-east-1.amazonaws.com", global = TRUE, signing_region = "us-east-1"), "us-east-1" = list(endpoint = "support.us-east-1.amazonaws.com", global = TRUE), "aws-cn-global" = list(endpoint = "support.cn-north-1.amazonaws.com.cn", global = TRUE, signing_region = "cn-north-1"), "cn-north-1" = list(endpoint = "support.cn-north-1.amazonaws.com.cn", global = TRUE), "aws-us-gov-global" = list(endpoint = "support.us-gov-west-1.amazonaws.com", global = TRUE, signing_region = "us-gov-west-1"), "us-gov-west-1" = list(endpoint = "support.us-gov-west-1.amazonaws.com", global = TRUE), "aws-iso-global" = list(endpoint = "support.us-iso-east-1.c2s.ic.gov", global = TRUE, signing_region = "us-iso-east-1"), "us-iso-east-1" = list(endpoint = "support.us-iso-east-1.c2s.ic.gov", global = TRUE), "aws-iso-b-global" = list(endpoint = "support.us-isob-east-1.sc2s.sgov.gov", global = TRUE, signing_region = "us-isob-east-1"), "us-isob-east-1" = list(endpoint = "support.us-isob-east-1.sc2s.sgov.gov", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "support.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "support.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "support.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "support.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "support.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "support.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "support.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "support.{region}.amazonaws.eu", global = FALSE)),
   service_id = "Support",
   api_version = "2013-04-15",
   signing_name = "support",

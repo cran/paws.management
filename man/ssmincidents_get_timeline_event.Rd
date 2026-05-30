@@ -7,11 +7,9 @@
 ssmincidents_get_timeline_event(eventId, incidentRecordArn)
 }
 \arguments{
-\item{eventId}{[required] The ID of the event. You can get an event's ID when you create it, or by
-using \code{\link[=ssmincidents_list_timeline_events]{list_timeline_events}}.}
+\item{eventId}{[required] The ID of the event. You can get an event's ID when you create it, or by using \code{\link[=ssmincidents_list_timeline_events]{list_timeline_events}}.}
 
-\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident that includes the
-timeline event.}
+\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident that includes the timeline event.}
 }
 \description{
 Retrieves a timeline event based on its ID and incident record.

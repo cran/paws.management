@@ -8,8 +8,7 @@ identifier}
 controltower_get_enabled_baseline(enabledBaselineIdentifier)
 }
 \arguments{
-\item{enabledBaselineIdentifier}{[required] Identifier of the \code{EnabledBaseline} resource to be retrieved, in ARN
-format.}
+\item{enabledBaselineIdentifier}{[required] Identifier of the \code{EnabledBaseline} resource to be retrieved, in ARN format.}
 }
 \description{
 Retrieve details of an \code{EnabledBaseline} resource by specifying its identifier.

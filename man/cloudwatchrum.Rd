@@ -53,19 +53,9 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-With Amazon CloudWatch RUM, you can perform real-user monitoring to
-collect client-side data about your web application performance from
-actual user sessions in real time. The data collected includes page load
-times, client-side errors, and user behavior. When you view this data,
-you can see it all aggregated together and also see breakdowns by the
-browsers and devices that your customers use.
+With Amazon CloudWatch RUM, you can perform real-user monitoring to collect client-side data about your web application performance from actual user sessions in real time. The data collected includes page load times, client-side errors, and user behavior. When you view this data, you can see it all aggregated together and also see breakdowns by the browsers and devices that your customers use.
 
-You can use the collected data to quickly identify and debug client-side
-performance issues. CloudWatch RUM helps you visualize anomalies in your
-application performance and find relevant debugging data such as error
-messages, stack traces, and user sessions. You can also use RUM to
-understand the range of end-user impact including the number of users,
-geolocations, and browsers used.
+You can use the collected data to quickly identify and debug client-side performance issues. CloudWatch RUM helps you visualize anomalies in your application performance and find relevant debugging data such as error messages, stack traces, and user sessions. You can also use RUM to understand the range of end-user impact including the number of users, geolocations, and browsers used.
 }
 \section{Service syntax}{
 
@@ -111,12 +101,15 @@ geolocations, and browsers used.
 \link[=cloudwatchrum_batch_get_rum_metric_definitions]{batch_get_rum_metric_definitions} \tab Retrieves the list of metrics and dimensions that a RUM app monitor is sending to a single destination\cr
 \link[=cloudwatchrum_create_app_monitor]{create_app_monitor} \tab Creates a Amazon CloudWatch RUM app monitor, which collects telemetry data from your application and sends that data to RUM\cr
 \link[=cloudwatchrum_delete_app_monitor]{delete_app_monitor} \tab Deletes an existing app monitor\cr
+\link[=cloudwatchrum_delete_resource_policy]{delete_resource_policy} \tab Removes the association of a resource-based policy from an app monitor\cr
 \link[=cloudwatchrum_delete_rum_metrics_destination]{delete_rum_metrics_destination} \tab Deletes a destination for CloudWatch RUM extended metrics, so that the specified app monitor stops sending extended metrics to that destination\cr
 \link[=cloudwatchrum_get_app_monitor]{get_app_monitor} \tab Retrieves the complete configuration information for one app monitor\cr
 \link[=cloudwatchrum_get_app_monitor_data]{get_app_monitor_data} \tab Retrieves the raw performance events that RUM has collected from your web application, so that you can do your own processing or analysis of this data\cr
+\link[=cloudwatchrum_get_resource_policy]{get_resource_policy} \tab Use this operation to retrieve information about a resource-based policy that is attached to an app monitor\cr
 \link[=cloudwatchrum_list_app_monitors]{list_app_monitors} \tab Returns a list of the Amazon CloudWatch RUM app monitors in the account\cr
 \link[=cloudwatchrum_list_rum_metrics_destinations]{list_rum_metrics_destinations} \tab Returns a list of destinations that you have created to receive RUM extended metrics, for the specified app monitor\cr
 \link[=cloudwatchrum_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch RUM resource\cr
+\link[=cloudwatchrum_put_resource_policy]{put_resource_policy} \tab Use this operation to assign a resource-based policy to a CloudWatch RUM app monitor to control access to it\cr
 \link[=cloudwatchrum_put_rum_events]{put_rum_events} \tab Sends telemetry events about your application performance and user behavior to CloudWatch RUM\cr
 \link[=cloudwatchrum_put_rum_metrics_destination]{put_rum_metrics_destination} \tab Creates or updates a destination to receive extended metrics from CloudWatch RUM\cr
 \link[=cloudwatchrum_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified CloudWatch RUM resource\cr

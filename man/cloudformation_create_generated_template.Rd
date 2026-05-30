@@ -15,18 +15,13 @@ cloudformation_create_generated_template(
 \arguments{
 \item{Resources}{An optional list of resources to be included in the generated template.
 
-If no resources are specified,the template will be created without any
-resources. Resources can be added to the template using the
-\code{\link[=cloudformation_update_generated_template]{update_generated_template}}
-API action.}
+If no resources are specified,the template will be created without any resources. Resources can be added to the template using the \code{\link[=cloudformation_update_generated_template]{update_generated_template}} API action.}
 
 \item{GeneratedTemplateName}{[required] The name assigned to the generated template.}
 
-\item{StackName}{An optional name or ARN of a stack to use as the base stack for the
-generated template.}
+\item{StackName}{An optional name or ARN of a stack to use as the base stack for the generated template.}
 
-\item{TemplateConfiguration}{The configuration details of the generated template, including the
-\code{DeletionPolicy} and \code{UpdateReplacePolicy}.}
+\item{TemplateConfiguration}{The configuration details of the generated template, including the \code{DeletionPolicy} and \code{UpdateReplacePolicy}.}
 }
 \description{
 Creates a template from existing resources that are not already managed with CloudFormation. You can check the status of the template generation using the \code{\link[=cloudformation_describe_generated_template]{describe_generated_template}} API action.

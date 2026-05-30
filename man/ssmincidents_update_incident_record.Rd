@@ -20,12 +20,9 @@ ssmincidents_update_incident_record(
 
 \item{chatChannel}{The Chatbot chat channel where responders can collaborate.}
 
-\item{clientToken}{A token that ensures that a client calls the operation only once with
-the specified details.}
+\item{clientToken}{A token that ensures that a client calls the operation only once with the specified details.}
 
-\item{impact}{Defines the impact of the incident to customers and applications. If you
-provide an impact for an incident, it overwrites the impact provided by
-the response plan.
+\item{impact}{Defines the impact of the incident to customers and applications. If you provide an impact for an incident, it overwrites the impact provided by the response plan.
 
 \strong{Supported impact codes}
 \itemize{
@@ -36,11 +33,9 @@ the response plan.
 \item \code{5} - No Impact
 }}
 
-\item{notificationTargets}{The Amazon SNS targets that Incident Manager notifies when a client
-updates an incident.
+\item{notificationTargets}{The Amazon SNS targets that Incident Manager notifies when a client updates an incident.
 
-Using multiple SNS topics creates redundancy in the event that a Region
-is down during the incident.}
+Using multiple SNS topics creates redundancy in the event that a Region is down during the incident.}
 
 \item{status}{The status of the incident. Possible statuses are \code{Open} or \code{Resolved}.}
 

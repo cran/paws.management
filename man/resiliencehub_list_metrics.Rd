@@ -14,21 +14,17 @@ resiliencehub_list_metrics(
 )
 }
 \arguments{
-\item{conditions}{Indicates the list of all the conditions that were applied on the
-metrics.}
+\item{conditions}{Indicates the list of all the conditions that were applied on the metrics.}
 
 \item{dataSource}{Indicates the data source of the metrics.}
 
 \item{fields}{Indicates the list of fields in the data source.}
 
-\item{maxResults}{Maximum number of results to include in the response. If more results
-exist than the specified \code{MaxResults} value, a token is included in the
-response so that the remaining results can be retrieved.}
+\item{maxResults}{Maximum number of results to include in the response. If more results exist than the specified \code{MaxResults} value, a token is included in the response so that the remaining results can be retrieved.}
 
 \item{nextToken}{Null, or the token from a previous call to get the next set of results.}
 
-\item{sorts}{(Optional) Indicates the order in which you want to sort the fields in
-the metrics. By default, the fields are sorted in the ascending order.}
+\item{sorts}{(Optional) Indicates the order in which you want to sort the fields in the metrics. By default, the fields are sorted in the ascending order.}
 }
 \description{
 Lists the metrics that can be exported.

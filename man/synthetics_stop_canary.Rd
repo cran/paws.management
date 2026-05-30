@@ -7,9 +7,7 @@
 synthetics_stop_canary(Name)
 }
 \arguments{
-\item{Name}{[required] The name of the canary that you want to stop. To find the names of your
-canaries, use
-\href{https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html}{ListCanaries}.}
+\item{Name}{[required] The name of the canary that you want to stop. To find the names of your canaries, use \href{https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html}{ListCanaries}.}
 }
 \description{
 Stops the canary to prevent all future runs. If the canary is currently running,the run that is in progress completes on its own, publishes metrics, and uploads artifacts, but it is not recorded in Synthetics as a completed run.

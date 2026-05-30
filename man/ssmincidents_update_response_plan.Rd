@@ -21,30 +21,23 @@ ssmincidents_update_response_plan(
 )
 }
 \arguments{
-\item{actions}{The actions that this response plan takes at the beginning of an
-incident.}
+\item{actions}{The actions that this response plan takes at the beginning of an incident.}
 
 \item{arn}{[required] The Amazon Resource Name (ARN) of the response plan.}
 
 \item{chatChannel}{The Chatbot chat channel used for collaboration during an incident.
 
-Use the empty structure to remove the chat channel from the response
-plan.}
+Use the empty structure to remove the chat channel from the response plan.}
 
-\item{clientToken}{A token ensuring that the operation is called only once with the
-specified details.}
+\item{clientToken}{A token ensuring that the operation is called only once with the specified details.}
 
-\item{displayName}{The long format name of the response plan. The display name can't
-contain spaces.}
+\item{displayName}{The long format name of the response plan. The display name can't contain spaces.}
 
-\item{engagements}{The Amazon Resource Name (ARN) for the contacts and escalation plans
-that the response plan engages during an incident.}
+\item{engagements}{The Amazon Resource Name (ARN) for the contacts and escalation plans that the response plan engages during an incident.}
 
-\item{incidentTemplateDedupeString}{The string Incident Manager uses to prevent duplicate incidents from
-being created by the same incident in the same account.}
+\item{incidentTemplateDedupeString}{The string Incident Manager uses to prevent duplicate incidents from being created by the same incident in the same account.}
 
-\item{incidentTemplateImpact}{Defines the impact to the customers. Providing an impact overwrites the
-impact provided by a response plan.
+\item{incidentTemplateImpact}{Defines the impact to the customers. Providing an impact overwrites the impact provided by a response plan.
 
 \strong{Supported impact codes}
 \itemize{
@@ -55,23 +48,15 @@ impact provided by a response plan.
 \item \code{5} - No Impact
 }}
 
-\item{incidentTemplateNotificationTargets}{The Amazon SNS targets that are notified when updates are made to an
-incident.}
+\item{incidentTemplateNotificationTargets}{The Amazon SNS targets that are notified when updates are made to an incident.}
 
-\item{incidentTemplateSummary}{A brief summary of the incident. This typically contains what has
-happened, what's currently happening, and next steps.}
+\item{incidentTemplateSummary}{A brief summary of the incident. This typically contains what has happened, what's currently happening, and next steps.}
 
-\item{incidentTemplateTags}{Tags to assign to the template. When the
-\code{\link[=ssmincidents_start_incident]{start_incident}} API action is called,
-Incident Manager assigns the tags specified in the template to the
-incident. To call this action, you must also have permission to call the
-\code{\link[=ssmincidents_tag_resource]{tag_resource}} API action for the incident
-record resource.}
+\item{incidentTemplateTags}{Tags to assign to the template. When the \code{\link[=ssmincidents_start_incident]{start_incident}} API action is called, Incident Manager assigns the tags specified in the template to the incident. To call this action, you must also have permission to call the \code{\link[=ssmincidents_tag_resource]{tag_resource}} API action for the incident record resource.}
 
 \item{incidentTemplateTitle}{The short format name of the incident. The title can't contain spaces.}
 
-\item{integrations}{Information about third-party services integrated into the response
-plan.}
+\item{integrations}{Information about third-party services integrated into the response plan.}
 }
 \description{
 Updates the specified response plan.

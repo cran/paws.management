@@ -11,13 +11,11 @@ ssmcontacts_list_pages_by_contact(
 )
 }
 \arguments{
-\item{ContactId}{[required] The Amazon Resource Name (ARN) of the contact you are retrieving
-engagements for.}
+\item{ContactId}{[required] The Amazon Resource Name (ARN) of the contact you are retrieving engagements for.}
 
 \item{NextToken}{The pagination token to continue to the next page of results.}
 
-\item{MaxResults}{The maximum number of engagements to contact channels to list per page
-of results.}
+\item{MaxResults}{The maximum number of engagements to contact channels to list per page of results.}
 }
 \description{
 Lists the engagements to a contact's contact channels.

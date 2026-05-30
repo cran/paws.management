@@ -7,9 +7,7 @@
 support_resolve_case(caseId = NULL)
 }
 \arguments{
-\item{caseId}{The support case ID requested or returned in the call. The case ID is an
-alphanumeric string formatted as shown in this example:
-case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
+\item{caseId}{The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
 }
 \description{
 Resolves a support case. This operation takes a \code{caseId} and returns the initial and final state of the case.

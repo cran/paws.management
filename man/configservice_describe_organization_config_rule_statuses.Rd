@@ -11,16 +11,11 @@ configservice_describe_organization_config_rule_statuses(
 )
 }
 \arguments{
-\item{OrganizationConfigRuleNames}{The names of organization Config rules for which you want status
-details. If you do not specify any names, Config returns details for all
-your organization Config rules.}
+\item{OrganizationConfigRuleNames}{The names of organization Config rules for which you want status details. If you do not specify any names, Config returns details for all your organization Config rules.}
 
-\item{Limit}{The maximum number of \code{OrganizationConfigRuleStatuses} returned on each
-page. If you do no specify a number, Config uses the default. The
-default is 100.}
+\item{Limit}{The maximum number of \code{OrganizationConfigRuleStatuses} returned on each page. If you do no specify a number, Config uses the default. The default is 100.}
 
-\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
-the next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get the next page of results in a paginated response.}
 }
 \description{
 Provides organization Config rule deployment status for an organization.

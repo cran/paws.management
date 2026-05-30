@@ -20,21 +20,15 @@ servicecatalog_update_portfolio_share(
 \item \code{zh} - Chinese
 }}
 
-\item{PortfolioId}{[required] The unique identifier of the portfolio for which the share will be
-updated.}
+\item{PortfolioId}{[required] The unique identifier of the portfolio for which the share will be updated.}
 
-\item{AccountId}{The Amazon Web Services account Id of the recipient account. This field
-is required when updating an external account to account type share.}
+\item{AccountId}{The Amazon Web Services account Id of the recipient account. This field is required when updating an external account to account type share.}
 
-\item{OrganizationNode}{}
+\item{OrganizationNode}{Information about the organization node.}
 
-\item{ShareTagOptions}{Enables or disables \code{TagOptions} sharing for the portfolio share. If
-this field is not provided, the current state of TagOptions sharing on
-the portfolio share will not be modified.}
+\item{ShareTagOptions}{Enables or disables \code{TagOptions} sharing for the portfolio share. If this field is not provided, the current state of TagOptions sharing on the portfolio share will not be modified.}
 
-\item{SharePrincipals}{A flag to enables or disables \code{Principals} sharing in the portfolio. If
-this field is not provided, the current state of the \code{Principals}
-sharing on the portfolio share will not be modified.}
+\item{SharePrincipals}{A flag to enables or disables \code{Principals} sharing in the portfolio. If this field is not provided, the current state of the \code{Principals} sharing on the portfolio share will not be modified.}
 }
 \description{
 Updates the specified portfolio share. You can use this API to enable or disable \code{TagOptions} sharing or Principal sharing for an existing portfolio share.

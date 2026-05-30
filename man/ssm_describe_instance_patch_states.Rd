@@ -11,11 +11,9 @@ ssm_describe_instance_patch_states(
 )
 }
 \arguments{
-\item{InstanceIds}{[required] The ID of the managed node for which patch state information should be
-retrieved.}
+\item{InstanceIds}{[required] The ID of the managed node for which patch state information should be retrieved.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
 \item{MaxResults}{The maximum number of managed nodes to return (per page).}
 }

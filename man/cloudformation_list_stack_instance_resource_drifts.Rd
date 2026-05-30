@@ -16,54 +16,34 @@ cloudformation_list_stack_instance_resource_drifts(
 )
 }
 \arguments{
-\item{StackSetName}{[required] The name or unique ID of the stack set that you want to list drifted
-resources for.}
+\item{StackSetName}{[required] The name or unique ID of the StackSet that you want to list drifted resources for.}
 
-\item{NextToken}{If the previous paginated request didn't return all of the remaining
-results, the response object's \code{NextToken} parameter value is set to a
-token. To retrieve the next set of results, call this action again and
-assign that token to the request object's \code{NextToken} parameter. If
-there are no remaining results, the previous response object's
-\code{NextToken} parameter is set to \code{null}.}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{MaxResults}{The maximum number of results to be returned with a single call. If the
-number of available results exceeds this maximum, the response includes
-a \code{NextToken} value that you can assign to the \code{NextToken} request
-parameter to get the next set of results.}
+\item{MaxResults}{The maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a \code{NextToken} value that you can assign to the \code{NextToken} request parameter to get the next set of results.}
 
 \item{StackInstanceResourceDriftStatuses}{The resource drift status of the stack instance.
 \itemize{
-\item \code{DELETED}: The resource differs from its expected template
-configuration in that the resource has been deleted.
-\item \code{MODIFIED}: One or more resource properties differ from their
-expected template values.
-\item \code{IN_SYNC}: The resource's actual configuration matches its expected
-template configuration.
+\item \code{DELETED}: The resource differs from its expected template configuration in that the resource has been deleted.
+\item \code{MODIFIED}: One or more resource properties differ from their expected template values.
+\item \code{IN_SYNC}: The resource's actual configuration matches its expected template configuration.
 \item \code{NOT_CHECKED}: CloudFormation doesn't currently return this value.
 }}
 
-\item{StackInstanceAccount}{[required] The name of the Amazon Web Services account that you want to list
-resource drifts for.}
+\item{StackInstanceAccount}{[required] The name of the Amazon Web Services account that you want to list resource drifts for.}
 
 \item{StackInstanceRegion}{[required] The name of the Region where you want to list resource drifts.}
 
 \item{OperationId}{[required] The unique ID of the drift operation.}
 
-\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
-account administrator in the organization's management account or as a
-delegated administrator in a member account.
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an account administrator in the organization's management account or as a delegated administrator in a member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
-self-managed permissions.
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.
-\item If you are signed in to a delegated administrator account, specify
-\code{DELEGATED_ADMIN}.
+\item If you are signed in to a delegated administrator account, specify \code{DELEGATED_ADMIN}.
 
-Your Amazon Web Services account must be registered as a delegated
-administrator in the management account. For more information, see
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
-in the \emph{CloudFormation User Guide}.
+Your Amazon Web Services account must be registered as a delegated administrator in the management account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator} in the \emph{CloudFormation User Guide}.
 }}
 }
 \description{

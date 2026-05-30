@@ -12,15 +12,13 @@ finspace_list_kx_volumes(
 )
 }
 \arguments{
-\item{environmentId}{[required] A unique identifier for the kdb environment, whose clusters can attach
-to the volume.}
+\item{environmentId}{[required] A unique identifier for the kdb environment, whose clusters can attach to the volume.}
 
 \item{maxResults}{The maximum number of results to return in this request.}
 
 \item{nextToken}{A token that indicates where a results page should begin.}
 
-\item{volumeType}{The type of file system volume. Currently, FinSpace only supports
-\code{NAS_1} volume type.}
+\item{volumeType}{The type of file system volume. Currently, FinSpace only supports \code{NAS_1} volume type.}
 }
 \description{
 Lists all the volumes in a kdb environment.

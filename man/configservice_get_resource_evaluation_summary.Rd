@@ -8,8 +8,7 @@ evaluation ID from the proactive rules that were run}
 configservice_get_resource_evaluation_summary(ResourceEvaluationId)
 }
 \arguments{
-\item{ResourceEvaluationId}{[required] The unique \code{ResourceEvaluationId} of Amazon Web Services resource
-execution for which you want to retrieve the evaluation summary.}
+\item{ResourceEvaluationId}{[required] The unique \code{ResourceEvaluationId} of Amazon Web Services resource execution for which you want to retrieve the evaluation summary.}
 }
 \description{
 Returns a summary of resource evaluation for the specified resource evaluation ID from the proactive rules that were run. The results indicate which evaluation context was used to evaluate the rules, which resource details were evaluated, the evaluation mode that was run, and whether the resource details comply with the configuration of the proactive rules.

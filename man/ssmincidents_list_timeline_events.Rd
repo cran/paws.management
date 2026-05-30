@@ -14,8 +14,7 @@ ssmincidents_list_timeline_events(
 )
 }
 \arguments{
-\item{filters}{Filters the timeline events based on the provided conditional values.
-You can filter timeline events with the following keys:
+\item{filters}{Filters the timeline events based on the provided conditional values. You can filter timeline events with the following keys:
 \itemize{
 \item \code{eventReference}
 \item \code{eventTime}
@@ -24,26 +23,20 @@ You can filter timeline events with the following keys:
 
 Note the following when deciding how to use Filters:
 \itemize{
-\item If you don't specify a Filter, the response includes all timeline
-events.
-\item If you specify more than one filter in a single request, the
-response returns timeline events that match all filters.
-\item If you specify a filter with more than one value, the response
-returns timeline events that match any of the values provided.
+\item If you don't specify a Filter, the response includes all timeline events.
+\item If you specify more than one filter in a single request, the response returns timeline events that match all filters.
+\item If you specify a filter with more than one value, the response returns timeline events that match any of the values provided.
 }}
 
-\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident that includes the
-timeline event.}
+\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident that includes the timeline event.}
 
 \item{maxResults}{The maximum number of results per page.}
 
-\item{nextToken}{The pagination token for the next set of items to return. (You received
-this token from a previous call.)}
+\item{nextToken}{The pagination token for the next set of items to return. (You received this token from a previous call.)}
 
 \item{sortBy}{Sort timeline events by the specified key value pair.}
 
-\item{sortOrder}{Sorts the order of timeline events by the value specified in the
-\code{sortBy} field.}
+\item{sortOrder}{Sorts the order of timeline events by the value specified in the \code{sortBy} field.}
 }
 \description{
 Lists timeline events for the specified incident record.

@@ -23,8 +23,7 @@ servicecatalog_list_principals_for_portfolio(
 
 \item{PageSize}{The maximum number of items to return with this call.}
 
-\item{PageToken}{The page token for the next set of results. To retrieve the first set of
-results, use null.}
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 }
 \description{
 Lists all \code{PrincipalARN}s and corresponding \code{PrincipalType}s associated with the specified portfolio.

@@ -15,8 +15,7 @@ autoscaling_enter_standby(
 
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{ShouldDecrementDesiredCapacity}{[required] Indicates whether to decrement the desired capacity of the Auto Scaling
-group by the number of instances moved to \code{Standby} mode.}
+\item{ShouldDecrementDesiredCapacity}{[required] Indicates whether to decrement the desired capacity of the Auto Scaling group by the number of instances moved to \code{Standby} mode.}
 }
 \description{
 Moves the specified instances into the standby state.

@@ -10,15 +10,11 @@ synthetics_create_group(Name, Tags = NULL)
 \arguments{
 \item{Name}{[required] The name for the group. It can include any Unicode characters.
 
-The names for all groups in your account, across all Regions, must be
-unique.}
+The names for all groups in your account, across all Regions, must be unique.}
 
-\item{Tags}{A list of key-value pairs to associate with the group. You can associate
-as many as 50 tags with a group.
+\item{Tags}{A list of key-value pairs to associate with the group. You can associate as many as 50 tags with a group.
 
-Tags can help you organize and categorize your resources. You can also
-use them to scope user permissions, by granting a user permission to
-access or change only the resources that have certain tag values.}
+Tags can help you organize and categorize your resources. You can also use them to scope user permissions, by granting a user permission to access or change only the resources that have certain tag values.}
 }
 \description{
 Creates a group which you can use to associate canaries with each other, including cross-Region canaries. Using groups can help you with managing and automating your canaries, and you can also view aggregated run results and statistics for all canaries in a group.

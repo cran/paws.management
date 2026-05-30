@@ -53,10 +53,9 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-With Service Quotas, you can view and manage your quotas easily as your
-Amazon Web Services workloads grow. Quotas, also referred to as limits,
-are the maximum number of resources that you can create in your Amazon
-Web Services account. For more information, see the \href{https://docs.aws.amazon.com/servicequotas/latest/userguide/}{Service Quotas User Guide}.
+With Service Quotas, you can view and manage your quotas easily as your Amazon Web Services workloads grow. Quotas, also referred to as limits, are the maximum number of resources that you can create in your Amazon Web Services account. For more information, see the \href{https://docs.aws.amazon.com/servicequotas/latest/userguide/}{Service Quotas User Guide}.
+
+You need Amazon Web Services CLI version 2.13.20 or higher to view and manage resource-level quotas such as \verb{Instances per domain} for Amazon OpenSearch Service.
 }
 \section{Service syntax}{
 
@@ -98,24 +97,31 @@ Web Services account. For more information, see the \href{https://docs.aws.amazo
 
 \tabular{ll}{
 \link[=servicequotas_associate_service_quota_template]{associate_service_quota_template} \tab Associates your quota request template with your organization\cr
+\link[=servicequotas_create_support_case]{create_support_case} \tab Creates a Support case for an existing quota increase request\cr
 \link[=servicequotas_delete_service_quota_increase_request_from_template]{delete_service_quota_increase_request_from_template} \tab Deletes the quota increase request for the specified quota from your quota request template\cr
 \link[=servicequotas_disassociate_service_quota_template]{disassociate_service_quota_template} \tab Disables your quota request template\cr
 \link[=servicequotas_get_association_for_service_quota_template]{get_association_for_service_quota_template} \tab Retrieves the status of the association for the quota request template\cr
+\link[=servicequotas_get_auto_management_configuration]{get_auto_management_configuration} \tab Retrieves information about your Service Quotas Automatic Management configuration\cr
 \link[=servicequotas_get_aws_default_service_quota]{get_aws_default_service_quota} \tab Retrieves the default value for the specified quota\cr
+\link[=servicequotas_get_quota_utilization_report]{get_quota_utilization_report} \tab Retrieves the quota utilization report for your Amazon Web Services account\cr
 \link[=servicequotas_get_requested_service_quota_change]{get_requested_service_quota_change} \tab Retrieves information about the specified quota increase request\cr
-\link[=servicequotas_get_service_quota]{get_service_quota} \tab Retrieves the applied quota value for the specified quota\cr
+\link[=servicequotas_get_service_quota]{get_service_quota} \tab Retrieves the applied quota value for the specified account-level or resource-level quota\cr
 \link[=servicequotas_get_service_quota_increase_request_from_template]{get_service_quota_increase_request_from_template} \tab Retrieves information about the specified quota increase request in your quota request template\cr
-\link[=servicequotas_list_aws_default_service_quotas]{list_aws_default_service_quotas} \tab Lists the default values for the quotas for the specified Amazon Web Service\cr
-\link[=servicequotas_list_requested_service_quota_change_history]{list_requested_service_quota_change_history} \tab Retrieves the quota increase requests for the specified Amazon Web Service\cr
+\link[=servicequotas_list_aws_default_service_quotas]{list_aws_default_service_quotas} \tab Lists the default values for the quotas for the specified Amazon Web Services service\cr
+\link[=servicequotas_list_requested_service_quota_change_history]{list_requested_service_quota_change_history} \tab Retrieves the quota increase requests for the specified Amazon Web Services service\cr
 \link[=servicequotas_list_requested_service_quota_change_history_by_quota]{list_requested_service_quota_change_history_by_quota} \tab Retrieves the quota increase requests for the specified quota\cr
 \link[=servicequotas_list_service_quota_increase_requests_in_template]{list_service_quota_increase_requests_in_template} \tab Lists the quota increase requests in the specified quota request template\cr
-\link[=servicequotas_list_service_quotas]{list_service_quotas} \tab Lists the applied quota values for the specified Amazon Web Service\cr
-\link[=servicequotas_list_services]{list_services} \tab Lists the names and codes for the Amazon Web Services integrated with Service Quotas\cr
+\link[=servicequotas_list_service_quotas]{list_service_quotas} \tab Lists the applied quota values for the specified Amazon Web Services service\cr
+\link[=servicequotas_list_services]{list_services} \tab Lists the names and codes for the Amazon Web Services services integrated with Service Quotas\cr
 \link[=servicequotas_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags assigned to the specified applied quota\cr
 \link[=servicequotas_put_service_quota_increase_request_into_template]{put_service_quota_increase_request_into_template} \tab Adds a quota increase request to your quota request template\cr
-\link[=servicequotas_request_service_quota_increase]{request_service_quota_increase} \tab Submits a quota increase request for the specified quota\cr
+\link[=servicequotas_request_service_quota_increase]{request_service_quota_increase} \tab Submits a quota increase request for the specified quota at the account or resource level\cr
+\link[=servicequotas_start_auto_management]{start_auto_management} \tab Starts Service Quotas Automatic Management for an Amazon Web Services account, including notification preferences and excluded quotas configurations\cr
+\link[=servicequotas_start_quota_utilization_report]{start_quota_utilization_report} \tab Initiates the generation of a quota utilization report for your Amazon Web Services account\cr
+\link[=servicequotas_stop_auto_management]{stop_auto_management} \tab Stops Service Quotas Automatic Management for an Amazon Web Services account and removes all associated configurations\cr
 \link[=servicequotas_tag_resource]{tag_resource} \tab Adds tags to the specified applied quota\cr
-\link[=servicequotas_untag_resource]{untag_resource} \tab Removes tags from the specified applied quota
+\link[=servicequotas_untag_resource]{untag_resource} \tab Removes tags from the specified applied quota\cr
+\link[=servicequotas_update_auto_management]{update_auto_management} \tab Updates your Service Quotas Automatic Management configuration, including notification preferences and excluded quotas
 }
 }
 

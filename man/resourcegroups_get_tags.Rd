@@ -8,8 +8,7 @@ specified by an Amazon resource name (ARN)}
 resourcegroups_get_tags(Arn)
 }
 \arguments{
-\item{Arn}{[required] The Amazon resource name (ARN) of the resource group whose tags you want
-to retrieve.}
+\item{Arn}{[required] The Amazon resource name (ARN) of the resource group whose tags you want to retrieve.}
 }
 \description{
 Returns a list of tags that are associated with a resource group, specified by an Amazon resource name (ARN).

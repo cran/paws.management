@@ -16,8 +16,7 @@ auditmanager_list_keywords_for_data_source(
 
 \item{nextToken}{The pagination token that's used to fetch the next set of results.}
 
-\item{maxResults}{Represents the maximum number of results on a page or for an API request
-call.}
+\item{maxResults}{Represents the maximum number of results on a page or for an API request call.}
 }
 \description{
 Returns a list of keywords that are pre-mapped to the specified control data source.

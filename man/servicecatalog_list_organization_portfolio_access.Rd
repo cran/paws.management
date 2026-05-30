@@ -24,14 +24,11 @@ servicecatalog_list_organization_portfolio_access(
 \item{OrganizationNodeType}{[required] The organization node type that will be returned in the output.
 \itemize{
 \item \code{ORGANIZATION} - Organization that has access to the portfolio.
-\item \code{ORGANIZATIONAL_UNIT} - Organizational unit that has access to the
-portfolio within your organization.
-\item \code{ACCOUNT} - Account that has access to the portfolio within your
-organization.
+\item \code{ORGANIZATIONAL_UNIT} - Organizational unit that has access to the portfolio within your organization.
+\item \code{ACCOUNT} - Account that has access to the portfolio within your organization.
 }}
 
-\item{PageToken}{The page token for the next set of results. To retrieve the first set of
-results, use null.}
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 }

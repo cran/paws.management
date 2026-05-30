@@ -17,16 +17,11 @@ appregistry_create_attribute_group(
 
 \item{description}{The description of the attribute group that the user provides.}
 
-\item{attributes}{[required] A JSON string in the form of nested key-value pairs that represent the
-attributes in the group and describes an application and its components.}
+\item{attributes}{[required] A JSON string in the form of nested key-value pairs that represent the attributes in the group and describes an application and its components.}
 
 \item{tags}{Key-value pairs you can use to associate with the attribute group.}
 
-\item{clientToken}{[required] A unique identifier that you provide to ensure idempotency. If you retry
-a request that completed successfully using the same client token and
-the same parameters, the retry succeeds without performing any further
-actions. If you retry a successful request using the same client token,
-but one or more of the parameters are different, the retry fails.}
+\item{clientToken}{[required] A unique identifier that you provide to ensure idempotency. If you retry a request that completed successfully using the same client token and the same parameters, the retry succeeds without performing any further actions. If you retry a successful request using the same client token, but one or more of the parameters are different, the retry fails.}
 }
 \description{
 Creates a new attribute group as a container for user-defined attributes. This feature enables users to have full control over their cloud application's metadata in a rich machine-readable format to facilitate integration with automated workflows and third-party tools.

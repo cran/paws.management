@@ -18,47 +18,27 @@ pi_get_resource_metrics(
 )
 }
 \arguments{
-\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights returns
-metrics. Valid values are as follows:
+\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights returns metrics. Valid values are as follows:
 \itemize{
 \item \code{RDS}
 \item \code{DOCDB}
 }}
 
-\item{Identifier}{[required] An immutable identifier for a data source that is unique for an Amazon
-Web Services Region. Performance Insights gathers metrics from this data
-source. In the console, the identifier is shown as \emph{ResourceID}. When
-you call \code{DescribeDBInstances}, the identifier is returned as
-\code{DbiResourceId}.
+\item{Identifier}{[required] An immutable identifier for a data source that is unique for an Amazon Web Services Region. Performance Insights gathers metrics from this data source. In the console, the identifier is shown as \emph{ResourceID}. When you call \code{DescribeDBInstances}, the identifier is returned as \code{DbiResourceId}.
 
-To use a DB instance as a data source, specify its \code{DbiResourceId}
-value. For example, specify \code{db-ABCDEFGHIJKLMNOPQRSTU1VW2X}.}
+To use a DB instance as a data source, specify its \code{DbiResourceId} value. For example, specify \code{db-ABCDEFGHIJKLMNOPQRSTU1VW2X}.}
 
-\item{MetricQueries}{[required] An array of one or more queries to perform. Each query must specify a
-Performance Insights metric and specify an aggregate function, and you
-can provide filtering criteria. You must append the aggregate function
-to the metric. For example, to find the average for the metric \code{db.load}
-you must use \code{db.load.avg}. Valid values for aggregate functions include
-\code{.avg}, \code{.min}, \code{.max}, and \code{.sum}.}
+\item{MetricQueries}{[required] An array of one or more queries to perform. Each query must specify a Performance Insights metric and specify an aggregate function, and you can provide filtering criteria. You must append the aggregate function to the metric. For example, to find the average for the metric \code{db.load} you must use \code{db.load.avg}. Valid values for aggregate functions include \code{.avg}, \code{.min}, \code{.max}, and \code{.sum}.}
 
-\item{StartTime}{[required] The date and time specifying the beginning of the requested time series
-query range. You can't specify a \code{StartTime} that is earlier than 7 days
-ago. By default, Performance Insights has 7 days of retention, but you
-can extend this range up to 2 years. The value specified is \emph{inclusive}.
-Thus, the command returns data points equal to or greater than
-\code{StartTime}.
+\item{StartTime}{[required] The date and time specifying the beginning of the requested time series query range. You can't specify a \code{StartTime} that is earlier than 7 days ago. By default, Performance Insights has 7 days of retention, but you can extend this range up to 2 years. The value specified is \emph{inclusive}. Thus, the command returns data points equal to or greater than \code{StartTime}.
 
 The value for \code{StartTime} must be earlier than the value for \code{EndTime}.}
 
-\item{EndTime}{[required] The date and time specifying the end of the requested time series query
-range. The value specified is \emph{exclusive}. Thus, the command returns
-data points less than (but not equal to) \code{EndTime}.
+\item{EndTime}{[required] The date and time specifying the end of the requested time series query range. The value specified is \emph{exclusive}. Thus, the command returns data points less than (but not equal to) \code{EndTime}.
 
 The value for \code{EndTime} must be later than the value for \code{StartTime}.}
 
-\item{PeriodInSeconds}{The granularity, in seconds, of the data points returned from
-Performance Insights. A period can be as short as one second, or as long
-as one day (86400 seconds). Valid values are:
+\item{PeriodInSeconds}{The granularity, in seconds, of the data points returned from Performance Insights. A period can be as short as one second, or as long as one day (86400 seconds). Valid values are:
 \itemize{
 \item \code{1} (one second)
 \item \code{60} (one minute)
@@ -67,18 +47,13 @@ as one day (86400 seconds). Valid values are:
 \item \code{86400} (twenty-four hours)
 }
 
-If you don't specify \code{PeriodInSeconds}, then Performance Insights will
-choose a value for you, with a goal of returning roughly 100-200 data
-points in the response.}
+If you don't specify \code{PeriodInSeconds}, then Performance Insights will choose a value for you, with a goal of returning roughly 100-200 data points in the response.}
 
 \item{MaxResults}{The maximum number of items to return in the response.}
 
-\item{NextToken}{An optional pagination token provided by a previous request. If this
-parameter is specified, the response includes only records beyond the
-token, up to the value specified by \code{MaxRecords}.}
+\item{NextToken}{An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the token, up to the value specified by \code{MaxRecords}.}
 
-\item{PeriodAlignment}{The returned timestamp which is the start or end time of the time
-periods. The default value is \code{END_TIME}.}
+\item{PeriodAlignment}{The returned timestamp which is the start or end time of the time periods. The default value is \code{END_TIME}.}
 }
 \description{
 Retrieve Performance Insights metrics for a set of data sources over a time period. You can provide specific dimension groups and dimensions, and provide filtering criteria for each group. You must specify an aggregate function for each metric.

@@ -7,8 +7,7 @@
 ssm_get_maintenance_window(WindowId)
 }
 \arguments{
-\item{WindowId}{[required] The ID of the maintenance window for which you want to retrieve
-information.}
+\item{WindowId}{[required] The ID of the maintenance window for which you want to retrieve information.}
 }
 \description{
 Retrieves a maintenance window.

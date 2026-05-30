@@ -17,24 +17,19 @@ ssmincidents_create_response_plan(
 )
 }
 \arguments{
-\item{actions}{The actions that the response plan starts at the beginning of an
-incident.}
+\item{actions}{The actions that the response plan starts at the beginning of an incident.}
 
 \item{chatChannel}{The Chatbot chat channel used for collaboration during an incident.}
 
-\item{clientToken}{A token ensuring that the operation is called only once with the
-specified details.}
+\item{clientToken}{A token ensuring that the operation is called only once with the specified details.}
 
-\item{displayName}{The long format of the response plan name. This field can contain
-spaces.}
+\item{displayName}{The long format of the response plan name. This field can contain spaces.}
 
-\item{engagements}{The Amazon Resource Name (ARN) for the contacts and escalation plans
-that the response plan engages during an incident.}
+\item{engagements}{The Amazon Resource Name (ARN) for the contacts and escalation plans that the response plan engages during an incident.}
 
 \item{incidentTemplate}{[required] Details used to create an incident when using this response plan.}
 
-\item{integrations}{Information about third-party services integrated into the response
-plan.}
+\item{integrations}{Information about third-party services integrated into the response plan.}
 
 \item{name}{[required] The short format name of the response plan. Can't include spaces.}
 

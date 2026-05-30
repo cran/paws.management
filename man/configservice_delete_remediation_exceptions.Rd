@@ -8,12 +8,9 @@ keys}
 configservice_delete_remediation_exceptions(ConfigRuleName, ResourceKeys)
 }
 \arguments{
-\item{ConfigRuleName}{[required] The name of the Config rule for which you want to delete remediation
-exception configuration.}
+\item{ConfigRuleName}{[required] The name of the Config rule for which you want to delete remediation exception configuration.}
 
-\item{ResourceKeys}{[required] An exception list of resource exception keys to be processed with the
-current request. Config adds exception for each resource key. For
-example, Config adds 3 exceptions for 3 resource keys.}
+\item{ResourceKeys}{[required] An exception list of resource exception keys to be processed with the current request. Config adds exception for each resource key. For example, Config adds 3 exceptions for 3 resource keys.}
 }
 \description{
 Deletes one or more remediation exceptions mentioned in the resource keys.

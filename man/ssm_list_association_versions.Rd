@@ -13,12 +13,9 @@ ssm_list_association_versions(
 \arguments{
 \item{AssociationId}{[required] The association ID for which you want to view all versions.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{A token to start the list. Use this token to get the next set of
-results.}
+\item{NextToken}{A token to start the list. Use this token to get the next set of results.}
 }
 \description{
 Retrieves all versions of an association for a specific association ID.

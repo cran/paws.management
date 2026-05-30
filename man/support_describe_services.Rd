@@ -8,14 +8,9 @@ service categories for each service}
 support_describe_services(serviceCodeList = NULL, language = NULL)
 }
 \arguments{
-\item{serviceCodeList}{A JSON-formatted list of service codes available for Amazon Web Services
-services.}
+\item{serviceCodeList}{A JSON-formatted list of service codes available for Amazon Web Services services.}
 
-\item{language}{The language in which Amazon Web Services Support handles the case.
-Amazon Web Services Support currently supports Chinese (“zh”), English
-("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO
-639-1 code for the \code{language} parameter if you want support in that
-language.}
+\item{language}{The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the \code{language} parameter if you want support in that language.}
 }
 \description{
 Returns the current list of Amazon Web Services services and a list of service categories for each service. You then use service names and categories in your \code{\link[=support_create_case]{create_case}} requests. Each Amazon Web Services service has its own set of categories.

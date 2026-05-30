@@ -12,16 +12,9 @@ licensemanagerusersubscriptions_create_license_server_endpoint(
 )
 }
 \arguments{
-\item{IdentityProviderArn}{[required] The Amazon Resource Name (ARN) that identifies the \code{IdentityProvider}
-resource that contains details about a registered identity provider. In
-the case of Active Directory, that can be a self-managed Active
-Directory or an Amazon Web Services Managed Active Directory that
-contains user identity details.}
+\item{IdentityProviderArn}{[required] The Amazon Resource Name (ARN) that identifies the \code{IdentityProvider} resource that contains details about a registered identity provider. In the case of Active Directory, that can be a self-managed Active Directory or an Amazon Web Services Managed Active Directory that contains user identity details.}
 
-\item{LicenseServerSettings}{[required] The \code{LicenseServerSettings} resource to create for the endpoint. The
-settings include the type of license server and the Secrets Manager
-secret that enables administrators to add or remove users associated
-with the license server.}
+\item{LicenseServerSettings}{[required] The \code{LicenseServerSettings} resource to create for the endpoint. The settings include the type of license server and the Secrets Manager secret that enables administrators to add or remove users associated with the license server.}
 
 \item{Tags}{The tags that apply for the license server endpoint.}
 }

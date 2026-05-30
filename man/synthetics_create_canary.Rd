@@ -17,29 +17,21 @@ synthetics_create_canary(
   VpcConfig = NULL,
   ResourcesToReplicateTags = NULL,
   ProvisionedResourceCleanup = NULL,
+  BrowserConfigs = NULL,
   Tags = NULL,
   ArtifactConfig = NULL
 )
 }
 \arguments{
-\item{Name}{[required] The name for this canary. Be sure to give it a descriptive name that
-distinguishes it from other canaries in your account.
+\item{Name}{[required] The name for this canary. Be sure to give it a descriptive name that distinguishes it from other canaries in your account.
 
-Do not include secrets or proprietary information in your canary names.
-The canary name makes up part of the canary ARN, and the ARN is included
-in outbound calls over the internet. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/servicelens_canaries_security.html}{Security Considerations for Synthetics Canaries}.}
+Do not include secrets or proprietary information in your canary names. The canary name makes up part of the canary ARN, and the ARN is included in outbound calls over the internet. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/servicelens_canaries_security.html}{Security Considerations for Synthetics Canaries}.}
 
-\item{Code}{[required] A structure that includes the entry point from which the canary should
-start running your script. If the script is stored in an S3 bucket, the
-bucket name, key, and version are also included.}
+\item{Code}{[required] A structure that includes the entry point from which the canary should start running your script. If the script is stored in an Amazon S3 bucket, the bucket name, key, and version are also included.}
 
-\item{ArtifactS3Location}{[required] The location in Amazon S3 where Synthetics stores artifacts from the
-test runs of this canary. Artifacts include the log file, screenshots,
-and HAR files. The name of the S3 bucket can't include a period (.).}
+\item{ArtifactS3Location}{[required] The location in Amazon S3 where Synthetics stores artifacts from the test runs of this canary. Artifacts include the log file, screenshots, and HAR files. The name of the Amazon S3 bucket can't include a period (.).}
 
-\item{ExecutionRoleArn}{[required] The ARN of the IAM role to be used to run the canary. This role must
-already exist, and must include \code{lambda.amazonaws.com} as a principal in
-the trust policy. The role must also have the following permissions:
+\item{ExecutionRoleArn}{[required] The ARN of the IAM role to be used to run the canary. This role must already exist, and must include \code{lambda.amazonaws.com} as a principal in the trust policy. The role must also have the following permissions:
 \itemize{
 \item \code{s3:PutObject}
 \item \code{s3:GetBucketLocation}
@@ -50,62 +42,43 @@ the trust policy. The role must also have the following permissions:
 \item \code{logs:PutLogEvents}
 }}
 
-\item{Schedule}{[required] A structure that contains information about how often the canary is to
-run and when these test runs are to stop.}
+\item{Schedule}{[required] A structure that contains information about how often the canary is to run and when these test runs are to stop.}
 
-\item{RunConfig}{A structure that contains the configuration for individual canary runs,
-such as timeout value and environment variables.
+\item{RunConfig}{A structure that contains the configuration for individual canary runs, such as timeout value and environment variables.
 
-The environment variables keys and values are not encrypted. Do not
-store sensitive information in this field.}
+Environment variable keys and values are encrypted at rest using Amazon Web Services owned KMS keys. However, the environment variables are not encrypted on the client side. Do not store sensitive information in them.}
 
-\item{SuccessRetentionPeriodInDays}{The number of days to retain data about successful runs of this canary.
-If you omit this field, the default of 31 days is used. The valid range
-is 1 to 455 days.}
+\item{SuccessRetentionPeriodInDays}{The number of days to retain data about successful runs of this canary. If you omit this field, the default of 31 days is used. The valid range is 1 to 455 days.
 
-\item{FailureRetentionPeriodInDays}{The number of days to retain data about failed runs of this canary. If
-you omit this field, the default of 31 days is used. The valid range is
-1 to 455 days.}
+This setting affects the range of information returned by \code{\link[=synthetics_get_canary_runs]{get_canary_runs}}, as well as the range of information displayed in the Synthetics console.}
 
-\item{RuntimeVersion}{[required] Specifies the runtime version to use for the canary. For a list of valid
-runtime versions and more information about runtime versions, see
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html}{Canary Runtime Versions}.}
+\item{FailureRetentionPeriodInDays}{The number of days to retain data about failed runs of this canary. If you omit this field, the default of 31 days is used. The valid range is 1 to 455 days.
 
-\item{VpcConfig}{If this canary is to test an endpoint in a VPC, this structure contains
-information about the subnet and security groups of the VPC endpoint.
-For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_VPC.html}{Running a Canary in a VPC}.}
+This setting affects the range of information returned by \code{\link[=synthetics_get_canary_runs]{get_canary_runs}}, as well as the range of information displayed in the Synthetics console.}
 
-\item{ResourcesToReplicateTags}{To have the tags that you apply to this canary also be applied to the
-Lambda function that the canary uses, specify this parameter with the
-value \verb{lambda-function}.
+\item{RuntimeVersion}{[required] Specifies the runtime version to use for the canary. For a list of valid runtime versions and more information about runtime versions, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html}{Canary Runtime Versions}.}
 
-If you specify this parameter and don't specify any tags in the \code{Tags}
-parameter, the canary creation fails.}
+\item{VpcConfig}{If this canary is to test an endpoint in a VPC, this structure contains information about the subnet and security groups of the VPC endpoint. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_VPC.html}{Running a Canary in a VPC}.}
 
-\item{ProvisionedResourceCleanup}{Specifies whether to also delete the Lambda functions and layers used by
-this canary when the canary is deleted. If you omit this parameter, the
-default of \code{AUTOMATIC} is used, which means that the Lambda functions
-and layers will be deleted when the canary is deleted.
+\item{ResourcesToReplicateTags}{To have the tags that you apply to this canary also be applied to the Lambda function that the canary uses, specify this parameter with the value \verb{lambda-function}.
 
-If the value of this parameter is \code{OFF}, then the value of the
-\code{DeleteLambda} parameter of the
-\code{\link[=synthetics_delete_canary]{delete_canary}} operation determines whether
-the Lambda functions and layers will be deleted.}
+If you specify this parameter and don't specify any tags in the \code{Tags} parameter, the canary creation fails.}
 
-\item{Tags}{A list of key-value pairs to associate with the canary. You can
-associate as many as 50 tags with a canary.
+\item{ProvisionedResourceCleanup}{Specifies whether to also delete the Lambda functions and layers used by this canary when the canary is deleted. If you omit this parameter, the default of \code{AUTOMATIC} is used, which means that the Lambda functions and layers will be deleted when the canary is deleted.
 
-Tags can help you organize and categorize your resources. You can also
-use them to scope user permissions, by granting a user permission to
-access or change only the resources that have certain tag values.
+If the value of this parameter is \code{OFF}, then the value of the \code{DeleteLambda} parameter of the \code{\link[=synthetics_delete_canary]{delete_canary}} operation determines whether the Lambda functions and layers will be deleted.}
 
-To have the tags that you apply to this canary also be applied to the
-Lambda function that the canary uses, specify this parameter with the
-value \verb{lambda-function}.}
+\item{BrowserConfigs}{CloudWatch Synthetics now supports multibrowser canaries for \code{syn-nodejs-puppeteer-11.0} and \code{syn-nodejs-playwright-3.0} runtimes. This feature allows you to run your canaries on both Firefox and Chrome browsers. To create a multibrowser canary, you need to specify the BrowserConfigs with a list of browsers you want to use.
 
-\item{ArtifactConfig}{A structure that contains the configuration for canary artifacts,
-including the encryption-at-rest settings for artifacts that the canary
-uploads to Amazon S3.}
+If not specified, \code{browserConfigs} defaults to Chrome.}
+
+\item{Tags}{A list of key-value pairs to associate with the canary. You can associate as many as 50 tags with a canary.
+
+Tags can help you organize and categorize your resources. You can also use them to scope user permissions, by granting a user permission to access or change only the resources that have certain tag values.
+
+To have the tags that you apply to this canary also be applied to the Lambda function that the canary uses, specify this parameter with the value \verb{lambda-function}.}
+
+\item{ArtifactConfig}{A structure that contains the configuration for canary artifacts, including the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.}
 }
 \description{
 Creates a canary. Canaries are scripts that monitor your endpoints and APIs from the outside-in. Canaries help you check the availability and latency of your web services and troubleshoot anomalies by investigating load time data, screenshots of the UI, logs, and metrics. You can set up a canary to run continuously or just once.

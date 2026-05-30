@@ -15,19 +15,11 @@ cloudwatchlogs_update_log_anomaly_detector(
 \arguments{
 \item{anomalyDetectorArn}{[required] The ARN of the anomaly detector that you want to update.}
 
-\item{evaluationFrequency}{Specifies how often the anomaly detector runs and look for anomalies.
-Set this value according to the frequency that the log group receives
-new logs. For example, if the log group receives new log events every 10
-minutes, then setting \code{evaluationFrequency} to \code{FIFTEEN_MIN} might be
-appropriate.}
+\item{evaluationFrequency}{Specifies how often the anomaly detector runs and look for anomalies. Set this value according to the frequency that the log group receives new logs. For example, if the log group receives new log events every 10 minutes, then setting \code{evaluationFrequency} to \code{FIFTEEN_MIN} might be appropriate.}
 
-\item{filterPattern}{}
+\item{filterPattern}{A symbolic description of how CloudWatch Logs should interpret the data in each log event. For example, a log event can contain timestamps, IP addresses, strings, and so on. You use the filter pattern to specify what to look for in the log event message.}
 
-\item{anomalyVisibilityTime}{The number of days to use as the life cycle of anomalies. After this
-time, anomalies are automatically baselined and the anomaly detector
-model will treat new occurrences of similar event as normal. Therefore,
-if you do not correct the cause of an anomaly during this time, it will
-be considered normal going forward and will not be detected.}
+\item{anomalyVisibilityTime}{The number of days to use as the life cycle of anomalies. After this time, anomalies are automatically baselined and the anomaly detector model will treat new occurrences of similar event as normal. Therefore, if you do not correct the cause of an anomaly during this time, it will be considered normal going forward and will not be detected.}
 
 \item{enabled}{[required] Use this parameter to pause or restart the anomaly detector.}
 }

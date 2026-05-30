@@ -14,43 +14,28 @@ cloudwatchapplicationsignals_list_service_operations(
 )
 }
 \arguments{
-\item{StartTime}{[required] The start of the time period to retrieve information about. When used in
-a raw HTTP Query API, it is formatted as be epoch time in seconds. For
-example: \code{1698778057}
+\item{StartTime}{[required] The start of the time period to retrieve information about. When used in a raw HTTP Query API, it is formatted as be epoch time in seconds. For example: \code{1698778057}
 
 Your requested start time will be rounded to the nearest hour.}
 
-\item{EndTime}{[required] The end of the time period to retrieve information about. When used in a
-raw HTTP Query API, it is formatted as be epoch time in seconds. For
-example: \code{1698778057}
+\item{EndTime}{[required] The end of the time period to retrieve information about. When used in a raw HTTP Query API, it is formatted as be epoch time in seconds. For example: \code{1698778057}
 
 Your requested end time will be rounded to the nearest hour.}
 
-\item{KeyAttributes}{[required] Use this field to specify which service you want to retrieve information
-for. You must specify at least the \code{Type}, \code{Name}, and \code{Environment}
-attributes.
+\item{KeyAttributes}{[required] Use this field to specify which service you want to retrieve information for. You must specify at least the \code{Type}, \code{Name}, and \code{Environment} attributes.
 
 This is a string-to-string map. It can include the following fields.
 \itemize{
 \item \code{Type} designates the type of object this is.
-\item \code{ResourceType} specifies the type of the resource. This field is
-used only when the value of the \code{Type} field is \code{Resource} or
-\code{AWS::Resource}.
-\item \code{Name} specifies the name of the object. This is used only if the
-value of the \code{Type} field is \code{Service}, \code{RemoteService}, or
-\code{AWS::Service}.
-\item \code{Identifier} identifies the resource objects of this resource. This
-is used only if the value of the \code{Type} field is \code{Resource} or
-\code{AWS::Resource}.
-\item \code{Environment} specifies the location where this object is hosted, or
-what it belongs to.
+\item \code{ResourceType} specifies the type of the resource. This field is used only when the value of the \code{Type} field is \code{Resource} or \code{AWS::Resource}.
+\item \code{Name} specifies the name of the object. This is used only if the value of the \code{Type} field is \code{Service}, \code{RemoteService}, or \code{AWS::Service}.
+\item \code{Identifier} identifies the resource objects of this resource. This is used only if the value of the \code{Type} field is \code{Resource} or \code{AWS::Resource}.
+\item \code{Environment} specifies the location where this object is hosted, or what it belongs to.
 }}
 
-\item{MaxResults}{The maximum number of results to return in one operation. If you omit
-this parameter, the default of 50 is used.}
+\item{MaxResults}{The maximum number of results to return in one operation. If you omit this parameter, the default of 50 is used.}
 
-\item{NextToken}{Include this value, if it was returned by the previous operation, to get
-the next set of service operations.}
+\item{NextToken}{Include this value, if it was returned by the previous operation, to get the next set of service operations.}
 }
 \description{
 Returns a list of the \emph{operations} of this service that have been discovered by Application Signals. Only the operations that were invoked during the specified time range are returned.

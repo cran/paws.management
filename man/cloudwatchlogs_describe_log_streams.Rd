@@ -17,43 +17,27 @@ cloudwatchlogs_describe_log_streams(
 \arguments{
 \item{logGroupName}{The name of the log group.
 
-You must include either \code{logGroupIdentifier} or \code{logGroupName}, but not
-both.}
+You must include either \code{logGroupIdentifier} or \code{logGroupName}, but not both.}
 
-\item{logGroupIdentifier}{Specify either the name or ARN of the log group to view. If the log
-group is in a source account and you are using a monitoring account, you
-must use the log group ARN.
+\item{logGroupIdentifier}{Specify either the name or ARN of the log group to view. If the log group is in a source account and you are using a monitoring account, you must use the log group ARN.
 
-You must include either \code{logGroupIdentifier} or \code{logGroupName}, but not
-both.}
+You must include either \code{logGroupIdentifier} or \code{logGroupName}, but not both.}
 
 \item{logStreamNamePrefix}{The prefix to match.
 
 If \code{orderBy} is \code{LastEventTime}, you cannot specify this parameter.}
 
-\item{orderBy}{If the value is \code{LogStreamName}, the results are ordered by log stream
-name. If the value is \code{LastEventTime}, the results are ordered by the
-event time. The default value is \code{LogStreamName}.
+\item{orderBy}{If the value is \code{LogStreamName}, the results are ordered by log stream name. If the value is \code{LastEventTime}, the results are ordered by the event time. The default value is \code{LogStreamName}.
 
-If you order the results by event time, you cannot specify the
-\code{logStreamNamePrefix} parameter.
+If you order the results by event time, you cannot specify the \code{logStreamNamePrefix} parameter.
 
-\code{lastEventTimestamp} represents the time of the most recent log event in
-the log stream in CloudWatch Logs. This number is expressed as the
-number of milliseconds after \verb{Jan 1, 1970 00:00:00 UTC}.
-\code{lastEventTimestamp} updates on an eventual consistency basis. It
-typically updates in less than an hour from ingestion, but in rare
-situations might take longer.}
+\code{lastEventTimestamp} represents the time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds after \verb{Jan 1, 1970 00:00:00 UTC}. \code{lastEventTimestamp} updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but in rare situations might take longer.}
 
-\item{descending}{If the value is true, results are returned in descending order. If the
-value is to false, results are returned in ascending order. The default
-value is false.}
+\item{descending}{If the value is true, results are returned in descending order. If the value is to false, results are returned in ascending order. The default value is false.}
 
-\item{nextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{nextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{limit}{The maximum number of items returned. If you don't specify a value, the
-default is up to 50 items.}
+\item{limit}{The maximum number of items returned. If you don't specify a value, the default is up to 50 items.}
 }
 \description{
 Lists the log streams for the specified log group. You can list all the log streams or filter the results by prefix. You can also control how the results are ordered.

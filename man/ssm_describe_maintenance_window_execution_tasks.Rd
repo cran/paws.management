@@ -12,20 +12,13 @@ ssm_describe_maintenance_window_execution_tasks(
 )
 }
 \arguments{
-\item{WindowExecutionId}{[required] The ID of the maintenance window execution whose task executions should
-be retrieved.}
+\item{WindowExecutionId}{[required] The ID of the maintenance window execution whose task executions should be retrieved.}
 
-\item{Filters}{Optional filters used to scope down the returned tasks. The supported
-filter key is \code{STATUS} with the corresponding values \code{PENDING},
-\code{IN_PROGRESS}, \code{SUCCESS}, \code{FAILED}, \code{TIMED_OUT}, \code{CANCELLING}, and
-\code{CANCELLED}.}
+\item{Filters}{Optional filters used to scope down the returned tasks. The supported filter key is \code{STATUS} with the corresponding values \code{PENDING}, \code{IN_PROGRESS}, \code{SUCCESS}, \code{FAILED}, \code{TIMED_OUT}, \code{CANCELLING}, and \code{CANCELLED}.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 For a given maintenance window execution, lists the tasks that were run.

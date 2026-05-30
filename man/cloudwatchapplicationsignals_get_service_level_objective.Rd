@@ -7,10 +7,7 @@
 cloudwatchapplicationsignals_get_service_level_objective(Id)
 }
 \arguments{
-\item{Id}{[required] The ARN or name of the SLO that you want to retrieve information about.
-You can find the ARNs of SLOs by using the
-\code{\link[=cloudwatchapplicationsignals_list_service_level_objectives]{list_service_level_objectives}}
-operation.}
+\item{Id}{[required] The ARN or name of the SLO that you want to retrieve information about. You can find the ARNs of SLOs by using the \code{\link[=cloudwatchapplicationsignals_list_service_level_objectives]{list_service_level_objectives}} operation.}
 }
 \description{
 Returns information about one SLO created in the account.

@@ -7,13 +7,7 @@
 servicequotas_tag_resource(ResourceARN, Tags)
 }
 \arguments{
-\item{ResourceARN}{[required] The Amazon Resource Name (ARN) for the applied quota. You can get this
-information by using the Service Quotas console, or by listing the
-quotas using the
-\href{https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html}{list-service-quotas}
-CLI command or the
-\code{\link[=servicequotas_list_service_quotas]{list_service_quotas}} Amazon Web
-Services API operation.}
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) for the applied quota. You can get this information by using the Service Quotas console, or by listing the quotas using the \href{https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html}{list-service-quotas} CLI command or the \code{\link[=servicequotas_list_service_quotas]{list_service_quotas}} Amazon Web Services API operation.}
 
 \item{Tags}{[required] The tags that you want to add to the resource.}
 }

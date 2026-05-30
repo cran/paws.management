@@ -17,51 +17,27 @@ support_create_case(
 )
 }
 \arguments{
-\item{subject}{[required] The title of the support case. The title appears in the \strong{Subject}
-field on the Amazon Web Services Support Center Create Case page.}
+\item{subject}{[required] The title of the support case. The title appears in the \strong{Subject} field on the Amazon Web Services Support Center Create Case page.}
 
-\item{serviceCode}{The code for the Amazon Web Services service. You can use the
-\code{\link[=support_describe_services]{describe_services}} operation to get the
-possible \code{serviceCode} values.}
+\item{serviceCode}{The code for the Amazon Web Services service. You can use the \code{\link[=support_describe_services]{describe_services}} operation to get the possible \code{serviceCode} values.}
 
-\item{severityCode}{A value that indicates the urgency of the case. This value determines
-the response time according to your service level agreement with Amazon
-Web Services Support. You can use the
-\code{\link[=support_describe_severity_levels]{describe_severity_levels}} operation
-to get the possible values for \code{severityCode}.
+\item{severityCode}{A value that indicates the urgency of the case. This value determines the response time according to your service level agreement with Amazon Web Services Support. You can use the \code{\link[=support_describe_severity_levels]{describe_severity_levels}} operation to get the possible values for \code{severityCode}.
 
-For more information, see SeverityLevel and \href{https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity}{Choosing a Severity}
-in the \emph{Amazon Web Services Support User Guide}.
+For more information, see SeverityLevel and \href{https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity}{Choosing a Severity} in the \emph{Amazon Web Services Support User Guide}.
 
-The availability of severity levels depends on the support plan for the
-Amazon Web Services account.}
+The availability of severity levels depends on the support plan for the Amazon Web Services account.}
 
-\item{categoryCode}{The category of problem for the support case. You also use the
-\code{\link[=support_describe_services]{describe_services}} operation to get the
-category code for a service. Each Amazon Web Services service defines
-its own set of category codes.}
+\item{categoryCode}{The category of problem for the support case. You also use the \code{\link[=support_describe_services]{describe_services}} operation to get the category code for a service. Each Amazon Web Services service defines its own set of category codes.}
 
-\item{communicationBody}{[required] The communication body text that describes the issue. This text appears
-in the \strong{Description} field on the Amazon Web Services Support Center
-Create Case page.}
+\item{communicationBody}{[required] The communication body text that describes the issue. This text appears in the \strong{Description} field on the Amazon Web Services Support Center Create Case page.}
 
-\item{ccEmailAddresses}{A list of email addresses that Amazon Web Services Support copies on
-case correspondence. Amazon Web Services Support identifies the account
-that creates the case when you specify your Amazon Web Services
-credentials in an HTTP POST method or use the \href{https://aws.amazon.com/developer/tools/}{Amazon Web Services SDKs}.}
+\item{ccEmailAddresses}{A list of email addresses that Amazon Web Services Support copies on case correspondence. Amazon Web Services Support identifies the account that creates the case when you specify your Amazon Web Services credentials in an HTTP POST method or use the \href{https://builder.aws.com/build/tools}{Amazon Web Services SDKs}.}
 
-\item{language}{The language in which Amazon Web Services Support handles the case.
-Amazon Web Services Support currently supports Chinese (“zh”), English
-("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO
-639-1 code for the \code{language} parameter if you want support in that
-language.}
+\item{language}{The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the \code{language} parameter if you want support in that language.}
 
-\item{issueType}{The type of issue for the case. You can specify \code{customer-service} or
-\code{technical}. If you don't specify a value, the default is \code{technical}.}
+\item{issueType}{The type of issue for the case. You can specify \code{customer-service} or \code{technical}. If you don't specify a value, the default is \code{technical}.}
 
-\item{attachmentSetId}{The ID of a set of one or more attachments for the case. Create the set
-by using the \code{\link[=support_add_attachments_to_set]{add_attachments_to_set}}
-operation.}
+\item{attachmentSetId}{The ID of a set of one or more attachments for the case. Create the set by using the \code{\link[=support_add_attachments_to_set]{add_attachments_to_set}} operation.}
 }
 \description{
 Creates a case in the Amazon Web Services Support Center. This operation is similar to how you create a case in the Amazon Web Services Support Center Create Case page.

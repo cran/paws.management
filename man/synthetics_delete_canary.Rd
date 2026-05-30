@@ -7,16 +7,11 @@
 synthetics_delete_canary(Name, DeleteLambda = NULL)
 }
 \arguments{
-\item{Name}{[required] The name of the canary that you want to delete. To find the names of
-your canaries, use \code{\link[=synthetics_describe_canaries]{describe_canaries}}.}
+\item{Name}{[required] The name of the canary that you want to delete. To find the names of your canaries, use \code{\link[=synthetics_describe_canaries]{describe_canaries}}.}
 
-\item{DeleteLambda}{Specifies whether to also delete the Lambda functions and layers used by
-this canary. The default is \code{false}.
+\item{DeleteLambda}{Specifies whether to also delete the Lambda functions and layers used by this canary. The default is \code{false}.
 
-Your setting for this parameter is used only if the canary doesn't have
-\code{AUTOMATIC} for its \code{ProvisionedResourceCleanup} field. If that field is
-set to \code{AUTOMATIC}, then the Lambda functions and layers will be deleted
-when this canary is deleted.
+Your setting for this parameter is used only if the canary doesn't have \code{AUTOMATIC} for its \code{ProvisionedResourceCleanup} field. If that field is set to \code{AUTOMATIC}, then the Lambda functions and layers will be deleted when this canary is deleted.
 
 Type: Boolean}
 }

@@ -13,8 +13,7 @@ cloudtrail_get_query_results(
 )
 }
 \arguments{
-\item{EventDataStore}{The ARN (or ID suffix of the ARN) of the event data store against which
-the query was run.}
+\item{EventDataStore}{The ARN (or ID suffix of the ARN) of the event data store against which the query was run.}
 
 \item{QueryId}{[required] The ID of the query for which you want to get results.}
 

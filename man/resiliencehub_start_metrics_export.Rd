@@ -7,12 +7,9 @@
 resiliencehub_start_metrics_export(bucketName = NULL, clientToken = NULL)
 }
 \arguments{
-\item{bucketName}{(Optional) Specifies the name of the Amazon Simple Storage Service
-bucket where the exported metrics will be stored.}
+\item{bucketName}{(Optional) Specifies the name of the Amazon Simple Storage Service bucket where the exported metrics will be stored.}
 
-\item{clientToken}{Used for an idempotency token. A client token is a unique,
-case-sensitive string of up to 64 ASCII characters. You should not reuse
-the same client token for other API requests.}
+\item{clientToken}{Used for an idempotency token. A client token is a unique, case-sensitive string of up to 64 ASCII characters. You should not reuse the same client token for other API requests.}
 }
 \description{
 Initiates the export task of metrics.

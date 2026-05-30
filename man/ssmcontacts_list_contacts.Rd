@@ -16,11 +16,9 @@ ssmcontacts_list_contacts(
 
 \item{MaxResults}{The maximum number of contacts and escalation plans per page of results.}
 
-\item{AliasPrefix}{Used to list only contacts who's aliases start with the specified
-prefix.}
+\item{AliasPrefix}{Used to list only contacts who's aliases start with the specified prefix.}
 
-\item{Type}{The type of contact. A contact is type \code{PERSONAL} and an escalation plan
-is type \code{ESCALATION}.}
+\item{Type}{The type of contact.}
 }
 \description{
 Lists all contacts and escalation plans in Incident Manager.

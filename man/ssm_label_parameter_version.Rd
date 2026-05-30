@@ -10,12 +10,9 @@ ssm_label_parameter_version(Name, ParameterVersion = NULL, Labels)
 \arguments{
 \item{Name}{[required] The parameter name on which you want to attach one or more labels.
 
-You can't enter the Amazon Resource Name (ARN) for a parameter, only the
-parameter name itself.}
+You can't enter the Amazon Resource Name (ARN) for a parameter, only the parameter name itself.}
 
-\item{ParameterVersion}{The specific version of the parameter on which you want to attach one or
-more labels. If no version is specified, the system attaches the label
-to the latest version.}
+\item{ParameterVersion}{The specific version of the parameter on which you want to attach one or more labels. If no version is specified, the system attaches the label to the latest version.}
 
 \item{Labels}{[required] One or more labels to attach to the specified parameter version.}
 }

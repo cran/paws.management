@@ -7,23 +7,13 @@
 configservice_put_evaluations(Evaluations = NULL, ResultToken, TestMode = NULL)
 }
 \arguments{
-\item{Evaluations}{The assessments that the Lambda function performs. Each evaluation
-identifies an Amazon Web Services resource and indicates whether it
-complies with the Config rule that invokes the Lambda function.}
+\item{Evaluations}{The assessments that the Lambda function performs. Each evaluation identifies an Amazon Web Services resource and indicates whether it complies with the Config rule that invokes the Lambda function.}
 
-\item{ResultToken}{[required] An encrypted token that associates an evaluation with an Config rule.
-Identifies the rule and the event that triggered the evaluation.}
+\item{ResultToken}{[required] An encrypted token that associates an evaluation with an Config rule. Identifies the rule and the event that triggered the evaluation.}
 
-\item{TestMode}{Use this parameter to specify a test run for
-\code{\link[=configservice_put_evaluations]{put_evaluations}}. You can verify
-whether your Lambda function will deliver evaluation results to Config.
-No updates occur to your existing evaluations, and evaluation results
-are not sent to Config.
+\item{TestMode}{Use this parameter to specify a test run for \code{\link[=configservice_put_evaluations]{put_evaluations}}. You can verify whether your Lambda function will deliver evaluation results to Config. No updates occur to your existing evaluations, and evaluation results are not sent to Config.
 
-When \code{TestMode} is \code{true},
-\code{\link[=configservice_put_evaluations]{put_evaluations}} doesn't require a
-valid value for the \code{ResultToken} parameter, but the value cannot be
-null.}
+When \code{TestMode} is \code{true}, \code{\link[=configservice_put_evaluations]{put_evaluations}} doesn't require a valid value for the \code{ResultToken} parameter, but the value cannot be null.}
 }
 \description{
 Used by an Lambda function to deliver evaluation results to Config. This operation is required in every Lambda function that is invoked by an Config rule.

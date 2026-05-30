@@ -7,11 +7,9 @@
 licensemanagerlinuxsubscriptions_tag_resource(resourceArn, tags)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Amazon Web Services resource to
-which to add the specified metadata tags.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Amazon Web Services resource to which to add the specified metadata tags.}
 
-\item{tags}{[required] The metadata tags to assign to the Amazon Web Services resource. Tags
-are formatted as key value pairs.}
+\item{tags}{[required] The metadata tags to assign to the Amazon Web Services resource. Tags are formatted as key value pairs.}
 }
 \description{
 Add metadata tags to the specified Amazon Web Services resource.

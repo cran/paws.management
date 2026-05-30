@@ -55,28 +55,9 @@ Operations section.
 \description{
 Config
 
-Config provides a way to keep track of the configurations of all the
-Amazon Web Services resources associated with your Amazon Web Services
-account. You can use Config to get the current and historical
-configurations of each Amazon Web Services resource and also to get
-information about the relationship between the resources. An Amazon Web
-Services resource can be an Amazon Compute Cloud (Amazon EC2) instance,
-an Elastic Block Store (EBS) volume, an elastic network Interface (ENI),
-or a security group. For a complete list of resources currently
-supported by Config, see \href{https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources}{Supported Amazon Web Services resources}.
+Config provides a way to keep track of the configurations of all the Amazon Web Services resources associated with your Amazon Web Services account. You can use Config to get the current and historical configurations of each Amazon Web Services resource and also to get information about the relationship between the resources. An Amazon Web Services resource can be an Amazon Compute Cloud (Amazon EC2) instance, an Elastic Block Store (EBS) volume, an elastic network Interface (ENI), or a security group. For a complete list of resources currently supported by Config, see \href{https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources}{Supported Amazon Web Services resources}.
 
-You can access and manage Config through the Amazon Web Services
-Management Console, the Amazon Web Services Command Line Interface
-(Amazon Web Services CLI), the Config API, or the Amazon Web Services
-SDKs for Config. This reference guide contains documentation for the
-Config API and the Amazon Web Services CLI commands that you can use to
-manage Config. The Config API uses the Signature Version 4 protocol for
-signing requests. For more information about how to sign a request with
-this protocol, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}.
-For detailed information about Config features and their associated
-actions or commands, as well as how to work with Amazon Web Services
-Management Console, see \href{https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html}{What Is Config}
-in the \emph{Config Developer Guide}.
+You can access and manage Config through the Amazon Web Services Management Console, the Amazon Web Services Command Line Interface (Amazon Web Services CLI), the Config API, or the Amazon Web Services SDKs for Config. This reference guide contains documentation for the Config API and the Amazon Web Services CLI commands that you can use to manage Config. The Config API uses the Signature Version 4 protocol for signing requests. For more information about how to sign a request with this protocol, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}. For detailed information about Config features and their associated actions or commands, as well as how to work with Amazon Web Services Management Console, see \href{https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html}{What Is Config} in the \emph{Config Developer Guide}.
 }
 \section{Service syntax}{
 
@@ -185,7 +166,7 @@ in the \emph{Config Developer Guide}.
 \link[=configservice_list_aggregate_discovered_resources]{list_aggregate_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers that are aggregated for a specific resource type across accounts and regions\cr
 \link[=configservice_list_configuration_recorders]{list_configuration_recorders} \tab Returns a list of configuration recorders depending on the filters you specify\cr
 \link[=configservice_list_conformance_pack_compliance_scores]{list_conformance_pack_compliance_scores} \tab Returns a list of conformance pack compliance scores\cr
-\link[=configservice_list_discovered_resources]{list_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers for the resources of that type\cr
+\link[=configservice_list_discovered_resources]{list_discovered_resources} \tab Returns a list of resource resource identifiers for the specified resource types for the resources of that type\cr
 \link[=configservice_list_resource_evaluations]{list_resource_evaluations} \tab Returns a list of proactive resource evaluations\cr
 \link[=configservice_list_stored_queries]{list_stored_queries} \tab Lists the stored queries for a single Amazon Web Services account and a single Amazon Web Services Region\cr
 \link[=configservice_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for Config resource\cr

@@ -8,17 +8,11 @@ administrator for the specified Amazon Web Services service}
 organizations_deregister_delegated_administrator(AccountId, ServicePrincipal)
 }
 \arguments{
-\item{AccountId}{[required] The account ID number of the member account in the organization that you
-want to deregister as a delegated administrator.}
+\item{AccountId}{[required] The account ID number of the member account in the organization that you want to deregister as a delegated administrator.}
 
-\item{ServicePrincipal}{[required] The service principal name of an Amazon Web Services service for which
-the account is a delegated administrator.
+\item{ServicePrincipal}{[required] The service principal name of an Amazon Web Services service for which the account is a delegated administrator.
 
-Delegated administrator privileges are revoked for only the specified
-Amazon Web Services service from the member account. If the specified
-service is the only service for which the member account is a delegated
-administrator, the operation also revokes Organizations read action
-permissions.}
+Delegated administrator privileges are revoked for only the specified Amazon Web Services service from the member account. If the specified service is the only service for which the member account is a delegated administrator, the operation also revokes Organizations read action permissions.}
 }
 \description{
 Removes the specified member Amazon Web Services account as a delegated administrator for the specified Amazon Web Services service.

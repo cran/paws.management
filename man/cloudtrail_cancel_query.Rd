@@ -12,11 +12,9 @@ cloudtrail_cancel_query(
 )
 }
 \arguments{
-\item{EventDataStore}{The ARN (or the ID suffix of the ARN) of an event data store on which
-the specified query is running.}
+\item{EventDataStore}{The ARN (or the ID suffix of the ARN) of an event data store on which the specified query is running.}
 
-\item{QueryId}{[required] The ID of the query that you want to cancel. The \code{QueryId} comes from
-the response of a \code{\link[=cloudtrail_start_query]{start_query}} operation.}
+\item{QueryId}{[required] The ID of the query that you want to cancel. The \code{QueryId} comes from the response of a \code{\link[=cloudtrail_start_query]{start_query}} operation.}
 
 \item{EventDataStoreOwnerAccountId}{The account ID of the event data store owner.}
 }

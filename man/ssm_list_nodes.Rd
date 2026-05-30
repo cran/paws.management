@@ -13,19 +13,17 @@ ssm_list_nodes(
 )
 }
 \arguments{
-\item{SyncName}{The name of the resource data sync to retrieve information about.
-Required for cross-account/cross-Region configurations. Optional for
-single account/single-Region configurations.}
+\item{SyncName}{The name of the Amazon Web Services managed resource data sync to retrieve information about.
 
-\item{Filters}{One or more filters. Use a filter to return a more specific list of
-managed nodes.}
+For cross-account/cross-Region configurations, this parameter is required, and the name of the supported resource data sync is \code{AWS-QuickSetup-ManagedNode}.
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+For single account/single-Region configurations, the parameter is not required.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{Filters}{One or more filters. Use a filter to return a more specific list of managed nodes.}
+
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
+
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 }
 \description{
 Takes in filters and returns a list of managed nodes matching the filter criteria.

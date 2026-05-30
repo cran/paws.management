@@ -14,24 +14,19 @@ ssm_list_nodes_summary(
 )
 }
 \arguments{
-\item{SyncName}{The name of the resource data sync to retrieve information about.
-Required for cross-account/cross-Region configuration. Optional for
-single account/single-Region configurations.}
+\item{SyncName}{The name of the Amazon Web Services managed resource data sync to retrieve information about.
 
-\item{Filters}{One or more filters. Use a filter to generate a summary that matches
-your specified filter criteria.}
+For cross-account/cross-Region configurations, this parameter is required, and the name of the supported resource data sync is \code{AWS-QuickSetup-ManagedNode}.
 
-\item{Aggregators}{[required] Specify one or more aggregators to return a count of managed nodes that
-match that expression. For example, a count of managed nodes by
-operating system.}
+For single account/single-Region configurations, the parameter is not required.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.) The call also returns a token that you can
-specify in a subsequent call to get the next set of results.}
+\item{Filters}{One or more filters. Use a filter to generate a summary that matches your specified filter criteria.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{Aggregators}{[required] Specify one or more aggregators to return a count of managed nodes that match that expression. For example, a count of managed nodes by operating system.}
+
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.) The call also returns a token that you can specify in a subsequent call to get the next set of results.}
+
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 }
 \description{
 Generates a summary of managed instance/node metadata based on the filters and aggregators you specify. Results are grouped by the input aggregator you specify.

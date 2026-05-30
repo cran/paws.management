@@ -12,15 +12,11 @@ licensemanagerlinuxsubscriptions_register_subscription_provider(
 )
 }
 \arguments{
-\item{SecretArn}{[required] The Amazon Resource Name (ARN) of the secret where you've stored your
-subscription provider's access token. For RHEL subscriptions managed
-through the Red Hat Subscription Manager (RHSM), the secret contains
-your Red Hat Offline token.}
+\item{SecretArn}{[required] The Amazon Resource Name (ARN) of the secret where you've stored your subscription provider's access token. For RHEL subscriptions managed through the Red Hat Subscription Manager (RHSM), the secret contains your Red Hat Offline token.}
 
 \item{SubscriptionProviderSource}{[required] The supported Linux subscription provider to register.}
 
-\item{Tags}{The metadata tags to assign to your registered Linux subscription
-provider resource.}
+\item{Tags}{The metadata tags to assign to your registered Linux subscription provider resource.}
 }
 \description{
 Register the supported third-party subscription provider for your Bring Your Own License (BYOL) subscription.

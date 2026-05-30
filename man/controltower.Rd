@@ -53,17 +53,17 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Web Services Control Tower offers application programming
-interface (API) operations that support programmatic interaction with
-these types of resources:
+Amazon Web Services Control Tower offers application programming interface (API) operations that support programmatic interaction with these types of resources:
 \itemize{
 \item \href{https://docs.aws.amazon.com/controltower/latest/controlreference/controls.html}{\emph{Controls}}
 \itemize{
 \item \code{\link[=controltower_disable_control]{disable_control}}
 \item \code{\link[=controltower_enable_control]{enable_control}}
 \item \code{\link[=controltower_get_enabled_control]{get_enabled_control}}
+\item \code{\link[=controltower_get_control_operation]{get_control_operation}}
 \item \code{\link[=controltower_list_control_operations]{list_control_operations}}
 \item \code{\link[=controltower_list_enabled_controls]{list_enabled_controls}}
+\item \code{\link[=controltower_reset_enabled_control]{reset_enabled_control}}
 \item \code{\link[=controltower_update_enabled_control]{update_enabled_control}}
 }
 \item \href{https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html}{\emph{Landing zones}}
@@ -97,74 +97,48 @@ these types of resources:
 }
 }
 
-For more information about these types of resources, see the \href{https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html}{\emph{Amazon Web Services Control Tower User Guide}}
-.
+For more information about these types of resources, see the \href{https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html}{\emph{Amazon Web Services Control Tower User Guide}} .
 
 \strong{About control APIs}
 
-These interfaces allow you to apply the Amazon Web Services library of
-pre-defined \emph{controls} to your organizational units, programmatically.
-In Amazon Web Services Control Tower, the terms "control" and
-"guardrail" are synonyms.
+These interfaces allow you to apply the Amazon Web Services library of pre-defined \emph{controls} to your organizational units, programmatically. In Amazon Web Services Control Tower, the terms "control" and "guardrail" are synonyms.
 
 To call these APIs, you'll need to know:
 \itemize{
-\item the \code{controlIdentifier} for the control--or guardrail--you are
-targeting.
-\item the ARN associated with the target organizational unit (OU), which
-we call the \code{targetIdentifier}.
+\item the \code{controlIdentifier} for the control--or guardrail--you are targeting.
+\item the ARN associated with the target organizational unit (OU), which we call the \code{targetIdentifier}.
 \item the ARN associated with a resource that you wish to tag or untag.
 }
 
-\strong{To get the \code{controlIdentifier} for your Amazon Web Services Control
-Tower control:}
+\strong{To get the \code{controlIdentifier} for your Amazon Web Services Control Tower control:}
 
-The \code{controlIdentifier} is an ARN that is specified for each control.
-You can view the \code{controlIdentifier} in the console on the \strong{Control
-details} page, as well as in the documentation.
+The \code{controlIdentifier} is an ARN that is specified for each control. You can view the \code{controlIdentifier} in the console on the \strong{Control details} page, as well as in the documentation.
 
 \strong{About identifiers for Amazon Web Services Control Tower}
 
-The Amazon Web Services Control Tower \code{controlIdentifier} is unique in
-each Amazon Web Services Region for each control. You can find the
-\code{controlIdentifier} for each Region and control in the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html}{Tables of control metadata}
-or the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-region-tables.html}{Control availability by Region tables}
-in the \emph{Amazon Web Services Control Tower Controls Reference Guide}.
+The Amazon Web Services Control Tower \code{controlIdentifier} is unique in each Amazon Web Services Region for each control. You can find the \code{controlIdentifier} for each Region and control in the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html}{Tables of control metadata} or the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-region-tables.html}{Control availability by Region tables} in the \emph{Amazon Web Services Control Tower Controls Reference Guide}.
 
-A quick-reference list of control identifers for the Amazon Web Services
-Control Tower legacy \emph{Strongly recommended} and \emph{Elective} controls is
-given in \href{https://docs.aws.amazon.com/controltower/latest/controlreference/}{Resource identifiers for APIs and controls}
-in the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html}{\emph{Amazon Web Services Control Tower Controls Reference Guide}}
-. Remember that \emph{Mandatory} controls cannot be added or removed.
+A quick-reference list of control identifers for the Amazon Web Services Control Tower legacy \emph{Strongly recommended} and \emph{Elective} controls is given in \href{https://docs.aws.amazon.com/controltower/latest/controlreference/}{Resource identifiers for APIs and controls} in the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html}{\emph{Amazon Web Services Control Tower Controls Reference Guide}} . Remember that \emph{Mandatory} controls cannot be added or removed.
 
 \strong{Some controls have two identifiers}
 \itemize{
-\item \strong{ARN format for Amazon Web Services Control Tower:}
-\verb{arn:aws:controltower:\{REGION\}::control/\{CONTROL_TOWER_OPAQUE_ID\}}
+\item \strong{ARN format for Amazon Web Services Control Tower:} \verb{arn:aws:controltower:\{REGION\}::control/\{CONTROL_TOWER_OPAQUE_ID\}}
 
 \strong{Example:}
 
 \verb{arn:aws:controltower:us-west-2::control/AWS-GR_AUTOSCALING_LAUNCH_CONFIG_PUBLIC_IP_DISABLED}
-\item \strong{ARN format for Amazon Web Services Control Catalog:}
-\code{arn:{PARTITION}:controlcatalog:::control/{CONTROL_CATALOG_OPAQUE_ID}}
+\item \strong{ARN format for Amazon Web Services Control Catalog:} \code{arn:{PARTITION}:controlcatalog:::control/{CONTROL_CATALOG_OPAQUE_ID}}
 }
 
-You can find the \code{{CONTROL_CATALOG_OPAQUE_ID}} in the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/all-global-identifiers.html}{\emph{Amazon Web Services Control Tower Controls Reference Guide}}
-, or in the Amazon Web Services Control Tower console, on the \strong{Control
-details} page.
+You can find the \code{{CONTROL_CATALOG_OPAQUE_ID}} in the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/all-global-identifiers.html}{\emph{Amazon Web Services Control Tower Controls Reference Guide}} , or in the Amazon Web Services Control Tower console, on the \strong{Control details} page.
 
-The Amazon Web Services Control Tower APIs for enabled controls, such as
-\code{\link[=controltower_get_enabled_control]{get_enabled_control}} and
-\code{\link[=controltower_list_enabled_controls]{list_enabled_controls}} always
-return an ARN of the same type given when the control was enabled.
+The Amazon Web Services Control Tower APIs for enabled controls, such as \code{\link[=controltower_get_enabled_control]{get_enabled_control}} and \code{\link[=controltower_list_enabled_controls]{list_enabled_controls}} always return an ARN of the same type given when the control was enabled.
 
 \strong{To get the \code{targetIdentifier}:}
 
 The \code{targetIdentifier} is the ARN for an OU.
 
-In the Amazon Web Services Organizations console, you can find the ARN
-for the OU on the \strong{Organizational unit details} page associated with
-that OU.
+In the Amazon Web Services Organizations console, you can find the ARN for the OU on the \strong{Organizational unit details} page associated with that OU.
 
 \strong{OU ARN format:}
 
@@ -172,47 +146,23 @@ that OU.
 
 \strong{About landing zone APIs}
 
-You can configure and launch an Amazon Web Services Control Tower
-landing zone with APIs. For an introduction and steps, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/getting-started-apis.html}{Getting started with Amazon Web Services Control Tower using APIs}.
+You can configure and launch an Amazon Web Services Control Tower landing zone with APIs. For an introduction and steps, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/getting-started-apis.html}{Getting started with Amazon Web Services Control Tower using APIs}.
 
-For an overview of landing zone API operations, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/2023-all.html#landing-zone-apis}{Amazon Web Services Control Tower supports landing zone APIs}.
-The individual API operations for landing zones are detailed in this
-document, the \href{https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html}{API reference manual},
-in the "Actions" section.
+For an overview of landing zone API operations, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/2023-all.html#landing-zone-apis}{Amazon Web Services Control Tower supports landing zone APIs}. The individual API operations for landing zones are detailed in this document, the \href{https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html}{API reference manual}, in the "Actions" section.
 
 \strong{About baseline APIs}
 
-You can apply the \code{AWSControlTowerBaseline} baseline to an
-organizational unit (OU) as a way to register the OU with Amazon Web
-Services Control Tower, programmatically. For a general overview of this
-capability, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/2024-all.html#baseline-apis}{Amazon Web Services Control Tower supports APIs for OU registration and configuration with baselines}.
+You can apply the \code{AWSControlTowerBaseline} baseline to an organizational unit (OU) as a way to register the OU with Amazon Web Services Control Tower, programmatically. For a general overview of this capability, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/2024-all.html#baseline-apis}{Amazon Web Services Control Tower supports APIs for OU registration and configuration with baselines}.
 
-You can call the baseline API operations to view the baselines that
-Amazon Web Services Control Tower enables for your landing zone, on your
-behalf, when setting up the landing zone. These baselines are read-only
-baselines.
+You can call the baseline API operations to view the baselines that Amazon Web Services Control Tower enables for your landing zone, on your behalf, when setting up the landing zone. These baselines are read-only baselines.
 
-The individual API operations for baselines are detailed in this
-document, the \href{https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html}{API reference manual},
-in the "Actions" section. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html}{Baseline API input and output examples with CLI}.
+The individual API operations for baselines are detailed in this document, the \href{https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html}{API reference manual}, in the "Actions" section. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html}{Baseline API input and output examples with CLI}.
 
 \strong{About Amazon Web Services Control Catalog identifiers}
 \itemize{
-\item The \code{\link[=controltower_enable_control]{enable_control}} and
-\code{\link[=controltower_disable_control]{disable_control}} API operations can
-be called by specifying either the Amazon Web Services Control Tower
-identifer or the Amazon Web Services Control Catalog identifier. The
-API response returns the same type of identifier that you specified
-when calling the API.
-\item If you use an Amazon Web Services Control Tower identifier to call
-the \code{\link[=controltower_enable_control]{enable_control}} API, and then
-call \code{\link[=controltower_enable_control]{enable_control}} again with an
-Amazon Web Services Control Catalog identifier, Amazon Web Services
-Control Tower returns an error message stating that the control is
-already enabled. Similar behavior applies to the
-\code{\link[=controltower_disable_control]{disable_control}} API operation.
-\item Mandatory controls and the landing-zone-level Region deny control
-have Amazon Web Services Control Tower identifiers only.
+\item The \code{\link[=controltower_enable_control]{enable_control}} and \code{\link[=controltower_disable_control]{disable_control}} API operations can be called by specifying either the Amazon Web Services Control Tower identifer or the Amazon Web Services Control Catalog identifier. The API response returns the same type of identifier that you specified when calling the API.
+\item If you use an Amazon Web Services Control Tower identifier to call the \code{\link[=controltower_enable_control]{enable_control}} API, and then call \code{\link[=controltower_enable_control]{enable_control}} again with an Amazon Web Services Control Catalog identifier, Amazon Web Services Control Tower returns an error message stating that the control is already enabled. Similar behavior applies to the \code{\link[=controltower_disable_control]{disable_control}} API operation.
+\item Mandatory controls and the landing-zone-level Region deny control have Amazon Web Services Control Tower identifiers only.
 }
 
 \strong{Details and examples}
@@ -229,21 +179,11 @@ have Amazon Web Services Control Tower identifiers only.
 \item \href{https://docs.aws.amazon.com/controltower/latest/userguide/creating-resources-with-cloudformation.html}{Creating Amazon Web Services Control Tower resources with Amazon Web Services CloudFormation}
 }
 
-To view the open source resource repository on GitHub, see
-\href{https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-controltower}{aws-cloudformation/aws-cloudformation-resource-providers-controltower}
+To view the open source resource repository on GitHub, see \href{https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-controltower}{aws-cloudformation/aws-cloudformation-resource-providers-controltower}
 
 \strong{Recording API Requests}
 
-Amazon Web Services Control Tower supports Amazon Web Services
-CloudTrail, a service that records Amazon Web Services API calls for
-your Amazon Web Services account and delivers log files to an Amazon S3
-bucket. By using information collected by CloudTrail, you can determine
-which requests the Amazon Web Services Control Tower service received,
-who made the request and when, and so on. For more about Amazon Web
-Services Control Tower and its support for CloudTrail, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/logging-using-cloudtrail.html}{Logging Amazon Web Services Control Tower Actions with Amazon Web Services CloudTrail}
-in the Amazon Web Services Control Tower User Guide. To learn more about
-CloudTrail, including how to turn it on and find your log files, see the
-Amazon Web Services CloudTrail User Guide.
+Amazon Web Services Control Tower supports Amazon Web Services CloudTrail, a service that records Amazon Web Services API calls for your Amazon Web Services account and delivers log files to an Amazon S3 bucket. By using information collected by CloudTrail, you can determine which requests the Amazon Web Services Control Tower service received, who made the request and when, and so on. For more about Amazon Web Services Control Tower and its support for CloudTrail, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/logging-using-cloudtrail.html}{Logging Amazon Web Services Control Tower Actions with Amazon Web Services CloudTrail} in the Amazon Web Services Control Tower User Guide. To learn more about CloudTrail, including how to turn it on and find your log files, see the Amazon Web Services CloudTrail User Guide.
 }
 \section{Service syntax}{
 

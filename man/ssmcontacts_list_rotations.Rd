@@ -11,16 +11,11 @@ ssmcontacts_list_rotations(
 )
 }
 \arguments{
-\item{RotationNamePrefix}{A filter to include rotations in list results based on their common
-prefix. For example, entering prod returns a list of all rotation names
-that begin with \code{prod}, such as \code{production} and \code{prod-1}.}
+\item{RotationNamePrefix}{A filter to include rotations in list results based on their common prefix. For example, entering prod returns a list of all rotation names that begin with \code{prod}, such as \code{production} and \code{prod-1}.}
 
-\item{NextToken}{A token to start the list. Use this token to get the next set of
-results.}
+\item{NextToken}{A token to start the list. Use this token to get the next set of results.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 }
 \description{
 Retrieves a list of on-call rotations.

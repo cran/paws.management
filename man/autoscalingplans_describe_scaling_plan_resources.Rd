@@ -14,11 +14,9 @@ autoscalingplans_describe_scaling_plan_resources(
 \arguments{
 \item{ScalingPlanName}{[required] The name of the scaling plan.}
 
-\item{ScalingPlanVersion}{[required] The version number of the scaling plan. Currently, the only valid value
-is \code{1}.}
+\item{ScalingPlanVersion}{[required] The version number of the scaling plan. Currently, the only valid value is \code{1}.}
 
-\item{MaxResults}{The maximum number of scalable resources to return. The value must be
-between 1 and 50. The default value is 50.}
+\item{MaxResults}{The maximum number of scalable resources to return. The value must be between 1 and 50. The default value is 50.}
 
 \item{NextToken}{The token for the next set of results.}
 }

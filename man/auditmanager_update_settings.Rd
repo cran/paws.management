@@ -15,8 +15,7 @@ auditmanager_update_settings(
 )
 }
 \arguments{
-\item{snsTopic}{The Amazon Simple Notification Service (Amazon SNS) topic that Audit
-Manager sends notifications to.}
+\item{snsTopic}{The Amazon Simple Notification Service (Amazon SNS) topic that Audit Manager sends notifications to.}
 
 \item{defaultAssessmentReportsDestination}{The default S3 destination bucket for storing assessment reports.}
 
@@ -24,21 +23,11 @@ Manager sends notifications to.}
 
 \item{kmsKey}{The KMS key details.}
 
-\item{evidenceFinderEnabled}{Specifies whether the evidence finder feature is enabled. Change this
-attribute to enable or disable evidence finder.
+\item{evidenceFinderEnabled}{Specifies whether the evidence finder feature is enabled. Change this attribute to enable or disable evidence finder.
 
-When you use this attribute to disable evidence finder, Audit Manager
-deletes the event data store that’s used to query your evidence data. As
-a result, you can’t re-enable evidence finder and use the feature again.
-Your only alternative is to
-\href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeregisterAccount.html}{deregister}
-and then
-\href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_RegisterAccount.html}{re-register}
-Audit Manager.}
+When you use this attribute to disable evidence finder, Audit Manager deletes the event data store that’s used to query your evidence data. As a result, you can’t re-enable evidence finder and use the feature again. Your only alternative is to \href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeregisterAccount.html}{deregister} and then \href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_RegisterAccount.html}{re-register} Audit Manager.}
 
-\item{deregistrationPolicy}{The deregistration policy for your Audit Manager data. You can use this
-attribute to determine how your data is handled when you deregister
-Audit Manager.}
+\item{deregistrationPolicy}{The deregistration policy for your Audit Manager data. You can use this attribute to determine how your data is handled when you deregister Audit Manager.}
 
 \item{defaultExportDestination}{The default S3 destination bucket for storing evidence finder exports.}
 }

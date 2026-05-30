@@ -12,8 +12,7 @@ finspace_delete_kx_dataview(
 )
 }
 \arguments{
-\item{environmentId}{[required] A unique identifier for the kdb environment, from where you want to
-delete the dataview.}
+\item{environmentId}{[required] A unique identifier for the kdb environment, from where you want to delete the dataview.}
 
 \item{databaseName}{[required] The name of the database whose dataview you want to delete.}
 

@@ -7,8 +7,7 @@
 licensemanagerusersubscriptions_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you want to remove
-tags from.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you want to remove tags from.}
 
 \item{TagKeys}{[required] The tag keys to remove from the resource.}
 }

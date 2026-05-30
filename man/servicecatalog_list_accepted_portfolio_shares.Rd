@@ -19,20 +19,15 @@ servicecatalog_list_accepted_portfolio_shares(
 \item \code{zh} - Chinese
 }}
 
-\item{PageToken}{The page token for the next set of results. To retrieve the first set of
-results, use null.}
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 
-\item{PortfolioShareType}{The type of shared portfolios to list. The default is to list imported
-portfolios.
+\item{PortfolioShareType}{The type of shared portfolios to list. The default is to list imported portfolios.
 \itemize{
-\item \code{AWS_ORGANIZATIONS} - List portfolios accepted and shared via
-organizational sharing by the management account or delegated
-administrator of your organization.
+\item \code{AWS_ORGANIZATIONS} - List portfolios accepted and shared via organizational sharing by the management account or delegated administrator of your organization.
 \item \code{AWS_SERVICECATALOG} - Deprecated type.
-\item \code{IMPORTED} - List imported portfolios that have been accepted and
-shared through account-to-account sharing.
+\item \code{IMPORTED} - List imported portfolios that have been accepted and shared through account-to-account sharing.
 }}
 }
 \description{

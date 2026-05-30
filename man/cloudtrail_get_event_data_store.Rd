@@ -8,8 +8,7 @@ or the ID portion of the ARN}
 cloudtrail_get_event_data_store(EventDataStore)
 }
 \arguments{
-\item{EventDataStore}{[required] The ARN (or ID suffix of the ARN) of the event data store about which
-you want information.}
+\item{EventDataStore}{[required] The ARN (or ID suffix of the ARN) of the event data store about which you want information.}
 }
 \description{
 Returns information about an event data store specified as either an ARN or the ID portion of the ARN.

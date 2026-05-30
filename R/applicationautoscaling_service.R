@@ -5,22 +5,19 @@ NULL
 #' Application Auto Scaling
 #'
 #' @description
-#' With Application Auto Scaling, you can configure automatic scaling for
-#' the following resources:
+#' With Application Auto Scaling, you can configure automatic scaling for the following resources:
 #' 
 #' -   Amazon AppStream 2.0 fleets
 #' 
 #' -   Amazon Aurora Replicas
 #' 
-#' -   Amazon Comprehend document classification and entity recognizer
-#'     endpoints
+#' -   Amazon Comprehend document classification and entity recognizer endpoints
 #' 
-#' -   Amazon DynamoDB tables and global secondary indexes throughput
-#'     capacity
+#' -   Amazon DynamoDB tables and global secondary indexes throughput capacity
 #' 
 #' -   Amazon ECS services
 #' 
-#' -   Amazon ElastiCache for Redis clusters (replication groups)
+#' -   Amazon ElastiCache replication groups (Redis OSS and Valkey) and Memcached clusters
 #' 
 #' -   Amazon EMR clusters
 #' 
@@ -44,33 +41,17 @@ NULL
 #' 
 #' -   Custom resources provided by your own applications or services
 #' 
-#' To learn more about Application Auto Scaling, see the [Application Auto
-#' Scaling User
-#' Guide](https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html).
+#' To learn more about Application Auto Scaling, see the [Application Auto Scaling User Guide](https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html).
 #' 
 #' **API Summary**
 #' 
-#' The Application Auto Scaling service API includes three key sets of
-#' actions:
+#' The Application Auto Scaling service API includes three key sets of actions:
 #' 
-#' -   Register and manage scalable targets - Register Amazon Web Services
-#'     or custom resources as scalable targets (a resource that Application
-#'     Auto Scaling can scale), set minimum and maximum capacity limits,
-#'     and retrieve information on existing scalable targets.
+#' -   Register and manage scalable targets - Register Amazon Web Services or custom resources as scalable targets (a resource that Application Auto Scaling can scale), set minimum and maximum capacity limits, and retrieve information on existing scalable targets.
 #' 
-#' -   Configure and manage automatic scaling - Define scaling policies to
-#'     dynamically scale your resources in response to CloudWatch alarms,
-#'     schedule one-time or recurring scaling actions, and retrieve your
-#'     recent scaling activity history.
+#' -   Configure and manage automatic scaling - Define scaling policies to dynamically scale your resources in response to CloudWatch alarms, schedule one-time or recurring scaling actions, and retrieve your recent scaling activity history.
 #' 
-#' -   Suspend and resume scaling - Temporarily suspend and later resume
-#'     automatic scaling by calling the
-#'     [`register_scalable_target`][applicationautoscaling_register_scalable_target]
-#'     API action for any Application Auto Scaling scalable target. You can
-#'     suspend and resume (individually or in combination) scale-out
-#'     activities that are triggered by a scaling policy, scale-in
-#'     activities that are triggered by a scaling policy, and scheduled
-#'     scaling.
+#' -   Suspend and resume scaling - Temporarily suspend and later resume automatic scaling by calling the [`register_scalable_target`][applicationautoscaling_register_scalable_target] API action for any Application Auto Scaling scalable target. You can suspend and resume (individually or in combination) scale-out activities that are triggered by a scaling policy, scale-in activities that are triggered by a scaling policy, and scheduled scaling.
 #'
 #' @param
 #' config
@@ -205,7 +186,7 @@ applicationautoscaling <- function(config = list(), credentials = list(), endpoi
 
 .applicationautoscaling$metadata <- list(
   service_name = "autoscaling",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.amazonaws.eu", global = FALSE)),
   service_id = "Application Auto Scaling",
   api_version = "2016-02-06",
   signing_name = "application-autoscaling",

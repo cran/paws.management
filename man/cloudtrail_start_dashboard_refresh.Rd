@@ -11,12 +11,9 @@ cloudtrail_start_dashboard_refresh(DashboardId, QueryParameterValues = NULL)
 
 \item{QueryParameterValues}{The query parameter values for the dashboard
 
-For custom dashboards, the following query parameters are valid:
-\verb{$StartTime$}, \verb{$EndTime$}, and \verb{$Period$}.
+For custom dashboards, the following query parameters are valid: \verb{$StartTime$}, \verb{$EndTime$}, and \verb{$Period$}.
 
-For managed dashboards, the following query parameters are valid:
-\verb{$StartTime$}, \verb{$EndTime$}, \verb{$Period$}, and \verb{$EventDataStoreId$}. The
-\verb{$EventDataStoreId$} query parameter is required.}
+For managed dashboards, the following query parameters are valid: \verb{$StartTime$}, \verb{$EndTime$}, \verb{$Period$}, and \verb{$EventDataStoreId$}. The \verb{$EventDataStoreId$} query parameter is required.}
 }
 \description{
 Starts a refresh of the specified dashboard.

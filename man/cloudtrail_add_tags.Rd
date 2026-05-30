@@ -8,20 +8,15 @@ channel, up to a limit of 50}
 cloudtrail_add_tags(ResourceId, TagsList)
 }
 \arguments{
-\item{ResourceId}{[required] Specifies the ARN of the trail, event data store, dashboard, or channel
-to which one or more tags will be added.
+\item{ResourceId}{[required] Specifies the ARN of the trail, event data store, dashboard, or channel to which one or more tags will be added.
 
-The format of a trail ARN is:
-\code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}
+The format of a trail ARN is: \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}
 
-The format of an event data store ARN is:
-\verb{arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE}
+The format of an event data store ARN is: \verb{arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE}
 
-The format of a dashboard ARN is:
-\code{arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash}
+The format of a dashboard ARN is: \code{arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash}
 
-The format of a channel ARN is:
-\code{arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890}}
+The format of a channel ARN is: \code{arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890}}
 
 \item{TagsList}{[required] Contains a list of tags, up to a limit of 50}
 }

@@ -26,16 +26,11 @@ servicecatalog_import_as_provisioned_product(
 
 \item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact.}
 
-\item{ProvisionedProductName}{[required] The user-friendly name of the provisioned product. The value must be
-unique for the Amazon Web Services account. The name cannot be updated
-after the product is provisioned.}
+\item{ProvisionedProductName}{[required] The user-friendly name of the provisioned product. The value must be unique for the Amazon Web Services account. The name cannot be updated after the product is provisioned.}
 
-\item{PhysicalId}{[required] The unique identifier of the resource to be imported. It only currently
-supports CloudFormation stack IDs.}
+\item{PhysicalId}{[required] The unique identifier of the resource to be imported. It only currently supports CloudFormation stack IDs.}
 
-\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple
-requests differ only by the idempotency token, the same response is
-returned for each repeated request.}
+\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
 }
 \description{
 Requests the import of a resource as an Service Catalog provisioned product that is associated to an Service Catalog product and provisioning artifact. Once imported, all supported governance actions are supported on the provisioned product.

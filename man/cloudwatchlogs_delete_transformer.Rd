@@ -7,9 +7,7 @@
 cloudwatchlogs_delete_transformer(logGroupIdentifier)
 }
 \arguments{
-\item{logGroupIdentifier}{[required] Specify either the name or ARN of the log group to delete the
-transformer for. If the log group is in a source account and you are
-using a monitoring account, you must use the log group ARN.}
+\item{logGroupIdentifier}{[required] Specify either the name or ARN of the log group to delete the transformer for. If the log group is in a source account and you are using a monitoring account, you must use the log group ARN.}
 }
 \description{
 Deletes the log transformer for the specified log group. As soon as you do this, the transformation of incoming log events according to that transformer stops. If this account has an account-level transformer that applies to this log group, the log group begins using that account-level transformer when this log-group level transformer is deleted.

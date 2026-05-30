@@ -13,8 +13,7 @@ ssm_get_maintenance_window_execution_task_invocation(
 \arguments{
 \item{WindowExecutionId}{[required] The ID of the maintenance window execution for which the task is a part.}
 
-\item{TaskId}{[required] The ID of the specific task in the maintenance window task that should
-be retrieved.}
+\item{TaskId}{[required] The ID of the specific task in the maintenance window task that should be retrieved.}
 
 \item{InvocationId}{[required] The invocation ID to retrieve.}
 }

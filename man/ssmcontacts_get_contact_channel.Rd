@@ -7,8 +7,7 @@
 ssmcontacts_get_contact_channel(ContactChannelId)
 }
 \arguments{
-\item{ContactChannelId}{[required] The Amazon Resource Name (ARN) of the contact channel you want
-information about.}
+\item{ContactChannelId}{[required] The Amazon Resource Name (ARN) of the contact channel you want information about.}
 }
 \description{
 List details about a specific contact channel.

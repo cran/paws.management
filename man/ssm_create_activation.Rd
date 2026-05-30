@@ -17,59 +17,31 @@ ssm_create_activation(
 )
 }
 \arguments{
-\item{Description}{A user-defined description of the resource that you want to register
-with Systems Manager.
+\item{Description}{A user-defined description of the resource that you want to register with Systems Manager.
 
 Don't enter personally identifiable information in this field.}
 
-\item{DefaultInstanceName}{The name of the registered, managed node as it will appear in the Amazon
-Web Services Systems Manager console or when you use the Amazon Web
-Services command line tools to list Systems Manager resources.
+\item{DefaultInstanceName}{The name of the registered, managed node as it will appear in the Amazon Web Services Systems Manager console or when you use the Amazon Web Services command line tools to list Systems Manager resources.
 
 Don't enter personally identifiable information in this field.}
 
-\item{IamRole}{[required] The name of the Identity and Access Management (IAM) role that you want
-to assign to the managed node. This IAM role must provide AssumeRole
-permissions for the Amazon Web Services Systems Manager service
-principal \code{ssm.amazonaws.com}. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/hybrid-multicloud-service-role.html}{Create the IAM service role required for Systems Manager in a hybrid and multicloud environments}
-in the \emph{Amazon Web Services Systems Manager User Guide}.
+\item{IamRole}{[required] The name of the Identity and Access Management (IAM) role that you want to assign to the managed node. This IAM role must provide AssumeRole permissions for the Amazon Web Services Systems Manager service principal \code{ssm.amazonaws.com}. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/hybrid-multicloud-service-role.html}{Create the IAM service role required for Systems Manager in a hybrid and multicloud environments} in the \emph{Amazon Web Services Systems Manager User Guide}.
 
-You can't specify an IAM service-linked role for this parameter. You
-must create a unique role.}
+You can't specify an IAM service-linked role for this parameter. You must create a unique role.}
 
-\item{RegistrationLimit}{Specify the maximum number of managed nodes you want to register. The
-default value is \code{1}.}
+\item{RegistrationLimit}{Specify the maximum number of managed nodes you want to register. The default value is \code{1}.}
 
-\item{ExpirationDate}{The date by which this activation request should expire, in timestamp
-format, such as "2024-07-07T00:00:00". You can specify a date up to 30
-days in advance. If you don't provide an expiration date, the activation
-code expires in 24 hours.}
+\item{ExpirationDate}{The date by which this activation request should expire, in timestamp format, such as "2024-07-07T00:00:00". You can specify a date up to 30 days in advance. If you don't provide an expiration date, the activation code expires in 24 hours.}
 
-\item{Tags}{Optional metadata that you assign to a resource. Tags enable you to
-categorize a resource in different ways, such as by purpose, owner, or
-environment. For example, you might want to tag an activation to
-identify which servers or virtual machines (VMs) in your on-premises
-environment you intend to activate. In this case, you could specify the
-following key-value pairs:
+\item{Tags}{Optional metadata that you assign to a resource. Tags enable you to categorize a resource in different ways, such as by purpose, owner, or environment. For example, you might want to tag an activation to identify which servers or virtual machines (VMs) in your on-premises environment you intend to activate. In this case, you could specify the following key-value pairs:
 \itemize{
 \item \verb{Key=OS,Value=Windows}
 \item \verb{Key=Environment,Value=Production}
 }
 
-When you install SSM Agent on your on-premises servers and VMs, you
-specify an activation ID and code. When you specify the activation ID
-and code, tags assigned to the activation are automatically applied to
-the on-premises servers or VMs.
+When you install SSM Agent on your on-premises servers and VMs, you specify an activation ID and code. When you specify the activation ID and code, tags assigned to the activation are automatically applied to the on-premises servers or VMs.
 
-You can't add tags to or delete tags from an existing activation. You
-can tag your on-premises servers, edge devices, and VMs after they
-connect to Systems Manager for the first time and are assigned a managed
-node ID. This means they are listed in the Amazon Web Services Systems
-Manager console with an ID that is prefixed with "mi-". For information
-about how to add tags to your managed nodes, see
-\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}}. For information
-about how to remove tags from your managed nodes, see
-\code{\link[=ssm_remove_tags_from_resource]{remove_tags_from_resource}}.}
+You can't add tags to or delete tags from an existing activation. You can tag your on-premises servers, edge devices, and VMs after they connect to Systems Manager for the first time and are assigned a managed node ID. This means they are listed in the Amazon Web Services Systems Manager console with an ID that is prefixed with "mi-". For information about how to add tags to your managed nodes, see \code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}}. For information about how to remove tags from your managed nodes, see \code{\link[=ssm_remove_tags_from_resource]{remove_tags_from_resource}}.}
 
 \item{RegistrationMetadata}{Reserved for internal use.}
 }

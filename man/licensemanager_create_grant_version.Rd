@@ -16,8 +16,7 @@ licensemanager_create_grant_version(
 )
 }
 \arguments{
-\item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+\item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.}
 
 \item{GrantArn}{[required] Amazon Resource Name (ARN) of the grant.}
 

@@ -20,14 +20,11 @@ appregistry_get_associated_resource(
 
 \item{resource}{[required] The name or ID of the resource associated with the application.}
 
-\item{nextToken}{A unique pagination token for each page of results. Make the call again
-with the returned token to retrieve the next page of results.}
+\item{nextToken}{A unique pagination token for each page of results. Make the call again with the returned token to retrieve the next page of results.}
 
-\item{resourceTagStatus}{States whether an application tag is applied, not applied, in the
-process of being applied, or skipped.}
+\item{resourceTagStatus}{States whether an application tag is applied, not applied, in the process of being applied, or skipped.}
 
-\item{maxResults}{The maximum number of results to return. If the parameter is omitted, it
-defaults to 25. The value is optional.}
+\item{maxResults}{The maximum number of results to return. If the parameter is omitted, it defaults to 25. The value is optional.}
 }
 \description{
 Gets the resource associated with the application.

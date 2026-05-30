@@ -7,20 +7,13 @@
 resourcegroups_put_group_configuration(Group = NULL, Configuration = NULL)
 }
 \arguments{
-\item{Group}{The name or Amazon resource name (ARN) of the resource group with the
-configuration that you want to update.}
+\item{Group}{The name or Amazon resource name (ARN) of the resource group with the configuration that you want to update.}
 
-\item{Configuration}{The new configuration to associate with the specified group. A
-configuration associates the resource group with an Amazon Web Services
-service and specifies how the service can interact with the resources in
-the group. A configuration is an array of GroupConfigurationItem
-elements.
+\item{Configuration}{The new configuration to associate with the specified group. A configuration associates the resource group with an Amazon Web Services service and specifies how the service can interact with the resources in the group. A configuration is an array of GroupConfigurationItem elements.
 
-For information about the syntax of a service configuration, see
-\href{https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html}{Service configurations for Resource Groups}.
+For information about the syntax of a service configuration, see \href{https://docs.aws.amazon.com/ARG/latest/APIReference/}{Service configurations for Resource Groups}.
 
-A resource group can contain either a \code{Configuration} or a
-\code{ResourceQuery}, but not both.}
+A resource group can contain either a \code{Configuration} or a \code{ResourceQuery}, but not both.}
 }
 \description{
 Attaches a service configuration to the specified group. This occurs asynchronously, and can take time to complete. You can use \code{\link[=resourcegroups_get_group_configuration]{get_group_configuration}} to check the status of the update.

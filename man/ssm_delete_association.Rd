@@ -12,14 +12,7 @@ ssm_delete_association(Name = NULL, InstanceId = NULL, AssociationId = NULL)
 
 \item{InstanceId}{The managed node ID.
 
-\code{InstanceId} has been deprecated. To specify a managed node ID for an
-association, use the \code{Targets} parameter. Requests that include the
-parameter \code{InstanceID} with Systems Manager documents (SSM documents)
-that use schema version 2.0 or later will fail. In addition, if you use
-the parameter \code{InstanceId}, you can't use the parameters
-\code{AssociationName}, \code{DocumentVersion}, \code{MaxErrors}, \code{MaxConcurrency},
-\code{OutputLocation}, or \code{ScheduleExpression}. To use these parameters, you
-must use the \code{Targets} parameter.}
+\code{InstanceId} has been deprecated. To specify a managed node ID for an association, use the \code{Targets} parameter. Requests that include the parameter \code{InstanceID} with Systems Manager documents (SSM documents) that use schema version 2.0 or later will fail. In addition, if you use the parameter \code{InstanceId}, you can't use the parameters \code{AssociationName}, \code{DocumentVersion}, \code{MaxErrors}, \code{MaxConcurrency}, \code{OutputLocation}, or \code{ScheduleExpression}. To use these parameters, you must use the \code{Targets} parameter.}
 
 \item{AssociationId}{The association ID that you want to delete.}
 }

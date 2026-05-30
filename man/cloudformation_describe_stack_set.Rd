@@ -7,23 +7,16 @@
 cloudformation_describe_stack_set(StackSetName, CallAs = NULL)
 }
 \arguments{
-\item{StackSetName}{[required] The name or unique ID of the stack set whose description you want.}
+\item{StackSetName}{[required] The name or unique ID of the StackSet whose description you want.}
 
-\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
-account administrator in the organization's management account or as a
-delegated administrator in a member account.
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an account administrator in the organization's management account or as a delegated administrator in a member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
-self-managed permissions.
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.
-\item If you are signed in to a delegated administrator account, specify
-\code{DELEGATED_ADMIN}.
+\item If you are signed in to a delegated administrator account, specify \code{DELEGATED_ADMIN}.
 
-Your Amazon Web Services account must be registered as a delegated
-administrator in the management account. For more information, see
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
-in the \emph{CloudFormation User Guide}.
+Your Amazon Web Services account must be registered as a delegated administrator in the management account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator} in the \emph{CloudFormation User Guide}.
 }}
 }
 \description{

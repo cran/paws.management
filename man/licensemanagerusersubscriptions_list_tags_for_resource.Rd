@@ -7,8 +7,7 @@
 licensemanagerusersubscriptions_list_tags_for_resource(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource whose tags you want to
-retrieve.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource whose tags you want to retrieve.}
 }
 \description{
 Returns the list of tags for the specified resource.

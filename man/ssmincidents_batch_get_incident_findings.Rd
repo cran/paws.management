@@ -10,8 +10,7 @@ ssmincidents_batch_get_incident_findings(findingIds, incidentRecordArn)
 \arguments{
 \item{findingIds}{[required] A list of IDs of findings for which you want to view details.}
 
-\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident for which you want to
-view finding details.}
+\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident for which you want to view finding details.}
 }
 \description{
 Retrieves details about all specified findings for an incident, including descriptive details about each finding. A finding represents a recent application environment change made by an CodeDeploy deployment or an CloudFormation stack creation or update that can be investigated as a potential cause of the incident.

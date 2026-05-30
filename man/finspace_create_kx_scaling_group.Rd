@@ -16,40 +16,28 @@ finspace_create_kx_scaling_group(
 \arguments{
 \item{clientToken}{[required] A token that ensures idempotency. This token expires in 10 minutes.}
 
-\item{environmentId}{[required] A unique identifier for the kdb environment, where you want to create
-the scaling group.}
+\item{environmentId}{[required] A unique identifier for the kdb environment, where you want to create the scaling group.}
 
 \item{scalingGroupName}{[required] A unique identifier for the kdb scaling group.}
 
-\item{hostType}{[required] The memory and CPU capabilities of the scaling group host on which
-FinSpace Managed kdb clusters will be placed.
+\item{hostType}{[required] The memory and CPU capabilities of the scaling group host on which FinSpace Managed kdb clusters will be placed.
 
 You can add one of the following values:
 \itemize{
-\item \code{kx.sg.large} – The host type with a configuration of 16 GiB memory
-and 2 vCPUs.
-\item \code{kx.sg.xlarge} – The host type with a configuration of 32 GiB memory
-and 4 vCPUs.
-\item \code{kx.sg.2xlarge} – The host type with a configuration of 64 GiB
-memory and 8 vCPUs.
-\item \code{kx.sg.4xlarge} – The host type with a configuration of 108 GiB
-memory and 16 vCPUs.
-\item \code{kx.sg.8xlarge} – The host type with a configuration of 216 GiB
-memory and 32 vCPUs.
-\item \code{kx.sg.16xlarge} – The host type with a configuration of 432 GiB
-memory and 64 vCPUs.
-\item \code{kx.sg.32xlarge} – The host type with a configuration of 864 GiB
-memory and 128 vCPUs.
-\item \code{kx.sg1.16xlarge} – The host type with a configuration of 1949 GiB
-memory and 64 vCPUs.
-\item \code{kx.sg1.24xlarge} – The host type with a configuration of 2948 GiB
-memory and 96 vCPUs.
+\item \code{kx.sg.large} – The host type with a configuration of 16 GiB memory and 2 vCPUs.
+\item \code{kx.sg.xlarge} – The host type with a configuration of 32 GiB memory and 4 vCPUs.
+\item \code{kx.sg.2xlarge} – The host type with a configuration of 64 GiB memory and 8 vCPUs.
+\item \code{kx.sg.4xlarge} – The host type with a configuration of 108 GiB memory and 16 vCPUs.
+\item \code{kx.sg.8xlarge} – The host type with a configuration of 216 GiB memory and 32 vCPUs.
+\item \code{kx.sg.16xlarge} – The host type with a configuration of 432 GiB memory and 64 vCPUs.
+\item \code{kx.sg.32xlarge} – The host type with a configuration of 864 GiB memory and 128 vCPUs.
+\item \code{kx.sg1.16xlarge} – The host type with a configuration of 1949 GiB memory and 64 vCPUs.
+\item \code{kx.sg1.24xlarge} – The host type with a configuration of 2948 GiB memory and 96 vCPUs.
 }}
 
 \item{availabilityZoneId}{[required] The identifier of the availability zones.}
 
-\item{tags}{A list of key-value pairs to label the scaling group. You can add up to
-50 tags to a scaling group.}
+\item{tags}{A list of key-value pairs to label the scaling group. You can add up to 50 tags to a scaling group.}
 }
 \description{
 Creates a new scaling group.

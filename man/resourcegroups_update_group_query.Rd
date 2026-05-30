@@ -13,14 +13,11 @@ resourcegroups_update_group_query(
 \arguments{
 \item{GroupName}{Don't use this parameter. Use \code{Group} instead.}
 
-\item{Group}{The name or the Amazon resource name (ARN) of the resource group to
-query.}
+\item{Group}{The name or the Amazon resource name (ARN) of the resource group to query.}
 
-\item{ResourceQuery}{[required] The resource query to determine which Amazon Web Services resources are
-members of this resource group.
+\item{ResourceQuery}{[required] The resource query to determine which Amazon Web Services resources are members of this resource group.
 
-A resource group can contain either a \code{Configuration} or a
-\code{ResourceQuery}, but not both.}
+A resource group can contain either a \code{Configuration} or a \code{ResourceQuery}, but not both.}
 }
 \description{
 Updates the resource query of a group. For more information about resource queries, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag}{Create a tag-based group in Resource Groups}.

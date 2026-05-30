@@ -9,7 +9,9 @@ cloudwatchlogs_put_retention_policy(logGroupName, retentionInDays)
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
 
-\item{retentionInDays}{[required]}
+\item{retentionInDays}{[required] The number of days to retain the log events in the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1096, 1827, 2192, 2557, 2922, 3288, and 3653.
+
+To set a log group so that its log events do not expire, use \code{\link[=cloudwatchlogs_delete_retention_policy]{delete_retention_policy}}.}
 }
 \description{
 Sets the retention of the specified log group. With a retention policy, you can configure the number of days for which to retain log events in the specified log group.

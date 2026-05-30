@@ -14,11 +14,9 @@ cloudwatchlogs_put_integration(
 \arguments{
 \item{integrationName}{[required] A name for the integration.}
 
-\item{resourceConfig}{[required] A structure that contains configuration information for the integration
-that you are creating.}
+\item{resourceConfig}{[required] A structure that contains configuration information for the integration that you are creating.}
 
-\item{integrationType}{[required] The type of integration. Currently, the only supported type is
-\code{OPENSEARCH}.}
+\item{integrationType}{[required] The type of integration. Currently, the only supported type is \code{OPENSEARCH}.}
 }
 \description{
 Creates an integration between CloudWatch Logs and another service in this account. Currently, only integrations with OpenSearch Service are supported, and currently you can have only one integration in your account.

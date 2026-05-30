@@ -11,8 +11,7 @@ licensemanager_list_license_specifications_for_resource(
 )
 }
 \arguments{
-\item{ResourceArn}{[required] Amazon Resource Name (ARN) of a resource that has an associated license
-configuration.}
+\item{ResourceArn}{[required] Amazon Resource Name (ARN) of a resource that has an associated license configuration.}
 
 \item{MaxResults}{Maximum number of results to return in a single call.}
 

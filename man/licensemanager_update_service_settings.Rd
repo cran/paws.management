@@ -8,19 +8,20 @@ licensemanager_update_service_settings(
   S3BucketArn = NULL,
   SnsTopicArn = NULL,
   OrganizationConfiguration = NULL,
-  EnableCrossAccountsDiscovery = NULL
+  EnableCrossAccountsDiscovery = NULL,
+  EnabledDiscoverySourceRegions = NULL
 )
 }
 \arguments{
-\item{S3BucketArn}{Amazon Resource Name (ARN) of the Amazon S3 bucket where the License
-Manager information is stored.}
+\item{S3BucketArn}{Amazon Resource Name (ARN) of the Amazon S3 bucket where the License Manager information is stored.}
 
-\item{SnsTopicArn}{Amazon Resource Name (ARN) of the Amazon SNS topic used for License
-Manager alerts.}
+\item{SnsTopicArn}{Amazon Resource Name (ARN) of the Amazon SNS topic used for License Manager alerts.}
 
 \item{OrganizationConfiguration}{Enables integration with Organizations for cross-account discovery.}
 
 \item{EnableCrossAccountsDiscovery}{Activates cross-account discovery.}
+
+\item{EnabledDiscoverySourceRegions}{Cross region discovery enabled source regions.}
 }
 \description{
 Updates License Manager settings for the current Region.

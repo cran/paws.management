@@ -8,10 +8,7 @@ service}
 ssm_update_service_setting(SettingId, SettingValue)
 }
 \arguments{
-\item{SettingId}{[required] The Amazon Resource Name (ARN) of the service setting to update. For
-example,
-\code{arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled}.
-The setting ID can be one of the following.
+\item{SettingId}{[required] The Amazon Resource Name (ARN) of the service setting to update. For example, \code{arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled}. The setting ID can be one of the following.
 \itemize{
 \item \verb{/ssm/appmanager/appmanager-enabled}
 \item \verb{/ssm/automation/customer-script-log-destination}
@@ -25,31 +22,19 @@ The setting ID can be one of the following.
 \item \verb{/ssm/parameter-store/high-throughput-enabled}
 }
 
-Permissions to update the
-\verb{/ssm/managed-instance/default-ec2-instance-management-role} setting
-should only be provided to administrators. Implement least privilege
-access when allowing individuals to configure or modify the Default Host
-Management Configuration.}
+Permissions to update the \verb{/ssm/managed-instance/default-ec2-instance-management-role} setting should only be provided to administrators. Implement least privilege access when allowing individuals to configure or modify the Default Host Management Configuration.}
 
-\item{SettingValue}{[required] The new value to specify for the service setting. The following list
-specifies the available values for each setting.
+\item{SettingValue}{[required] The new value to specify for the service setting. The following list specifies the available values for each setting.
 \itemize{
 \item For \verb{/ssm/appmanager/appmanager-enabled}, enter \code{True} or \code{False}.
-\item For \verb{/ssm/automation/customer-script-log-destination}, enter
-\code{CloudWatch}.
-\item For \verb{/ssm/automation/customer-script-log-group-name}, enter the name
-of an Amazon CloudWatch Logs log group.
-\item For \verb{/ssm/documents/console/public-sharing-permission}, enter
-\code{Enable} or \code{Disable}.
-\item For \verb{/ssm/managed-instance/activation-tier}, enter \code{standard} or
-\code{advanced}.
-\item For \verb{/ssm/managed-instance/default-ec2-instance-management-role},
-enter the name of an IAM role.
+\item For \verb{/ssm/automation/customer-script-log-destination}, enter \code{CloudWatch}.
+\item For \verb{/ssm/automation/customer-script-log-group-name}, enter the name of an Amazon CloudWatch Logs log group.
+\item For \verb{/ssm/documents/console/public-sharing-permission}, enter \code{Enable} or \code{Disable}.
+\item For \verb{/ssm/managed-instance/activation-tier}, enter \code{standard} or \code{advanced}.
+\item For \verb{/ssm/managed-instance/default-ec2-instance-management-role}, enter the name of an IAM role.
 \item For \verb{/ssm/opsinsights/opscenter}, enter \code{Enabled} or \code{Disabled}.
-\item For \verb{/ssm/parameter-store/default-parameter-tier}, enter \code{Standard},
-\code{Advanced}, or \code{Intelligent-Tiering}
-\item For \verb{/ssm/parameter-store/high-throughput-enabled}, enter \code{true} or
-\code{false}.
+\item For \verb{/ssm/parameter-store/default-parameter-tier}, enter \code{Standard}, \code{Advanced}, or \code{Intelligent-Tiering}
+\item For \verb{/ssm/parameter-store/high-throughput-enabled}, enter \code{true} or \code{false}.
 }}
 }
 \description{

@@ -10,8 +10,7 @@ configservice_delete_remediation_configuration(
 )
 }
 \arguments{
-\item{ConfigRuleName}{[required] The name of the Config rule for which you want to delete remediation
-configuration.}
+\item{ConfigRuleName}{[required] The name of the Config rule for which you want to delete remediation configuration.}
 
 \item{ResourceType}{The type of a resource.}
 }

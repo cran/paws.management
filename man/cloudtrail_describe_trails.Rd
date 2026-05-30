@@ -8,32 +8,19 @@ Region for your account}
 cloudtrail_describe_trails(trailNameList = NULL, includeShadowTrails = NULL)
 }
 \arguments{
-\item{trailNameList}{Specifies a list of trail names, trail ARNs, or both, of the trails to
-describe. The format of a trail ARN is:
+\item{trailNameList}{Specifies a list of trail names, trail ARNs, or both, of the trails to describe. The format of a trail ARN is:
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}
 
-If an empty list is specified, information for the trail in the current
-Region is returned.
+If an empty list is specified, information for the trail in the current Region is returned.
 \itemize{
-\item If an empty list is specified and \code{IncludeShadowTrails} is false,
-then information for all trails in the current Region is returned.
-\item If an empty list is specified and IncludeShadowTrails is null or
-true, then information for all trails in the current Region and any
-associated shadow trails in other Regions is returned.
+\item If an empty list is specified and \code{IncludeShadowTrails} is false, then information for all trails in the current Region is returned.
+\item If an empty list is specified and IncludeShadowTrails is null or true, then information for all trails in the current Region and any associated shadow trails in other Regions is returned.
 }
 
-If one or more trail names are specified, information is returned only
-if the names match the names of trails belonging only to the current
-Region and current account. To return information about a trail in
-another Region, you must specify its trail ARN.}
+If one or more trail names are specified, information is returned only if the names match the names of trails belonging only to the current Region and current account. To return information about a trail in another Region, you must specify its trail ARN.}
 
-\item{includeShadowTrails}{Specifies whether to include shadow trails in the response. A shadow
-trail is the replication in a Region of a trail that was created in a
-different Region, or in the case of an organization trail, the
-replication of an organization trail in member accounts. If you do not
-include shadow trails, organization trails in a member account and
-Region replication trails will not be returned. The default is true.}
+\item{includeShadowTrails}{Specifies whether to include shadow trails in the response. A shadow trail is the replication in a Region of a trail that was created in a different Region, or in the case of an organization trail, the replication of an organization trail in member accounts. If you do not include shadow trails, organization trails in a member account and Region replication trails will not be returned. The default is true.}
 }
 \description{
 Retrieves settings for one or more trails associated with the current Region for your account.

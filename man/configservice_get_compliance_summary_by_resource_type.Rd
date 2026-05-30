@@ -8,13 +8,9 @@ are noncompliant}
 configservice_get_compliance_summary_by_resource_type(ResourceTypes = NULL)
 }
 \arguments{
-\item{ResourceTypes}{Specify one or more resource types to get the number of resources that
-are compliant and the number that are noncompliant for each resource
-type.
+\item{ResourceTypes}{Specify one or more resource types to get the number of resources that are compliant and the number that are noncompliant for each resource type.
 
-For this request, you can specify an Amazon Web Services resource type
-such as \verb{AWS::EC2::Instance}. You can specify that the resource type is
-an Amazon Web Services account by specifying \verb{AWS::::Account}.}
+For this request, you can specify an Amazon Web Services resource type such as \verb{AWS::EC2::Instance}. You can specify that the resource type is an Amazon Web Services account by specifying \verb{AWS::::Account}.}
 }
 \description{
 Returns the number of resources that are compliant and the number that are noncompliant. You can specify one or more resource types to get these numbers for each resource type. The maximum number returned is 100.

@@ -7,8 +7,7 @@
 auditmanager_validate_assessment_report_integrity(s3RelativePath)
 }
 \arguments{
-\item{s3RelativePath}{[required] The relative path of the Amazon S3 bucket that the assessment report is
-stored in.}
+\item{s3RelativePath}{[required] The relative path of the Amazon S3 bucket that the assessment report is stored in.}
 }
 \description{
 Validates the integrity of an assessment report in Audit Manager.

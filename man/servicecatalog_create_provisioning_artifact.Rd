@@ -23,9 +23,7 @@ servicecatalog_create_provisioning_artifact(
 
 \item{Parameters}{[required] The configuration for the provisioning artifact.}
 
-\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple
-requests differ only by the idempotency token, the same response is
-returned for each repeated request.}
+\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
 }
 \description{
 Creates a provisioning artifact (also known as a version) for the specified product.

@@ -2,7 +2,8 @@
 % Please edit documentation in R/servicequotas_operations.R
 \name{servicequotas_list_service_quotas}
 \alias{servicequotas_list_service_quotas}
-\title{Lists the applied quota values for the specified Amazon Web Service}
+\title{Lists the applied quota values for the specified Amazon Web Services
+service}
 \usage{
 servicequotas_list_service_quotas(
   ServiceCode,
@@ -13,38 +14,20 @@ servicequotas_list_service_quotas(
 )
 }
 \arguments{
-\item{ServiceCode}{[required] Specifies the service identifier. To find the service code value for an
-Amazon Web Services service, use the
-\code{\link[=servicequotas_list_services]{list_services}} operation.}
+\item{ServiceCode}{[required] Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the \code{\link[=servicequotas_list_services]{list_services}} operation.}
 
-\item{NextToken}{Specifies a value for receiving additional results after you receive a
-\code{NextToken} response in a previous request. A \code{NextToken} response
-indicates that more output is available. Set this parameter to the value
-of the previous call's \code{NextToken} response to indicate where the output
-should continue from.}
+\item{NextToken}{Specifies a value for receiving additional results after you receive a \code{NextToken} response in a previous request. A \code{NextToken} response indicates that more output is available. Set this parameter to the value of the previous call's \code{NextToken} response to indicate where the output should continue from.}
 
-\item{MaxResults}{Specifies the maximum number of results that you want included on each
-page of the response. If you do not include this parameter, it defaults
-to a value appropriate to the operation. If additional items exist
-beyond those included in the current response, the \code{NextToken} response
-element is present and has a value (is not null). Include that value as
-the \code{NextToken} request parameter in the next call to the operation to
-get the next part of the results.
+\item{MaxResults}{Specifies the maximum number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value appropriate to the operation. If additional items exist beyond those included in the current response, the \code{NextToken} response element is present and has a value (is not null). Include that value as the \code{NextToken} request parameter in the next call to the operation to get the next part of the results.
 
-An API operation can return fewer results than the maximum even when
-there are more results available. You should check \code{NextToken} after
-every operation to ensure that you receive all of the results.}
+An API operation can return fewer results than the maximum even when there are more results available. You should check \code{NextToken} after every operation to ensure that you receive all of the results.}
 
-\item{QuotaCode}{Specifies the quota identifier. To find the quota code for a specific
-quota, use the
-\code{\link[=servicequotas_list_service_quotas]{list_service_quotas}} operation,
-and look for the \code{QuotaCode} response in the output for the quota you
-want.}
+\item{QuotaCode}{Specifies the quota identifier. To find the quota code for a specific quota, use the \code{\link[=servicequotas_list_service_quotas]{list_service_quotas}} operation, and look for the \code{QuotaCode} response in the output for the quota you want.}
 
-\item{QuotaAppliedAtLevel}{Specifies at which level of granularity that the quota value is applied.}
+\item{QuotaAppliedAtLevel}{Filters the response to return applied quota values for the \code{ACCOUNT}, \code{RESOURCE}, or \code{ALL} levels. \code{ACCOUNT} is the default.}
 }
 \description{
-Lists the applied quota values for the specified Amazon Web Service. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved.
+Lists the applied quota values for the specified Amazon Web Services service. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved. Filter responses to return applied quota values at either the account level, resource level, or all levels.
 
 See \url{https://www.paws-r-sdk.com/docs/servicequotas_list_service_quotas/} for full documentation.
 }

@@ -10,9 +10,7 @@ managedgrafana_list_workspaces(maxResults = NULL, nextToken = NULL)
 \arguments{
 \item{maxResults}{The maximum number of workspaces to include in the results.}
 
-\item{nextToken}{The token for the next set of workspaces to return. (You receive this
-token from a previous
-\code{\link[=managedgrafana_list_workspaces]{list_workspaces}} operation.)}
+\item{nextToken}{The token for the next set of workspaces to return. (You receive this token from a previous \code{\link[=managedgrafana_list_workspaces]{list_workspaces}} operation.)}
 }
 \description{
 Returns a list of Amazon Managed Grafana workspaces in the account, with some information about each workspace. For more complete information about one workspace, use \code{\link[=managedgrafana_describe_workspace]{describe_workspace}}.

@@ -55,19 +55,9 @@ Operations section.
 \description{
 Amazon CloudWatch Synthetics
 
-You can use Amazon CloudWatch Synthetics to continually monitor your
-services. You can create and manage \emph{canaries}, which are modular,
-lightweight scripts that monitor your endpoints and APIs from the
-outside-in. You can set up your canaries to run 24 hours a day, once per
-minute. The canaries help you check the availability and latency of your
-web services and troubleshoot anomalies by investigating load time data,
-screenshots of the UI, logs, and metrics. The canaries seamlessly
-integrate with CloudWatch ServiceLens to help you trace the causes of
-impacted nodes in your applications. For more information, see \href{https://docs.aws.amazon.com/xray/latest/devguide/xray-console-servicemap.html}{Using ServiceLens to Monitor the Health of Your Applications}
-in the \emph{Amazon CloudWatch User Guide}.
+You can use Amazon CloudWatch Synthetics to continually monitor your services. You can create and manage \emph{canaries}, which are modular, lightweight scripts that monitor your endpoints and APIs from the outside-in. You can set up your canaries to run 24 hours a day, once per minute. The canaries help you check the availability and latency of your web services and troubleshoot anomalies by investigating load time data, screenshots of the UI, logs, and metrics. The canaries seamlessly integrate with CloudWatch ServiceLens to help you trace the causes of impacted nodes in your applications. For more information, see \href{https://docs.aws.amazon.com/xray/latest/devguide/xray-console-servicemap.html}{Using ServiceLens to Monitor the Health of Your Applications} in the \emph{Amazon CloudWatch User Guide}.
 
-Before you create and manage canaries, be aware of the security
-considerations. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/servicelens_canaries_security.html}{Security Considerations for Synthetics Canaries}.
+Before you create and manage canaries, be aware of the security considerations. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/servicelens_canaries_security.html}{Security Considerations for Synthetics Canaries}.
 }
 \section{Service syntax}{
 
@@ -125,6 +115,7 @@ considerations. For more information, see \href{https://docs.aws.amazon.com/Amaz
 \link[=synthetics_list_groups]{list_groups} \tab Returns a list of all groups in the account, displaying their names, unique IDs, and ARNs\cr
 \link[=synthetics_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a canary or group\cr
 \link[=synthetics_start_canary]{start_canary} \tab Use this operation to run a canary that has already been created\cr
+\link[=synthetics_start_canary_dry_run]{start_canary_dry_run} \tab Use this operation to start a dry run for a canary that has already been created\cr
 \link[=synthetics_stop_canary]{stop_canary} \tab Stops the canary to prevent all future runs\cr
 \link[=synthetics_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified canary or group\cr
 \link[=synthetics_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr

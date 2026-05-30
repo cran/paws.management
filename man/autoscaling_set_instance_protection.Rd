@@ -15,8 +15,7 @@ autoscaling_set_instance_protection(
 
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{ProtectedFromScaleIn}{[required] Indicates whether the instance is protected from termination by Amazon
-EC2 Auto Scaling when scaling in.}
+\item{ProtectedFromScaleIn}{[required] Indicates whether the instance is protected from termination by Amazon EC2 Auto Scaling when scaling in.}
 }
 \description{
 Updates the instance protection settings of the specified instances. This operation cannot be called on instances in a warm pool.

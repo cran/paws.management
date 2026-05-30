@@ -12,16 +12,13 @@ cloudwatchlogs_list_anomalies(
 )
 }
 \arguments{
-\item{anomalyDetectorArn}{Use this to optionally limit the results to only the anomalies found by
-a certain anomaly detector.}
+\item{anomalyDetectorArn}{Use this to optionally limit the results to only the anomalies found by a certain anomaly detector.}
 
-\item{suppressionState}{You can specify this parameter if you want to the operation to return
-only anomalies that are currently either suppressed or unsuppressed.}
+\item{suppressionState}{You can specify this parameter if you want to the operation to return only anomalies that are currently either suppressed or unsuppressed.}
 
-\item{limit}{The maximum number of items to return. If you don't specify a value, the
-default maximum value of 50 items is used.}
+\item{limit}{The maximum number of items to return. If you don't specify a value, the default maximum value of 50 items is used.}
 
-\item{nextToken}{}
+\item{nextToken}{The token for the next set of items to return. The token expires after 24 hours.}
 }
 \description{
 Returns a list of anomalies that log anomaly detectors have found. For details about the structure format of each anomaly object that is returned, see the example in this section.

@@ -13,7 +13,8 @@ licensemanager_create_license_configuration(
   LicenseRules = NULL,
   Tags = NULL,
   DisassociateWhenNotFound = NULL,
-  ProductInformationList = NULL
+  ProductInformationList = NULL,
+  LicenseExpiry = NULL
 )
 }
 \arguments{
@@ -25,34 +26,25 @@ licensemanager_create_license_configuration(
 
 \item{LicenseCount}{Number of licenses managed by the license configuration.}
 
-\item{LicenseCountHardLimit}{Indicates whether hard or soft license enforcement is used. Exceeding a
-hard limit blocks the launch of new instances.}
+\item{LicenseCountHardLimit}{Indicates whether hard or soft license enforcement is used. Exceeding a hard limit blocks the launch of new instances.}
 
-\item{LicenseRules}{License rules. The syntax is #name=value (for example,
-#allowedTenancy=EC2-DedicatedHost). The available rules vary by
-dimension, as follows.
+\item{LicenseRules}{License rules. The syntax is #name=value (for example, #allowedTenancy=EC2-DedicatedHost). The available rules vary by dimension, as follows.
 \itemize{
-\item \code{Cores} dimension: \code{allowedTenancy} | \code{licenseAffinityToHost} |
-\code{maximumCores} | \code{minimumCores}
-\item \code{Instances} dimension: \code{allowedTenancy} | \code{maximumCores} |
-\code{minimumCores} | \code{maximumSockets} | \code{minimumSockets} |
-\code{maximumVcpus} | \code{minimumVcpus}
-\item \code{Sockets} dimension: \code{allowedTenancy} | \code{licenseAffinityToHost} |
-\code{maximumSockets} | \code{minimumSockets}
-\item \code{vCPUs} dimension: \code{allowedTenancy} | \code{honorVcpuOptimization} |
-\code{maximumVcpus} | \code{minimumVcpus}
+\item \code{Cores} dimension: \code{allowedTenancy} | \code{licenseAffinityToHost} | \code{maximumCores} | \code{minimumCores}
+\item \code{Instances} dimension: \code{allowedTenancy} | \code{maximumVcpus} | \code{minimumVcpus}
+\item \code{Sockets} dimension: \code{allowedTenancy} | \code{licenseAffinityToHost} | \code{maximumSockets} | \code{minimumSockets}
+\item \code{vCPUs} dimension: \code{allowedTenancy} | \code{honorVcpuOptimization} | \code{maximumVcpus} | \code{minimumVcpus}
 }
 
-The unit for \code{licenseAffinityToHost} is days and the range is 1 to 180.
-The possible values for \code{allowedTenancy} are \code{EC2-Default},
-\code{EC2-DedicatedHost}, and \code{EC2-DedicatedInstance}. The possible values
-for \code{honorVcpuOptimization} are \code{True} and \code{False}.}
+The unit for \code{licenseAffinityToHost} is days and the range is 1 to 180. The possible values for \code{allowedTenancy} are \code{EC2-Default}, \code{EC2-DedicatedHost}, and \code{EC2-DedicatedInstance}. The possible values for \code{honorVcpuOptimization} are \code{True} and \code{False}.}
 
 \item{Tags}{Tags to add to the license configuration.}
 
 \item{DisassociateWhenNotFound}{When true, disassociates a resource when software is uninstalled.}
 
 \item{ProductInformationList}{Product information.}
+
+\item{LicenseExpiry}{License configuration expiry.}
 }
 \description{
 Creates a license configuration.

@@ -53,16 +53,7 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-The CloudTrail Data Service lets you ingest events into CloudTrail from
-any source in your hybrid environments, such as in-house or SaaS
-applications hosted on-premises or in the cloud, virtual machines, or
-containers. You can store, access, analyze, troubleshoot and take action
-on this data without maintaining multiple log aggregators and reporting
-tools. After you run
-\code{\link[=cloudtraildataservice_put_audit_events]{put_audit_events}} to ingest
-your application activity into CloudTrail, you can use CloudTrail Lake
-to search, query, and analyze the data that is logged from your
-applications.
+The CloudTrail Data Service lets you ingest events into CloudTrail from any source in your hybrid environments, such as in-house or SaaS applications hosted on-premises or in the cloud, virtual machines, or containers. You can store, access, analyze, troubleshoot and take action on this data without maintaining multiple log aggregators and reporting tools. After you run \code{\link[=cloudtraildataservice_put_audit_events]{put_audit_events}} to ingest your application activity into CloudTrail, you can use CloudTrail Lake to search, query, and analyze the data that is logged from your applications.
 }
 \section{Service syntax}{
 

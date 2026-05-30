@@ -7,12 +7,9 @@
 cloudwatchlogs_delete_integration(integrationName, force = NULL)
 }
 \arguments{
-\item{integrationName}{[required] The name of the integration to delete. To find the name of your
-integration, use
-\code{\link[=cloudwatchlogs_list_integrations]{list_integrations}}.}
+\item{integrationName}{[required] The name of the integration to delete. To find the name of your integration, use \code{\link[=cloudwatchlogs_list_integrations]{list_integrations}}.}
 
-\item{force}{Specify \code{true} to force the deletion of the integration even if vended
-logs dashboards currently exist.
+\item{force}{Specify \code{true} to force the deletion of the integration even if vended logs dashboards currently exist.
 
 The default is \code{false}.}
 }

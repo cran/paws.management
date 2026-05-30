@@ -17,20 +17,13 @@ health_describe_affected_entities_for_organization(
 \arguments{
 \item{organizationEntityFilters}{A JSON set of elements including the \code{awsAccountId} and the \code{eventArn}.}
 
-\item{locale}{The locale (language) to return information in. English (en) is the
-default and the only supported value at this time.}
+\item{locale}{The locale (language) to return information in. English (en) is the default and the only supported value at this time.}
 
-\item{nextToken}{If the results of a search are large, only a portion of the results are
-returned, and a \code{nextToken} pagination token is returned in the
-response. To retrieve the next batch of results, reissue the search
-request and include the returned token. When all results have been
-returned, the response does not contain a pagination token value.}
+\item{nextToken}{If the results of a search are large, only a portion of the results are returned, and a \code{nextToken} pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.}
 
-\item{maxResults}{The maximum number of items to return in one batch, between 10 and 100,
-inclusive.}
+\item{maxResults}{The maximum number of items to return in one batch, between 1 and 100, inclusive.}
 
-\item{organizationEntityAccountFilters}{A JSON set of elements including the \code{awsAccountId}, \code{eventArn} and a
-set of \code{statusCodes}.}
+\item{organizationEntityAccountFilters}{A JSON set of elements including the \code{awsAccountId}, \code{eventArn} and a set of \code{statusCodes}.}
 }
 \description{
 Returns a list of entities that have been affected by one or more events for one or more accounts in your organization in Organizations, based on the filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the Amazon Web Services service.

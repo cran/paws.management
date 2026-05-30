@@ -10,8 +10,7 @@ licensemanagerlinuxsubscriptions_get_registered_subscription_provider(
 )
 }
 \arguments{
-\item{SubscriptionProviderArn}{[required] The Amazon Resource Name (ARN) of the BYOL registration resource to get
-details for.}
+\item{SubscriptionProviderArn}{[required] The Amazon Resource Name (ARN) of the BYOL registration resource to get details for.}
 }
 \description{
 Get details for a Bring Your Own License (BYOL) subscription that's registered to your account.

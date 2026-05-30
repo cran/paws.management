@@ -14,8 +14,7 @@ cloudtrail_describe_query(
 )
 }
 \arguments{
-\item{EventDataStore}{The ARN (or the ID suffix of the ARN) of an event data store on which
-the specified query was run.}
+\item{EventDataStore}{The ARN (or the ID suffix of the ARN) of an event data store on which the specified query was run.}
 
 \item{QueryId}{The query ID.}
 

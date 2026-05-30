@@ -13,13 +13,11 @@ ssm_describe_association_execution_targets(
 )
 }
 \arguments{
-\item{AssociationId}{[required] The association ID that includes the execution for which you want to
-view details.}
+\item{AssociationId}{[required] The association ID that includes the execution for which you want to view details.}
 
 \item{ExecutionId}{[required] The execution ID for which you want to view details.}
 
-\item{Filters}{Filters for the request. You can specify the following filters and
-values.
+\item{Filters}{Filters for the request. You can specify the following filters and values.
 
 Status (EQUAL)
 
@@ -27,12 +25,9 @@ ResourceId (EQUAL)
 
 ResourceType (EQUAL)}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{A token to start the list. Use this token to get the next set of
-results.}
+\item{NextToken}{A token to start the list. Use this token to get the next set of results.}
 }
 \description{
 Views information about a specific execution of a specific association.

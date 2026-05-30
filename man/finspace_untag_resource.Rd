@@ -7,8 +7,7 @@
 finspace_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
-\item{resourceArn}{[required] A FinSpace resource from which you want to remove a tag or tags. The
-value for this parameter is an Amazon Resource Name (ARN).}
+\item{resourceArn}{[required] A FinSpace resource from which you want to remove a tag or tags. The value for this parameter is an Amazon Resource Name (ARN).}
 
 \item{tagKeys}{[required] The tag keys (names) of one or more tags to be removed.}
 }

@@ -9,9 +9,7 @@ ssm_add_tags_to_resource(ResourceType, ResourceId, Tags)
 \arguments{
 \item{ResourceType}{[required] Specifies the type of resource you are tagging.
 
-The \code{ManagedInstance} type for this API operation is for on-premises
-managed nodes. You must specify the name of the managed node in the
-following format: \code{mi-ID_number }. For example, \verb{mi-1a2b3c4d5e6f}.}
+The \code{ManagedInstance} type for this API operation is for on-premises managed nodes. You must specify the name of the managed node in the following format: \code{mi-ID_number }. For example, \verb{mi-1a2b3c4d5e6f}.}
 
 \item{ResourceId}{[required] The resource ID you want to tag.
 
@@ -23,24 +21,13 @@ Use the ID of the resource. Here are some examples:
 
 \code{Automation}: \verb{example-c160-4567-8519-012345abcde}
 
-\code{OpsMetadata} object: \code{ResourceID} for tagging is created from the
-Amazon Resource Name (ARN) for the object. Specifically, \code{ResourceID} is
-created from the strings that come after the word \code{opsmetadata} in the
-ARN. For example, an OpsMetadata object with an ARN of
-\code{arn:aws:ssm:us-east-2:1234567890:opsmetadata/aws/ssm/MyGroup/appmanager}
-has a \code{ResourceID} of either \code{aws/ssm/MyGroup/appmanager} or
-\verb{/aws/ssm/MyGroup/appmanager}.
+\code{OpsMetadata} object: \code{ResourceID} for tagging is created from the Amazon Resource Name (ARN) for the object. Specifically, \code{ResourceID} is created from the strings that come after the word \code{opsmetadata} in the ARN. For example, an OpsMetadata object with an ARN of \code{arn:aws:ssm:us-east-2:1234567890:opsmetadata/aws/ssm/MyGroup/appmanager} has a \code{ResourceID} of either \code{aws/ssm/MyGroup/appmanager} or \verb{/aws/ssm/MyGroup/appmanager}.
 
-For the \code{Document} and \code{Parameter} values, use the name of the resource.
-If you're tagging a shared document, you must use the full ARN of the
-document.
+For the \code{Document} and \code{Parameter} values, use the name of the resource. If you're tagging a shared document, you must use the full ARN of the document.
 
 \code{ManagedInstance}: \verb{mi-012345abcde}
 
-The \code{ManagedInstance} type for this API operation is only for
-on-premises managed nodes. You must specify the name of the managed node
-in the following format: \code{mi-ID_number }. For example,
-\verb{mi-1a2b3c4d5e6f}.}
+The \code{ManagedInstance} type for this API operation is only for on-premises managed nodes. You must specify the name of the managed node in the following format: \code{mi-ID_number }. For example, \verb{mi-1a2b3c4d5e6f}.}
 
 \item{Tags}{[required] One or more tags. The value parameter is required.
 

@@ -13,15 +13,13 @@ finspace_create_kx_user(
 )
 }
 \arguments{
-\item{environmentId}{[required] A unique identifier for the kdb environment where you want to create a
-user.}
+\item{environmentId}{[required] A unique identifier for the kdb environment where you want to create a user.}
 
 \item{userName}{[required] A unique identifier for the user.}
 
 \item{iamRole}{[required] The IAM role ARN that will be associated with the user.}
 
-\item{tags}{A list of key-value pairs to label the user. You can add up to 50 tags
-to a user.}
+\item{tags}{A list of key-value pairs to label the user. You can add up to 50 tags to a user.}
 
 \item{clientToken}{A token that ensures idempotency. This token expires in 10 minutes.}
 }

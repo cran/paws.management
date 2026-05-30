@@ -11,19 +11,16 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_create_alert_manager_definition/](https://www.paws-r-sdk.com/docs/prometheusservice_create_alert_manager_definition/) for full documentation.
 #'
-#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
-#' the request. Case-sensitive.
-#' @param data &#91;required&#93; The alert manager definition to add. A base64-encoded version of the
-#' YAML alert manager definition file.
-#' 
-#' For details about the alert manager definition, see
-#' [AlertManagedDefinitionData](https://docs.aws.amazon.com/prometheus/latest/APIReference/yaml-AlertManagerDefinitionData.html).
 #' @param workspaceId &#91;required&#93; The ID of the workspace to add the alert manager definition to.
+#' @param data &#91;required&#93; The alert manager definition to add. A base64-encoded version of the YAML alert manager definition file.
+#' 
+#' For details about the alert manager definition, see [AlertManagedDefinitionData](https://docs.aws.amazon.com/prometheus/latest/APIReference/yaml-AlertManagerDefinitionData.html).
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of the request. Case-sensitive.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_create_alert_manager_definition
-prometheusservice_create_alert_manager_definition <- function(clientToken = NULL, data, workspaceId) {
+prometheusservice_create_alert_manager_definition <- function(workspaceId, data, clientToken = NULL) {
   op <- new_operation(
     name = "CreateAlertManagerDefinition",
     http_method = "POST",
@@ -32,7 +29,7 @@ prometheusservice_create_alert_manager_definition <- function(clientToken = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$create_alert_manager_definition_input(clientToken = clientToken, data = data, workspaceId = workspaceId)
+  input <- .prometheusservice$create_alert_manager_definition_input(workspaceId = workspaceId, data = data, clientToken = clientToken)
   output <- .prometheusservice$create_alert_manager_definition_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -42,24 +39,61 @@ prometheusservice_create_alert_manager_definition <- function(clientToken = NULL
 }
 .prometheusservice$operations$create_alert_manager_definition <- prometheusservice_create_alert_manager_definition
 
-#' The CreateLoggingConfiguration operation creates a logging configuration
-#' for the workspace
+#' Creates an anomaly detector within a workspace using the Random Cut
+#' Forest algorithm for time-series analysis
 #'
 #' @description
-#' The [`create_logging_configuration`][prometheusservice_create_logging_configuration] operation creates a logging configuration for the workspace. Use this operation to set the CloudWatch log group to which the logs will be published to.
+#' Creates an anomaly detector within a workspace using the Random Cut Forest algorithm for time-series analysis. The anomaly detector analyzes Amazon Managed Service for Prometheus metrics to identify unusual patterns and behaviors.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_create_anomaly_detector/](https://www.paws-r-sdk.com/docs/prometheusservice_create_anomaly_detector/) for full documentation.
+#'
+#' @param workspaceId &#91;required&#93; The identifier of the workspace where the anomaly detector will be created.
+#' @param alias &#91;required&#93; A user-friendly name for the anomaly detector.
+#' @param evaluationIntervalInSeconds The frequency, in seconds, at which the anomaly detector evaluates metrics. The default value is 60 seconds.
+#' @param missingDataAction Specifies the action to take when data is missing during evaluation.
+#' @param configuration &#91;required&#93; The algorithm configuration for the anomaly detector.
+#' @param labels The Amazon Managed Service for Prometheus metric labels to associate with the anomaly detector.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#' @param tags The metadata to apply to the anomaly detector to assist with categorization and organization.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_create_anomaly_detector
+prometheusservice_create_anomaly_detector <- function(workspaceId, alias, evaluationIntervalInSeconds = NULL, missingDataAction = NULL, configuration, labels = NULL, clientToken = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateAnomalyDetector",
+    http_method = "POST",
+    http_path = "/workspaces/{workspaceId}/anomalydetectors",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$create_anomaly_detector_input(workspaceId = workspaceId, alias = alias, evaluationIntervalInSeconds = evaluationIntervalInSeconds, missingDataAction = missingDataAction, configuration = configuration, labels = labels, clientToken = clientToken, tags = tags)
+  output <- .prometheusservice$create_anomaly_detector_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$create_anomaly_detector <- prometheusservice_create_anomaly_detector
+
+#' The CreateLoggingConfiguration operation creates rules and alerting
+#' logging configuration for the workspace
+#'
+#' @description
+#' The [`create_logging_configuration`][prometheusservice_create_logging_configuration] operation creates rules and alerting logging configuration for the workspace. Use this operation to set the CloudWatch log group to which the logs will be published to.
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_create_logging_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_create_logging_configuration/) for full documentation.
 #'
-#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
-#' the request. Case-sensitive.
-#' @param logGroupArn &#91;required&#93; The ARN of the CloudWatch log group to which the vended log data will be
-#' published. This log group must exist prior to calling this operation.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to create the logging configuration for.
+#' @param logGroupArn &#91;required&#93; The ARN of the CloudWatch log group to which the vended log data will be published. This log group must exist prior to calling this operation.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of the request. Case-sensitive.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_create_logging_configuration
-prometheusservice_create_logging_configuration <- function(clientToken = NULL, logGroupArn, workspaceId) {
+prometheusservice_create_logging_configuration <- function(workspaceId, logGroupArn, clientToken = NULL) {
   op <- new_operation(
     name = "CreateLoggingConfiguration",
     http_method = "POST",
@@ -68,7 +102,7 @@ prometheusservice_create_logging_configuration <- function(clientToken = NULL, l
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$create_logging_configuration_input(clientToken = clientToken, logGroupArn = logGroupArn, workspaceId = workspaceId)
+  input <- .prometheusservice$create_logging_configuration_input(workspaceId = workspaceId, logGroupArn = logGroupArn, clientToken = clientToken)
   output <- .prometheusservice$create_logging_configuration_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -78,6 +112,39 @@ prometheusservice_create_logging_configuration <- function(clientToken = NULL, l
 }
 .prometheusservice$operations$create_logging_configuration <- prometheusservice_create_logging_configuration
 
+#' Creates a query logging configuration for the specified workspace
+#'
+#' @description
+#' Creates a query logging configuration for the specified workspace. This operation enables logging of queries that exceed the specified QSP threshold.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_create_query_logging_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_create_query_logging_configuration/) for full documentation.
+#'
+#' @param workspaceId &#91;required&#93; The ID of the workspace for which to create the query logging configuration.
+#' @param destinations &#91;required&#93; The destinations where query logs will be sent. Only CloudWatch Logs destination is supported. The list must contain exactly one element.
+#' @param clientToken (Optional) A unique, case-sensitive identifier that you can provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_create_query_logging_configuration
+prometheusservice_create_query_logging_configuration <- function(workspaceId, destinations, clientToken = NULL) {
+  op <- new_operation(
+    name = "CreateQueryLoggingConfiguration",
+    http_method = "POST",
+    http_path = "/workspaces/{workspaceId}/logging/query",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$create_query_logging_configuration_input(workspaceId = workspaceId, destinations = destinations, clientToken = clientToken)
+  output <- .prometheusservice$create_query_logging_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$create_query_logging_configuration <- prometheusservice_create_query_logging_configuration
+
 #' The CreateRuleGroupsNamespace operation creates a rule groups namespace
 #' within a workspace
 #'
@@ -86,23 +153,20 @@ prometheusservice_create_logging_configuration <- function(clientToken = NULL, l
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_create_rule_groups_namespace/](https://www.paws-r-sdk.com/docs/prometheusservice_create_rule_groups_namespace/) for full documentation.
 #'
-#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
-#' the request. Case-sensitive.
+#' @param workspaceId &#91;required&#93; The ID of the workspace to add the rule groups namespace.
+#' @param name &#91;required&#93; The name for the new rule groups namespace.
 #' @param data &#91;required&#93; The rules file to use in the new namespace.
 #' 
 #' Contains the base64-encoded version of the YAML rules file.
 #' 
-#' For details about the rule groups namespace structure, see
-#' [RuleGroupsNamespaceData](https://docs.aws.amazon.com/prometheus/latest/APIReference/yaml-RuleGroupsNamespaceData.html).
-#' @param name &#91;required&#93; The name for the new rule groups namespace.
-#' @param tags The list of tag keys and values to associate with the rule groups
-#' namespace.
-#' @param workspaceId &#91;required&#93; The ID of the workspace to add the rule groups namespace.
+#' For details about the rule groups namespace structure, see [RuleGroupsNamespaceData](https://docs.aws.amazon.com/prometheus/latest/APIReference/yaml-RuleGroupsNamespaceData.html).
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of the request. Case-sensitive.
+#' @param tags The list of tag keys and values to associate with the rule groups namespace.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_create_rule_groups_namespace
-prometheusservice_create_rule_groups_namespace <- function(clientToken = NULL, data, name, tags = NULL, workspaceId) {
+prometheusservice_create_rule_groups_namespace <- function(workspaceId, name, data, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateRuleGroupsNamespace",
     http_method = "POST",
@@ -111,7 +175,7 @@ prometheusservice_create_rule_groups_namespace <- function(clientToken = NULL, d
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$create_rule_groups_namespace_input(clientToken = clientToken, data = data, name = name, tags = tags, workspaceId = workspaceId)
+  input <- .prometheusservice$create_rule_groups_namespace_input(workspaceId = workspaceId, name = name, data = data, clientToken = clientToken, tags = tags)
   output <- .prometheusservice$create_rule_groups_namespace_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -124,28 +188,22 @@ prometheusservice_create_rule_groups_namespace <- function(clientToken = NULL, d
 #' The CreateScraper operation creates a scraper to collect metrics
 #'
 #' @description
-#' The [`create_scraper`][prometheusservice_create_scraper] operation creates a scraper to collect metrics. A scraper pulls metrics from Prometheus-compatible sources within an Amazon EKS cluster, and sends them to your Amazon Managed Service for Prometheus workspace. Scrapers are flexible, and can be configured to control what metrics are collected, the frequency of collection, what transformations are applied to the metrics, and more.
+#' The [`create_scraper`][prometheusservice_create_scraper] operation creates a scraper to collect metrics. A scraper pulls metrics from Prometheus-compatible sources and sends them to your Amazon Managed Service for Prometheus workspace. You can configure scrapers to collect metrics from Amazon EKS clusters, Amazon MSK clusters, or from VPC-based sources that support DNS-based service discovery. Scrapers are flexible, and can be configured to control what metrics are collected, the frequency of collection, what transformations are applied to the metrics, and more.
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_create_scraper/](https://www.paws-r-sdk.com/docs/prometheusservice_create_scraper/) for full documentation.
 #'
-#' @param alias (optional) An alias to associate with the scraper. This is for your use,
-#' and does not need to be unique.
-#' @param clientToken (Optional) A unique, case-sensitive identifier that you can provide to
-#' ensure the idempotency of the request.
+#' @param alias (optional) An alias to associate with the scraper. This is for your use, and does not need to be unique.
+#' @param scrapeConfiguration &#91;required&#93; The configuration file to use in the new scraper. For more information, see [Scraper configuration](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration) in the *Amazon Managed Service for Prometheus User Guide*.
+#' @param source &#91;required&#93; The Amazon EKS or Amazon Web Services cluster from which the scraper will collect metrics.
 #' @param destination &#91;required&#93; The Amazon Managed Service for Prometheus workspace to send metrics to.
-#' @param roleConfiguration The scraper role configuration for the workspace.
-#' @param scrapeConfiguration &#91;required&#93; The configuration file to use in the new scraper. For more information,
-#' see [Scraper
-#' configuration](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration)
-#' in the *Amazon Managed Service for Prometheus User Guide*.
-#' @param source &#91;required&#93; The Amazon EKS cluster from which the scraper will collect metrics.
-#' @param tags (Optional) The list of tag keys and values to associate with the
-#' scraper.
+#' @param roleConfiguration Use this structure to enable cross-account access, so that you can use a target account to access Prometheus metrics from source accounts.
+#' @param clientToken (Optional) A unique, case-sensitive identifier that you can provide to ensure the idempotency of the request.
+#' @param tags (Optional) The list of tag keys and values to associate with the scraper.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_create_scraper
-prometheusservice_create_scraper <- function(alias = NULL, clientToken = NULL, destination, roleConfiguration = NULL, scrapeConfiguration, source, tags = NULL) {
+prometheusservice_create_scraper <- function(alias = NULL, scrapeConfiguration, source, destination, roleConfiguration = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateScraper",
     http_method = "POST",
@@ -154,7 +212,7 @@ prometheusservice_create_scraper <- function(alias = NULL, clientToken = NULL, d
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$create_scraper_input(alias = alias, clientToken = clientToken, destination = destination, roleConfiguration = roleConfiguration, scrapeConfiguration = scrapeConfiguration, source = source, tags = tags)
+  input <- .prometheusservice$create_scraper_input(alias = alias, scrapeConfiguration = scrapeConfiguration, source = source, destination = destination, roleConfiguration = roleConfiguration, clientToken = clientToken, tags = tags)
   output <- .prometheusservice$create_scraper_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -171,24 +229,17 @@ prometheusservice_create_scraper <- function(alias = NULL, clientToken = NULL, d
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_create_workspace/](https://www.paws-r-sdk.com/docs/prometheusservice_create_workspace/) for full documentation.
 #'
-#' @param alias An alias that you assign to this workspace to help you identify it. It
-#' does not need to be unique.
+#' @param alias An alias that you assign to this workspace to help you identify it. It does not need to be unique.
 #' 
-#' Blank spaces at the beginning or end of the alias that you specify will
-#' be trimmed from the value used.
-#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
-#' the request. Case-sensitive.
-#' @param kmsKeyArn (optional) The ARN for a customer managed KMS key to use for encrypting
-#' data within your workspace. For more information about using your own
-#' key in your workspace, see [Encryption at
-#' rest](https://docs.aws.amazon.com/prometheus/latest/userguide/encryption-at-rest-Amazon-Service-Prometheus.html)
-#' in the *Amazon Managed Service for Prometheus User Guide*.
+#' Blank spaces at the beginning or end of the alias that you specify will be trimmed from the value used.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of the request. Case-sensitive.
 #' @param tags The list of tag keys and values to associate with the workspace.
+#' @param kmsKeyArn (optional) The ARN for a customer managed KMS key to use for encrypting data within your workspace. For more information about using your own key in your workspace, see [Encryption at rest](https://docs.aws.amazon.com/prometheus/latest/userguide/encryption-at-rest-Amazon-Service-Prometheus.html) in the *Amazon Managed Service for Prometheus User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_create_workspace
-prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL, kmsKeyArn = NULL, tags = NULL) {
+prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL, tags = NULL, kmsKeyArn = NULL) {
   op <- new_operation(
     name = "CreateWorkspace",
     http_method = "POST",
@@ -197,7 +248,7 @@ prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$create_workspace_input(alias = alias, clientToken = clientToken, kmsKeyArn = kmsKeyArn, tags = tags)
+  input <- .prometheusservice$create_workspace_input(alias = alias, clientToken = clientToken, tags = tags, kmsKeyArn = kmsKeyArn)
   output <- .prometheusservice$create_workspace_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -214,14 +265,13 @@ prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_delete_alert_manager_definition/](https://www.paws-r-sdk.com/docs/prometheusservice_delete_alert_manager_definition/) for full documentation.
 #'
-#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
-#' the request. Case-sensitive.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to delete the alert manager definition from.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of the request. Case-sensitive.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_delete_alert_manager_definition
-prometheusservice_delete_alert_manager_definition <- function(clientToken = NULL, workspaceId) {
+prometheusservice_delete_alert_manager_definition <- function(workspaceId, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteAlertManagerDefinition",
     http_method = "DELETE",
@@ -230,7 +280,7 @@ prometheusservice_delete_alert_manager_definition <- function(clientToken = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$delete_alert_manager_definition_input(clientToken = clientToken, workspaceId = workspaceId)
+  input <- .prometheusservice$delete_alert_manager_definition_input(workspaceId = workspaceId, clientToken = clientToken)
   output <- .prometheusservice$delete_alert_manager_definition_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -240,21 +290,53 @@ prometheusservice_delete_alert_manager_definition <- function(clientToken = NULL
 }
 .prometheusservice$operations$delete_alert_manager_definition <- prometheusservice_delete_alert_manager_definition
 
-#' Deletes the logging configuration for a workspace
+#' Removes an anomaly detector from a workspace
 #'
 #' @description
-#' Deletes the logging configuration for a workspace.
+#' Removes an anomaly detector from a workspace. This operation is idempotent.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_delete_anomaly_detector/](https://www.paws-r-sdk.com/docs/prometheusservice_delete_anomaly_detector/) for full documentation.
+#'
+#' @param workspaceId &#91;required&#93; The identifier of the workspace containing the anomaly detector to delete.
+#' @param anomalyDetectorId &#91;required&#93; The identifier of the anomaly detector to delete.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_delete_anomaly_detector
+prometheusservice_delete_anomaly_detector <- function(workspaceId, anomalyDetectorId, clientToken = NULL) {
+  op <- new_operation(
+    name = "DeleteAnomalyDetector",
+    http_method = "DELETE",
+    http_path = "/workspaces/{workspaceId}/anomalydetectors/{anomalyDetectorId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$delete_anomaly_detector_input(workspaceId = workspaceId, anomalyDetectorId = anomalyDetectorId, clientToken = clientToken)
+  output <- .prometheusservice$delete_anomaly_detector_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$delete_anomaly_detector <- prometheusservice_delete_anomaly_detector
+
+#' Deletes the rules and alerting logging configuration for a workspace
+#'
+#' @description
+#' Deletes the rules and alerting logging configuration for a workspace.
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_delete_logging_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_delete_logging_configuration/) for full documentation.
 #'
-#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
-#' the request. Case-sensitive.
 #' @param workspaceId &#91;required&#93; The ID of the workspace containing the logging configuration to delete.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of the request. Case-sensitive.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_delete_logging_configuration
-prometheusservice_delete_logging_configuration <- function(clientToken = NULL, workspaceId) {
+prometheusservice_delete_logging_configuration <- function(workspaceId, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteLoggingConfiguration",
     http_method = "DELETE",
@@ -263,7 +345,7 @@ prometheusservice_delete_logging_configuration <- function(clientToken = NULL, w
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$delete_logging_configuration_input(clientToken = clientToken, workspaceId = workspaceId)
+  input <- .prometheusservice$delete_logging_configuration_input(workspaceId = workspaceId, clientToken = clientToken)
   output <- .prometheusservice$delete_logging_configuration_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -273,6 +355,72 @@ prometheusservice_delete_logging_configuration <- function(clientToken = NULL, w
 }
 .prometheusservice$operations$delete_logging_configuration <- prometheusservice_delete_logging_configuration
 
+#' Deletes the query logging configuration for the specified workspace
+#'
+#' @description
+#' Deletes the query logging configuration for the specified workspace.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_delete_query_logging_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_delete_query_logging_configuration/) for full documentation.
+#'
+#' @param workspaceId &#91;required&#93; The ID of the workspace from which to delete the query logging configuration.
+#' @param clientToken (Optional) A unique, case-sensitive identifier that you can provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_delete_query_logging_configuration
+prometheusservice_delete_query_logging_configuration <- function(workspaceId, clientToken = NULL) {
+  op <- new_operation(
+    name = "DeleteQueryLoggingConfiguration",
+    http_method = "DELETE",
+    http_path = "/workspaces/{workspaceId}/logging/query",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$delete_query_logging_configuration_input(workspaceId = workspaceId, clientToken = clientToken)
+  output <- .prometheusservice$delete_query_logging_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$delete_query_logging_configuration <- prometheusservice_delete_query_logging_configuration
+
+#' Deletes the resource-based policy attached to an Amazon Managed Service
+#' for Prometheus workspace
+#'
+#' @description
+#' Deletes the resource-based policy attached to an Amazon Managed Service for Prometheus workspace.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_delete_resource_policy/](https://www.paws-r-sdk.com/docs/prometheusservice_delete_resource_policy/) for full documentation.
+#'
+#' @param workspaceId &#91;required&#93; The ID of the workspace from which to delete the resource-based policy.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the request is safe to retry (idempotent).
+#' @param revisionId The revision ID of the policy to delete. Use this parameter to ensure that you are deleting the correct version of the policy.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_delete_resource_policy
+prometheusservice_delete_resource_policy <- function(workspaceId, clientToken = NULL, revisionId = NULL) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "DELETE",
+    http_path = "/workspaces/{workspaceId}/policy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$delete_resource_policy_input(workspaceId = workspaceId, clientToken = clientToken, revisionId = revisionId)
+  output <- .prometheusservice$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$delete_resource_policy <- prometheusservice_delete_resource_policy
+
 #' Deletes one rule groups namespace and its associated rule groups
 #' definition
 #'
@@ -281,16 +429,14 @@ prometheusservice_delete_logging_configuration <- function(clientToken = NULL, w
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_delete_rule_groups_namespace/](https://www.paws-r-sdk.com/docs/prometheusservice_delete_rule_groups_namespace/) for full documentation.
 #'
-#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
-#' the request. Case-sensitive.
+#' @param workspaceId &#91;required&#93; The ID of the workspace containing the rule groups namespace and definition to delete.
 #' @param name &#91;required&#93; The name of the rule groups namespace to delete.
-#' @param workspaceId &#91;required&#93; The ID of the workspace containing the rule groups namespace and
-#' definition to delete.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of the request. Case-sensitive.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_delete_rule_groups_namespace
-prometheusservice_delete_rule_groups_namespace <- function(clientToken = NULL, name, workspaceId) {
+prometheusservice_delete_rule_groups_namespace <- function(workspaceId, name, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteRuleGroupsNamespace",
     http_method = "DELETE",
@@ -299,7 +445,7 @@ prometheusservice_delete_rule_groups_namespace <- function(clientToken = NULL, n
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$delete_rule_groups_namespace_input(clientToken = clientToken, name = name, workspaceId = workspaceId)
+  input <- .prometheusservice$delete_rule_groups_namespace_input(workspaceId = workspaceId, name = name, clientToken = clientToken)
   output <- .prometheusservice$delete_rule_groups_namespace_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -317,14 +463,13 @@ prometheusservice_delete_rule_groups_namespace <- function(clientToken = NULL, n
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_delete_scraper/](https://www.paws-r-sdk.com/docs/prometheusservice_delete_scraper/) for full documentation.
 #'
-#' @param clientToken (Optional) A unique, case-sensitive identifier that you can provide to
-#' ensure the idempotency of the request.
 #' @param scraperId &#91;required&#93; The ID of the scraper to delete.
+#' @param clientToken (Optional) A unique, case-sensitive identifier that you can provide to ensure the idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_delete_scraper
-prometheusservice_delete_scraper <- function(clientToken = NULL, scraperId) {
+prometheusservice_delete_scraper <- function(scraperId, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteScraper",
     http_method = "DELETE",
@@ -333,7 +478,7 @@ prometheusservice_delete_scraper <- function(clientToken = NULL, scraperId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$delete_scraper_input(clientToken = clientToken, scraperId = scraperId)
+  input <- .prometheusservice$delete_scraper_input(scraperId = scraperId, clientToken = clientToken)
   output <- .prometheusservice$delete_scraper_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -343,6 +488,39 @@ prometheusservice_delete_scraper <- function(clientToken = NULL, scraperId) {
 }
 .prometheusservice$operations$delete_scraper <- prometheusservice_delete_scraper
 
+#' Deletes the logging configuration for a Amazon Managed Service for
+#' Prometheus scraper
+#'
+#' @description
+#' Deletes the logging configuration for a Amazon Managed Service for Prometheus scraper.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_delete_scraper_logging_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_delete_scraper_logging_configuration/) for full documentation.
+#'
+#' @param scraperId &#91;required&#93; The ID of the scraper whose logging configuration will be deleted.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the request is processed exactly once.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_delete_scraper_logging_configuration
+prometheusservice_delete_scraper_logging_configuration <- function(scraperId, clientToken = NULL) {
+  op <- new_operation(
+    name = "DeleteScraperLoggingConfiguration",
+    http_method = "DELETE",
+    http_path = "/scrapers/{scraperId}/logging-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$delete_scraper_logging_configuration_input(scraperId = scraperId, clientToken = clientToken)
+  output <- .prometheusservice$delete_scraper_logging_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$delete_scraper_logging_configuration <- prometheusservice_delete_scraper_logging_configuration
+
 #' Deletes an existing workspace
 #'
 #' @description
@@ -350,14 +528,13 @@ prometheusservice_delete_scraper <- function(clientToken = NULL, scraperId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_delete_workspace/](https://www.paws-r-sdk.com/docs/prometheusservice_delete_workspace/) for full documentation.
 #'
-#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
-#' the request. Case-sensitive.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to delete.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of the request. Case-sensitive.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_delete_workspace
-prometheusservice_delete_workspace <- function(clientToken = NULL, workspaceId) {
+prometheusservice_delete_workspace <- function(workspaceId, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteWorkspace",
     http_method = "DELETE",
@@ -366,7 +543,7 @@ prometheusservice_delete_workspace <- function(clientToken = NULL, workspaceId) 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$delete_workspace_input(clientToken = clientToken, workspaceId = workspaceId)
+  input <- .prometheusservice$delete_workspace_input(workspaceId = workspaceId, clientToken = clientToken)
   output <- .prometheusservice$delete_workspace_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -408,11 +585,44 @@ prometheusservice_describe_alert_manager_definition <- function(workspaceId) {
 }
 .prometheusservice$operations$describe_alert_manager_definition <- prometheusservice_describe_alert_manager_definition
 
-#' Returns complete information about the current logging configuration of
-#' the workspace
+#' Retrieves detailed information about a specific anomaly detector,
+#' including its status and configuration
 #'
 #' @description
-#' Returns complete information about the current logging configuration of the workspace.
+#' Retrieves detailed information about a specific anomaly detector, including its status and configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_describe_anomaly_detector/](https://www.paws-r-sdk.com/docs/prometheusservice_describe_anomaly_detector/) for full documentation.
+#'
+#' @param workspaceId &#91;required&#93; The identifier of the workspace containing the anomaly detector.
+#' @param anomalyDetectorId &#91;required&#93; The identifier of the anomaly detector to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_describe_anomaly_detector
+prometheusservice_describe_anomaly_detector <- function(workspaceId, anomalyDetectorId) {
+  op <- new_operation(
+    name = "DescribeAnomalyDetector",
+    http_method = "GET",
+    http_path = "/workspaces/{workspaceId}/anomalydetectors/{anomalyDetectorId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$describe_anomaly_detector_input(workspaceId = workspaceId, anomalyDetectorId = anomalyDetectorId)
+  output <- .prometheusservice$describe_anomaly_detector_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$describe_anomaly_detector <- prometheusservice_describe_anomaly_detector
+
+#' Returns complete information about the current rules and alerting
+#' logging configuration of the workspace
+#'
+#' @description
+#' Returns complete information about the current rules and alerting logging configuration of the workspace.
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_describe_logging_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_describe_logging_configuration/) for full documentation.
 #'
@@ -440,6 +650,70 @@ prometheusservice_describe_logging_configuration <- function(workspaceId) {
 }
 .prometheusservice$operations$describe_logging_configuration <- prometheusservice_describe_logging_configuration
 
+#' Retrieves the details of the query logging configuration for the
+#' specified workspace
+#'
+#' @description
+#' Retrieves the details of the query logging configuration for the specified workspace.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_describe_query_logging_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_describe_query_logging_configuration/) for full documentation.
+#'
+#' @param workspaceId &#91;required&#93; The ID of the workspace for which to retrieve the query logging configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_describe_query_logging_configuration
+prometheusservice_describe_query_logging_configuration <- function(workspaceId) {
+  op <- new_operation(
+    name = "DescribeQueryLoggingConfiguration",
+    http_method = "GET",
+    http_path = "/workspaces/{workspaceId}/logging/query",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$describe_query_logging_configuration_input(workspaceId = workspaceId)
+  output <- .prometheusservice$describe_query_logging_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$describe_query_logging_configuration <- prometheusservice_describe_query_logging_configuration
+
+#' Returns information about the resource-based policy attached to an
+#' Amazon Managed Service for Prometheus workspace
+#'
+#' @description
+#' Returns information about the resource-based policy attached to an Amazon Managed Service for Prometheus workspace.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_describe_resource_policy/](https://www.paws-r-sdk.com/docs/prometheusservice_describe_resource_policy/) for full documentation.
+#'
+#' @param workspaceId &#91;required&#93; The ID of the workspace to describe the resource-based policy for.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_describe_resource_policy
+prometheusservice_describe_resource_policy <- function(workspaceId) {
+  op <- new_operation(
+    name = "DescribeResourcePolicy",
+    http_method = "GET",
+    http_path = "/workspaces/{workspaceId}/policy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$describe_resource_policy_input(workspaceId = workspaceId)
+  output <- .prometheusservice$describe_resource_policy_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$describe_resource_policy <- prometheusservice_describe_resource_policy
+
 #' Returns complete information about one rule groups namespace
 #'
 #' @description
@@ -447,13 +721,13 @@ prometheusservice_describe_logging_configuration <- function(workspaceId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_describe_rule_groups_namespace/](https://www.paws-r-sdk.com/docs/prometheusservice_describe_rule_groups_namespace/) for full documentation.
 #'
-#' @param name &#91;required&#93; The name of the rule groups namespace that you want information for.
 #' @param workspaceId &#91;required&#93; The ID of the workspace containing the rule groups namespace.
+#' @param name &#91;required&#93; The name of the rule groups namespace that you want information for.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_describe_rule_groups_namespace
-prometheusservice_describe_rule_groups_namespace <- function(name, workspaceId) {
+prometheusservice_describe_rule_groups_namespace <- function(workspaceId, name) {
   op <- new_operation(
     name = "DescribeRuleGroupsNamespace",
     http_method = "GET",
@@ -462,7 +736,7 @@ prometheusservice_describe_rule_groups_namespace <- function(name, workspaceId) 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$describe_rule_groups_namespace_input(name = name, workspaceId = workspaceId)
+  input <- .prometheusservice$describe_rule_groups_namespace_input(workspaceId = workspaceId, name = name)
   output <- .prometheusservice$describe_rule_groups_namespace_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -504,6 +778,38 @@ prometheusservice_describe_scraper <- function(scraperId) {
 }
 .prometheusservice$operations$describe_scraper <- prometheusservice_describe_scraper
 
+#' Describes the logging configuration for a Amazon Managed Service for
+#' Prometheus scraper
+#'
+#' @description
+#' Describes the logging configuration for a Amazon Managed Service for Prometheus scraper.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_describe_scraper_logging_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_describe_scraper_logging_configuration/) for full documentation.
+#'
+#' @param scraperId &#91;required&#93; The ID of the scraper whose logging configuration will be described.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_describe_scraper_logging_configuration
+prometheusservice_describe_scraper_logging_configuration <- function(scraperId) {
+  op <- new_operation(
+    name = "DescribeScraperLoggingConfiguration",
+    http_method = "GET",
+    http_path = "/scrapers/{scraperId}/logging-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$describe_scraper_logging_configuration_input(scraperId = scraperId)
+  output <- .prometheusservice$describe_scraper_logging_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$describe_scraper_logging_configuration <- prometheusservice_describe_scraper_logging_configuration
+
 #' Returns information about an existing workspace
 #'
 #' @description
@@ -534,6 +840,38 @@ prometheusservice_describe_workspace <- function(workspaceId) {
   return(response)
 }
 .prometheusservice$operations$describe_workspace <- prometheusservice_describe_workspace
+
+#' Use this operation to return information about the configuration of a
+#' workspace
+#'
+#' @description
+#' Use this operation to return information about the configuration of a workspace. The configuration details returned include workspace configuration status, label set limits, and retention period.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_describe_workspace_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_describe_workspace_configuration/) for full documentation.
+#'
+#' @param workspaceId &#91;required&#93; The ID of the workspace that you want to retrieve information for. To find the IDs of your workspaces, use the [`list_workspaces`][prometheusservice_list_workspaces] operation.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_describe_workspace_configuration
+prometheusservice_describe_workspace_configuration <- function(workspaceId) {
+  op <- new_operation(
+    name = "DescribeWorkspaceConfiguration",
+    http_method = "GET",
+    http_path = "/workspaces/{workspaceId}/configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$describe_workspace_configuration_input(workspaceId = workspaceId)
+  output <- .prometheusservice$describe_workspace_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$describe_workspace_configuration <- prometheusservice_describe_workspace_configuration
 
 #' The GetDefaultScraperConfiguration operation returns the default scraper
 #' configuration used when Amazon EKS creates a scraper for you
@@ -567,6 +905,41 @@ prometheusservice_get_default_scraper_configuration <- function() {
 }
 .prometheusservice$operations$get_default_scraper_configuration <- prometheusservice_get_default_scraper_configuration
 
+#' Returns a paginated list of anomaly detectors for a workspace with
+#' optional filtering by alias
+#'
+#' @description
+#' Returns a paginated list of anomaly detectors for a workspace with optional filtering by alias.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_list_anomaly_detectors/](https://www.paws-r-sdk.com/docs/prometheusservice_list_anomaly_detectors/) for full documentation.
+#'
+#' @param workspaceId &#91;required&#93; The identifier of the workspace containing the anomaly detectors to list.
+#' @param alias Filters the results to anomaly detectors with the specified alias.
+#' @param maxResults The maximum number of results to return in a single call. Valid range is 1 to 1000.
+#' @param nextToken The pagination token to continue retrieving results.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_list_anomaly_detectors
+prometheusservice_list_anomaly_detectors <- function(workspaceId, alias = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListAnomalyDetectors",
+    http_method = "GET",
+    http_path = "/workspaces/{workspaceId}/anomalydetectors",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "anomalyDetectors"),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$list_anomaly_detectors_input(workspaceId = workspaceId, alias = alias, maxResults = maxResults, nextToken = nextToken)
+  output <- .prometheusservice$list_anomaly_detectors_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$list_anomaly_detectors <- prometheusservice_list_anomaly_detectors
+
 #' Returns a list of rule groups namespaces in a workspace
 #'
 #' @description
@@ -574,24 +947,17 @@ prometheusservice_get_default_scraper_configuration <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_list_rule_groups_namespaces/](https://www.paws-r-sdk.com/docs/prometheusservice_list_rule_groups_namespaces/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to return. The default is 100.
-#' @param name Use this parameter to filter the rule groups namespaces that are
-#' returned. Only the namespaces with names that begin with the value that
-#' you specify are returned.
-#' @param nextToken The token for the next set of items to return. You receive this token
-#' from a previous call, and use it to get the next page of results. The
-#' other parameters must be the same as the initial call.
-#' 
-#' For example, if your initial request has `maxResults` of 10, and there
-#' are 12 rule groups namespaces to return, then your initial request will
-#' return 10 and a `nextToken`. Using the next token in a subsequent call
-#' will return the remaining 2 namespaces.
 #' @param workspaceId &#91;required&#93; The ID of the workspace containing the rule groups namespaces.
+#' @param name Use this parameter to filter the rule groups namespaces that are returned. Only the namespaces with names that begin with the value that you specify are returned.
+#' @param nextToken The token for the next set of items to return. You receive this token from a previous call, and use it to get the next page of results. The other parameters must be the same as the initial call.
+#' 
+#' For example, if your initial request has `maxResults` of 10, and there are 12 rule groups namespaces to return, then your initial request will return 10 and a `nextToken`. Using the next token in a subsequent call will return the remaining 2 namespaces.
+#' @param maxResults The maximum number of results to return. The default is 100.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_list_rule_groups_namespaces
-prometheusservice_list_rule_groups_namespaces <- function(maxResults = NULL, name = NULL, nextToken = NULL, workspaceId) {
+prometheusservice_list_rule_groups_namespaces <- function(workspaceId, name = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListRuleGroupsNamespaces",
     http_method = "GET",
@@ -600,7 +966,7 @@ prometheusservice_list_rule_groups_namespaces <- function(maxResults = NULL, nam
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ruleGroupsNamespaces"),
     stream_api = FALSE
   )
-  input <- .prometheusservice$list_rule_groups_namespaces_input(maxResults = maxResults, name = name, nextToken = nextToken, workspaceId = workspaceId)
+  input <- .prometheusservice$list_rule_groups_namespaces_input(workspaceId = workspaceId, name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .prometheusservice$list_rule_groups_namespaces_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -617,35 +983,24 @@ prometheusservice_list_rule_groups_namespaces <- function(maxResults = NULL, nam
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_list_scrapers/](https://www.paws-r-sdk.com/docs/prometheusservice_list_scrapers/) for full documentation.
 #'
-#' @param filters (Optional) A list of key-value pairs to filter the list of scrapers
-#' returned. Keys include `status`, `sourceArn`, `destinationArn`, and
-#' `alias`.
+#' @param filters (Optional) A list of key-value pairs to filter the list of scrapers returned. Keys include `status`, `sourceArn`, `destinationArn`, and `alias`.
 #' 
-#' Filters on the same key are `OR`'d together, and filters on different
-#' keys are `AND`'d together. For example,
-#' `status=ACTIVE&status=CREATING&alias=Test`, will return all scrapers
-#' that have the alias Test, and are either in status ACTIVE or CREATING.
+#' Filters on the same key are `OR`'d together, and filters on different keys are `AND`'d together. For example, `status=ACTIVE&status=CREATING&alias=Test`, will return all scrapers that have the alias Test, and are either in status ACTIVE or CREATING.
 #' 
-#' To find all active scrapers that are sending metrics to a specific
-#' Amazon Managed Service for Prometheus workspace, you would use the ARN
-#' of the workspace in a query:
+#' To find all active scrapers that are sending metrics to a specific Amazon Managed Service for Prometheus workspace, you would use the ARN of the workspace in a query:
 #' 
 #' `status=ACTIVE&destinationArn=arn:aws:aps:us-east-1:123456789012:workspace/ws-example1-1234-abcd-56ef-123456789012`
 #' 
-#' If this is included, it filters the results to only the scrapers that
-#' match the filter.
-#' @param maxResults Optional) The maximum number of scrapers to return in one
-#' [`list_scrapers`][prometheusservice_list_scrapers] operation. The range
-#' is 1-1000.
+#' If this is included, it filters the results to only the scrapers that match the filter.
+#' @param nextToken (Optional) The token for the next set of items to return. (You received this token from a previous call.)
+#' @param maxResults Optional) The maximum number of scrapers to return in one [`list_scrapers`][prometheusservice_list_scrapers] operation. The range is 1-1000.
 #' 
 #' If you omit this parameter, the default of 100 is used.
-#' @param nextToken (Optional) The token for the next set of items to return. (You received
-#' this token from a previous call.)
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_list_scrapers
-prometheusservice_list_scrapers <- function(filters = NULL, maxResults = NULL, nextToken = NULL) {
+prometheusservice_list_scrapers <- function(filters = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListScrapers",
     http_method = "GET",
@@ -654,7 +1009,7 @@ prometheusservice_list_scrapers <- function(filters = NULL, maxResults = NULL, n
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scrapers"),
     stream_api = FALSE
   )
-  input <- .prometheusservice$list_scrapers_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
+  input <- .prometheusservice$list_scrapers_input(filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .prometheusservice$list_scrapers_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -672,8 +1027,7 @@ prometheusservice_list_scrapers <- function(filters = NULL, maxResults = NULL, n
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/prometheusservice_list_tags_for_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The ARN of the resource to list tages for. Must be a workspace, scraper,
-#' or rule groups namespace resource.
+#' @param resourceArn &#91;required&#93; The ARN of the resource to list tages for. Must be a workspace, scraper, or rule groups namespace resource.
 #'
 #' @keywords internal
 #'
@@ -705,26 +1059,18 @@ prometheusservice_list_tags_for_resource <- function(resourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_list_workspaces/](https://www.paws-r-sdk.com/docs/prometheusservice_list_workspaces/) for full documentation.
 #'
-#' @param alias If this is included, it filters the results to only the workspaces with
-#' names that start with the value that you specify here.
+#' @param nextToken The token for the next set of items to return. You receive this token from a previous call, and use it to get the next page of results. The other parameters must be the same as the initial call.
 #' 
-#' Amazon Managed Service for Prometheus will automatically strip any blank
-#' spaces from the beginning and end of the alias that you specify.
-#' @param maxResults The maximum number of workspaces to return per request. The default is
-#' 100.
-#' @param nextToken The token for the next set of items to return. You receive this token
-#' from a previous call, and use it to get the next page of results. The
-#' other parameters must be the same as the initial call.
+#' For example, if your initial request has `maxResults` of 10, and there are 12 workspaces to return, then your initial request will return 10 and a `nextToken`. Using the next token in a subsequent call will return the remaining 2 workspaces.
+#' @param alias If this is included, it filters the results to only the workspaces with names that start with the value that you specify here.
 #' 
-#' For example, if your initial request has `maxResults` of 10, and there
-#' are 12 workspaces to return, then your initial request will return 10
-#' and a `nextToken`. Using the next token in a subsequent call will return
-#' the remaining 2 workspaces.
+#' Amazon Managed Service for Prometheus will automatically strip any blank spaces from the beginning and end of the alias that you specify.
+#' @param maxResults The maximum number of workspaces to return per request. The default is 100.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_list_workspaces
-prometheusservice_list_workspaces <- function(alias = NULL, maxResults = NULL, nextToken = NULL) {
+prometheusservice_list_workspaces <- function(nextToken = NULL, alias = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListWorkspaces",
     http_method = "GET",
@@ -733,7 +1079,7 @@ prometheusservice_list_workspaces <- function(alias = NULL, maxResults = NULL, n
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workspaces"),
     stream_api = FALSE
   )
-  input <- .prometheusservice$list_workspaces_input(alias = alias, maxResults = maxResults, nextToken = nextToken)
+  input <- .prometheusservice$list_workspaces_input(nextToken = nextToken, alias = alias, maxResults = maxResults)
   output <- .prometheusservice$list_workspaces_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -750,19 +1096,16 @@ prometheusservice_list_workspaces <- function(alias = NULL, maxResults = NULL, n
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_put_alert_manager_definition/](https://www.paws-r-sdk.com/docs/prometheusservice_put_alert_manager_definition/) for full documentation.
 #'
-#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
-#' the request. Case-sensitive.
-#' @param data &#91;required&#93; The alert manager definition to use. A base64-encoded version of the
-#' YAML alert manager definition file.
-#' 
-#' For details about the alert manager definition, see
-#' [AlertManagedDefinitionData](https://docs.aws.amazon.com/prometheus/latest/APIReference/yaml-AlertManagerDefinitionData.html).
 #' @param workspaceId &#91;required&#93; The ID of the workspace to update the alert manager definition in.
+#' @param data &#91;required&#93; The alert manager definition to use. A base64-encoded version of the YAML alert manager definition file.
+#' 
+#' For details about the alert manager definition, see [AlertManagedDefinitionData](https://docs.aws.amazon.com/prometheus/latest/APIReference/yaml-AlertManagerDefinitionData.html).
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of the request. Case-sensitive.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_put_alert_manager_definition
-prometheusservice_put_alert_manager_definition <- function(clientToken = NULL, data, workspaceId) {
+prometheusservice_put_alert_manager_definition <- function(workspaceId, data, clientToken = NULL) {
   op <- new_operation(
     name = "PutAlertManagerDefinition",
     http_method = "PUT",
@@ -771,7 +1114,7 @@ prometheusservice_put_alert_manager_definition <- function(clientToken = NULL, d
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$put_alert_manager_definition_input(clientToken = clientToken, data = data, workspaceId = workspaceId)
+  input <- .prometheusservice$put_alert_manager_definition_input(workspaceId = workspaceId, data = data, clientToken = clientToken)
   output <- .prometheusservice$put_alert_manager_definition_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -781,6 +1124,81 @@ prometheusservice_put_alert_manager_definition <- function(clientToken = NULL, d
 }
 .prometheusservice$operations$put_alert_manager_definition <- prometheusservice_put_alert_manager_definition
 
+#' When you call PutAnomalyDetector, the operation creates a new anomaly
+#' detector if one doesn't exist, or updates an existing one
+#'
+#' @description
+#' When you call [`put_anomaly_detector`][prometheusservice_put_anomaly_detector], the operation creates a new anomaly detector if one doesn't exist, or updates an existing one. Each call to this operation triggers a complete retraining of the detector, which includes querying the minimum required samples and backfilling the detector with historical data. This process occurs regardless of whether you're making a minor change like updating the evaluation interval or making more substantial modifications. The operation serves as the single method for creating, updating, and retraining anomaly detectors.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_put_anomaly_detector/](https://www.paws-r-sdk.com/docs/prometheusservice_put_anomaly_detector/) for full documentation.
+#'
+#' @param workspaceId &#91;required&#93; The identifier of the workspace containing the anomaly detector to update.
+#' @param anomalyDetectorId &#91;required&#93; The identifier of the anomaly detector to update.
+#' @param evaluationIntervalInSeconds The frequency, in seconds, at which the anomaly detector evaluates metrics.
+#' @param missingDataAction Specifies the action to take when data is missing during evaluation.
+#' @param configuration &#91;required&#93; The algorithm configuration for the anomaly detector.
+#' @param labels The Amazon Managed Service for Prometheus metric labels to associate with the anomaly detector.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_put_anomaly_detector
+prometheusservice_put_anomaly_detector <- function(workspaceId, anomalyDetectorId, evaluationIntervalInSeconds = NULL, missingDataAction = NULL, configuration, labels = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "PutAnomalyDetector",
+    http_method = "PUT",
+    http_path = "/workspaces/{workspaceId}/anomalydetectors/{anomalyDetectorId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$put_anomaly_detector_input(workspaceId = workspaceId, anomalyDetectorId = anomalyDetectorId, evaluationIntervalInSeconds = evaluationIntervalInSeconds, missingDataAction = missingDataAction, configuration = configuration, labels = labels, clientToken = clientToken)
+  output <- .prometheusservice$put_anomaly_detector_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$put_anomaly_detector <- prometheusservice_put_anomaly_detector
+
+#' Creates or updates a resource-based policy for an Amazon Managed Service
+#' for Prometheus workspace
+#'
+#' @description
+#' Creates or updates a resource-based policy for an Amazon Managed Service for Prometheus workspace. Use resource-based policies to grant permissions to other AWS accounts or services to access your workspace.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_put_resource_policy/](https://www.paws-r-sdk.com/docs/prometheusservice_put_resource_policy/) for full documentation.
+#'
+#' @param workspaceId &#91;required&#93; The ID of the workspace to attach the resource-based policy to.
+#' @param policyDocument &#91;required&#93; The JSON policy document to use as the resource-based policy. This policy defines the permissions that other AWS accounts or services have to access your workspace.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the request is safe to retry (idempotent).
+#' @param revisionId The revision ID of the policy to update. Use this parameter to ensure that you are updating the correct version of the policy. If you don't specify a revision ID, the policy is updated regardless of its current revision.
+#' 
+#' For the first **PUT** request on a workspace that doesn't have an existing resource policy, you can specify `NO_POLICY` as the revision ID.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_put_resource_policy
+prometheusservice_put_resource_policy <- function(workspaceId, policyDocument, clientToken = NULL, revisionId = NULL) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "PUT",
+    http_path = "/workspaces/{workspaceId}/policy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$put_resource_policy_input(workspaceId = workspaceId, policyDocument = policyDocument, clientToken = clientToken, revisionId = revisionId)
+  output <- .prometheusservice$put_resource_policy_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$put_resource_policy <- prometheusservice_put_resource_policy
+
 #' Updates an existing rule groups namespace within a workspace
 #'
 #' @description
@@ -788,21 +1206,17 @@ prometheusservice_put_alert_manager_definition <- function(clientToken = NULL, d
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_put_rule_groups_namespace/](https://www.paws-r-sdk.com/docs/prometheusservice_put_rule_groups_namespace/) for full documentation.
 #'
-#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
-#' the request. Case-sensitive.
-#' @param data &#91;required&#93; The new rules file to use in the namespace. A base64-encoded version of
-#' the YAML rule groups file.
-#' 
-#' For details about the rule groups namespace structure, see
-#' [RuleGroupsNamespaceData](https://docs.aws.amazon.com/prometheus/latest/APIReference/yaml-RuleGroupsNamespaceData.html).
+#' @param workspaceId &#91;required&#93; The ID of the workspace where you are updating the rule groups namespace.
 #' @param name &#91;required&#93; The name of the rule groups namespace that you are updating.
-#' @param workspaceId &#91;required&#93; The ID of the workspace where you are updating the rule groups
-#' namespace.
+#' @param data &#91;required&#93; The new rules file to use in the namespace. A base64-encoded version of the YAML rule groups file.
+#' 
+#' For details about the rule groups namespace structure, see [RuleGroupsNamespaceData](https://docs.aws.amazon.com/prometheus/latest/APIReference/yaml-RuleGroupsNamespaceData.html).
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of the request. Case-sensitive.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_put_rule_groups_namespace
-prometheusservice_put_rule_groups_namespace <- function(clientToken = NULL, data, name, workspaceId) {
+prometheusservice_put_rule_groups_namespace <- function(workspaceId, name, data, clientToken = NULL) {
   op <- new_operation(
     name = "PutRuleGroupsNamespace",
     http_method = "PUT",
@@ -811,7 +1225,7 @@ prometheusservice_put_rule_groups_namespace <- function(clientToken = NULL, data
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$put_rule_groups_namespace_input(clientToken = clientToken, data = data, name = name, workspaceId = workspaceId)
+  input <- .prometheusservice$put_rule_groups_namespace_input(workspaceId = workspaceId, name = name, data = data, clientToken = clientToken)
   output <- .prometheusservice$put_rule_groups_namespace_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -889,24 +1303,22 @@ prometheusservice_untag_resource <- function(resourceArn, tagKeys) {
 }
 .prometheusservice$operations$untag_resource <- prometheusservice_untag_resource
 
-#' Updates the log group ARN or the workspace ID of the current logging
-#' configuration
+#' Updates the log group ARN or the workspace ID of the current rules and
+#' alerting logging configuration
 #'
 #' @description
-#' Updates the log group ARN or the workspace ID of the current logging configuration.
+#' Updates the log group ARN or the workspace ID of the current rules and alerting logging configuration.
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_update_logging_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_update_logging_configuration/) for full documentation.
 #'
-#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
-#' the request. Case-sensitive.
-#' @param logGroupArn &#91;required&#93; The ARN of the CloudWatch log group to which the vended log data will be
-#' published.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to update the logging configuration for.
+#' @param logGroupArn &#91;required&#93; The ARN of the CloudWatch log group to which the vended log data will be published.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of the request. Case-sensitive.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_update_logging_configuration
-prometheusservice_update_logging_configuration <- function(clientToken = NULL, logGroupArn, workspaceId) {
+prometheusservice_update_logging_configuration <- function(workspaceId, logGroupArn, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateLoggingConfiguration",
     http_method = "PUT",
@@ -915,7 +1327,7 @@ prometheusservice_update_logging_configuration <- function(clientToken = NULL, l
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$update_logging_configuration_input(clientToken = clientToken, logGroupArn = logGroupArn, workspaceId = workspaceId)
+  input <- .prometheusservice$update_logging_configuration_input(workspaceId = workspaceId, logGroupArn = logGroupArn, clientToken = clientToken)
   output <- .prometheusservice$update_logging_configuration_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -925,6 +1337,39 @@ prometheusservice_update_logging_configuration <- function(clientToken = NULL, l
 }
 .prometheusservice$operations$update_logging_configuration <- prometheusservice_update_logging_configuration
 
+#' Updates the query logging configuration for the specified workspace
+#'
+#' @description
+#' Updates the query logging configuration for the specified workspace.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_update_query_logging_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_update_query_logging_configuration/) for full documentation.
+#'
+#' @param workspaceId &#91;required&#93; The ID of the workspace for which to update the query logging configuration.
+#' @param destinations &#91;required&#93; The destinations where query logs will be sent. Only CloudWatch Logs destination is supported. The list must contain exactly one element.
+#' @param clientToken (Optional) A unique, case-sensitive identifier that you can provide to ensure the idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_update_query_logging_configuration
+prometheusservice_update_query_logging_configuration <- function(workspaceId, destinations, clientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateQueryLoggingConfiguration",
+    http_method = "PUT",
+    http_path = "/workspaces/{workspaceId}/logging/query",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$update_query_logging_configuration_input(workspaceId = workspaceId, destinations = destinations, clientToken = clientToken)
+  output <- .prometheusservice$update_query_logging_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$update_query_logging_configuration <- prometheusservice_update_query_logging_configuration
+
 #' Updates an existing scraper
 #'
 #' @description
@@ -932,24 +1377,19 @@ prometheusservice_update_logging_configuration <- function(clientToken = NULL, l
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_update_scraper/](https://www.paws-r-sdk.com/docs/prometheusservice_update_scraper/) for full documentation.
 #'
+#' @param scraperId &#91;required&#93; The ID of the scraper to update.
 #' @param alias The new alias of the scraper.
-#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
-#' the request. Case-sensitive.
-#' @param destination The new Amazon Managed Service for Prometheus workspace to send metrics
-#' to.
-#' @param roleConfiguration The scraper role configuration for the workspace.
 #' @param scrapeConfiguration Contains the base-64 encoded YAML configuration for the scraper.
 #' 
-#' For more information about configuring a scraper, see [Using an Amazon
-#' Web Services managed
-#' collector](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html)
-#' in the *Amazon Managed Service for Prometheus User Guide*.
-#' @param scraperId &#91;required&#93; The ID of the scraper to update.
+#' For more information about configuring a scraper, see [Using an Amazon Web Services managed collector](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html) in the *Amazon Managed Service for Prometheus User Guide*.
+#' @param destination The new Amazon Managed Service for Prometheus workspace to send metrics to.
+#' @param roleConfiguration Use this structure to enable cross-account access, so that you can use a target account to access Prometheus metrics from source accounts.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of the request. Case-sensitive.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_update_scraper
-prometheusservice_update_scraper <- function(alias = NULL, clientToken = NULL, destination = NULL, roleConfiguration = NULL, scrapeConfiguration = NULL, scraperId) {
+prometheusservice_update_scraper <- function(scraperId, alias = NULL, scrapeConfiguration = NULL, destination = NULL, roleConfiguration = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateScraper",
     http_method = "PUT",
@@ -958,7 +1398,7 @@ prometheusservice_update_scraper <- function(alias = NULL, clientToken = NULL, d
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$update_scraper_input(alias = alias, clientToken = clientToken, destination = destination, roleConfiguration = roleConfiguration, scrapeConfiguration = scrapeConfiguration, scraperId = scraperId)
+  input <- .prometheusservice$update_scraper_input(scraperId = scraperId, alias = alias, scrapeConfiguration = scrapeConfiguration, destination = destination, roleConfiguration = roleConfiguration, clientToken = clientToken)
   output <- .prometheusservice$update_scraper_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -968,6 +1408,40 @@ prometheusservice_update_scraper <- function(alias = NULL, clientToken = NULL, d
 }
 .prometheusservice$operations$update_scraper <- prometheusservice_update_scraper
 
+#' Updates the logging configuration for a Amazon Managed Service for
+#' Prometheus scraper
+#'
+#' @description
+#' Updates the logging configuration for a Amazon Managed Service for Prometheus scraper.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_update_scraper_logging_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_update_scraper_logging_configuration/) for full documentation.
+#'
+#' @param scraperId &#91;required&#93; The ID of the scraper whose logging configuration will be updated.
+#' @param loggingDestination &#91;required&#93; The destination where scraper logs will be sent.
+#' @param scraperComponents The list of scraper components to configure for logging.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_update_scraper_logging_configuration
+prometheusservice_update_scraper_logging_configuration <- function(scraperId, loggingDestination, scraperComponents = NULL) {
+  op <- new_operation(
+    name = "UpdateScraperLoggingConfiguration",
+    http_method = "PUT",
+    http_path = "/scrapers/{scraperId}/logging-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$update_scraper_logging_configuration_input(scraperId = scraperId, loggingDestination = loggingDestination, scraperComponents = scraperComponents)
+  output <- .prometheusservice$update_scraper_logging_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$update_scraper_logging_configuration <- prometheusservice_update_scraper_logging_configuration
+
 #' Updates the alias of an existing workspace
 #'
 #' @description
@@ -975,18 +1449,16 @@ prometheusservice_update_scraper <- function(alias = NULL, clientToken = NULL, d
 #'
 #' See [https://www.paws-r-sdk.com/docs/prometheusservice_update_workspace_alias/](https://www.paws-r-sdk.com/docs/prometheusservice_update_workspace_alias/) for full documentation.
 #'
+#' @param workspaceId &#91;required&#93; The ID of the workspace to update.
 #' @param alias The new alias for the workspace. It does not need to be unique.
 #' 
-#' Amazon Managed Service for Prometheus will automatically strip any blank
-#' spaces from the beginning and end of the alias that you specify.
-#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
-#' the request. Case-sensitive.
-#' @param workspaceId &#91;required&#93; The ID of the workspace to update.
+#' Amazon Managed Service for Prometheus will automatically strip any blank spaces from the beginning and end of the alias that you specify.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of the request. Case-sensitive.
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_update_workspace_alias
-prometheusservice_update_workspace_alias <- function(alias = NULL, clientToken = NULL, workspaceId) {
+prometheusservice_update_workspace_alias <- function(workspaceId, alias = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateWorkspaceAlias",
     http_method = "POST",
@@ -995,7 +1467,7 @@ prometheusservice_update_workspace_alias <- function(alias = NULL, clientToken =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$update_workspace_alias_input(alias = alias, clientToken = clientToken, workspaceId = workspaceId)
+  input <- .prometheusservice$update_workspace_alias_input(workspaceId = workspaceId, alias = alias, clientToken = clientToken)
   output <- .prometheusservice$update_workspace_alias_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -1004,3 +1476,38 @@ prometheusservice_update_workspace_alias <- function(alias = NULL, clientToken =
   return(response)
 }
 .prometheusservice$operations$update_workspace_alias <- prometheusservice_update_workspace_alias
+
+#' Use this operation to create or update the label sets, label set limits,
+#' and retention period of a workspace
+#'
+#' @description
+#' Use this operation to create or update the label sets, label set limits, and retention period of a workspace.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_update_workspace_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_update_workspace_configuration/) for full documentation.
+#'
+#' @param workspaceId &#91;required&#93; The ID of the workspace that you want to update. To find the IDs of your workspaces, use the [`list_workspaces`][prometheusservice_list_workspaces] operation.
+#' @param clientToken You can include a token in your operation to make it an idempotent opeartion.
+#' @param limitsPerLabelSet This is an array of structures, where each structure defines a label set for the workspace, and defines the active time series limit for each of those label sets. Each label name in a label set must be unique.
+#' @param retentionPeriodInDays Specifies how many days that metrics will be retained in the workspace.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_update_workspace_configuration
+prometheusservice_update_workspace_configuration <- function(workspaceId, clientToken = NULL, limitsPerLabelSet = NULL, retentionPeriodInDays = NULL) {
+  op <- new_operation(
+    name = "UpdateWorkspaceConfiguration",
+    http_method = "PATCH",
+    http_path = "/workspaces/{workspaceId}/configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .prometheusservice$update_workspace_configuration_input(workspaceId = workspaceId, clientToken = clientToken, limitsPerLabelSet = limitsPerLabelSet, retentionPeriodInDays = retentionPeriodInDays)
+  output <- .prometheusservice$update_workspace_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$update_workspace_configuration <- prometheusservice_update_workspace_configuration

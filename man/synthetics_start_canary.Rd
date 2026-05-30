@@ -7,8 +7,7 @@
 synthetics_start_canary(Name)
 }
 \arguments{
-\item{Name}{[required] The name of the canary that you want to run. To find canary names, use
-\code{\link[=synthetics_describe_canaries]{describe_canaries}}.}
+\item{Name}{[required] The name of the canary that you want to run. To find canary names, use \code{\link[=synthetics_describe_canaries]{describe_canaries}}.}
 }
 \description{
 Use this operation to run a canary that has already been created. The frequency of the canary runs is determined by the value of the canary's \code{Schedule}. To see a canary's schedule, use \code{\link[=synthetics_get_canary]{get_canary}}.

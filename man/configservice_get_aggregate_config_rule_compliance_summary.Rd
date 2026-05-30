@@ -16,17 +16,13 @@ configservice_get_aggregate_config_rule_compliance_summary(
 \arguments{
 \item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
 
-\item{Filters}{Filters the results based on the ConfigRuleComplianceSummaryFilters
-object.}
+\item{Filters}{Filters the results based on the ConfigRuleComplianceSummaryFilters object.}
 
 \item{GroupByKey}{Groups the result based on ACCOUNT_ID or AWS_REGION.}
 
-\item{Limit}{The maximum number of evaluation results returned on each page. The
-default is 1000. You cannot specify a number greater than 1000. If you
-specify 0, Config uses the default.}
+\item{Limit}{The maximum number of evaluation results returned on each page. The default is 1000. You cannot specify a number greater than 1000. If you specify 0, Config uses the default.}
 
-\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
-the next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get the next page of results in a paginated response.}
 }
 \description{
 Returns the number of compliant and noncompliant rules for one or more accounts and regions in an aggregator.

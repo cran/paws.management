@@ -22,19 +22,15 @@ servicecatalog_get_provisioned_product_outputs(
 \item \code{zh} - Chinese
 }}
 
-\item{ProvisionedProductId}{The identifier of the provisioned product that you want the outputs
-from.}
+\item{ProvisionedProductId}{The identifier of the provisioned product that you want the outputs from.}
 
 \item{ProvisionedProductName}{The name of the provisioned product that you want the outputs from.}
 
-\item{OutputKeys}{The list of keys that the API should return with their values. If none
-are provided, the API will return all outputs of the provisioned
-product.}
+\item{OutputKeys}{The list of keys that the API should return with their values. If none are provided, the API will return all outputs of the provisioned product.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 
-\item{PageToken}{The page token for the next set of results. To retrieve the first set of
-results, use null.}
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 }
 \description{
 This API takes either a \code{ProvisonedProductId} or a \code{ProvisionedProductName}, along with a list of one or more output keys, and responds with the key/value pairs of those outputs.

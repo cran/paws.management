@@ -14,9 +14,7 @@ applicationautoscaling_get_predictive_scaling_forecast(
 )
 }
 \arguments{
-\item{ServiceNamespace}{[required] The namespace of the Amazon Web Services service that provides the
-resource. For a resource provided by your own application or service,
-use \code{custom-resource} instead.}
+\item{ServiceNamespace}{[required] The namespace of the Amazon Web Services service that provides the resource. For a resource provided by your own application or service, use \code{custom-resource} instead.}
 
 \item{ResourceId}{[required] The identifier of the resource.}
 
@@ -24,12 +22,9 @@ use \code{custom-resource} instead.}
 
 \item{PolicyName}{[required] The name of the policy.}
 
-\item{StartTime}{[required] The inclusive start time of the time range for the forecast data to get.
-At most, the date and time can be one year before the current date and
-time}
+\item{StartTime}{[required] The inclusive start time of the time range for the forecast data to get. At most, the date and time can be one year before the current date and time}
 
-\item{EndTime}{[required] The exclusive end time of the time range for the forecast data to get.
-The maximum time duration between the start and end time is 30 days.}
+\item{EndTime}{[required] The exclusive end time of the time range for the forecast data to get. The maximum time duration between the start and end time is 30 days.}
 }
 \description{
 Retrieves the forecast data for a predictive scaling policy.

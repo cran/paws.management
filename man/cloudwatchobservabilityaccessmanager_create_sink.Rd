@@ -13,12 +13,9 @@ cloudwatchobservabilityaccessmanager_create_sink(Name, Tags = NULL)
 
 \item{Tags}{Assigns one or more tags (key-value pairs) to the link.
 
-Tags can help you organize and categorize your resources. You can also
-use them to scope user permissions by granting a user permission to
-access or change only resources with certain tag values.
+Tags can help you organize and categorize your resources. You can also use them to scope user permissions by granting a user permission to access or change only resources with certain tag values.
 
-For more information about using tags to control access, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Controlling access to Amazon Web Services resources using tags}.}
+For more information about using tags to control access, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Controlling access to Amazon Web Services resources using tags}.}
 }
 \description{
 Use this to create a \emph{sink} in the current account, so that it can be used as a monitoring account in CloudWatch cross-account observability. A sink is a resource that represents an attachment point in a monitoring account. Source accounts can link to the sink to send observability data.

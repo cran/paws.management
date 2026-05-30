@@ -10,11 +10,9 @@ applicationautoscaling_list_tags_for_resource(ResourceARN)
 \arguments{
 \item{ResourceARN}{[required] Specify the ARN of the scalable target.
 
-For example:
-\verb{arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123}
+For example: \verb{arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123}
 
-To get the ARN for a scalable target, use
-\code{\link[=applicationautoscaling_describe_scalable_targets]{describe_scalable_targets}}.}
+To get the ARN for a scalable target, use \code{\link[=applicationautoscaling_describe_scalable_targets]{describe_scalable_targets}}.}
 }
 \description{
 Returns all the tags on the specified Application Auto Scaling scalable target.

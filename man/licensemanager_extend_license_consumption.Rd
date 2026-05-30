@@ -12,9 +12,7 @@ licensemanager_extend_license_consumption(
 \arguments{
 \item{LicenseConsumptionToken}{[required] License consumption token.}
 
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request. Provides an error response if you do not
-have the required permissions.}
+\item{DryRun}{Checks whether you have the required permissions for the action, without actually making the request. Provides an error response if you do not have the required permissions.}
 }
 \description{
 Extends the expiration date for license consumption.

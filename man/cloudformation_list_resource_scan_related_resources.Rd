@@ -14,17 +14,11 @@ cloudformation_list_resource_scan_related_resources(
 \arguments{
 \item{ResourceScanId}{[required] The Amazon Resource Name (ARN) of the resource scan.}
 
-\item{Resources}{[required] The list of resources for which you want to get the related resources.
-Up to 100 resources can be provided.}
+\item{Resources}{[required] The list of resources for which you want to get the related resources. Up to 100 resources can be provided.}
 
-\item{NextToken}{A string that identifies the next page of resource scan results.}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{MaxResults}{If the number of available results exceeds this maximum, the response
-includes a \code{NextToken} value that you can use for the \code{NextToken}
-parameter to get the next set of results. By default the
-\code{\link[=cloudformation_list_resource_scan_related_resources]{list_resource_scan_related_resources}}
-API action will return up to 100 results in each response. The maximum
-value is 100.}
+\item{MaxResults}{If the number of available results exceeds this maximum, the response includes a \code{NextToken} value that you can use for the \code{NextToken} parameter to get the next set of results. By default the \code{\link[=cloudformation_list_resource_scan_related_resources]{list_resource_scan_related_resources}} API action will return up to 100 results in each response. The maximum value is 100.}
 }
 \description{
 Lists the related resources for a list of resources from a resource scan. The response indicates whether each returned resource is already managed by CloudFormation.

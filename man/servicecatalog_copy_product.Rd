@@ -24,22 +24,15 @@ servicecatalog_copy_product(
 
 \item{SourceProductArn}{[required] The Amazon Resource Name (ARN) of the source product.}
 
-\item{TargetProductId}{The identifier of the target product. By default, a new product is
-created.}
+\item{TargetProductId}{The identifier of the target product. By default, a new product is created.}
 
-\item{TargetProductName}{A name for the target product. The default is the name of the source
-product.}
+\item{TargetProductName}{A name for the target product. The default is the name of the source product.}
 
-\item{SourceProvisioningArtifactIdentifiers}{The identifiers of the provisioning artifacts (also known as versions)
-of the product to copy. By default, all provisioning artifacts are
-copied.}
+\item{SourceProvisioningArtifactIdentifiers}{The identifiers of the provisioning artifacts (also known as versions) of the product to copy. By default, all provisioning artifacts are copied.}
 
-\item{CopyOptions}{The copy options. If the value is \code{CopyTags}, the tags from the source
-product are copied to the target product.}
+\item{CopyOptions}{The copy options. If the value is \code{CopyTags}, the tags from the source product are copied to the target product.}
 
-\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple
-requests differ only by the idempotency token, the same response is
-returned for each repeated request.}
+\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
 }
 \description{
 Copies the specified source product to the specified target product or a new product.

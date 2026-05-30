@@ -14,30 +14,19 @@ cloudwatch_describe_anomaly_detectors(
 )
 }
 \arguments{
-\item{NextToken}{Use the token returned by the previous operation to request the next
-page of results.}
+\item{NextToken}{Use the token returned by the previous operation to request the next page of results.}
 
-\item{MaxResults}{The maximum number of results to return in one operation. The maximum
-value that you can specify is 100.
+\item{MaxResults}{The maximum number of results to return in one operation. The maximum value that you can specify is 100.
 
-To retrieve the remaining results, make another call with the returned
-\code{NextToken} value.}
+To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
 
-\item{Namespace}{Limits the results to only the anomaly detection models that are
-associated with the specified namespace.}
+\item{Namespace}{Limits the results to only the anomaly detection models that are associated with the specified namespace.}
 
-\item{MetricName}{Limits the results to only the anomaly detection models that are
-associated with the specified metric name. If there are multiple metrics
-with this name in different namespaces that have anomaly detection
-models, they're all returned.}
+\item{MetricName}{Limits the results to only the anomaly detection models that are associated with the specified metric name. If there are multiple metrics with this name in different namespaces that have anomaly detection models, they're all returned.}
 
-\item{Dimensions}{Limits the results to only the anomaly detection models that are
-associated with the specified metric dimensions. If there are multiple
-metrics that have these dimensions and have anomaly detection models
-associated, they're all returned.}
+\item{Dimensions}{Limits the results to only the anomaly detection models that are associated with the specified metric dimensions. If there are multiple metrics that have these dimensions and have anomaly detection models associated, they're all returned.}
 
-\item{AnomalyDetectorTypes}{The anomaly detector types to request when using
-\code{DescribeAnomalyDetectorsInput}. If empty, defaults to \code{SINGLE_METRIC}.}
+\item{AnomalyDetectorTypes}{The anomaly detector types to request when using \code{DescribeAnomalyDetectorsInput}. If empty, defaults to \code{SINGLE_METRIC}.}
 }
 \description{
 Lists the anomaly detection models that you have created in your account. For single metric anomaly detectors, you can list all of the models in your account or filter the results to only the models that are related to a certain namespace, metric name, or metric dimension. For metric math anomaly detectors, you can list them by adding \code{METRIC_MATH} to the \code{AnomalyDetectorTypes} array. This will return all metric math anomaly detectors in your account.

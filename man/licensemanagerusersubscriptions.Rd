@@ -53,9 +53,7 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-With License Manager, you can create user-based subscriptions to utilize
-licensed software with a per user subscription fee on Amazon EC2
-instances.
+With License Manager, you can create user-based subscriptions to utilize licensed software with a per user subscription fee on Amazon EC2 instances.
 }
 \section{Service syntax}{
 

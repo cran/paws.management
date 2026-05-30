@@ -14,19 +14,13 @@ servicecatalog_terminate_provisioned_product(
 )
 }
 \arguments{
-\item{ProvisionedProductName}{The name of the provisioned product. You cannot specify both
-\code{ProvisionedProductName} and \code{ProvisionedProductId}.}
+\item{ProvisionedProductName}{The name of the provisioned product. You cannot specify both \code{ProvisionedProductName} and \code{ProvisionedProductId}.}
 
-\item{ProvisionedProductId}{The identifier of the provisioned product. You cannot specify both
-\code{ProvisionedProductName} and \code{ProvisionedProductId}.}
+\item{ProvisionedProductId}{The identifier of the provisioned product. You cannot specify both \code{ProvisionedProductName} and \code{ProvisionedProductId}.}
 
-\item{TerminateToken}{[required] An idempotency token that uniquely identifies the termination request.
-This token is only valid during the termination process. After the
-provisioned product is terminated, subsequent requests to terminate the
-same provisioned product always return \strong{ResourceNotFound}.}
+\item{TerminateToken}{[required] An idempotency token that uniquely identifies the termination request. This token is only valid during the termination process. After the provisioned product is terminated, subsequent requests to terminate the same provisioned product always return \strong{ResourceNotFound}.}
 
-\item{IgnoreErrors}{If set to true, Service Catalog stops managing the specified provisioned
-product even if it cannot delete the underlying resources.}
+\item{IgnoreErrors}{If set to true, Service Catalog stops managing the specified provisioned product even if it cannot delete the underlying resources.}
 
 \item{AcceptLanguage}{The language code.
 \itemize{
@@ -34,12 +28,7 @@ product even if it cannot delete the underlying resources.}
 \item \code{zh} - Chinese
 }}
 
-\item{RetainPhysicalResources}{When this boolean parameter is set to true, the
-\code{\link[=servicecatalog_terminate_provisioned_product]{terminate_provisioned_product}}
-API deletes the Service Catalog provisioned product. However, it does
-not remove the CloudFormation stack, stack set, or the underlying
-resources of the deleted provisioned product. The default value is
-false.}
+\item{RetainPhysicalResources}{When this boolean parameter is set to true, the \code{\link[=servicecatalog_terminate_provisioned_product]{terminate_provisioned_product}} API deletes the Service Catalog provisioned product. However, it does not remove the CloudFormation stack, stack set, or the underlying resources of the deleted provisioned product. The default value is false.}
 }
 \description{
 Terminates the specified provisioned product.

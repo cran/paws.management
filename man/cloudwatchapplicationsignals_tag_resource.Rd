@@ -8,14 +8,11 @@ resource, such as a service level objective}
 cloudwatchapplicationsignals_tag_resource(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the CloudWatch resource that you want
-to set tags for.
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the CloudWatch resource that you want to set tags for.
 
-The ARN format of an Application Signals SLO is
-\code{arn:aws:cloudwatch:Region:account-id:slo:slo-name }
+The ARN format of an Application Signals SLO is \code{arn:aws:cloudwatch:Region:account-id:slo:slo-name }
 
-For more information about ARN format, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies}{Resource Types Defined by Amazon CloudWatch}
-in the \emph{Amazon Web Services General Reference}.}
+For more information about ARN format, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies}{Resource Types Defined by Amazon CloudWatch} in the \emph{Amazon Web Services General Reference}.}
 
 \item{Tags}{[required] The list of key-value pairs to associate with the alarm.}
 }

@@ -16,8 +16,7 @@ configservice_get_conformance_pack_compliance_summary(
 
 \item{Limit}{The maximum number of conformance packs returned on each page.}
 
-\item{NextToken}{The nextToken string returned on a previous page that you use to get the
-next page of results in a paginated response.}
+\item{NextToken}{The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.}
 }
 \description{
 Returns compliance details for the conformance pack based on the cumulative compliance results of all the rules in that conformance pack.

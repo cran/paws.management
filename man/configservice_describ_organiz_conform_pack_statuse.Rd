@@ -12,16 +12,11 @@ configservice_describe_organization_conformance_pack_statuses(
 )
 }
 \arguments{
-\item{OrganizationConformancePackNames}{The names of organization conformance packs for which you want status
-details. If you do not specify any names, Config returns details for all
-your organization conformance packs.}
+\item{OrganizationConformancePackNames}{The names of organization conformance packs for which you want status details. If you do not specify any names, Config returns details for all your organization conformance packs.}
 
-\item{Limit}{The maximum number of OrganizationConformancePackStatuses returned on
-each page. If you do no specify a number, Config uses the default. The
-default is 100.}
+\item{Limit}{The maximum number of OrganizationConformancePackStatuses returned on each page. If you do no specify a number, Config uses the default. The default is 100.}
 
-\item{NextToken}{The nextToken string returned on a previous page that you use to get the
-next page of results in a paginated response.}
+\item{NextToken}{The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.}
 }
 \description{
 Provides organization conformance pack deployment status for an organization.

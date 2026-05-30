@@ -25,16 +25,9 @@ ssmcontacts_accept_page(
 
 \item{AcceptCode}{[required] A 6-digit code used to acknowledge the page.}
 
-\item{AcceptCodeValidation}{An optional field that Incident Manager uses to \code{ENFORCE} \code{AcceptCode}
-validation when acknowledging an page. Acknowledgement can occur by
-replying to a page, or when entering the AcceptCode in the console.
-Enforcing AcceptCode validation causes Incident Manager to verify that
-the code entered by the user matches the code sent by Incident Manager
-with the page.
+\item{AcceptCodeValidation}{An optional field that Incident Manager uses to \code{ENFORCE} \code{AcceptCode} validation when acknowledging an page. Acknowledgement can occur by replying to a page, or when entering the AcceptCode in the console. Enforcing AcceptCode validation causes Incident Manager to verify that the code entered by the user matches the code sent by Incident Manager with the page.
 
-Incident Manager can also \code{IGNORE} \code{AcceptCode} validation. Ignoring
-\code{AcceptCode} validation causes Incident Manager to accept any value
-entered for the \code{AcceptCode}.}
+Incident Manager can also \code{IGNORE} \code{AcceptCode} validation. Ignoring \code{AcceptCode} validation causes Incident Manager to accept any value entered for the \code{AcceptCode}.}
 }
 \description{
 Used to acknowledge an engagement to a contact channel during an incident.

@@ -12,8 +12,7 @@ cloudwatchlogs_start_live_tail(
 )
 }
 \arguments{
-\item{logGroupIdentifiers}{[required] An array where each item in the array is a log group to include in the
-Live Tail session.
+\item{logGroupIdentifiers}{[required] An array where each item in the array is a log group to include in the Live Tail session.
 
 Specify each log group by its ARN.
 
@@ -21,29 +20,19 @@ If you specify an ARN, the ARN can't end with an asterisk (*).
 
 You can include up to 10 log groups.}
 
-\item{logStreamNames}{If you specify this parameter, then only log events in the log streams
-that you specify here are included in the Live Tail session.
+\item{logStreamNames}{If you specify this parameter, then only log events in the log streams that you specify here are included in the Live Tail session.
 
-If you specify this field, you can't also specify the
-\code{logStreamNamePrefixes} field.
+If you specify this field, you can't also specify the \code{logStreamNamePrefixes} field.
 
-You can specify this parameter only if you specify only one log group in
-\code{logGroupIdentifiers}.}
+You can specify this parameter only if you specify only one log group in \code{logGroupIdentifiers}.}
 
-\item{logStreamNamePrefixes}{If you specify this parameter, then only log events in the log streams
-that have names that start with the prefixes that you specify here are
-included in the Live Tail session.
+\item{logStreamNamePrefixes}{If you specify this parameter, then only log events in the log streams that have names that start with the prefixes that you specify here are included in the Live Tail session.
 
-If you specify this field, you can't also specify the \code{logStreamNames}
-field.
+If you specify this field, you can't also specify the \code{logStreamNames} field.
 
-You can specify this parameter only if you specify only one log group in
-\code{logGroupIdentifiers}.}
+You can specify this parameter only if you specify only one log group in \code{logGroupIdentifiers}.}
 
-\item{logEventFilterPattern}{An optional pattern to use to filter the results to include only log
-events that match the pattern. For example, a filter pattern of
-\verb{error 404} causes only log events that include both \code{error} and \code{404}
-to be included in the Live Tail stream.
+\item{logEventFilterPattern}{An optional pattern to use to filter the results to include only log events that match the pattern. For example, a filter pattern of \verb{error 404} causes only log events that include both \code{error} and \code{404} to be included in the Live Tail stream.
 
 Regular expression filter patterns are supported.
 

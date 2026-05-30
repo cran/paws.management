@@ -12,17 +12,13 @@ appregistry_update_attribute_group(
 )
 }
 \arguments{
-\item{attributeGroup}{[required] The name, ID, or ARN of the attribute group that holds the attributes to
-describe the application.}
+\item{attributeGroup}{[required] The name, ID, or ARN of the attribute group that holds the attributes to describe the application.}
 
-\item{name}{Deprecated: The new name of the attribute group. The name must be unique
-in the region in which you are updating the attribute group. Please do
-not use this field as we have stopped supporting name updates.}
+\item{name}{Deprecated: The new name of the attribute group. The name must be unique in the region in which you are updating the attribute group. Please do not use this field as we have stopped supporting name updates.}
 
 \item{description}{The description of the attribute group that the user provides.}
 
-\item{attributes}{A JSON string in the form of nested key-value pairs that represent the
-attributes in the group and describes an application and its components.}
+\item{attributes}{A JSON string in the form of nested key-value pairs that represent the attributes in the group and describes an application and its components.}
 }
 \description{
 Updates an existing attribute group with new details.

@@ -15,22 +15,11 @@ ssm_start_session(
 \arguments{
 \item{Target}{[required] The managed node to connect to for the session.}
 
-\item{DocumentName}{The name of the SSM document you want to use to define the type of
-session, input parameters, or preferences for the session. For example,
-\code{SSM-SessionManagerRunShell}. You can call the
-\code{\link[=ssm_get_document]{get_document}} API to verify the document exists
-before attempting to start a session. If no document name is provided, a
-shell to the managed node is launched by default. For more information,
-see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html}{Start a session}
-in the \emph{Amazon Web Services Systems Manager User Guide}.}
+\item{DocumentName}{The name of the SSM document you want to use to define the type of session, input parameters, or preferences for the session. For example, \code{SSM-SessionManagerRunShell}. You can call the \code{\link[=ssm_get_document]{get_document}} API to verify the document exists before attempting to start a session. If no document name is provided, a shell to the managed node is launched by default. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html}{Start a session} in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
-\item{Reason}{The reason for connecting to the instance. This value is included in the
-details for the Amazon CloudWatch Events event created when you start
-the session.}
+\item{Reason}{The reason for connecting to the instance. This value is included in the details for the Amazon CloudWatch Events event created when you start the session.}
 
-\item{Parameters}{The values you want to specify for the parameters defined in the Session
-document. For more information about these parameters, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-create-preferences-cli.html}{Create a Session Manager preferences document}
-in the \emph{Amazon Web Services Systems Manager User Guide}.}
+\item{Parameters}{The values you want to specify for the parameters defined in the Session document. For more information about these parameters, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-create-preferences-cli.html}{Create a Session Manager preferences document} in the \emph{Amazon Web Services Systems Manager User Guide}.}
 }
 \description{
 Initiates a connection to a target (for example, a managed node) for a Session Manager session. Returns a URL and token that can be used to open a WebSocket connection for sending input and receiving outputs.

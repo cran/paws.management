@@ -7,21 +7,14 @@
 resourcegroups_list_groups(Filters = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
-\item{Filters}{Filters, formatted as GroupFilter objects, that you want to apply to a
-\code{\link[=resourcegroups_list_groups]{list_groups}} operation.
+\item{Filters}{Filters, formatted as GroupFilter objects, that you want to apply to a \code{\link[=resourcegroups_list_groups]{list_groups}} operation.
 \itemize{
-\item \code{resource-type} - Filter the results to include only those resource
-groups that have the specified resource type in their
-\code{ResourceTypeFilter}. For example, \verb{AWS::EC2::Instance} would return
-any resource group with a \code{ResourceTypeFilter} that includes
-\verb{AWS::EC2::Instance}.
-\item \code{configuration-type} - Filter the results to include only those
-groups that have the specified configuration types attached. The
-current supported values are:
+\item \code{resource-type} - Filter the results to include only those resource groups that have the specified resource type in their \code{ResourceTypeFilter}. For example, \verb{AWS::EC2::Instance} would return any resource group with a \code{ResourceTypeFilter} that includes \verb{AWS::EC2::Instance}.
+\item \code{configuration-type} - Filter the results to include only those groups that have the specified configuration types attached. The current supported values are:
 \itemize{
 \item \verb{AWS::ResourceGroups::ApplicationGroup}
 \item \verb{AWS::AppRegistry::Application}
-\item \verb{AWS::AppRegistry::ApplicationResourceGroups}
+\item \verb{AWS::AppRegistry::ApplicationResourceGroup}
 \item \verb{AWS::CloudFormation::Stack}
 \item \verb{AWS::EC2::CapacityReservationPool}
 \item \verb{AWS::EC2::HostManagement}
@@ -29,22 +22,9 @@ current supported values are:
 }
 }}
 
-\item{MaxResults}{The total number of results that you want included on each page of the
-response. If you do not include this parameter, it defaults to a value
-that is specific to the operation. If additional items exist beyond the
-maximum you specify, the \code{NextToken} response element is present and has
-a value (is not null). Include that value as the \code{NextToken} request
-parameter in the next call to the operation to get the next part of the
-results. Note that the service might return fewer results than the
-maximum even when there are more results available. You should check
-\code{NextToken} after every operation to ensure that you receive all of the
-results.}
+\item{MaxResults}{The total number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the \code{NextToken} response element is present and has a value (is not null). Include that value as the \code{NextToken} request parameter in the next call to the operation to get the next part of the results. Note that the service might return fewer results than the maximum even when there are more results available. You should check \code{NextToken} after every operation to ensure that you receive all of the results.}
 
-\item{NextToken}{The parameter for receiving additional results if you receive a
-\code{NextToken} response in a previous request. A \code{NextToken} response
-indicates that more output is available. Set this parameter to the value
-provided by a previous call's \code{NextToken} response to indicate where the
-output should continue from.}
+\item{NextToken}{The parameter for receiving additional results if you receive a \code{NextToken} response in a previous request. A \code{NextToken} response indicates that more output is available. Set this parameter to the value provided by a previous call's \code{NextToken} response to indicate where the output should continue from.}
 }
 \description{
 Returns a list of existing Resource Groups in your account.

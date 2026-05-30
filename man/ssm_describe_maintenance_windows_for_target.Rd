@@ -15,15 +15,11 @@ ssm_describe_maintenance_windows_for_target(
 \arguments{
 \item{Targets}{[required] The managed node ID or key-value pair to retrieve information about.}
 
-\item{ResourceType}{[required] The type of resource you want to retrieve information about. For
-example, \code{INSTANCE}.}
+\item{ResourceType}{[required] The type of resource you want to retrieve information about. For example, \code{INSTANCE}.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Retrieves information about the maintenance window targets or tasks that a managed node is associated with.

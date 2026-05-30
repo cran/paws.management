@@ -2,18 +2,17 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_describe_index_policies}
 \alias{cloudwatchlogs_describe_index_policies}
-\title{Returns the field index policies of one or more log groups}
+\title{Returns the field index policies of the specified log group}
 \usage{
 cloudwatchlogs_describe_index_policies(logGroupIdentifiers, nextToken = NULL)
 }
 \arguments{
-\item{logGroupIdentifiers}{[required] An array containing the name or ARN of the log group that you want to
-retrieve field index policies for.}
+\item{logGroupIdentifiers}{[required] An array containing the name or ARN of the log group that you want to retrieve field index policies for.}
 
-\item{nextToken}{}
+\item{nextToken}{The token for the next set of items to return. The token expires after 24 hours.}
 }
 \description{
-Returns the field index policies of one or more log groups. For more information about field index policies, see \code{\link[=cloudwatchlogs_put_index_policy]{put_index_policy}}.
+Returns the field index policies of the specified log group. For more information about field index policies, see \code{\link[=cloudwatchlogs_put_index_policy]{put_index_policy}}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_index_policies/} for full documentation.
 }

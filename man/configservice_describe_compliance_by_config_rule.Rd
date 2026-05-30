@@ -15,8 +15,7 @@ configservice_describe_compliance_by_config_rule(
 
 \item{ComplianceTypes}{Filters the results by compliance.}
 
-\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
-the next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get the next page of results in a paginated response.}
 }
 \description{
 Indicates whether the specified Config rules are compliant. If a rule is noncompliant, this operation returns the number of Amazon Web Services resources that do not comply with the rule.

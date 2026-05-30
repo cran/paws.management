@@ -13,14 +13,11 @@ ssm_start_execution_preview(
 )
 }
 \arguments{
-\item{DocumentName}{[required] The name of the Automation runbook to run. The result of the execution
-preview indicates what the impact would be of running this runbook.}
+\item{DocumentName}{[required] The name of the Automation runbook to run. The result of the execution preview indicates what the impact would be of running this runbook.}
 
-\item{DocumentVersion}{The version of the Automation runbook to run. The default value is
-\verb{$DEFAULT}.}
+\item{DocumentVersion}{The version of the Automation runbook to run. The default value is \verb{$DEFAULT}.}
 
-\item{ExecutionInputs}{Information about the inputs that can be specified for the preview
-operation.}
+\item{ExecutionInputs}{Information about the inputs that can be specified for the preview operation.}
 }
 \description{
 Initiates the process of creating a preview showing the effects that running a specified Automation runbook would have on the targeted resources.

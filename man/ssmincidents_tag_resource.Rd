@@ -7,8 +7,7 @@
 ssmincidents_tag_resource(resourceArn, tags)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the response plan you're adding the
-tags to.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the response plan you're adding the tags to.}
 
 \item{tags}{[required] A list of tags to add to the response plan.}
 }

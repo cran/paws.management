@@ -5,35 +5,32 @@
 \title{Creates or updates a resource policy allowing other Amazon Web Services
 services to put log events to this account, such as Amazon Route 53}
 \usage{
-cloudwatchlogs_put_resource_policy(policyName = NULL, policyDocument = NULL)
+cloudwatchlogs_put_resource_policy(
+  policyName = NULL,
+  policyDocument = NULL,
+  resourceArn = NULL,
+  expectedRevisionId = NULL
+)
 }
 \arguments{
 \item{policyName}{Name of the new policy. This parameter is required.}
 
-\item{policyDocument}{Details of the new policy, including the identity of the principal that
-is enabled to put logs to this account. This is formatted as a JSON
-string. This parameter is required.
+\item{policyDocument}{Details of the new policy, including the identity of the principal that is enabled to put logs to this account. This is formatted as a JSON string. This parameter is required.
 
-The following example creates a resource policy enabling the Route 53
-service to put DNS query logs in to the specified log group. Replace
-\code{"logArn"} with the ARN of your CloudWatch Logs resource, such as a log
-group or log stream.
+The following example creates a resource policy enabling the Route 53 service to put DNS query logs in to the specified log group. Replace \code{"logArn"} with the ARN of your CloudWatch Logs resource, such as a log group or log stream.
 
-CloudWatch Logs also supports
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourcearn}{aws:SourceArn}
-and
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourceaccount}{aws:SourceAccount}
-condition context keys.
+CloudWatch Logs also supports \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourcearn}{aws:SourceArn} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourceaccount}{aws:SourceAccount} condition context keys.
 
-In the example resource policy, you would replace the value of
-\code{SourceArn} with the resource making the call from Route 53 to
-CloudWatch Logs. You would also replace the value of \code{SourceAccount}
-with the Amazon Web Services account ID making that call.
+In the example resource policy, you would replace the value of \code{SourceArn} with the resource making the call from Route 53 to CloudWatch Logs. You would also replace the value of \code{SourceAccount} with the Amazon Web Services account ID making that call.
 
 \verb{\{ "Version": "2012-10-17", "Statement": [ \{ "Sid": "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": \{ "Service": [ "route53.amazonaws.com" ] \}, "Action": "logs:PutLogEvents", "Resource": "logArn", "Condition": \{ "ArnLike": \{ "aws:SourceArn": "myRoute53ResourceArn" \}, "StringEquals": \{ "aws:SourceAccount": "myAwsAccountId" \} \} \} ] \}}}
+
+\item{resourceArn}{The ARN of the CloudWatch Logs resource to which the resource policy needs to be added or attached. Currently only supports LogGroup ARN.}
+
+\item{expectedRevisionId}{The expected revision ID of the resource policy. Required when \code{resourceArn} is provided to prevent concurrent modifications. Use \code{null} when creating a resource policy for the first time.}
 }
 \description{
-Creates or updates a resource policy allowing other Amazon Web Services services to put log events to this account, such as Amazon Route 53. An account can have up to 10 resource policies per Amazon Web Services Region.
+Creates or updates a resource policy allowing other Amazon Web Services services to put log events to this account, such as Amazon Route 53. This API has the following restrictions:
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_resource_policy/} for full documentation.
 }

@@ -18,19 +18,13 @@ ssm_describe_maintenance_window_schedule(
 
 \item{Targets}{The managed node ID or key-value pair to retrieve information about.}
 
-\item{ResourceType}{The type of resource you want to retrieve information about. For
-example, \code{INSTANCE}.}
+\item{ResourceType}{The type of resource you want to retrieve information about. For example, \code{INSTANCE}.}
 
-\item{Filters}{Filters used to limit the range of results. For example, you can limit
-maintenance window executions to only those scheduled before or after a
-certain date and time.}
+\item{Filters}{Filters used to limit the range of results. For example, you can limit maintenance window executions to only those scheduled before or after a certain date and time.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Retrieves information about upcoming executions of a maintenance window.

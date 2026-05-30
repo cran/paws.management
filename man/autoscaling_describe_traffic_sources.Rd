@@ -20,16 +20,13 @@ autoscaling_describe_traffic_sources(
 The following lists the valid values:
 \itemize{
 \item \code{elb} if the traffic source is a Classic Load Balancer.
-\item \code{elbv2} if the traffic source is a Application Load Balancer,
-Gateway Load Balancer, or Network Load Balancer.
+\item \code{elbv2} if the traffic source is a Application Load Balancer, Gateway Load Balancer, or Network Load Balancer.
 \item \code{vpc-lattice} if the traffic source is VPC Lattice.
 }}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{MaxRecords}{The maximum number of items to return with this call. The maximum value
-is \code{50}.}
+\item{MaxRecords}{The maximum number of items to return with this call. The maximum value is \code{50}.}
 }
 \description{
 Gets information about the traffic sources for the specified Auto Scaling group.

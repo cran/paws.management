@@ -13,8 +13,7 @@ autoscaling_describe_lifecycle_hooks(
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{LifecycleHookNames}{The names of one or more lifecycle hooks. If you omit this property, all
-lifecycle hooks are described.}
+\item{LifecycleHookNames}{The names of one or more lifecycle hooks. If you omit this property, all lifecycle hooks are described.}
 }
 \description{
 Gets information about the lifecycle hooks for the specified Auto Scaling group.

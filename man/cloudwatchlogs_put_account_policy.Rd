@@ -3,8 +3,9 @@
 \name{cloudwatchlogs_put_account_policy}
 \alias{cloudwatchlogs_put_account_policy}
 \title{Creates an account-level data protection policy, subscription filter
-policy, or field index policy that applies to all log groups or a subset
-of log groups in the account}
+policy, field index policy, transformer policy, or metric extraction
+policy that applies to all log groups, a subset of log groups, or a data
+source name and type combination in the account}
 \usage{
 cloudwatchlogs_put_account_policy(
   policyName,
@@ -15,7 +16,7 @@ cloudwatchlogs_put_account_policy(
 )
 }
 \arguments{
-\item{policyName}{[required] A name for the policy. This must be unique within the account.}
+\item{policyName}{[required] A name for the policy. This must be unique within the account and cannot start with \verb{aws/}.}
 
 \item{policyDocument}{[required] Specify the policy, in JSON.
 
@@ -23,122 +24,83 @@ cloudwatchlogs_put_account_policy(
 
 A data protection policy must include two JSON blocks:
 \itemize{
-\item The first block must include both a \code{DataIdentifer} array and an
-\code{Operation} property with an \code{Audit} action. The \code{DataIdentifer}
-array lists the types of sensitive data that you want to mask. For
-more information about the available options, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/}{Types of data that you can mask}.
+\item The first block must include both a \code{DataIdentifer} array and an \code{Operation} property with an \code{Audit} action. The \code{DataIdentifer} array lists the types of sensitive data that you want to mask. For more information about the available options, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/}{Types of data that you can mask}.
 
-The \code{Operation} property with an \code{Audit} action is required to find
-the sensitive data terms. This \code{Audit} action must contain a
-\code{FindingsDestination} object. You can optionally use that
-\code{FindingsDestination} object to list one or more destinations to
-send audit findings to. If you specify destinations such as log
-groups, Firehose streams, and S3 buckets, they must already exist.
-\item The second block must include both a \code{DataIdentifer} array and an
-\code{Operation} property with an \code{Deidentify} action. The
-\code{DataIdentifer} array must exactly match the \code{DataIdentifer} array
-in the first block of the policy.
+The \code{Operation} property with an \code{Audit} action is required to find the sensitive data terms. This \code{Audit} action must contain a \code{FindingsDestination} object. You can optionally use that \code{FindingsDestination} object to list one or more destinations to send audit findings to. If you specify destinations such as log groups, Firehose streams, and S3 buckets, they must already exist.
+\item The second block must include both a \code{DataIdentifer} array and an \code{Operation} property with an \code{Deidentify} action. The \code{DataIdentifer} array must exactly match the \code{DataIdentifer} array in the first block of the policy.
 
-The \code{Operation} property with the \code{Deidentify} action is what
-actually masks the data, and it must contain the \code{ "MaskConfig": {}}
-object. The \code{ "MaskConfig": {}} object must be empty.
+The \code{Operation} property with the \code{Deidentify} action is what actually masks the data, and it must contain the \code{ "MaskConfig": {}} object. The \code{ "MaskConfig": {}} object must be empty.
 }
 
-For an example data protection policy, see the \strong{Examples} section on
-this page.
+For an example data protection policy, see the \strong{Examples} section on this page.
 
 The contents of the two \code{DataIdentifer} arrays must match exactly.
 
-In addition to the two JSON blocks, the \code{policyDocument} can also
-include \code{Name}, \code{Description}, and \code{Version} fields. The \code{Name} is
-different than the operation's \code{policyName} parameter, and is used as a
-dimension when CloudWatch Logs reports audit findings metrics to
-CloudWatch.
+In addition to the two JSON blocks, the \code{policyDocument} can also include \code{Name}, \code{Description}, and \code{Version} fields. The \code{Name} is different than the operation's \code{policyName} parameter, and is used as a dimension when CloudWatch Logs reports audit findings metrics to CloudWatch.
 
-The JSON specified in \code{policyDocument} can be up to 30,720 characters
-long.
+The JSON specified in \code{policyDocument} can be up to 30,720 characters long.
 
 \strong{Subscription filter policy}
 
-A subscription filter policy can include the following attributes in a
-JSON block:
+A subscription filter policy can include the following attributes in a JSON block:
 \itemize{
-\item \strong{DestinationArn} The ARN of the destination to deliver log events
-to. Supported destinations are:
+\item \strong{DestinationArn} The ARN of the destination to deliver log events to. Supported destinations are:
 \itemize{
-\item An Kinesis Data Streams data stream in the same account as the
-subscription policy, for same-account delivery.
-\item An Firehose data stream in the same account as the subscription
-policy, for same-account delivery.
-\item A Lambda function in the same account as the subscription
-policy, for same-account delivery.
-\item A logical destination in a different account created with
-\code{\link[=cloudwatchlogs_put_destination]{put_destination}}, for
-cross-account delivery. Kinesis Data Streams and Firehose are
-supported as logical destinations.
+\item An Kinesis Data Streams data stream in the same account as the subscription policy, for same-account delivery.
+\item An Firehose data stream in the same account as the subscription policy, for same-account delivery.
+\item A Lambda function in the same account as the subscription policy, for same-account delivery.
+\item A logical destination in a different account created with \code{\link[=cloudwatchlogs_put_destination]{put_destination}}, for cross-account delivery. Kinesis Data Streams and Firehose are supported as logical destinations.
 }
-\item \strong{RoleArn} The ARN of an IAM role that grants CloudWatch Logs
-permissions to deliver ingested log events to the destination
-stream. You don't need to provide the ARN when you are working with
-a logical destination for cross-account delivery.
-\item \strong{FilterPattern} A filter pattern for subscribing to a filtered
-stream of log events.
-\item \strong{Distribution} The method used to distribute log data to the
-destination. By default, log data is grouped by log stream, but the
-grouping can be set to \code{Random} for a more even distribution. This
-property is only applicable when the destination is an Kinesis Data
-Streams data stream.
+\item \strong{RoleArn} The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination stream. You don't need to provide the ARN when you are working with a logical destination for cross-account delivery.
+\item \strong{FilterPattern} A filter pattern for subscribing to a filtered stream of log events.
+\item \strong{Distribution} The method used to distribute log data to the destination. By default, log data is grouped by log stream, but the grouping can be set to \code{Random} for a more even distribution. This property is only applicable when the destination is an Kinesis Data Streams data stream.
 }
 
 \strong{Transformer policy}
 
-A transformer policy must include one JSON block with the array of
-processors and their configurations. For more information about
-available processors, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html#CloudWatch-Logs-Transformation-Processors}{Processors that you can use}.
+A transformer policy must include one JSON block with the array of processors and their configurations. For more information about available processors, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html#CloudWatch-Logs-Transformation-Processors}{Processors that you can use}.
 
 \strong{Field index policy}
 
-A field index filter policy can include the following attribute in a
-JSON block:
+A field index filter policy can include the following attribute in a JSON block:
 \itemize{
 \item \strong{Fields} The array of field indexes to create.
+\item \strong{FieldsV2} The object of field indexes to create along with it's type.
 }
 
 It must contain at least one field index.
 
-The following is an example of an index policy document that creates two
-indexes, \code{RequestId} and \code{TransactionId}.
+The following is an example of an index policy document that creates indexes with different types.
 
-\verb{"policyDocument": "\{ \\"Fields\\": [ \\"RequestId\\", \\"TransactionId\\" ] \}"}}
+\verb{"policyDocument": "\{ \\"Fields\\": [ \\"TransactionId\\" ], \\"FieldsV2\\": \{\\"RequestId\\": \{\\"type\\": \\"FIELD_INDEX\\"\}, \\"APIName\\": \{\\"type\\": \\"FACET\\"\}, \\"StatusCode\\": \{\\"type\\": \\"FACET\\"\}\}\}"}
+
+You can use \code{FieldsV2} to specify the type for each field. Supported types are \code{FIELD_INDEX} and \code{FACET}. Field names within \code{Fields} and \code{FieldsV2} must be mutually exclusive.}
 
 \item{policyType}{[required] The type of policy that you're creating or updating.}
 
-\item{scope}{Currently the only valid value for this parameter is \code{ALL}, which
-specifies that the data protection policy applies to all log groups in
-the account. If you omit this parameter, the default of \code{ALL} is used.}
+\item{scope}{Currently the only valid value for this parameter is \code{ALL}, which specifies that the data protection policy applies to all log groups in the account. If you omit this parameter, the default of \code{ALL} is used.}
 
-\item{selectionCriteria}{Use this parameter to apply the new policy to a subset of log groups in
-the account.
+\item{selectionCriteria}{Use this parameter to apply the new policy to a subset of log groups in the account or a data source name and type combination.
 
-Specifing \code{selectionCriteria} is valid only when you specify
-\code{SUBSCRIPTION_FILTER_POLICY}, \code{FIELD_INDEX_POLICY} or
-\code{TRANSFORMER_POLICY}for \code{policyType}.
+Specifying \code{selectionCriteria} is valid only when you specify \code{SUBSCRIPTION_FILTER_POLICY}, \code{FIELD_INDEX_POLICY} or \code{TRANSFORMER_POLICY}for \code{policyType}.
+\itemize{
+\item If \code{policyType} is \code{SUBSCRIPTION_FILTER_POLICY}, the only supported \code{selectionCriteria} filter is \verb{LogGroupName NOT IN []}
+\item If \code{policyType} is \code{TRANSFORMER_POLICY}, the only supported \code{selectionCriteria} filter is \code{LogGroupNamePrefix}
+\item If \code{policyType} is \code{FIELD_INDEX_POLICY}, the supported \code{selectionCriteria} filters are:
+\itemize{
+\item \code{LogGroupNamePrefix}
+\item \code{DataSourceName} AND \code{DataSourceType}
+}
 
-If \code{policyType} is \code{SUBSCRIPTION_FILTER_POLICY}, the only supported
-\code{selectionCriteria} filter is \verb{LogGroupName NOT IN []}
+When you specify \code{selectionCriteria} for a field index policy you can use either \code{LogGroupNamePrefix} by itself or \code{DataSourceName} and \code{DataSourceType} together.
+}
 
-If \code{policyType} is \code{FIELD_INDEX_POLICY} or \code{TRANSFORMER_POLICY}, the
-only supported \code{selectionCriteria} filter is \code{LogGroupNamePrefix}
+The \code{selectionCriteria} string can be up to 25KB in length. The length is determined by using its UTF-8 bytes.
 
-The \code{selectionCriteria} string can be up to 25KB in length. The length
-is determined by using its UTF-8 bytes.
-
-Using the \code{selectionCriteria} parameter with
-\code{SUBSCRIPTION_FILTER_POLICY} is useful to help prevent infinite loops.
-For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions-recursion-prevention.html}{Log recursion prevention}.}
+Using the \code{selectionCriteria} parameter with \code{SUBSCRIPTION_FILTER_POLICY} is useful to help prevent infinite loops. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions-recursion-prevention.html}{Log recursion prevention}.}
 }
 \description{
-Creates an account-level data protection policy, subscription filter policy, or field index policy that applies to all log groups or a subset of log groups in the account.
+Creates an account-level data protection policy, subscription filter policy, field index policy, transformer policy, or metric extraction policy that applies to all log groups, a subset of log groups, or a data source name and type combination in the account.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_account_policy/} for full documentation.
 }

@@ -7,8 +7,7 @@
 resiliencehub_list_tags_for_resource(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) for a specific resource in your
-Resilience Hub application.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) for a specific resource in your Resilience Hub application.}
 }
 \description{
 Lists the tags for your resources in your Resilience Hub applications.

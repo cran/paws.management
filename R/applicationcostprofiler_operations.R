@@ -138,13 +138,11 @@ applicationcostprofiler_list_report_definitions <- function(nextToken = NULL, ma
 #'
 #' See [https://www.paws-r-sdk.com/docs/applicationcostprofiler_put_report_definition/](https://www.paws-r-sdk.com/docs/applicationcostprofiler_put_report_definition/) for full documentation.
 #'
-#' @param reportId &#91;required&#93; Required. ID of the report. You can choose any valid string matching the
-#' pattern for the ID.
+#' @param reportId &#91;required&#93; Required. ID of the report. You can choose any valid string matching the pattern for the ID.
 #' @param reportDescription &#91;required&#93; Required. Description of the report.
 #' @param reportFrequency &#91;required&#93; Required. The cadence to generate the report.
 #' @param format &#91;required&#93; Required. The format to use for the generated report.
-#' @param destinationS3Location &#91;required&#93; Required. Amazon Simple Storage Service (Amazon S3) location where
-#' Application Cost Profiler uploads the report.
+#' @param destinationS3Location &#91;required&#93; Required. Amazon Simple Storage Service (Amazon S3) location where Application Cost Profiler uploads the report.
 #'
 #' @keywords internal
 #'
@@ -179,8 +177,7 @@ applicationcostprofiler_put_report_definition <- function(reportId, reportDescri
 #' @param reportDescription &#91;required&#93; Required. Description of the report.
 #' @param reportFrequency &#91;required&#93; Required. The cadence to generate the report.
 #' @param format &#91;required&#93; Required. The format to use for the generated report.
-#' @param destinationS3Location &#91;required&#93; Required. Amazon Simple Storage Service (Amazon S3) location where
-#' Application Cost Profiler uploads the report.
+#' @param destinationS3Location &#91;required&#93; Required. Amazon Simple Storage Service (Amazon S3) location where Application Cost Profiler uploads the report.
 #'
 #' @keywords internal
 #'

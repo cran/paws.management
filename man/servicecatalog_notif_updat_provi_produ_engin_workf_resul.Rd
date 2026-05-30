@@ -14,9 +14,7 @@ servicecatalog_notify_update_provisioned_product_engine_workflow_result(
 )
 }
 \arguments{
-\item{WorkflowToken}{[required] The encrypted contents of the update engine execution payload that
-Service Catalog sends after the Terraform product update workflow
-starts.}
+\item{WorkflowToken}{[required] The encrypted contents of the update engine execution payload that Service Catalog sends after the Terraform product update workflow starts.}
 
 \item{RecordId}{[required] The identifier of the record.}
 

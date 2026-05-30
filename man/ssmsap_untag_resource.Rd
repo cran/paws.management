@@ -9,8 +9,7 @@ ssmsap_untag_resource(resourceArn, tagKeys)
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 
-\item{tagKeys}{[required] Adds/updates or removes credentials for applications registered with AWS
-Systems Manager for SAP.}
+\item{tagKeys}{[required] Adds/updates or removes credentials for applications registered with AWS Systems Manager for SAP.}
 }
 \description{
 Delete the tags for a resource.

@@ -14,21 +14,15 @@ resiliencehub_update_app_version_app_component(
 )
 }
 \arguments{
-\item{additionalInfo}{Currently, there is no supported additional information for Application
-Components.}
+\item{additionalInfo}{Currently, there is no supported additional information for Application Components.}
 
-\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format
-for this ARN is:
-arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
-information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{Amazon Web Services General Reference} guide.}
+\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format for this ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference} guide.}
 
 \item{id}{[required] Identifier of the Application Component.}
 
 \item{name}{Name of the Application Component.}
 
-\item{type}{Type of Application Component. For more information about the types of
-Application Component, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/AppComponent.grouping.html}{Grouping resources in an AppComponent}.}
+\item{type}{Type of Application Component. For more information about the types of Application Component, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/AppComponent.grouping.html}{Grouping resources in an AppComponent}.}
 }
 \description{
 Updates an existing Application Component in the Resilience Hub application.

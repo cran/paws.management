@@ -32,8 +32,7 @@ servicecatalog_describe_provisioning_artifact(
 
 \item{Verbose}{Indicates whether a verbose level of detail is enabled.}
 
-\item{IncludeProvisioningArtifactParameters}{Indicates if the API call response does or does not include additional
-details about the provisioning parameters.}
+\item{IncludeProvisioningArtifactParameters}{Indicates if the API call response does or does not include additional details about the provisioning parameters.}
 }
 \description{
 Gets information about the specified provisioning artifact (also known as a version) for the specified product.

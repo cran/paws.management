@@ -28,39 +28,29 @@ servicecatalog_update_provisioned_product(
 \item \code{zh} - Chinese
 }}
 
-\item{ProvisionedProductName}{The name of the provisioned product. You cannot specify both
-\code{ProvisionedProductName} and \code{ProvisionedProductId}.}
+\item{ProvisionedProductName}{The name of the provisioned product. You cannot specify both \code{ProvisionedProductName} and \code{ProvisionedProductId}.}
 
-\item{ProvisionedProductId}{The identifier of the provisioned product. You must provide the name or
-ID, but not both.}
+\item{ProvisionedProductId}{The identifier of the provisioned product. You must provide the name or ID, but not both.}
 
-\item{ProductId}{The identifier of the product. You must provide the name or ID, but not
-both.}
+\item{ProductId}{The identifier of the product. You must provide the name or ID, but not both.}
 
 \item{ProductName}{The name of the product. You must provide the name or ID, but not both.}
 
 \item{ProvisioningArtifactId}{The identifier of the provisioning artifact.}
 
-\item{ProvisioningArtifactName}{The name of the provisioning artifact. You must provide the name or ID,
-but not both.}
+\item{ProvisioningArtifactName}{The name of the provisioning artifact. You must provide the name or ID, but not both.}
 
-\item{PathId}{The path identifier. This value is optional if the product has a default
-path, and required if the product has more than one path. You must
-provide the name or ID, but not both.}
+\item{PathId}{The path identifier. This value is optional if the product has a default path, and required if the product has more than one path. You must provide the name or ID, but not both.}
 
 \item{PathName}{The name of the path. You must provide the name or ID, but not both.}
 
 \item{ProvisioningParameters}{The new parameters.}
 
-\item{ProvisioningPreferences}{An object that contains information about the provisioning preferences
-for a stack set.}
+\item{ProvisioningPreferences}{An object that contains information about the provisioning preferences for a stack set.}
 
-\item{Tags}{One or more tags. Requires the product to have \code{RESOURCE_UPDATE}
-constraint with \code{TagUpdatesOnProvisionedProduct} set to \code{ALLOWED} to
-allow tag updates.}
+\item{Tags}{One or more tags. Requires the product to have \code{RESOURCE_UPDATE} constraint with \code{TagUpdatesOnProvisionedProduct} set to \code{ALLOWED} to allow tag updates.}
 
-\item{UpdateToken}{[required] The idempotency token that uniquely identifies the provisioning update
-request.}
+\item{UpdateToken}{[required] The idempotency token that uniquely identifies the provisioning update request.}
 }
 \description{
 Requests updates to the configuration of the specified provisioned product.

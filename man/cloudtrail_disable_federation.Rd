@@ -7,8 +7,7 @@
 cloudtrail_disable_federation(EventDataStore)
 }
 \arguments{
-\item{EventDataStore}{[required] The ARN (or ID suffix of the ARN) of the event data store for which you
-want to disable Lake query federation.}
+\item{EventDataStore}{[required] The ARN (or ID suffix of the ARN) of the event data store for which you want to disable Lake query federation.}
 }
 \description{
 Disables Lake query federation on the specified event data store. When you disable federation, CloudTrail disables the integration with Glue, Lake Formation, and Amazon Athena. After disabling Lake query federation, you can no longer query your event data in Amazon Athena.

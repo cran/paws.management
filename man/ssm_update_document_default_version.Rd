@@ -7,11 +7,9 @@
 ssm_update_document_default_version(Name, DocumentVersion)
 }
 \arguments{
-\item{Name}{[required] The name of a custom document that you want to set as the default
-version.}
+\item{Name}{[required] The name of a custom document that you want to set as the default version.}
 
-\item{DocumentVersion}{[required] The version of a custom document that you want to set as the default
-version.}
+\item{DocumentVersion}{[required] The version of a custom document that you want to set as the default version.}
 }
 \description{
 Set the default version of a document.

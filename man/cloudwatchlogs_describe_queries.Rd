@@ -16,16 +16,13 @@ cloudwatchlogs_describe_queries(
 \arguments{
 \item{logGroupName}{Limits the returned queries to only those for the specified log group.}
 
-\item{status}{Limits the returned queries to only those that have the specified
-status. Valid values are \code{Cancelled}, \code{Complete}, \code{Failed}, \code{Running},
-and \code{Scheduled}.}
+\item{status}{Limits the returned queries to only those that have the specified status. Valid values are \code{Cancelled}, \code{Complete}, \code{Failed}, \code{Running}, and \code{Scheduled}.}
 
 \item{maxResults}{Limits the number of returned queries to the specified number.}
 
-\item{nextToken}{}
+\item{nextToken}{The token for the next set of items to return. The token expires after 24 hours.}
 
-\item{queryLanguage}{Limits the returned queries to only the queries that use the specified
-query language.}
+\item{queryLanguage}{Limits the returned queries to only the queries that use the specified query language.}
 }
 \description{
 Returns a list of CloudWatch Logs Insights queries that are scheduled, running, or have been run recently in this account. You can request all queries or limit it to queries of a specific log group or queries with a certain status.

@@ -10,8 +10,7 @@ licensemanagerlinuxsubscriptions_deregister_subscription_provider(
 )
 }
 \arguments{
-\item{SubscriptionProviderArn}{[required] The Amazon Resource Name (ARN) of the subscription provider resource to
-deregister.}
+\item{SubscriptionProviderArn}{[required] The Amazon Resource Name (ARN) of the subscription provider resource to deregister.}
 }
 \description{
 Remove a third-party subscription provider from the Bring Your Own License (BYOL) subscriptions registered to your account.

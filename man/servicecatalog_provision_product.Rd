@@ -31,34 +31,23 @@ servicecatalog_provision_product(
 
 \item{ProductName}{The name of the product. You must provide the name or ID, but not both.}
 
-\item{ProvisioningArtifactId}{The identifier of the provisioning artifact. You must provide the name
-or ID, but not both.}
+\item{ProvisioningArtifactId}{The identifier of the provisioning artifact. You must provide the name or ID, but not both.}
 
-\item{ProvisioningArtifactName}{The name of the provisioning artifact. You must provide the name or ID,
-but not both.}
+\item{ProvisioningArtifactName}{The name of the provisioning artifact. You must provide the name or ID, but not both.}
 
-\item{PathId}{The path identifier of the product. This value is optional if the
-product has a default path, and required if the product has more than
-one path. To list the paths for a product, use
-\code{\link[=servicecatalog_list_launch_paths]{list_launch_paths}}. You must
-provide the name or ID, but not both.}
+\item{PathId}{The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use \code{\link[=servicecatalog_list_launch_paths]{list_launch_paths}}. You must provide the name or ID, but not both.}
 
 \item{PathName}{The name of the path. You must provide the name or ID, but not both.}
 
-\item{ProvisionedProductName}{[required] A user-friendly name for the provisioned product. This value must be
-unique for the Amazon Web Services account and cannot be updated after
-the product is provisioned.}
+\item{ProvisionedProductName}{[required] A user-friendly name for the provisioned product. This value must be unique for the Amazon Web Services account and cannot be updated after the product is provisioned.}
 
-\item{ProvisioningParameters}{Parameters specified by the administrator that are required for
-provisioning the product.}
+\item{ProvisioningParameters}{Parameters specified by the administrator that are required for provisioning the product.}
 
-\item{ProvisioningPreferences}{An object that contains information about the provisioning preferences
-for a stack set.}
+\item{ProvisioningPreferences}{An object that contains information about the provisioning preferences for a stack set.}
 
 \item{Tags}{One or more tags.}
 
-\item{NotificationArns}{Passed to CloudFormation. The SNS topic ARNs to which to publish
-stack-related events.}
+\item{NotificationArns}{Passed to CloudFormation. The SNS topic ARNs to which to publish stack-related events.}
 
 \item{ProvisionToken}{[required] An idempotency token that uniquely identifies the provisioning request.}
 }

@@ -13,8 +13,7 @@ applicationcostprofiler_put_report_definition(
 )
 }
 \arguments{
-\item{reportId}{[required] Required. ID of the report. You can choose any valid string matching the
-pattern for the ID.}
+\item{reportId}{[required] Required. ID of the report. You can choose any valid string matching the pattern for the ID.}
 
 \item{reportDescription}{[required] Required. Description of the report.}
 
@@ -22,8 +21,7 @@ pattern for the ID.}
 
 \item{format}{[required] Required. The format to use for the generated report.}
 
-\item{destinationS3Location}{[required] Required. Amazon Simple Storage Service (Amazon S3) location where
-Application Cost Profiler uploads the report.}
+\item{destinationS3Location}{[required] Required. Amazon Simple Storage Service (Amazon S3) location where Application Cost Profiler uploads the report.}
 }
 \description{
 Creates the report definition for a report in Application Cost Profiler.

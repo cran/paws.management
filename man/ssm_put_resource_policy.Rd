@@ -12,16 +12,13 @@ ssm_put_resource_policy(
 )
 }
 \arguments{
-\item{ResourceArn}{[required] Amazon Resource Name (ARN) of the resource to which you want to attach a
-policy.}
+\item{ResourceArn}{[required] Amazon Resource Name (ARN) of the resource to which you want to attach a policy.}
 
 \item{Policy}{[required] A policy you want to associate with a resource.}
 
 \item{PolicyId}{The policy ID.}
 
-\item{PolicyHash}{ID of the current policy version. The hash helps to prevent a situation
-where multiple users attempt to overwrite a policy. You must provide
-this hash when updating or deleting a policy.}
+\item{PolicyHash}{ID of the current policy version. The hash helps to prevent a situation where multiple users attempt to overwrite a policy. You must provide this hash when updating or deleting a policy.}
 }
 \description{
 Creates or updates a Systems Manager resource policy. A resource policy helps you to define the IAM entity (for example, an Amazon Web Services account) that can manage your Systems Manager resources. The following resources support Systems Manager resource policies.

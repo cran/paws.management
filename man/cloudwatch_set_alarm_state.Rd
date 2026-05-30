@@ -16,15 +16,11 @@ cloudwatch_set_alarm_state(
 
 \item{StateValue}{[required] The value of the state.}
 
-\item{StateReason}{[required] The reason that this alarm is set to this specific state, in text
-format.}
+\item{StateReason}{[required] The reason that this alarm is set to this specific state, in text format.}
 
-\item{StateReasonData}{The reason that this alarm is set to this specific state, in JSON
-format.
+\item{StateReasonData}{The reason that this alarm is set to this specific state, in JSON format.
 
-For SNS or EC2 alarm actions, this is just informational. But for EC2
-Auto Scaling or application Auto Scaling alarm actions, the Auto Scaling
-policy uses the information in this field to take the correct action.}
+For SNS or EC2 alarm actions, this is just informational. But for EC2 Auto Scaling or application Auto Scaling alarm actions, the Auto Scaling policy uses the information in this field to take the correct action.}
 }
 \description{
 Temporarily sets the state of an alarm for testing purposes. When the updated state differs from the previous value, the action configured for the appropriate state is invoked. For example, if your alarm is configured to send an Amazon SNS message when an alarm is triggered, temporarily changing the alarm state to \code{ALARM} sends an SNS message.

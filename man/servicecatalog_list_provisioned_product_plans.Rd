@@ -24,8 +24,7 @@ servicecatalog_list_provisioned_product_plans(
 
 \item{PageSize}{The maximum number of items to return with this call.}
 
-\item{PageToken}{The page token for the next set of results. To retrieve the first set of
-results, use null.}
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 
 \item{AccessLevelFilter}{The access level to use to obtain results. The default is \code{User}.}
 }

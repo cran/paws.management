@@ -15,26 +15,19 @@ ssmcontacts_update_rotation(
 \arguments{
 \item{RotationId}{[required] The Amazon Resource Name (ARN) of the rotation to update.}
 
-\item{ContactIds}{The Amazon Resource Names (ARNs) of the contacts to include in the
-updated rotation.
+\item{ContactIds}{The Amazon Resource Names (ARNs) of the contacts to include in the updated rotation.
 
-The order in which you list the contacts is their shift order in the
-rotation schedule.}
+Only the \code{PERSONAL} contact type is supported. The contact types \code{ESCALATION} and \code{ONCALL_SCHEDULE} are not supported for this operation.
+
+The order in which you list the contacts is their shift order in the rotation schedule.}
 
 \item{StartTime}{The date and time the rotation goes into effect.}
 
-\item{TimeZoneId}{The time zone to base the updated rotation’s activity on, in Internet
-Assigned Numbers Authority (IANA) format. For example:
-"America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see
-the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA
-website.
+\item{TimeZoneId}{The time zone to base the updated rotation’s activity on, in Internet Assigned Numbers Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA website.
 
-Designators for time zones that don’t support Daylight Savings Time
-Rules, such as Pacific Standard Time (PST) and Pacific Daylight Time
-(PDT), aren't supported.}
+Designators for time zones that don’t support Daylight Savings Time Rules, such as Pacific Standard Time (PST), aren't supported.}
 
-\item{Recurrence}{[required] Information about how long the updated rotation lasts before restarting
-at the beginning of the shift order.}
+\item{Recurrence}{[required] Information about how long the updated rotation lasts before restarting at the beginning of the shift order.}
 }
 \description{
 Updates the information specified for an on-call rotation.

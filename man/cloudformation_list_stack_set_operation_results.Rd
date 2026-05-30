@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_list_stack_set_operation_results}
 \alias{cloudformation_list_stack_set_operation_results}
-\title{Returns summary information about the results of a stack set operation}
+\title{Returns summary information about the results of a StackSet operation}
 \usage{
 cloudformation_list_stack_set_operation_results(
   StackSetName,
@@ -14,45 +14,28 @@ cloudformation_list_stack_set_operation_results(
 )
 }
 \arguments{
-\item{StackSetName}{[required] The name or unique ID of the stack set that you want to get operation
-results for.}
+\item{StackSetName}{[required] The name or unique ID of the StackSet that you want to get operation results for.}
 
-\item{OperationId}{[required] The ID of the stack set operation.}
+\item{OperationId}{[required] The ID of the StackSet operation.}
 
-\item{NextToken}{If the previous request didn't return all the remaining results, the
-response object's \code{NextToken} parameter value is set to a token. To
-retrieve the next set of results, call
-\code{\link[=cloudformation_list_stack_set_operation_results]{list_stack_set_operation_results}}
-again and assign that token to the request object's \code{NextToken}
-parameter. If there are no remaining results, the previous response
-object's \code{NextToken} parameter is set to \code{null}.}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{MaxResults}{The maximum number of results to be returned with a single call. If the
-number of available results exceeds this maximum, the response includes
-a \code{NextToken} value that you can assign to the \code{NextToken} request
-parameter to get the next set of results.}
+\item{MaxResults}{The maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a \code{NextToken} value that you can assign to the \code{NextToken} request parameter to get the next set of results.}
 
-\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
-account administrator in the organization's management account or as a
-delegated administrator in a member account.
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an account administrator in the organization's management account or as a delegated administrator in a member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
-self-managed permissions.
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.
-\item If you are signed in to a delegated administrator account, specify
-\code{DELEGATED_ADMIN}.
+\item If you are signed in to a delegated administrator account, specify \code{DELEGATED_ADMIN}.
 
-Your Amazon Web Services account must be registered as a delegated
-administrator in the management account. For more information, see
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
-in the \emph{CloudFormation User Guide}.
+Your Amazon Web Services account must be registered as a delegated administrator in the management account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator} in the \emph{CloudFormation User Guide}.
 }}
 
 \item{Filters}{The filter to apply to operation results.}
 }
 \description{
-Returns summary information about the results of a stack set operation.
+Returns summary information about the results of a StackSet operation.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_list_stack_set_operation_results/} for full documentation.
 }

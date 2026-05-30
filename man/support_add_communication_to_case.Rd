@@ -13,18 +13,13 @@ support_add_communication_to_case(
 )
 }
 \arguments{
-\item{caseId}{The support case ID requested or returned in the call. The case ID is an
-alphanumeric string formatted as shown in this example:
-case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
+\item{caseId}{The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
 
 \item{communicationBody}{[required] The body of an email communication to add to the support case.}
 
-\item{ccEmailAddresses}{The email addresses in the CC line of an email to be added to the
-support case.}
+\item{ccEmailAddresses}{The email addresses in the CC line of an email to be added to the support case.}
 
-\item{attachmentSetId}{The ID of a set of one or more attachments for the communication to add
-to the case. Create the set by calling
-\code{\link[=support_add_attachments_to_set]{add_attachments_to_set}}}
+\item{attachmentSetId}{The ID of a set of one or more attachments for the communication to add to the case. Create the set by calling \code{\link[=support_add_attachments_to_set]{add_attachments_to_set}}}
 }
 \description{
 Adds additional customer communication to an Amazon Web Services Support case. Use the \code{caseId} parameter to identify the case to which to add communication. You can list a set of email addresses to copy on the communication by using the \code{ccEmailAddresses} parameter. The \code{communicationBody} value contains the text of the communication.

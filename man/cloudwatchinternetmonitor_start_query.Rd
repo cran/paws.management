@@ -17,55 +17,27 @@ cloudwatchinternetmonitor_start_query(
 \arguments{
 \item{MonitorName}{[required] The name of the monitor to query.}
 
-\item{StartTime}{[required] The timestamp that is the beginning of the period that you want to
-retrieve data for with your query.}
+\item{StartTime}{[required] The timestamp that is the beginning of the period that you want to retrieve data for with your query.}
 
-\item{EndTime}{[required] The timestamp that is the end of the period that you want to retrieve
-data for with your query.}
+\item{EndTime}{[required] The timestamp that is the end of the period that you want to retrieve data for with your query.}
 
-\item{QueryType}{[required] The type of query to run. The following are the three types of queries
-that you can run using the Internet Monitor query interface:
+\item{QueryType}{[required] The type of query to run. The following are the three types of queries that you can run using the Internet Monitor query interface:
 \itemize{
-\item \code{MEASUREMENTS}: Provides availability score, performance score,
-total traffic, and round-trip times, at 5 minute intervals.
-\item \code{TOP_LOCATIONS}: Provides availability score, performance score,
-total traffic, and time to first byte (TTFB) information, for the
-top location and ASN combinations that you're monitoring, by traffic
-volume.
-\item \code{TOP_LOCATION_DETAILS}: Provides TTFB for Amazon CloudFront, your
-current configuration, and the best performing EC2 configuration, at
-1 hour intervals.
-\item \code{OVERALL_TRAFFIC_SUGGESTIONS}: Provides TTFB, using a 30-day
-weighted average, for all traffic in each Amazon Web Services
-location that is monitored.
-\item \code{OVERALL_TRAFFIC_SUGGESTIONS_DETAILS}: Provides TTFB, using a 30-day
-weighted average, for each top location, for a proposed Amazon Web
-Services location. Must provide an Amazon Web Services location to
-search.
-\item \code{ROUTING_SUGGESTIONS}: Provides the predicted average round-trip
-time (RTT) from an IP prefix toward an Amazon Web Services location
-for a DNS resolver. The RTT is calculated at one hour intervals,
-over a one hour period.
+\item \code{MEASUREMENTS}: Provides availability score, performance score, total traffic, and round-trip times, at 5 minute intervals.
+\item \code{TOP_LOCATIONS}: Provides availability score, performance score, total traffic, and time to first byte (TTFB) information, for the top location and ASN combinations that you're monitoring, by traffic volume.
+\item \code{TOP_LOCATION_DETAILS}: Provides TTFB for Amazon CloudFront, your current configuration, and the best performing EC2 configuration, at 1 hour intervals.
+\item \code{OVERALL_TRAFFIC_SUGGESTIONS}: Provides TTFB, using a 30-day weighted average, for all traffic in each Amazon Web Services location that is monitored.
+\item \code{OVERALL_TRAFFIC_SUGGESTIONS_DETAILS}: Provides TTFB, using a 30-day weighted average, for each top location, for a proposed Amazon Web Services location. Must provide an Amazon Web Services location to search.
+\item \code{ROUTING_SUGGESTIONS}: Provides the predicted average round-trip time (RTT) from an IP prefix toward an Amazon Web Services location for a DNS resolver. The RTT is calculated at one hour intervals, over a one hour period.
 }
 
-For lists of the fields returned with each query type and more
-information about how each type of query is performed, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-IM-view-cw-tools-cwim-query.html}{Using the Amazon CloudWatch Internet Monitor query interface}
-in the Amazon CloudWatch Internet Monitor User Guide.}
+For lists of the fields returned with each query type and more information about how each type of query is performed, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-IM-view-cw-tools-cwim-query.html}{Using the Amazon CloudWatch Internet Monitor query interface} in the Amazon CloudWatch Internet Monitor User Guide.}
 
-\item{FilterParameters}{The \code{FilterParameters} field that you use with Amazon CloudWatch
-Internet Monitor queries is a string the defines how you want a query to
-be filtered. The filter parameters that you can specify depend on the
-query type, since each query type returns a different set of Internet
-Monitor data.
+\item{FilterParameters}{The \code{FilterParameters} field that you use with Amazon CloudWatch Internet Monitor queries is a string the defines how you want a query to be filtered. The filter parameters that you can specify depend on the query type, since each query type returns a different set of Internet Monitor data.
 
-For more information about specifying filter parameters, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-IM-view-cw-tools-cwim-query.html}{Using the Amazon CloudWatch Internet Monitor query interface}
-in the Amazon CloudWatch Internet Monitor User Guide.}
+For more information about specifying filter parameters, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-IM-view-cw-tools-cwim-query.html}{Using the Amazon CloudWatch Internet Monitor query interface} in the Amazon CloudWatch Internet Monitor User Guide.}
 
-\item{LinkedAccountId}{The account ID for an account that you've set up cross-account sharing
-for in Amazon CloudWatch Internet Monitor. You configure cross-account
-sharing by using Amazon CloudWatch Observability Access Manager. For
-more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cwim-cross-account.html}{Internet Monitor cross-account observability}
-in the Amazon CloudWatch Internet Monitor User Guide.}
+\item{LinkedAccountId}{The account ID for an account that you've set up cross-account sharing for in Amazon CloudWatch Internet Monitor. You configure cross-account sharing by using Amazon CloudWatch Observability Access Manager. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cwim-cross-account.html}{Internet Monitor cross-account observability} in the Amazon CloudWatch Internet Monitor User Guide.}
 }
 \description{
 Start a query to return data for a specific query type for the Amazon CloudWatch Internet Monitor query interface. Specify a time period for the data that you want returned by using \code{StartTime} and \code{EndTime}. You filter the query results to return by providing parameters that you specify with \code{FilterParameters}.

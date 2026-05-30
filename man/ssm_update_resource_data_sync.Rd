@@ -9,8 +9,7 @@ ssm_update_resource_data_sync(SyncName, SyncType, SyncSource)
 \arguments{
 \item{SyncName}{[required] The name of the resource data sync you want to update.}
 
-\item{SyncType}{[required] The type of resource data sync. The supported \code{SyncType} is
-SyncFromSource.}
+\item{SyncType}{[required] The type of resource data sync. The supported \code{SyncType} is SyncFromSource.}
 
 \item{SyncSource}{[required] Specify information about the data sources to synchronize.}
 }

@@ -15,12 +15,9 @@ ssmsap_list_components(
 
 \item{NextToken}{The token for the next page of results.}
 
-\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned nextToken
-value.
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.
 
-If you do not specify a value for MaxResults, the request returns 50
-items per page by default.}
+If you do not specify a value for MaxResults, the request returns 50 items per page by default.}
 }
 \description{
 Lists all the components registered with AWS Systems Manager for SAP.

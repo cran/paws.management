@@ -35,7 +35,7 @@ NULL
 
 .resourcegroupstaggingapi$get_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PaginationToken = structure(logical(0), tags = list(type = "string")), ResourceTagMappingList = structure(list(structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ComplianceDetails = structure(list(NoncompliantKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KeysWithNoncompliantValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ComplianceStatus = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(PaginationToken = structure(logical(0), tags = list(type = "string")), ResourceTagMappingList = structure(list(structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ComplianceDetails = structure(list(NoncompliantKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KeysWithNoncompliantValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MissingTagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ComplianceStatus = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -60,6 +60,18 @@ NULL
 .resourcegroupstaggingapi$get_tag_values_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PaginationToken = structure(logical(0), tags = list(type = "string")), TagValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resourcegroupstaggingapi$list_required_tags_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resourcegroupstaggingapi$list_required_tags_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RequiredTags = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), CloudFormationResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReportingTagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

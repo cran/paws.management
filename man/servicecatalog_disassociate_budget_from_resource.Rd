@@ -9,8 +9,7 @@ servicecatalog_disassociate_budget_from_resource(BudgetName, ResourceId)
 \arguments{
 \item{BudgetName}{[required] The name of the budget you want to disassociate.}
 
-\item{ResourceId}{[required] The resource identifier you want to disassociate from. Either a
-portfolio-id or a product-id.}
+\item{ResourceId}{[required] The resource identifier you want to disassociate from. Either a portfolio-id or a product-id.}
 }
 \description{
 Disassociates the specified budget from the specified resource.

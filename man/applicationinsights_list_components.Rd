@@ -15,9 +15,7 @@ applicationinsights_list_components(
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
 
-\item{MaxResults}{The maximum number of results to return in a single call. To retrieve
-the remaining results, make another call with the returned \code{NextToken}
-value.}
+\item{MaxResults}{The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
 
 \item{NextToken}{The token to request the next page of results.}
 

@@ -12,13 +12,11 @@ auditmanager_list_assessment_framework_share_requests(
 )
 }
 \arguments{
-\item{requestType}{[required] Specifies whether the share request is a sent request or a received
-request.}
+\item{requestType}{[required] Specifies whether the share request is a sent request or a received request.}
 
 \item{nextToken}{The pagination token that's used to fetch the next set of results.}
 
-\item{maxResults}{Represents the maximum number of results on a page or for an API request
-call.}
+\item{maxResults}{Represents the maximum number of results on a page or for an API request call.}
 }
 \description{
 Returns a list of sent or received share requests for custom frameworks in Audit Manager.

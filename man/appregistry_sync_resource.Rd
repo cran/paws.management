@@ -9,9 +9,7 @@ appregistry_sync_resource(resourceType, resource)
 \arguments{
 \item{resourceType}{[required] The type of resource of which the application will be associated.}
 
-\item{resource}{[required] An entity you can work with and specify with a name or ID. Examples
-include an Amazon EC2 instance, an Amazon Web Services CloudFormation
-stack, or an Amazon S3 bucket.}
+\item{resource}{[required] An entity you can work with and specify with a name or ID. Examples include an Amazon EC2 instance, an Amazon Web Services CloudFormation stack, or an Amazon S3 bucket.}
 }
 \description{
 Syncs the resource with current AppRegistry records.

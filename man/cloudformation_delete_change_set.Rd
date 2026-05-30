@@ -7,11 +7,9 @@
 cloudformation_delete_change_set(ChangeSetName, StackName = NULL)
 }
 \arguments{
-\item{ChangeSetName}{[required] The name or Amazon Resource Name (ARN) of the change set that you want
-to delete.}
+\item{ChangeSetName}{[required] The name or Amazon Resource Name (ARN) of the change set that you want to delete.}
 
-\item{StackName}{If you specified the name of a change set to delete, specify the stack
-name or Amazon Resource Name (ARN) that's associated with it.}
+\item{StackName}{If you specified the name of a change set to delete, specify the stack name or Amazon Resource Name (ARN) that's associated with it.}
 }
 \description{
 Deletes the specified change set. Deleting change sets ensures that no one executes the wrong change set.

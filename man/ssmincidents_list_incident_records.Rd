@@ -11,8 +11,7 @@ ssmincidents_list_incident_records(
 )
 }
 \arguments{
-\item{filters}{Filters the list of incident records you want to search through. You can
-filter on the following keys:
+\item{filters}{Filters the list of incident records you want to search through. You can filter on the following keys:
 \itemize{
 \item \code{creationTime}
 \item \code{impact}
@@ -22,18 +21,14 @@ filter on the following keys:
 
 Note the following when when you use Filters:
 \itemize{
-\item If you don't specify a Filter, the response includes all incident
-records.
-\item If you specify more than one filter in a single request, the
-response returns incident records that match all filters.
-\item If you specify a filter with more than one value, the response
-returns incident records that match any of the values provided.
+\item If you don't specify a Filter, the response includes all incident records.
+\item If you specify more than one filter in a single request, the response returns incident records that match all filters.
+\item If you specify a filter with more than one value, the response returns incident records that match any of the values provided.
 }}
 
 \item{maxResults}{The maximum number of results per page.}
 
-\item{nextToken}{The pagination token for the next set of items to return. (You received
-this token from a previous call.)}
+\item{nextToken}{The pagination token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Lists all incident records in your account. Use this command to retrieve the Amazon Resource Name (ARN) of the incident record you want to update.

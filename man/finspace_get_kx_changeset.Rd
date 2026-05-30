@@ -11,8 +11,7 @@ finspace_get_kx_changeset(environmentId, databaseName, changesetId)
 
 \item{databaseName}{[required] The name of the kdb database.}
 
-\item{changesetId}{[required] A unique identifier of the changeset for which you want to retrieve
-data.}
+\item{changesetId}{[required] A unique identifier of the changeset for which you want to retrieve data.}
 }
 \description{
 Returns information about a kdb changeset.

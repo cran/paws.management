@@ -10,8 +10,7 @@ cloudwatchinternetmonitor_get_query_status(MonitorName, QueryId)
 \arguments{
 \item{MonitorName}{[required] The name of the monitor.}
 
-\item{QueryId}{[required] The ID of the query that you want to return the status for. A \code{QueryId}
-is an internally-generated dentifier for a specific query.}
+\item{QueryId}{[required] The ID of the query that you want to return the status for. A \code{QueryId} is an internally-generated dentifier for a specific query.}
 }
 \description{
 Returns the current status of a query for the Amazon CloudWatch Internet Monitor query interface, for a specified query ID and monitor. When you run a query, check the status to make sure that the query has \code{SUCCEEDED} before you review the results.

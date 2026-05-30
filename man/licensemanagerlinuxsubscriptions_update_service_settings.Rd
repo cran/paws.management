@@ -11,15 +11,11 @@ licensemanagerlinuxsubscriptions_update_service_settings(
 )
 }
 \arguments{
-\item{AllowUpdate}{Describes if updates are allowed to the service settings for Linux
-subscriptions. If you allow updates, you can aggregate Linux
-subscription data in more than one home Region.}
+\item{AllowUpdate}{Describes if updates are allowed to the service settings for Linux subscriptions. If you allow updates, you can aggregate Linux subscription data in more than one home Region.}
 
 \item{LinuxSubscriptionsDiscovery}{[required] Describes if the discovery of Linux subscriptions is enabled.}
 
-\item{LinuxSubscriptionsDiscoverySettings}{[required] The settings defined for Linux subscriptions discovery. The settings
-include if Organizations integration has been enabled, and which Regions
-data will be aggregated from.}
+\item{LinuxSubscriptionsDiscoverySettings}{[required] The settings defined for Linux subscriptions discovery. The settings include if Organizations integration has been enabled, and which Regions data will be aggregated from.}
 }
 \description{
 Updates the service settings for Linux subscriptions.

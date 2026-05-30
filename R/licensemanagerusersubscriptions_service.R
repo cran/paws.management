@@ -5,9 +5,7 @@ NULL
 #' AWS License Manager User Subscriptions
 #'
 #' @description
-#' With License Manager, you can create user-based subscriptions to utilize
-#' licensed software with a per user subscription fee on Amazon EC2
-#' instances.
+#' With License Manager, you can create user-based subscriptions to utilize licensed software with a per user subscription fee on Amazon EC2 instances.
 #'
 #' @param
 #' config
@@ -140,11 +138,11 @@ licensemanagerusersubscriptions <- function(config = list(), credentials = list(
 
 .licensemanagerusersubscriptions$metadata <- list(
   service_name = "licensemanagerusersubscriptions",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.amazonaws.eu", global = FALSE)),
   service_id = "License Manager User Subscriptions",
   api_version = "2018-05-10",
   signing_name = "license-manager-user-subscriptions",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

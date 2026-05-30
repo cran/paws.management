@@ -8,11 +8,7 @@ account}
 supportapp_list_slack_workspace_configurations(nextToken = NULL)
 }
 \arguments{
-\item{nextToken}{If the results of a search are large, the API only returns a portion of
-the results and includes a \code{nextToken} pagination token in the response.
-To retrieve the next batch of results, reissue the search request and
-include the returned token. When the API returns the last set of
-results, the response doesn't include a pagination token value.}
+\item{nextToken}{If the results of a search are large, the API only returns a portion of the results and includes a \code{nextToken} pagination token in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When the API returns the last set of results, the response doesn't include a pagination token value.}
 }
 \description{
 Lists the Slack workspace configurations for an Amazon Web Services account.

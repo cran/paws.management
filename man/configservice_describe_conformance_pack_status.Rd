@@ -15,8 +15,7 @@ configservice_describe_conformance_pack_status(
 
 \item{Limit}{The maximum number of conformance packs status returned on each page.}
 
-\item{NextToken}{The \code{nextToken} string returned in a previous request that you use to
-request the next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned in a previous request that you use to request the next page of results in a paginated response.}
 }
 \description{
 Provides one or more conformance packs deployment status.

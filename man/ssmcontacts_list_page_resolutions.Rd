@@ -7,8 +7,7 @@
 ssmcontacts_list_page_resolutions(NextToken = NULL, PageId)
 }
 \arguments{
-\item{NextToken}{A token to start the list. Use this token to get the next set of
-results.}
+\item{NextToken}{A token to start the list. Use this token to get the next set of results.}
 
 \item{PageId}{[required] The Amazon Resource Name (ARN) of the contact engaged for the incident.}
 }

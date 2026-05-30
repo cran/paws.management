@@ -6,109 +6,73 @@
 \usage{
 managedgrafana_update_workspace(
   accountAccessType = NULL,
-  networkAccessControl = NULL,
   organizationRoleName = NULL,
   permissionType = NULL,
-  removeNetworkAccessConfiguration = NULL,
-  removeVpcConfiguration = NULL,
   stackSetName = NULL,
-  vpcConfiguration = NULL,
   workspaceDataSources = NULL,
   workspaceDescription = NULL,
   workspaceId,
   workspaceName = NULL,
   workspaceNotificationDestinations = NULL,
   workspaceOrganizationalUnits = NULL,
-  workspaceRoleArn = NULL
+  workspaceRoleArn = NULL,
+  vpcConfiguration = NULL,
+  removeVpcConfiguration = NULL,
+  networkAccessControl = NULL,
+  removeNetworkAccessConfiguration = NULL,
+  ipAddressType = NULL
 )
 }
 \arguments{
-\item{accountAccessType}{Specifies whether the workspace can access Amazon Web Services resources
-in this Amazon Web Services account only, or whether it can also access
-Amazon Web Services resources in other accounts in the same
-organization. If you specify \code{ORGANIZATION}, you must specify which
-organizational units the workspace can access in the
-\code{workspaceOrganizationalUnits} parameter.}
+\item{accountAccessType}{Specifies whether the workspace can access Amazon Web Services resources in this Amazon Web Services account only, or whether it can also access Amazon Web Services resources in other accounts in the same organization. If you specify \code{ORGANIZATION}, you must specify which organizational units the workspace can access in the \code{workspaceOrganizationalUnits} parameter.}
 
-\item{networkAccessControl}{The configuration settings for network access to your workspace.
+\item{organizationRoleName}{The name of an IAM role that already exists to use to access resources through Organizations. This can only be used with a workspace that has the \code{permissionType} set to \code{CUSTOMER_MANAGED}.}
 
-When this is configured, only listed IP addresses and VPC endpoints will
-be able to access your workspace. Standard Grafana authentication and
-authorization will still be required.
+\item{permissionType}{Use this parameter if you want to change a workspace from \code{SERVICE_MANAGED} to \code{CUSTOMER_MANAGED}. This allows you to manage the permissions that the workspace uses to access datasources and notification channels. If the workspace is in a member Amazon Web Services account of an organization, and that account is not a delegated administrator account, and you want the workspace to access data sources in other Amazon Web Services accounts in the organization, you must choose \code{CUSTOMER_MANAGED}.
 
-If this is not configured, or is removed, then all IP addresses and VPC
-endpoints will be allowed. Standard Grafana authentication and
-authorization will still be required.}
-
-\item{organizationRoleName}{The name of an IAM role that already exists to use to access resources
-through Organizations. This can only be used with a workspace that has
-the \code{permissionType} set to \code{CUSTOMER_MANAGED}.}
-
-\item{permissionType}{Use this parameter if you want to change a workspace from
-\code{SERVICE_MANAGED} to \code{CUSTOMER_MANAGED}. This allows you to manage the
-permissions that the workspace uses to access datasources and
-notification channels. If the workspace is in a member Amazon Web
-Services account of an organization, and that account is not a delegated
-administrator account, and you want the workspace to access data sources
-in other Amazon Web Services accounts in the organization, you must
-choose \code{CUSTOMER_MANAGED}.
-
-If you specify this as \code{CUSTOMER_MANAGED}, you must also specify a
-\code{workspaceRoleArn} that the workspace will use for accessing Amazon Web
-Services resources.
+If you specify this as \code{CUSTOMER_MANAGED}, you must also specify a \code{workspaceRoleArn} that the workspace will use for accessing Amazon Web Services resources.
 
 For more information on the role and permissions needed, see \href{https://docs.aws.amazon.com/grafana/latest/userguide/AMG-manage-permissions.html}{Amazon Managed Grafana permissions and policies for Amazon Web Services data sources and notification channels}
 
-Do not use this to convert a \code{CUSTOMER_MANAGED} workspace to
-\code{SERVICE_MANAGED}. Do not include this parameter if you want to leave
-the workspace as \code{SERVICE_MANAGED}.
+Do not use this to convert a \code{CUSTOMER_MANAGED} workspace to \code{SERVICE_MANAGED}. Do not include this parameter if you want to leave the workspace as \code{SERVICE_MANAGED}.
 
-You can convert a \code{CUSTOMER_MANAGED} workspace to \code{SERVICE_MANAGED}
-using the Amazon Managed Grafana console. For more information, see
-\href{https://docs.aws.amazon.com/grafana/latest/userguide/AMG-datasource-and-notification.html}{Managing permissions for data sources and notification channels}.}
+You can convert a \code{CUSTOMER_MANAGED} workspace to \code{SERVICE_MANAGED} using the Amazon Managed Grafana console. For more information, see \href{https://docs.aws.amazon.com/grafana/latest/userguide/AMG-datasource-and-notification.html}{Managing permissions for data sources and notification channels}.}
 
-\item{removeNetworkAccessConfiguration}{Whether to remove the network access configuration from the workspace.
-
-Setting this to \code{true} and providing a \code{networkAccessControl} to set
-will return an error.
-
-If you remove this configuration by setting this to \code{true}, then all IP
-addresses and VPC endpoints will be allowed. Standard Grafana
-authentication and authorization will still be required.}
-
-\item{removeVpcConfiguration}{Whether to remove the VPC configuration from the workspace.
-
-Setting this to \code{true} and providing a \code{vpcConfiguration} to set will
-return an error.}
-
-\item{stackSetName}{The name of the CloudFormation stack set to use to generate IAM roles to
-be used for this workspace.}
-
-\item{vpcConfiguration}{The configuration settings for an Amazon VPC that contains data sources
-for your Grafana workspace to connect to.}
+\item{stackSetName}{The name of the CloudFormation stack set to use to generate IAM roles to be used for this workspace.}
 
 \item{workspaceDataSources}{This parameter is for internal use only, and should not be used.}
 
-\item{workspaceDescription}{A description for the workspace. This is used only to help you identify
-this workspace.}
+\item{workspaceDescription}{A description for the workspace. This is used only to help you identify this workspace.}
 
 \item{workspaceId}{[required] The ID of the workspace to update.}
 
 \item{workspaceName}{A new name for the workspace to update.}
 
-\item{workspaceNotificationDestinations}{Specify the Amazon Web Services notification channels that you plan to
-use in this workspace. Specifying these data sources here enables Amazon
-Managed Grafana to create IAM roles and permissions that allow Amazon
-Managed Grafana to use these channels.}
+\item{workspaceNotificationDestinations}{Specify the Amazon Web Services notification channels that you plan to use in this workspace. Specifying these data sources here enables Amazon Managed Grafana to create IAM roles and permissions that allow Amazon Managed Grafana to use these channels.}
 
-\item{workspaceOrganizationalUnits}{Specifies the organizational units that this workspace is allowed to use
-data sources from, if this workspace is in an account that is part of an
-organization.}
+\item{workspaceOrganizationalUnits}{Specifies the organizational units that this workspace is allowed to use data sources from, if this workspace is in an account that is part of an organization.}
 
-\item{workspaceRoleArn}{Specifies an IAM role that grants permissions to Amazon Web Services
-resources that the workspace accesses, such as data sources and
-notification channels. If this workspace has \code{permissionType}
-\code{CUSTOMER_MANAGED}, then this role is required.}
+\item{workspaceRoleArn}{Specifies an IAM role that grants permissions to Amazon Web Services resources that the workspace accesses, such as data sources and notification channels. If this workspace has \code{permissionType} \code{CUSTOMER_MANAGED}, then this role is required.}
+
+\item{vpcConfiguration}{The configuration settings for an Amazon VPC that contains data sources for your Grafana workspace to connect to.}
+
+\item{removeVpcConfiguration}{Whether to remove the VPC configuration from the workspace.
+
+Setting this to \code{true} and providing a \code{vpcConfiguration} to set will return an error.}
+
+\item{networkAccessControl}{The configuration settings for network access to your workspace.
+
+When this is configured, only listed IP addresses and VPC endpoints will be able to access your workspace. Standard Grafana authentication and authorization will still be required.
+
+If this is not configured, or is removed, then all IP addresses and VPC endpoints will be allowed. Standard Grafana authentication and authorization will still be required.}
+
+\item{removeNetworkAccessConfiguration}{Whether to remove the network access configuration from the workspace.
+
+Setting this to \code{true} and providing a \code{networkAccessControl} to set will return an error.
+
+If you remove this configuration by setting this to \code{true}, then all IP addresses and VPC endpoints will be allowed. Standard Grafana authentication and authorization will still be required.}
+
+\item{ipAddressType}{Specifies whether the workspace supports IPv4 only, or IPv4 and IPv6. Valid values are \code{IPv4} and \code{DualStack}. For more information about IP address types, see \href{https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-nac.html}{Network access control}.}
 }
 \description{
 Modifies an existing Amazon Managed Grafana workspace. If you use this operation and omit any optional parameters, the existing values of those parameters are not changed.

@@ -12,8 +12,7 @@ NULL
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
-#' @param WorkloadConfiguration &#91;required&#93; The configuration settings of the workload. The value is the escaped
-#' JSON of the configuration.
+#' @param WorkloadConfiguration &#91;required&#93; The configuration settings of the workload. The value is the escaped JSON of the configuration.
 #'
 #' @keywords internal
 #'
@@ -45,27 +44,15 @@ applicationinsights_add_workload <- function(ResourceGroupName, ComponentName, W
 #' See [https://www.paws-r-sdk.com/docs/applicationinsights_create_application/](https://www.paws-r-sdk.com/docs/applicationinsights_create_application/) for full documentation.
 #'
 #' @param ResourceGroupName The name of the resource group.
-#' @param OpsCenterEnabled When set to `true`, creates opsItems for any problems detected on an
-#' application.
-#' @param CWEMonitorEnabled Indicates whether Application Insights can listen to CloudWatch events
-#' for the application resources, such as `instance terminated`,
-#' `failed deployment`, and others.
-#' @param OpsItemSNSTopicArn The SNS topic provided to Application Insights that is associated to the
-#' created opsItem. Allows you to receive notifications for updates to the
-#' opsItem.
+#' @param OpsCenterEnabled When set to `true`, creates opsItems for any problems detected on an application.
+#' @param CWEMonitorEnabled Indicates whether Application Insights can listen to CloudWatch events for the application resources, such as `instance terminated`, `failed deployment`, and others.
+#' @param OpsItemSNSTopicArn The SNS topic provided to Application Insights that is associated to the created opsItem. Allows you to receive notifications for updates to the opsItem.
 #' @param SNSNotificationArn The SNS notification topic ARN.
-#' @param Tags List of tags to add to the application. tag key (`Key`) and an
-#' associated tag value (`Value`). The maximum length of a tag key is 128
-#' characters. The maximum length of a tag value is 256 characters.
-#' @param AutoConfigEnabled Indicates whether Application Insights automatically configures
-#' unmonitored resources in the resource group.
-#' @param AutoCreate Configures all of the resources in the resource group by applying the
-#' recommended configurations.
-#' @param GroupingType Application Insights can create applications based on a resource group
-#' or on an account. To create an account-based application using all of
-#' the resources in the account, set this parameter to `ACCOUNT_BASED`.
-#' @param AttachMissingPermission If set to true, the managed policies for SSM and CW will be attached to
-#' the instance roles if they are missing.
+#' @param Tags List of tags to add to the application. tag key (`Key`) and an associated tag value (`Value`). The maximum length of a tag key is 128 characters. The maximum length of a tag value is 256 characters.
+#' @param AutoConfigEnabled Indicates whether Application Insights automatically configures unmonitored resources in the resource group.
+#' @param AutoCreate Configures all of the resources in the resource group by applying the recommended configurations.
+#' @param GroupingType Application Insights can create applications based on a resource group or on an account. To create an account-based application using all of the resources in the account, set this parameter to `ACCOUNT_BASED`.
+#' @param AttachMissingPermission If set to true, the managed policies for SSM and CW will be attached to the instance roles if they are missing.
 #'
 #' @keywords internal
 #'
@@ -133,19 +120,8 @@ applicationinsights_create_component <- function(ResourceGroupName, ComponentNam
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
 #' @param PatternName &#91;required&#93; The name of the log pattern.
-#' @param Pattern &#91;required&#93; The log pattern. The pattern must be DFA compatible. Patterns that
-#' utilize forward lookahead or backreference constructions are not
-#' supported.
-#' @param Rank &#91;required&#93; Rank of the log pattern. Must be a value between `1` and `1,000,000`.
-#' The patterns are sorted by rank, so we recommend that you set your
-#' highest priority patterns with the lowest rank. A pattern of rank `1`
-#' will be the first to get matched to a log line. A pattern of rank
-#' `1,000,000` will be last to get matched. When you configure custom log
-#' patterns from the console, a `Low` severity pattern translates to a
-#' `750,000` rank. A `Medium` severity pattern translates to a `500,000`
-#' rank. And a `High` severity pattern translates to a `250,000` rank. Rank
-#' values less than `1` or greater than `1,000,000` are reserved for Amazon
-#' Web Services provided patterns.
+#' @param Pattern &#91;required&#93; The log pattern. The pattern must be DFA compatible. Patterns that utilize forward lookahead or backreference constructions are not supported.
+#' @param Rank &#91;required&#93; Rank of the log pattern. Must be a value between `1` and `1,000,000`. The patterns are sorted by rank, so we recommend that you set your highest priority patterns with the lowest rank. A pattern of rank `1` will be the first to get matched to a log line. A pattern of rank `1,000,000` will be last to get matched. When you configure custom log patterns from the console, a `Low` severity pattern translates to a `750,000` rank. A `Medium` severity pattern translates to a `500,000` rank. And a `High` severity pattern translates to a `250,000` rank. Rank values less than `1` or greater than `1,000,000` are reserved for Amazon Web Services provided patterns.
 #'
 #' @keywords internal
 #'
@@ -374,9 +350,7 @@ applicationinsights_describe_component_configuration <- function(ResourceGroupNa
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
 #' @param Tier &#91;required&#93; The tier of the application component.
-#' @param WorkloadName The name of the workload. The name of the workload is required when the
-#' tier of the application component is `SAP_ASE_SINGLE_NODE` or
-#' `SAP_ASE_HIGH_AVAILABILITY`.
+#' @param WorkloadName The name of the workload. The name of the workload is required when the tier of the application component is `SAP_ASE_SINGLE_NODE` or `SAP_ASE_HIGH_AVAILABILITY`.
 #' @param RecommendationType The recommended configuration type.
 #'
 #' @keywords internal
@@ -475,8 +449,7 @@ applicationinsights_describe_observation <- function(ObservationId, AccountId = 
 #' See [https://www.paws-r-sdk.com/docs/applicationinsights_describe_problem/](https://www.paws-r-sdk.com/docs/applicationinsights_describe_problem/) for full documentation.
 #'
 #' @param ProblemId &#91;required&#93; The ID of the problem.
-#' @param AccountId The Amazon Web Services account ID for the owner of the resource group
-#' affected by the problem.
+#' @param AccountId The Amazon Web Services account ID for the owner of the resource group affected by the problem.
 #'
 #' @keywords internal
 #'
@@ -573,9 +546,7 @@ applicationinsights_describe_workload <- function(ResourceGroupName, ComponentNa
 #'
 #' See [https://www.paws-r-sdk.com/docs/applicationinsights_list_applications/](https://www.paws-r-sdk.com/docs/applicationinsights_list_applications/) for full documentation.
 #'
-#' @param MaxResults The maximum number of results to return in a single call. To retrieve
-#' the remaining results, make another call with the returned `NextToken`
-#' value.
+#' @param MaxResults The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value.
 #' @param NextToken The token to request the next page of results.
 #' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #'
@@ -610,9 +581,7 @@ applicationinsights_list_applications <- function(MaxResults = NULL, NextToken =
 #' See [https://www.paws-r-sdk.com/docs/applicationinsights_list_components/](https://www.paws-r-sdk.com/docs/applicationinsights_list_components/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
-#' @param MaxResults The maximum number of results to return in a single call. To retrieve
-#' the remaining results, make another call with the returned `NextToken`
-#' value.
+#' @param MaxResults The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value.
 #' @param NextToken The token to request the next page of results.
 #' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #'
@@ -649,26 +618,9 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
 #' @param ResourceGroupName Resource group to which the application belongs.
 #' @param StartTime The start time of the event.
 #' @param EndTime The end time of the event.
-#' @param EventStatus The status of the configuration update event. Possible values include
-#' INFO, WARN, and ERROR.
-#' @param MaxResults The maximum number of results returned by
-#' [`list_configuration_history`][applicationinsights_list_configuration_history]
-#' in paginated output. When this parameter is used,
-#' [`list_configuration_history`][applicationinsights_list_configuration_history]
-#' returns only `MaxResults` in a single page along with a `NextToken`
-#' response element. The remaining results of the initial request can be
-#' seen by sending another
-#' [`list_configuration_history`][applicationinsights_list_configuration_history]
-#' request with the returned `NextToken` value. If this parameter is not
-#' used, then
-#' [`list_configuration_history`][applicationinsights_list_configuration_history]
-#' returns all results.
-#' @param NextToken The `NextToken` value returned from a previous paginated
-#' [`list_configuration_history`][applicationinsights_list_configuration_history]
-#' request where `MaxResults` was used and the results exceeded the value
-#' of that parameter. Pagination continues from the end of the previous
-#' results that returned the `NextToken` value. This value is `null` when
-#' there are no more results to return.
+#' @param EventStatus The status of the configuration update event. Possible values include INFO, WARN, and ERROR.
+#' @param MaxResults The maximum number of results returned by [`list_configuration_history`][applicationinsights_list_configuration_history] in paginated output. When this parameter is used, [`list_configuration_history`][applicationinsights_list_configuration_history] returns only `MaxResults` in a single page along with a `NextToken` response element. The remaining results of the initial request can be seen by sending another [`list_configuration_history`][applicationinsights_list_configuration_history] request with the returned `NextToken` value. If this parameter is not used, then [`list_configuration_history`][applicationinsights_list_configuration_history] returns all results.
+#' @param NextToken The `NextToken` value returned from a previous paginated [`list_configuration_history`][applicationinsights_list_configuration_history] request where `MaxResults` was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the `NextToken` value. This value is `null` when there are no more results to return.
 #' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #'
 #' @keywords internal
@@ -701,9 +653,7 @@ applicationinsights_list_configuration_history <- function(ResourceGroupName = N
 #' See [https://www.paws-r-sdk.com/docs/applicationinsights_list_log_pattern_sets/](https://www.paws-r-sdk.com/docs/applicationinsights_list_log_pattern_sets/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
-#' @param MaxResults The maximum number of results to return in a single call. To retrieve
-#' the remaining results, make another call with the returned `NextToken`
-#' value.
+#' @param MaxResults The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value.
 #' @param NextToken The token to request the next page of results.
 #' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #'
@@ -738,9 +688,7 @@ applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResu
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName The name of the log pattern set.
-#' @param MaxResults The maximum number of results to return in a single call. To retrieve
-#' the remaining results, make another call with the returned `NextToken`
-#' value.
+#' @param MaxResults The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value.
 #' @param NextToken The token to request the next page of results.
 #' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #'
@@ -775,18 +723,12 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #'
 #' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #' @param ResourceGroupName The name of the resource group.
-#' @param StartTime The time when the problem was detected, in epoch seconds. If you don't
-#' specify a time frame for the request, problems within the past seven
-#' days are returned.
-#' @param EndTime The time when the problem ended, in epoch seconds. If not specified,
-#' problems within the past seven days are returned.
-#' @param MaxResults The maximum number of results to return in a single call. To retrieve
-#' the remaining results, make another call with the returned `NextToken`
-#' value.
+#' @param StartTime The time when the problem was detected, in epoch seconds. If you don't specify a time frame for the request, problems within the past seven days are returned.
+#' @param EndTime The time when the problem ended, in epoch seconds. If not specified, problems within the past seven days are returned.
+#' @param MaxResults The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value.
 #' @param NextToken The token to request the next page of results.
 #' @param ComponentName The name of the component.
-#' @param Visibility Specifies whether or not you can view the problem. If not specified,
-#' visible and ignored problems are returned.
+#' @param Visibility Specifies whether or not you can view the problem. If not specified, visible and ignored problems are returned.
 #'
 #' @keywords internal
 #'
@@ -818,8 +760,7 @@ applicationinsights_list_problems <- function(AccountId = NULL, ResourceGroupNam
 #'
 #' See [https://www.paws-r-sdk.com/docs/applicationinsights_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/applicationinsights_list_tags_for_resource/) for full documentation.
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the application that you want to
-#' retrieve tag information for.
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the application that you want to retrieve tag information for.
 #'
 #' @keywords internal
 #'
@@ -852,9 +793,7 @@ applicationinsights_list_tags_for_resource <- function(ResourceARN) {
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
-#' @param MaxResults The maximum number of results to return in a single call. To retrieve
-#' the remaining results, make another call with the returned `NextToken`
-#' value.
+#' @param MaxResults The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned `NextToken` value.
 #' @param NextToken The token to request the next page of results.
 #' @param AccountId The Amazon Web Services account ID of the owner of the workload.
 #'
@@ -920,12 +859,8 @@ applicationinsights_remove_workload <- function(ResourceGroupName, ComponentName
 #'
 #' See [https://www.paws-r-sdk.com/docs/applicationinsights_tag_resource/](https://www.paws-r-sdk.com/docs/applicationinsights_tag_resource/) for full documentation.
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the application that you want to add
-#' one or more tags to.
-#' @param Tags &#91;required&#93; A list of tags that to add to the application. A tag consists of a
-#' required tag key (`Key`) and an associated tag value (`Value`). The
-#' maximum length of a tag key is 128 characters. The maximum length of a
-#' tag value is 256 characters.
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the application that you want to add one or more tags to.
+#' @param Tags &#91;required&#93; A list of tags that to add to the application. A tag consists of a required tag key (`Key`) and an associated tag value (`Value`). The maximum length of a tag key is 128 characters. The maximum length of a tag value is 256 characters.
 #'
 #' @keywords internal
 #'
@@ -956,15 +891,10 @@ applicationinsights_tag_resource <- function(ResourceARN, Tags) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/applicationinsights_untag_resource/](https://www.paws-r-sdk.com/docs/applicationinsights_untag_resource/) for full documentation.
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the application that you want to
-#' remove one or more tags from.
-#' @param TagKeys &#91;required&#93; The tags (tag keys) that you want to remove from the resource. When you
-#' specify a tag key, the action removes both that key and its associated
-#' tag value.
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the application that you want to remove one or more tags from.
+#' @param TagKeys &#91;required&#93; The tags (tag keys) that you want to remove from the resource. When you specify a tag key, the action removes both that key and its associated tag value.
 #' 
-#' To remove more than one tag from the application, append the `TagKeys`
-#' parameter and argument for each additional tag to remove, separated by
-#' an ampersand.
+#' To remove more than one tag from the application, append the `TagKeys` parameter and argument for each additional tag to remove, separated by an ampersand.
 #'
 #' @keywords internal
 #'
@@ -996,21 +926,13 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 #' See [https://www.paws-r-sdk.com/docs/applicationinsights_update_application/](https://www.paws-r-sdk.com/docs/applicationinsights_update_application/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
-#' @param OpsCenterEnabled When set to `true`, creates opsItems for any problems detected on an
-#' application.
-#' @param CWEMonitorEnabled Indicates whether Application Insights can listen to CloudWatch events
-#' for the application resources, such as `instance terminated`,
-#' `failed deployment`, and others.
-#' @param OpsItemSNSTopicArn The SNS topic provided to Application Insights that is associated to the
-#' created opsItem. Allows you to receive notifications for updates to the
-#' opsItem.
-#' @param SNSNotificationArn The SNS topic ARN. Allows you to receive SNS notifications for updates
-#' and issues with an application.
-#' @param RemoveSNSTopic Disassociates the SNS topic from the opsItem created for detected
-#' problems.
+#' @param OpsCenterEnabled When set to `true`, creates opsItems for any problems detected on an application.
+#' @param CWEMonitorEnabled Indicates whether Application Insights can listen to CloudWatch events for the application resources, such as `instance terminated`, `failed deployment`, and others.
+#' @param OpsItemSNSTopicArn The SNS topic provided to Application Insights that is associated to the created opsItem. Allows you to receive notifications for updates to the opsItem.
+#' @param SNSNotificationArn The SNS topic ARN. Allows you to receive SNS notifications for updates and issues with an application.
+#' @param RemoveSNSTopic Disassociates the SNS topic from the opsItem created for detected problems.
 #' @param AutoConfigEnabled Turns auto-configuration on or off.
-#' @param AttachMissingPermission If set to true, the managed policies for SSM and CW will be attached to
-#' the instance roles if they are missing.
+#' @param AttachMissingPermission If set to true, the managed policies for SSM and CW will be attached to the instance roles if they are missing.
 #'
 #' @keywords internal
 #'
@@ -1080,17 +1002,8 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
 #' @param ComponentName &#91;required&#93; The name of the component.
 #' @param Monitor Indicates whether the application component is monitored.
 #' @param Tier The tier of the application component.
-#' @param ComponentConfiguration The configuration settings of the component. The value is the escaped
-#' JSON of the configuration. For more information about the JSON format,
-#' see [Working with
-#' JSON](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/working-with-json.html).
-#' You can send a request to
-#' [`describe_component_configuration_recommendation`][applicationinsights_describe_component_configuration_recommendation]
-#' to see the recommended configuration for a component. For the complete
-#' format of the component configuration file, see [Component
-#' Configuration](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/component-config.html).
-#' @param AutoConfigEnabled Automatically configures the component by applying the recommended
-#' configurations.
+#' @param ComponentConfiguration The configuration settings of the component. The value is the escaped JSON of the configuration. For more information about the JSON format, see [Working with JSON](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/working-with-json.html). You can send a request to [`describe_component_configuration_recommendation`][applicationinsights_describe_component_configuration_recommendation] to see the recommended configuration for a component. For the complete format of the component configuration file, see [Component Configuration](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/component-config.html).
+#' @param AutoConfigEnabled Automatically configures the component by applying the recommended configurations.
 #'
 #' @keywords internal
 #'
@@ -1124,19 +1037,8 @@ applicationinsights_update_component_configuration <- function(ResourceGroupName
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
 #' @param PatternName &#91;required&#93; The name of the log pattern.
-#' @param Pattern The log pattern. The pattern must be DFA compatible. Patterns that
-#' utilize forward lookahead or backreference constructions are not
-#' supported.
-#' @param Rank Rank of the log pattern. Must be a value between `1` and `1,000,000`.
-#' The patterns are sorted by rank, so we recommend that you set your
-#' highest priority patterns with the lowest rank. A pattern of rank `1`
-#' will be the first to get matched to a log line. A pattern of rank
-#' `1,000,000` will be last to get matched. When you configure custom log
-#' patterns from the console, a `Low` severity pattern translates to a
-#' `750,000` rank. A `Medium` severity pattern translates to a `500,000`
-#' rank. And a `High` severity pattern translates to a `250,000` rank. Rank
-#' values less than `1` or greater than `1,000,000` are reserved for Amazon
-#' Web Services provided patterns.
+#' @param Pattern The log pattern. The pattern must be DFA compatible. Patterns that utilize forward lookahead or backreference constructions are not supported.
+#' @param Rank Rank of the log pattern. Must be a value between `1` and `1,000,000`. The patterns are sorted by rank, so we recommend that you set your highest priority patterns with the lowest rank. A pattern of rank `1` will be the first to get matched to a log line. A pattern of rank `1,000,000` will be last to get matched. When you configure custom log patterns from the console, a `Low` severity pattern translates to a `750,000` rank. A `Medium` severity pattern translates to a `500,000` rank. And a `High` severity pattern translates to a `250,000` rank. Rank values less than `1` or greater than `1,000,000` are reserved for Amazon Web Services provided patterns.
 #'
 #' @keywords internal
 #'
@@ -1169,12 +1071,8 @@ applicationinsights_update_log_pattern <- function(ResourceGroupName, PatternSet
 #' See [https://www.paws-r-sdk.com/docs/applicationinsights_update_problem/](https://www.paws-r-sdk.com/docs/applicationinsights_update_problem/) for full documentation.
 #'
 #' @param ProblemId &#91;required&#93; The ID of the problem.
-#' @param UpdateStatus The status of the problem. Arguments can be passed for only problems
-#' that show a status of `RECOVERING`.
-#' @param Visibility The visibility of a problem. When you pass a value of `IGNORED`, the
-#' problem is removed from the default view, and all notifications for the
-#' problem are suspended. When `VISIBLE` is passed, the `IGNORED` action is
-#' reversed.
+#' @param UpdateStatus The status of the problem. Arguments can be passed for only problems that show a status of `RECOVERING`.
+#' @param Visibility The visibility of a problem. When you pass a value of `IGNORED`, the problem is removed from the default view, and all notifications for the problem are suspended. When `VISIBLE` is passed, the `IGNORED` action is reversed.
 #'
 #' @keywords internal
 #'
@@ -1208,8 +1106,7 @@ applicationinsights_update_problem <- function(ProblemId, UpdateStatus = NULL, V
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
 #' @param WorkloadId The ID of the workload.
-#' @param WorkloadConfiguration &#91;required&#93; The configuration settings of the workload. The value is the escaped
-#' JSON of the configuration.
+#' @param WorkloadConfiguration &#91;required&#93; The configuration settings of the workload. The value is the escaped JSON of the configuration.
 #'
 #' @keywords internal
 #'

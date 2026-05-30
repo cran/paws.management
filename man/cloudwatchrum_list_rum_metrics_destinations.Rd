@@ -12,17 +12,13 @@ cloudwatchrum_list_rum_metrics_destinations(
 )
 }
 \arguments{
-\item{AppMonitorName}{[required] The name of the app monitor associated with the destinations that you
-want to retrieve.}
+\item{AppMonitorName}{[required] The name of the app monitor associated with the destinations that you want to retrieve.}
 
-\item{MaxResults}{The maximum number of results to return in one operation. The default is
-50. The maximum that you can specify is 100.
+\item{MaxResults}{The maximum number of results to return in one operation. The default is 50. The maximum that you can specify is 100.
 
-To retrieve the remaining results, make another call with the returned
-\code{NextToken} value.}
+To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
 
-\item{NextToken}{Use the token returned by the previous operation to request the next
-page of results.}
+\item{NextToken}{Use the token returned by the previous operation to request the next page of results.}
 }
 \description{
 Returns a list of destinations that you have created to receive RUM extended metrics, for the specified app monitor.

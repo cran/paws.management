@@ -13,11 +13,9 @@ autoscaling_describe_warm_pool(
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{MaxRecords}{The maximum number of instances to return with this call. The maximum
-value is \code{50}.}
+\item{MaxRecords}{The maximum number of instances to return with this call. The maximum value is \code{50}.}
 
-\item{NextToken}{The token for the next set of instances to return. (You received this
-token from a previous call.)}
+\item{NextToken}{The token for the next set of instances to return. (You received this token from a previous call.)}
 }
 \description{
 Gets information about a warm pool and its instances.

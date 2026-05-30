@@ -15,26 +15,17 @@ cloudwatchlogs_describe_configuration_templates(
 )
 }
 \arguments{
-\item{service}{Use this parameter to filter the response to include only the
-configuration templates that apply to the Amazon Web Services service
-that you specify here.}
+\item{service}{Use this parameter to filter the response to include only the configuration templates that apply to the Amazon Web Services service that you specify here.}
 
-\item{logTypes}{Use this parameter to filter the response to include only the
-configuration templates that apply to the log types that you specify
-here.}
+\item{logTypes}{Use this parameter to filter the response to include only the configuration templates that apply to the log types that you specify here.}
 
-\item{resourceTypes}{Use this parameter to filter the response to include only the
-configuration templates that apply to the resource types that you
-specify here.}
+\item{resourceTypes}{Use this parameter to filter the response to include only the configuration templates that apply to the resource types that you specify here.}
 
-\item{deliveryDestinationTypes}{Use this parameter to filter the response to include only the
-configuration templates that apply to the delivery destination types
-that you specify here.}
+\item{deliveryDestinationTypes}{Use this parameter to filter the response to include only the configuration templates that apply to the delivery destination types that you specify here.}
 
-\item{nextToken}{}
+\item{nextToken}{The token for the next set of items to return. The token expires after 24 hours.}
 
-\item{limit}{Use this parameter to limit the number of configuration templates that
-are returned in the response.}
+\item{limit}{Use this parameter to limit the number of configuration templates that are returned in the response.}
 }
 \description{
 Use this operation to return the valid and default values that are used when creating delivery sources, delivery destinations, and deliveries. For more information about deliveries, see \code{\link[=cloudwatchlogs_create_delivery]{create_delivery}}.

@@ -16,19 +16,13 @@ ssm_describe_maintenance_window_executions(
 
 \item{Filters}{Each entry in the array is a structure containing:
 \itemize{
-\item Key. A string between 1 and 128 characters. Supported keys include
-\code{ExecutedBefore} and \code{ExecutedAfter}.
-\item Values. An array of strings, each between 1 and 256 characters.
-Supported values are date/time strings in a valid ISO 8601 date/time
-format, such as \verb{2024-11-04T05:00:00Z}.
+\item Key. A string between 1 and 128 characters. Supported keys include \code{ExecutedBefore} and \code{ExecutedAfter}.
+\item Values. An array of strings, each between 1 and 256 characters. Supported values are date/time strings in a valid ISO 8601 date/time format, such as \verb{2024-11-04T05:00:00Z}.
 }}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Lists the executions of a maintenance window. This includes information about when the maintenance window was scheduled to be active, and information about tasks registered and run with the maintenance window.

@@ -7,8 +7,7 @@
 finspace_get_kx_volume(environmentId, volumeName)
 }
 \arguments{
-\item{environmentId}{[required] A unique identifier for the kdb environment, whose clusters can attach
-to the volume.}
+\item{environmentId}{[required] A unique identifier for the kdb environment, whose clusters can attach to the volume.}
 
 \item{volumeName}{[required] A unique identifier for the volume.}
 }

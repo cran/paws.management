@@ -9,8 +9,7 @@ ssmcontacts_delete_rotation_override(RotationId, RotationOverrideId)
 \arguments{
 \item{RotationId}{[required] The Amazon Resource Name (ARN) of the rotation that was overridden.}
 
-\item{RotationOverrideId}{[required] The Amazon Resource Name (ARN) of the on-call rotation override to
-delete.}
+\item{RotationOverrideId}{[required] The Amazon Resource Name (ARN) of the on-call rotation override to delete.}
 }
 \description{
 Deletes an existing override for an on-call rotation.

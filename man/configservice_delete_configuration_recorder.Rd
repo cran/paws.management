@@ -7,11 +7,7 @@
 configservice_delete_configuration_recorder(ConfigurationRecorderName)
 }
 \arguments{
-\item{ConfigurationRecorderName}{[required] The name of the customer managed configuration recorder that you want to
-delete. You can retrieve the name of your configuration recorders by
-using the
-\code{\link[=configservice_describe_configuration_recorders]{describe_configuration_recorders}}
-operation.}
+\item{ConfigurationRecorderName}{[required] The name of the customer managed configuration recorder that you want to delete. You can retrieve the name of your configuration recorders by using the \code{\link[=configservice_describe_configuration_recorders]{describe_configuration_recorders}} operation.}
 }
 \description{
 Deletes the customer managed configuration recorder.

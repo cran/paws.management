@@ -18,23 +18,15 @@ configservice_put_organization_conformance_pack(
 \arguments{
 \item{OrganizationConformancePackName}{[required] Name of the organization conformance pack you want to create.}
 
-\item{TemplateS3Uri}{Location of file containing the template body. The uri must point to the
-conformance pack template (max size: 300 KB).
+\item{TemplateS3Uri}{Location of file containing the template body. The uri must point to the conformance pack template (max size: 300 KB).
 
-You must have access to read Amazon S3 bucket. In addition, in order to
-ensure a successful deployment, the template object must not be in an
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}{archived storage class}
-if this parameter is passed.}
+You must have access to read Amazon S3 bucket. In addition, in order to ensure a successful deployment, the template object must not be in an \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}{archived storage class} if this parameter is passed.}
 
-\item{TemplateBody}{A string containing full conformance pack template body. Structure
-containing the template body with a minimum length of 1 byte and a
-maximum length of 51,200 bytes.}
+\item{TemplateBody}{A string that contains the full conformance pack template body. Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes.}
 
-\item{DeliveryS3Bucket}{The name of the Amazon S3 bucket where Config stores conformance pack
-templates.
+\item{DeliveryS3Bucket}{The name of the Amazon S3 bucket where Config stores conformance pack templates.
 
-This field is optional. If used, it must be prefixed with
-\code{awsconfigconforms}.}
+This field is optional. If used, it must be prefixed with \code{awsconfigconforms}.}
 
 \item{DeliveryS3KeyPrefix}{The prefix for the Amazon S3 bucket.
 
@@ -42,8 +34,7 @@ This field is optional.}
 
 \item{ConformancePackInputParameters}{A list of \code{ConformancePackInputParameter} objects.}
 
-\item{ExcludedAccounts}{A list of Amazon Web Services accounts to be excluded from an
-organization conformance pack while deploying a conformance pack.}
+\item{ExcludedAccounts}{A list of Amazon Web Services accounts to be excluded from an organization conformance pack while deploying a conformance pack.}
 }
 \description{
 Deploys conformance packs across member accounts in an Amazon Web Services Organization. For information on how many organization conformance packs and how many Config rules you can have per account, see \href{https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html}{\strong{Service Limits}} in the \emph{Config Developer Guide}.

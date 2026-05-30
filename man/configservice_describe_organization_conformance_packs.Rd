@@ -13,12 +13,9 @@ configservice_describe_organization_conformance_packs(
 \arguments{
 \item{OrganizationConformancePackNames}{The name that you assign to an organization conformance pack.}
 
-\item{Limit}{The maximum number of organization config packs returned on each page.
-If you do no specify a number, Config uses the default. The default is
-100.}
+\item{Limit}{The maximum number of organization config packs returned on each page. If you do no specify a number, Config uses the default. The default is 100.}
 
-\item{NextToken}{The nextToken string returned on a previous page that you use to get the
-next page of results in a paginated response.}
+\item{NextToken}{The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.}
 }
 \description{
 Returns a list of organization conformance packs.

@@ -9,8 +9,7 @@ auditmanager_list_assessment_reports(nextToken = NULL, maxResults = NULL)
 \arguments{
 \item{nextToken}{The pagination token that's used to fetch the next set of results.}
 
-\item{maxResults}{Represents the maximum number of results on a page or for an API request
-call.}
+\item{maxResults}{Represents the maximum number of results on a page or for an API request call.}
 }
 \description{
 Returns a list of assessment reports created in Audit Manager.

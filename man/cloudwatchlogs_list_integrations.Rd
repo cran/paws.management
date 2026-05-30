@@ -12,14 +12,11 @@ cloudwatchlogs_list_integrations(
 )
 }
 \arguments{
-\item{integrationNamePrefix}{To limit the results to integrations that start with a certain name
-prefix, specify that name prefix here.}
+\item{integrationNamePrefix}{To limit the results to integrations that start with a certain name prefix, specify that name prefix here.}
 
-\item{integrationType}{To limit the results to integrations of a certain type, specify that
-type here.}
+\item{integrationType}{To limit the results to integrations of a certain type, specify that type here.}
 
-\item{integrationStatus}{To limit the results to integrations with a certain status, specify that
-status here.}
+\item{integrationStatus}{To limit the results to integrations with a certain status, specify that status here.}
 }
 \description{
 Returns a list of integrations between CloudWatch Logs and other services in this account. Currently, only one integration can be created in an account, and this integration must be with OpenSearch Service.

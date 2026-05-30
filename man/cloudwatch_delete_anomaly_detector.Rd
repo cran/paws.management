@@ -18,42 +18,35 @@ cloudwatch_delete_anomaly_detector(
 
 \item{MetricName}{The metric name associated with the anomaly detection model to delete.}
 
-\item{Dimensions}{The metric dimensions associated with the anomaly detection model to
-delete.}
+\item{Dimensions}{The metric dimensions associated with the anomaly detection model to delete.}
 
 \item{Stat}{The statistic associated with the anomaly detection model to delete.}
 
 \item{SingleMetricAnomalyDetector}{A single metric anomaly detector to be deleted.
 
-When using \code{SingleMetricAnomalyDetector}, you cannot include the
-following parameters in the same operation:
+When using \code{SingleMetricAnomalyDetector}, you cannot include the following parameters in the same operation:
 \itemize{
 \item \code{Dimensions},
 \item \code{MetricName}
 \item \code{Namespace}
 \item \code{Stat}
-\item the \code{MetricMathAnomalyDetector} parameters of
-\code{DeleteAnomalyDetectorInput}
+\item the \code{MetricMathAnomalyDetector} parameters of \code{DeleteAnomalyDetectorInput}
 }
 
-Instead, specify the single metric anomaly detector attributes as part
-of the \code{SingleMetricAnomalyDetector} property.}
+Instead, specify the single metric anomaly detector attributes as part of the \code{SingleMetricAnomalyDetector} property.}
 
 \item{MetricMathAnomalyDetector}{The metric math anomaly detector to be deleted.
 
-When using \code{MetricMathAnomalyDetector}, you cannot include following
-parameters in the same operation:
+When using \code{MetricMathAnomalyDetector}, you cannot include following parameters in the same operation:
 \itemize{
 \item \code{Dimensions},
 \item \code{MetricName}
 \item \code{Namespace}
 \item \code{Stat}
-\item the \code{SingleMetricAnomalyDetector} parameters of
-\code{DeleteAnomalyDetectorInput}
+\item the \code{SingleMetricAnomalyDetector} parameters of \code{DeleteAnomalyDetectorInput}
 }
 
-Instead, specify the metric math anomaly detector attributes as part of
-the \code{MetricMathAnomalyDetector} property.}
+Instead, specify the metric math anomaly detector attributes as part of the \code{MetricMathAnomalyDetector} property.}
 }
 \description{
 Deletes the specified anomaly detection model from your account. For more information about how to delete an anomaly detection model, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Anomaly_Detection_Alarm.html#Delete_Anomaly_Detection_Model}{Deleting an anomaly detection model} in the \emph{CloudWatch User Guide}.

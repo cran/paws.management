@@ -13,14 +13,11 @@ ssm_describe_instance_patches(
 )
 }
 \arguments{
-\item{InstanceId}{[required] The ID of the managed node whose patch state information should be
-retrieved.}
+\item{InstanceId}{[required] The ID of the managed node whose patch state information should be retrieved.}
 
 \item{Filters}{Each element in the array is a structure containing a key-value pair.
 
-Supported keys for
-\code{\link[=ssm_describe_instance_patches]{describe_instance_patches}}include the
-following:
+Supported keys for \code{\link[=ssm_describe_instance_patches]{describe_instance_patches}}include the following:
 \itemize{
 \item \strong{\code{Classification}}
 
@@ -33,15 +30,12 @@ Sample values: \code{KB4480056} | \verb{java-1.7.0-openjdk.x86_64}
 Sample values: \code{Important} | \code{Medium} | \code{Low}
 \item \strong{\code{State}}
 
-Sample values: \code{Installed} | \code{InstalledOther} |
-\code{InstalledPendingReboot}
+Sample values: \code{Installed} | \code{InstalledOther} | \code{InstalledPendingReboot}
 
-For lists of all \code{State} values, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-compliance-states.html}{Patch compliance state values}
-in the \emph{Amazon Web Services Systems Manager User Guide}.
+For lists of all \code{State} values, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-compliance-states.html}{Patch compliance state values} in the \emph{Amazon Web Services Systems Manager User Guide}.
 }}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
 \item{MaxResults}{The maximum number of patches to return (per page).}
 }

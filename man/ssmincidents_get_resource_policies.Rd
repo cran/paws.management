@@ -11,14 +11,11 @@ ssmincidents_get_resource_policies(
 )
 }
 \arguments{
-\item{maxResults}{The maximum number of resource policies to display for each page of
-results.}
+\item{maxResults}{The maximum number of resource policies to display for each page of results.}
 
-\item{nextToken}{The pagination token for the next set of items to return. (You received
-this token from a previous call.)}
+\item{nextToken}{The pagination token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the response plan with the attached
-resource policy.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the response plan with the attached resource policy.}
 }
 \description{
 Retrieves the resource policies attached to the specified response plan.

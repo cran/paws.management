@@ -19,8 +19,7 @@ finspace_create_kx_environment(
 
 \item{kmsKeyId}{[required] The KMS key ID to encrypt your data in the FinSpace environment.}
 
-\item{tags}{A list of key-value pairs to label the kdb environment. You can add up
-to 50 tags to your kdb environment.}
+\item{tags}{A list of key-value pairs to label the kdb environment. You can add up to 50 tags to your kdb environment.}
 
 \item{clientToken}{A token that ensures idempotency. This token expires in 10 minutes.}
 }

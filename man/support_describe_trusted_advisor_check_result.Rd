@@ -10,11 +10,9 @@ support_describe_trusted_advisor_check_result(checkId, language = NULL)
 \arguments{
 \item{checkId}{[required] The unique identifier for the Trusted Advisor check.}
 
-\item{language}{The ISO 639-1 code for the language that you want your check results to
-appear in.
+\item{language}{The ISO 639-1 code for the language that you want your check results to appear in.
 
-The Amazon Web Services Support API currently supports the following
-languages for Trusted Advisor:
+The Amazon Web Services Support API currently supports the following languages for Trusted Advisor:
 \itemize{
 \item Chinese, Simplified - \code{zh}
 \item Chinese, Traditional - \code{zh_TW}

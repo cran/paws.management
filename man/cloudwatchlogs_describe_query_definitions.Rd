@@ -13,15 +13,13 @@ cloudwatchlogs_describe_query_definitions(
 )
 }
 \arguments{
-\item{queryLanguage}{The query language used for this query. For more information about the
-query languages that CloudWatch Logs supports, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData_Languages.html}{Supported query languages}.}
+\item{queryLanguage}{The query language used for this query. For more information about the query languages that CloudWatch Logs supports, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData_Languages.html}{Supported query languages}.}
 
-\item{queryDefinitionNamePrefix}{Use this parameter to filter your results to only the query definitions
-that have names that start with the prefix you specify.}
+\item{queryDefinitionNamePrefix}{Use this parameter to filter your results to only the query definitions that have names that start with the prefix you specify.}
 
 \item{maxResults}{Limits the number of returned query definitions to the specified number.}
 
-\item{nextToken}{}
+\item{nextToken}{The token for the next set of items to return. The token expires after 24 hours.}
 }
 \description{
 This operation returns a paginated list of your saved CloudWatch Logs Insights query definitions. You can retrieve query definitions from the current account or from a source account that is linked to the current account.

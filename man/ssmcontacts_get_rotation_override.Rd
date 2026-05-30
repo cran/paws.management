@@ -7,11 +7,9 @@
 ssmcontacts_get_rotation_override(RotationId, RotationOverrideId)
 }
 \arguments{
-\item{RotationId}{[required] The Amazon Resource Name (ARN) of the overridden rotation to retrieve
-information about.}
+\item{RotationId}{[required] The Amazon Resource Name (ARN) of the overridden rotation to retrieve information about.}
 
-\item{RotationOverrideId}{[required] The Amazon Resource Name (ARN) of the on-call rotation override to
-retrieve information about.}
+\item{RotationOverrideId}{[required] The Amazon Resource Name (ARN) of the on-call rotation override to retrieve information about.}
 }
 \description{
 Retrieves information about an override to an on-call rotation.

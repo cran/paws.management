@@ -8,8 +8,7 @@ destination that you specify}
 cloudwatchlogs_get_delivery_destination_policy(deliveryDestinationName)
 }
 \arguments{
-\item{deliveryDestinationName}{[required] The name of the delivery destination that you want to retrieve the
-policy of.}
+\item{deliveryDestinationName}{[required] The name of the delivery destination that you want to retrieve the policy of.}
 }
 \description{
 Retrieves the delivery destination policy assigned to the delivery destination that you specify. For more information about delivery destinations and their policies, see \code{\link[=cloudwatchlogs_put_delivery_destination_policy]{put_delivery_destination_policy}}.

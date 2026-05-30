@@ -28,9 +28,7 @@ servicecatalog_create_portfolio(
 
 \item{Tags}{One or more tags.}
 
-\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple
-requests differ only by the idempotency token, the same response is
-returned for each repeated request.}
+\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
 }
 \description{
 Creates a portfolio.

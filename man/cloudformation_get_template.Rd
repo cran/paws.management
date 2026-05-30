@@ -11,28 +11,17 @@ cloudformation_get_template(
 )
 }
 \arguments{
-\item{StackName}{The name or the unique stack ID that's associated with the stack, which
-aren't always interchangeable:
+\item{StackName}{The name or the unique stack ID that's associated with the stack, which aren't always interchangeable:
 \itemize{
-\item Running stacks: You can specify either the stack's name or its
-unique stack ID.
+\item Running stacks: You can specify either the stack's name or its unique stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
-}
+}}
 
-Default: There is no default value.}
+\item{ChangeSetName}{The name or Amazon Resource Name (ARN) of a change set for which CloudFormation returns the associated template. If you specify a name, you must also specify the \code{StackName}.}
 
-\item{ChangeSetName}{The name or Amazon Resource Name (ARN) of a change set for which
-CloudFormation returns the associated template. If you specify a name,
-you must also specify the \code{StackName}.}
+\item{TemplateStage}{For templates that include transforms, the stage of the template that CloudFormation returns. To get the user-submitted template, specify \code{Original}. To get the template after CloudFormation has processed all transforms, specify \code{Processed}.
 
-\item{TemplateStage}{For templates that include transforms, the stage of the template that
-CloudFormation returns. To get the user-submitted template, specify
-\code{Original}. To get the template after CloudFormation has processed all
-transforms, specify \code{Processed}.
-
-If the template doesn't include transforms, \code{Original} and \code{Processed}
-return the same template. By default, CloudFormation specifies
-\code{Processed}.}
+If the template doesn't include transforms, \code{Original} and \code{Processed} return the same template. By default, CloudFormation specifies \code{Processed}.}
 }
 \description{
 Returns the template body for a specified stack. You can get the template for running or deleted stacks.

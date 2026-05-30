@@ -21,8 +21,7 @@ applicationcostprofiler_update_report_definition(
 
 \item{format}{[required] Required. The format to use for the generated report.}
 
-\item{destinationS3Location}{[required] Required. Amazon Simple Storage Service (Amazon S3) location where
-Application Cost Profiler uploads the report.}
+\item{destinationS3Location}{[required] Required. Amazon Simple Storage Service (Amazon S3) location where Application Cost Profiler uploads the report.}
 }
 \description{
 Updates existing report in AWS Application Cost Profiler.

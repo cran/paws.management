@@ -11,14 +11,11 @@ configservice_describe_conformance_packs(
 )
 }
 \arguments{
-\item{ConformancePackNames}{Comma-separated list of conformance pack names for which you want
-details. If you do not specify any names, Config returns details for all
-your conformance packs.}
+\item{ConformancePackNames}{Comma-separated list of conformance pack names for which you want details. If you do not specify any names, Config returns details for all your conformance packs.}
 
 \item{Limit}{The maximum number of conformance packs returned on each page.}
 
-\item{NextToken}{The \code{nextToken} string returned in a previous request that you use to
-request the next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned in a previous request that you use to request the next page of results in a paginated response.}
 }
 \description{
 Returns a list of one or more conformance packs.

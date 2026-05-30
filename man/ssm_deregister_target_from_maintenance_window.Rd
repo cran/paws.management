@@ -15,9 +15,7 @@ ssm_deregister_target_from_maintenance_window(
 
 \item{WindowTargetId}{[required] The ID of the target definition to remove.}
 
-\item{Safe}{The system checks if the target is being referenced by a task. If the
-target is being referenced, the system returns an error and doesn't
-deregister the target from the maintenance window.}
+\item{Safe}{The system checks if the target is being referenced by a task. If the target is being referenced, the system returns an error and doesn't deregister the target from the maintenance window.}
 }
 \description{
 Removes a target from a maintenance window.

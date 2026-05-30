@@ -7,28 +7,19 @@
 applicationautoscaling_tag_resource(ResourceARN, Tags)
 }
 \arguments{
-\item{ResourceARN}{[required] Identifies the Application Auto Scaling scalable target that you want to
-apply tags to.
+\item{ResourceARN}{[required] Identifies the Application Auto Scaling scalable target that you want to apply tags to.
 
-For example:
-\verb{arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123}
+For example: \verb{arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123}
 
-To get the ARN for a scalable target, use
-\code{\link[=applicationautoscaling_describe_scalable_targets]{describe_scalable_targets}}.}
+To get the ARN for a scalable target, use \code{\link[=applicationautoscaling_describe_scalable_targets]{describe_scalable_targets}}.}
 
-\item{Tags}{[required] The tags assigned to the resource. A tag is a label that you assign to
-an Amazon Web Services resource.
+\item{Tags}{[required] The tags assigned to the resource. A tag is a label that you assign to an Amazon Web Services resource.
 
 Each tag consists of a tag key and a tag value.
 
-You cannot have more than one tag on an Application Auto Scaling
-scalable target with the same tag key. If you specify an existing tag
-key with a different tag value, Application Auto Scaling replaces the
-current tag value with the specified one.
+You cannot have more than one tag on an Application Auto Scaling scalable target with the same tag key. If you specify an existing tag key with a different tag value, Application Auto Scaling replaces the current tag value with the specified one.
 
-For information about the rules that apply to tag keys and tag values,
-see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/}{User-defined tag restrictions}
-in the \emph{Amazon Web Services Billing User Guide}.}
+For information about the rules that apply to tag keys and tag values, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/}{User-defined tag restrictions} in the \emph{Amazon Web Services Billing User Guide}.}
 }
 \description{
 Adds or edits tags on an Application Auto Scaling scalable target.

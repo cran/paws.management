@@ -13,16 +13,11 @@ support_describe_communications(
 )
 }
 \arguments{
-\item{caseId}{[required] The support case ID requested or returned in the call. The case ID is an
-alphanumeric string formatted as shown in this example:
-case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
+\item{caseId}{[required] The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
 
-\item{beforeTime}{The end date for a filtered date search on support case communications.
-Case communications are available for 12 months after creation.}
+\item{beforeTime}{The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.}
 
-\item{afterTime}{The start date for a filtered date search on support case
-communications. Case communications are available for 12 months after
-creation.}
+\item{afterTime}{The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.}
 
 \item{nextToken}{A resumption point for pagination.}
 

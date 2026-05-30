@@ -15,16 +15,13 @@ cloudwatchinternetmonitor_list_internet_events(
 )
 }
 \arguments{
-\item{NextToken}{The token for the next set of results. You receive this token from a
-previous call.}
+\item{NextToken}{The token for the next set of results. You receive this token from a previous call.}
 
 \item{MaxResults}{The number of query results that you want to return with this call.}
 
-\item{StartTime}{The start time of the time window that you want to get a list of
-internet events for.}
+\item{StartTime}{The start time of the time window that you want to get a list of internet events for.}
 
-\item{EndTime}{The end time of the time window that you want to get a list of internet
-events for.}
+\item{EndTime}{The end time of the time window that you want to get a list of internet events for.}
 
 \item{EventStatus}{The status of an internet event.}
 

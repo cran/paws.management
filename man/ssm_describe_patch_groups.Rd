@@ -11,8 +11,7 @@ ssm_describe_patch_groups(MaxResults = NULL, Filters = NULL, NextToken = NULL)
 
 \item{Filters}{Each element in the array is a structure containing a key-value pair.
 
-Supported keys for \code{\link[=ssm_describe_patch_groups]{describe_patch_groups}}
-include the following:
+Supported keys for \code{\link[=ssm_describe_patch_groups]{describe_patch_groups}} include the following:
 \itemize{
 \item \strong{\code{NAME_PREFIX}}
 
@@ -22,8 +21,7 @@ Sample values: \verb{AWS-} | \verb{My-}.
 Sample values: \code{AMAZON_LINUX} | \code{SUSE} | \code{WINDOWS}
 }}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Lists all patch groups that have been registered with patch baselines.

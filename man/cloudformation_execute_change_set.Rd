@@ -14,43 +14,21 @@ cloudformation_execute_change_set(
 )
 }
 \arguments{
-\item{ChangeSetName}{[required] The name or Amazon Resource Name (ARN) of the change set that you want
-use to update the specified stack.}
+\item{ChangeSetName}{[required] The name or Amazon Resource Name (ARN) of the change set that you want use to update the specified stack.}
 
-\item{StackName}{If you specified the name of a change set, specify the stack name or
-Amazon Resource Name (ARN) that's associated with the change set you
-want to execute.}
+\item{StackName}{If you specified the name of a change set, specify the stack name or Amazon Resource Name (ARN) that's associated with the change set you want to execute.}
 
-\item{ClientRequestToken}{A unique identifier for this
-\code{\link[=cloudformation_execute_change_set]{execute_change_set}} request.
-Specify this token if you plan to retry requests so that CloudFormation
-knows that you're not attempting to execute a change set to update a
-stack with the same name. You might retry
-\code{\link[=cloudformation_execute_change_set]{execute_change_set}} requests to
-ensure that CloudFormation successfully received them.}
+\item{ClientRequestToken}{A unique identifier for this \code{\link[=cloudformation_execute_change_set]{execute_change_set}} request. Specify this token if you plan to retry requests so that CloudFormation knows that you're not attempting to execute a change set to update a stack with the same name. You might retry \code{\link[=cloudformation_execute_change_set]{execute_change_set}} requests to ensure that CloudFormation successfully received them.}
 
-\item{DisableRollback}{Preserves the state of previously provisioned resources when an
-operation fails. This parameter can't be specified when the
-\code{OnStackFailure} parameter to the
-\code{\link[=cloudformation_create_change_set]{create_change_set}} API operation
-was specified.
+\item{DisableRollback}{Preserves the state of previously provisioned resources when an operation fails. This parameter can't be specified when the \code{OnStackFailure} parameter to the \code{\link[=cloudformation_create_change_set]{create_change_set}} API operation was specified.
 \itemize{
-\item \code{True} - if the stack creation fails, do nothing. This is equivalent
-to specifying \code{DO_NOTHING} for the \code{OnStackFailure} parameter to the
-\code{\link[=cloudformation_create_change_set]{create_change_set}} API
-operation.
-\item \code{False} - if the stack creation fails, roll back the stack. This is
-equivalent to specifying \code{ROLLBACK} for the \code{OnStackFailure}
-parameter to the
-\code{\link[=cloudformation_create_change_set]{create_change_set}} API
-operation.
+\item \code{True} - if the stack creation fails, do nothing. This is equivalent to specifying \code{DO_NOTHING} for the \code{OnStackFailure} parameter to the \code{\link[=cloudformation_create_change_set]{create_change_set}} API operation.
+\item \code{False} - if the stack creation fails, roll back the stack. This is equivalent to specifying \code{ROLLBACK} for the \code{OnStackFailure} parameter to the \code{\link[=cloudformation_create_change_set]{create_change_set}} API operation.
 }
 
 Default: \code{True}}
 
-\item{RetainExceptOnCreate}{When set to \code{true}, newly created resources are deleted when the
-operation rolls back. This includes newly created resources marked with
-a deletion policy of \code{Retain}.
+\item{RetainExceptOnCreate}{When set to \code{true}, newly created resources are deleted when the operation rolls back. This includes newly created resources marked with a deletion policy of \code{Retain}.
 
 Default: \code{false}}
 }

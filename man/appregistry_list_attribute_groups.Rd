@@ -7,11 +7,9 @@
 appregistry_list_attribute_groups(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{nextToken}{The token to use to get the next page of results after a previous API
-call.}
+\item{nextToken}{The token to use to get the next page of results after a previous API call.}
 
-\item{maxResults}{The upper bound of the number of results to return (cannot exceed 25).
-If this parameter is omitted, it defaults to 25. This value is optional.}
+\item{maxResults}{The upper bound of the number of results to return (cannot exceed 25). If this parameter is omitted, it defaults to 25. This value is optional.}
 }
 \description{
 Lists all attribute groups which you have access to. Results are paginated.

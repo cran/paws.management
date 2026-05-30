@@ -7,15 +7,9 @@
 resiliencehub_delete_app_assessment(assessmentArn, clientToken = NULL)
 }
 \arguments{
-\item{assessmentArn}{[required] Amazon Resource Name (ARN) of the assessment. The format for this ARN
-is:
-arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app-assessment/\code{app-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{Amazon Web Services General Reference} guide.}
+\item{assessmentArn}{[required] Amazon Resource Name (ARN) of the assessment. The format for this ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app-assessment/\code{app-id}. For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference} guide.}
 
-\item{clientToken}{Used for an idempotency token. A client token is a unique,
-case-sensitive string of up to 64 ASCII characters. You should not reuse
-the same client token for other API requests.}
+\item{clientToken}{Used for an idempotency token. A client token is a unique, case-sensitive string of up to 64 ASCII characters. You should not reuse the same client token for other API requests.}
 }
 \description{
 Deletes an Resilience Hub application assessment. This is a destructive action that can't be undone.

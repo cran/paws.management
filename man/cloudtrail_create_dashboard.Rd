@@ -15,23 +15,17 @@ cloudtrail_create_dashboard(
 \arguments{
 \item{Name}{[required] The name of the dashboard. The name must be unique to your account.
 
-To create the Highlights dashboard, the name must be
-\code{AWSCloudTrail-Highlights}.}
+To create the Highlights dashboard, the name must be \code{AWSCloudTrail-Highlights}.}
 
 \item{RefreshSchedule}{The refresh schedule configuration for the dashboard.
 
-To create the Highlights dashboard, you must set a refresh schedule and
-set the \code{Status} to \code{ENABLED}. The \code{Unit} for the refresh schedule must
-be \code{HOURS} and the \code{Value} must be \code{6}.}
+To create the Highlights dashboard, you must set a refresh schedule and set the \code{Status} to \code{ENABLED}. The \code{Unit} for the refresh schedule must be \code{HOURS} and the \code{Value} must be \code{6}.}
 
-\item{TagsList}{}
+\item{TagsList}{A list of tags.}
 
-\item{TerminationProtectionEnabled}{Specifies whether termination protection is enabled for the dashboard.
-If termination protection is enabled, you cannot delete the dashboard
-until termination protection is disabled.}
+\item{TerminationProtectionEnabled}{Specifies whether termination protection is enabled for the dashboard. If termination protection is enabled, you cannot delete the dashboard until termination protection is disabled.}
 
-\item{Widgets}{An array of widgets for a custom dashboard. A custom dashboard can have
-a maximum of ten widgets.
+\item{Widgets}{An array of widgets for a custom dashboard. A custom dashboard can have a maximum of ten widgets.
 
 You do not need to specify widgets for the Highlights dashboard.}
 }

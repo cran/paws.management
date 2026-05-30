@@ -8,8 +8,7 @@ acknowledged}
 ssmcontacts_list_page_receipts(PageId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{PageId}{[required] The Amazon Resource Name (ARN) of the engagement to a specific contact
-channel.}
+\item{PageId}{[required] The Amazon Resource Name (ARN) of the engagement to a specific contact channel.}
 
 \item{NextToken}{The pagination token to continue to the next page of results.}
 

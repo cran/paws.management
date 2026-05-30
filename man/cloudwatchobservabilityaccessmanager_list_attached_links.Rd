@@ -15,8 +15,7 @@ cloudwatchobservabilityaccessmanager_list_attached_links(
 \arguments{
 \item{MaxResults}{Limits the number of returned links to the specified number.}
 
-\item{NextToken}{The token for the next set of items to return. You received this token
-from a previous call.}
+\item{NextToken}{The token for the next set of items to return. You received this token from a previous call.}
 
 \item{SinkIdentifier}{[required] The ARN of the sink that you want to retrieve links for.}
 }

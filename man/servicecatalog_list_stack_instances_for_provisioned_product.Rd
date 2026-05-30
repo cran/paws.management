@@ -21,8 +21,7 @@ servicecatalog_list_stack_instances_for_provisioned_product(
 
 \item{ProvisionedProductId}{[required] The identifier of the provisioned product.}
 
-\item{PageToken}{The page token for the next set of results. To retrieve the first set of
-results, use null.}
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 }

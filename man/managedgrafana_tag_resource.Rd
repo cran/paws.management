@@ -10,9 +10,7 @@ managedgrafana_tag_resource(resourceArn, tags)
 \arguments{
 \item{resourceArn}{[required] The ARN of the resource the tag is associated with.}
 
-\item{tags}{[required] The list of tag keys and values to associate with the resource. You can
-associate tag keys only, tags (key and values) only or a combination of
-tag keys and tags.}
+\item{tags}{[required] The list of tag keys and values to associate with the resource. You can associate tag keys only, tags (key and values) only or a combination of tag keys and tags.}
 }
 \description{
 The \code{\link[=managedgrafana_tag_resource]{tag_resource}} operation associates tags with an Amazon Managed Grafana resource. Currently, the only resource that can be tagged is workspaces.

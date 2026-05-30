@@ -8,11 +8,9 @@
 resourcegroups_tag(Arn, Tags)
 }
 \arguments{
-\item{Arn}{[required] The Amazon resource name (ARN) of the resource group to which to add
-tags.}
+\item{Arn}{[required] The Amazon resource name (ARN) of the resource group to which to add tags.}
 
-\item{Tags}{[required] The tags to add to the specified resource group. A tag is a
-string-to-string map of key-value pairs.}
+\item{Tags}{[required] The tags to add to the specified resource group. A tag is a string-to-string map of key-value pairs.}
 }
 \description{
 Adds tags to a resource group with the specified Amazon resource name (ARN). Existing tags on a resource group are not changed if they are not specified in the request parameters.

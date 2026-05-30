@@ -5,9 +5,7 @@ NULL
 #' AWS Control Tower
 #'
 #' @description
-#' Amazon Web Services Control Tower offers application programming
-#' interface (API) operations that support programmatic interaction with
-#' these types of resources:
+#' Amazon Web Services Control Tower offers application programming interface (API) operations that support programmatic interaction with these types of resources:
 #' 
 #' -   [*Controls*](https://docs.aws.amazon.com/controltower/latest/controlreference/controls.html)
 #' 
@@ -17,14 +15,17 @@ NULL
 #' 
 #'     -   [`get_enabled_control`][controltower_get_enabled_control]
 #' 
+#'     -   [`get_control_operation`][controltower_get_control_operation]
+#' 
 #'     -   [`list_control_operations`][controltower_list_control_operations]
 #' 
 #'     -   [`list_enabled_controls`][controltower_list_enabled_controls]
 #' 
+#'     -   [`reset_enabled_control`][controltower_reset_enabled_control]
+#' 
 #'     -   [`update_enabled_control`][controltower_update_enabled_control]
 #' 
-#' -   [*Landing
-#'     zones*](https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html)
+#' -   [*Landing zones*](https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html)
 #' 
 #'     -   [`create_landing_zone`][controltower_create_landing_zone]
 #' 
@@ -70,84 +71,49 @@ NULL
 #' 
 #'     -   [`untag_resource`][controltower_untag_resource]
 #' 
-#' For more information about these types of resources, see the [*Amazon
-#' Web Services Control Tower User
-#' Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html)
-#' .
+#' For more information about these types of resources, see the [*Amazon Web Services Control Tower User Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html) .
 #' 
 #' **About control APIs**
 #' 
-#' These interfaces allow you to apply the Amazon Web Services library of
-#' pre-defined *controls* to your organizational units, programmatically.
-#' In Amazon Web Services Control Tower, the terms "control" and
-#' "guardrail" are synonyms.
+#' These interfaces allow you to apply the Amazon Web Services library of pre-defined *controls* to your organizational units, programmatically. In Amazon Web Services Control Tower, the terms "control" and "guardrail" are synonyms.
 #' 
 #' To call these APIs, you'll need to know:
 #' 
-#' -   the `controlIdentifier` for the control--or guardrail--you are
-#'     targeting.
+#' -   the `controlIdentifier` for the control--or guardrail--you are targeting.
 #' 
-#' -   the ARN associated with the target organizational unit (OU), which
-#'     we call the `targetIdentifier`.
+#' -   the ARN associated with the target organizational unit (OU), which we call the `targetIdentifier`.
 #' 
 #' -   the ARN associated with a resource that you wish to tag or untag.
 #' 
-#' **To get the `controlIdentifier` for your Amazon Web Services Control
-#' Tower control:**
+#' **To get the `controlIdentifier` for your Amazon Web Services Control Tower control:**
 #' 
-#' The `controlIdentifier` is an ARN that is specified for each control.
-#' You can view the `controlIdentifier` in the console on the **Control
-#' details** page, as well as in the documentation.
+#' The `controlIdentifier` is an ARN that is specified for each control. You can view the `controlIdentifier` in the console on the **Control details** page, as well as in the documentation.
 #' 
 #' **About identifiers for Amazon Web Services Control Tower**
 #' 
-#' The Amazon Web Services Control Tower `controlIdentifier` is unique in
-#' each Amazon Web Services Region for each control. You can find the
-#' `controlIdentifier` for each Region and control in the [Tables of
-#' control
-#' metadata](https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html)
-#' or the [Control availability by Region
-#' tables](https://docs.aws.amazon.com/controltower/latest/controlreference/control-region-tables.html)
-#' in the *Amazon Web Services Control Tower Controls Reference Guide*.
+#' The Amazon Web Services Control Tower `controlIdentifier` is unique in each Amazon Web Services Region for each control. You can find the `controlIdentifier` for each Region and control in the [Tables of control metadata](https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html) or the [Control availability by Region tables](https://docs.aws.amazon.com/controltower/latest/controlreference/control-region-tables.html) in the *Amazon Web Services Control Tower Controls Reference Guide*.
 #' 
-#' A quick-reference list of control identifers for the Amazon Web Services
-#' Control Tower legacy *Strongly recommended* and *Elective* controls is
-#' given in [Resource identifiers for APIs and
-#' controls](https://docs.aws.amazon.com/controltower/latest/controlreference/)
-#' in the [*Amazon Web Services Control Tower Controls Reference
-#' Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html)
-#' . Remember that *Mandatory* controls cannot be added or removed.
+#' A quick-reference list of control identifers for the Amazon Web Services Control Tower legacy *Strongly recommended* and *Elective* controls is given in [Resource identifiers for APIs and controls](https://docs.aws.amazon.com/controltower/latest/controlreference/) in the [*Amazon Web Services Control Tower Controls Reference Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html) . Remember that *Mandatory* controls cannot be added or removed.
 #' 
 #' **Some controls have two identifiers**
 #' 
-#' -   **ARN format for Amazon Web Services Control Tower:**
-#'     `arn:aws:controltower:{REGION}::control/{CONTROL_TOWER_OPAQUE_ID}`
+#' -   **ARN format for Amazon Web Services Control Tower:** `arn:aws:controltower:{REGION}::control/{CONTROL_TOWER_OPAQUE_ID}`
 #' 
 #'     **Example:**
 #' 
 #'     `arn:aws:controltower:us-west-2::control/AWS-GR_AUTOSCALING_LAUNCH_CONFIG_PUBLIC_IP_DISABLED`
 #' 
-#' -   **ARN format for Amazon Web Services Control Catalog:**
-#'     `arn:{PARTITION}:controlcatalog:::control/{CONTROL_CATALOG_OPAQUE_ID}`
+#' -   **ARN format for Amazon Web Services Control Catalog:** `arn:{PARTITION}:controlcatalog:::control/{CONTROL_CATALOG_OPAQUE_ID}`
 #' 
-#' You can find the `{CONTROL_CATALOG_OPAQUE_ID}` in the [*Amazon Web
-#' Services Control Tower Controls Reference
-#' Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/all-global-identifiers.html)
-#' , or in the Amazon Web Services Control Tower console, on the **Control
-#' details** page.
+#' You can find the `{CONTROL_CATALOG_OPAQUE_ID}` in the [*Amazon Web Services Control Tower Controls Reference Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/all-global-identifiers.html) , or in the Amazon Web Services Control Tower console, on the **Control details** page.
 #' 
-#' The Amazon Web Services Control Tower APIs for enabled controls, such as
-#' [`get_enabled_control`][controltower_get_enabled_control] and
-#' [`list_enabled_controls`][controltower_list_enabled_controls] always
-#' return an ARN of the same type given when the control was enabled.
+#' The Amazon Web Services Control Tower APIs for enabled controls, such as [`get_enabled_control`][controltower_get_enabled_control] and [`list_enabled_controls`][controltower_list_enabled_controls] always return an ARN of the same type given when the control was enabled.
 #' 
 #' **To get the `targetIdentifier`:**
 #' 
 #' The `targetIdentifier` is the ARN for an OU.
 #' 
-#' In the Amazon Web Services Organizations console, you can find the ARN
-#' for the OU on the **Organizational unit details** page associated with
-#' that OU.
+#' In the Amazon Web Services Organizations console, you can find the ARN for the OU on the **Organizational unit details** page associated with that OU.
 #' 
 #' **OU ARN format:**
 #' 
@@ -155,110 +121,53 @@ NULL
 #' 
 #' **About landing zone APIs**
 #' 
-#' You can configure and launch an Amazon Web Services Control Tower
-#' landing zone with APIs. For an introduction and steps, see [Getting
-#' started with Amazon Web Services Control Tower using
-#' APIs](https://docs.aws.amazon.com/controltower/latest/userguide/getting-started-apis.html).
+#' You can configure and launch an Amazon Web Services Control Tower landing zone with APIs. For an introduction and steps, see [Getting started with Amazon Web Services Control Tower using APIs](https://docs.aws.amazon.com/controltower/latest/userguide/getting-started-apis.html).
 #' 
-#' For an overview of landing zone API operations, see [Amazon Web Services
-#' Control Tower supports landing zone
-#' APIs](https://docs.aws.amazon.com/controltower/latest/userguide/2023-all.html#landing-zone-apis).
-#' The individual API operations for landing zones are detailed in this
-#' document, the [API reference
-#' manual](https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html),
-#' in the "Actions" section.
+#' For an overview of landing zone API operations, see [Amazon Web Services Control Tower supports landing zone APIs](https://docs.aws.amazon.com/controltower/latest/userguide/2023-all.html#landing-zone-apis). The individual API operations for landing zones are detailed in this document, the [API reference manual](https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html), in the "Actions" section.
 #' 
 #' **About baseline APIs**
 #' 
-#' You can apply the `AWSControlTowerBaseline` baseline to an
-#' organizational unit (OU) as a way to register the OU with Amazon Web
-#' Services Control Tower, programmatically. For a general overview of this
-#' capability, see [Amazon Web Services Control Tower supports APIs for OU
-#' registration and configuration with
-#' baselines](https://docs.aws.amazon.com/controltower/latest/userguide/2024-all.html#baseline-apis).
+#' You can apply the `AWSControlTowerBaseline` baseline to an organizational unit (OU) as a way to register the OU with Amazon Web Services Control Tower, programmatically. For a general overview of this capability, see [Amazon Web Services Control Tower supports APIs for OU registration and configuration with baselines](https://docs.aws.amazon.com/controltower/latest/userguide/2024-all.html#baseline-apis).
 #' 
-#' You can call the baseline API operations to view the baselines that
-#' Amazon Web Services Control Tower enables for your landing zone, on your
-#' behalf, when setting up the landing zone. These baselines are read-only
-#' baselines.
+#' You can call the baseline API operations to view the baselines that Amazon Web Services Control Tower enables for your landing zone, on your behalf, when setting up the landing zone. These baselines are read-only baselines.
 #' 
-#' The individual API operations for baselines are detailed in this
-#' document, the [API reference
-#' manual](https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html),
-#' in the "Actions" section. For usage examples, see [Baseline API input
-#' and output examples with
-#' CLI](https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html).
+#' The individual API operations for baselines are detailed in this document, the [API reference manual](https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html), in the "Actions" section. For usage examples, see [Baseline API input and output examples with CLI](https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html).
 #' 
 #' **About Amazon Web Services Control Catalog identifiers**
 #' 
-#' -   The [`enable_control`][controltower_enable_control] and
-#'     [`disable_control`][controltower_disable_control] API operations can
-#'     be called by specifying either the Amazon Web Services Control Tower
-#'     identifer or the Amazon Web Services Control Catalog identifier. The
-#'     API response returns the same type of identifier that you specified
-#'     when calling the API.
+#' -   The [`enable_control`][controltower_enable_control] and [`disable_control`][controltower_disable_control] API operations can be called by specifying either the Amazon Web Services Control Tower identifer or the Amazon Web Services Control Catalog identifier. The API response returns the same type of identifier that you specified when calling the API.
 #' 
-#' -   If you use an Amazon Web Services Control Tower identifier to call
-#'     the [`enable_control`][controltower_enable_control] API, and then
-#'     call [`enable_control`][controltower_enable_control] again with an
-#'     Amazon Web Services Control Catalog identifier, Amazon Web Services
-#'     Control Tower returns an error message stating that the control is
-#'     already enabled. Similar behavior applies to the
-#'     [`disable_control`][controltower_disable_control] API operation.
+#' -   If you use an Amazon Web Services Control Tower identifier to call the [`enable_control`][controltower_enable_control] API, and then call [`enable_control`][controltower_enable_control] again with an Amazon Web Services Control Catalog identifier, Amazon Web Services Control Tower returns an error message stating that the control is already enabled. Similar behavior applies to the [`disable_control`][controltower_disable_control] API operation.
 #' 
-#' -   Mandatory controls and the landing-zone-level Region deny control
-#'     have Amazon Web Services Control Tower identifiers only.
+#' -   Mandatory controls and the landing-zone-level Region deny control have Amazon Web Services Control Tower identifiers only.
 #' 
 #' **Details and examples**
 #' 
-#' -   [Control API input and output examples with
-#'     CLI](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html)
+#' -   [Control API input and output examples with CLI](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html)
 #' 
-#' -   [Baseline API input and output examples with
-#'     CLI](https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html)
+#' -   [Baseline API input and output examples with CLI](https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html)
 #' 
-#' -   [Enable controls with
-#'     CloudFormation](https://docs.aws.amazon.com/controltower/latest/controlreference/enable-controls.html)
+#' -   [Enable controls with CloudFormation](https://docs.aws.amazon.com/controltower/latest/controlreference/enable-controls.html)
 #' 
-#' -   [Launch a landing zone with
-#'     CloudFormation](https://docs.aws.amazon.com/controltower/latest/userguide/lz-apis-cfn-setup.html)
+#' -   [Launch a landing zone with CloudFormation](https://docs.aws.amazon.com/controltower/latest/userguide/lz-apis-cfn-setup.html)
 #' 
-#' -   [Control metadata tables (large
-#'     page)](https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html)
+#' -   [Control metadata tables (large page)](https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html)
 #' 
-#' -   [Control availability by Region tables (large
-#'     page)](https://docs.aws.amazon.com/controltower/latest/controlreference/control-region-tables.html)
+#' -   [Control availability by Region tables (large page)](https://docs.aws.amazon.com/controltower/latest/controlreference/control-region-tables.html)
 #' 
-#' -   [List of identifiers for legacy
-#'     controls](https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html)
+#' -   [List of identifiers for legacy controls](https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html)
 #' 
-#' -   [Controls reference
-#'     guide](https://docs.aws.amazon.com/controltower/latest/controlreference/controls.html)
+#' -   [Controls reference guide](https://docs.aws.amazon.com/controltower/latest/controlreference/controls.html)
 #' 
-#' -   [Controls library
-#'     groupings](https://docs.aws.amazon.com/controltower/latest/controlreference/controls-reference.html)
+#' -   [Controls library groupings](https://docs.aws.amazon.com/controltower/latest/controlreference/controls-reference.html)
 #' 
-#' -   [Creating Amazon Web Services Control Tower resources with Amazon
-#'     Web Services
-#'     CloudFormation](https://docs.aws.amazon.com/controltower/latest/userguide/creating-resources-with-cloudformation.html)
+#' -   [Creating Amazon Web Services Control Tower resources with Amazon Web Services CloudFormation](https://docs.aws.amazon.com/controltower/latest/userguide/creating-resources-with-cloudformation.html)
 #' 
-#' To view the open source resource repository on GitHub, see
-#' [aws-cloudformation/aws-cloudformation-resource-providers-controltower](https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-controltower)
+#' To view the open source resource repository on GitHub, see [aws-cloudformation/aws-cloudformation-resource-providers-controltower](https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-controltower)
 #' 
 #' **Recording API Requests**
 #' 
-#' Amazon Web Services Control Tower supports Amazon Web Services
-#' CloudTrail, a service that records Amazon Web Services API calls for
-#' your Amazon Web Services account and delivers log files to an Amazon S3
-#' bucket. By using information collected by CloudTrail, you can determine
-#' which requests the Amazon Web Services Control Tower service received,
-#' who made the request and when, and so on. For more about Amazon Web
-#' Services Control Tower and its support for CloudTrail, see [Logging
-#' Amazon Web Services Control Tower Actions with Amazon Web Services
-#' CloudTrail](https://docs.aws.amazon.com/controltower/latest/userguide/logging-using-cloudtrail.html)
-#' in the Amazon Web Services Control Tower User Guide. To learn more about
-#' CloudTrail, including how to turn it on and find your log files, see the
-#' Amazon Web Services CloudTrail User Guide.
+#' Amazon Web Services Control Tower supports Amazon Web Services CloudTrail, a service that records Amazon Web Services API calls for your Amazon Web Services account and delivers log files to an Amazon S3 bucket. By using information collected by CloudTrail, you can determine which requests the Amazon Web Services Control Tower service received, who made the request and when, and so on. For more about Amazon Web Services Control Tower and its support for CloudTrail, see [Logging Amazon Web Services Control Tower Actions with Amazon Web Services CloudTrail](https://docs.aws.amazon.com/controltower/latest/userguide/logging-using-cloudtrail.html) in the Amazon Web Services Control Tower User Guide. To learn more about CloudTrail, including how to turn it on and find your log files, see the Amazon Web Services CloudTrail User Guide.
 #'
 #' @param
 #' config
@@ -402,11 +311,11 @@ controltower <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .controltower$metadata <- list(
   service_name = "controltower",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.amazonaws.eu", global = FALSE)),
   service_id = "ControlTower",
   api_version = "2018-05-10",
   signing_name = "controltower",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

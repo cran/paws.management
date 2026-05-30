@@ -6,22 +6,17 @@
 workspace authenticates users from, using SAML}
 \usage{
 managedgrafana_update_workspace_authentication(
+  workspaceId,
   authenticationProviders,
-  samlConfiguration = NULL,
-  workspaceId
+  samlConfiguration = NULL
 )
 }
 \arguments{
-\item{authenticationProviders}{[required] Specifies whether this workspace uses SAML 2.0, IAM Identity Center, or
-both to authenticate users for using the Grafana console within a
-workspace. For more information, see \href{https://docs.aws.amazon.com/grafana/latest/userguide/authentication-in-AMG.html}{User authentication in Amazon Managed Grafana}.}
-
-\item{samlConfiguration}{If the workspace uses SAML, use this structure to map SAML assertion
-attributes to workspace user information and define which groups in the
-assertion attribute are to have the \code{Admin} and \code{Editor} roles in the
-workspace.}
-
 \item{workspaceId}{[required] The ID of the workspace to update the authentication for.}
+
+\item{authenticationProviders}{[required] Specifies whether this workspace uses SAML 2.0, IAM Identity Center, or both to authenticate users for using the Grafana console within a workspace. For more information, see \href{https://docs.aws.amazon.com/grafana/latest/userguide/authentication-in-AMG.html}{User authentication in Amazon Managed Grafana}.}
+
+\item{samlConfiguration}{If the workspace uses SAML, use this structure to map SAML assertion attributes to workspace user information and define which groups in the assertion attribute are to have the \code{Admin} and \code{Editor} roles in the workspace.}
 }
 \description{
 Use this operation to define the identity provider (IdP) that this workspace authenticates users from, using SAML. You can also map SAML assertion attributes to workspace user information and define which groups in the assertion attribute are to have the \code{Admin} and \code{Editor} roles in the workspace.

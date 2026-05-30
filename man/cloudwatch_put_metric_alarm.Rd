@@ -3,8 +3,8 @@
 \name{cloudwatch_put_metric_alarm}
 \alias{cloudwatch_put_metric_alarm}
 \title{Creates or updates an alarm and associates it with the specified metric,
-metric math expression, anomaly detection model, or Metrics Insights
-query}
+metric math expression, anomaly detection model, Metrics Insights query,
+or PromQL query}
 \usage{
 cloudwatch_put_metric_alarm(
   AlarmName,
@@ -20,31 +20,29 @@ cloudwatch_put_metric_alarm(
   Dimensions = NULL,
   Period = NULL,
   Unit = NULL,
-  EvaluationPeriods,
+  EvaluationPeriods = NULL,
   DatapointsToAlarm = NULL,
   Threshold = NULL,
-  ComparisonOperator,
+  ComparisonOperator = NULL,
   TreatMissingData = NULL,
   EvaluateLowSampleCountPercentile = NULL,
   Metrics = NULL,
   Tags = NULL,
-  ThresholdMetricId = NULL
+  ThresholdMetricId = NULL,
+  EvaluationCriteria = NULL,
+  EvaluationInterval = NULL
 )
 }
 \arguments{
 \item{AlarmName}{[required] The name for the alarm. This name must be unique within the Region.
 
-The name must contain only UTF-8 characters, and can't contain ASCII
-control characters}
+The name must contain only UTF-8 characters, and can't contain ASCII control characters}
 
 \item{AlarmDescription}{The description for the alarm.}
 
-\item{ActionsEnabled}{Indicates whether actions should be executed during any changes to the
-alarm state. The default is \code{TRUE}.}
+\item{ActionsEnabled}{Indicates whether actions should be executed during any changes to the alarm state. The default is \code{TRUE}.}
 
-\item{OKActions}{The actions to execute when this alarm transitions to an \code{OK} state from
-any other state. Each action is specified as an Amazon Resource Name
-(ARN). Valid values:
+\item{OKActions}{The actions to execute when this alarm transitions to an \code{OK} state from any other state. Each action is specified as an Amazon Resource Name (ARN). Valid values:
 
 \strong{EC2 actions:}
 \itemize{
@@ -65,12 +63,9 @@ any other state. Each action is specified as an Amazon Resource Name
 
 \strong{Lambda actions:}
 \itemize{
-\item Invoke the latest version of a Lambda function:
-\verb{arn:aws:lambda:region:account-id:function:function-name }
-\item Invoke a specific version of a Lambda function:
-\verb{arn:aws:lambda:region:account-id:function:function-name:version-number }
-\item Invoke a function by using an alias Lambda function:
-\verb{arn:aws:lambda:region:account-id:function:function-name:alias-name }
+\item Invoke the latest version of a Lambda function: \verb{arn:aws:lambda:region:account-id:function:function-name }
+\item Invoke a specific version of a Lambda function: \verb{arn:aws:lambda:region:account-id:function:function-name:version-number }
+\item Invoke a function by using an alias Lambda function: \verb{arn:aws:lambda:region:account-id:function:function-name:alias-name }
 }
 
 \strong{SNS notification action:}
@@ -84,9 +79,7 @@ any other state. Each action is specified as an Amazon Resource Name
 \item \code{arn:aws:ssm-incidents::account-id:responseplan/response-plan-name }
 }}
 
-\item{AlarmActions}{The actions to execute when this alarm transitions to the \code{ALARM} state
-from any other state. Each action is specified as an Amazon Resource
-Name (ARN). Valid values:
+\item{AlarmActions}{The actions to execute when this alarm transitions to the \code{ALARM} state from any other state. Each action is specified as an Amazon Resource Name (ARN). Valid values:
 
 \strong{EC2 actions:}
 \itemize{
@@ -107,12 +100,9 @@ Name (ARN). Valid values:
 
 \strong{Lambda actions:}
 \itemize{
-\item Invoke the latest version of a Lambda function:
-\verb{arn:aws:lambda:region:account-id:function:function-name }
-\item Invoke a specific version of a Lambda function:
-\verb{arn:aws:lambda:region:account-id:function:function-name:version-number }
-\item Invoke a function by using an alias Lambda function:
-\verb{arn:aws:lambda:region:account-id:function:function-name:alias-name }
+\item Invoke the latest version of a Lambda function: \verb{arn:aws:lambda:region:account-id:function:function-name }
+\item Invoke a specific version of a Lambda function: \verb{arn:aws:lambda:region:account-id:function:function-name:version-number }
+\item Invoke a function by using an alias Lambda function: \verb{arn:aws:lambda:region:account-id:function:function-name:alias-name }
 }
 
 \strong{SNS notification action:}
@@ -128,11 +118,9 @@ Name (ARN). Valid values:
 
 \strong{Start a Amazon Q Developer operational investigation}
 
-\code{arn:aws:aiops:region:account-id:investigation-group:ingestigation-group-id }}
+\code{arn:aws:aiops:region:account-id:investigation-group:investigation-group-id }}
 
-\item{InsufficientDataActions}{The actions to execute when this alarm transitions to the
-\code{INSUFFICIENT_DATA} state from any other state. Each action is specified
-as an Amazon Resource Name (ARN). Valid values:
+\item{InsufficientDataActions}{The actions to execute when this alarm transitions to the \code{INSUFFICIENT_DATA} state from any other state. Each action is specified as an Amazon Resource Name (ARN). Valid values:
 
 \strong{EC2 actions:}
 \itemize{
@@ -153,12 +141,9 @@ as an Amazon Resource Name (ARN). Valid values:
 
 \strong{Lambda actions:}
 \itemize{
-\item Invoke the latest version of a Lambda function:
-\verb{arn:aws:lambda:region:account-id:function:function-name }
-\item Invoke a specific version of a Lambda function:
-\verb{arn:aws:lambda:region:account-id:function:function-name:version-number }
-\item Invoke a function by using an alias Lambda function:
-\verb{arn:aws:lambda:region:account-id:function:function-name:alias-name }
+\item Invoke the latest version of a Lambda function: \verb{arn:aws:lambda:region:account-id:function:function-name }
+\item Invoke a specific version of a Lambda function: \verb{arn:aws:lambda:region:account-id:function:function-name:version-number }
+\item Invoke a function by using an alias Lambda function: \verb{arn:aws:lambda:region:account-id:function:function-name:alias-name }
 }
 
 \strong{SNS notification action:}
@@ -172,27 +157,15 @@ as an Amazon Resource Name (ARN). Valid values:
 \item \code{arn:aws:ssm-incidents::account-id:responseplan/response-plan-name }
 }}
 
-\item{MetricName}{The name for the metric associated with the alarm. For each
-\code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} operation, you must
-specify either \code{MetricName} or a \code{Metrics} array.
+\item{MetricName}{The name for the metric associated with the alarm. For each \code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} operation, you must specify either \code{MetricName}, a \code{Metrics} array, or an \code{EvaluationCriteria}.
 
-If you are creating an alarm based on a math expression, you cannot
-specify this parameter, or any of the \code{Namespace}, \code{Dimensions},
-\code{Period}, \code{Unit}, \code{Statistic}, or \code{ExtendedStatistic} parameters.
-Instead, you specify all this information in the \code{Metrics} array.}
+If you are creating an alarm based on a math expression, you cannot specify this parameter, or any of the \code{Namespace}, \code{Dimensions}, \code{Period}, \code{Unit}, \code{Statistic}, or \code{ExtendedStatistic} parameters. Instead, you specify all this information in the \code{Metrics} array.}
 
 \item{Namespace}{The namespace for the metric associated specified in \code{MetricName}.}
 
-\item{Statistic}{The statistic for the metric specified in \code{MetricName}, other than
-percentile. For percentile statistics, use \code{ExtendedStatistic}. When you
-call \code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} and specify a
-\code{MetricName}, you must specify either \code{Statistic} or
-\verb{ExtendedStatistic,} but not both.}
+\item{Statistic}{The statistic for the metric specified in \code{MetricName}, other than percentile. For percentile statistics, use \code{ExtendedStatistic}. When you call \code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} and specify a \code{MetricName}, you must specify either \code{Statistic} or \verb{ExtendedStatistic,} but not both.}
 
-\item{ExtendedStatistic}{The extended statistic for the metric specified in \code{MetricName}. When
-you call \code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} and specify a
-\code{MetricName}, you must specify either \code{Statistic} or \code{ExtendedStatistic}
-but not both.
+\item{ExtendedStatistic}{The extended statistic for the metric specified in \code{MetricName}. When you call \code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} and specify a \code{MetricName}, you must specify either \code{Statistic} or \code{ExtendedStatistic} but not both.
 
 If you specify \code{ExtendedStatistic}, the following are valid values:
 \itemize{
@@ -213,148 +186,80 @@ For more information about these extended statistics, see \href{https://docs.aws
 
 \item{Dimensions}{The dimensions for the metric specified in \code{MetricName}.}
 
-\item{Period}{The length, in seconds, used each time the metric specified in
-\code{MetricName} is evaluated. Valid values are 10, 30, and any multiple of
-60.
+\item{Period}{The length, in seconds, used each time the metric specified in \code{MetricName} is evaluated. Valid values are 10, 20, 30, and any multiple of 60.
 
-\code{Period} is required for alarms based on static thresholds. If you are
-creating an alarm based on a metric math expression, you specify the
-period for each metric within the objects in the \code{Metrics} array.
+\code{Period} is required for alarms based on static thresholds. If you are creating an alarm based on a metric math expression, you specify the period for each metric within the objects in the \code{Metrics} array.
 
-Be sure to specify 10 or 30 only for metrics that are stored by a
-\code{\link[=cloudwatch_put_metric_data]{put_metric_data}} call with a
-\code{StorageResolution} of 1. If you specify a period of 10 or 30 for a
-metric that does not have sub-minute resolution, the alarm still
-attempts to gather data at the period rate that you specify. In this
-case, it does not receive data for the attempts that do not correspond
-to a one-minute data resolution, and the alarm might often lapse into
-INSUFFICENT_DATA status. Specifying 10 or 30 also sets this alarm as a
-high-resolution alarm, which has a higher charge than other alarms. For
-more information about pricing, see \href{https://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
+Be sure to specify 10, 20, or 30 only for metrics that are stored by a \code{\link[=cloudwatch_put_metric_data]{put_metric_data}} call with a \code{StorageResolution} of 1. If you specify a period of 10, 20, or 30 for a metric that does not have sub-minute resolution, the alarm still attempts to gather data at the period rate that you specify. In this case, it does not receive data for the attempts that do not correspond to a one-minute data resolution, and the alarm might often lapse into INSUFFICENT_DATA status. Specifying 10, 20, or 30 also sets this alarm as a high-resolution alarm, which has a higher charge than other alarms. For more information about pricing, see \href{https://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
 
-An alarm's total current evaluation period can be no longer than one
-day, so \code{Period} multiplied by \code{EvaluationPeriods} cannot be more than
-86,400 seconds.}
+An alarm's total current evaluation period can be no longer than seven days, so \code{Period} multiplied by \code{EvaluationPeriods} can't be more than 604,800 seconds. For alarms with a period of less than one hour (3,600 seconds), the total evaluation period can't be longer than one day (86,400 seconds).}
 
-\item{Unit}{The unit of measure for the statistic. For example, the units for the
-Amazon EC2 NetworkIn metric are Bytes because NetworkIn tracks the
-number of bytes that an instance receives on all network interfaces. You
-can also specify a unit when you create a custom metric. Units help
-provide conceptual meaning to your data. Metric data points that specify
-a unit of measure, such as Percent, are aggregated separately. If you
-are creating an alarm based on a metric math expression, you can specify
-the unit for each metric (if needed) within the objects in the \code{Metrics}
-array.
+\item{Unit}{The unit of measure for the statistic. For example, the units for the Amazon EC2 NetworkIn metric are Bytes because NetworkIn tracks the number of bytes that an instance receives on all network interfaces. You can also specify a unit when you create a custom metric. Units help provide conceptual meaning to your data. Metric data points that specify a unit of measure, such as Percent, are aggregated separately. If you are creating an alarm based on a metric math expression, you can specify the unit for each metric (if needed) within the objects in the \code{Metrics} array.
 
-If you don't specify \code{Unit}, CloudWatch retrieves all unit types that
-have been published for the metric and attempts to evaluate the alarm.
-Usually, metrics are published with only one unit, so the alarm works as
-intended.
+If you don't specify \code{Unit}, CloudWatch retrieves all unit types that have been published for the metric and attempts to evaluate the alarm. Usually, metrics are published with only one unit, so the alarm works as intended.
 
-However, if the metric is published with multiple types of units and you
-don't specify a unit, the alarm's behavior is not defined and it behaves
-unpredictably.
+However, if the metric is published with multiple types of units and you don't specify a unit, the alarm's behavior is not defined and it behaves unpredictably.
 
-We recommend omitting \code{Unit} so that you don't inadvertently specify an
-incorrect unit that is not published for this metric. Doing so causes
-the alarm to be stuck in the \verb{INSUFFICIENT DATA} state.}
+We recommend omitting \code{Unit} so that you don't inadvertently specify an incorrect unit that is not published for this metric. Doing so causes the alarm to be stuck in the \verb{INSUFFICIENT DATA} state.}
 
-\item{EvaluationPeriods}{[required] The number of periods over which data is compared to the specified
-threshold. If you are setting an alarm that requires that a number of
-consecutive data points be breaching to trigger the alarm, this value
-specifies that number. If you are setting an "M out of N" alarm, this
-value is the N.
+\item{EvaluationPeriods}{The number of periods over which data is compared to the specified threshold. If you are setting an alarm that requires that a number of consecutive data points be breaching to trigger the alarm, this value specifies that number. If you are setting an "M out of N" alarm, this value is the N.}
 
-An alarm's total current evaluation period can be no longer than one
-day, so this number multiplied by \code{Period} cannot be more than 86,400
-seconds.}
-
-\item{DatapointsToAlarm}{The number of data points that must be breaching to trigger the alarm.
-This is used only if you are setting an "M out of N" alarm. In that
-case, this value is the M. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation}{Evaluating an Alarm}
-in the \emph{Amazon CloudWatch User Guide}.}
+\item{DatapointsToAlarm}{The number of data points that must be breaching to trigger the alarm. This is used only if you are setting an "M out of N" alarm. In that case, this value is the M. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html#alarm-evaluation}{Evaluating an Alarm} in the \emph{Amazon CloudWatch User Guide}.}
 
 \item{Threshold}{The value against which the specified statistic is compared.
 
-This parameter is required for alarms based on static thresholds, but
-should not be used for alarms based on anomaly detection models.}
+This parameter is required for alarms based on static thresholds, but should not be used for alarms based on anomaly detection models.}
 
-\item{ComparisonOperator}{[required] The arithmetic operation to use when comparing the specified statistic
-and threshold. The specified statistic value is used as the first
-operand.
+\item{ComparisonOperator}{The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic value is used as the first operand.
 
-The values \code{LessThanLowerOrGreaterThanUpperThreshold},
-\code{LessThanLowerThreshold}, and \code{GreaterThanUpperThreshold} are used only
-for alarms based on anomaly detection models.}
+The values \code{LessThanLowerOrGreaterThanUpperThreshold}, \code{LessThanLowerThreshold}, and \code{GreaterThanUpperThreshold} are used only for alarms based on anomaly detection models.}
 
-\item{TreatMissingData}{Sets how this alarm is to handle missing data points. If
-\code{TreatMissingData} is omitted, the default behavior of \code{missing} is
-used. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data}{Configuring How CloudWatch Alarms Treats Missing Data}.
+\item{TreatMissingData}{Sets how this alarm is to handle missing data points. If \code{TreatMissingData} is omitted, the default behavior of \code{missing} is used. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html#alarms-and-missing-data}{Configuring How CloudWatch Alarms Treats Missing Data}.
 
 Valid Values: \code{breaching | notBreaching | ignore | missing}
 
-Alarms that evaluate metrics in the \code{AWS/DynamoDB} namespace always
-\code{ignore} missing data even if you choose a different option for
-\code{TreatMissingData}. When an \code{AWS/DynamoDB} metric has missing data,
-alarms that evaluate that metric remain in their current state.}
+Alarms that evaluate metrics in the \code{AWS/DynamoDB} namespace always \code{ignore} missing data even if you choose a different option for \code{TreatMissingData}. When an \code{AWS/DynamoDB} metric has missing data, alarms that evaluate that metric remain in their current state.
 
-\item{EvaluateLowSampleCountPercentile}{Used only for alarms based on percentiles. If you specify \code{ignore}, the
-alarm state does not change during periods with too few data points to
-be statistically significant. If you specify \code{evaluate} or omit this
-parameter, the alarm is always evaluated and possibly changes state no
-matter how many data points are available. For more information, see
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples}{Percentile-Based CloudWatch Alarms and Low Data Samples}.
+This parameter is not applicable to PromQL alarms.}
+
+\item{EvaluateLowSampleCountPercentile}{Used only for alarms based on percentiles. If you specify \code{ignore}, the alarm state does not change during periods with too few data points to be statistically significant. If you specify \code{evaluate} or omit this parameter, the alarm is always evaluated and possibly changes state no matter how many data points are available. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html#percentiles-with-low-samples}{Percentile-Based CloudWatch Alarms and Low Data Samples}.
 
 Valid Values: \code{evaluate | ignore}}
 
-\item{Metrics}{An array of \code{MetricDataQuery} structures that enable you to create an
-alarm based on the result of a metric math expression. For each
-\code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} operation, you must
-specify either \code{MetricName} or a \code{Metrics} array.
+\item{Metrics}{An array of \code{MetricDataQuery} structures that enable you to create an alarm based on the result of a metric math expression. For each \code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} operation, you must specify either \code{MetricName}, a \code{Metrics} array, or an \code{EvaluationCriteria}.
 
-Each item in the \code{Metrics} array either retrieves a metric or performs a
-math expression.
+Each item in the \code{Metrics} array either retrieves a metric or performs a math expression.
 
-One item in the \code{Metrics} array is the expression that the alarm
-watches. You designate this expression by setting \code{ReturnData} to true
-for this object in the array. For more information, see
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricDataQuery.html}{MetricDataQuery}.
+One item in the \code{Metrics} array is the expression that the alarm watches. You designate this expression by setting \code{ReturnData} to true for this object in the array. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricDataQuery.html}{MetricDataQuery}.
 
-If you use the \code{Metrics} parameter, you cannot include the \code{Namespace},
-\code{MetricName}, \code{Dimensions}, \code{Period}, \code{Unit}, \code{Statistic}, or
-\code{ExtendedStatistic} parameters of
-\code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} in the same operation.
-Instead, you retrieve the metrics you are using in your math expression
-as part of the \code{Metrics} array.}
+If you use the \code{Metrics} parameter, you cannot include the \code{Namespace}, \code{MetricName}, \code{Dimensions}, \code{Period}, \code{Unit}, \code{Statistic}, or \code{ExtendedStatistic} parameters of \code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} in the same operation. Instead, you retrieve the metrics you are using in your math expression as part of the \code{Metrics} array.}
 
-\item{Tags}{A list of key-value pairs to associate with the alarm. You can associate
-as many as 50 tags with an alarm. To be able to associate tags with the
-alarm when you create the alarm, you must have the
-\code{cloudwatch:TagResource} permission.
+\item{Tags}{A list of key-value pairs to associate with the alarm. You can associate as many as 50 tags with an alarm. To be able to associate tags with the alarm when you create the alarm, you must have the \code{cloudwatch:TagResource} permission.
 
-Tags can help you organize and categorize your resources. You can also
-use them to scope user permissions by granting a user permission to
-access or change only resources with certain tag values.
+Tags can help you organize and categorize your resources. You can also use them to scope user permissions by granting a user permission to access or change only resources with certain tag values.
 
-If you are using this operation to update an existing alarm, any tags
-you specify in this parameter are ignored. To change the tags of an
-existing alarm, use \code{\link[=cloudwatch_tag_resource]{tag_resource}} or
-\code{\link[=cloudwatch_untag_resource]{untag_resource}}.
+If you are using this operation to update an existing alarm, any tags you specify in this parameter are ignored. To change the tags of an existing alarm, use \code{\link[=cloudwatch_tag_resource]{tag_resource}} or \code{\link[=cloudwatch_untag_resource]{untag_resource}}.
 
-To use this field to set tags for an alarm when you create it, you must
-be signed on with both the \code{cloudwatch:PutMetricAlarm} and
-\code{cloudwatch:TagResource} permissions.}
+To use this field to set tags for an alarm when you create it, you must be signed on with both the \code{cloudwatch:PutMetricAlarm} and \code{cloudwatch:TagResource} permissions.}
 
-\item{ThresholdMetricId}{If this is an alarm based on an anomaly detection model, make this value
-match the ID of the \code{ANOMALY_DETECTION_BAND} function.
+\item{ThresholdMetricId}{If this is an alarm based on an anomaly detection model, make this value match the ID of the \code{ANOMALY_DETECTION_BAND} function.
 
-For an example of how to use this parameter, see the \strong{Anomaly Detection
-Model Alarm} example on this page.
+For an example of how to use this parameter, see the \strong{Anomaly Detection Model Alarm} example on this page.
 
 If your alarm uses this parameter, it cannot have Auto Scaling actions.}
+
+\item{EvaluationCriteria}{The evaluation criteria for the alarm. For each \code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} operation, you must specify either \code{MetricName}, a \code{Metrics} array, or an \code{EvaluationCriteria}.
+
+If you use the \code{EvaluationCriteria} parameter, you cannot include the \code{Namespace}, \code{MetricName}, \code{Dimensions}, \code{Period}, \code{Unit}, \code{Statistic}, \code{ExtendedStatistic}, \code{Metrics}, \code{Threshold}, \code{ComparisonOperator}, \code{ThresholdMetricId}, \code{EvaluationPeriods}, or \code{DatapointsToAlarm} parameters of \code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} in the same operation. Instead, all evaluation parameters are defined within this structure.
+
+For an example of how to use this parameter, see the \strong{PromQL alarm} example on this page.}
+
+\item{EvaluationInterval}{The frequency, in seconds, at which the alarm is evaluated. Valid values are 10, 20, 30, and any multiple of 60.
+
+This parameter is required for alarms that use \code{EvaluationCriteria}, and cannot be specified for alarms configured with \code{MetricName} or \code{Metrics}.}
 }
 \description{
-Creates or updates an alarm and associates it with the specified metric, metric math expression, anomaly detection model, or Metrics Insights query. For more information about using a Metrics Insights query for an alarm, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Metrics_Insights_Alarm.html}{Create alarms on Metrics Insights queries}.
+Creates or updates an alarm and associates it with the specified metric, metric math expression, anomaly detection model, Metrics Insights query, or PromQL query. For more information about using a Metrics Insights query for an alarm, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/multi-time-series-alarm.html}{Create alarms on Metrics Insights queries}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatch_put_metric_alarm/} for full documentation.
 }

@@ -7,8 +7,7 @@
 configservice_start_configuration_recorder(ConfigurationRecorderName)
 }
 \arguments{
-\item{ConfigurationRecorderName}{[required] The name of the customer managed configuration recorder that you want to
-start.}
+\item{ConfigurationRecorderName}{[required] The name of the customer managed configuration recorder that you want to start.}
 }
 \description{
 Starts the customer managed configuration recorder. The customer managed configuration recorder will begin recording configuration changes for the resource types you specify.

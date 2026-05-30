@@ -24,12 +24,20 @@ test_that("describe_export_tasks", {
   expect_error(svc$describe_export_tasks(), NA)
 })
 
+test_that("describe_import_tasks", {
+  expect_error(svc$describe_import_tasks(), NA)
+})
+
 test_that("describe_log_groups", {
   expect_error(svc$describe_log_groups(), NA)
 })
 
 test_that("describe_log_streams", {
   expect_error(svc$describe_log_streams(), NA)
+})
+
+test_that("describe_lookup_tables", {
+  expect_error(svc$describe_lookup_tables(), NA)
 })
 
 test_that("describe_metric_filters", {
@@ -58,4 +66,12 @@ test_that("list_integrations", {
 
 test_that("list_log_anomaly_detectors", {
   expect_error(svc$list_log_anomaly_detectors(), NA)
+})
+
+test_that("list_log_groups", {
+  expect_error(svc$list_log_groups(), NA)
+})
+
+test_that("list_scheduled_queries", {
+  expect_error(svc$list_scheduled_queries(), NA)
 })

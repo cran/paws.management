@@ -8,8 +8,7 @@ single log group}
 cloudwatchlogs_delete_index_policy(logGroupIdentifier)
 }
 \arguments{
-\item{logGroupIdentifier}{[required] The log group to delete the index policy for. You can specify either the
-name or the ARN of the log group.}
+\item{logGroupIdentifier}{[required] The log group to delete the index policy for. You can specify either the name or the ARN of the log group.}
 }
 \description{
 Deletes a log-group level field index policy that was applied to a single log group. The indexing of the log events that happened before you delete the policy will still be used for as many as 30 days to improve CloudWatch Logs Insights queries.

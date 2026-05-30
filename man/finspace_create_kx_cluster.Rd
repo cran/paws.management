@@ -35,83 +35,42 @@ finspace_create_kx_cluster(
 
 \item{clusterName}{[required] A unique name for the cluster that you want to create.}
 
-\item{clusterType}{[required] Specifies the type of KDB database that is being created. The following
-types are available:
+\item{clusterType}{[required] Specifies the type of KDB database that is being created. The following types are available:
 \itemize{
-\item HDB – A Historical Database. The data is only accessible with
-read-only permissions from one of the FinSpace managed kdb databases
-mounted to the cluster.
-\item RDB – A Realtime Database. This type of database captures all the
-data from a ticker plant and stores it in memory until the end of
-day, after which it writes all of its data to a disk and reloads the
-HDB. This cluster type requires local storage for temporary storage
-of data during the savedown process. If you specify this field in
-your request, you must provide the \code{savedownStorageConfiguration}
-parameter.
-\item GATEWAY – A gateway cluster allows you to access data across
-processes in kdb systems. It allows you to create your own routing
-logic using the initialization scripts and custom code. This type of
-cluster does not require a writable local storage.
-\item GP – A general purpose cluster allows you to quickly iterate on code
-during development by granting greater access to system commands and
-enabling a fast reload of custom code. This cluster type can
-optionally mount databases including cache and savedown storage. For
-this cluster type, the node count is fixed at 1. It does not support
-autoscaling and supports only \code{SINGLE} AZ mode.
-\item Tickerplant – A tickerplant cluster allows you to subscribe to feed
-handlers based on IAM permissions. It can publish to RDBs, other
-Tickerplants, and real-time subscribers (RTS). Tickerplants can
-persist messages to log, which is readable by any RDB environment.
-It supports only single-node that is only one kdb process.
+\item HDB – A Historical Database. The data is only accessible with read-only permissions from one of the FinSpace managed kdb databases mounted to the cluster.
+\item RDB – A Realtime Database. This type of database captures all the data from a ticker plant and stores it in memory until the end of day, after which it writes all of its data to a disk and reloads the HDB. This cluster type requires local storage for temporary storage of data during the savedown process. If you specify this field in your request, you must provide the \code{savedownStorageConfiguration} parameter.
+\item GATEWAY – A gateway cluster allows you to access data across processes in kdb systems. It allows you to create your own routing logic using the initialization scripts and custom code. This type of cluster does not require a writable local storage.
+\item GP – A general purpose cluster allows you to quickly iterate on code during development by granting greater access to system commands and enabling a fast reload of custom code. This cluster type can optionally mount databases including cache and savedown storage. For this cluster type, the node count is fixed at 1. It does not support autoscaling and supports only \code{SINGLE} AZ mode.
+\item Tickerplant – A tickerplant cluster allows you to subscribe to feed handlers based on IAM permissions. It can publish to RDBs, other Tickerplants, and real-time subscribers (RTS). Tickerplants can persist messages to log, which is readable by any RDB environment. It supports only single-node that is only one kdb process.
 }}
 
-\item{tickerplantLogConfiguration}{A configuration to store Tickerplant logs. It consists of a list of
-volumes that will be mounted to your cluster. For the cluster type
-\code{Tickerplant}, the location of the TP volume on the cluster will be
-available by using the global variable \code{.aws.tp_log_path}.}
+\item{tickerplantLogConfiguration}{A configuration to store Tickerplant logs. It consists of a list of volumes that will be mounted to your cluster. For the cluster type \code{Tickerplant}, the location of the TP volume on the cluster will be available by using the global variable \code{.aws.tp_log_path}.}
 
 \item{databases}{A list of databases that will be available for querying.}
 
-\item{cacheStorageConfigurations}{The configurations for a read only cache storage associated with a
-cluster. This cache will be stored as an FSx Lustre that reads from the
-S3 store.}
+\item{cacheStorageConfigurations}{The configurations for a read only cache storage associated with a cluster. This cache will be stored as an FSx Lustre that reads from the S3 store.}
 
-\item{autoScalingConfiguration}{The configuration based on which FinSpace will scale in or scale out
-nodes in your cluster.}
+\item{autoScalingConfiguration}{The configuration based on which FinSpace will scale in or scale out nodes in your cluster.}
 
 \item{clusterDescription}{A description of the cluster.}
 
-\item{capacityConfiguration}{A structure for the metadata of a cluster. It includes information like
-the CPUs needed, memory of instances, and number of instances.}
+\item{capacityConfiguration}{A structure for the metadata of a cluster. It includes information like the CPUs needed, memory of instances, and number of instances.}
 
 \item{releaseLabel}{[required] The version of FinSpace managed kdb to run.}
 
-\item{vpcConfiguration}{[required] Configuration details about the network where the Privatelink endpoint
-of the cluster resides.}
+\item{vpcConfiguration}{[required] Configuration details about the network where the Privatelink endpoint of the cluster resides.}
 
-\item{initializationScript}{Specifies a Q program that will be run at launch of a cluster. It is a
-relative path within \emph{.zip} file that contains the custom code, which
-will be loaded on the cluster. It must include the file name itself. For
-example, \code{somedir/init.q}.}
+\item{initializationScript}{Specifies a Q program that will be run at launch of a cluster. It is a relative path within \emph{.zip} file that contains the custom code, which will be loaded on the cluster. It must include the file name itself. For example, \code{somedir/init.q}.}
 
 \item{commandLineArguments}{Defines the key-value pairs to make them available inside the cluster.}
 
-\item{code}{The details of the custom code that you want to use inside a cluster
-when analyzing a data. It consists of the S3 source bucket, location, S3
-object version, and the relative path from where the custom code is
-loaded into the cluster.}
+\item{code}{The details of the custom code that you want to use inside a cluster when analyzing a data. It consists of the S3 source bucket, location, S3 object version, and the relative path from where the custom code is loaded into the cluster.}
 
-\item{executionRole}{An IAM role that defines a set of permissions associated with a cluster.
-These permissions are assumed when a cluster attempts to access another
-cluster.}
+\item{executionRole}{An IAM role that defines a set of permissions associated with a cluster. These permissions are assumed when a cluster attempts to access another cluster.}
 
-\item{savedownStorageConfiguration}{The size and type of the temporary storage that is used to hold data
-during the savedown process. This parameter is required when you choose
-\code{clusterType} as RDB. All the data written to this storage space is lost
-when the cluster node is restarted.}
+\item{savedownStorageConfiguration}{The size and type of the temporary storage that is used to hold data during the savedown process. This parameter is required when you choose \code{clusterType} as RDB. All the data written to this storage space is lost when the cluster node is restarted.}
 
-\item{azMode}{[required] The number of availability zones you want to assign per cluster. This
-can be one of the following
+\item{azMode}{[required] The number of availability zones you want to assign per cluster. This can be one of the following
 \itemize{
 \item \code{SINGLE} – Assigns one availability zone per cluster.
 \item \code{MULTI} – Assigns all the availability zones per cluster.
@@ -119,8 +78,7 @@ can be one of the following
 
 \item{availabilityZoneId}{The availability zone identifiers for the requested regions.}
 
-\item{tags}{A list of key-value pairs to label the cluster. You can add up to 50
-tags to a cluster.}
+\item{tags}{A list of key-value pairs to label the cluster. You can add up to 50 tags to a cluster.}
 
 \item{scalingGroupConfiguration}{The structure that stores the configuration details of a scaling group.}
 }

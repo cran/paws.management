@@ -7,8 +7,7 @@
 controltower_reset_enabled_baseline(enabledBaselineIdentifier)
 }
 \arguments{
-\item{enabledBaselineIdentifier}{[required] Specifies the ID of the \code{EnabledBaseline} resource to be re-enabled, in
-ARN format.}
+\item{enabledBaselineIdentifier}{[required] Specifies the ID of the \code{EnabledBaseline} resource to be re-enabled, in ARN format.}
 }
 \description{
 Re-enables an \code{EnabledBaseline} resource. For example, this API can re-apply the existing \code{Baseline} after a new member account is moved to the target OU. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html}{\emph{the Amazon Web Services Control Tower User Guide}} .

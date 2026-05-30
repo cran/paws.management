@@ -13,13 +13,9 @@ managedgrafana_list_versions(
 \arguments{
 \item{maxResults}{The maximum number of results to include in the response.}
 
-\item{nextToken}{The token to use when requesting the next set of results. You receive
-this token from a previous
-\code{\link[=managedgrafana_list_versions]{list_versions}} operation.}
+\item{nextToken}{The token to use when requesting the next set of results. You receive this token from a previous \code{\link[=managedgrafana_list_versions]{list_versions}} operation.}
 
-\item{workspaceId}{The ID of the workspace to list the available upgrade versions. If not
-included, lists all versions of Grafana that are supported for
-\code{\link[=managedgrafana_create_workspace]{create_workspace}}.}
+\item{workspaceId}{The ID of the workspace to list the available upgrade versions. If not included, lists all versions of Grafana that are supported for \code{\link[=managedgrafana_create_workspace]{create_workspace}}.}
 }
 \description{
 Lists available versions of Grafana. These are available when calling \code{\link[=managedgrafana_create_workspace]{create_workspace}}. Optionally, include a workspace to list the versions to which it can be upgraded.

@@ -18,11 +18,9 @@ servicecatalog_describe_record(
 \item \code{zh} - Chinese
 }}
 
-\item{Id}{[required] The record identifier of the provisioned product. This identifier is
-returned by the request operation.}
+\item{Id}{[required] The record identifier of the provisioned product. This identifier is returned by the request operation.}
 
-\item{PageToken}{The page token for the next set of results. To retrieve the first set of
-results, use null.}
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 }

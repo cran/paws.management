@@ -12,15 +12,12 @@ cloudtrail_put_event_selectors(
 )
 }
 \arguments{
-\item{TrailName}{[required] Specifies the name of the trail or trail ARN. If you specify a trail
-name, the string must meet the following requirements:
+\item{TrailName}{[required] Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:
 \itemize{
-\item Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-underscores (_), or dashes (-)
+\item Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)
 \item Start with a letter or number, and end with a letter or number
 \item Be between 3 and 128 characters
-\item Have no adjacent periods, underscores or dashes. Names like
-\verb{my-_namespace} and \code{my--namespace} are not valid.
+\item Have no adjacent periods, underscores or dashes. Names like \verb{my-_namespace} and \code{my--namespace} are not valid.
 \item Not be in IP address format (for example, 192.168.5.4)
 }
 
@@ -28,9 +25,7 @@ If you specify a trail ARN, it must be in the following format.
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 
-\item{EventSelectors}{Specifies the settings for your event selectors. You can use event
-selectors to log management events and data events for the following
-resource types:
+\item{EventSelectors}{Specifies the settings for your event selectors. You can use event selectors to log management events and data events for the following resource types:
 \itemize{
 \item \verb{AWS::DynamoDB::Table}
 \item \verb{AWS::Lambda::Function}
@@ -39,24 +34,11 @@ resource types:
 
 You can't use event selectors to log network activity events.
 
-You can configure up to five event selectors for a trail. You can use
-either \code{EventSelectors} or \code{AdvancedEventSelectors} in a
-\code{\link[=cloudtrail_put_event_selectors]{put_event_selectors}} request, but not
-both. If you apply \code{EventSelectors} to a trail, any existing
-\code{AdvancedEventSelectors} are overwritten.}
+You can configure up to five event selectors for a trail. You can use either \code{EventSelectors} or \code{AdvancedEventSelectors} in a \code{\link[=cloudtrail_put_event_selectors]{put_event_selectors}} request, but not both. If you apply \code{EventSelectors} to a trail, any existing \code{AdvancedEventSelectors} are overwritten.}
 
-\item{AdvancedEventSelectors}{Specifies the settings for advanced event selectors. You can use
-advanced event selectors to log management events, data events for all
-resource types, and network activity events.
+\item{AdvancedEventSelectors}{Specifies the settings for advanced event selectors. You can use advanced event selectors to log management events, data events for all resource types, and network activity events.
 
-You can add advanced event selectors, and conditions for your advanced
-event selectors, up to a maximum of 500 values for all conditions and
-selectors on a trail. You can use either \code{AdvancedEventSelectors} or
-\code{EventSelectors}, but not both. If you apply \code{AdvancedEventSelectors} to
-a trail, any existing \code{EventSelectors} are overwritten. For more
-information about advanced event selectors, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html}{Logging data events}
-and \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-network-events-with-cloudtrail.html}{Logging network activity events}
-in the \emph{CloudTrail User Guide}.}
+You can add advanced event selectors, and conditions for your advanced event selectors, up to a maximum of 500 values for all conditions and selectors on a trail. You can use either \code{AdvancedEventSelectors} or \code{EventSelectors}, but not both. If you apply \code{AdvancedEventSelectors} to a trail, any existing \code{EventSelectors} are overwritten. For more information about advanced event selectors, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html}{Logging data events} and \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-network-events-with-cloudtrail.html}{Logging network activity events} in the \emph{CloudTrail User Guide}.}
 }
 \description{
 Configures event selectors (also referred to as \emph{basic event selectors}) or advanced event selectors for your trail. You can use either \code{AdvancedEventSelectors} or \code{EventSelectors}, but not both. If you apply \code{AdvancedEventSelectors} to a trail, any existing \code{EventSelectors} are overwritten.

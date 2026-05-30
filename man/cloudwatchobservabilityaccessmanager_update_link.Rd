@@ -8,6 +8,7 @@ account to its linked monitoring account sink}
 \usage{
 cloudwatchobservabilityaccessmanager_update_link(
   Identifier,
+  IncludeTags = NULL,
   LinkConfiguration = NULL,
   ResourceTypes
 )
@@ -15,12 +16,13 @@ cloudwatchobservabilityaccessmanager_update_link(
 \arguments{
 \item{Identifier}{[required] The ARN of the link that you want to update.}
 
-\item{LinkConfiguration}{Use this structure to filter which metric namespaces and which log
-groups are to be shared from the source account to the monitoring
-account.}
+\item{IncludeTags}{Specifies whether to include the tags associated with the link in the response after the update operation. When \code{IncludeTags} is set to \code{true} and the caller has the required permission, \code{oam:ListTagsForResource}, the API will return the tags for the specified resource. If the caller doesn't have the required permission, \code{oam:ListTagsForResource}, the API will raise an exception.
 
-\item{ResourceTypes}{[required] An array of strings that define which types of data that the source
-account will send to the monitoring account.
+The default value is \code{false}.}
+
+\item{LinkConfiguration}{Use this structure to filter which metric namespaces and which log groups are to be shared from the source account to the monitoring account.}
+
+\item{ResourceTypes}{[required] An array of strings that define which types of data that the source account will send to the monitoring account.
 
 Your input here replaces the current set of data types that are shared.}
 }

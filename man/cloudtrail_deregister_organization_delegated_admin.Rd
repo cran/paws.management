@@ -8,8 +8,7 @@ account in an organization}
 cloudtrail_deregister_organization_delegated_admin(DelegatedAdminAccountId)
 }
 \arguments{
-\item{DelegatedAdminAccountId}{[required] A delegated administrator account ID. This is a member account in an
-organization that is currently designated as a delegated administrator.}
+\item{DelegatedAdminAccountId}{[required] A delegated administrator account ID. This is a member account in an organization that is currently designated as a delegated administrator.}
 }
 \description{
 Removes CloudTrail delegated administrator permissions from a member account in an organization.

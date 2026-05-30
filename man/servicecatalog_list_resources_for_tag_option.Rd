@@ -22,8 +22,7 @@ servicecatalog_list_resources_for_tag_option(
 
 \item{PageSize}{The maximum number of items to return with this call.}
 
-\item{PageToken}{The page token for the next set of results. To retrieve the first set of
-results, use null.}
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 }
 \description{
 Lists the resources associated with the specified TagOption.

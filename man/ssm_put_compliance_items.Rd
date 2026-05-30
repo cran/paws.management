@@ -16,37 +16,21 @@ ssm_put_compliance_items(
 )
 }
 \arguments{
-\item{ResourceId}{[required] Specify an ID for this resource. For a managed node, this is the node
-ID.}
+\item{ResourceId}{[required] Specify an ID for this resource. For a managed node, this is the node ID.}
 
-\item{ResourceType}{[required] Specify the type of resource. \code{ManagedInstance} is currently the only
-supported resource type.}
+\item{ResourceType}{[required] Specify the type of resource. \code{ManagedInstance} is currently the only supported resource type.}
 
-\item{ComplianceType}{[required] Specify the compliance type. For example, specify Association (for a
-State Manager association), Patch, or Custom:\code{string}.}
+\item{ComplianceType}{[required] Specify the compliance type. For example, specify Association (for a State Manager association), Patch, or Custom:\code{string}.}
 
-\item{ExecutionSummary}{[required] A summary of the call execution that includes an execution ID, the type
-of execution (for example, \code{Command}), and the date/time of the
-execution using a datetime object that is saved in the following format:
-\verb{yyyy-MM-dd'T'HH:mm:ss'Z'}}
+\item{ExecutionSummary}{[required] A summary of the call execution that includes an execution ID, the type of execution (for example, \code{Command}), and the date/time of the execution using a datetime object that is saved in the following format: \verb{yyyy-MM-dd'T'HH:mm:ss'Z'}}
 
-\item{Items}{[required] Information about the compliance as defined by the resource type. For
-example, for a patch compliance type, \code{Items} includes information about
-the PatchSeverity, Classification, and so on.}
+\item{Items}{[required] Information about the compliance as defined by the resource type. For example, for a patch compliance type, \code{Items} includes information about the PatchSeverity, Classification, and so on.}
 
-\item{ItemContentHash}{MD5 or SHA-256 content hash. The content hash is used to determine if
-existing information should be overwritten or ignored. If the content
-hashes match, the request to put compliance information is ignored.}
+\item{ItemContentHash}{MD5 or SHA-256 content hash. The content hash is used to determine if existing information should be overwritten or ignored. If the content hashes match, the request to put compliance information is ignored.}
 
-\item{UploadType}{The mode for uploading compliance items. You can specify \code{COMPLETE} or
-\code{PARTIAL}. In \code{COMPLETE} mode, the system overwrites all existing
-compliance information for the resource. You must provide a full list of
-compliance items each time you send the request.
+\item{UploadType}{The mode for uploading compliance items. You can specify \code{COMPLETE} or \code{PARTIAL}. In \code{COMPLETE} mode, the system overwrites all existing compliance information for the resource. You must provide a full list of compliance items each time you send the request.
 
-In \code{PARTIAL} mode, the system overwrites compliance information for a
-specific association. The association must be configured with
-\code{SyncCompliance} set to \code{MANUAL}. By default, all requests use
-\code{COMPLETE} mode.
+In \code{PARTIAL} mode, the system overwrites compliance information for a specific association. The association must be configured with \code{SyncCompliance} set to \code{MANUAL}. By default, all requests use \code{COMPLETE} mode.
 
 This attribute is only valid for association compliance.}
 }

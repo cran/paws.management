@@ -15,24 +15,13 @@ ssm_list_documents(
 \arguments{
 \item{DocumentFilterList}{This data type is deprecated. Instead, use \code{Filters}.}
 
-\item{Filters}{One or more \code{DocumentKeyValuesFilter} objects. Use a filter to return a
-more specific list of results. For keys, you can specify one or more
-key-value pair tags that have been applied to a document. Other valid
-keys include \code{Owner}, \code{Name}, \code{PlatformTypes}, \code{DocumentType}, and
-\code{TargetType}. For example, to return documents you own use
-\verb{Key=Owner,Values=Self}. To specify a custom key-value pair, use the
-format \verb{Key=tag:tagName,Values=valueName}.
+\item{Filters}{One or more \code{DocumentKeyValuesFilter} objects. Use a filter to return a more specific list of results. For keys, you can specify one or more key-value pair tags that have been applied to a document. Other valid keys include \code{Owner}, \code{Name}, \code{PlatformTypes}, \code{DocumentType}, and \code{TargetType}. For example, to return documents you own use \verb{Key=Owner,Values=Self}. To specify a custom key-value pair, use the format \verb{Key=tag:tagName,Values=valueName}.
 
-This API operation only supports filtering documents by using a single
-tag key and one or more tag values. For example:
-\verb{Key=tag:tagName,Values=valueName1,valueName2}}
+This API operation only supports filtering documents by using a single tag key and one or more tag values. For example: \verb{Key=tag:tagName,Values=valueName1,valueName2}}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Returns all Systems Manager (SSM) documents in the current Amazon Web Services account and Amazon Web Services Region. You can limit the results of this request by using a filter.

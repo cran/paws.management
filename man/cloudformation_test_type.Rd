@@ -28,29 +28,21 @@ Conditional: You must specify \code{Arn}, or \code{TypeName} and \code{Type}.}
 
 \item{VersionId}{The version of the extension to test.
 
-You can specify the version id with either \code{Arn}, or with \code{TypeName} and
-\code{Type}.
+You can specify the version id with either \code{Arn}, or with \code{TypeName} and \code{Type}.
 
-If you don't specify a version, CloudFormation uses the default version
-of the extension in this account and Region for testing.}
+If you don't specify a version, CloudFormation uses the default version of the extension in this account and Region for testing.}
 
-\item{LogDeliveryBucket}{The S3 bucket to which CloudFormation delivers the contract test
-execution logs.
+\item{LogDeliveryBucket}{The S3 bucket to which CloudFormation delivers the contract test execution logs.
 
-CloudFormation delivers the logs by the time contract testing has
-completed and the extension has been assigned a test type status of
-\code{PASSED} or \code{FAILED}.
+CloudFormation delivers the logs by the time contract testing has completed and the extension has been assigned a test type status of \code{PASSED} or \code{FAILED}.
 
-The user calling \code{\link[=cloudformation_test_type]{test_type}} must be able to
-access items in the specified S3 bucket. Specifically, the user needs
-the following permissions:
+The user calling \code{\link[=cloudformation_test_type]{test_type}} must be able to access items in the specified S3 bucket. Specifically, the user needs the following permissions:
 \itemize{
 \item \code{GetObject}
 \item \code{PutObject}
 }
 
-For more information, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazons3.html}{Actions, Resources, and Condition Keys for Amazon S3}
-in the \emph{Identity and Access Management User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazons3.html}{Actions, Resources, and Condition Keys for Amazon S3} in the \emph{Identity and Access Management User Guide}.}
 }
 \description{
 Tests a registered extension to make sure it meets all necessary requirements for being published in the CloudFormation registry.

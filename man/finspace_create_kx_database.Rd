@@ -19,8 +19,7 @@ finspace_create_kx_database(
 
 \item{description}{A description of the database.}
 
-\item{tags}{A list of key-value pairs to label the kdb database. You can add up to
-50 tags to your kdb database}
+\item{tags}{A list of key-value pairs to label the kdb database. You can add up to 50 tags to your kdb database}
 
 \item{clientToken}{[required] A token that ensures idempotency. This token expires in 10 minutes.}
 }

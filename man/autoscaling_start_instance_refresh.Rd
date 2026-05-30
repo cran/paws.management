@@ -14,30 +14,15 @@ autoscaling_start_instance_refresh(
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{Strategy}{The strategy to use for the instance refresh. The only valid value is
-\code{Rolling}.}
+\item{Strategy}{The strategy to use for the instance refresh. The default value is \code{Rolling}.}
 
-\item{DesiredConfiguration}{The desired configuration. For example, the desired configuration can
-specify a new launch template or a new version of the current launch
-template.
+\item{DesiredConfiguration}{The desired configuration. For example, the desired configuration can specify a new launch template or a new version of the current launch template.
 
-Once the instance refresh succeeds, Amazon EC2 Auto Scaling updates the
-settings of the Auto Scaling group to reflect the new desired
-configuration.
+Once the instance refresh succeeds, Amazon EC2 Auto Scaling updates the settings of the Auto Scaling group to reflect the new desired configuration.
 
-When you specify a new launch template or a new version of the current
-launch template for your desired configuration, consider enabling the
-\code{SkipMatching} property in preferences. If it's enabled, Amazon EC2 Auto
-Scaling skips replacing instances that already use the specified launch
-template and instance types. This can help you reduce the number of
-replacements that are required to apply updates.}
+When you specify a new launch template or a new version of the current launch template for your desired configuration, consider enabling the \code{SkipMatching} property in preferences. If it's enabled, Amazon EC2 Auto Scaling skips replacing instances that already use the specified launch template and instance types. This can help you reduce the number of replacements that are required to apply updates.}
 
-\item{Preferences}{Sets your preferences for the instance refresh so that it performs as
-expected when you start it. Includes the instance warmup time, the
-minimum and maximum healthy percentages, and the behaviors that you want
-Amazon EC2 Auto Scaling to use if instances that are in \code{Standby} state
-or protected from scale in are found. You can also choose to enable
-additional features, such as the following:
+\item{Preferences}{Sets your preferences for the instance refresh so that it performs as expected when you start it. Includes the instance warmup time, the minimum and maximum healthy percentages, and the behaviors that you want Amazon EC2 Auto Scaling to use if instances that are in \code{Standby} state or protected from scale in are found. You can also choose to enable additional features, such as the following:
 \itemize{
 \item Auto rollback
 \item Checkpoints

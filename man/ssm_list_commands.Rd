@@ -17,19 +17,13 @@ ssm_list_commands(
 
 \item{InstanceId}{(Optional) Lists commands issued against this managed node ID.
 
-You can't specify a managed node ID in the same command that you specify
-\code{Status} = \code{Pending}. This is because the command hasn't reached the
-managed node yet.}
+You can't specify a managed node ID in the same command that you specify \code{Status} = \code{Pending}. This is because the command hasn't reached the managed node yet.}
 
-\item{MaxResults}{(Optional) The maximum number of items to return for this call. The call
-also returns a token that you can specify in a subsequent call to get
-the next set of results.}
+\item{MaxResults}{(Optional) The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{(Optional) The token for the next set of items to return. (You received
-this token from a previous call.)}
+\item{NextToken}{(Optional) The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{Filters}{(Optional) One or more filters. Use a filter to return a more specific
-list of results.}
+\item{Filters}{(Optional) One or more filters. Use a filter to return a more specific list of results.}
 }
 \description{
 Lists the commands requested by users of the Amazon Web Services account.

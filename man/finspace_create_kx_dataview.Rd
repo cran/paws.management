@@ -21,52 +21,33 @@ finspace_create_kx_dataview(
 )
 }
 \arguments{
-\item{environmentId}{[required] A unique identifier for the kdb environment, where you want to create
-the dataview.}
+\item{environmentId}{[required] A unique identifier for the kdb environment, where you want to create the dataview.}
 
 \item{databaseName}{[required] The name of the database where you want to create a dataview.}
 
 \item{dataviewName}{[required] A unique identifier for the dataview.}
 
-\item{azMode}{[required] The number of availability zones you want to assign per volume.
-Currently, FinSpace only supports \code{SINGLE} for volumes. This places
-dataview in a single AZ.}
+\item{azMode}{[required] The number of availability zones you want to assign per volume. Currently, FinSpace only supports \code{SINGLE} for volumes. This places dataview in a single AZ.}
 
 \item{availabilityZoneId}{The identifier of the availability zones.}
 
-\item{changesetId}{A unique identifier of the changeset that you want to use to ingest
-data.}
+\item{changesetId}{A unique identifier of the changeset that you want to use to ingest data.}
 
-\item{segmentConfigurations}{The configuration that contains the database path of the data that you
-want to place on each selected volume. Each segment must have a unique
-database path for each volume. If you do not explicitly specify any
-database path for a volume, they are accessible from the cluster through
-the default S3/object store segment.}
+\item{segmentConfigurations}{The configuration that contains the database path of the data that you want to place on each selected volume. Each segment must have a unique database path for each volume. If you do not explicitly specify any database path for a volume, they are accessible from the cluster through the default S3/object store segment.}
 
-\item{autoUpdate}{The option to specify whether you want to apply all the future additions
-and corrections automatically to the dataview, when you ingest new
-changesets. The default value is false.}
+\item{autoUpdate}{The option to specify whether you want to apply all the future additions and corrections automatically to the dataview, when you ingest new changesets. The default value is false.}
 
-\item{readWrite}{The option to specify whether you want to make the dataview writable to
-perform database maintenance. The following are some considerations
-related to writable dataviews.
+\item{readWrite}{The option to specify whether you want to make the dataview writable to perform database maintenance. The following are some considerations related to writable dataviews.
 \itemize{
-\item You cannot create partial writable dataviews. When you create
-writeable dataviews you must provide the entire database path.
-\item You cannot perform updates on a writeable dataview. Hence,
-\code{autoUpdate} must be set as \strong{False} if \code{readWrite} is \strong{True} for
-a dataview.
-\item You must also use a unique volume for creating a writeable dataview.
-So, if you choose a volume that is already in use by another
-dataview, the dataview creation fails.
-\item Once you create a dataview as writeable, you cannot change it to
-read-only. So, you cannot update the \code{readWrite} parameter later.
+\item You cannot create partial writable dataviews. When you create writeable dataviews you must provide the entire database path.
+\item You cannot perform updates on a writeable dataview. Hence, \code{autoUpdate} must be set as \strong{False} if \code{readWrite} is \strong{True} for a dataview.
+\item You must also use a unique volume for creating a writeable dataview. So, if you choose a volume that is already in use by another dataview, the dataview creation fails.
+\item Once you create a dataview as writeable, you cannot change it to read-only. So, you cannot update the \code{readWrite} parameter later.
 }}
 
 \item{description}{A description of the dataview.}
 
-\item{tags}{A list of key-value pairs to label the dataview. You can add up to 50
-tags to a dataview.}
+\item{tags}{A list of key-value pairs to label the dataview. You can add up to 50 tags to a dataview.}
 
 \item{clientToken}{[required] A token that ensures idempotency. This token expires in 10 minutes.}
 }

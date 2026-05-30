@@ -15,8 +15,7 @@ autoscaling_detach_instances(
 
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{ShouldDecrementDesiredCapacity}{[required] Indicates whether the Auto Scaling group decrements the desired capacity
-value by the number of instances detached.}
+\item{ShouldDecrementDesiredCapacity}{[required] Indicates whether the Auto Scaling group decrements the desired capacity value by the number of instances detached.}
 }
 \description{
 Removes one or more instances from the specified Auto Scaling group.

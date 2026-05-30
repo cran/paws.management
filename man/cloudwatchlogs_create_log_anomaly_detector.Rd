@@ -16,37 +16,19 @@ cloudwatchlogs_create_log_anomaly_detector(
 )
 }
 \arguments{
-\item{logGroupArnList}{[required] An array containing the ARN of the log group that this anomaly detector
-will watch. You can specify only one log group ARN.}
+\item{logGroupArnList}{[required] An array containing the ARN of the log group that this anomaly detector will watch. You can specify only one log group ARN.}
 
 \item{detectorName}{A name for this anomaly detector.}
 
-\item{evaluationFrequency}{Specifies how often the anomaly detector is to run and look for
-anomalies. Set this value according to the frequency that the log group
-receives new logs. For example, if the log group receives new log events
-every 10 minutes, then 15 minutes might be a good setting for
-\code{evaluationFrequency} .}
+\item{evaluationFrequency}{Specifies how often the anomaly detector is to run and look for anomalies. Set this value according to the frequency that the log group receives new logs. For example, if the log group receives new log events every 10 minutes, then 15 minutes might be a good setting for \code{evaluationFrequency} .}
 
-\item{filterPattern}{You can use this parameter to limit the anomaly detection model to
-examine only log events that match the pattern you specify here. For
-more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html}{Filter and Pattern Syntax}.}
+\item{filterPattern}{You can use this parameter to limit the anomaly detection model to examine only log events that match the pattern you specify here. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html}{Filter and Pattern Syntax}.}
 
-\item{kmsKeyId}{Optionally assigns a KMS key to secure this anomaly detector and its
-findings. If a key is assigned, the anomalies found and the model used
-by this detector are encrypted at rest with the key. If a key is
-assigned to an anomaly detector, a user must have permissions for both
-this key and for the anomaly detector to retrieve information about the
-anomalies that it finds.
+\item{kmsKeyId}{Optionally assigns a KMS key to secure this anomaly detector and its findings. If a key is assigned, the anomalies found and the model used by this detector are encrypted at rest with the key. If a key is assigned to an anomaly detector, a user must have permissions for both this key and for the anomaly detector to retrieve information about the anomalies that it finds.
 
-For more information about using a KMS key and to see the required IAM
-policy, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/LogsAnomalyDetection-KMS.html}{Use a KMS key with an anomaly detector}.}
+Make sure the value provided is a valid KMS key ARN. For more information about using a KMS key and to see the required IAM policy, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/LogsAnomalyDetection-KMS.html}{Use a KMS key with an anomaly detector}.}
 
-\item{anomalyVisibilityTime}{The number of days to have visibility on an anomaly. After this time
-period has elapsed for an anomaly, it will be automatically baselined
-and the anomaly detector will treat new occurrences of a similar anomaly
-as normal. Therefore, if you do not correct the cause of an anomaly
-during the time period specified in \code{anomalyVisibilityTime}, it will be
-considered normal going forward and will not be detected as an anomaly.}
+\item{anomalyVisibilityTime}{The number of days to have visibility on an anomaly. After this time period has elapsed for an anomaly, it will be automatically baselined and the anomaly detector will treat new occurrences of a similar anomaly as normal. Therefore, if you do not correct the cause of an anomaly during the time period specified in \code{anomalyVisibilityTime}, it will be considered normal going forward and will not be detected as an anomaly.}
 
 \item{tags}{An optional list of key-value pairs to associate with the resource.
 

@@ -8,10 +8,9 @@ account}
 cloudwatchlogs_describe_delivery_sources(nextToken = NULL, limit = NULL)
 }
 \arguments{
-\item{nextToken}{}
+\item{nextToken}{The token for the next set of items to return. The token expires after 24 hours.}
 
-\item{limit}{Optionally specify the maximum number of delivery sources to return in
-the response.}
+\item{limit}{Optionally specify the maximum number of delivery sources to return in the response.}
 }
 \description{
 Retrieves a list of the delivery sources that have been created in the account.

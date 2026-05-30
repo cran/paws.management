@@ -14,11 +14,9 @@ licensemanagerlinuxsubscriptions_list_registered_subscription_providers(
 \arguments{
 \item{MaxResults}{The maximum items to return in a request.}
 
-\item{NextToken}{A token to specify where to start paginating. This is the nextToken from
-a previously truncated response.}
+\item{NextToken}{A token to specify where to start paginating. This is the nextToken from a previously truncated response.}
 
-\item{SubscriptionProviderSources}{To filter your results, specify which subscription providers to return
-in the list.}
+\item{SubscriptionProviderSources}{To filter your results, specify which subscription providers to return in the list.}
 }
 \description{
 List Bring Your Own License (BYOL) subscription registration resources for your account.

@@ -18,26 +18,15 @@ ssm_describe_parameters(
 
 \item{ParameterFilters}{Filters to limit the request results.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
 \item{Shared}{Lists parameters that are shared with you.
 
-By default when using this option, the command returns parameters that
-have been shared using a standard Resource Access Manager Resource
-Share. In order for a parameter that was shared using the
-\code{\link[=ssm_put_resource_policy]{put_resource_policy}} command to be returned,
-the associated \verb{RAM Resource Share Created From Policy} must have been
-promoted to a standard Resource Share using the RAM
-\href{https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html}{PromoteResourceShareCreatedFromPolicy}
-API operation.
+By default when using this option, the command returns parameters that have been shared using a standard Resource Access Manager Resource Share. In order for a parameter that was shared using the \code{\link[=ssm_put_resource_policy]{put_resource_policy}} command to be returned, the associated \verb{RAM Resource Share Created From Policy} must have been promoted to a standard Resource Share using the RAM \href{https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html}{PromoteResourceShareCreatedFromPolicy} API operation.
 
-For more information about sharing parameters, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-shared-parameters.html}{Working with shared parameters}
-in the \emph{Amazon Web Services Systems Manager User Guide}.}
+For more information about sharing parameters, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-shared-parameters.html}{Working with shared parameters} in the \emph{Amazon Web Services Systems Manager User Guide}.}
 }
 \description{
 Lists the parameters in your Amazon Web Services account or the parameters shared with you when you enable the \href{https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_DescribeParameters.html#systemsmanager-DescribeParameters-request-Shared}{Shared} option.

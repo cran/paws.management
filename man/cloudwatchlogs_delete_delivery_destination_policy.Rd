@@ -7,8 +7,7 @@
 cloudwatchlogs_delete_delivery_destination_policy(deliveryDestinationName)
 }
 \arguments{
-\item{deliveryDestinationName}{[required] The name of the delivery destination that you want to delete the policy
-for.}
+\item{deliveryDestinationName}{[required] The name of the delivery destination that you want to delete the policy for.}
 }
 \description{
 Deletes a delivery destination policy. For more information about these policies, see \code{\link[=cloudwatchlogs_put_delivery_destination_policy]{put_delivery_destination_policy}}.

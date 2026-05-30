@@ -18,17 +18,11 @@ resourcegroups_update_group(
 
 \item{Group}{The name or the ARN of the resource group to update.}
 
-\item{Description}{The new description that you want to update the resource group with.
-Descriptions can contain letters, numbers, hyphens, underscores,
-periods, and spaces.}
+\item{Description}{The new description that you want to update the resource group with. Descriptions can contain letters, numbers, hyphens, underscores, periods, and spaces.}
 
-\item{Criticality}{The critical rank of the application group on a scale of 1 to 10, with a
-rank of 1 being the most critical, and a rank of 10 being least
-critical.}
+\item{Criticality}{The critical rank of the application group on a scale of 1 to 10, with a rank of 1 being the most critical, and a rank of 10 being least critical.}
 
-\item{Owner}{A name, email address or other identifier for the person or group who is
-considered as the owner of this application group within your
-organization.}
+\item{Owner}{A name, email address or other identifier for the person or group who is considered as the owner of this application group within your organization.}
 
 \item{DisplayName}{The name of the application group, which you can change at any time.}
 }

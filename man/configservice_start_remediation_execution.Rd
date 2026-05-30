@@ -8,11 +8,9 @@ last known remediation configuration}
 configservice_start_remediation_execution(ConfigRuleName, ResourceKeys)
 }
 \arguments{
-\item{ConfigRuleName}{[required] The list of names of Config rules that you want to run remediation
-execution for.}
+\item{ConfigRuleName}{[required] The list of names of Config rules that you want to run remediation execution for.}
 
-\item{ResourceKeys}{[required] A list of resource keys to be processed with the current request. Each
-element in the list consists of the resource type and resource ID.}
+\item{ResourceKeys}{[required] A list of resource keys to be processed with the current request. Each element in the list consists of the resource type and resource ID.}
 }
 \description{
 Runs an on-demand remediation for the specified Config rules against the last known remediation configuration. It runs an execution against the current state of your resources. Remediation execution is asynchronous.

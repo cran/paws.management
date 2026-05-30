@@ -25,8 +25,7 @@ We suggest that extension names adhere to the following patterns:
 \item For Hooks, \verb{MyCompany::Testing::MyTestHook}.
 }
 
-The following organization namespaces are reserved and can't be used in
-your extension names:
+The following organization namespaces are reserved and can't be used in your extension names:
 \itemize{
 \item \code{Alexa}
 \item \code{AMZN}
@@ -36,46 +35,21 @@ your extension names:
 \item \code{Dev}
 }}
 
-\item{SchemaHandlerPackage}{[required] A URL to the S3 bucket containing the extension project package that
-contains the necessary files for the extension you want to register.
+\item{SchemaHandlerPackage}{[required] A URL to the S3 bucket that contains the extension project package that contains the necessary files for the extension you want to register.
 
-For information about generating a schema handler package for the
-extension you want to register, see
-\href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-cli-submit.html}{submit}
-in the \emph{CloudFormation Command Line Interface (CLI) User Guide}.
+For information about generating a schema handler package for the extension you want to register, see \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-cli-submit.html}{submit} in the \emph{CloudFormation Command Line Interface (CLI) User Guide}.
 
-The user registering the extension must be able to access the package in
-the S3 bucket. That's, the user needs to have
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
-permissions for the schema handler package. For more information, see
-\href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazons3.html}{Actions, Resources, and Condition Keys for Amazon S3}
-in the \emph{Identity and Access Management User Guide}.}
+The user registering the extension must be able to access the package in the S3 bucket. That's, the user needs to have \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject} permissions for the schema handler package. For more information, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazons3.html}{Actions, Resources, and Condition Keys for Amazon S3} in the \emph{Identity and Access Management User Guide}.}
 
 \item{LoggingConfig}{Specifies logging configuration information for an extension.}
 
-\item{ExecutionRoleArn}{The Amazon Resource Name (ARN) of the IAM role for CloudFormation to
-assume when invoking the extension.
+\item{ExecutionRoleArn}{The Amazon Resource Name (ARN) of the IAM role for CloudFormation to assume when invoking the extension.
 
-For CloudFormation to assume the specified execution role, the role must
-contain a trust relationship with the CloudFormation service principal
-(\code{resources.cloudformation.amazonaws.com}). For more information about
-adding trust relationships, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage.html#roles-managingrole_edit-trust-policy}{Modifying a role trust policy}
-in the \emph{Identity and Access Management User Guide}.
+For CloudFormation to assume the specified execution role, the role must contain a trust relationship with the CloudFormation service principal (\code{resources.cloudformation.amazonaws.com}). For more information about adding trust relationships, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage.html#roles-managingrole_edit-trust-policy}{Modifying a role trust policy} in the \emph{Identity and Access Management User Guide}.
 
-If your extension calls Amazon Web Services APIs in any of its handlers,
-you must create an \emph{\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM execution role}} that includes the necessary permissions to call
-those Amazon Web Services APIs, and provision that execution role in
-your account. When CloudFormation needs to invoke the resource type
-handler, CloudFormation assumes this execution role to create a
-temporary session token, which it then passes to the resource type
-handler, thereby supplying your resource type with the appropriate
-credentials.}
+If your extension calls Amazon Web Services APIs in any of its handlers, you must create an \emph{\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM execution role}} that includes the necessary permissions to call those Amazon Web Services APIs, and provision that execution role in your account. When CloudFormation needs to invoke the resource type handler, CloudFormation assumes this execution role to create a temporary session token, which it then passes to the resource type handler, thereby supplying your resource type with the appropriate credentials.}
 
-\item{ClientRequestToken}{A unique identifier that acts as an idempotency key for this
-registration request. Specifying a client request token prevents
-CloudFormation from generating more than one version of an extension
-from the same registration request, even if the request is submitted
-multiple times.}
+\item{ClientRequestToken}{A unique identifier that acts as an idempotency key for this registration request. Specifying a client request token prevents CloudFormation from generating more than one version of an extension from the same registration request, even if the request is submitted multiple times.}
 }
 \description{
 Registers an extension with the CloudFormation service. Registering an extension makes it available for use in CloudFormation templates in your Amazon Web Services account, and includes:

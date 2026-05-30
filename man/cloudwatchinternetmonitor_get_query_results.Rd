@@ -15,11 +15,9 @@ cloudwatchinternetmonitor_get_query_results(
 \arguments{
 \item{MonitorName}{[required] The name of the monitor to return data for.}
 
-\item{QueryId}{[required] The ID of the query that you want to return data results for. A
-\code{QueryId} is an internally-generated identifier for a specific query.}
+\item{QueryId}{[required] The ID of the query that you want to return data results for. A \code{QueryId} is an internally-generated identifier for a specific query.}
 
-\item{NextToken}{The token for the next set of results. You receive this token from a
-previous call.}
+\item{NextToken}{The token for the next set of results. You receive this token from a previous call.}
 
 \item{MaxResults}{The number of query results that you want to return with this call.}
 }

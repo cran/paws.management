@@ -11,22 +11,13 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/supportapp_create_slack_channel_configuration/](https://www.paws-r-sdk.com/docs/supportapp_create_slack_channel_configuration/) for full documentation.
 #'
-#' @param channelId &#91;required&#93; The channel ID in Slack. This ID identifies a channel within a Slack
-#' workspace.
-#' @param channelName The name of the Slack channel that you configure for the Amazon Web
-#' Services Support App.
-#' @param channelRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that you want to use to
-#' perform operations on Amazon Web Services. For more information, see
-#' [Managing access to the Amazon Web Services Support
-#' App](https://docs.aws.amazon.com/awssupport/latest/user/support-app-permissions.html)
-#' in the *Amazon Web Services Support User Guide*.
-#' @param notifyOnAddCorrespondenceToCase Whether you want to get notified when a support case has a new
-#' correspondence.
-#' @param notifyOnCaseSeverity &#91;required&#93; The case severity for a support case that you want to receive
-#' notifications.
+#' @param channelId &#91;required&#93; The channel ID in Slack. This ID identifies a channel within a Slack workspace.
+#' @param channelName The name of the Slack channel that you configure for the Amazon Web Services Support App.
+#' @param channelRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that you want to use to perform operations on Amazon Web Services. For more information, see [Managing access to the Amazon Web Services Support App](https://docs.aws.amazon.com/awssupport/latest/user/support-app-permissions.html) in the *Amazon Web Services Support User Guide*.
+#' @param notifyOnAddCorrespondenceToCase Whether you want to get notified when a support case has a new correspondence.
+#' @param notifyOnCaseSeverity &#91;required&#93; The case severity for a support case that you want to receive notifications.
 #' 
-#' If you specify `high` or `all`, you must specify `true` for at least one
-#' of the following parameters:
+#' If you specify `high` or `all`, you must specify `true` for at least one of the following parameters:
 #' 
 #' -   `notifyOnAddCorrespondenceToCase`
 #' 
@@ -42,13 +33,10 @@ NULL
 #' 
 #' -   `notifyOnResolveCase`
 #' 
-#' If you don't specify these parameters in your request, they default to
-#' `false`.
-#' @param notifyOnCreateOrReopenCase Whether you want to get notified when a support case is created or
-#' reopened.
+#' If you don't specify these parameters in your request, they default to `false`.
+#' @param notifyOnCreateOrReopenCase Whether you want to get notified when a support case is created or reopened.
 #' @param notifyOnResolveCase Whether you want to get notified when a support case is resolved.
-#' @param teamId &#91;required&#93; The team ID in Slack. This ID uniquely identifies a Slack workspace,
-#' such as `T012ABCDEFG`.
+#' @param teamId &#91;required&#93; The team ID in Slack. This ID uniquely identifies a Slack workspace, such as `T012ABCDEFG`.
 #'
 #' @keywords internal
 #'
@@ -111,10 +99,8 @@ supportapp_delete_account_alias <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/supportapp_delete_slack_channel_configuration/](https://www.paws-r-sdk.com/docs/supportapp_delete_slack_channel_configuration/) for full documentation.
 #'
-#' @param channelId &#91;required&#93; The channel ID in Slack. This ID identifies a channel within a Slack
-#' workspace.
-#' @param teamId &#91;required&#93; The team ID in Slack. This ID uniquely identifies a Slack workspace,
-#' such as `T012ABCDEFG`.
+#' @param channelId &#91;required&#93; The channel ID in Slack. This ID identifies a channel within a Slack workspace.
+#' @param teamId &#91;required&#93; The team ID in Slack. This ID uniquely identifies a Slack workspace, such as `T012ABCDEFG`.
 #'
 #' @keywords internal
 #'
@@ -146,8 +132,7 @@ supportapp_delete_slack_channel_configuration <- function(channelId, teamId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/supportapp_delete_slack_workspace_configuration/](https://www.paws-r-sdk.com/docs/supportapp_delete_slack_workspace_configuration/) for full documentation.
 #'
-#' @param teamId &#91;required&#93; The team ID in Slack. This ID uniquely identifies a Slack workspace,
-#' such as `T012ABCDEFG`.
+#' @param teamId &#91;required&#93; The team ID in Slack. This ID uniquely identifies a Slack workspace, such as `T012ABCDEFG`.
 #'
 #' @keywords internal
 #'
@@ -210,11 +195,7 @@ supportapp_get_account_alias <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/supportapp_list_slack_channel_configurations/](https://www.paws-r-sdk.com/docs/supportapp_list_slack_channel_configurations/) for full documentation.
 #'
-#' @param nextToken If the results of a search are large, the API only returns a portion of
-#' the results and includes a `nextToken` pagination token in the response.
-#' To retrieve the next batch of results, reissue the search request and
-#' include the returned token. When the API returns the last set of
-#' results, the response doesn't include a pagination token value.
+#' @param nextToken If the results of a search are large, the API only returns a portion of the results and includes a `nextToken` pagination token in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When the API returns the last set of results, the response doesn't include a pagination token value.
 #'
 #' @keywords internal
 #'
@@ -246,11 +227,7 @@ supportapp_list_slack_channel_configurations <- function(nextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/supportapp_list_slack_workspace_configurations/](https://www.paws-r-sdk.com/docs/supportapp_list_slack_workspace_configurations/) for full documentation.
 #'
-#' @param nextToken If the results of a search are large, the API only returns a portion of
-#' the results and includes a `nextToken` pagination token in the response.
-#' To retrieve the next batch of results, reissue the search request and
-#' include the returned token. When the API returns the last set of
-#' results, the response doesn't include a pagination token value.
+#' @param nextToken If the results of a search are large, the API only returns a portion of the results and includes a `nextToken` pagination token in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When the API returns the last set of results, the response doesn't include a pagination token value.
 #'
 #' @keywords internal
 #'
@@ -313,9 +290,7 @@ supportapp_put_account_alias <- function(accountAlias) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/supportapp_register_slack_workspace_for_organization/](https://www.paws-r-sdk.com/docs/supportapp_register_slack_workspace_for_organization/) for full documentation.
 #'
-#' @param teamId &#91;required&#93; The team ID in Slack. This ID uniquely identifies a Slack workspace,
-#' such as `T012ABCDEFG`. Specify the Slack workspace that you want to use
-#' for your organization.
+#' @param teamId &#91;required&#93; The team ID in Slack. This ID uniquely identifies a Slack workspace, such as `T012ABCDEFG`. Specify the Slack workspace that you want to use for your organization.
 #'
 #' @keywords internal
 #'
@@ -347,21 +322,13 @@ supportapp_register_slack_workspace_for_organization <- function(teamId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/supportapp_update_slack_channel_configuration/](https://www.paws-r-sdk.com/docs/supportapp_update_slack_channel_configuration/) for full documentation.
 #'
-#' @param channelId &#91;required&#93; The channel ID in Slack. This ID identifies a channel within a Slack
-#' workspace.
+#' @param channelId &#91;required&#93; The channel ID in Slack. This ID identifies a channel within a Slack workspace.
 #' @param channelName The Slack channel name that you want to update.
-#' @param channelRoleArn The Amazon Resource Name (ARN) of an IAM role that you want to use to
-#' perform operations on Amazon Web Services. For more information, see
-#' [Managing access to the Amazon Web Services Support
-#' App](https://docs.aws.amazon.com/awssupport/latest/user/support-app-permissions.html)
-#' in the *Amazon Web Services Support User Guide*.
-#' @param notifyOnAddCorrespondenceToCase Whether you want to get notified when a support case has a new
-#' correspondence.
-#' @param notifyOnCaseSeverity The case severity for a support case that you want to receive
-#' notifications.
+#' @param channelRoleArn The Amazon Resource Name (ARN) of an IAM role that you want to use to perform operations on Amazon Web Services. For more information, see [Managing access to the Amazon Web Services Support App](https://docs.aws.amazon.com/awssupport/latest/user/support-app-permissions.html) in the *Amazon Web Services Support User Guide*.
+#' @param notifyOnAddCorrespondenceToCase Whether you want to get notified when a support case has a new correspondence.
+#' @param notifyOnCaseSeverity The case severity for a support case that you want to receive notifications.
 #' 
-#' If you specify `high` or `all`, at least one of the following parameters
-#' must be `true`:
+#' If you specify `high` or `all`, at least one of the following parameters must be `true`:
 #' 
 #' -   `notifyOnAddCorrespondenceToCase`
 #' 
@@ -369,8 +336,7 @@ supportapp_register_slack_workspace_for_organization <- function(teamId) {
 #' 
 #' -   `notifyOnResolveCase`
 #' 
-#' If you specify `none`, any of the following parameters that you specify
-#' in your request must be `false`:
+#' If you specify `none`, any of the following parameters that you specify in your request must be `false`:
 #' 
 #' -   `notifyOnAddCorrespondenceToCase`
 #' 
@@ -378,13 +344,10 @@ supportapp_register_slack_workspace_for_organization <- function(teamId) {
 #' 
 #' -   `notifyOnResolveCase`
 #' 
-#' If you don't specify these parameters in your request, the Amazon Web
-#' Services Support App uses the current values by default.
-#' @param notifyOnCreateOrReopenCase Whether you want to get notified when a support case is created or
-#' reopened.
+#' If you don't specify these parameters in your request, the Amazon Web Services Support App uses the current values by default.
+#' @param notifyOnCreateOrReopenCase Whether you want to get notified when a support case is created or reopened.
 #' @param notifyOnResolveCase Whether you want to get notified when a support case is resolved.
-#' @param teamId &#91;required&#93; The team ID in Slack. This ID uniquely identifies a Slack workspace,
-#' such as `T012ABCDEFG`.
+#' @param teamId &#91;required&#93; The team ID in Slack. This ID uniquely identifies a Slack workspace, such as `T012ABCDEFG`.
 #'
 #' @keywords internal
 #'

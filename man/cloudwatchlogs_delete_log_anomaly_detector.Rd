@@ -7,10 +7,7 @@
 cloudwatchlogs_delete_log_anomaly_detector(anomalyDetectorArn)
 }
 \arguments{
-\item{anomalyDetectorArn}{[required] The ARN of the anomaly detector to delete. You can find the ARNs of log
-anomaly detectors in your account by using the
-\code{\link[=cloudwatchlogs_list_log_anomaly_detectors]{list_log_anomaly_detectors}}
-operation.}
+\item{anomalyDetectorArn}{[required] The ARN of the anomaly detector to delete. You can find the ARNs of log anomaly detectors in your account by using the \code{\link[=cloudwatchlogs_list_log_anomaly_detectors]{list_log_anomaly_detectors}} operation.}
 }
 \description{
 Deletes the specified CloudWatch Logs anomaly detector.

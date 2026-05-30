@@ -26,16 +26,11 @@ configservice_get_aggregate_compliance_details_by_config_rule(
 
 \item{ComplianceType}{The resource compliance status.
 
-For the \code{GetAggregateComplianceDetailsByConfigRuleRequest} data type,
-Config supports only the \code{COMPLIANT} and \code{NON_COMPLIANT}. Config does
-not support the \code{NOT_APPLICABLE} and \code{INSUFFICIENT_DATA} values.}
+For the \code{GetAggregateComplianceDetailsByConfigRuleRequest} data type, Config supports only the \code{COMPLIANT} and \code{NON_COMPLIANT}. Config does not support the \code{NOT_APPLICABLE} and \code{INSUFFICIENT_DATA} values.}
 
-\item{Limit}{The maximum number of evaluation results returned on each page. The
-default is 50. You cannot specify a number greater than 100. If you
-specify 0, Config uses the default.}
+\item{Limit}{The maximum number of evaluation results returned on each page. The default is 50. You cannot specify a number greater than 100. If you specify 0, Config uses the default.}
 
-\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
-the next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get the next page of results in a paginated response.}
 }
 \description{
 Returns the evaluation results for the specified Config rule for a specific resource in a rule. The results indicate which Amazon Web Services resources were evaluated by the rule, when each resource was last evaluated, and whether each resource complies with the rule.

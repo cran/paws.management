@@ -13,12 +13,9 @@ configservice_list_resource_evaluations(
 \arguments{
 \item{Filters}{Returns a \code{ResourceEvaluationFilters} object.}
 
-\item{Limit}{The maximum number of evaluations returned on each page. The default is
-10. You cannot specify a number greater than 100. If you specify 0,
-Config uses the default.}
+\item{Limit}{The maximum number of evaluations returned on each page. The default is 10. You cannot specify a number greater than 100. If you specify 0, Config uses the default.}
 
-\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
-the next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get the next page of results in a paginated response.}
 }
 \description{
 Returns a list of proactive resource evaluations.

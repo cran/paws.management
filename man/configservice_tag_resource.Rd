@@ -8,8 +8,7 @@ ResourceArn}
 configservice_tag_resource(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that identifies the resource for which to
-list the tags. The following resources are supported:
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that identifies the resource for which to list the tags. The following resources are supported:
 \itemize{
 \item \code{ConfigurationRecorder}
 \item \code{ConfigRule}

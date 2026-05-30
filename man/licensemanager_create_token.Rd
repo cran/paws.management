@@ -13,17 +13,13 @@ licensemanager_create_token(
 )
 }
 \arguments{
-\item{LicenseArn}{[required] Amazon Resource Name (ARN) of the license. The ARN is mapped to the aud
-claim of the JWT token.}
+\item{LicenseArn}{[required] Amazon Resource Name (ARN) of the license. The ARN is mapped to the aud claim of the JWT token.}
 
-\item{RoleArns}{Amazon Resource Name (ARN) of the IAM roles to embed in the token.
-License Manager does not check whether the roles are in use.}
+\item{RoleArns}{Amazon Resource Name (ARN) of the IAM roles to embed in the token. License Manager does not check whether the roles are in use.}
 
-\item{ExpirationInDays}{Token expiration, in days, counted from token creation. The default is
-365 days.}
+\item{ExpirationInDays}{Token expiration, in days, counted from token creation. The default is 365 days.}
 
-\item{TokenProperties}{Data specified by the caller to be included in the JWT token. The data
-is mapped to the amr claim of the JWT token.}
+\item{TokenProperties}{Data specified by the caller to be included in the JWT token. The data is mapped to the amr claim of the JWT token.}
 
 \item{ClientToken}{[required] Idempotency token, valid for 10 minutes.}
 }

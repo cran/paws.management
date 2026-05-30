@@ -23,8 +23,7 @@ licensemanager_checkout_license(
 
 \item{Entitlements}{[required] License entitlements.}
 
-\item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+\item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.}
 
 \item{Beneficiary}{License beneficiary.}
 

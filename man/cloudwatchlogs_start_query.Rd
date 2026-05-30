@@ -2,7 +2,8 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_start_query}
 \alias{cloudwatchlogs_start_query}
-\title{Starts a query of one or more log groups using CloudWatch Logs Insights}
+\title{Starts a query of one or more log groups or data sources using
+CloudWatch Logs Insights}
 \usage{
 cloudwatchlogs_start_query(
   queryLanguage = NULL,
@@ -16,60 +17,36 @@ cloudwatchlogs_start_query(
 )
 }
 \arguments{
-\item{queryLanguage}{Specify the query language to use for this query. The options are Logs
-Insights QL, OpenSearch PPL, and OpenSearch SQL. For more information
-about the query languages that CloudWatch Logs supports, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData_Languages.html}{Supported query languages}.}
+\item{queryLanguage}{Specify the query language to use for this query. The options are Logs Insights QL, OpenSearch PPL, and OpenSearch SQL. For more information about the query languages that CloudWatch Logs supports, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData_Languages.html}{Supported query languages}.}
 
 \item{logGroupName}{The log group on which to perform the query.
 
-A \code{\link[=cloudwatchlogs_start_query]{start_query}} operation must include
-exactly one of the following parameters: \code{logGroupName},
-\code{logGroupNames}, or \code{logGroupIdentifiers}. The exception is queries
-using the OpenSearch Service SQL query language, where you specify the
-log group names inside the \code{querystring} instead of here.}
+A \code{\link[=cloudwatchlogs_start_query]{start_query}} operation must include exactly one of the following parameters: \code{logGroupName}, \code{logGroupNames}, or \code{logGroupIdentifiers}. The exception is queries using the OpenSearch Service SQL query language, where you specify the log group names inside the \code{querystring} instead of here.}
 
-\item{logGroupNames}{The list of log groups to be queried. You can include up to 50 log
-groups.
+\item{logGroupNames}{The list of log groups to be queried. You can include up to 50 log groups.
 
-A \code{\link[=cloudwatchlogs_start_query]{start_query}} operation must include
-exactly one of the following parameters: \code{logGroupName},
-\code{logGroupNames}, or \code{logGroupIdentifiers}. The exception is queries
-using the OpenSearch Service SQL query language, where you specify the
-log group names inside the \code{querystring} instead of here.}
+A \code{\link[=cloudwatchlogs_start_query]{start_query}} operation must include exactly one of the following parameters: \code{logGroupName}, \code{logGroupNames}, or \code{logGroupIdentifiers}. The exception is queries using the OpenSearch Service SQL query language, where you specify the log group names inside the \code{querystring} instead of here.}
 
 \item{logGroupIdentifiers}{The list of log groups to query. You can include up to 50 log groups.
 
-You can specify them by the log group name or ARN. If a log group that
-you're querying is in a source account and you're using a monitoring
-account, you must specify the ARN of the log group here. The query
-definition must also be defined in the monitoring account.
+You can specify them by the log group name or ARN. If a log group that you're querying is in a source account and you're using a monitoring account, you must specify the ARN of the log group here. The query definition must also be defined in the monitoring account.
 
-If you specify an ARN, use the format
-arn:aws:logs:\emph{region}:\emph{account-id}:log-group:\emph{log_group_name} Don't
-include an * at the end.
+If you specify an ARN, use the format arn:aws:logs:\emph{region}:\emph{account-id}:log-group:\emph{log_group_name} Don't include an * at the end.
 
-A \code{\link[=cloudwatchlogs_start_query]{start_query}} operation must include
-exactly one of the following parameters: \code{logGroupName},
-\code{logGroupNames}, or \code{logGroupIdentifiers}. The exception is queries
-using the OpenSearch Service SQL query language, where you specify the
-log group names inside the \code{querystring} instead of here.}
+A \code{\link[=cloudwatchlogs_start_query]{start_query}} operation must include exactly one of the following parameters: \code{logGroupName}, \code{logGroupNames}, or \code{logGroupIdentifiers}. The exception is queries using the OpenSearch Service SQL query language, where you specify the log group names inside the \code{querystring} instead of here.}
 
-\item{startTime}{[required] The beginning of the time range to query. The range is inclusive, so the
-specified start time is included in the query. Specified as epoch time,
-the number of seconds since \verb{January 1, 1970, 00:00:00 UTC}.}
+\item{startTime}{[required] The beginning of the time range to query. The range is inclusive, so the specified start time is included in the query. Specified as epoch time, the number of seconds since \verb{January 1, 1970, 00:00:00 UTC}.}
 
-\item{endTime}{[required] The end of the time range to query. The range is inclusive, so the
-specified end time is included in the query. Specified as epoch time,
-the number of seconds since \verb{January 1, 1970, 00:00:00 UTC}.}
+\item{endTime}{[required] The end of the time range to query. The range is inclusive, so the specified end time is included in the query. Specified as epoch time, the number of seconds since \verb{January 1, 1970, 00:00:00 UTC}.}
 
 \item{queryString}{[required] The query string to use. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html}{CloudWatch Logs Insights Query Syntax}.}
 
-\item{limit}{The maximum number of log events to return in the query. If the query
-string uses the \code{fields} command, only the specified fields and their
-values are returned. The default is 10,000.}
+\item{limit}{The maximum number of log events to return in the query. If the query string uses the \code{fields} command, only the specified fields and their values are returned. The default is 10,000.
+
+The maximum value is 100,000.}
 }
 \description{
-Starts a query of one or more log groups using CloudWatch Logs Insights. You specify the log groups and time range to query and the query string to use.
+Starts a query of one or more log groups or data sources using CloudWatch Logs Insights. You specify the log groups or data sources and time range to query and the query string to use. You can query up to 10 data sources in a single query.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_start_query/} for full documentation.
 }

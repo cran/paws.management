@@ -11,16 +11,11 @@ ssm_describe_inventory_deletions(
 )
 }
 \arguments{
-\item{DeletionId}{Specify the delete inventory ID for which you want information. This ID
-was returned by the \code{\link[=ssm_delete_inventory]{delete_inventory}}
-operation.}
+\item{DeletionId}{Specify the delete inventory ID for which you want information. This ID was returned by the \code{\link[=ssm_delete_inventory]{delete_inventory}} operation.}
 
-\item{NextToken}{A token to start the list. Use this token to get the next set of
-results.}
+\item{NextToken}{A token to start the list. Use this token to get the next set of results.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 }
 \description{
 Describes a specific delete inventory operation.

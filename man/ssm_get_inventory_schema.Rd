@@ -16,17 +16,11 @@ ssm_get_inventory_schema(
 \arguments{
 \item{TypeName}{The type of inventory item to return.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{Aggregator}{Returns inventory schemas that support aggregation. For example, this
-call returns the \code{AWS:InstanceInformation} type, because it supports
-aggregation based on the \code{PlatformName}, \code{PlatformType}, and
-\code{PlatformVersion} attributes.}
+\item{Aggregator}{Returns inventory schemas that support aggregation. For example, this call returns the \code{AWS:InstanceInformation} type, because it supports aggregation based on the \code{PlatformName}, \code{PlatformType}, and \code{PlatformVersion} attributes.}
 
 \item{SubType}{Returns the sub-type schema for a specified inventory type.}
 }

@@ -6,23 +6,22 @@
 \usage{
 autoscaling_describe_auto_scaling_groups(
   AutoScalingGroupNames = NULL,
+  IncludeInstances = NULL,
   NextToken = NULL,
   MaxRecords = NULL,
   Filters = NULL
 )
 }
 \arguments{
-\item{AutoScalingGroupNames}{The names of the Auto Scaling groups. By default, you can only specify
-up to 50 names. You can optionally increase this limit using the
-\code{MaxRecords} property.
+\item{AutoScalingGroupNames}{The names of the Auto Scaling groups. By default, you can only specify up to 50 names. You can optionally increase this limit using the \code{MaxRecords} property.
 
 If you omit this property, all Auto Scaling groups are described.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{IncludeInstances}{Specifies whether to include information about Amazon EC2 instances in the response. When set to \code{true} (default), the response includes instance details.}
 
-\item{MaxRecords}{The maximum number of items to return with this call. The default value
-is \code{50} and the maximum value is \code{100}.}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
+
+\item{MaxRecords}{The maximum number of items to return with this call. The default value is \code{50} and the maximum value is \code{100}.}
 
 \item{Filters}{One or more filters to limit the results based on specific tags.}
 }

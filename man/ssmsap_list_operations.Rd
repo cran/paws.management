@@ -14,10 +14,7 @@ ssmsap_list_operations(
 \arguments{
 \item{ApplicationId}{[required] The ID of the application.}
 
-\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned nextToken
-value. If you do not specify a value for MaxResults, the request returns
-50 items per page by default.}
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value. If you do not specify a value for MaxResults, the request returns 50 items per page by default.}
 
 \item{NextToken}{The token for the next page of results.}
 

@@ -4,10 +4,14 @@
 \alias{cloudwatchlogs_get_query_results}
 \title{Returns the results from the specified query}
 \usage{
-cloudwatchlogs_get_query_results(queryId)
+cloudwatchlogs_get_query_results(queryId, nextToken = NULL, maxItems = NULL)
 }
 \arguments{
 \item{queryId}{[required] The ID number of the query.}
+
+\item{nextToken}{The token for the next set of items to return. The token expires after 1 hour.}
+
+\item{maxItems}{The maximum number of log events to return in the response. The maximum is 10,000 log events per request. You can retrieve up to 100,000 log event results from a query by paginating with the \code{nextToken}.}
 }
 \description{
 Returns the results from the specified query.

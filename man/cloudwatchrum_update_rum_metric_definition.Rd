@@ -16,21 +16,13 @@ cloudwatchrum_update_rum_metric_definition(
 \arguments{
 \item{AppMonitorName}{[required] The name of the CloudWatch RUM app monitor that sends these metrics.}
 
-\item{Destination}{[required] The destination to send the metrics to. Valid values are \code{CloudWatch}
-and \code{Evidently}. If you specify \code{Evidently}, you must also specify the
-ARN of the CloudWatchEvidently experiment that will receive the metrics
-and an IAM role that has permission to write to the experiment.}
+\item{Destination}{[required] The destination to send the metrics to. Valid values are \code{CloudWatch} and \code{Evidently}. If you specify \code{Evidently}, you must also specify the ARN of the CloudWatchEvidently experiment that will receive the metrics and an IAM role that has permission to write to the experiment.}
 
-\item{DestinationArn}{This parameter is required if \code{Destination} is \code{Evidently}. If
-\code{Destination} is \code{CloudWatch}, do not use this parameter.
+\item{DestinationArn}{This parameter is required if \code{Destination} is \code{Evidently}. If \code{Destination} is \code{CloudWatch}, do not use this parameter.
 
-This parameter specifies the ARN of the Evidently experiment that is to
-receive the metrics. You must have already defined this experiment as a
-valid destination. For more information, see
-\code{\link[=cloudwatchrum_put_rum_metrics_destination]{put_rum_metrics_destination}}.}
+This parameter specifies the ARN of the Evidently experiment that is to receive the metrics. You must have already defined this experiment as a valid destination. For more information, see \code{\link[=cloudwatchrum_put_rum_metrics_destination]{put_rum_metrics_destination}}.}
 
-\item{MetricDefinition}{[required] A structure that contains the new definition that you want to use for
-this metric.}
+\item{MetricDefinition}{[required] A structure that contains the new definition that you want to use for this metric.}
 
 \item{MetricDefinitionId}{[required] The ID of the metric definition to update.}
 }

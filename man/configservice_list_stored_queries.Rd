@@ -8,8 +8,7 @@ single Amazon Web Services Region}
 configservice_list_stored_queries(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{NextToken}{The nextToken string returned in a previous request that you use to
-request the next page of results in a paginated response.}
+\item{NextToken}{The nextToken string returned in a previous request that you use to request the next page of results in a paginated response.}
 
 \item{MaxResults}{The maximum number of results to be returned with a single call.}
 }

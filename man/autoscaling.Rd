@@ -55,12 +55,11 @@ Operations section.
 \description{
 Amazon EC2 Auto Scaling
 
-Amazon EC2 Auto Scaling is designed to automatically launch and
-terminate EC2 instances based on user-defined scaling policies,
-scheduled actions, and health checks.
+The \code{\link[=autoscaling_describe_auto_scaling_groups]{describe_auto_scaling_groups}} API operation might be throttled when retrieving details for an Auto Scaling group that contains many instances. By default, this operation returns details for all instances in the group. To help prevent throttling, you can set the \code{IncludeInstances} parameter to \code{false} to exclude instance details from the response.
 
-For more information, see the \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html}{Amazon EC2 Auto Scaling User Guide}
-and the \href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/Welcome.html}{Amazon EC2 Auto Scaling API Reference}.
+Amazon EC2 Auto Scaling is designed to automatically launch and terminate EC2 instances based on user-defined scaling policies, scheduled actions, and health checks.
+
+For more information, see the \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html}{Amazon EC2 Auto Scaling User Guide} and the \href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/Welcome.html}{Amazon EC2 Auto Scaling API Reference}.
 }
 \section{Service syntax}{
 
@@ -102,7 +101,7 @@ and the \href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/Welcome.h
 
 \tabular{ll}{
 \link[=autoscaling_attach_instances]{attach_instances} \tab Attaches one or more EC2 instances to the specified Auto Scaling group\cr
-\link[=autoscaling_attach_load_balancers]{attach_load_balancers} \tab This API operation is superseded by https://docs\cr
+\link[=autoscaling_attach_load_balancers]{attach_load_balancers} \tab This API operation is superseded by AttachTrafficSources, which can attach multiple traffic sources types\cr
 \link[=autoscaling_attach_load_balancer_target_groups]{attach_load_balancer_target_groups} \tab This API operation is superseded by AttachTrafficSources, which can attach multiple traffic sources types\cr
 \link[=autoscaling_attach_traffic_sources]{attach_traffic_sources} \tab Attaches one or more traffic sources to the specified Auto Scaling group\cr
 \link[=autoscaling_batch_delete_scheduled_action]{batch_delete_scheduled_action} \tab Deletes one or more scheduled actions for the specified Auto Scaling group\cr
@@ -151,6 +150,7 @@ and the \href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/Welcome.h
 \link[=autoscaling_execute_policy]{execute_policy} \tab Executes the specified policy\cr
 \link[=autoscaling_exit_standby]{exit_standby} \tab Moves the specified instances out of the standby state\cr
 \link[=autoscaling_get_predictive_scaling_forecast]{get_predictive_scaling_forecast} \tab Retrieves the forecast data for a predictive scaling policy\cr
+\link[=autoscaling_launch_instances]{launch_instances} \tab Launches a specified number of instances in an Auto Scaling group\cr
 \link[=autoscaling_put_lifecycle_hook]{put_lifecycle_hook} \tab Creates or updates a lifecycle hook for the specified Auto Scaling group\cr
 \link[=autoscaling_put_notification_configuration]{put_notification_configuration} \tab Configures an Auto Scaling group to send notifications when specified events take place\cr
 \link[=autoscaling_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a scaling policy for an Auto Scaling group\cr

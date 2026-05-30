@@ -11,20 +11,15 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_add_tags/](https://www.paws-r-sdk.com/docs/cloudtrail_add_tags/) for full documentation.
 #'
-#' @param ResourceId &#91;required&#93; Specifies the ARN of the trail, event data store, dashboard, or channel
-#' to which one or more tags will be added.
+#' @param ResourceId &#91;required&#93; Specifies the ARN of the trail, event data store, dashboard, or channel to which one or more tags will be added.
 #' 
-#' The format of a trail ARN is:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
+#' The format of a trail ARN is: `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #' 
-#' The format of an event data store ARN is:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
+#' The format of an event data store ARN is: `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
 #' 
-#' The format of a dashboard ARN is:
-#' `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
+#' The format of a dashboard ARN is: `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
 #' 
-#' The format of a channel ARN is:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
+#' The format of a channel ARN is: `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
 #' @param TagsList &#91;required&#93; Contains a list of tags, up to a limit of 50
 #'
 #' @keywords internal
@@ -57,10 +52,8 @@ cloudtrail_add_tags <- function(ResourceId, TagsList) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_cancel_query/](https://www.paws-r-sdk.com/docs/cloudtrail_cancel_query/) for full documentation.
 #'
-#' @param EventDataStore The ARN (or the ID suffix of the ARN) of an event data store on which
-#' the specified query is running.
-#' @param QueryId &#91;required&#93; The ID of the query that you want to cancel. The `QueryId` comes from
-#' the response of a [`start_query`][cloudtrail_start_query] operation.
+#' @param EventDataStore The ARN (or the ID suffix of the ARN) of an event data store on which the specified query is running.
+#' @param QueryId &#91;required&#93; The ID of the query that you want to cancel. The `QueryId` comes from the response of a [`start_query`][cloudtrail_start_query] operation.
 #' @param EventDataStoreOwnerAccountId The account ID of the event data store owner.
 #'
 #' @keywords internal
@@ -94,19 +87,11 @@ cloudtrail_cancel_query <- function(EventDataStore = NULL, QueryId, EventDataSto
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_create_channel/](https://www.paws-r-sdk.com/docs/cloudtrail_create_channel/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the channel.
-#' @param Source &#91;required&#93; The name of the partner or external event source. You cannot change this
-#' name after you create the channel. A maximum of one channel is allowed
-#' per source.
+#' @param Source &#91;required&#93; The name of the partner or external event source. You cannot change this name after you create the channel. A maximum of one channel is allowed per source.
 #' 
-#' A source can be either `Custom` for all valid non-Amazon Web Services
-#' events, or the name of a partner event source. For information about the
-#' source names for available partners, see [Additional information about
-#' integration
-#' partners](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-event-data-store-integration.html#cloudtrail-lake-partner-information)
-#' in the CloudTrail User Guide.
-#' @param Destinations &#91;required&#93; One or more event data stores to which events arriving through a channel
-#' will be logged.
-#' @param Tags 
+#' A source can be either `Custom` for all valid non-Amazon Web Services events, or the name of a partner event source. For information about the source names for available partners, see [Additional information about integration partners](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-event-data-store-integration.html#cloudtrail-lake-partner-information) in the CloudTrail User Guide.
+#' @param Destinations &#91;required&#93; One or more event data stores to which events arriving through a channel will be logged.
+#' @param Tags A list of tags.
 #'
 #' @keywords internal
 #'
@@ -139,19 +124,13 @@ cloudtrail_create_channel <- function(Name, Source, Destinations, Tags = NULL) {
 #'
 #' @param Name &#91;required&#93; The name of the dashboard. The name must be unique to your account.
 #' 
-#' To create the Highlights dashboard, the name must be
-#' `AWSCloudTrail-Highlights`.
+#' To create the Highlights dashboard, the name must be `AWSCloudTrail-Highlights`.
 #' @param RefreshSchedule The refresh schedule configuration for the dashboard.
 #' 
-#' To create the Highlights dashboard, you must set a refresh schedule and
-#' set the `Status` to `ENABLED`. The `Unit` for the refresh schedule must
-#' be `HOURS` and the `Value` must be `6`.
-#' @param TagsList 
-#' @param TerminationProtectionEnabled Specifies whether termination protection is enabled for the dashboard.
-#' If termination protection is enabled, you cannot delete the dashboard
-#' until termination protection is disabled.
-#' @param Widgets An array of widgets for a custom dashboard. A custom dashboard can have
-#' a maximum of ten widgets.
+#' To create the Highlights dashboard, you must set a refresh schedule and set the `Status` to `ENABLED`. The `Unit` for the refresh schedule must be `HOURS` and the `Value` must be `6`.
+#' @param TagsList A list of tags.
+#' @param TerminationProtectionEnabled Specifies whether termination protection is enabled for the dashboard. If termination protection is enabled, you cannot delete the dashboard until termination protection is disabled.
+#' @param Widgets An array of widgets for a custom dashboard. A custom dashboard can have a maximum of ten widgets.
 #' 
 #' You do not need to specify widgets for the Highlights dashboard.
 #'
@@ -185,68 +164,27 @@ cloudtrail_create_dashboard <- function(Name, RefreshSchedule = NULL, TagsList =
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_create_event_data_store/](https://www.paws-r-sdk.com/docs/cloudtrail_create_event_data_store/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the event data store.
-#' @param AdvancedEventSelectors The advanced event selectors to use to select the events for the data
-#' store. You can configure up to five advanced event selectors for each
-#' event data store.
+#' @param AdvancedEventSelectors The advanced event selectors to use to select the events for the data store. You can configure up to five advanced event selectors for each event data store.
 #' 
-#' For more information about how to use advanced event selectors to log
-#' CloudTrail events, see [Log events by using advanced event
-#' selectors](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#creating-data-event-selectors-advanced)
-#' in the CloudTrail User Guide.
+#' For more information about how to use advanced event selectors to log CloudTrail events, see [Log events by using advanced event selectors](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#creating-data-event-selectors-advanced) in the CloudTrail User Guide.
 #' 
-#' For more information about how to use advanced event selectors to
-#' include Config configuration items in your event data store, see [Create
-#' an event data store for Config configuration
-#' items](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/lake-eds-cli.html#lake-cli-create-eds-config)
-#' in the CloudTrail User Guide.
+#' For more information about how to use advanced event selectors to include Config configuration items in your event data store, see [Create an event data store for Config configuration items](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/lake-eds-cli.html#lake-cli-create-eds-config) in the CloudTrail User Guide.
 #' 
-#' For more information about how to use advanced event selectors to
-#' include events outside of Amazon Web Services events in your event data
-#' store, see [Create an integration to log events from outside Amazon Web
-#' Services](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/lake-integrations-cli.html#lake-cli-create-integration)
-#' in the CloudTrail User Guide.
-#' @param MultiRegionEnabled Specifies whether the event data store includes events from all Regions,
-#' or only from the Region in which the event data store is created.
-#' @param OrganizationEnabled Specifies whether an event data store collects events logged for an
-#' organization in Organizations.
-#' @param RetentionPeriod The retention period of the event data store, in days. If `BillingMode`
-#' is set to `EXTENDABLE_RETENTION_PRICING`, you can set a retention period
-#' of up to 3653 days, the equivalent of 10 years. If `BillingMode` is set
-#' to `FIXED_RETENTION_PRICING`, you can set a retention period of up to
-#' 2557 days, the equivalent of seven years.
+#' For more information about how to use advanced event selectors to include events outside of Amazon Web Services events in your event data store, see [Create an integration to log events from outside Amazon Web Services](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/lake-integrations-cli.html#lake-cli-create-integration) in the CloudTrail User Guide.
+#' @param MultiRegionEnabled Specifies whether the event data store includes events from all Regions, or only from the Region in which the event data store is created.
+#' @param OrganizationEnabled Specifies whether an event data store collects events logged for an organization in Organizations.
+#' @param RetentionPeriod The retention period of the event data store, in days. If `BillingMode` is set to `EXTENDABLE_RETENTION_PRICING`, you can set a retention period of up to 3653 days, the equivalent of 10 years. If `BillingMode` is set to `FIXED_RETENTION_PRICING`, you can set a retention period of up to 2557 days, the equivalent of seven years.
 #' 
-#' CloudTrail Lake determines whether to retain an event by checking if the
-#' `eventTime` of the event is within the specified retention period. For
-#' example, if you set a retention period of 90 days, CloudTrail will
-#' remove events when the `eventTime` is older than 90 days.
+#' CloudTrail Lake determines whether to retain an event by checking if the `eventTime` of the event is within the specified retention period. For example, if you set a retention period of 90 days, CloudTrail will remove events when the `eventTime` is older than 90 days.
 #' 
-#' If you plan to copy trail events to this event data store, we recommend
-#' that you consider both the age of the events that you want to copy as
-#' well as how long you want to keep the copied events in your event data
-#' store. For example, if you copy trail events that are 5 years old and
-#' specify a retention period of 7 years, the event data store will retain
-#' those events for two years.
-#' @param TerminationProtectionEnabled Specifies whether termination protection is enabled for the event data
-#' store. If termination protection is enabled, you cannot delete the event
-#' data store until termination protection is disabled.
-#' @param TagsList 
-#' @param KmsKeyId Specifies the KMS key ID to use to encrypt the events delivered by
-#' CloudTrail. The value can be an alias name prefixed by `alias/`, a fully
-#' specified ARN to an alias, a fully specified ARN to a key, or a globally
-#' unique identifier.
+#' If you plan to copy trail events to this event data store, we recommend that you consider both the age of the events that you want to copy as well as how long you want to keep the copied events in your event data store. For example, if you copy trail events that are 5 years old and specify a retention period of 7 years, the event data store will retain those events for two years.
+#' @param TerminationProtectionEnabled Specifies whether termination protection is enabled for the event data store. If termination protection is enabled, you cannot delete the event data store until termination protection is disabled.
+#' @param TagsList A list of tags.
+#' @param KmsKeyId Specifies the KMS key ID to use to encrypt the events delivered by CloudTrail. The value can be an alias name prefixed by `alias/`, a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.
 #' 
-#' Disabling or deleting the KMS key, or removing CloudTrail permissions on
-#' the key, prevents CloudTrail from logging events to the event data
-#' store, and prevents users from querying the data in the event data store
-#' that was encrypted with the key. After you associate an event data store
-#' with a KMS key, the KMS key cannot be removed or changed. Before you
-#' disable or delete a KMS key that you are using with an event data store,
-#' delete or back up your event data store.
+#' Disabling or deleting the KMS key, or removing CloudTrail permissions on the key, prevents CloudTrail from logging events to the event data store, and prevents users from querying the data in the event data store that was encrypted with the key. After you associate an event data store with a KMS key, the KMS key cannot be removed or changed. Before you disable or delete a KMS key that you are using with an event data store, delete or back up your event data store.
 #' 
-#' CloudTrail also supports KMS multi-Region keys. For more information
-#' about multi-Region keys, see [Using multi-Region
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html)
-#' in the *Key Management Service Developer Guide*.
+#' CloudTrail also supports KMS multi-Region keys. For more information about multi-Region keys, see [Using multi-Region keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html) in the *Key Management Service Developer Guide*.
 #' 
 #' Examples:
 #' 
@@ -257,30 +195,18 @@ cloudtrail_create_dashboard <- function(Name, RefreshSchedule = NULL, TagsList =
 #' -   `arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012`
 #' 
 #' -   `12345678-1234-1234-1234-123456789012`
-#' @param StartIngestion Specifies whether the event data store should start ingesting live
-#' events. The default is true.
-#' @param BillingMode The billing mode for the event data store determines the cost for
-#' ingesting events and the default and maximum retention period for the
-#' event data store.
+#' @param StartIngestion Specifies whether the event data store should start ingesting live events. The default is true.
+#' @param BillingMode The billing mode for the event data store determines the cost for ingesting events and the default and maximum retention period for the event data store.
 #' 
 #' The following are the possible values:
 #' 
-#' -   `EXTENDABLE_RETENTION_PRICING` - This billing mode is generally
-#'     recommended if you want a flexible retention period of up to 3653
-#'     days (about 10 years). The default retention period for this billing
-#'     mode is 366 days.
+#' -   `EXTENDABLE_RETENTION_PRICING` - This billing mode is generally recommended if you want a flexible retention period of up to 3653 days (about 10 years). The default retention period for this billing mode is 366 days.
 #' 
-#' -   `FIXED_RETENTION_PRICING` - This billing mode is recommended if you
-#'     expect to ingest more than 25 TB of event data per month and need a
-#'     retention period of up to 2557 days (about 7 years). The default
-#'     retention period for this billing mode is 2557 days.
+#' -   `FIXED_RETENTION_PRICING` - This billing mode is recommended if you expect to ingest more than 25 TB of event data per month and need a retention period of up to 2557 days (about 7 years). The default retention period for this billing mode is 2557 days.
 #' 
 #' The default value is `EXTENDABLE_RETENTION_PRICING`.
 #' 
-#' For more information about CloudTrail pricing, see [CloudTrail
-#' Pricing](https://aws.amazon.com/cloudtrail/pricing/) and [Managing
-#' CloudTrail Lake
-#' costs](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-manage-costs.html).
+#' For more information about CloudTrail pricing, see [CloudTrail Pricing](https://aws.amazon.com/cloudtrail/pricing/) and [Managing CloudTrail Lake costs](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-manage-costs.html).
 #'
 #' @keywords internal
 #'
@@ -312,65 +238,32 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_create_trail/](https://www.paws-r-sdk.com/docs/cloudtrail_create_trail/) for full documentation.
 #'
-#' @param Name &#91;required&#93; Specifies the name of the trail. The name must meet the following
-#' requirements:
+#' @param Name &#91;required&#93; Specifies the name of the trail. The name must meet the following requirements:
 #' 
-#' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-#'     underscores (_), or dashes (-)
+#' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)
 #' 
 #' -   Start with a letter or number, and end with a letter or number
 #' 
 #' -   Be between 3 and 128 characters
 #' 
-#' -   Have no adjacent periods, underscores or dashes. Names like
-#'     `my-_namespace` and `my--namespace` are not valid.
+#' -   Have no adjacent periods, underscores or dashes. Names like `my-_namespace` and `my--namespace` are not valid.
 #' 
 #' -   Not be in IP address format (for example, 192.168.5.4)
-#' @param S3BucketName &#91;required&#93; Specifies the name of the Amazon S3 bucket designated for publishing log
-#' files. For information about bucket naming rules, see [Bucket naming
-#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html)
-#' in the *Amazon Simple Storage Service User Guide*.
-#' @param S3KeyPrefix Specifies the Amazon S3 key prefix that comes after the name of the
-#' bucket you have designated for log file delivery. For more information,
-#' see [Finding Your CloudTrail Log
-#' Files](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/get-and-view-cloudtrail-log-files.html#cloudtrail-find-log-files).
-#' The maximum length is 200 characters.
-#' @param SnsTopicName Specifies the name of the Amazon SNS topic defined for notification of
-#' log file delivery. The maximum length is 256 characters.
-#' @param IncludeGlobalServiceEvents Specifies whether the trail is publishing events from global services
-#' such as IAM to the log files.
-#' @param IsMultiRegionTrail Specifies whether the trail is created in the current Region or in all
-#' Regions. The default is false, which creates a trail only in the Region
-#' where you are signed in. As a best practice, consider creating trails
-#' that log events in all Regions.
-#' @param EnableLogFileValidation Specifies whether log file integrity validation is enabled. The default
-#' is false.
+#' @param S3BucketName &#91;required&#93; Specifies the name of the Amazon S3 bucket designated for publishing log files. For information about bucket naming rules, see [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html) in the *Amazon Simple Storage Service User Guide*.
+#' @param S3KeyPrefix Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see [Finding Your CloudTrail Log Files](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/get-and-view-cloudtrail-log-files.html#cloudtrail-find-log-files). The maximum length is 200 characters.
+#' @param SnsTopicName Specifies the name or ARN of the Amazon SNS topic defined for notification of log file delivery. The maximum length is 256 characters.
+#' @param IncludeGlobalServiceEvents Specifies whether the trail is publishing events from global services such as IAM to the log files.
+#' @param IsMultiRegionTrail Specifies whether the trail is created in the current Region or in all Regions. The default is false, which creates a trail only in the Region where you are signed in. As a best practice, consider creating trails that log events in all Regions.
+#' @param EnableLogFileValidation Specifies whether log file integrity validation is enabled. The default is false.
 #' 
-#' When you disable log file integrity validation, the chain of digest
-#' files is broken after one hour. CloudTrail does not create digest files
-#' for log files that were delivered during a period in which log file
-#' integrity validation was disabled. For example, if you enable log file
-#' integrity validation at noon on January 1, disable it at noon on January
-#' 2, and re-enable it at noon on January 10, digest files will not be
-#' created for the log files delivered from noon on January 2 to noon on
-#' January 10. The same applies whenever you stop CloudTrail logging or
-#' delete a trail.
-#' @param CloudWatchLogsLogGroupArn Specifies a log group name using an Amazon Resource Name (ARN), a unique
-#' identifier that represents the log group to which CloudTrail logs will
-#' be delivered. You must use a log group that exists in your account.
+#' When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail does not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.
+#' @param CloudWatchLogsLogGroupArn Specifies a log group name using an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered. You must use a log group that exists in your account.
 #' 
 #' Not required unless you specify `CloudWatchLogsRoleArn`.
-#' @param CloudWatchLogsRoleArn Specifies the role for the CloudWatch Logs endpoint to assume to write
-#' to a user's log group. You must use a role that exists in your account.
-#' @param KmsKeyId Specifies the KMS key ID to use to encrypt the logs delivered by
-#' CloudTrail. The value can be an alias name prefixed by `alias/`, a fully
-#' specified ARN to an alias, a fully specified ARN to a key, or a globally
-#' unique identifier.
+#' @param CloudWatchLogsRoleArn Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group. You must use a role that exists in your account.
+#' @param KmsKeyId Specifies the KMS key ID to use to encrypt the logs and digest files delivered by CloudTrail. The value can be an alias name prefixed by `alias/`, a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.
 #' 
-#' CloudTrail also supports KMS multi-Region keys. For more information
-#' about multi-Region keys, see [Using multi-Region
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html)
-#' in the *Key Management Service Developer Guide*.
+#' CloudTrail also supports KMS multi-Region keys. For more information about multi-Region keys, see [Using multi-Region keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html) in the *Key Management Service Developer Guide*.
 #' 
 #' Examples:
 #' 
@@ -381,13 +274,8 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #' -   `arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012`
 #' 
 #' -   `12345678-1234-1234-1234-123456789012`
-#' @param IsOrganizationTrail Specifies whether the trail is created for all accounts in an
-#' organization in Organizations, or only for the current Amazon Web
-#' Services account. The default is false, and cannot be true unless the
-#' call is made on behalf of an Amazon Web Services account that is the
-#' management account or delegated administrator account for an
-#' organization in Organizations.
-#' @param TagsList 
+#' @param IsOrganizationTrail Specifies whether the trail is created for all accounts in an organization in Organizations, or only for the current Amazon Web Services account. The default is false, and cannot be true unless the call is made on behalf of an Amazon Web Services account that is the management account or delegated administrator account for an organization in Organizations.
+#' @param TagsList A list of tags.
 #'
 #' @keywords internal
 #'
@@ -513,17 +401,13 @@ cloudtrail_delete_event_data_store <- function(EventDataStore) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_delete_resource_policy/](https://www.paws-r-sdk.com/docs/cloudtrail_delete_resource_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudTrail event data store,
-#' dashboard, or channel you're deleting the resource-based policy from.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudTrail event data store, dashboard, or channel you're deleting the resource-based policy from.
 #' 
-#' Example event data store ARN format:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
+#' Example event data store ARN format: `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
 #' 
-#' Example dashboard ARN format:
-#' `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
+#' Example dashboard ARN format: `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
 #' 
-#' Example channel ARN format:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
+#' Example channel ARN format: `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
 #'
 #' @keywords internal
 #'
@@ -554,9 +438,7 @@ cloudtrail_delete_resource_policy <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_delete_trail/](https://www.paws-r-sdk.com/docs/cloudtrail_delete_trail/) for full documentation.
 #'
-#' @param Name &#91;required&#93; Specifies the name or the CloudTrail ARN of the trail to be deleted. The
-#' following is the format of a trail ARN.
-#' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
+#' @param Name &#91;required&#93; Specifies the name or the CloudTrail ARN of the trail to be deleted. The following is the format of a trail ARN. `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #'
 #' @keywords internal
 #'
@@ -588,8 +470,7 @@ cloudtrail_delete_trail <- function(Name) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_deregister_organization_delegated_admin/](https://www.paws-r-sdk.com/docs/cloudtrail_deregister_organization_delegated_admin/) for full documentation.
 #'
-#' @param DelegatedAdminAccountId &#91;required&#93; A delegated administrator account ID. This is a member account in an
-#' organization that is currently designated as a delegated administrator.
+#' @param DelegatedAdminAccountId &#91;required&#93; A delegated administrator account ID. This is a member account in an organization that is currently designated as a delegated administrator.
 #'
 #' @keywords internal
 #'
@@ -621,8 +502,7 @@ cloudtrail_deregister_organization_delegated_admin <- function(DelegatedAdminAcc
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_describe_query/](https://www.paws-r-sdk.com/docs/cloudtrail_describe_query/) for full documentation.
 #'
-#' @param EventDataStore The ARN (or the ID suffix of the ARN) of an event data store on which
-#' the specified query was run.
+#' @param EventDataStore The ARN (or the ID suffix of the ARN) of an event data store on which the specified query was run.
 #' @param QueryId The query ID.
 #' @param QueryAlias The alias that identifies a query template.
 #' @param RefreshId The ID of the dashboard refresh.
@@ -658,31 +538,18 @@ cloudtrail_describe_query <- function(EventDataStore = NULL, QueryId = NULL, Que
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_describe_trails/](https://www.paws-r-sdk.com/docs/cloudtrail_describe_trails/) for full documentation.
 #'
-#' @param trailNameList Specifies a list of trail names, trail ARNs, or both, of the trails to
-#' describe. The format of a trail ARN is:
+#' @param trailNameList Specifies a list of trail names, trail ARNs, or both, of the trails to describe. The format of a trail ARN is:
 #' 
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #' 
-#' If an empty list is specified, information for the trail in the current
-#' Region is returned.
+#' If an empty list is specified, information for the trail in the current Region is returned.
 #' 
-#' -   If an empty list is specified and `IncludeShadowTrails` is false,
-#'     then information for all trails in the current Region is returned.
+#' -   If an empty list is specified and `IncludeShadowTrails` is false, then information for all trails in the current Region is returned.
 #' 
-#' -   If an empty list is specified and IncludeShadowTrails is null or
-#'     true, then information for all trails in the current Region and any
-#'     associated shadow trails in other Regions is returned.
+#' -   If an empty list is specified and IncludeShadowTrails is null or true, then information for all trails in the current Region and any associated shadow trails in other Regions is returned.
 #' 
-#' If one or more trail names are specified, information is returned only
-#' if the names match the names of trails belonging only to the current
-#' Region and current account. To return information about a trail in
-#' another Region, you must specify its trail ARN.
-#' @param includeShadowTrails Specifies whether to include shadow trails in the response. A shadow
-#' trail is the replication in a Region of a trail that was created in a
-#' different Region, or in the case of an organization trail, the
-#' replication of an organization trail in member accounts. If you do not
-#' include shadow trails, organization trails in a member account and
-#' Region replication trails will not be returned. The default is true.
+#' If one or more trail names are specified, information is returned only if the names match the names of trails belonging only to the current Region and current account. To return information about a trail in another Region, you must specify its trail ARN.
+#' @param includeShadowTrails Specifies whether to include shadow trails in the response. A shadow trail is the replication in a Region of a trail that was created in a different Region, or in the case of an organization trail, the replication of an organization trail in member accounts. If you do not include shadow trails, organization trails in a member account and Region replication trails will not be returned. The default is true.
 #'
 #' @keywords internal
 #'
@@ -713,8 +580,7 @@ cloudtrail_describe_trails <- function(trailNameList = NULL, includeShadowTrails
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_disable_federation/](https://www.paws-r-sdk.com/docs/cloudtrail_disable_federation/) for full documentation.
 #'
-#' @param EventDataStore &#91;required&#93; The ARN (or ID suffix of the ARN) of the event data store for which you
-#' want to disable Lake query federation.
+#' @param EventDataStore &#91;required&#93; The ARN (or ID suffix of the ARN) of the event data store for which you want to disable Lake query federation.
 #'
 #' @keywords internal
 #'
@@ -745,13 +611,8 @@ cloudtrail_disable_federation <- function(EventDataStore) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_enable_federation/](https://www.paws-r-sdk.com/docs/cloudtrail_enable_federation/) for full documentation.
 #'
-#' @param EventDataStore &#91;required&#93; The ARN (or ID suffix of the ARN) of the event data store for which you
-#' want to enable Lake query federation.
-#' @param FederationRoleArn &#91;required&#93; The ARN of the federation role to use for the event data store. Amazon
-#' Web Services services like Lake Formation use this federation role to
-#' access data for the federated event data store. The federation role must
-#' exist in your account and provide the [required minimum
-#' permissions](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-federation.html#query-federation-permissions-role).
+#' @param EventDataStore &#91;required&#93; The ARN (or ID suffix of the ARN) of the event data store for which you want to enable Lake query federation.
+#' @param FederationRoleArn &#91;required&#93; The ARN of the federation role to use for the event data store. Amazon Web Services services like Lake Formation use this federation role to access data for the federated event data store. The federation role must exist in your account and provide the [required minimum permissions](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-federation.html#query-federation-permissions-role).
 #'
 #' @keywords internal
 #'
@@ -782,12 +643,8 @@ cloudtrail_enable_federation <- function(EventDataStore, FederationRoleArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_generate_query/](https://www.paws-r-sdk.com/docs/cloudtrail_generate_query/) for full documentation.
 #'
-#' @param EventDataStores &#91;required&#93; The ARN (or ID suffix of the ARN) of the event data store that you want
-#' to query. You can only specify one event data store.
-#' @param Prompt &#91;required&#93; The prompt that you want to use to generate the query. The prompt must
-#' be in English. For example prompts, see [Example
-#' prompts](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/lake-query-generator.html#lake-query-generator-examples)
-#' in the *CloudTrail* user guide.
+#' @param EventDataStores &#91;required&#93; The ARN (or ID suffix of the ARN) of the event data store that you want to query. You can only specify one event data store.
+#' @param Prompt &#91;required&#93; The prompt that you want to use to generate the query. The prompt must be in English. For example prompts, see [Example prompts](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/lake-query-generator.html#lake-query-generator-examples) in the *CloudTrail* user guide.
 #'
 #' @keywords internal
 #'
@@ -873,6 +730,39 @@ cloudtrail_get_dashboard <- function(DashboardId) {
 }
 .cloudtrail$operations$get_dashboard <- cloudtrail_get_dashboard
 
+#' Retrieves the current event configuration settings for the specified
+#' event data store or trail
+#'
+#' @description
+#' Retrieves the current event configuration settings for the specified event data store or trail. The response includes maximum event size configuration, the context key selectors configured for the event data store, and any aggregation settings configured for the trail.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudtrail_get_event_configuration/](https://www.paws-r-sdk.com/docs/cloudtrail_get_event_configuration/) for full documentation.
+#'
+#' @param TrailName The name of the trail for which you want to retrieve event configuration settings.
+#' @param EventDataStore The Amazon Resource Name (ARN) or ID suffix of the ARN of the event data store for which you want to retrieve event configuration settings.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_get_event_configuration
+cloudtrail_get_event_configuration <- function(TrailName = NULL, EventDataStore = NULL) {
+  op <- new_operation(
+    name = "GetEventConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudtrail$get_event_configuration_input(TrailName = TrailName, EventDataStore = EventDataStore)
+  output <- .cloudtrail$get_event_configuration_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$get_event_configuration <- cloudtrail_get_event_configuration
+
 #' Returns information about an event data store specified as either an ARN
 #' or the ID portion of the ARN
 #'
@@ -881,8 +771,7 @@ cloudtrail_get_dashboard <- function(DashboardId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_get_event_data_store/](https://www.paws-r-sdk.com/docs/cloudtrail_get_event_data_store/) for full documentation.
 #'
-#' @param EventDataStore &#91;required&#93; The ARN (or ID suffix of the ARN) of the event data store about which
-#' you want information.
+#' @param EventDataStore &#91;required&#93; The ARN (or ID suffix of the ARN) of the event data store about which you want information.
 #'
 #' @keywords internal
 #'
@@ -914,18 +803,15 @@ cloudtrail_get_event_data_store <- function(EventDataStore) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_get_event_selectors/](https://www.paws-r-sdk.com/docs/cloudtrail_get_event_selectors/) for full documentation.
 #'
-#' @param TrailName &#91;required&#93; Specifies the name of the trail or trail ARN. If you specify a trail
-#' name, the string must meet the following requirements:
+#' @param TrailName &#91;required&#93; Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:
 #' 
-#' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-#'     underscores (_), or dashes (-)
+#' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)
 #' 
 #' -   Start with a letter or number, and end with a letter or number
 #' 
 #' -   Be between 3 and 128 characters
 #' 
-#' -   Have no adjacent periods, underscores or dashes. Names like
-#'     `my-_namespace` and `my--namespace` are not valid.
+#' -   Have no adjacent periods, underscores or dashes. Names like `my-_namespace` and `my--namespace` are not valid.
 #' 
 #' -   Not be in IP address format (for example, 192.168.5.4)
 #' 
@@ -990,22 +876,19 @@ cloudtrail_get_import <- function(ImportId) {
 #' configured for your trail or event data store
 #'
 #' @description
-#' Describes the settings for the Insights event selectors that you configured for your trail or event data store. [`get_insight_selectors`][cloudtrail_get_insight_selectors] shows if CloudTrail Insights event logging is enabled on the trail or event data store, and if it is, which Insights types are enabled. If you run [`get_insight_selectors`][cloudtrail_get_insight_selectors] on a trail or event data store that does not have Insights events enabled, the operation throws the exception `InsightNotEnabledException`
+#' Describes the settings for the Insights event selectors that you configured for your trail or event data store. [`get_insight_selectors`][cloudtrail_get_insight_selectors] shows if CloudTrail Insights logging is enabled and which Insights types are configured with corresponding event categories. If you run [`get_insight_selectors`][cloudtrail_get_insight_selectors] on a trail or event data store that does not have Insights events enabled, the operation throws the exception `InsightNotEnabledException`
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_get_insight_selectors/](https://www.paws-r-sdk.com/docs/cloudtrail_get_insight_selectors/) for full documentation.
 #'
-#' @param TrailName Specifies the name of the trail or trail ARN. If you specify a trail
-#' name, the string must meet the following requirements:
+#' @param TrailName Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:
 #' 
-#' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-#'     underscores (_), or dashes (-)
+#' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)
 #' 
 #' -   Start with a letter or number, and end with a letter or number
 #' 
 #' -   Be between 3 and 128 characters
 #' 
-#' -   Have no adjacent periods, underscores or dashes. Names like
-#'     `my-_namespace` and `my--namespace` are not valid.
+#' -   Have no adjacent periods, underscores or dashes. Names like `my-_namespace` and `my--namespace` are not valid.
 #' 
 #' -   Not be in IP address format (for example, 192.168.5.4)
 #' 
@@ -1014,8 +897,7 @@ cloudtrail_get_import <- function(ImportId) {
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #' 
 #' You cannot use this parameter with the `EventDataStore` parameter.
-#' @param EventDataStore Specifies the ARN (or ID suffix of the ARN) of the event data store for
-#' which you want to get Insights selectors.
+#' @param EventDataStore Specifies the ARN (or ID suffix of the ARN) of the event data store for which you want to get Insights selectors.
 #' 
 #' You cannot use this parameter with the `TrailName` parameter.
 #'
@@ -1048,8 +930,7 @@ cloudtrail_get_insight_selectors <- function(TrailName = NULL, EventDataStore = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_get_query_results/](https://www.paws-r-sdk.com/docs/cloudtrail_get_query_results/) for full documentation.
 #'
-#' @param EventDataStore The ARN (or ID suffix of the ARN) of the event data store against which
-#' the query was run.
+#' @param EventDataStore The ARN (or ID suffix of the ARN) of the event data store against which the query was run.
 #' @param QueryId &#91;required&#93; The ID of the query for which you want to get results.
 #' @param NextToken A token you can use to get the next page of query results.
 #' @param MaxQueryResults The maximum number of query results to display on a single page.
@@ -1085,17 +966,13 @@ cloudtrail_get_query_results <- function(EventDataStore = NULL, QueryId, NextTok
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_get_resource_policy/](https://www.paws-r-sdk.com/docs/cloudtrail_get_resource_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudTrail event data store,
-#' dashboard, or channel attached to the resource-based policy.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudTrail event data store, dashboard, or channel attached to the resource-based policy.
 #' 
-#' Example event data store ARN format:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
+#' Example event data store ARN format: `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
 #' 
-#' Example dashboard ARN format:
-#' `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
+#' Example dashboard ARN format: `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
 #' 
-#' Example channel ARN format:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
+#' Example channel ARN format: `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
 #'
 #' @keywords internal
 #'
@@ -1126,8 +1003,7 @@ cloudtrail_get_resource_policy <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_get_trail/](https://www.paws-r-sdk.com/docs/cloudtrail_get_trail/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name or the Amazon Resource Name (ARN) of the trail for which you
-#' want to retrieve settings information.
+#' @param Name &#91;required&#93; The name or the Amazon Resource Name (ARN) of the trail for which you want to retrieve settings information.
 #'
 #' @keywords internal
 #'
@@ -1158,16 +1034,11 @@ cloudtrail_get_trail <- function(Name) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_get_trail_status/](https://www.paws-r-sdk.com/docs/cloudtrail_get_trail_status/) for full documentation.
 #'
-#' @param Name &#91;required&#93; Specifies the name or the CloudTrail ARN of the trail for which you are
-#' requesting status. To get the status of a shadow trail (a replication of
-#' the trail in another Region), you must specify its ARN.
+#' @param Name &#91;required&#93; Specifies the name or the CloudTrail ARN of the trail for which you are requesting status. To get the status of a shadow trail (a replication of the trail in another Region), you must specify its ARN.
 #' 
-#' The following is the format of a trail ARN:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
+#' The following is the format of a trail ARN: `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #' 
-#' If the trail is an organization trail and you are a member account in
-#' the organization in Organizations, you must provide the full ARN of that
-#' trail, and not just the name.
+#' If the trail is an organization trail and you are a member account in the organization in Organizations, you must provide the full ARN of that trail, and not just the name.
 #'
 #' @keywords internal
 #'
@@ -1199,11 +1070,7 @@ cloudtrail_get_trail_status <- function(Name) {
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_list_channels/](https://www.paws-r-sdk.com/docs/cloudtrail_list_channels/) for full documentation.
 #'
 #' @param MaxResults The maximum number of CloudTrail channels to display on a single page.
-#' @param NextToken The token to use to get the next page of results after a previous API
-#' call. This token must be passed in with the same parameters that were
-#' specified in the original call. For example, if the original call
-#' specified an AttributeKey of 'Username' with a value of 'root', the call
-#' with NextToken should include those same parameters.
+#' @param NextToken The token to use to get the next page of results after a previous API call. This token must be passed in with the same parameters that were specified in the original call. For example, if the original call specified an AttributeKey of 'Username' with a value of 'root', the call with NextToken should include those same parameters.
 #'
 #' @keywords internal
 #'
@@ -1363,6 +1230,43 @@ cloudtrail_list_imports <- function(MaxResults = NULL, Destination = NULL, Impor
 }
 .cloudtrail$operations$list_imports <- cloudtrail_list_imports
 
+#' Returns Insights events generated on a trail that logs data events
+#'
+#' @description
+#' Returns Insights events generated on a trail that logs data events. You can list Insights events that occurred in a Region within the last 90 days.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudtrail_list_insights_data/](https://www.paws-r-sdk.com/docs/cloudtrail_list_insights_data/) for full documentation.
+#'
+#' @param InsightSource &#91;required&#93; The Amazon Resource Name(ARN) of the trail for which you want to retrieve Insights events.
+#' @param DataType &#91;required&#93; Specifies the category of events returned. To fetch Insights events, specify `InsightsEvents` as the value of `DataType`
+#' @param Dimensions Contains a map of dimensions. Currently the map can contain only one item.
+#' @param StartTime Specifies that only events that occur after or at the specified time are returned. If the specified start time is after the specified end time, an error is returned.
+#' @param EndTime Specifies that only events that occur before or at the specified time are returned. If the specified end time is before the specified start time, an error is returned.
+#' @param MaxResults The number of events to return. Possible values are 1 through 50. The default is 50.
+#' @param NextToken The token to use to get the next page of results after a previous API call. This token must be passed in with the same parameters that were specified in the original call. For example, if the original call specified a EventName as a dimension with `PutObject` as a value, the call with NextToken should include those same parameters.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_list_insights_data
+cloudtrail_list_insights_data <- function(InsightSource, DataType, Dimensions = NULL, StartTime = NULL, EndTime = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListInsightsData",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events"),
+    stream_api = FALSE
+  )
+  input <- .cloudtrail$list_insights_data_input(InsightSource = InsightSource, DataType = DataType, Dimensions = Dimensions, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .cloudtrail$list_insights_data_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$list_insights_data <- cloudtrail_list_insights_data
+
 #' Returns Insights metrics data for trails that have enabled Insights
 #'
 #' @description
@@ -1370,48 +1274,30 @@ cloudtrail_list_imports <- function(MaxResults = NULL, Destination = NULL, Impor
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_list_insights_metric_data/](https://www.paws-r-sdk.com/docs/cloudtrail_list_insights_metric_data/) for full documentation.
 #'
-#' @param EventSource &#91;required&#93; The Amazon Web Services service to which the request was made, such as
-#' `iam.amazonaws.com` or `s3.amazonaws.com`.
-#' @param EventName &#91;required&#93; The name of the event, typically the Amazon Web Services API on which
-#' unusual levels of activity were recorded.
-#' @param InsightType &#91;required&#93; The type of CloudTrail Insights event, which is either
-#' `ApiCallRateInsight` or `ApiErrorRateInsight`. The `ApiCallRateInsight`
-#' Insights type analyzes write-only management API calls that are
-#' aggregated per minute against a baseline API call volume. The
-#' `ApiErrorRateInsight` Insights type analyzes management API calls that
-#' result in error codes.
-#' @param ErrorCode Conditionally required if the `InsightType` parameter is set to
-#' `ApiErrorRateInsight`.
+#' @param TrailName The Amazon Resource Name(ARN) or name of the trail for which you want to retrieve Insights metrics data. This parameter should only be provided to fetch Insights metrics data generated on trails logging data events. This parameter is not required for Insights metric data generated on trails logging management events.
+#' @param EventSource &#91;required&#93; The Amazon Web Services service to which the request was made, such as `iam.amazonaws.com` or `s3.amazonaws.com`.
+#' @param EventName &#91;required&#93; The name of the event, typically the Amazon Web Services API on which unusual levels of activity were recorded.
+#' @param InsightType &#91;required&#93; The type of CloudTrail Insights event, which is either `ApiCallRateInsight` or `ApiErrorRateInsight`. The `ApiCallRateInsight` Insights type analyzes write-only management API calls that are aggregated per minute against a baseline API call volume. The `ApiErrorRateInsight` Insights type analyzes management API calls that result in error codes.
+#' @param ErrorCode Conditionally required if the `InsightType` parameter is set to `ApiErrorRateInsight`.
 #' 
-#' If returning metrics for the `ApiErrorRateInsight` Insights type, this
-#' is the error to retrieve data for. For example, `AccessDenied`.
-#' @param StartTime Specifies, in UTC, the start time for time-series data. The value
-#' specified is inclusive; results include data points with the specified
-#' time stamp.
+#' If returning metrics for the `ApiErrorRateInsight` Insights type, this is the error to retrieve data for. For example, `AccessDenied`.
+#' @param StartTime Specifies, in UTC, the start time for time-series data. The value specified is inclusive; results include data points with the specified time stamp.
 #' 
 #' The default is 90 days before the time of request.
-#' @param EndTime Specifies, in UTC, the end time for time-series data. The value
-#' specified is exclusive; results include data points up to the specified
-#' time stamp.
+#' @param EndTime Specifies, in UTC, the end time for time-series data. The value specified is exclusive; results include data points up to the specified time stamp.
 #' 
 #' The default is the time of request.
-#' @param Period Granularity of data to retrieve, in seconds. Valid values are `60`,
-#' `300`, and `3600`. If you specify any other value, you will get an
-#' error. The default is 3600 seconds.
-#' @param DataType Type of data points to return. Valid values are `NonZeroData` and
-#' `FillWithZeros`. The default is `NonZeroData`.
-#' @param MaxResults The maximum number of data points to return. Valid values are integers
-#' from 1 to 21600. The default value is 21600.
-#' @param NextToken Returned if all datapoints can't be returned in a single call. For
-#' example, due to reaching `MaxResults`.
+#' @param Period Granularity of data to retrieve, in seconds. Valid values are `60`, `300`, and `3600`. If you specify any other value, you will get an error. The default is 3600 seconds.
+#' @param DataType Type of data points to return. Valid values are `NonZeroData` and `FillWithZeros`. The default is `NonZeroData`.
+#' @param MaxResults The maximum number of data points to return. Valid values are integers from 1 to 21600. The default value is 21600.
+#' @param NextToken Returned if all datapoints can't be returned in a single call. For example, due to reaching `MaxResults`.
 #' 
-#' Add this parameter to the request to continue retrieving results
-#' starting from the last evaluated point.
+#' Add this parameter to the request to continue retrieving results starting from the last evaluated point.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudtrail_list_insights_metric_data
-cloudtrail_list_insights_metric_data <- function(EventSource, EventName, InsightType, ErrorCode = NULL, StartTime = NULL, EndTime = NULL, Period = NULL, DataType = NULL, MaxResults = NULL, NextToken = NULL) {
+cloudtrail_list_insights_metric_data <- function(TrailName = NULL, EventSource, EventName, InsightType, ErrorCode = NULL, StartTime = NULL, EndTime = NULL, Period = NULL, DataType = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListInsightsMetricData",
     http_method = "POST",
@@ -1420,7 +1306,7 @@ cloudtrail_list_insights_metric_data <- function(EventSource, EventName, Insight
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
-  input <- .cloudtrail$list_insights_metric_data_input(EventSource = EventSource, EventName = EventName, InsightType = InsightType, ErrorCode = ErrorCode, StartTime = StartTime, EndTime = EndTime, Period = Period, DataType = DataType, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .cloudtrail$list_insights_metric_data_input(TrailName = TrailName, EventSource = EventSource, EventName = EventName, InsightType = InsightType, ErrorCode = ErrorCode, StartTime = StartTime, EndTime = EndTime, Period = Period, DataType = DataType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudtrail$list_insights_metric_data_output()
   config <- get_config()
   svc <- .cloudtrail$service(config, op)
@@ -1438,12 +1324,8 @@ cloudtrail_list_insights_metric_data <- function(EventSource, EventName, Insight
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_list_public_keys/](https://www.paws-r-sdk.com/docs/cloudtrail_list_public_keys/) for full documentation.
 #'
-#' @param StartTime Optionally specifies, in UTC, the start of the time range to look up
-#' public keys for CloudTrail digest files. If not specified, the current
-#' time is used, and the current public key is returned.
-#' @param EndTime Optionally specifies, in UTC, the end of the time range to look up
-#' public keys for CloudTrail digest files. If not specified, the current
-#' time is used.
+#' @param StartTime Optionally specifies, in UTC, the start of the time range to look up public keys for CloudTrail digest files. If not specified, the current time is used, and the current public key is returned.
+#' @param EndTime Optionally specifies, in UTC, the end of the time range to look up public keys for CloudTrail digest files. If not specified, the current time is used.
 #' @param NextToken Reserved for future use.
 #'
 #' @keywords internal
@@ -1475,19 +1357,12 @@ cloudtrail_list_public_keys <- function(StartTime = NULL, EndTime = NULL, NextTo
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_list_queries/](https://www.paws-r-sdk.com/docs/cloudtrail_list_queries/) for full documentation.
 #'
-#' @param EventDataStore &#91;required&#93; The ARN (or the ID suffix of the ARN) of an event data store on which
-#' queries were run.
+#' @param EventDataStore &#91;required&#93; The ARN (or the ID suffix of the ARN) of an event data store on which queries were run.
 #' @param NextToken A token you can use to get the next page of results.
 #' @param MaxResults The maximum number of queries to show on a page.
-#' @param StartTime Use with `EndTime` to bound a [`list_queries`][cloudtrail_list_queries]
-#' request, and limit its results to only those queries run within a
-#' specified time period.
-#' @param EndTime Use with `StartTime` to bound a
-#' [`list_queries`][cloudtrail_list_queries] request, and limit its results
-#' to only those queries run within a specified time period.
-#' @param QueryStatus The status of queries that you want to return in results. Valid values
-#' for `QueryStatus` include `QUEUED`, `RUNNING`, `FINISHED`, `FAILED`,
-#' `TIMED_OUT`, or `CANCELLED`.
+#' @param StartTime Use with `EndTime` to bound a [`list_queries`][cloudtrail_list_queries] request, and limit its results to only those queries run within a specified time period.
+#' @param EndTime Use with `StartTime` to bound a [`list_queries`][cloudtrail_list_queries] request, and limit its results to only those queries run within a specified time period.
+#' @param QueryStatus The status of queries that you want to return in results. Valid values for `QueryStatus` include `QUEUED`, `RUNNING`, `FINISHED`, `FAILED`, `TIMED_OUT`, or `CANCELLED`.
 #'
 #' @keywords internal
 #'
@@ -1519,20 +1394,15 @@ cloudtrail_list_queries <- function(EventDataStore, NextToken = NULL, MaxResults
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_list_tags/](https://www.paws-r-sdk.com/docs/cloudtrail_list_tags/) for full documentation.
 #'
-#' @param ResourceIdList &#91;required&#93; Specifies a list of trail, event data store, dashboard, or channel ARNs
-#' whose tags will be listed. The list has a limit of 20 ARNs.
+#' @param ResourceIdList &#91;required&#93; Specifies a list of trail, event data store, dashboard, or channel ARNs whose tags will be listed. The list has a limit of 20 ARNs.
 #' 
-#' Example trail ARN format:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
+#' Example trail ARN format: `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #' 
-#' Example event data store ARN format:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
+#' Example event data store ARN format: `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
 #' 
-#' Example dashboard ARN format:
-#' `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
+#' Example dashboard ARN format: `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
 #' 
-#' Example channel ARN format:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
+#' Example channel ARN format: `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
 #' @param NextToken Reserved for future use.
 #'
 #' @keywords internal
@@ -1564,11 +1434,7 @@ cloudtrail_list_tags <- function(ResourceIdList, NextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_list_trails/](https://www.paws-r-sdk.com/docs/cloudtrail_list_trails/) for full documentation.
 #'
-#' @param NextToken The token to use to get the next page of results after a previous API
-#' call. This token must be passed in with the same parameters that were
-#' specified in the original call. For example, if the original call
-#' specified an AttributeKey of 'Username' with a value of 'root', the call
-#' with NextToken should include those same parameters.
+#' @param NextToken The token to use to get the next page of results after a previous API call. This token must be passed in with the same parameters that were specified in the original call. For example, if the original call specified an AttributeKey of 'Username' with a value of 'root', the call with NextToken should include those same parameters.
 #'
 #' @keywords internal
 #'
@@ -1600,25 +1466,12 @@ cloudtrail_list_trails <- function(NextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_lookup_events/](https://www.paws-r-sdk.com/docs/cloudtrail_lookup_events/) for full documentation.
 #'
-#' @param LookupAttributes Contains a list of lookup attributes. Currently the list can contain
-#' only one item.
-#' @param StartTime Specifies that only events that occur after or at the specified time are
-#' returned. If the specified start time is after the specified end time,
-#' an error is returned.
-#' @param EndTime Specifies that only events that occur before or at the specified time
-#' are returned. If the specified end time is before the specified start
-#' time, an error is returned.
-#' @param EventCategory Specifies the event category. If you do not specify an event category,
-#' events of the category are not returned in the response. For example, if
-#' you do not specify `insight` as the value of `EventCategory`, no
-#' Insights events are returned.
-#' @param MaxResults The number of events to return. Possible values are 1 through 50. The
-#' default is 50.
-#' @param NextToken The token to use to get the next page of results after a previous API
-#' call. This token must be passed in with the same parameters that were
-#' specified in the original call. For example, if the original call
-#' specified an AttributeKey of 'Username' with a value of 'root', the call
-#' with NextToken should include those same parameters.
+#' @param LookupAttributes Contains a list of lookup attributes. Currently the list can contain only one item.
+#' @param StartTime Specifies that only events that occur after or at the specified time are returned. If the specified start time is after the specified end time, an error is returned.
+#' @param EndTime Specifies that only events that occur before or at the specified time are returned. If the specified end time is before the specified start time, an error is returned.
+#' @param EventCategory Specifies the event category. If you do not specify an event category, events of the category are not returned in the response. For example, if you do not specify `insight` as the value of `EventCategory`, no Insights events are returned.
+#' @param MaxResults The number of events to return. Possible values are 1 through 50. The default is 50.
+#' @param NextToken The token to use to get the next page of results after a previous API call. This token must be passed in with the same parameters that were specified in the original call. For example, if the original call specified an AttributeKey of 'Username' with a value of 'root', the call with NextToken should include those same parameters.
 #'
 #' @keywords internal
 #'
@@ -1642,6 +1495,42 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 }
 .cloudtrail$operations$lookup_events <- cloudtrail_lookup_events
 
+#' Updates the event configuration settings for the specified event data
+#' store or trail
+#'
+#' @description
+#' Updates the event configuration settings for the specified event data store or trail. This operation supports updating the maximum event size, adding or modifying context key selectors for event data store, and configuring aggregation settings for the trail.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudtrail_put_event_configuration/](https://www.paws-r-sdk.com/docs/cloudtrail_put_event_configuration/) for full documentation.
+#'
+#' @param TrailName The name of the trail for which you want to update event configuration settings.
+#' @param EventDataStore The Amazon Resource Name (ARN) or ID suffix of the ARN of the event data store for which event configuration settings are updated.
+#' @param MaxEventSize The maximum allowed size for events to be stored in the specified event data store. If you are using context key selectors, MaxEventSize must be set to Large.
+#' @param ContextKeySelectors A list of context key selectors that will be included to provide enriched event data.
+#' @param AggregationConfigurations The list of aggregation configurations that you want to configure for the trail.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_put_event_configuration
+cloudtrail_put_event_configuration <- function(TrailName = NULL, EventDataStore = NULL, MaxEventSize = NULL, ContextKeySelectors = NULL, AggregationConfigurations = NULL) {
+  op <- new_operation(
+    name = "PutEventConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudtrail$put_event_configuration_input(TrailName = TrailName, EventDataStore = EventDataStore, MaxEventSize = MaxEventSize, ContextKeySelectors = ContextKeySelectors, AggregationConfigurations = AggregationConfigurations)
+  output <- .cloudtrail$put_event_configuration_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$put_event_configuration <- cloudtrail_put_event_configuration
+
 #' Configures event selectors (also referred to as basic event selectors)
 #' or advanced event selectors for your trail
 #'
@@ -1650,27 +1539,22 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_put_event_selectors/](https://www.paws-r-sdk.com/docs/cloudtrail_put_event_selectors/) for full documentation.
 #'
-#' @param TrailName &#91;required&#93; Specifies the name of the trail or trail ARN. If you specify a trail
-#' name, the string must meet the following requirements:
+#' @param TrailName &#91;required&#93; Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:
 #' 
-#' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-#'     underscores (_), or dashes (-)
+#' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)
 #' 
 #' -   Start with a letter or number, and end with a letter or number
 #' 
 #' -   Be between 3 and 128 characters
 #' 
-#' -   Have no adjacent periods, underscores or dashes. Names like
-#'     `my-_namespace` and `my--namespace` are not valid.
+#' -   Have no adjacent periods, underscores or dashes. Names like `my-_namespace` and `my--namespace` are not valid.
 #' 
 #' -   Not be in IP address format (for example, 192.168.5.4)
 #' 
 #' If you specify a trail ARN, it must be in the following format.
 #' 
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
-#' @param EventSelectors Specifies the settings for your event selectors. You can use event
-#' selectors to log management events and data events for the following
-#' resource types:
+#' @param EventSelectors Specifies the settings for your event selectors. You can use event selectors to log management events and data events for the following resource types:
 #' 
 #' -   `AWS::DynamoDB::Table`
 #' 
@@ -1680,25 +1564,10 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #' 
 #' You can't use event selectors to log network activity events.
 #' 
-#' You can configure up to five event selectors for a trail. You can use
-#' either `EventSelectors` or `AdvancedEventSelectors` in a
-#' [`put_event_selectors`][cloudtrail_put_event_selectors] request, but not
-#' both. If you apply `EventSelectors` to a trail, any existing
-#' `AdvancedEventSelectors` are overwritten.
-#' @param AdvancedEventSelectors Specifies the settings for advanced event selectors. You can use
-#' advanced event selectors to log management events, data events for all
-#' resource types, and network activity events.
+#' You can configure up to five event selectors for a trail. You can use either `EventSelectors` or `AdvancedEventSelectors` in a [`put_event_selectors`][cloudtrail_put_event_selectors] request, but not both. If you apply `EventSelectors` to a trail, any existing `AdvancedEventSelectors` are overwritten.
+#' @param AdvancedEventSelectors Specifies the settings for advanced event selectors. You can use advanced event selectors to log management events, data events for all resource types, and network activity events.
 #' 
-#' You can add advanced event selectors, and conditions for your advanced
-#' event selectors, up to a maximum of 500 values for all conditions and
-#' selectors on a trail. You can use either `AdvancedEventSelectors` or
-#' `EventSelectors`, but not both. If you apply `AdvancedEventSelectors` to
-#' a trail, any existing `EventSelectors` are overwritten. For more
-#' information about advanced event selectors, see [Logging data
-#' events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html)
-#' and [Logging network activity
-#' events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-network-events-with-cloudtrail.html)
-#' in the *CloudTrail User Guide*.
+#' You can add advanced event selectors, and conditions for your advanced event selectors, up to a maximum of 500 values for all conditions and selectors on a trail. You can use either `AdvancedEventSelectors` or `EventSelectors`, but not both. If you apply `AdvancedEventSelectors` to a trail, any existing `EventSelectors` are overwritten. For more information about advanced event selectors, see [Logging data events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html) and [Logging network activity events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-network-events-with-cloudtrail.html) in the *CloudTrail User Guide*.
 #'
 #' @keywords internal
 #'
@@ -1722,41 +1591,27 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 }
 .cloudtrail$operations$put_event_selectors <- cloudtrail_put_event_selectors
 
-#' Lets you enable Insights event logging by specifying the Insights
-#' selectors that you want to enable on an existing trail or event data
-#' store
+#' Lets you enable Insights event logging on specific event categories by
+#' specifying the Insights selectors that you want to enable on an existing
+#' trail or event data store
 #'
 #' @description
-#' Lets you enable Insights event logging by specifying the Insights selectors that you want to enable on an existing trail or event data store. You also use [`put_insight_selectors`][cloudtrail_put_insight_selectors] to turn off Insights event logging, by passing an empty list of Insights types. The valid Insights event types are `ApiErrorRateInsight` and `ApiCallRateInsight`.
+#' Lets you enable Insights event logging on specific event categories by specifying the Insights selectors that you want to enable on an existing trail or event data store. You also use [`put_insight_selectors`][cloudtrail_put_insight_selectors] to turn off Insights event logging, by passing an empty list of Insights types. The valid Insights event types are `ApiErrorRateInsight` and `ApiCallRateInsight`, and valid EventCategories are `Management` and `Data`.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_put_insight_selectors/](https://www.paws-r-sdk.com/docs/cloudtrail_put_insight_selectors/) for full documentation.
 #'
-#' @param TrailName The name of the CloudTrail trail for which you want to change or add
-#' Insights selectors.
+#' @param TrailName The name of the CloudTrail trail for which you want to change or add Insights selectors.
 #' 
-#' You cannot use this parameter with the `EventDataStore` and
-#' `InsightsDestination` parameters.
-#' @param InsightSelectors &#91;required&#93; A JSON string that contains the Insights types you want to log on a
-#' trail or event data store. `ApiCallRateInsight` and
-#' `ApiErrorRateInsight` are valid Insight types.
+#' You cannot use this parameter with the `EventDataStore` and `InsightsDestination` parameters.
+#' @param InsightSelectors &#91;required&#93; Contains the Insights types you want to log on a specific category of events on a trail or event data store. `ApiCallRateInsight` and `ApiErrorRateInsight` are valid Insight types.The EventCategory field can specify `Management` or `Data` events or both. For event data store, you can log Insights for management events only.
 #' 
-#' The `ApiCallRateInsight` Insights type analyzes write-only management
-#' API calls that are aggregated per minute against a baseline API call
-#' volume.
+#' The `ApiCallRateInsight` Insights type analyzes write-only management API calls or read and write data API calls that are aggregated per minute against a baseline API call volume.
 #' 
-#' The `ApiErrorRateInsight` Insights type analyzes management API calls
-#' that result in error codes. The error is shown if the API call is
-#' unsuccessful.
-#' @param EventDataStore The ARN (or ID suffix of the ARN) of the source event data store for
-#' which you want to change or add Insights selectors. To enable Insights
-#' on an event data store, you must provide both the `EventDataStore` and
-#' `InsightsDestination` parameters.
+#' The `ApiErrorRateInsight` Insights type analyzes management and data API calls that result in error codes. The error is shown if the API call is unsuccessful.
+#' @param EventDataStore The ARN (or ID suffix of the ARN) of the source event data store for which you want to change or add Insights selectors. To enable Insights on an event data store, you must provide both the `EventDataStore` and `InsightsDestination` parameters.
 #' 
 #' You cannot use this parameter with the `TrailName` parameter.
-#' @param InsightsDestination The ARN (or ID suffix of the ARN) of the destination event data store
-#' that logs Insights events. To enable Insights on an event data store,
-#' you must provide both the `EventDataStore` and `InsightsDestination`
-#' parameters.
+#' @param InsightsDestination The ARN (or ID suffix of the ARN) of the destination event data store that logs Insights events. To enable Insights on an event data store, you must provide both the `EventDataStore` and `InsightsDestination` parameters.
 #' 
 #' You cannot use this parameter with the `TrailName` parameter.
 #'
@@ -1790,24 +1645,16 @@ cloudtrail_put_insight_selectors <- function(TrailName = NULL, InsightSelectors,
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_put_resource_policy/](https://www.paws-r-sdk.com/docs/cloudtrail_put_resource_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudTrail event data store,
-#' dashboard, or channel attached to the resource-based policy.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudTrail event data store, dashboard, or channel attached to the resource-based policy.
 #' 
-#' Example event data store ARN format:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
+#' Example event data store ARN format: `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
 #' 
-#' Example dashboard ARN format:
-#' `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
+#' Example dashboard ARN format: `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
 #' 
-#' Example channel ARN format:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
-#' @param ResourcePolicy &#91;required&#93; A JSON-formatted string for an Amazon Web Services resource-based
-#' policy.
+#' Example channel ARN format: `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
+#' @param ResourcePolicy &#91;required&#93; A JSON-formatted string for an Amazon Web Services resource-based policy.
 #' 
-#' For example resource-based policies, see [CloudTrail resource-based
-#' policy
-#' examples](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/security_iam_resource-based-policy-examples.html)
-#' in the *CloudTrail User Guide*.
+#' For example resource-based policies, see [CloudTrail resource-based policy examples](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/security_iam_resource-based-policy-examples.html) in the *CloudTrail User Guide*.
 #'
 #' @keywords internal
 #'
@@ -1839,8 +1686,7 @@ cloudtrail_put_resource_policy <- function(ResourceArn, ResourcePolicy) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_register_organization_delegated_admin/](https://www.paws-r-sdk.com/docs/cloudtrail_register_organization_delegated_admin/) for full documentation.
 #'
-#' @param MemberAccountId &#91;required&#93; An organization member account ID that you want to designate as a
-#' delegated administrator.
+#' @param MemberAccountId &#91;required&#93; An organization member account ID that you want to designate as a delegated administrator.
 #'
 #' @keywords internal
 #'
@@ -1872,20 +1718,15 @@ cloudtrail_register_organization_delegated_admin <- function(MemberAccountId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_remove_tags/](https://www.paws-r-sdk.com/docs/cloudtrail_remove_tags/) for full documentation.
 #'
-#' @param ResourceId &#91;required&#93; Specifies the ARN of the trail, event data store, dashboard, or channel
-#' from which tags should be removed.
+#' @param ResourceId &#91;required&#93; Specifies the ARN of the trail, event data store, dashboard, or channel from which tags should be removed.
 #' 
-#' Example trail ARN format:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
+#' Example trail ARN format: `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #' 
-#' Example event data store ARN format:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
+#' Example event data store ARN format: `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
 #' 
-#' Example dashboard ARN format:
-#' `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
+#' Example dashboard ARN format: `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
 #' 
-#' Example channel ARN format:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
+#' Example channel ARN format: `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
 #' @param TagsList &#91;required&#93; Specifies a list of tags to be removed.
 #'
 #' @keywords internal
@@ -1918,8 +1759,7 @@ cloudtrail_remove_tags <- function(ResourceId, TagsList) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_restore_event_data_store/](https://www.paws-r-sdk.com/docs/cloudtrail_restore_event_data_store/) for full documentation.
 #'
-#' @param EventDataStore &#91;required&#93; The ARN (or the ID suffix of the ARN) of the event data store that you
-#' want to restore.
+#' @param EventDataStore &#91;required&#93; The ARN (or the ID suffix of the ARN) of the event data store that you want to restore.
 #'
 #' @keywords internal
 #'
@@ -1951,12 +1791,9 @@ cloudtrail_restore_event_data_store <- function(EventDataStore) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_search_sample_queries/](https://www.paws-r-sdk.com/docs/cloudtrail_search_sample_queries/) for full documentation.
 #'
-#' @param SearchPhrase &#91;required&#93; The natural language phrase to use for the semantic search. The phrase
-#' must be in English. The length constraint is in characters, not words.
-#' @param MaxResults The maximum number of results to return on a single page. The default
-#' value is 10.
-#' @param NextToken A token you can use to get the next page of results. The length
-#' constraint is in characters, not words.
+#' @param SearchPhrase &#91;required&#93; The natural language phrase to use for the semantic search. The phrase must be in English. The length constraint is in characters, not words.
+#' @param MaxResults The maximum number of results to return on a single page. The default value is 10.
+#' @param NextToken A token you can use to get the next page of results. The length constraint is in characters, not words.
 #'
 #' @keywords internal
 #'
@@ -1990,12 +1827,9 @@ cloudtrail_search_sample_queries <- function(SearchPhrase, MaxResults = NULL, Ne
 #' @param DashboardId &#91;required&#93; The name or ARN of the dashboard.
 #' @param QueryParameterValues The query parameter values for the dashboard
 #' 
-#' For custom dashboards, the following query parameters are valid:
-#' `$StartTime$`, `$EndTime$`, and `$Period$`.
+#' For custom dashboards, the following query parameters are valid: `$StartTime$`, `$EndTime$`, and `$Period$`.
 #' 
-#' For managed dashboards, the following query parameters are valid:
-#' `$StartTime$`, `$EndTime$`, `$Period$`, and `$EventDataStoreId$`. The
-#' `$EventDataStoreId$` query parameter is required.
+#' For managed dashboards, the following query parameters are valid: `$StartTime$`, `$EndTime$`, `$Period$`, and `$EventDataStoreId$`. The `$EventDataStoreId$` query parameter is required.
 #'
 #' @keywords internal
 #'
@@ -2027,8 +1861,7 @@ cloudtrail_start_dashboard_refresh <- function(DashboardId, QueryParameterValues
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_start_event_data_store_ingestion/](https://www.paws-r-sdk.com/docs/cloudtrail_start_event_data_store_ingestion/) for full documentation.
 #'
-#' @param EventDataStore &#91;required&#93; The ARN (or ID suffix of the ARN) of the event data store for which you
-#' want to start ingestion.
+#' @param EventDataStore &#91;required&#93; The ARN (or ID suffix of the ARN) of the event data store for which you want to start ingestion.
 #'
 #' @keywords internal
 #'
@@ -2060,24 +1893,11 @@ cloudtrail_start_event_data_store_ingestion <- function(EventDataStore) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_start_import/](https://www.paws-r-sdk.com/docs/cloudtrail_start_import/) for full documentation.
 #'
-#' @param Destinations The ARN of the destination event data store. Use this parameter for a
-#' new import.
-#' @param ImportSource The source S3 bucket for the import. Use this parameter for a new
-#' import.
-#' @param StartEventTime Use with `EndEventTime` to bound a
-#' [`start_import`][cloudtrail_start_import] request, and limit imported
-#' trail events to only those events logged within a specified time period.
-#' When you specify a time range, CloudTrail checks the prefix and log file
-#' names to verify the names contain a date between the specified
-#' `StartEventTime` and `EndEventTime` before attempting to import events.
-#' @param EndEventTime Use with `StartEventTime` to bound a
-#' [`start_import`][cloudtrail_start_import] request, and limit imported
-#' trail events to only those events logged within a specified time period.
-#' When you specify a time range, CloudTrail checks the prefix and log file
-#' names to verify the names contain a date between the specified
-#' `StartEventTime` and `EndEventTime` before attempting to import events.
-#' @param ImportId The ID of the import. Use this parameter when you are retrying an
-#' import.
+#' @param Destinations The ARN of the destination event data store. Use this parameter for a new import.
+#' @param ImportSource The source S3 bucket for the import. Use this parameter for a new import.
+#' @param StartEventTime Use with `EndEventTime` to bound a [`start_import`][cloudtrail_start_import] request, and limit imported trail events to only those events logged within a specified time period. When you specify a time range, CloudTrail checks the prefix and log file names to verify the names contain a date between the specified `StartEventTime` and `EndEventTime` before attempting to import events.
+#' @param EndEventTime Use with `StartEventTime` to bound a [`start_import`][cloudtrail_start_import] request, and limit imported trail events to only those events logged within a specified time period. When you specify a time range, CloudTrail checks the prefix and log file names to verify the names contain a date between the specified `StartEventTime` and `EndEventTime` before attempting to import events.
+#' @param ImportId The ID of the import. Use this parameter when you are retrying an import.
 #'
 #' @keywords internal
 #'
@@ -2109,9 +1929,7 @@ cloudtrail_start_import <- function(Destinations = NULL, ImportSource = NULL, St
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_start_logging/](https://www.paws-r-sdk.com/docs/cloudtrail_start_logging/) for full documentation.
 #'
-#' @param Name &#91;required&#93; Specifies the name or the CloudTrail ARN of the trail for which
-#' CloudTrail logs Amazon Web Services API calls. The following is the
-#' format of a trail ARN.
+#' @param Name &#91;required&#93; Specifies the name or the CloudTrail ARN of the trail for which CloudTrail logs Amazon Web Services API calls. The following is the format of a trail ARN.
 #' 
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #'
@@ -2180,8 +1998,7 @@ cloudtrail_start_query <- function(QueryStatement = NULL, DeliveryS3Uri = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_stop_event_data_store_ingestion/](https://www.paws-r-sdk.com/docs/cloudtrail_stop_event_data_store_ingestion/) for full documentation.
 #'
-#' @param EventDataStore &#91;required&#93; The ARN (or ID suffix of the ARN) of the event data store for which you
-#' want to stop ingestion.
+#' @param EventDataStore &#91;required&#93; The ARN (or ID suffix of the ARN) of the event data store for which you want to stop ingestion.
 #'
 #' @keywords internal
 #'
@@ -2244,9 +2061,7 @@ cloudtrail_stop_import <- function(ImportId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_stop_logging/](https://www.paws-r-sdk.com/docs/cloudtrail_stop_logging/) for full documentation.
 #'
-#' @param Name &#91;required&#93; Specifies the name or the CloudTrail ARN of the trail for which
-#' CloudTrail will stop logging Amazon Web Services API calls. The
-#' following is the format of a trail ARN.
+#' @param Name &#91;required&#93; Specifies the name or the CloudTrail ARN of the trail for which CloudTrail will stop logging Amazon Web Services API calls. The following is the format of a trail ARN.
 #' 
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #'
@@ -2280,8 +2095,7 @@ cloudtrail_stop_logging <- function(Name) {
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_update_channel/](https://www.paws-r-sdk.com/docs/cloudtrail_update_channel/) for full documentation.
 #'
 #' @param Channel &#91;required&#93; The ARN or ID (the ARN suffix) of the channel that you want to update.
-#' @param Destinations The ARNs of event data stores that you want to log events arriving
-#' through the channel.
+#' @param Destinations The ARNs of event data stores that you want to log events arriving through the channel.
 #' @param Name Changes the name of the channel.
 #'
 #' @keywords internal
@@ -2314,20 +2128,13 @@ cloudtrail_update_channel <- function(Channel, Destinations = NULL, Name = NULL)
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_update_dashboard/](https://www.paws-r-sdk.com/docs/cloudtrail_update_dashboard/) for full documentation.
 #'
 #' @param DashboardId &#91;required&#93; The name or ARN of the dashboard.
-#' @param Widgets An array of widgets for the dashboard. A custom dashboard can have a
-#' maximum of 10 widgets.
+#' @param Widgets An array of widgets for the dashboard. A custom dashboard can have a maximum of 10 widgets.
 #' 
-#' To add new widgets, pass in an array that includes the existing widgets
-#' along with any new widgets. Run the
-#' [`get_dashboard`][cloudtrail_get_dashboard] operation to get the list of
-#' widgets for the dashboard.
+#' To add new widgets, pass in an array that includes the existing widgets along with any new widgets. Run the [`get_dashboard`][cloudtrail_get_dashboard] operation to get the list of widgets for the dashboard.
 #' 
-#' To remove widgets, pass in an array that includes the existing widgets
-#' minus the widgets you want removed.
+#' To remove widgets, pass in an array that includes the existing widgets minus the widgets you want removed.
 #' @param RefreshSchedule The refresh schedule configuration for the dashboard.
-#' @param TerminationProtectionEnabled Specifies whether termination protection is enabled for the dashboard.
-#' If termination protection is enabled, you cannot delete the dashboard
-#' until termination protection is disabled.
+#' @param TerminationProtectionEnabled Specifies whether termination protection is enabled for the dashboard. If termination protection is enabled, you cannot delete the dashboard until termination protection is disabled.
 #'
 #' @keywords internal
 #'
@@ -2358,56 +2165,24 @@ cloudtrail_update_dashboard <- function(DashboardId, Widgets = NULL, RefreshSche
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_update_event_data_store/](https://www.paws-r-sdk.com/docs/cloudtrail_update_event_data_store/) for full documentation.
 #'
-#' @param EventDataStore &#91;required&#93; The ARN (or the ID suffix of the ARN) of the event data store that you
-#' want to update.
+#' @param EventDataStore &#91;required&#93; The ARN (or the ID suffix of the ARN) of the event data store that you want to update.
 #' @param Name The event data store name.
-#' @param AdvancedEventSelectors The advanced event selectors used to select events for the event data
-#' store. You can configure up to five advanced event selectors for each
-#' event data store.
-#' @param MultiRegionEnabled Specifies whether an event data store collects events from all Regions,
-#' or only from the Region in which it was created.
-#' @param OrganizationEnabled Specifies whether an event data store collects events logged for an
-#' organization in Organizations.
+#' @param AdvancedEventSelectors The advanced event selectors used to select events for the event data store. You can configure up to five advanced event selectors for each event data store.
+#' @param MultiRegionEnabled Specifies whether an event data store collects events from all Regions, or only from the Region in which it was created.
+#' @param OrganizationEnabled Specifies whether an event data store collects events logged for an organization in Organizations.
 #' 
-#' Only the management account for the organization can convert an
-#' organization event data store to a non-organization event data store, or
-#' convert a non-organization event data store to an organization event
-#' data store.
-#' @param RetentionPeriod The retention period of the event data store, in days. If `BillingMode`
-#' is set to `EXTENDABLE_RETENTION_PRICING`, you can set a retention period
-#' of up to 3653 days, the equivalent of 10 years. If `BillingMode` is set
-#' to `FIXED_RETENTION_PRICING`, you can set a retention period of up to
-#' 2557 days, the equivalent of seven years.
+#' Only the management account for the organization can convert an organization event data store to a non-organization event data store, or convert a non-organization event data store to an organization event data store.
+#' @param RetentionPeriod The retention period of the event data store, in days. If `BillingMode` is set to `EXTENDABLE_RETENTION_PRICING`, you can set a retention period of up to 3653 days, the equivalent of 10 years. If `BillingMode` is set to `FIXED_RETENTION_PRICING`, you can set a retention period of up to 2557 days, the equivalent of seven years.
 #' 
-#' CloudTrail Lake determines whether to retain an event by checking if the
-#' `eventTime` of the event is within the specified retention period. For
-#' example, if you set a retention period of 90 days, CloudTrail will
-#' remove events when the `eventTime` is older than 90 days.
+#' CloudTrail Lake determines whether to retain an event by checking if the `eventTime` of the event is within the specified retention period. For example, if you set a retention period of 90 days, CloudTrail will remove events when the `eventTime` is older than 90 days.
 #' 
-#' If you decrease the retention period of an event data store, CloudTrail
-#' will remove any events with an `eventTime` older than the new retention
-#' period. For example, if the previous retention period was 365 days and
-#' you decrease it to 100 days, CloudTrail will remove events with an
-#' `eventTime` older than 100 days.
-#' @param TerminationProtectionEnabled Indicates that termination protection is enabled and the event data
-#' store cannot be automatically deleted.
-#' @param KmsKeyId Specifies the KMS key ID to use to encrypt the events delivered by
-#' CloudTrail. The value can be an alias name prefixed by `alias/`, a fully
-#' specified ARN to an alias, a fully specified ARN to a key, or a globally
-#' unique identifier.
+#' If you decrease the retention period of an event data store, CloudTrail will remove any events with an `eventTime` older than the new retention period. For example, if the previous retention period was 365 days and you decrease it to 100 days, CloudTrail will remove events with an `eventTime` older than 100 days.
+#' @param TerminationProtectionEnabled Indicates that termination protection is enabled and the event data store cannot be automatically deleted.
+#' @param KmsKeyId Specifies the KMS key ID to use to encrypt the events delivered by CloudTrail. The value can be an alias name prefixed by `alias/`, a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.
 #' 
-#' Disabling or deleting the KMS key, or removing CloudTrail permissions on
-#' the key, prevents CloudTrail from logging events to the event data
-#' store, and prevents users from querying the data in the event data store
-#' that was encrypted with the key. After you associate an event data store
-#' with a KMS key, the KMS key cannot be removed or changed. Before you
-#' disable or delete a KMS key that you are using with an event data store,
-#' delete or back up your event data store.
+#' Disabling or deleting the KMS key, or removing CloudTrail permissions on the key, prevents CloudTrail from logging events to the event data store, and prevents users from querying the data in the event data store that was encrypted with the key. After you associate an event data store with a KMS key, the KMS key cannot be removed or changed. Before you disable or delete a KMS key that you are using with an event data store, delete or back up your event data store.
 #' 
-#' CloudTrail also supports KMS multi-Region keys. For more information
-#' about multi-Region keys, see [Using multi-Region
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html)
-#' in the *Key Management Service Developer Guide*.
+#' CloudTrail also supports KMS multi-Region keys. For more information about multi-Region keys, see [Using multi-Region keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html) in the *Key Management Service Developer Guide*.
 #' 
 #' Examples:
 #' 
@@ -2418,33 +2193,17 @@ cloudtrail_update_dashboard <- function(DashboardId, Widgets = NULL, RefreshSche
 #' -   `arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012`
 #' 
 #' -   `12345678-1234-1234-1234-123456789012`
-#' @param BillingMode You can't change the billing mode from `EXTENDABLE_RETENTION_PRICING` to
-#' `FIXED_RETENTION_PRICING`. If `BillingMode` is set to
-#' `EXTENDABLE_RETENTION_PRICING` and you want to use
-#' `FIXED_RETENTION_PRICING` instead, you'll need to stop ingestion on the
-#' event data store and create a new event data store that uses
-#' `FIXED_RETENTION_PRICING`.
+#' @param BillingMode You can't change the billing mode from `EXTENDABLE_RETENTION_PRICING` to `FIXED_RETENTION_PRICING`. If `BillingMode` is set to `EXTENDABLE_RETENTION_PRICING` and you want to use `FIXED_RETENTION_PRICING` instead, you'll need to stop ingestion on the event data store and create a new event data store that uses `FIXED_RETENTION_PRICING`.
 #' 
-#' The billing mode for the event data store determines the cost for
-#' ingesting events and the default and maximum retention period for the
-#' event data store.
+#' The billing mode for the event data store determines the cost for ingesting events and the default and maximum retention period for the event data store.
 #' 
 #' The following are the possible values:
 #' 
-#' -   `EXTENDABLE_RETENTION_PRICING` - This billing mode is generally
-#'     recommended if you want a flexible retention period of up to 3653
-#'     days (about 10 years). The default retention period for this billing
-#'     mode is 366 days.
+#' -   `EXTENDABLE_RETENTION_PRICING` - This billing mode is generally recommended if you want a flexible retention period of up to 3653 days (about 10 years). The default retention period for this billing mode is 366 days.
 #' 
-#' -   `FIXED_RETENTION_PRICING` - This billing mode is recommended if you
-#'     expect to ingest more than 25 TB of event data per month and need a
-#'     retention period of up to 2557 days (about 7 years). The default
-#'     retention period for this billing mode is 2557 days.
+#' -   `FIXED_RETENTION_PRICING` - This billing mode is recommended if you expect to ingest more than 25 TB of event data per month and need a retention period of up to 2557 days (about 7 years). The default retention period for this billing mode is 2557 days.
 #' 
-#' For more information about CloudTrail pricing, see [CloudTrail
-#' Pricing](https://aws.amazon.com/cloudtrail/pricing/) and [Managing
-#' CloudTrail Lake
-#' costs](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-manage-costs.html).
+#' For more information about CloudTrail pricing, see [CloudTrail Pricing](https://aws.amazon.com/cloudtrail/pricing/) and [Managing CloudTrail Lake costs](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-manage-costs.html).
 #'
 #' @keywords internal
 #'
@@ -2476,71 +2235,36 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_update_trail/](https://www.paws-r-sdk.com/docs/cloudtrail_update_trail/) for full documentation.
 #'
-#' @param Name &#91;required&#93; Specifies the name of the trail or trail ARN. If `Name` is a trail name,
-#' the string must meet the following requirements:
+#' @param Name &#91;required&#93; Specifies the name of the trail or trail ARN. If `Name` is a trail name, the string must meet the following requirements:
 #' 
-#' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-#'     underscores (_), or dashes (-)
+#' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)
 #' 
 #' -   Start with a letter or number, and end with a letter or number
 #' 
 #' -   Be between 3 and 128 characters
 #' 
-#' -   Have no adjacent periods, underscores or dashes. Names like
-#'     `my-_namespace` and `my--namespace` are not valid.
+#' -   Have no adjacent periods, underscores or dashes. Names like `my-_namespace` and `my--namespace` are not valid.
 #' 
 #' -   Not be in IP address format (for example, 192.168.5.4)
 #' 
 #' If `Name` is a trail ARN, it must be in the following format.
 #' 
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
-#' @param S3BucketName Specifies the name of the Amazon S3 bucket designated for publishing log
-#' files. See [Amazon S3 Bucket naming
-#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
-#' @param S3KeyPrefix Specifies the Amazon S3 key prefix that comes after the name of the
-#' bucket you have designated for log file delivery. For more information,
-#' see [Finding Your CloudTrail Log
-#' Files](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/get-and-view-cloudtrail-log-files.html#cloudtrail-find-log-files).
-#' The maximum length is 200 characters.
-#' @param SnsTopicName Specifies the name of the Amazon SNS topic defined for notification of
-#' log file delivery. The maximum length is 256 characters.
-#' @param IncludeGlobalServiceEvents Specifies whether the trail is publishing events from global services
-#' such as IAM to the log files.
-#' @param IsMultiRegionTrail Specifies whether the trail applies only to the current Region or to all
-#' Regions. The default is false. If the trail exists only in the current
-#' Region and this value is set to true, shadow trails (replications of the
-#' trail) will be created in the other Regions. If the trail exists in all
-#' Regions and this value is set to false, the trail will remain in the
-#' Region where it was created, and its shadow trails in other Regions will
-#' be deleted. As a best practice, consider using trails that log events in
-#' all Regions.
+#' @param S3BucketName Specifies the name of the Amazon S3 bucket designated for publishing log files. See [Amazon S3 Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
+#' @param S3KeyPrefix Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see [Finding Your CloudTrail Log Files](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/get-and-view-cloudtrail-log-files.html#cloudtrail-find-log-files). The maximum length is 200 characters.
+#' @param SnsTopicName Specifies the name or ARN of the Amazon SNS topic defined for notification of log file delivery. The maximum length is 256 characters.
+#' @param IncludeGlobalServiceEvents Specifies whether the trail is publishing events from global services such as IAM to the log files.
+#' @param IsMultiRegionTrail Specifies whether the trail applies only to the current Region or to all Regions. The default is false. If the trail exists only in the current Region and this value is set to true, shadow trails (replications of the trail) will be created in the other Regions. If the trail exists in all Regions and this value is set to false, the trail will remain in the Region where it was created, and its shadow trails in other Regions will be deleted. As a best practice, consider using trails that log events in all Regions.
 #' @param EnableLogFileValidation Specifies whether log file validation is enabled. The default is false.
 #' 
-#' When you disable log file integrity validation, the chain of digest
-#' files is broken after one hour. CloudTrail does not create digest files
-#' for log files that were delivered during a period in which log file
-#' integrity validation was disabled. For example, if you enable log file
-#' integrity validation at noon on January 1, disable it at noon on January
-#' 2, and re-enable it at noon on January 10, digest files will not be
-#' created for the log files delivered from noon on January 2 to noon on
-#' January 10. The same applies whenever you stop CloudTrail logging or
-#' delete a trail.
-#' @param CloudWatchLogsLogGroupArn Specifies a log group name using an Amazon Resource Name (ARN), a unique
-#' identifier that represents the log group to which CloudTrail logs are
-#' delivered. You must use a log group that exists in your account.
+#' When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail does not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.
+#' @param CloudWatchLogsLogGroupArn Specifies a log group name using an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs are delivered. You must use a log group that exists in your account.
 #' 
 #' Not required unless you specify `CloudWatchLogsRoleArn`.
-#' @param CloudWatchLogsRoleArn Specifies the role for the CloudWatch Logs endpoint to assume to write
-#' to a user's log group. You must use a role that exists in your account.
-#' @param KmsKeyId Specifies the KMS key ID to use to encrypt the logs delivered by
-#' CloudTrail. The value can be an alias name prefixed by "alias/", a fully
-#' specified ARN to an alias, a fully specified ARN to a key, or a globally
-#' unique identifier.
+#' @param CloudWatchLogsRoleArn Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group. You must use a role that exists in your account.
+#' @param KmsKeyId Specifies the KMS key ID to use to encrypt the logs and digest files delivered by CloudTrail. The value can be an alias name prefixed by "alias/", a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.
 #' 
-#' CloudTrail also supports KMS multi-Region keys. For more information
-#' about multi-Region keys, see [Using multi-Region
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html)
-#' in the *Key Management Service Developer Guide*.
+#' CloudTrail also supports KMS multi-Region keys. For more information about multi-Region keys, see [Using multi-Region keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html) in the *Key Management Service Developer Guide*.
 #' 
 #' Examples:
 #' 
@@ -2551,20 +2275,9 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #' -   arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012
 #' 
 #' -   12345678-1234-1234-1234-123456789012
-#' @param IsOrganizationTrail Specifies whether the trail is applied to all accounts in an
-#' organization in Organizations, or only for the current Amazon Web
-#' Services account. The default is false, and cannot be true unless the
-#' call is made on behalf of an Amazon Web Services account that is the
-#' management account for an organization in Organizations. If the trail is
-#' not an organization trail and this is set to `true`, the trail will be
-#' created in all Amazon Web Services accounts that belong to the
-#' organization. If the trail is an organization trail and this is set to
-#' `false`, the trail will remain in the current Amazon Web Services
-#' account but be deleted from all member accounts in the organization.
+#' @param IsOrganizationTrail Specifies whether the trail is applied to all accounts in an organization in Organizations, or only for the current Amazon Web Services account. The default is false, and cannot be true unless the call is made on behalf of an Amazon Web Services account that is the management account for an organization in Organizations. If the trail is not an organization trail and this is set to `true`, the trail will be created in all Amazon Web Services accounts that belong to the organization. If the trail is an organization trail and this is set to `false`, the trail will remain in the current Amazon Web Services account but be deleted from all member accounts in the organization.
 #' 
-#' Only the management account for the organization can convert an
-#' organization trail to a non-organization trail, or convert a
-#' non-organization trail to an organization trail.
+#' Only the management account for the organization can convert an organization trail to a non-organization trail, or convert a non-organization trail to an organization trail.
 #'
 #' @keywords internal
 #'

@@ -21,13 +21,11 @@ finspace_update_environment(
 
 \item{federationMode}{Authentication mode for the environment.
 \itemize{
-\item \code{FEDERATED} - Users access FinSpace through Single Sign On (SSO) via
-your Identity provider.
-\item \code{LOCAL} - Users access FinSpace via email and password managed
-within the FinSpace environment.
+\item \code{FEDERATED} - Users access FinSpace through Single Sign On (SSO) via your Identity provider.
+\item \code{LOCAL} - Users access FinSpace via email and password managed within the FinSpace environment.
 }}
 
-\item{federationParameters}{}
+\item{federationParameters}{Configuration information when authentication mode is FEDERATED.}
 }
 \description{
 Update your FinSpace environment.

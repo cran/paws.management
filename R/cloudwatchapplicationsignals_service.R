@@ -5,30 +5,17 @@ NULL
 #' Amazon CloudWatch Application Signals
 #'
 #' @description
-#' Use CloudWatch Application Signals for comprehensive observability of
-#' your cloud-based applications. It enables real-time service health
-#' dashboards and helps you track long-term performance trends against your
-#' business goals. The application-centric view provides you with unified
-#' visibility across your applications, services, and dependencies, so you
-#' can proactively monitor and efficiently triage any issues that may
-#' arise, ensuring optimal customer experience.
+#' Use CloudWatch Application Signals for comprehensive observability of your cloud-based applications. It enables real-time service health dashboards and helps you track long-term performance trends against your business goals. The application-centric view provides you with unified visibility across your applications, services, and dependencies, so you can proactively monitor and efficiently triage any issues that may arise, ensuring optimal customer experience.
 #' 
 #' Application Signals provides the following benefits:
 #' 
-#' -   Automatically collect metrics and traces from your applications, and
-#'     display key metrics such as call volume, availability, latency,
-#'     faults, and errors.
+#' -   Automatically collect metrics and traces from your applications, and display key metrics such as call volume, availability, latency, faults, and errors.
 #' 
 #' -   Create and monitor service level objectives (SLOs).
 #' 
-#' -   See a map of your application topology that Application Signals
-#'     automatically discovers, that gives you a visual representation of
-#'     your applications, dependencies, and their connectivity.
+#' -   See a map of your application topology that Application Signals automatically discovers, that gives you a visual representation of your applications, dependencies, and their connectivity.
 #' 
-#' Application Signals works with CloudWatch RUM, CloudWatch Synthetics
-#' canaries, and Amazon Web Services Service Catalog AppRegistry, to
-#' display your client pages, Synthetics canaries, and application names
-#' within dashboards and maps.
+#' Application Signals works with CloudWatch RUM, CloudWatch Synthetics canaries, and Amazon Web Services Service Catalog AppRegistry, to display your client pages, Synthetics canaries, and application names within dashboards and maps.
 #'
 #' @param
 #' config
@@ -114,16 +101,24 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report]{batch_get_service_level_objective_budget_report} \tab Use this operation to retrieve one or more service level objective (SLO) budget reports\cr
+#'  \link[=cloudwatchapplicationsignals_batch_update_exclusion_windows]{batch_update_exclusion_windows} \tab Add or remove time window exclusions for one or more Service Level Objectives (SLOs)\cr
 #'  \link[=cloudwatchapplicationsignals_create_service_level_objective]{create_service_level_objective} \tab Creates a service level objective (SLO), which can help you ensure that your critical business operations are meeting customer expectations\cr
+#'  \link[=cloudwatchapplicationsignals_delete_grouping_configuration]{delete_grouping_configuration} \tab Deletes the grouping configuration for this account\cr
 #'  \link[=cloudwatchapplicationsignals_delete_service_level_objective]{delete_service_level_objective} \tab Deletes the specified service level objective\cr
 #'  \link[=cloudwatchapplicationsignals_get_service]{get_service} \tab Returns information about a service discovered by Application Signals\cr
 #'  \link[=cloudwatchapplicationsignals_get_service_level_objective]{get_service_level_objective} \tab Returns information about one SLO created in the account\cr
+#'  \link[=cloudwatchapplicationsignals_list_audit_findings]{list_audit_findings} \tab Returns a list of audit findings that provide automated analysis of service behavior and root cause analysis\cr
+#'  \link[=cloudwatchapplicationsignals_list_entity_events]{list_entity_events} \tab Returns a list of change events for a specific entity, such as deployments, configuration changes, or other state-changing activities\cr
+#'  \link[=cloudwatchapplicationsignals_list_grouping_attribute_definitions]{list_grouping_attribute_definitions} \tab Returns the current grouping configuration for this account, including all custom grouping attribute definitions that have been configured\cr
 #'  \link[=cloudwatchapplicationsignals_list_service_dependencies]{list_service_dependencies} \tab Returns a list of service dependencies of the service that you specify\cr
 #'  \link[=cloudwatchapplicationsignals_list_service_dependents]{list_service_dependents} \tab Returns the list of dependents that invoked the specified service during the provided time range\cr
+#'  \link[=cloudwatchapplicationsignals_list_service_level_objective_exclusion_windows]{list_service_level_objective_exclusion_windows} \tab Retrieves all exclusion windows configured for a specific SLO\cr
 #'  \link[=cloudwatchapplicationsignals_list_service_level_objectives]{list_service_level_objectives} \tab Returns a list of SLOs created in this account\cr
 #'  \link[=cloudwatchapplicationsignals_list_service_operations]{list_service_operations} \tab Returns a list of the operations of this service that have been discovered by Application Signals\cr
 #'  \link[=cloudwatchapplicationsignals_list_services]{list_services} \tab Returns a list of services that have been discovered by Application Signals\cr
+#'  \link[=cloudwatchapplicationsignals_list_service_states]{list_service_states} \tab Returns information about the last deployment and other change states of services\cr
 #'  \link[=cloudwatchapplicationsignals_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch resource\cr
+#'  \link[=cloudwatchapplicationsignals_put_grouping_configuration]{put_grouping_configuration} \tab Creates or updates the grouping configuration for this account\cr
 #'  \link[=cloudwatchapplicationsignals_start_discovery]{start_discovery} \tab Enables this Amazon Web Services account to be able to use CloudWatch Application Signals by creating the AWSServiceRoleForCloudWatchApplicationSignals service-linked role\cr
 #'  \link[=cloudwatchapplicationsignals_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified CloudWatch resource, such as a service level objective\cr
 #'  \link[=cloudwatchapplicationsignals_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
@@ -159,7 +154,7 @@ cloudwatchapplicationsignals <- function(config = list(), credentials = list(), 
 
 .cloudwatchapplicationsignals$metadata <- list(
   service_name = "cloudwatchapplicationsignals",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "application-signals.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "application-signals.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "application-signals.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "application-signals.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "application-signals.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "application-signals.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "application-signals.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "application-signals.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "application-signals.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "application-signals.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "application-signals.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "application-signals.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "application-signals.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "application-signals.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "application-signals.{region}.amazonaws.eu", global = FALSE)),
   service_id = "Application Signals",
   api_version = "2024-04-15",
   signing_name = "application-signals",

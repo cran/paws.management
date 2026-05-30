@@ -17,17 +17,13 @@ servicecatalog_describe_provisioned_product(
 \item \code{zh} - Chinese
 }}
 
-\item{Id}{The provisioned product identifier. You must provide the name or ID, but
-not both.
+\item{Id}{The provisioned product identifier. You must provide the name or ID, but not both.
 
-If you do not provide a name or ID, or you provide both name and ID, an
-\code{InvalidParametersException} will occur.}
+If you do not provide a name or ID, or you provide both name and ID, an \code{InvalidParametersException} will occur.}
 
-\item{Name}{The name of the provisioned product. You must provide the name or ID,
-but not both.
+\item{Name}{The name of the provisioned product. You must provide the name or ID, but not both.
 
-If you do not provide a name or ID, or you provide both name and ID, an
-\code{InvalidParametersException} will occur.}
+If you do not provide a name or ID, or you provide both name and ID, an \code{InvalidParametersException} will occur.}
 }
 \description{
 Gets information about the specified provisioned product.

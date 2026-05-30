@@ -18,18 +18,13 @@ ssm_list_command_invocations(
 
 \item{InstanceId}{(Optional) The command execution details for a specific managed node ID.}
 
-\item{MaxResults}{(Optional) The maximum number of items to return for this call. The call
-also returns a token that you can specify in a subsequent call to get
-the next set of results.}
+\item{MaxResults}{(Optional) The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{(Optional) The token for the next set of items to return. (You received
-this token from a previous call.)}
+\item{NextToken}{(Optional) The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{Filters}{(Optional) One or more filters. Use a filter to return a more specific
-list of results.}
+\item{Filters}{(Optional) One or more filters. Use a filter to return a more specific list of results.}
 
-\item{Details}{(Optional) If set this returns the response of the command executions
-and any command output. The default value is \code{false}.}
+\item{Details}{(Optional) If set this returns the response of the command executions and any command output. The default value is \code{false}.}
 }
 \description{
 An invocation is copy of a command sent to a specific managed node. A command can apply to one or more managed nodes. A command invocation applies to one managed node. For example, if a user runs \code{\link[=ssm_send_command]{send_command}} against three managed nodes, then a command invocation is created for each requested managed node ID. \code{\link[=ssm_list_command_invocations]{list_command_invocations}} provide status about command execution.

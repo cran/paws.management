@@ -7,18 +7,13 @@
 cloudformation_get_generated_template(Format = NULL, GeneratedTemplateName)
 }
 \arguments{
-\item{Format}{The language to use to retrieve for the generated template. Supported
-values are:
+\item{Format}{The language to use to retrieve for the generated template. Supported values are:
 \itemize{
 \item \code{JSON}
 \item \code{YAML}
 }}
 
-\item{GeneratedTemplateName}{[required] The name or Amazon Resource Name (ARN) of the generated template. The
-format is
-\verb{arn:$\{Partition\}:cloudformation:$\{Region\}:$\{Account\}:generatedtemplate/$\{Id\}}.
-For example,
-\verb{arn:aws:cloudformation:us-east-1:123456789012:generatedtemplate/2e8465c1-9a80-43ea-a3a3-4f2d692fe6dc }.}
+\item{GeneratedTemplateName}{[required] The name or Amazon Resource Name (ARN) of the generated template. The format is \verb{arn:$\{Partition\}:cloudformation:$\{Region\}:$\{Account\}:generatedtemplate/$\{Id\}}. For example, \verb{arn:aws:cloudformation:us-east-1:123456789012:generatedtemplate/2e8465c1-9a80-43ea-a3a3-4f2d692fe6dc }.}
 }
 \description{
 Retrieves a generated template. If the template is in an \code{InProgress} or \code{Pending} status then the template returned will be the template when the template was last in a \code{Complete} status. If the template has not yet been in a \code{Complete} status then an empty template will be returned.

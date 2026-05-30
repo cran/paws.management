@@ -14,16 +14,11 @@ ssm_describe_maintenance_window_targets(
 \arguments{
 \item{WindowId}{[required] The ID of the maintenance window whose targets should be retrieved.}
 
-\item{Filters}{Optional filters that can be used to narrow down the scope of the
-returned window targets. The supported filter keys are \code{Type},
-\code{WindowTargetId}, and \code{OwnerInformation}.}
+\item{Filters}{Optional filters that can be used to narrow down the scope of the returned window targets. The supported filter keys are \code{Type}, \code{WindowTargetId}, and \code{OwnerInformation}.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Lists the targets registered with the maintenance window.

@@ -9,9 +9,7 @@ cloudformation_describe_stack_drift_detection_status(StackDriftDetectionId)
 \arguments{
 \item{StackDriftDetectionId}{[required] The ID of the drift detection results of this operation.
 
-CloudFormation generates new results, with a new drift detection ID,
-each time this operation is run. However, the number of drift results
-CloudFormation retains for any given stack, and for how long, may vary.}
+CloudFormation generates new results, with a new drift detection ID, each time this operation is run. However, the number of drift results CloudFormation retains for any given stack, and for how long, may vary.}
 }
 \description{
 Returns information about a stack drift detection operation. A stack drift detection operation detects whether a stack's actual configuration differs, or has \emph{drifted}, from its expected configuration, as defined in the stack template and any values specified as template parameters. A stack is considered to have drifted if one or more of its resources have drifted. For more information about stack and resource drift, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html}{Detect unmanaged configuration changes to stacks and resources with drift detection}.

@@ -14,8 +14,7 @@ configservice_disassociate_resource_types(
 \arguments{
 \item{ConfigurationRecorderArn}{[required] The Amazon Resource Name (ARN) of the specified configuration recorder.}
 
-\item{ResourceTypes}{[required] The list of resource types you want to remove from the recording group
-of the specified configuration recorder.}
+\item{ResourceTypes}{[required] The list of resource types you want to remove from the recording group of the specified configuration recorder.}
 }
 \description{
 Removes all resource types specified in the \code{ResourceTypes} list from the \href{https://docs.aws.amazon.com/config/latest/APIReference/API_RecordingGroup.html}{RecordingGroup} of configuration recorder and excludes these resource types when recording.

@@ -7,9 +7,7 @@
 cloudwatchlogs_delete_delivery(id)
 }
 \arguments{
-\item{id}{[required] The unique ID of the delivery to delete. You can find the ID of a
-delivery with the
-\code{\link[=cloudwatchlogs_describe_deliveries]{describe_deliveries}} operation.}
+\item{id}{[required] The unique ID of the delivery to delete. You can find the ID of a delivery with the \code{\link[=cloudwatchlogs_describe_deliveries]{describe_deliveries}} operation.}
 }
 \description{
 Deletes a \emph{delivery}. A delivery is a connection between a logical \emph{delivery source} and a logical \emph{delivery destination}. Deleting a delivery only deletes the connection between the delivery source and delivery destination. It does not delete the delivery destination or the delivery source.

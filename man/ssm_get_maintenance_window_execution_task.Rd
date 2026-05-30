@@ -10,8 +10,7 @@ ssm_get_maintenance_window_execution_task(WindowExecutionId, TaskId)
 \arguments{
 \item{WindowExecutionId}{[required] The ID of the maintenance window execution that includes the task.}
 
-\item{TaskId}{[required] The ID of the specific task execution in the maintenance window task
-that should be retrieved.}
+\item{TaskId}{[required] The ID of the specific task execution in the maintenance window task that should be retrieved.}
 }
 \description{
 Retrieves the details about a specific task run as part of a maintenance window execution.

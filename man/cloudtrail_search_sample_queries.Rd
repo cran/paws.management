@@ -12,14 +12,11 @@ cloudtrail_search_sample_queries(
 )
 }
 \arguments{
-\item{SearchPhrase}{[required] The natural language phrase to use for the semantic search. The phrase
-must be in English. The length constraint is in characters, not words.}
+\item{SearchPhrase}{[required] The natural language phrase to use for the semantic search. The phrase must be in English. The length constraint is in characters, not words.}
 
-\item{MaxResults}{The maximum number of results to return on a single page. The default
-value is 10.}
+\item{MaxResults}{The maximum number of results to return on a single page. The default value is 10.}
 
-\item{NextToken}{A token you can use to get the next page of results. The length
-constraint is in characters, not words.}
+\item{NextToken}{A token you can use to get the next page of results. The length constraint is in characters, not words.}
 }
 \description{
 Searches sample queries and returns a list of sample queries that are sorted by relevance. To search for sample queries, provide a natural language \code{SearchPhrase} in English.

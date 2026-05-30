@@ -7,8 +7,7 @@
 synthetics_get_group(GroupIdentifier)
 }
 \arguments{
-\item{GroupIdentifier}{[required] Specifies the group to return information for. You can specify the group
-name, the ARN, or the group ID as the \code{GroupIdentifier}.}
+\item{GroupIdentifier}{[required] Specifies the group to return information for. You can specify the group name, the ARN, or the group ID as the \code{GroupIdentifier}.}
 }
 \description{
 Returns information about one group. Groups are a global resource, so you can use this operation from any Region.

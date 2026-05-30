@@ -7,8 +7,7 @@
 finspace_get_kx_dataview(environmentId, databaseName, dataviewName)
 }
 \arguments{
-\item{environmentId}{[required] A unique identifier for the kdb environment, from where you want to
-retrieve the dataview details.}
+\item{environmentId}{[required] A unique identifier for the kdb environment, from where you want to retrieve the dataview details.}
 
 \item{databaseName}{[required] The name of the database where you created the dataview.}
 

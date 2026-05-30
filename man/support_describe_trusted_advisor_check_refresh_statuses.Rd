@@ -10,8 +10,7 @@ support_describe_trusted_advisor_check_refresh_statuses(checkIds)
 \arguments{
 \item{checkIds}{[required] The IDs of the Trusted Advisor checks to get the status.
 
-If you specify the check ID of a check that is automatically refreshed,
-you might see an \code{InvalidParameterValue} error.}
+If you specify the check ID of a check that is automatically refreshed, you might see an \code{InvalidParameterValue} error.}
 }
 \description{
 Returns the refresh status of the Trusted Advisor checks that have the specified check IDs. You can get the check IDs by calling the \code{\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks}} operation.

@@ -7,8 +7,7 @@
 cloudwatchlogs_get_data_protection_policy(logGroupIdentifier)
 }
 \arguments{
-\item{logGroupIdentifier}{[required] The name or ARN of the log group that contains the data protection
-policy that you want to see.}
+\item{logGroupIdentifier}{[required] The name or ARN of the log group that contains the data protection policy that you want to see.}
 }
 \description{
 Returns information about a log group data protection policy.

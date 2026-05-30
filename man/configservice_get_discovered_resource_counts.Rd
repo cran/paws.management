@@ -13,24 +13,15 @@ configservice_get_discovered_resource_counts(
 )
 }
 \arguments{
-\item{resourceTypes}{The comma-separated list that specifies the resource types that you want
-Config to return (for example, \code{"AWS::EC2::Instance"},
-\code{"AWS::IAM::User"}).
+\item{resourceTypes}{The comma-separated list that specifies the resource types that you want Config to return (for example, \code{"AWS::EC2::Instance"}, \code{"AWS::IAM::User"}).
 
-If a value for \code{resourceTypes} is not specified, Config returns all
-resource types that Config is recording in the region for your account.
+If a value for \code{resourceTypes} is not specified, Config returns all resource types that Config is recording in the region for your account.
 
-If the configuration recorder is turned off, Config returns an empty
-list of ResourceCount objects. If the configuration recorder is not
-recording a specific resource type (for example, S3 buckets), that
-resource type is not returned in the list of ResourceCount objects.}
+If the configuration recorder is turned off, Config returns an empty list of ResourceCount objects. If the configuration recorder is not recording a specific resource type (for example, S3 buckets), that resource type is not returned in the list of ResourceCount objects.}
 
-\item{limit}{The maximum number of ResourceCount objects returned on each page. The
-default is 100. You cannot specify a number greater than 100. If you
-specify 0, Config uses the default.}
+\item{limit}{The maximum number of ResourceCount objects returned on each page. The default is 100. You cannot specify a number greater than 100. If you specify 0, Config uses the default.}
 
-\item{nextToken}{The \code{nextToken} string returned on a previous page that you use to get
-the next page of results in a paginated response.}
+\item{nextToken}{The \code{nextToken} string returned on a previous page that you use to get the next page of results in a paginated response.}
 }
 \description{
 Returns the resource types, the number of each resource type, and the total number of resources that Config is recording in this region for your Amazon Web Services account.

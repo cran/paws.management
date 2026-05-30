@@ -18,13 +18,9 @@ autoscaling_complete_lifecycle_action(
 
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{LifecycleActionToken}{A universally unique identifier (UUID) that identifies a specific
-lifecycle action associated with an instance. Amazon EC2 Auto Scaling
-sends this token to the notification target you specified when you
-created the lifecycle hook.}
+\item{LifecycleActionToken}{A universally unique identifier (UUID) that identifies a specific lifecycle action associated with an instance. Amazon EC2 Auto Scaling sends this token to the notification target you specified when you created the lifecycle hook.}
 
-\item{LifecycleActionResult}{[required] The action for the group to take. You can specify either \code{CONTINUE} or
-\code{ABANDON}.}
+\item{LifecycleActionResult}{[required] The action for the group to take. You can specify either \code{CONTINUE} or \code{ABANDON}.}
 
 \item{InstanceId}{The ID of the instance.}
 }

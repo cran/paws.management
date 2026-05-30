@@ -15,17 +15,11 @@ ssm_delete_document(
 \arguments{
 \item{Name}{[required] The name of the document.}
 
-\item{DocumentVersion}{The version of the document that you want to delete. If not provided,
-all versions of the document are deleted.}
+\item{DocumentVersion}{The version of the document that you want to delete. If not provided, all versions of the document are deleted.}
 
-\item{VersionName}{The version name of the document that you want to delete. If not
-provided, all versions of the document are deleted.}
+\item{VersionName}{The version name of the document that you want to delete. If not provided, all versions of the document are deleted.}
 
-\item{Force}{Some SSM document types require that you specify a \code{Force} flag before
-you can delete the document. For example, you must specify a \code{Force}
-flag to delete a document of type \code{ApplicationConfigurationSchema}. You
-can restrict access to the \code{Force} flag in an Identity and Access
-Management (IAM) policy.}
+\item{Force}{Some SSM document types require that you specify a \code{Force} flag before you can delete the document. For example, you must specify a \code{Force} flag to delete a document of type \code{ApplicationConfigurationSchema}. You can restrict access to the \code{Force} flag in an Identity and Access Management (IAM) policy.}
 }
 \description{
 Deletes the Amazon Web Services Systems Manager document (SSM document) and all managed node associations to the document.

@@ -16,18 +16,11 @@ resiliencehub_create_recommendation_template(
 )
 }
 \arguments{
-\item{assessmentArn}{[required] Amazon Resource Name (ARN) of the assessment. The format for this ARN
-is:
-arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app-assessment/\code{app-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{Amazon Web Services General Reference} guide.}
+\item{assessmentArn}{[required] Amazon Resource Name (ARN) of the assessment. The format for this ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app-assessment/\code{app-id}. For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference} guide.}
 
-\item{bucketName}{The name of the Amazon S3 bucket that will contain the recommendation
-template.}
+\item{bucketName}{The name of the Amazon S3 bucket that will contain the recommendation template.}
 
-\item{clientToken}{Used for an idempotency token. A client token is a unique,
-case-sensitive string of up to 64 ASCII characters. You should not reuse
-the same client token for other API requests.}
+\item{clientToken}{Used for an idempotency token. A client token is a unique, case-sensitive string of up to 64 ASCII characters. You should not reuse the same client token for other API requests.}
 
 \item{format}{The format for the recommendation template.
 
@@ -41,11 +34,9 @@ The template is CloudFormation YAML.}
 
 \item{name}{[required] The name for the recommendation template.}
 
-\item{recommendationIds}{Identifiers for the recommendations used to create a recommendation
-template.}
+\item{recommendationIds}{Identifiers for the recommendations used to create a recommendation template.}
 
-\item{recommendationTypes}{An array of strings that specify the recommendation template type or
-types.
+\item{recommendationTypes}{An array of strings that specify the recommendation template type or types.
 
 \strong{Alarm}
 
@@ -59,8 +50,7 @@ The template is a SopRecommendation template.
 
 The template is a TestRecommendation template.}
 
-\item{tags}{Tags assigned to the resource. A tag is a label that you assign to an
-Amazon Web Services resource. Each tag consists of a key/value pair.}
+\item{tags}{Tags assigned to the resource. A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key/value pair.}
 }
 \description{
 Creates a new recommendation template for the Resilience Hub application.

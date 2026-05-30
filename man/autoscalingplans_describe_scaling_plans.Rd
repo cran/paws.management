@@ -13,20 +13,15 @@ autoscalingplans_describe_scaling_plans(
 )
 }
 \arguments{
-\item{ScalingPlanNames}{The names of the scaling plans (up to 10). If you specify application
-sources, you cannot specify scaling plan names.}
+\item{ScalingPlanNames}{The names of the scaling plans (up to 10). If you specify application sources, you cannot specify scaling plan names.}
 
-\item{ScalingPlanVersion}{The version number of the scaling plan. Currently, the only valid value
-is \code{1}.
+\item{ScalingPlanVersion}{The version number of the scaling plan. Currently, the only valid value is \code{1}.
 
-If you specify a scaling plan version, you must also specify a scaling
-plan name.}
+If you specify a scaling plan version, you must also specify a scaling plan name.}
 
-\item{ApplicationSources}{The sources for the applications (up to 10). If you specify scaling plan
-names, you cannot specify application sources.}
+\item{ApplicationSources}{The sources for the applications (up to 10). If you specify scaling plan names, you cannot specify application sources.}
 
-\item{MaxResults}{The maximum number of scalable resources to return. This value can be
-between 1 and 50. The default value is 50.}
+\item{MaxResults}{The maximum number of scalable resources to return. This value can be between 1 and 50. The default value is 50.}
 
 \item{NextToken}{The token for the next set of results.}
 }

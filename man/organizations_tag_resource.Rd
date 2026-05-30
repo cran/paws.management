@@ -12,21 +12,16 @@ organizations_tag_resource(ResourceId, Tags)
 You can specify any of the following taggable resources.
 \itemize{
 \item Amazon Web Services account – specify the account ID number.
-\item Organizational unit – specify the OU ID that begins with \verb{ou-} and
-looks similar to: \verb{ou-1a2b-34uvwxyz }
-\item Root – specify the root ID that begins with \verb{r-} and looks similar
-to: \verb{r-1a2b }
-\item Policy – specify the policy ID that begins with \verb{p-} andlooks
-similar to: \verb{p-12abcdefg3 }
+\item Organizational unit – specify the OU ID that begins with \verb{ou-} and looks similar to: \verb{ou-1a2b-34uvwxyz }
+\item Root – specify the root ID that begins with \verb{r-} and looks similar to: \verb{r-1a2b }
+\item Policy – specify the policy ID that begins with \verb{p-} andlooks similar to: \verb{p-12abcdefg3 }
 }}
 
 \item{Tags}{[required] A list of tags to add to the specified resource.
 
-For each tag in the list, you must specify both a tag key and a value.
-The value can be an empty string, but you can't set it to \code{null}.
+For each tag in the list, you must specify both a tag key and a value. The value can be an empty string, but you can't set it to \code{null}.
 
-If any one of the tags is not valid or if you exceed the maximum allowed
-number of tags for a resource, then the entire request fails.}
+If any one of the tags is not valid or if you exceed the maximum allowed number of tags for a resource, then the entire request fails.}
 }
 \description{
 Adds one or more tags to the specified resource.

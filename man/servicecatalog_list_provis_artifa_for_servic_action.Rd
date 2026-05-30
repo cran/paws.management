@@ -17,8 +17,7 @@ servicecatalog_list_provisioning_artifacts_for_service_action(
 
 \item{PageSize}{The maximum number of items to return with this call.}
 
-\item{PageToken}{The page token for the next set of results. To retrieve the first set of
-results, use null.}
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 
 \item{AcceptLanguage}{The language code.
 \itemize{

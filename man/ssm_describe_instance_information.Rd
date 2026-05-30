@@ -14,25 +14,15 @@ ssm_describe_instance_information(
 )
 }
 \arguments{
-\item{InstanceInformationFilterList}{This is a legacy method. We recommend that you don't use this method.
-Instead, use the \code{Filters} data type. \code{Filters} enables you to return
-node information by filtering based on tags applied to managed nodes.
+\item{InstanceInformationFilterList}{This is a legacy method. We recommend that you don't use this method. Instead, use the \code{Filters} data type. \code{Filters} enables you to return node information by filtering based on tags applied to managed nodes.
 
-Attempting to use \code{InstanceInformationFilterList} and \code{Filters} leads to
-an exception error.}
+Attempting to use \code{InstanceInformationFilterList} and \code{Filters} leads to an exception error.}
 
-\item{Filters}{One or more filters. Use a filter to return a more specific list of
-managed nodes. You can filter based on tags applied to your managed
-nodes. Tag filters can't be combined with other filter types. Use this
-\code{Filters} data type instead of \code{InstanceInformationFilterList}, which is
-deprecated.}
+\item{Filters}{One or more filters. Use a filter to return a more specific list of managed nodes. You can filter based on tags applied to your managed nodes. Tag filters can't be combined with other filter types. Use this \code{Filters} data type instead of \code{InstanceInformationFilterList}, which is deprecated.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results. The default value is 10 items.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results. The default value is 10 items.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Provides information about one or more of your managed nodes, including the operating system platform, SSM Agent version, association status, and IP address. This operation does not return information for nodes that are either Stopped or Terminated.

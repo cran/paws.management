@@ -13,36 +13,19 @@ cloudwatchlogs_put_data_protection_policy(logGroupIdentifier, policyDocument)
 
 This policy must include two JSON blocks:
 \itemize{
-\item The first block must include both a \code{DataIdentifer} array and an
-\code{Operation} property with an \code{Audit} action. The \code{DataIdentifer}
-array lists the types of sensitive data that you want to mask. For
-more information about the available options, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/}{Types of data that you can mask}.
+\item The first block must include both a \code{DataIdentifer} array and an \code{Operation} property with an \code{Audit} action. The \code{DataIdentifer} array lists the types of sensitive data that you want to mask. For more information about the available options, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/}{Types of data that you can mask}.
 
-The \code{Operation} property with an \code{Audit} action is required to find
-the sensitive data terms. This \code{Audit} action must contain a
-\code{FindingsDestination} object. You can optionally use that
-\code{FindingsDestination} object to list one or more destinations to
-send audit findings to. If you specify destinations such as log
-groups, Firehose streams, and S3 buckets, they must already exist.
-\item The second block must include both a \code{DataIdentifer} array and an
-\code{Operation} property with an \code{Deidentify} action. The
-\code{DataIdentifer} array must exactly match the \code{DataIdentifer} array
-in the first block of the policy.
+The \code{Operation} property with an \code{Audit} action is required to find the sensitive data terms. This \code{Audit} action must contain a \code{FindingsDestination} object. You can optionally use that \code{FindingsDestination} object to list one or more destinations to send audit findings to. If you specify destinations such as log groups, Firehose streams, and S3 buckets, they must already exist.
+\item The second block must include both a \code{DataIdentifer} array and an \code{Operation} property with an \code{Deidentify} action. The \code{DataIdentifer} array must exactly match the \code{DataIdentifer} array in the first block of the policy.
 
-The \code{Operation} property with the \code{Deidentify} action is what
-actually masks the data, and it must contain the \code{ "MaskConfig": {}}
-object. The \code{ "MaskConfig": {}} object must be empty.
+The \code{Operation} property with the \code{Deidentify} action is what actually masks the data, and it must contain the \code{ "MaskConfig": {}} object. The \code{ "MaskConfig": {}} object must be empty.
 }
 
-For an example data protection policy, see the \strong{Examples} section on
-this page.
+For an example data protection policy, see the \strong{Examples} section on this page.
 
 The contents of the two \code{DataIdentifer} arrays must match exactly.
 
-In addition to the two JSON blocks, the \code{policyDocument} can also
-include \code{Name}, \code{Description}, and \code{Version} fields. The \code{Name} is used
-as a dimension when CloudWatch Logs reports audit findings metrics to
-CloudWatch.
+In addition to the two JSON blocks, the \code{policyDocument} can also include \code{Name}, \code{Description}, and \code{Version} fields. The \code{Name} is used as a dimension when CloudWatch Logs reports audit findings metrics to CloudWatch.
 
 The JSON specified in \code{policyDocument} can be up to 30,720 characters.}
 }

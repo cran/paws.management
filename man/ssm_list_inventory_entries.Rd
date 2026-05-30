@@ -17,15 +17,11 @@ ssm_list_inventory_entries(
 
 \item{TypeName}{[required] The type of inventory item for which you want information.}
 
-\item{Filters}{One or more filters. Use a filter to return a more specific list of
-results.}
+\item{Filters}{One or more filters. Use a filter to return a more specific list of results.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 }
 \description{
 A list of inventory items returned by the request.

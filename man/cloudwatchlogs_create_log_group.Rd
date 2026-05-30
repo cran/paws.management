@@ -8,39 +8,33 @@ cloudwatchlogs_create_log_group(
   logGroupName,
   kmsKeyId = NULL,
   tags = NULL,
-  logGroupClass = NULL
+  logGroupClass = NULL,
+  deletionProtectionEnabled = NULL
 )
 }
 \arguments{
 \item{logGroupName}{[required] A name for the log group.}
 
-\item{kmsKeyId}{The Amazon Resource Name (ARN) of the KMS key to use when encrypting log
-data. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms}{Amazon Resource Names}.}
+\item{kmsKeyId}{The Amazon Resource Name (ARN) of the KMS key to use when encrypting log data. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms}{Amazon Resource Names}.}
 
 \item{tags}{The key-value pairs to use for the tags.
 
-You can grant users access to certain log groups while preventing them
-from accessing other log groups. To do so, tag your groups and use IAM
-policies that refer to those tags. To assign tags when you create a log
-group, you must have either the \code{logs:TagResource} or \code{logs:TagLogGroup}
-permission. For more information about tagging, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}.
-For more information about using tags to control access, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Controlling access to Amazon Web Services resources using tags}.}
+You can grant users access to certain log groups while preventing them from accessing other log groups. To do so, tag your groups and use IAM policies that refer to those tags. To assign tags when you create a log group, you must have either the \code{logs:TagResource} or \code{logs:TagLogGroup} permission. For more information about tagging, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}. For more information about using tags to control access, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Controlling access to Amazon Web Services resources using tags}.}
 
-\item{logGroupClass}{Use this parameter to specify the log group class for this log group.
-There are two classes:
+\item{logGroupClass}{Use this parameter to specify the log group class for this log group. There are three classes:
 \itemize{
 \item The \code{Standard} log class supports all CloudWatch Logs features.
-\item The \verb{Infrequent Access} log class supports a subset of CloudWatch
-Logs features and incurs lower costs.
+\item The \verb{Infrequent Access} log class supports a subset of CloudWatch Logs features and incurs lower costs.
+\item Use the \code{Delivery} log class only for delivering Lambda logs to store in Amazon S3 or Amazon Data Firehose. Log events in log groups in the Delivery class are kept in CloudWatch Logs for only one day. This log class doesn't offer rich CloudWatch Logs capabilities such as CloudWatch Logs Insights queries.
 }
 
 If you omit this parameter, the default of \code{STANDARD} is used.
 
-The value of \code{logGroupClass} can't be changed after a log group is
-created.
+The value of \code{logGroupClass} can't be changed after a log group is created.
 
 For details about the features supported by each class, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html}{Log classes}}
+
+\item{deletionProtectionEnabled}{Use this parameter to enable deletion protection for the new log group. When enabled on a log group, deletion protection blocks all deletion operations until it is explicitly disabled. By default log groups are created without deletion protection enabled.}
 }
 \description{
 Creates a log group with the specified name. You can create up to 1,000,000 log groups per Region per account.

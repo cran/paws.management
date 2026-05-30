@@ -13,20 +13,13 @@ resourcegroups_list_grouping_statuses(
 )
 }
 \arguments{
-\item{Group}{[required] The application group identifier, expressed as an Amazon resource name
-(ARN) or the application group name.}
+\item{Group}{[required] The application group identifier, expressed as an Amazon resource name (ARN) or the application group name.}
 
-\item{MaxResults}{The maximum number of resources and their statuses returned in the
-response.}
+\item{MaxResults}{The maximum number of resources and their statuses returned in the response.}
 
-\item{Filters}{The filter name and value pair that is used to return more specific
-results from a list of resources.}
+\item{Filters}{The filter name and value pair that is used to return more specific results from a list of resources.}
 
-\item{NextToken}{The parameter for receiving additional results if you receive a
-\code{NextToken} response in a previous request. A \code{NextToken} response
-indicates that more output is available. Set this parameter to the value
-provided by a previous call's \code{NextToken} response to indicate where the
-output should continue from.}
+\item{NextToken}{The parameter for receiving additional results if you receive a \code{NextToken} response in a previous request. A \code{NextToken} response indicates that more output is available. Set this parameter to the value provided by a previous call's \code{NextToken} response to indicate where the output should continue from.}
 }
 \description{
 Returns the status of the last grouping or ungrouping action for each resource in the specified application group.

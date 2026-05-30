@@ -15,11 +15,9 @@ ssmincidents_start_incident(
 )
 }
 \arguments{
-\item{clientToken}{A token ensuring that the operation is called only once with the
-specified details.}
+\item{clientToken}{A token ensuring that the operation is called only once with the specified details.}
 
-\item{impact}{Defines the impact to the customers. Providing an impact overwrites the
-impact provided by a response plan.
+\item{impact}{Defines the impact to the customers. Providing an impact overwrites the impact provided by a response plan.
 
 \strong{Supported impact codes}
 \itemize{
@@ -30,16 +28,11 @@ impact provided by a response plan.
 \item \code{5} - No Impact
 }}
 
-\item{relatedItems}{Add related items to the incident for other responders to use. Related
-items are Amazon Web Services resources, external links, or files
-uploaded to an Amazon S3 bucket.}
+\item{relatedItems}{Add related items to the incident for other responders to use. Related items are Amazon Web Services resources, external links, or files uploaded to an Amazon S3 bucket.}
 
-\item{responsePlanArn}{[required] The Amazon Resource Name (ARN) of the response plan that pre-defines
-summary, chat channels, Amazon SNS topics, runbooks, title, and impact
-of the incident.}
+\item{responsePlanArn}{[required] The Amazon Resource Name (ARN) of the response plan that pre-defines summary, chat channels, Amazon SNS topics, runbooks, title, and impact of the incident.}
 
-\item{title}{Provide a title for the incident. Providing a title overwrites the title
-provided by the response plan.}
+\item{title}{Provide a title for the incident. Providing a title overwrites the title provided by the response plan.}
 
 \item{triggerDetails}{Details of what created the incident record in Incident Manager.}
 }

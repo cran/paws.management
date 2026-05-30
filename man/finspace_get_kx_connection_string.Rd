@@ -7,9 +7,7 @@
 finspace_get_kx_connection_string(userArn, environmentId, clusterName)
 }
 \arguments{
-\item{userArn}{[required] The Amazon Resource Name (ARN) that identifies the user. For more
-information about ARNs and how to use ARNs in policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM Identifiers}
-in the \emph{IAM User Guide}.}
+\item{userArn}{[required] The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs and how to use ARNs in policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM Identifiers} in the \emph{IAM User Guide}.}
 
 \item{environmentId}{[required] A unique identifier for the kdb environment.}
 

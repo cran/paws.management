@@ -16,8 +16,7 @@ appregistry_associate_resource(
 
 \item{resourceType}{[required] The type of resource of which the application will be associated.}
 
-\item{resource}{[required] The name or ID of the resource of which the application will be
-associated.}
+\item{resource}{[required] The name or ID of the resource of which the application will be associated.}
 
 \item{options}{Determines whether an application tag is applied or skipped.}
 }

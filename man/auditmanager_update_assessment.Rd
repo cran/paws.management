@@ -22,8 +22,7 @@ auditmanager_update_assessment(
 
 \item{scope}{[required] The scope of the assessment.}
 
-\item{assessmentReportsDestination}{The assessment report storage destination for the assessment that's
-being updated.}
+\item{assessmentReportsDestination}{The assessment report storage destination for the assessment that's being updated.}
 
 \item{roles}{The list of roles for the assessment.}
 }

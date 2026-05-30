@@ -16,8 +16,7 @@ ssm_describe_effective_patches_for_patch_baseline(
 
 \item{MaxResults}{The maximum number of patches to return (per page).}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Retrieves the current effective patches (the patch and the approval state) for the specified patch baseline. Applies to patch baselines for Windows only.

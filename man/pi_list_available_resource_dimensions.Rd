@@ -15,33 +15,19 @@ pi_list_available_resource_dimensions(
 )
 }
 \arguments{
-\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights returns
-metrics.}
+\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights returns metrics.}
 
-\item{Identifier}{[required] An immutable identifier for a data source that is unique within an
-Amazon Web Services Region. Performance Insights gathers metrics from
-this data source. To use an Amazon RDS DB instance as a data source,
-specify its \code{DbiResourceId} value. For example, specify
-\code{db-ABCDEFGHIJKLMNOPQRSTU1VWZ}.}
+\item{Identifier}{[required] An immutable identifier for a data source that is unique within an Amazon Web Services Region. Performance Insights gathers metrics from this data source. To use an Amazon RDS DB instance as a data source, specify its \code{DbiResourceId} value. For example, specify \code{db-ABCDEFGHIJKLMNOPQRSTU1VWZ}.}
 
-\item{Metrics}{[required] The types of metrics for which to retrieve dimensions. Valid values
-include \code{db.load}.}
+\item{Metrics}{[required] The types of metrics for which to retrieve dimensions. Valid values include \code{db.load}.}
 
-\item{MaxResults}{The maximum number of items to return in the response. If more items
-exist than the specified \code{MaxRecords} value, a pagination token is
-included in the response so that the remaining results can be retrieved.}
+\item{MaxResults}{The maximum number of items to return in the response. If more items exist than the specified \code{MaxRecords} value, a pagination token is included in the response so that the remaining results can be retrieved.}
 
-\item{NextToken}{An optional pagination token provided by a previous request. If this
-parameter is specified, the response includes only records beyond the
-token, up to the value specified by \code{MaxRecords}.}
+\item{NextToken}{An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the token, up to the value specified by \code{MaxRecords}.}
 
-\item{AuthorizedActions}{The actions to discover the dimensions you are authorized to access. If
-you specify multiple actions, then the response will contain the
-dimensions common for all the actions.
+\item{AuthorizedActions}{The actions to discover the dimensions you are authorized to access. If you specify multiple actions, then the response will contain the dimensions common for all the actions.
 
-When you don't specify this request parameter or provide an empty list,
-the response contains all the available dimensions for the target
-database engine whether or not you are authorized to access them.}
+When you don't specify this request parameter or provide an empty list, the response contains all the available dimensions for the target database engine whether or not you are authorized to access them.}
 }
 \description{
 Retrieve the dimensions that can be queried for each specified metric type on a specified DB instance.

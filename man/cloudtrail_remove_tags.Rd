@@ -8,20 +8,15 @@ channel}
 cloudtrail_remove_tags(ResourceId, TagsList)
 }
 \arguments{
-\item{ResourceId}{[required] Specifies the ARN of the trail, event data store, dashboard, or channel
-from which tags should be removed.
+\item{ResourceId}{[required] Specifies the ARN of the trail, event data store, dashboard, or channel from which tags should be removed.
 
-Example trail ARN format:
-\code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}
+Example trail ARN format: \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}
 
-Example event data store ARN format:
-\verb{arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE}
+Example event data store ARN format: \verb{arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE}
 
-Example dashboard ARN format:
-\code{arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash}
+Example dashboard ARN format: \code{arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash}
 
-Example channel ARN format:
-\code{arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890}}
+Example channel ARN format: \code{arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890}}
 
 \item{TagsList}{[required] Specifies a list of tags to be removed.}
 }

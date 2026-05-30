@@ -9,8 +9,7 @@ ssmincidents_list_replication_sets(maxResults = NULL, nextToken = NULL)
 \arguments{
 \item{maxResults}{The maximum number of results per page.}
 
-\item{nextToken}{The pagination token for the next set of items to return. (You received
-this token from a previous call.)}
+\item{nextToken}{The pagination token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Lists details about the replication set configured in your account.

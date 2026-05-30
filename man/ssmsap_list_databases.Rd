@@ -19,10 +19,7 @@ ssmsap_list_databases(
 
 \item{NextToken}{The token for the next page of results.}
 
-\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned nextToken
-value. If you do not specify a value for MaxResults, the request returns
-50 items per page by default.}
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value. If you do not specify a value for MaxResults, the request returns 50 items per page by default.}
 }
 \description{
 Lists the SAP HANA databases of an application registered with AWS Systems Manager for SAP.

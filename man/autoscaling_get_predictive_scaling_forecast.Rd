@@ -16,17 +16,11 @@ autoscaling_get_predictive_scaling_forecast(
 
 \item{PolicyName}{[required] The name of the policy.}
 
-\item{StartTime}{[required] The inclusive start time of the time range for the forecast data to get.
-At most, the date and time can be one year before the current date and
-time.}
+\item{StartTime}{[required] The inclusive start time of the time range for the forecast data to get. At most, the date and time can be one year before the current date and time.}
 
-\item{EndTime}{[required] The exclusive end time of the time range for the forecast data to get.
-The maximum time duration between the start and end time is 30 days.
+\item{EndTime}{[required] The exclusive end time of the time range for the forecast data to get. The maximum time duration between the start and end time is 30 days.
 
-Although this parameter can accept a date and time that is more than two
-days in the future, the availability of forecast data has limits. Amazon
-EC2 Auto Scaling only issues forecasts for periods of two days in
-advance.}
+Although this parameter can accept a date and time that is more than two days in the future, the availability of forecast data has limits. Amazon EC2 Auto Scaling only issues forecasts for periods of two days in advance.}
 }
 \description{
 Retrieves the forecast data for a predictive scaling policy.

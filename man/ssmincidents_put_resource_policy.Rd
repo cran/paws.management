@@ -9,8 +9,7 @@ ssmincidents_put_resource_policy(policy, resourceArn)
 \arguments{
 \item{policy}{[required] Details of the resource policy.}
 
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the response plan to add the resource
-policy to.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the response plan to add the resource policy to.}
 }
 \description{
 Adds a resource policy to the specified response plan. The resource policy is used to share the response plan using Resource Access Manager (RAM). For more information about cross-account sharing, see \href{https://docs.aws.amazon.com/incident-manager/latest/userguide/incident-manager-cross-account-cross-region.html}{Cross-Region and cross-account incident management}.

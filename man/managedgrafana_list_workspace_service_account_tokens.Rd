@@ -14,10 +14,7 @@ managedgrafana_list_workspace_service_account_tokens(
 \arguments{
 \item{maxResults}{The maximum number of tokens to include in the results.}
 
-\item{nextToken}{The token for the next set of service accounts to return. (You receive
-this token from a previous
-\code{\link[=managedgrafana_list_workspace_service_account_tokens]{list_workspace_service_account_tokens}}
-operation.)}
+\item{nextToken}{The token for the next set of service accounts to return. (You receive this token from a previous \code{\link[=managedgrafana_list_workspace_service_account_tokens]{list_workspace_service_account_tokens}} operation.)}
 
 \item{serviceAccountId}{[required] The ID of the service account for which to return tokens.}
 

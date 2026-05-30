@@ -2,19 +2,18 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_describe_field_indexes}
 \alias{cloudwatchlogs_describe_field_indexes}
-\title{Returns a list of field indexes listed in the field index policies of
-one or more log groups}
+\title{Returns a list of custom and default field indexes which are discovered
+in log data}
 \usage{
 cloudwatchlogs_describe_field_indexes(logGroupIdentifiers, nextToken = NULL)
 }
 \arguments{
-\item{logGroupIdentifiers}{[required] An array containing the names or ARNs of the log groups that you want to
-retrieve field indexes for.}
+\item{logGroupIdentifiers}{[required] An array containing the names or ARNs of the log groups that you want to retrieve field indexes for.}
 
-\item{nextToken}{}
+\item{nextToken}{The token for the next set of items to return. The token expires after 24 hours.}
 }
 \description{
-Returns a list of field indexes listed in the field index policies of one or more log groups. For more information about field index policies, see \code{\link[=cloudwatchlogs_put_index_policy]{put_index_policy}}.
+Returns a list of custom and default field indexes which are discovered in log data. For more information about field index policies, see \code{\link[=cloudwatchlogs_put_index_policy]{put_index_policy}}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_field_indexes/} for full documentation.
 }

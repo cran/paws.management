@@ -15,24 +15,18 @@ cloudformation_describe_stack_resource_drifts(
 \arguments{
 \item{StackName}{[required] The name of the stack for which you want drift information.}
 
-\item{StackResourceDriftStatusFilters}{The resource drift status values to use as filters for the resource
-drift results returned.
+\item{StackResourceDriftStatusFilters}{The resource drift status values to use as filters for the resource drift results returned.
 \itemize{
-\item \code{DELETED}: The resource differs from its expected template
-configuration in that the resource has been deleted.
-\item \code{MODIFIED}: One or more resource properties differ from their
-expected template values.
-\item \code{IN_SYNC}: The resource's actual configuration matches its expected
-template configuration.
+\item \code{DELETED}: The resource differs from its expected template configuration in that the resource has been deleted.
+\item \code{MODIFIED}: One or more resource properties differ from their expected template values.
+\item \code{IN_SYNC}: The resource's actual configuration matches its expected template configuration.
 \item \code{NOT_CHECKED}: CloudFormation doesn't currently return this value.
+\item \code{UNKNOWN}: CloudFormation could not run drift detection for the resource.
 }}
 
-\item{NextToken}{A string that identifies the next page of stack resource drift results.}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{MaxResults}{The maximum number of results to be returned with a single call. If the
-number of available results exceeds this maximum, the response includes
-a \code{NextToken} value that you can assign to the \code{NextToken} request
-parameter to get the next set of results.}
+\item{MaxResults}{The maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a \code{NextToken} value that you can assign to the \code{NextToken} request parameter to get the next set of results.}
 }
 \description{
 Returns drift information for the resources that have been checked for drift in the specified stack. This includes actual and expected configuration values for resources where CloudFormation detects configuration drift.

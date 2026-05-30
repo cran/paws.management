@@ -12,26 +12,11 @@ resourcegroups_search_resources(
 )
 }
 \arguments{
-\item{ResourceQuery}{[required] The search query, using the same formats that are supported for resource
-group definition. For more information, see
-\code{\link[=resourcegroups_create_group]{create_group}}.}
+\item{ResourceQuery}{[required] The search query, using the same formats that are supported for resource group definition. For more information, see \code{\link[=resourcegroups_create_group]{create_group}}.}
 
-\item{MaxResults}{The total number of results that you want included on each page of the
-response. If you do not include this parameter, it defaults to a value
-that is specific to the operation. If additional items exist beyond the
-maximum you specify, the \code{NextToken} response element is present and has
-a value (is not null). Include that value as the \code{NextToken} request
-parameter in the next call to the operation to get the next part of the
-results. Note that the service might return fewer results than the
-maximum even when there are more results available. You should check
-\code{NextToken} after every operation to ensure that you receive all of the
-results.}
+\item{MaxResults}{The total number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the \code{NextToken} response element is present and has a value (is not null). Include that value as the \code{NextToken} request parameter in the next call to the operation to get the next part of the results. Note that the service might return fewer results than the maximum even when there are more results available. You should check \code{NextToken} after every operation to ensure that you receive all of the results.}
 
-\item{NextToken}{The parameter for receiving additional results if you receive a
-\code{NextToken} response in a previous request. A \code{NextToken} response
-indicates that more output is available. Set this parameter to the value
-provided by a previous call's \code{NextToken} response to indicate where the
-output should continue from.}
+\item{NextToken}{The parameter for receiving additional results if you receive a \code{NextToken} response in a previous request. A \code{NextToken} response indicates that more output is available. Set this parameter to the value provided by a previous call's \code{NextToken} response to indicate where the output should continue from.}
 }
 \description{
 Returns a list of Amazon Web Services resource identifiers that matches the specified query. The query uses the same format as a resource query in a \code{\link[=resourcegroups_create_group]{create_group}} or \code{\link[=resourcegroups_update_group_query]{update_group_query}} operation.

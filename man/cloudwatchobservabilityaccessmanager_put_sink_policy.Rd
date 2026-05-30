@@ -9,14 +9,11 @@ accounts to link to the monitoring account sink}
 cloudwatchobservabilityaccessmanager_put_sink_policy(Policy, SinkIdentifier)
 }
 \arguments{
-\item{Policy}{[required] The JSON policy to use. If you are updating an existing policy, the
-entire existing policy is replaced by what you specify here.
+\item{Policy}{[required] The JSON policy to use. If you are updating an existing policy, the entire existing policy is replaced by what you specify here.
 
-The policy must be in JSON string format with quotation marks escaped
-and no newlines.
+The policy must be in JSON string format with quotation marks escaped and no newlines.
 
-For examples of different types of policies, see the \strong{Examples}
-section on this page.}
+For examples of different types of policies, see the \strong{Examples} section on this page.}
 
 \item{SinkIdentifier}{[required] The ARN of the sink to attach this policy to.}
 }

@@ -8,8 +8,7 @@ operation}
 controltower_get_control_operation(operationIdentifier)
 }
 \arguments{
-\item{operationIdentifier}{[required] The ID of the asynchronous operation, which is used to track status. The
-operation is available for 90 days.}
+\item{operationIdentifier}{[required] The ID of the asynchronous operation, which is used to track status. The operation is available for 90 days.}
 }
 \description{
 Returns the status of a particular \code{\link[=controltower_enable_control]{enable_control}} or \code{\link[=controltower_disable_control]{disable_control}} operation. Displays a message in case of error. Details for an operation are available for 90 days. For usage examples, see the \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html}{\emph{Controls Reference Guide}} .

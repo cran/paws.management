@@ -12,13 +12,11 @@ ssmincidents_list_incident_findings(
 )
 }
 \arguments{
-\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident for which you want to
-view associated findings.}
+\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident for which you want to view associated findings.}
 
 \item{maxResults}{The maximum number of findings to retrieve per call.}
 
-\item{nextToken}{The pagination token for the next set of items to return. (You received
-this token from a previous call.)}
+\item{nextToken}{The pagination token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Retrieves a list of the IDs of findings, plus their last modified times, that have been identified for a specified incident. A finding represents a recent application environment change made by an CloudFormation stack creation or update or an CodeDeploy deployment that can be investigated as a potential cause of the incident.

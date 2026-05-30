@@ -24,25 +24,15 @@ autoscaling_put_scheduled_update_group_action(
 
 \item{Time}{This property is no longer used.}
 
-\item{StartTime}{The date and time for this action to start, in YYYY-MM-DDThh:mm:ssZ
-format in UTC/GMT only and in quotes (for example,
-\code{"2021-06-01T00:00:00Z"}).
+\item{StartTime}{The date and time for this action to start, in YYYY-MM-DDThh:mm:ssZ format in UTC/GMT only and in quotes (for example, \code{"2021-06-01T00:00:00Z"}).
 
-If you specify \code{Recurrence} and \code{StartTime}, Amazon EC2 Auto Scaling
-performs the action at this time, and then performs the action based on
-the specified recurrence.}
+If you specify \code{Recurrence} and \code{StartTime}, Amazon EC2 Auto Scaling performs the action at this time, and then performs the action based on the specified recurrence.}
 
-\item{EndTime}{The date and time for the recurring schedule to end, in UTC. For
-example, \code{"2021-06-01T00:00:00Z"}.}
+\item{EndTime}{The date and time for the recurring schedule to end, in UTC. For example, \code{"2021-06-01T00:00:00Z"}.}
 
-\item{Recurrence}{The recurring schedule for this action. This format consists of five
-fields separated by white spaces: [Minute] [Hour] [Day_of_Month]
-[Month_of_Year] [Day_of_Week]. The value must be in quotes (for
-example, \code{"30 0 1 1,6,12 *"}). For more information about this format,
-see \href{http://crontab.org/}{Crontab}.
+\item{Recurrence}{The recurring schedule for this action. This format consists of five fields separated by white spaces: [Minute] [Hour] [Day_of_Month] [Month_of_Year] [Day_of_Week]. The value must be in quotes (for example, \code{"30 0 1 1,6,12 *"}). For more information about this format, see Crontab.
 
-When \code{StartTime} and \code{EndTime} are specified with \code{Recurrence}, they
-form the boundaries of when the recurring action starts and stops.
+When \code{StartTime} and \code{EndTime} are specified with \code{Recurrence}, they form the boundaries of when the recurring action starts and stops.
 
 Cron expressions use Universal Coordinated Time (UTC) by default.}
 
@@ -50,21 +40,13 @@ Cron expressions use Universal Coordinated Time (UTC) by default.}
 
 \item{MaxSize}{The maximum size of the Auto Scaling group.}
 
-\item{DesiredCapacity}{The desired capacity is the initial capacity of the Auto Scaling group
-after the scheduled action runs and the capacity it attempts to
-maintain. It can scale beyond this capacity if you add more scaling
-conditions.
+\item{DesiredCapacity}{The desired capacity is the initial capacity of the Auto Scaling group after the scheduled action runs and the capacity it attempts to maintain. It can scale beyond this capacity if you add more scaling conditions.
 
-You must specify at least one of the following properties: \code{MaxSize},
-\code{MinSize}, or \code{DesiredCapacity}.}
+You must specify at least one of the following properties: \code{MaxSize}, \code{MinSize}, or \code{DesiredCapacity}.}
 
-\item{TimeZone}{Specifies the time zone for a cron expression. If a time zone is not
-provided, UTC is used by default.
+\item{TimeZone}{Specifies the time zone for a cron expression. If a time zone is not provided, UTC is used by default.
 
-Valid values are the canonical names of the IANA time zones, derived
-from the IANA Time Zone Database (such as \code{Etc/GMT+9} or
-\code{Pacific/Tahiti}). For more information, see
-\url{https://en.wikipedia.org/wiki/List_of_tz_database_time_zones}.}
+Valid values are the canonical names of the IANA time zones, derived from the IANA Time Zone Database (such as \code{Etc/GMT+9} or \code{Pacific/Tahiti}). For more information, see \url{https://en.wikipedia.org/wiki/List_of_tz_database_time_zones}.}
 }
 \description{
 Creates or updates a scheduled scaling action for an Auto Scaling group.

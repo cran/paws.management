@@ -5,16 +5,7 @@ NULL
 #' AWS CloudTrail Data Service
 #'
 #' @description
-#' The CloudTrail Data Service lets you ingest events into CloudTrail from
-#' any source in your hybrid environments, such as in-house or SaaS
-#' applications hosted on-premises or in the cloud, virtual machines, or
-#' containers. You can store, access, analyze, troubleshoot and take action
-#' on this data without maintaining multiple log aggregators and reporting
-#' tools. After you run
-#' [`put_audit_events`][cloudtraildataservice_put_audit_events] to ingest
-#' your application activity into CloudTrail, you can use CloudTrail Lake
-#' to search, query, and analyze the data that is logged from your
-#' applications.
+#' The CloudTrail Data Service lets you ingest events into CloudTrail from any source in your hybrid environments, such as in-house or SaaS applications hosted on-premises or in the cloud, virtual machines, or containers. You can store, access, analyze, troubleshoot and take action on this data without maintaining multiple log aggregators and reporting tools. After you run [`put_audit_events`][cloudtraildataservice_put_audit_events] to ingest your application activity into CloudTrail, you can use CloudTrail Lake to search, query, and analyze the data that is logged from your applications.
 #'
 #' @param
 #' config
@@ -131,7 +122,7 @@ cloudtraildataservice <- function(config = list(), credentials = list(), endpoin
 
 .cloudtraildataservice$metadata <- list(
   service_name = "cloudtraildataservice",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "cloudtrail-data.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "cloudtrail-data.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "cloudtrail-data.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "cloudtrail-data.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "cloudtrail-data.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "cloudtrail-data.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "cloudtrail-data.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "cloudtrail-data.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "cloudtrail-data.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "cloudtrail-data.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "cloudtrail-data.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "cloudtrail-data.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "cloudtrail-data.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "cloudtrail-data.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "cloudtrail-data.{region}.amazonaws.eu", global = FALSE)),
   service_id = "CloudTrail Data",
   api_version = "2021-08-11",
   signing_name = "cloudtrail-data",

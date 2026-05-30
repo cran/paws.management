@@ -20,22 +20,15 @@ cloudwatchinternetmonitor_list_health_events(
 
 \item{StartTime}{The time when a health event started.}
 
-\item{EndTime}{The time when a health event ended. If the health event is still
-ongoing, then the end time is not set.}
+\item{EndTime}{The time when a health event ended. If the health event is still ongoing, then the end time is not set.}
 
-\item{NextToken}{The token for the next set of results. You receive this token from a
-previous call.}
+\item{NextToken}{The token for the next set of results. You receive this token from a previous call.}
 
-\item{MaxResults}{The number of health event objects that you want to return with this
-call.}
+\item{MaxResults}{The number of health event objects that you want to return with this call.}
 
 \item{EventStatus}{The status of a health event.}
 
-\item{LinkedAccountId}{The account ID for an account that you've set up cross-account sharing
-for in Amazon CloudWatch Internet Monitor. You configure cross-account
-sharing by using Amazon CloudWatch Observability Access Manager. For
-more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cwim-cross-account.html}{Internet Monitor cross-account observability}
-in the Amazon CloudWatch Internet Monitor User Guide.}
+\item{LinkedAccountId}{The account ID for an account that you've set up cross-account sharing for in Amazon CloudWatch Internet Monitor. You configure cross-account sharing by using Amazon CloudWatch Observability Access Manager. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cwim-cross-account.html}{Internet Monitor cross-account observability} in the Amazon CloudWatch Internet Monitor User Guide.}
 }
 \description{
 Lists all health events for a monitor in Amazon CloudWatch Internet Monitor. Returns information for health events including the event start and end times, and the status.

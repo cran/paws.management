@@ -14,22 +14,15 @@ cloudtrail_update_dashboard(
 \arguments{
 \item{DashboardId}{[required] The name or ARN of the dashboard.}
 
-\item{Widgets}{An array of widgets for the dashboard. A custom dashboard can have a
-maximum of 10 widgets.
+\item{Widgets}{An array of widgets for the dashboard. A custom dashboard can have a maximum of 10 widgets.
 
-To add new widgets, pass in an array that includes the existing widgets
-along with any new widgets. Run the
-\code{\link[=cloudtrail_get_dashboard]{get_dashboard}} operation to get the list of
-widgets for the dashboard.
+To add new widgets, pass in an array that includes the existing widgets along with any new widgets. Run the \code{\link[=cloudtrail_get_dashboard]{get_dashboard}} operation to get the list of widgets for the dashboard.
 
-To remove widgets, pass in an array that includes the existing widgets
-minus the widgets you want removed.}
+To remove widgets, pass in an array that includes the existing widgets minus the widgets you want removed.}
 
 \item{RefreshSchedule}{The refresh schedule configuration for the dashboard.}
 
-\item{TerminationProtectionEnabled}{Specifies whether termination protection is enabled for the dashboard.
-If termination protection is enabled, you cannot delete the dashboard
-until termination protection is disabled.}
+\item{TerminationProtectionEnabled}{Specifies whether termination protection is enabled for the dashboard. If termination protection is enabled, you cannot delete the dashboard until termination protection is disabled.}
 }
 \description{
 Updates the specified dashboard.

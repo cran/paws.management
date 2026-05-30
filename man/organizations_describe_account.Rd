@@ -7,14 +7,9 @@
 organizations_describe_account(AccountId)
 }
 \arguments{
-\item{AccountId}{[required] The unique identifier (ID) of the Amazon Web Services account that you
-want information about. You can get the ID from the
-\code{\link[=organizations_list_accounts]{list_accounts}} or
-\code{\link[=organizations_list_accounts_for_parent]{list_accounts_for_parent}}
-operations.
+\item{AccountId}{[required] The unique identifier (ID) of the Amazon Web Services account that you want information about. You can get the ID from the \code{\link[=organizations_list_accounts]{list_accounts}} or \code{\link[=organizations_list_accounts_for_parent]{list_accounts_for_parent}} operations.
 
-The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for an account
-ID string requires exactly 12 digits.}
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for an account ID string requires exactly 12 digits.}
 }
 \description{
 Retrieves Organizations-related information about the specified account.

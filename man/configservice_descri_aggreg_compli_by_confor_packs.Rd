@@ -16,15 +16,11 @@ configservice_describe_aggregate_compliance_by_conformance_packs(
 \arguments{
 \item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
 
-\item{Filters}{Filters the result by \code{AggregateConformancePackComplianceFilters}
-object.}
+\item{Filters}{Filters the result by \code{AggregateConformancePackComplianceFilters} object.}
 
-\item{Limit}{The maximum number of conformance packs compliance details returned on
-each page. The default is maximum. If you specify 0, Config uses the
-default.}
+\item{Limit}{The maximum number of conformance packs compliance details returned on each page. The default is maximum. If you specify 0, Config uses the default.}
 
-\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
-the next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get the next page of results in a paginated response.}
 }
 \description{
 Returns a list of the existing and deleted conformance packs and their associated compliance status with the count of compliant and noncompliant Config rules within each conformance pack. Also returns the total rule count which includes compliant rules, noncompliant rules, and rules that cannot be evaluated due to insufficient data.

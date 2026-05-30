@@ -11,8 +11,7 @@ appregistry_disassociate_attribute_group(application, attributeGroup)
 \arguments{
 \item{application}{[required] The name, ID, or ARN of the application.}
 
-\item{attributeGroup}{[required] The name, ID, or ARN of the attribute group that holds the attributes to
-describe the application.}
+\item{attributeGroup}{[required] The name, ID, or ARN of the attribute group that holds the attributes to describe the application.}
 }
 \description{
 Disassociates an attribute group from an application to remove the extra attributes contained in the attribute group from the application's metadata. This operation reverts \code{\link[=appregistry_associate_attribute_group]{associate_attribute_group}}.

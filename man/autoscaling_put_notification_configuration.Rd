@@ -16,10 +16,7 @@ autoscaling_put_notification_configuration(
 
 \item{TopicARN}{[required] The Amazon Resource Name (ARN) of the Amazon SNS topic.}
 
-\item{NotificationTypes}{[required] The type of event that causes the notification to be sent. To query the
-notification types supported by Amazon EC2 Auto Scaling, call the
-\code{\link[=autoscaling_describe_auto_scaling_notification_types]{describe_auto_scaling_notification_types}}
-API.}
+\item{NotificationTypes}{[required] The type of event that causes the notification to be sent. To query the notification types supported by Amazon EC2 Auto Scaling, call the \code{\link[=autoscaling_describe_auto_scaling_notification_types]{describe_auto_scaling_notification_types}} API.}
 }
 \description{
 Configures an Auto Scaling group to send notifications when specified events take place. Subscribers to the specified topic can have messages delivered to an endpoint such as a web server or an email address.

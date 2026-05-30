@@ -9,27 +9,22 @@ pi_create_performance_analysis_report(
   ServiceType,
   Identifier,
   StartTime,
-  EndTime,
+  EndTime = NULL,
   Tags = NULL
 )
 }
 \arguments{
-\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights will
-return metrics. Valid value is \code{RDS}.}
+\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights will return metrics. Valid value is \code{RDS}.}
 
-\item{Identifier}{[required] An immutable, Amazon Web Services Region-unique identifier for a data
-source. Performance Insights gathers metrics from this data source.
+\item{Identifier}{[required] An immutable, Amazon Web Services Region-unique identifier for a data source. Performance Insights gathers metrics from this data source.
 
-To use an Amazon RDS instance as a data source, you specify its
-\code{DbiResourceId} value. For example, specify
-\code{db-ADECBTYHKTSAUMUZQYPDS2GW4A}.}
+To use an Amazon RDS instance as a data source, you specify its \code{DbiResourceId} value. For example, specify \code{db-ADECBTYHKTSAUMUZQYPDS2GW4A}.}
 
 \item{StartTime}{[required] The start time defined for the analysis report.}
 
-\item{EndTime}{[required] The end time defined for the analysis report.}
+\item{EndTime}{The end time defined for the analysis report.}
 
-\item{Tags}{The metadata assigned to the analysis report consisting of a key-value
-pair.}
+\item{Tags}{The metadata assigned to the analysis report consisting of a key-value pair.}
 }
 \description{
 Creates a new performance analysis report for a specific time period for the DB instance.

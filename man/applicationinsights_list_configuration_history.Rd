@@ -22,28 +22,11 @@ applicationinsights_list_configuration_history(
 
 \item{EndTime}{The end time of the event.}
 
-\item{EventStatus}{The status of the configuration update event. Possible values include
-INFO, WARN, and ERROR.}
+\item{EventStatus}{The status of the configuration update event. Possible values include INFO, WARN, and ERROR.}
 
-\item{MaxResults}{The maximum number of results returned by
-\code{\link[=applicationinsights_list_configuration_history]{list_configuration_history}}
-in paginated output. When this parameter is used,
-\code{\link[=applicationinsights_list_configuration_history]{list_configuration_history}}
-returns only \code{MaxResults} in a single page along with a \code{NextToken}
-response element. The remaining results of the initial request can be
-seen by sending another
-\code{\link[=applicationinsights_list_configuration_history]{list_configuration_history}}
-request with the returned \code{NextToken} value. If this parameter is not
-used, then
-\code{\link[=applicationinsights_list_configuration_history]{list_configuration_history}}
-returns all results.}
+\item{MaxResults}{The maximum number of results returned by \code{\link[=applicationinsights_list_configuration_history]{list_configuration_history}} in paginated output. When this parameter is used, \code{\link[=applicationinsights_list_configuration_history]{list_configuration_history}} returns only \code{MaxResults} in a single page along with a \code{NextToken} response element. The remaining results of the initial request can be seen by sending another \code{\link[=applicationinsights_list_configuration_history]{list_configuration_history}} request with the returned \code{NextToken} value. If this parameter is not used, then \code{\link[=applicationinsights_list_configuration_history]{list_configuration_history}} returns all results.}
 
-\item{NextToken}{The \code{NextToken} value returned from a previous paginated
-\code{\link[=applicationinsights_list_configuration_history]{list_configuration_history}}
-request where \code{MaxResults} was used and the results exceeded the value
-of that parameter. Pagination continues from the end of the previous
-results that returned the \code{NextToken} value. This value is \code{null} when
-there are no more results to return.}
+\item{NextToken}{The \code{NextToken} value returned from a previous paginated \code{\link[=applicationinsights_list_configuration_history]{list_configuration_history}} request where \code{MaxResults} was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the \code{NextToken} value. This value is \code{null} when there are no more results to return.}
 
 \item{AccountId}{The Amazon Web Services account ID for the resource group owner.}
 }

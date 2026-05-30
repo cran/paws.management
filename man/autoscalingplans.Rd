@@ -55,28 +55,21 @@ Operations section.
 \description{
 AWS Auto Scaling
 
-Use AWS Auto Scaling to create scaling plans for your applications to
-automatically scale your scalable AWS resources.
+Use AWS Auto Scaling to create scaling plans for your applications to automatically scale your scalable AWS resources.
 
 \strong{API Summary}
 
-You can use the AWS Auto Scaling service API to accomplish the following
-tasks:
+You can use the AWS Auto Scaling service API to accomplish the following tasks:
 \itemize{
 \item Create and manage scaling plans
-\item Define target tracking scaling policies to dynamically scale your
-resources based on utilization
-\item Scale Amazon EC2 Auto Scaling groups using predictive scaling and
-dynamic scaling to scale your Amazon EC2 capacity faster
+\item Define target tracking scaling policies to dynamically scale your resources based on utilization
+\item Scale Amazon EC2 Auto Scaling groups using predictive scaling and dynamic scaling to scale your Amazon EC2 capacity faster
 \item Set minimum and maximum capacity limits
 \item Retrieve information on existing scaling plans
-\item Access current forecast data and historical forecast data for up to
-56 days previous
+\item Access current forecast data and historical forecast data for up to 56 days previous
 }
 
-To learn more about AWS Auto Scaling, including information about
-granting IAM users required permissions for AWS Auto Scaling actions,
-see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/migrate-scaling-plan.html}{AWS Auto Scaling User Guide}.
+To learn more about AWS Auto Scaling, including information about granting IAM users required permissions for AWS Auto Scaling actions, see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/migrate-scaling-plan.html}{AWS Auto Scaling User Guide}.
 }
 \section{Service syntax}{
 

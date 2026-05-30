@@ -16,8 +16,7 @@ ssmcontacts_list_pages_by_engagement(
 
 \item{NextToken}{The pagination token to continue to the next page of results.}
 
-\item{MaxResults}{The maximum number of engagements to contact channels to list per page
-of results.}
+\item{MaxResults}{The maximum number of engagements to contact channels to list per page of results.}
 }
 \description{
 Lists the engagements to contact channels that occurred by engaging a contact.

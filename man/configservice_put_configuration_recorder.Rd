@@ -7,11 +7,9 @@
 configservice_put_configuration_recorder(ConfigurationRecorder, Tags = NULL)
 }
 \arguments{
-\item{ConfigurationRecorder}{[required] An object for the configuration recorder. A configuration recorder
-records configuration changes for the resource types in scope.}
+\item{ConfigurationRecorder}{[required] An object for the configuration recorder. A configuration recorder records configuration changes for the resource types in scope.}
 
-\item{Tags}{The tags for the customer managed configuration recorder. Each tag
-consists of a key and an optional value, both of which you define.}
+\item{Tags}{The tags for the customer managed configuration recorder. Each tag consists of a key and an optional value, both of which you define.}
 }
 \description{
 Creates or updates the customer managed configuration recorder.

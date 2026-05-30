@@ -7,12 +7,9 @@
 cloudtrail_generate_query(EventDataStores, Prompt)
 }
 \arguments{
-\item{EventDataStores}{[required] The ARN (or ID suffix of the ARN) of the event data store that you want
-to query. You can only specify one event data store.}
+\item{EventDataStores}{[required] The ARN (or ID suffix of the ARN) of the event data store that you want to query. You can only specify one event data store.}
 
-\item{Prompt}{[required] The prompt that you want to use to generate the query. The prompt must
-be in English. For example prompts, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/lake-query-generator.html#lake-query-generator-examples}{Example prompts}
-in the \emph{CloudTrail} user guide.}
+\item{Prompt}{[required] The prompt that you want to use to generate the query. The prompt must be in English. For example prompts, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/lake-query-generator.html#lake-query-generator-examples}{Example prompts} in the \emph{CloudTrail} user guide.}
 }
 \description{
 Generates a query from a natural language prompt. This operation uses generative artificial intelligence (generative AI) to produce a ready-to-use SQL query from the prompt.

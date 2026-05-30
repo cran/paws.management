@@ -22,8 +22,7 @@ configservice_put_configuration_aggregator(
 
 \item{Tags}{An array of tag object.}
 
-\item{AggregatorFilters}{An object to filter configuration recorders in an aggregator. Either
-\code{ResourceType} or \code{ServicePrincipal} is required.}
+\item{AggregatorFilters}{An object to filter configuration recorders in an aggregator. Either \code{ResourceType} or \code{ServicePrincipal} is required.}
 }
 \description{
 Creates and updates the configuration aggregator with the selected source accounts and regions. The source account can be individual account(s) or an organization.

@@ -28,216 +28,112 @@ cloudformation_update_stack(
 \arguments{
 \item{StackName}{[required] The name or unique stack ID of the stack to update.}
 
-\item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte
-and a maximum length of 51,200 bytes.
+\item{TemplateBody}{Structure that contains the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes.
 
-Conditional: You must specify only one of the following parameters:
-\code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to
-\code{true}.}
+Conditional: You must specify only one of the following parameters: \code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to \code{true}.}
 
-\item{TemplateURL}{The URL of a file containing the template body. The URL must point to a
-template that's located in an Amazon S3 bucket or a Systems Manager
-document. The location for an Amazon S3 bucket must start with
-\verb{https://}.
+\item{TemplateURL}{The URL of a file that contains the template body. The URL must point to a template that's located in an Amazon S3 bucket or a Systems Manager document. The location for an Amazon S3 bucket must start with \verb{https://}.
 
-Conditional: You must specify only one of the following parameters:
-\code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to
-\code{true}.}
+Conditional: You must specify only one of the following parameters: \code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to \code{true}.}
 
-\item{UsePreviousTemplate}{Reuse the existing template that is associated with the stack that you
-are updating.
+\item{UsePreviousTemplate}{Reuse the existing template that is associated with the stack that you are updating.
 
-Conditional: You must specify only one of the following parameters:
-\code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to
-\code{true}.}
+When using templates with the \code{AWS::LanguageExtensions} transform, provide the template instead of using \code{UsePreviousTemplate} to ensure new parameter values and Systems Manager parameter updates are applied correctly. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/transform-aws-languageextensions.html}{AWS::LanguageExtensions transform}.
 
-\item{StackPolicyDuringUpdateBody}{Structure containing the temporary overriding stack policy body. You can
-specify either the \code{StackPolicyDuringUpdateBody} or the
-\code{StackPolicyDuringUpdateURL} parameter, but not both.
+Conditional: You must specify only one of the following parameters: \code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to \code{true}.}
 
-If you want to update protected resources, specify a temporary
-overriding stack policy during this update. If you don't specify a stack
-policy, the current policy that is associated with the stack will be
-used.}
+\item{StackPolicyDuringUpdateBody}{Structure that contains the temporary overriding stack policy body. You can specify either the \code{StackPolicyDuringUpdateBody} or the \code{StackPolicyDuringUpdateURL} parameter, but not both.
 
-\item{StackPolicyDuringUpdateURL}{Location of a file containing the temporary overriding stack policy. The
-URL must point to a policy (max size: 16KB) located in an S3 bucket in
-the same Region as the stack. The location for an Amazon S3 bucket must
-start with \verb{https://}. You can specify either the
-\code{StackPolicyDuringUpdateBody} or the \code{StackPolicyDuringUpdateURL}
-parameter, but not both.
+If you want to update protected resources, specify a temporary overriding stack policy during this update. If you don't specify a stack policy, the current policy that is associated with the stack will be used.}
 
-If you want to update protected resources, specify a temporary
-overriding stack policy during this update. If you don't specify a stack
-policy, the current policy that is associated with the stack will be
-used.}
+\item{StackPolicyDuringUpdateURL}{Location of a file that contains the temporary overriding stack policy. The URL must point to a policy (max size: 16KB) located in an S3 bucket in the same Region as the stack. The location for an Amazon S3 bucket must start with \verb{https://}. URLs from S3 static websites are not supported.
 
-\item{Parameters}{A list of \code{Parameter} structures that specify input parameters for the
-stack. For more information, see the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html}{Parameter}
-data type.}
+You can specify either the \code{StackPolicyDuringUpdateBody} or the \code{StackPolicyDuringUpdateURL} parameter, but not both.
 
-\item{Capabilities}{In some cases, you must explicitly acknowledge that your stack template
-contains certain capabilities in order for CloudFormation to update the
-stack.
+If you want to update protected resources, specify a temporary overriding stack policy during this update. If you don't specify a stack policy, the current policy that is associated with the stack will be used.}
+
+\item{Parameters}{A list of \code{Parameter} structures that specify input parameters for the stack. For more information, see the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html}{Parameter} data type.}
+
+\item{Capabilities}{In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in order for CloudFormation to update the stack.
 \itemize{
 \item \code{CAPABILITY_IAM} and \code{CAPABILITY_NAMED_IAM}
 
-Some stack templates might include resources that can affect
-permissions in your Amazon Web Services account, for example, by
-creating new IAM users. For those stacks, you must explicitly
-acknowledge this by specifying one of these capabilities.
+Some stack templates might include resources that can affect permissions in your Amazon Web Services account, for example, by creating new IAM users. For those stacks, you must explicitly acknowledge this by specifying one of these capabilities.
 
-The following IAM resources require you to specify either the
-\code{CAPABILITY_IAM} or \code{CAPABILITY_NAMED_IAM} capability.
+The following IAM resources require you to specify either the \code{CAPABILITY_IAM} or \code{CAPABILITY_NAMED_IAM} capability.
 \itemize{
 \item If you have IAM resources, you can specify either capability.
-\item If you have IAM resources with custom names, you \emph{must} specify
-\code{CAPABILITY_NAMED_IAM}.
-\item If you don't specify either of these capabilities,
-CloudFormation returns an \code{InsufficientCapabilities} error.
+\item If you have IAM resources with custom names, you \emph{must} specify \code{CAPABILITY_NAMED_IAM}.
+\item If you don't specify either of these capabilities, CloudFormation returns an \code{InsufficientCapabilities} error.
 }
 
-If your stack template contains these resources, we suggest that you
-review all permissions associated with them and edit their
-permissions if necessary.
+If your stack template contains these resources, we suggest that you review all permissions associated with them and edit their permissions if necessary.
 \itemize{
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html}{AWS::IAM::Group}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-managedpolicy.html}{AWS::IAM::ManagedPolicy}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html}{AWS::IAM::Policy}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html}{AWS::IAM::User}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-group.html}{AWS::IAM::Group}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-managedpolicy.html}{AWS::IAM::ManagedPolicy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-policy.html}{AWS::IAM::Policy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-role.html}{AWS::IAM::Role}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-user.html}{AWS::IAM::User}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#using-iam-capabilities}{Acknowledging IAM resources in CloudFormation templates}.
 \item \code{CAPABILITY_AUTO_EXPAND}
 
-Some template contain macros. Macros perform custom processing on
-templates; this can include simple actions like find-and-replace
-operations, all the way to extensive transformations of entire
-templates. Because of this, users typically create a change set from
-the processed template, so that they can review the changes
-resulting from the macros before actually updating the stack. If
-your stack template contains one or more macros, and you choose to
-update a stack directly from the processed template, without first
-reviewing the resulting changes in a change set, you must
-acknowledge this capability. This includes the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-include.html}{AWS::Include}
-and
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
-transforms, which are macros hosted by CloudFormation.
+Some template contain macros. Macros perform custom processing on templates; this can include simple actions like find-and-replace operations, all the way to extensive transformations of entire templates. Because of this, users typically create a change set from the processed template, so that they can review the changes resulting from the macros before actually updating the stack. If your stack template contains one or more macros, and you choose to update a stack directly from the processed template, without first reviewing the resulting changes in a change set, you must acknowledge this capability. This includes the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/transform-aws-include.html}{AWS::Include} and \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/transform-aws-serverless.html}{AWS::Serverless} transforms, which are macros hosted by CloudFormation.
 
-If you want to update a stack from a stack template that contains
-macros \emph{and} nested stacks, you must update the stack directly from
-the template using this capability.
+If you want to update a stack from a stack template that contains macros \emph{and} nested stacks, you must update the stack directly from the template using this capability.
 
-You should only update stacks directly from a stack template that
-contains macros if you know what processing the macro performs.
+You should only update stacks directly from a stack template that contains macros if you know what processing the macro performs.
 
-Each macro relies on an underlying Lambda service function for
-processing stack templates. Be aware that the Lambda function owner
-can update the function operation without CloudFormation being
-notified.
+Each macro relies on an underlying Lambda service function for processing stack templates. Be aware that the Lambda function owner can update the function operation without CloudFormation being notified.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Perform custom processing on CloudFormation templates with template macros}.
 }
 
-Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
-specified.}
+Only one of the \code{Capabilities} and \code{ResourceType} parameters can be specified.}
 
-\item{ResourceTypes}{The template resource types that you have permissions to work with for
-this update stack action, such as \verb{AWS::EC2::Instance}, \verb{AWS::EC2::*},
-or \code{Custom::MyCustomInstance}.
+\item{ResourceTypes}{Specifies which resource types you can work with, such as \verb{AWS::EC2::Instance} or \code{Custom::MyCustomInstance}.
 
-If the list of resource types doesn't include a resource that you're
-updating, the stack update fails. By default, CloudFormation grants
-permissions to all resource types. IAM uses this parameter for
-CloudFormation-specific condition keys in IAM policies. For more
-information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html}{Control access with Identity and Access Management}.
+If the list of resource types doesn't include a resource that you're updating, the stack update fails. By default, CloudFormation grants permissions to all resource types. IAM uses this parameter for CloudFormation-specific condition keys in IAM policies. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html}{Control CloudFormation access with Identity and Access Management}.
 
-Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
-specified.}
+Only one of the \code{Capabilities} and \code{ResourceType} parameters can be specified.}
 
-\item{RoleARN}{The Amazon Resource Name (ARN) of an IAM role that CloudFormation
-assumes to update the stack. CloudFormation uses the role's credentials
-to make calls on your behalf. CloudFormation always uses this role for
-all future operations on the stack. Provided that users have permission
-to operate on the stack, CloudFormation uses this role even if the users
-don't have permission to pass it. Ensure that the role grants least
-privilege.
+\item{RoleARN}{The Amazon Resource Name (ARN) of an IAM role that CloudFormation assumes to update the stack. CloudFormation uses the role's credentials to make calls on your behalf. CloudFormation always uses this role for all future operations on the stack. Provided that users have permission to operate on the stack, CloudFormation uses this role even if the users don't have permission to pass it. Ensure that the role grants least privilege.
 
-If you don't specify a value, CloudFormation uses the role that was
-previously associated with the stack. If no role is available,
-CloudFormation uses a temporary session that is generated from your user
-credentials.}
+If you don't specify a value, CloudFormation uses the role that was previously associated with the stack. If no role is available, CloudFormation uses a temporary session that is generated from your user credentials.}
 
-\item{RollbackConfiguration}{The rollback triggers for CloudFormation to monitor during stack
-creation and updating operations, and for the specified monitoring
-period afterwards.}
+\item{RollbackConfiguration}{The rollback triggers for CloudFormation to monitor during stack creation and updating operations, and for the specified monitoring period afterwards.}
 
-\item{StackPolicyBody}{Structure containing a new stack policy body. You can specify either the
-\code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.
+\item{StackPolicyBody}{Structure that contains a new stack policy body. You can specify either the \code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.
 
-You might update the stack policy, for example, in order to protect a
-new resource that you created during a stack update. If you don't
-specify a stack policy, the current policy that is associated with the
-stack is unchanged.}
+You might update the stack policy, for example, in order to protect a new resource that you created during a stack update. If you don't specify a stack policy, the current policy that is associated with the stack is unchanged.}
 
-\item{StackPolicyURL}{Location of a file containing the updated stack policy. The URL must
-point to a policy (max size: 16KB) located in an S3 bucket in the same
-Region as the stack. The location for an Amazon S3 bucket must start
-with \verb{https://}. You can specify either the \code{StackPolicyBody} or the
-\code{StackPolicyURL} parameter, but not both.
+\item{StackPolicyURL}{Location of a file that contains the updated stack policy. The URL must point to a policy (max size: 16KB) located in an S3 bucket in the same Region as the stack. The location for an Amazon S3 bucket must start with \verb{https://}. URLs from S3 static websites are not supported.
 
-You might update the stack policy, for example, in order to protect a
-new resource that you created during a stack update. If you don't
-specify a stack policy, the current policy that is associated with the
-stack is unchanged.}
+You can specify either the \code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.
 
-\item{NotificationARNs}{Amazon Simple Notification Service topic Amazon Resource Names (ARNs)
-that CloudFormation associates with the stack. Specify an empty list to
-remove all notification topics.}
+You might update the stack policy, for example, in order to protect a new resource that you created during a stack update. If you don't specify a stack policy, the current policy that is associated with the stack is unchanged.}
 
-\item{Tags}{Key-value pairs to associate with this stack. CloudFormation also
-propagates these tags to supported resources in the stack. You can
-specify a maximum number of 50 tags.
+\item{NotificationARNs}{Amazon Simple Notification Service topic Amazon Resource Names (ARNs) that CloudFormation associates with the stack. Specify an empty list to remove all notification topics.}
 
-If you don't specify this parameter, CloudFormation doesn't modify the
-stack's tags. If you specify an empty value, CloudFormation removes all
-associated tags.}
+\item{Tags}{Key-value pairs to associate with this stack. CloudFormation also propagates these tags to supported resources in the stack. You can specify a maximum number of 50 tags.
 
-\item{DisableRollback}{Preserve the state of previously provisioned resources when an operation
-fails.
+If you don't specify this parameter, CloudFormation doesn't modify the stack's tags. If you specify an empty value, CloudFormation removes all associated tags.}
+
+\item{DisableRollback}{Preserve the state of previously provisioned resources when an operation fails.
 
 Default: \code{False}}
 
-\item{ClientRequestToken}{A unique identifier for this
-\code{\link[=cloudformation_update_stack]{update_stack}} request. Specify this
-token if you plan to retry requests so that CloudFormation knows that
-you're not attempting to update a stack with the same name. You might
-retry \code{\link[=cloudformation_update_stack]{update_stack}} requests to ensure
-that CloudFormation successfully received them.
+\item{ClientRequestToken}{A unique identifier for this \code{\link[=cloudformation_update_stack]{update_stack}} request. Specify this token if you plan to retry requests so that CloudFormation knows that you're not attempting to update a stack with the same name. You might retry \code{\link[=cloudformation_update_stack]{update_stack}} requests to ensure that CloudFormation successfully received them.
 
-All events triggered by a given stack operation are assigned the same
-client request token, which you can use to track operations. For
-example, if you execute a \code{\link[=cloudformation_create_stack]{create_stack}}
-operation with the token \code{token1}, then all the \code{StackEvents} generated
-by that operation will have \code{ClientRequestToken} set as \code{token1}.
+All events triggered by a given stack operation are assigned the same client request token, which you can use to track operations. For example, if you execute a \code{\link[=cloudformation_create_stack]{create_stack}} operation with the token \code{token1}, then all the \code{StackEvents} generated by that operation will have \code{ClientRequestToken} set as \code{token1}.
 
-In the console, stack operations display the client request token on the
-Events tab. Stack operations that are initiated from the console use the
-token format \emph{Console-StackOperation-ID}, which helps you easily
-identify the stack operation . For example, if you create a stack using
-the console, each stack event would be assigned the same token in the
-following format:
-\verb{Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002}.}
+In the console, stack operations display the client request token on the Events tab. Stack operations that are initiated from the console use the token format \emph{Console-StackOperation-ID}, which helps you easily identify the stack operation . For example, if you create a stack using the console, each stack event would be assigned the same token in the following format: \verb{Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002}.}
 
-\item{RetainExceptOnCreate}{When set to \code{true}, newly created resources are deleted when the
-operation rolls back. This includes newly created resources marked with
-a deletion policy of \code{Retain}.
+\item{RetainExceptOnCreate}{When set to \code{true}, newly created resources are deleted when the operation rolls back. This includes newly created resources marked with a deletion policy of \code{Retain}.
 
 Default: \code{false}}
 }

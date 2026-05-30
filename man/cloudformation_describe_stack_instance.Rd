@@ -13,29 +13,20 @@ cloudformation_describe_stack_instance(
 )
 }
 \arguments{
-\item{StackSetName}{[required] The name or the unique stack ID of the stack set that you want to get
-stack instance information for.}
+\item{StackSetName}{[required] The name or the unique stack ID of the StackSet that you want to get stack instance information for.}
 
-\item{StackInstanceAccount}{[required] The ID of an Amazon Web Services account that's associated with this
-stack instance.}
+\item{StackInstanceAccount}{[required] The ID of an Amazon Web Services account that's associated with this stack instance.}
 
 \item{StackInstanceRegion}{[required] The name of a Region that's associated with this stack instance.}
 
-\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
-account administrator in the organization's management account or as a
-delegated administrator in a member account.
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an account administrator in the organization's management account or as a delegated administrator in a member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
-self-managed permissions.
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.
-\item If you are signed in to a delegated administrator account, specify
-\code{DELEGATED_ADMIN}.
+\item If you are signed in to a delegated administrator account, specify \code{DELEGATED_ADMIN}.
 
-Your Amazon Web Services account must be registered as a delegated
-administrator in the management account. For more information, see
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
-in the \emph{CloudFormation User Guide}.
+Your Amazon Web Services account must be registered as a delegated administrator in the management account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator} in the \emph{CloudFormation User Guide}.
 }}
 }
 \description{

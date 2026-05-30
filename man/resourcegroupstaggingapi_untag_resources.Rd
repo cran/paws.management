@@ -7,15 +7,11 @@
 resourcegroupstaggingapi_untag_resources(ResourceARNList, TagKeys)
 }
 \arguments{
-\item{ResourceARNList}{[required] Specifies a list of ARNs of the resources that you want to remove tags
-from.
+\item{ResourceARNList}{[required] Specifies a list of ARNs of the resources that you want to remove tags from.
 
-An ARN (Amazon Resource Name) uniquely identifies a resource. For more
-information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}
-in the \emph{Amazon Web Services General Reference}.}
+An ARN (Amazon Resource Name) uniquely identifies a resource. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces} in the \emph{Amazon Web Services General Reference}.}
 
-\item{TagKeys}{[required] Specifies a list of tag keys that you want to remove from the specified
-resources.}
+\item{TagKeys}{[required] Specifies a list of tag keys that you want to remove from the specified resources.}
 }
 \description{
 Removes the specified tags from the specified resources. When you specify a tag key, the action removes both that key and its associated value. The operation succeeds even if you attempt to remove tags from a resource that were already removed. Note the following:

@@ -13,8 +13,7 @@ autoscaling_detach_load_balancer_target_groups(
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{TargetGroupARNs}{[required] The Amazon Resource Names (ARN) of the target groups. You can specify up
-to 10 target groups.}
+\item{TargetGroupARNs}{[required] The Amazon Resource Names (ARN) of the target groups. You can specify up to 10 target groups.}
 }
 \description{
 This API operation is superseded by \code{\link[=autoscaling_detach_traffic_sources]{detach_traffic_sources}}, which can detach multiple traffic sources types. We recommend using \code{\link[=autoscaling_detach_traffic_sources]{detach_traffic_sources}} to simplify how you manage traffic sources. However, we continue to support \code{\link[=autoscaling_detach_load_balancer_target_groups]{detach_load_balancer_target_groups}}. You can use both the original \code{\link[=autoscaling_detach_load_balancer_target_groups]{detach_load_balancer_target_groups}} API operation and \code{\link[=autoscaling_detach_traffic_sources]{detach_traffic_sources}} on the same Auto Scaling group.

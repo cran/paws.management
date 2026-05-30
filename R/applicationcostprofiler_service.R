@@ -5,16 +5,11 @@ NULL
 #' AWS Application Cost Profiler
 #'
 #' @description
-#' This reference provides descriptions of the AWS Application Cost
-#' Profiler API.
+#' This reference provides descriptions of the AWS Application Cost Profiler API.
 #' 
-#' The AWS Application Cost Profiler API provides programmatic access to
-#' view, create, update, and delete application cost report definitions, as
-#' well as to import your usage data into the Application Cost Profiler
-#' service.
+#' The AWS Application Cost Profiler API provides programmatic access to view, create, update, and delete application cost report definitions, as well as to import your usage data into the Application Cost Profiler service.
 #' 
-#' For more information about using this service, see the AWS Application
-#' Cost Profiler User Guide.
+#' For more information about using this service, see the AWS Application Cost Profiler User Guide.
 #'
 #' @param
 #' config
@@ -136,7 +131,7 @@ applicationcostprofiler <- function(config = list(), credentials = list(), endpo
 
 .applicationcostprofiler$metadata <- list(
   service_name = "applicationcostprofiler",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.amazonaws.eu", global = FALSE)),
   service_id = "ApplicationCostProfiler",
   api_version = "2020-09-10",
   signing_name = "application-cost-profiler",

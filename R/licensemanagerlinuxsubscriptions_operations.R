@@ -11,8 +11,7 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_deregister_subscription_provider/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_deregister_subscription_provider/) for full documentation.
 #'
-#' @param SubscriptionProviderArn &#91;required&#93; The Amazon Resource Name (ARN) of the subscription provider resource to
-#' deregister.
+#' @param SubscriptionProviderArn &#91;required&#93; The Amazon Resource Name (ARN) of the subscription provider resource to deregister.
 #'
 #' @keywords internal
 #'
@@ -44,8 +43,7 @@ licensemanagerlinuxsubscriptions_deregister_subscription_provider <- function(Su
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_get_registered_subscription_provider/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_get_registered_subscription_provider/) for full documentation.
 #'
-#' @param SubscriptionProviderArn &#91;required&#93; The Amazon Resource Name (ARN) of the BYOL registration resource to get
-#' details for.
+#' @param SubscriptionProviderArn &#91;required&#93; The Amazon Resource Name (ARN) of the BYOL registration resource to get details for.
 #'
 #' @keywords internal
 #'
@@ -108,13 +106,9 @@ licensemanagerlinuxsubscriptions_get_service_settings <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_list_linux_subscription_instances/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_list_linux_subscription_instances/) for full documentation.
 #'
-#' @param Filters An array of structures that you can use to filter the results by your
-#' specified criteria. For example, you can specify `Region` in the `Name`,
-#' with the `contains` operator to list all subscriptions that match a
-#' partial string in the `Value`, such as `us-west`.
+#' @param Filters An array of structures that you can use to filter the results by your specified criteria. For example, you can specify `Region` in the `Name`, with the `contains` operator to list all subscriptions that match a partial string in the `Value`, such as `us-west`.
 #' 
-#' For each filter, you can specify one of the following values for the
-#' `Name` key to streamline results:
+#' For each filter, you can specify one of the following values for the `Name` key to streamline results:
 #' 
 #' -   `AccountID`
 #' 
@@ -134,8 +128,7 @@ licensemanagerlinuxsubscriptions_get_service_settings <- function() {
 #' 
 #' -   `UsageOperation`
 #' 
-#' For each filter, you can use one of the following `Operator` values to
-#' define the behavior of the filter:
+#' For each filter, you can use one of the following `Operator` values to define the behavior of the filter:
 #' 
 #' -   `contains`
 #' 
@@ -143,8 +136,7 @@ licensemanagerlinuxsubscriptions_get_service_settings <- function() {
 #' 
 #' -   `Notequal`
 #' @param MaxResults The maximum items to return in a request.
-#' @param NextToken A token to specify where to start paginating. This is the nextToken from
-#' a previously truncated response.
+#' @param NextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -175,11 +167,7 @@ licensemanagerlinuxsubscriptions_list_linux_subscription_instances <- function(F
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_list_linux_subscriptions/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_list_linux_subscriptions/) for full documentation.
 #'
-#' @param Filters An array of structures that you can use to filter the results to those
-#' that match one or more sets of key-value pairs that you specify. For
-#' example, you can filter by the name of `Subscription` with an optional
-#' operator to see subscriptions that match, partially match, or don't
-#' match a certain subscription's name.
+#' @param Filters An array of structures that you can use to filter the results to those that match one or more sets of key-value pairs that you specify. For example, you can filter by the name of `Subscription` with an optional operator to see subscriptions that match, partially match, or don't match a certain subscription's name.
 #' 
 #' The valid names for this filter are:
 #' 
@@ -193,8 +181,7 @@ licensemanagerlinuxsubscriptions_list_linux_subscription_instances <- function(F
 #' 
 #' -   `Notequal`
 #' @param MaxResults The maximum items to return in a request.
-#' @param NextToken A token to specify where to start paginating. This is the nextToken from
-#' a previously truncated response.
+#' @param NextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -227,10 +214,8 @@ licensemanagerlinuxsubscriptions_list_linux_subscriptions <- function(Filters = 
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_list_registered_subscription_providers/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_list_registered_subscription_providers/) for full documentation.
 #'
 #' @param MaxResults The maximum items to return in a request.
-#' @param NextToken A token to specify where to start paginating. This is the nextToken from
-#' a previously truncated response.
-#' @param SubscriptionProviderSources To filter your results, specify which subscription providers to return
-#' in the list.
+#' @param NextToken A token to specify where to start paginating. This is the nextToken from a previously truncated response.
+#' @param SubscriptionProviderSources To filter your results, specify which subscription providers to return in the list.
 #'
 #' @keywords internal
 #'
@@ -262,8 +247,7 @@ licensemanagerlinuxsubscriptions_list_registered_subscription_providers <- funct
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_list_tags_for_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which to list
-#' metadata tags.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which to list metadata tags.
 #'
 #' @keywords internal
 #'
@@ -295,13 +279,9 @@ licensemanagerlinuxsubscriptions_list_tags_for_resource <- function(resourceArn)
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_register_subscription_provider/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_register_subscription_provider/) for full documentation.
 #'
-#' @param SecretArn &#91;required&#93; The Amazon Resource Name (ARN) of the secret where you've stored your
-#' subscription provider's access token. For RHEL subscriptions managed
-#' through the Red Hat Subscription Manager (RHSM), the secret contains
-#' your Red Hat Offline token.
+#' @param SecretArn &#91;required&#93; The Amazon Resource Name (ARN) of the secret where you've stored your subscription provider's access token. For RHEL subscriptions managed through the Red Hat Subscription Manager (RHSM), the secret contains your Red Hat Offline token.
 #' @param SubscriptionProviderSource &#91;required&#93; The supported Linux subscription provider to register.
-#' @param Tags The metadata tags to assign to your registered Linux subscription
-#' provider resource.
+#' @param Tags The metadata tags to assign to your registered Linux subscription provider resource.
 #'
 #' @keywords internal
 #'
@@ -332,10 +312,8 @@ licensemanagerlinuxsubscriptions_register_subscription_provider <- function(Secr
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_tag_resource/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_tag_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services resource to
-#' which to add the specified metadata tags.
-#' @param tags &#91;required&#93; The metadata tags to assign to the Amazon Web Services resource. Tags
-#' are formatted as key value pairs.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services resource to which to add the specified metadata tags.
+#' @param tags &#91;required&#93; The metadata tags to assign to the Amazon Web Services resource. Tags are formatted as key value pairs.
 #'
 #' @keywords internal
 #'
@@ -367,8 +345,7 @@ licensemanagerlinuxsubscriptions_tag_resource <- function(resourceArn, tags) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_untag_resource/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_untag_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services resource to
-#' remove the metadata tags from.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services resource to remove the metadata tags from.
 #' @param tagKeys &#91;required&#93; A list of metadata tag keys to remove from the requested resource.
 #'
 #' @keywords internal
@@ -400,13 +377,9 @@ licensemanagerlinuxsubscriptions_untag_resource <- function(resourceArn, tagKeys
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_update_service_settings/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_update_service_settings/) for full documentation.
 #'
-#' @param AllowUpdate Describes if updates are allowed to the service settings for Linux
-#' subscriptions. If you allow updates, you can aggregate Linux
-#' subscription data in more than one home Region.
+#' @param AllowUpdate Describes if updates are allowed to the service settings for Linux subscriptions. If you allow updates, you can aggregate Linux subscription data in more than one home Region.
 #' @param LinuxSubscriptionsDiscovery &#91;required&#93; Describes if the discovery of Linux subscriptions is enabled.
-#' @param LinuxSubscriptionsDiscoverySettings &#91;required&#93; The settings defined for Linux subscriptions discovery. The settings
-#' include if Organizations integration has been enabled, and which Regions
-#' data will be aggregated from.
+#' @param LinuxSubscriptionsDiscoverySettings &#91;required&#93; The settings defined for Linux subscriptions discovery. The settings include if Organizations integration has been enabled, and which Regions data will be aggregated from.
 #'
 #' @keywords internal
 #'

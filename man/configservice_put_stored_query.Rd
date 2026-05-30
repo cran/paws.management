@@ -7,12 +7,9 @@
 configservice_put_stored_query(StoredQuery, Tags = NULL)
 }
 \arguments{
-\item{StoredQuery}{[required] A list of \code{StoredQuery} objects. The mandatory fields are \code{QueryName}
-and \code{Expression}.
+\item{StoredQuery}{[required] A list of \code{StoredQuery} objects. The mandatory fields are \code{QueryName} and \code{Expression}.
 
-When you are creating a query, you must provide a query name and an
-expression. When you are updating a query, you must provide a query name
-but updating the description is optional.}
+When you are creating a query, you must provide a query name and an expression. When you are updating a query, you must provide a query name but updating the description is optional.}
 
 \item{Tags}{A list of \code{Tags} object.}
 }

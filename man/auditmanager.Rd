@@ -53,33 +53,18 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Welcome to the Audit Manager API reference. This guide is for developers
-who need detailed information about the Audit Manager API operations,
-data types, and errors.
+Welcome to the Audit Manager API reference. This guide is for developers who need detailed information about the Audit Manager API operations, data types, and errors.
 
-Audit Manager is a service that provides automated evidence collection
-so that you can continually audit your Amazon Web Services usage. You
-can use it to assess the effectiveness of your controls, manage risk,
-and simplify compliance.
+Audit Manager is a service that provides automated evidence collection so that you can continually audit your Amazon Web Services usage. You can use it to assess the effectiveness of your controls, manage risk, and simplify compliance.
 
-Audit Manager provides prebuilt frameworks that structure and automate
-assessments for a given compliance standard. Frameworks include a
-prebuilt collection of controls with descriptions and testing
-procedures. These controls are grouped according to the requirements of
-the specified compliance standard or regulation. You can also customize
-frameworks and controls to support internal audits with specific
-requirements.
+Audit Manager provides prebuilt frameworks that structure and automate assessments for a given compliance standard. Frameworks include a prebuilt collection of controls with descriptions and testing procedures. These controls are grouped according to the requirements of the specified compliance standard or regulation. You can also customize frameworks and controls to support internal audits with specific requirements.
 
 Use the following links to get started with the Audit Manager API:
 \itemize{
-\item \href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Operations.html}{Actions}:
-An alphabetical list of all Audit Manager API operations.
-\item \href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Types.html}{Data types}:
-An alphabetical list of all Audit Manager data types.
-\item \href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/CommonParameters.html}{Common parameters}:
-Parameters that all operations can use.
-\item \href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/CommonErrors.html}{Common errors}:
-Client and server errors that all operations can return.
+\item \href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Operations.html}{Actions}: An alphabetical list of all Audit Manager API operations.
+\item \href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Types.html}{Data types}: An alphabetical list of all Audit Manager data types.
+\item \href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/CommonParameters.html}{Common parameters}: Parameters that all operations can use.
+\item \href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/CommonErrors.html}{Common errors}: Client and server errors that all operations can return.
 }
 
 If you're new to Audit Manager, we recommend that you review the \href{https://docs.aws.amazon.com/audit-manager/latest/userguide/what-is.html}{Audit Manager User Guide}.
@@ -157,7 +142,7 @@ If you're new to Audit Manager, we recommend that you review the \href{https://d
 \link[=auditmanager_get_insights]{get_insights} \tab Gets the latest analytics data for all your current active assessments\cr
 \link[=auditmanager_get_insights_by_assessment]{get_insights_by_assessment} \tab Gets the latest analytics data for a specific active assessment\cr
 \link[=auditmanager_get_organization_admin_account]{get_organization_admin_account} \tab Gets the name of the delegated Amazon Web Services administrator account for a specified organization\cr
-\link[=auditmanager_get_services_in_scope]{get_services_in_scope} \tab Gets a list of the Amazon Web Services from which Audit Manager can collect evidence\cr
+\link[=auditmanager_get_services_in_scope]{get_services_in_scope} \tab Gets a list of the Amazon Web Services services from which Audit Manager can collect evidence\cr
 \link[=auditmanager_get_settings]{get_settings} \tab Gets the settings for a specified Amazon Web Services account\cr
 \link[=auditmanager_list_assessment_control_insights_by_control_domain]{list_assessment_control_insights_by_control_domain} \tab Lists the latest analytics data for controls within a specific control domain and a specific active assessment\cr
 \link[=auditmanager_list_assessment_frameworks]{list_assessment_frameworks} \tab Returns a list of the frameworks that are available in the Audit Manager framework library\cr

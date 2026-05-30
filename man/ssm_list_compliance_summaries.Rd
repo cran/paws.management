@@ -12,15 +12,11 @@ ssm_list_compliance_summaries(
 )
 }
 \arguments{
-\item{Filters}{One or more compliance or inventory filters. Use a filter to return a
-more specific list of results.}
+\item{Filters}{One or more compliance or inventory filters. Use a filter to return a more specific list of results.}
 
-\item{NextToken}{A token to start the list. Use this token to get the next set of
-results.}
+\item{NextToken}{A token to start the list. Use this token to get the next set of results.}
 
-\item{MaxResults}{The maximum number of items to return for this call. Currently, you can
-specify null or 50. The call also returns a token that you can specify
-in a subsequent call to get the next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. Currently, you can specify null or 50. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 }
 \description{
 Returns a summary count of compliant and non-compliant resources for a compliance type. For example, this call can return State Manager associations, patches, or custom compliance types according to the filter criteria that you specify.

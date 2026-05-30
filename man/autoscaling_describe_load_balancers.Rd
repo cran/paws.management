@@ -14,11 +14,9 @@ autoscaling_describe_load_balancers(
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{MaxRecords}{The maximum number of items to return with this call. The default value
-is \code{100} and the maximum value is \code{100}.}
+\item{MaxRecords}{The maximum number of items to return with this call. The default value is \code{100} and the maximum value is \code{100}.}
 }
 \description{
 This API operation is superseded by \code{\link[=autoscaling_describe_traffic_sources]{describe_traffic_sources}}, which can describe multiple traffic sources types. We recommend using \code{\link[=autoscaling_describe_traffic_sources]{describe_traffic_sources}} to simplify how you manage traffic sources. However, we continue to support \code{\link[=autoscaling_describe_load_balancers]{describe_load_balancers}}. You can use both the original \code{\link[=autoscaling_describe_load_balancers]{describe_load_balancers}} API operation and \code{\link[=autoscaling_describe_traffic_sources]{describe_traffic_sources}} on the same Auto Scaling group.

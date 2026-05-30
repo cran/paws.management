@@ -12,13 +12,11 @@ auditmanager_list_assessment_frameworks(
 )
 }
 \arguments{
-\item{frameworkType}{[required] The type of framework, such as a standard framework or a custom
-framework.}
+\item{frameworkType}{[required] The type of framework, such as a standard framework or a custom framework.}
 
 \item{nextToken}{The pagination token that's used to fetch the next set of results.}
 
-\item{maxResults}{Represents the maximum number of results on a page or for an API request
-call.}
+\item{maxResults}{Represents the maximum number of results on a page or for an API request call.}
 }
 \description{
 Returns a list of the frameworks that are available in the Audit Manager framework library.

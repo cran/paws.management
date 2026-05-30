@@ -11,9 +11,7 @@ the organization and its accounts}
 organizations_enable_aws_service_access(ServicePrincipal)
 }
 \arguments{
-\item{ServicePrincipal}{[required] The service principal name of the Amazon Web Services service for which
-you want to enable integration with your organization. This is typically
-in the form of a URL, such as \code{ service-abbreviation.amazonaws.com}.}
+\item{ServicePrincipal}{[required] The service principal name of the Amazon Web Services service for which you want to enable integration with your organization. This is typically in the form of a URL, such as \code{ service-abbreviation.amazonaws.com}.}
 }
 \description{
 Provides an Amazon Web Services service (the service that is specified by \code{ServicePrincipal}) with permissions to view the structure of an organization, create a \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create-service-linked-role.html}{service-linked role} in all the accounts in the organization, and allow the service to perform operations on behalf of the organization and its accounts. Establishing these permissions can be a first step in enabling the integration of an Amazon Web Services service with Organizations.

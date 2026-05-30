@@ -12,11 +12,9 @@ configservice_put_service_linked_configuration_recorder(
 )
 }
 \arguments{
-\item{ServicePrincipal}{[required] The service principal of the Amazon Web Services service for the
-service-linked configuration recorder that you want to create.}
+\item{ServicePrincipal}{[required] The service principal of the Amazon Web Services service for the service-linked configuration recorder that you want to create.}
 
-\item{Tags}{The tags for a service-linked configuration recorder. Each tag consists
-of a key and an optional value, both of which you define.}
+\item{Tags}{The tags for a service-linked configuration recorder. Each tag consists of a key and an optional value, both of which you define.}
 }
 \description{
 Creates a service-linked configuration recorder that is linked to a specific Amazon Web Services service based on the \code{ServicePrincipal} you specify.

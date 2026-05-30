@@ -11,11 +11,7 @@ licensemanagerlinuxsubscriptions_list_linux_subscriptions(
 )
 }
 \arguments{
-\item{Filters}{An array of structures that you can use to filter the results to those
-that match one or more sets of key-value pairs that you specify. For
-example, you can filter by the name of \code{Subscription} with an optional
-operator to see subscriptions that match, partially match, or don't
-match a certain subscription's name.
+\item{Filters}{An array of structures that you can use to filter the results to those that match one or more sets of key-value pairs that you specify. For example, you can filter by the name of \code{Subscription} with an optional operator to see subscriptions that match, partially match, or don't match a certain subscription's name.
 
 The valid names for this filter are:
 \itemize{
@@ -31,8 +27,7 @@ The valid Operators for this filter are:
 
 \item{MaxResults}{The maximum items to return in a request.}
 
-\item{NextToken}{A token to specify where to start paginating. This is the nextToken from
-a previously truncated response.}
+\item{NextToken}{A token to specify where to start paginating. This is the nextToken from a previously truncated response.}
 }
 \description{
 Lists the Linux subscriptions that have been discovered. If you have linked your organization, the returned results will include data aggregated across your accounts in Organizations.

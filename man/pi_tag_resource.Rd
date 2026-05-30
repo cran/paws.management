@@ -7,15 +7,11 @@
 pi_tag_resource(ServiceType, ResourceARN, Tags)
 }
 \arguments{
-\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights returns
-metrics. Valid value is \code{RDS}.}
+\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights returns metrics. Valid value is \code{RDS}.}
 
-\item{ResourceARN}{[required] The Amazon RDS Performance Insights resource that the tags are added to.
-This value is an Amazon Resource Name (ARN). For information about
-creating an ARN, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an RDS Amazon Resource Name (ARN)}.}
+\item{ResourceARN}{[required] The Amazon RDS Performance Insights resource that the tags are added to. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an RDS Amazon Resource Name (ARN)}.}
 
-\item{Tags}{[required] The metadata assigned to an Amazon RDS resource consisting of a
-key-value pair.}
+\item{Tags}{[required] The metadata assigned to an Amazon RDS resource consisting of a key-value pair.}
 }
 \description{
 Adds metadata tags to the Amazon RDS Performance Insights resource.

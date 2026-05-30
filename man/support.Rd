@@ -50,57 +50,26 @@ Operations section.
 \description{
 Amazon Web Services Support
 
-The \emph{Amazon Web Services Support API Reference} is intended for
-programmers who need detailed information about the Amazon Web Services
-Support operations and data types. You can use the API to manage your
-support cases programmatically. The Amazon Web Services Support API uses
-HTTP methods that return results in JSON format.
+The \emph{Amazon Web Services Support API Reference} is intended for programmers who need detailed information about the Amazon Web Services Support operations and data types. You can use the API to manage your support cases programmatically. The Amazon Web Services Support API uses HTTP methods that return results in JSON format.
 \itemize{
-\item You must have a Business, Enterprise On-Ramp, or Enterprise Support
-plan to use the Amazon Web Services Support API.
-\item If you call the Amazon Web Services Support API from an account that
-doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-plan, the \code{SubscriptionRequiredException} error message appears. For
-information about changing your support plan, see \href{https://aws.amazon.com/premiumsupport/}{Amazon Web Services Support}.
+\item You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+\item If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the \code{SubscriptionRequiredException} error message appears. For information about changing your support plan, see \href{https://aws.amazon.com/premiumsupport/}{Amazon Web Services Support}.
 }
 
-You can also use the Amazon Web Services Support API to access features
-for \href{https://aws.amazon.com/premiumsupport/technology/trusted-advisor/}{Trusted Advisor}.
-You can return a list of checks and their descriptions, get check
-results, specify checks to refresh, and get the refresh status of
-checks.
+You can also use the Amazon Web Services Support API to access features for \href{https://aws.amazon.com/premiumsupport/technology/trusted-advisor/}{Trusted Advisor}. You can return a list of checks and their descriptions, get check results, specify checks to refresh, and get the refresh status of checks.
 
-You can manage your support cases with the following Amazon Web Services
-Support API operations:
+You can manage your support cases with the following Amazon Web Services Support API operations:
 \itemize{
-\item The \code{\link[=support_create_case]{create_case}},
-\code{\link[=support_describe_cases]{describe_cases}},
-\code{\link[=support_describe_attachment]{describe_attachment}}, and
-\code{\link[=support_resolve_case]{resolve_case}} operations create Amazon Web
-Services Support cases, retrieve information about cases, and
-resolve cases.
-\item The \code{\link[=support_describe_communications]{describe_communications}},
-\code{\link[=support_add_communication_to_case]{add_communication_to_case}},
-and \code{\link[=support_add_attachments_to_set]{add_attachments_to_set}}
-operations retrieve and add communications and attachments to Amazon
-Web Services Support cases.
-\item The \code{\link[=support_describe_services]{describe_services}} and
-\code{\link[=support_describe_severity_levels]{describe_severity_levels}}
-operations return Amazon Web Service names, service codes, service
-categories, and problem severity levels. You use these values when
-you call the \code{\link[=support_create_case]{create_case}} operation.
+\item The \code{\link[=support_create_case]{create_case}}, \code{\link[=support_describe_cases]{describe_cases}}, \code{\link[=support_describe_attachment]{describe_attachment}}, and \code{\link[=support_resolve_case]{resolve_case}} operations create Amazon Web Services Support cases, retrieve information about cases, and resolve cases.
+\item The \code{\link[=support_describe_communications]{describe_communications}}, \code{\link[=support_add_communication_to_case]{add_communication_to_case}}, and \code{\link[=support_add_attachments_to_set]{add_attachments_to_set}} operations retrieve and add communications and attachments to Amazon Web Services Support cases.
+\item The \code{\link[=support_describe_services]{describe_services}} and \code{\link[=support_describe_severity_levels]{describe_severity_levels}} operations return Amazon Web Services service names, service codes, service categories, and problem severity levels. You use these values when you call the \code{\link[=support_create_case]{create_case}} operation.
 }
 
-You can also use the Amazon Web Services Support API to call the Trusted
-Advisor operations. For more information, see \href{https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html}{Trusted Advisor}
-in the \emph{Amazon Web Services Support User Guide}.
+You can also use the Amazon Web Services Support API to call the Trusted Advisor operations. For more information, see \href{https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html}{Trusted Advisor} in the \emph{Amazon Web Services Support User Guide}.
 
-For authentication of requests, Amazon Web Services Support uses
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}.
+For authentication of requests, Amazon Web Services Support uses \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}.
 
-For more information about this service and the endpoints to use, see
-\href{https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html}{About the Amazon Web Services Support API}
-in the \emph{Amazon Web Services Support User Guide}.
+For more information about this service and the endpoints to use, see \href{https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html}{About the Amazon Web Services Support API} in the \emph{Amazon Web Services Support User Guide}.
 }
 \section{Service syntax}{
 

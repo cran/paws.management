@@ -15,12 +15,9 @@ ssmsap_stop_application(
 
 \item{StopConnectedEntity}{Specify the \code{ConnectedEntityType}. Accepted type is \code{DBMS}.
 
-If this parameter is included, the connected DBMS (Database Management
-System) will be stopped.}
+If this parameter is included, the connected DBMS (Database Management System) will be stopped.}
 
-\item{IncludeEc2InstanceShutdown}{Boolean. If included and if set to \code{True}, the StopApplication operation
-will shut down the associated Amazon EC2 instance in addition to the
-application.}
+\item{IncludeEc2InstanceShutdown}{Boolean. If included and if set to \code{True}, the StopApplication operation will shut down the associated Amazon EC2 instance in addition to the application.}
 }
 \description{
 Request is an operation to stop an application.

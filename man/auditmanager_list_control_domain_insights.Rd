@@ -10,8 +10,7 @@ auditmanager_list_control_domain_insights(nextToken = NULL, maxResults = NULL)
 \arguments{
 \item{nextToken}{The pagination token that's used to fetch the next set of results.}
 
-\item{maxResults}{Represents the maximum number of results on a page or for an API request
-call.}
+\item{maxResults}{Represents the maximum number of results on a page or for an API request call.}
 }
 \description{
 Lists the latest analytics data for control domains across all of your active assessments.

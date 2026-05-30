@@ -5,39 +5,13 @@ NULL
 #' Amazon CloudWatch Internet Monitor
 #'
 #' @description
-#' Amazon CloudWatch Internet Monitor provides visibility into how internet
-#' issues impact the performance and availability between your applications
-#' hosted on Amazon Web Services and your end users. It can reduce the time
-#' it takes for you to diagnose internet issues from days to minutes.
-#' Internet Monitor uses the connectivity data that Amazon Web Services
-#' captures from its global networking footprint to calculate a baseline of
-#' performance and availability for internet traffic. This is the same data
-#' that Amazon Web Services uses to monitor internet uptime and
-#' availability. With those measurements as a baseline, Internet Monitor
-#' raises awareness for you when there are significant problems for your
-#' end users in the different geographic locations where your application
-#' runs.
+#' Amazon CloudWatch Internet Monitor provides visibility into how internet issues impact the performance and availability between your applications hosted on Amazon Web Services and your end users. It can reduce the time it takes for you to diagnose internet issues from days to minutes. Internet Monitor uses the connectivity data that Amazon Web Services captures from its global networking footprint to calculate a baseline of performance and availability for internet traffic. This is the same data that Amazon Web Services uses to monitor internet uptime and availability. With those measurements as a baseline, Internet Monitor raises awareness for you when there are significant problems for your end users in the different geographic locations where your application runs.
 #' 
-#' Internet Monitor publishes internet measurements to CloudWatch Logs and
-#' CloudWatch Metrics, to easily support using CloudWatch tools with health
-#' information for geographies and networks specific to your application.
-#' Internet Monitor sends health events to Amazon EventBridge so that you
-#' can set up notifications. If an issue is caused by the Amazon Web
-#' Services network, you also automatically receive an Amazon Web Services
-#' Health Dashboard notification with the steps that Amazon Web Services is
-#' taking to mitigate the problem.
+#' Internet Monitor publishes internet measurements to CloudWatch Logs and CloudWatch Metrics, to easily support using CloudWatch tools with health information for geographies and networks specific to your application. Internet Monitor sends health events to Amazon EventBridge so that you can set up notifications. If an issue is caused by the Amazon Web Services network, you also automatically receive an Amazon Web Services Health Dashboard notification with the steps that Amazon Web Services is taking to mitigate the problem.
 #' 
-#' To use Internet Monitor, you create a *monitor* and associate your
-#' application's resources with it - VPCs, NLBs, CloudFront distributions,
-#' or WorkSpaces directories - so Internet Monitor can determine where your
-#' application's internet traffic is. Internet Monitor then provides
-#' internet measurements from Amazon Web Services that are specific to the
-#' locations and ASNs (typically, internet service providers or ISPs) that
-#' communicate with your application.
+#' To use Internet Monitor, you create a *monitor* and associate your application's resources with it - VPCs, NLBs, CloudFront distributions, or WorkSpaces directories - so Internet Monitor can determine where your application's internet traffic is. Internet Monitor then provides internet measurements from Amazon Web Services that are specific to the locations and ASNs (typically, internet service providers or ISPs) that communicate with your application.
 #' 
-#' For more information, see [Using Amazon CloudWatch Internet
-#' Monitor](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-InternetMonitor.html)
-#' in the *Amazon CloudWatch User Guide*.
+#' For more information, see [Using Amazon CloudWatch Internet Monitor](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-InternetMonitor.html) in the *Amazon CloudWatch User Guide*.
 #'
 #' @param
 #' config
@@ -169,7 +143,7 @@ cloudwatchinternetmonitor <- function(config = list(), credentials = list(), end
 
 .cloudwatchinternetmonitor$metadata <- list(
   service_name = "cloudwatchinternetmonitor",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "internetmonitor.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "internetmonitor.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "internetmonitor.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "internetmonitor.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "internetmonitor.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "internetmonitor.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "internetmonitor.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "internetmonitor.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "internetmonitor.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "internetmonitor.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "internetmonitor.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "internetmonitor.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "internetmonitor.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "internetmonitor.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "internetmonitor.{region}.amazonaws.eu", global = FALSE)),
   service_id = "InternetMonitor",
   api_version = "2021-06-03",
   signing_name = "internetmonitor",

@@ -34,6 +34,37 @@ servicequotas_associate_service_quota_template <- function() {
 }
 .servicequotas$operations$associate_service_quota_template <- servicequotas_associate_service_quota_template
 
+#' Creates a Support case for an existing quota increase request
+#'
+#' @description
+#' Creates a Support case for an existing quota increase request. This call only creates a Support case if the request has a `Pending` status.
+#'
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_create_support_case/](https://www.paws-r-sdk.com/docs/servicequotas_create_support_case/) for full documentation.
+#'
+#' @param RequestId &#91;required&#93; The ID of the pending quota increase request for which you want to open a Support case.
+#'
+#' @keywords internal
+#'
+#' @rdname servicequotas_create_support_case
+servicequotas_create_support_case <- function(RequestId) {
+  op <- new_operation(
+    name = "CreateSupportCase",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .servicequotas$create_support_case_input(RequestId = RequestId)
+  output <- .servicequotas$create_support_case_output()
+  config <- get_config()
+  svc <- .servicequotas$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicequotas$operations$create_support_case <- servicequotas_create_support_case
+
 #' Deletes the quota increase request for the specified quota from your
 #' quota request template
 #'
@@ -42,14 +73,8 @@ servicequotas_associate_service_quota_template <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_delete_service_quota_increase_request_from_template/](https://www.paws-r-sdk.com/docs/servicequotas_delete_service_quota_increase_request_from_template/) for full documentation.
 #'
-#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
-#' Amazon Web Services service, use the
-#' [`list_services`][servicequotas_list_services] operation.
-#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific
-#' quota, use the
-#' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
-#' and look for the `QuotaCode` response in the output for the quota you
-#' want.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the [`list_services`][servicequotas_list_services] operation.
+#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific quota, use the [`list_service_quotas`][servicequotas_list_service_quotas] operation, and look for the `QuotaCode` response in the output for the quota you want.
 #' @param AwsRegion &#91;required&#93; Specifies the Amazon Web Services Region for which the request was made.
 #'
 #' @keywords internal
@@ -112,14 +137,8 @@ servicequotas_disassociate_service_quota_template <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_get_aws_default_service_quota/](https://www.paws-r-sdk.com/docs/servicequotas_get_aws_default_service_quota/) for full documentation.
 #'
-#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
-#' Amazon Web Services service, use the
-#' [`list_services`][servicequotas_list_services] operation.
-#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific
-#' quota, use the
-#' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
-#' and look for the `QuotaCode` response in the output for the quota you
-#' want.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the [`list_services`][servicequotas_list_services] operation.
+#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific quota, use the [`list_service_quotas`][servicequotas_list_service_quotas] operation, and look for the `QuotaCode` response in the output for the quota you want.
 #'
 #' @keywords internal
 #'
@@ -174,6 +193,72 @@ servicequotas_get_association_for_service_quota_template <- function() {
 }
 .servicequotas$operations$get_association_for_service_quota_template <- servicequotas_get_association_for_service_quota_template
 
+#' Retrieves information about your Service Quotas Automatic Management
+#' configuration
+#'
+#' @description
+#' Retrieves information about your [Service Quotas Automatic Management](https://docs.aws.amazon.com/servicequotas/latest/userguide/automatic-management.html) configuration. Automatic Management monitors your Service Quotas utilization and notifies you before you run out of your allocated quotas.
+#'
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_get_auto_management_configuration/](https://www.paws-r-sdk.com/docs/servicequotas_get_auto_management_configuration/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname servicequotas_get_auto_management_configuration
+servicequotas_get_auto_management_configuration <- function() {
+  op <- new_operation(
+    name = "GetAutoManagementConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .servicequotas$get_auto_management_configuration_input()
+  output <- .servicequotas$get_auto_management_configuration_output()
+  config <- get_config()
+  svc <- .servicequotas$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicequotas$operations$get_auto_management_configuration <- servicequotas_get_auto_management_configuration
+
+#' Retrieves the quota utilization report for your Amazon Web Services
+#' account
+#'
+#' @description
+#' Retrieves the quota utilization report for your Amazon Web Services account. This operation returns paginated results showing your quota usage across all Amazon Web Services services, sorted by utilization percentage in descending order (highest utilization first).
+#'
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_get_quota_utilization_report/](https://www.paws-r-sdk.com/docs/servicequotas_get_quota_utilization_report/) for full documentation.
+#'
+#' @param ReportId &#91;required&#93; The unique identifier for the quota utilization report. This identifier is returned by the [`start_quota_utilization_report`][servicequotas_start_quota_utilization_report] operation.
+#' @param NextToken A token that indicates the next page of results to retrieve. This token is returned in the response when there are more results available. Omit this parameter for the first request.
+#' @param MaxResults The maximum number of results to return per page. The default value is 1,000 and the maximum allowed value is 1,000.
+#'
+#' @keywords internal
+#'
+#' @rdname servicequotas_get_quota_utilization_report
+servicequotas_get_quota_utilization_report <- function(ReportId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetQuotaUtilizationReport",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .servicequotas$get_quota_utilization_report_input(ReportId = ReportId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .servicequotas$get_quota_utilization_report_output()
+  config <- get_config()
+  svc <- .servicequotas$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicequotas$operations$get_quota_utilization_report <- servicequotas_get_quota_utilization_report
+
 #' Retrieves information about the specified quota increase request
 #'
 #' @description
@@ -205,24 +290,17 @@ servicequotas_get_requested_service_quota_change <- function(RequestId) {
 }
 .servicequotas$operations$get_requested_service_quota_change <- servicequotas_get_requested_service_quota_change
 
-#' Retrieves the applied quota value for the specified quota
+#' Retrieves the applied quota value for the specified account-level or
+#' resource-level quota
 #'
 #' @description
-#' Retrieves the applied quota value for the specified quota. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved.
+#' Retrieves the applied quota value for the specified account-level or resource-level quota. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_get_service_quota/](https://www.paws-r-sdk.com/docs/servicequotas_get_service_quota/) for full documentation.
 #'
-#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
-#' Amazon Web Services service, use the
-#' [`list_services`][servicequotas_list_services] operation.
-#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific
-#' quota, use the
-#' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
-#' and look for the `QuotaCode` response in the output for the quota you
-#' want.
-#' @param ContextId Specifies the Amazon Web Services account or resource to which the quota
-#' applies. The value in this field depends on the context scope associated
-#' with the specified service quota.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the [`list_services`][servicequotas_list_services] operation.
+#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific quota, use the [`list_service_quotas`][servicequotas_list_service_quotas] operation, and look for the `QuotaCode` response in the output for the quota you want.
+#' @param ContextId Specifies the resource with an Amazon Resource Name (ARN).
 #'
 #' @keywords internal
 #'
@@ -254,14 +332,8 @@ servicequotas_get_service_quota <- function(ServiceCode, QuotaCode, ContextId = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_get_service_quota_increase_request_from_template/](https://www.paws-r-sdk.com/docs/servicequotas_get_service_quota_increase_request_from_template/) for full documentation.
 #'
-#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
-#' Amazon Web Services service, use the
-#' [`list_services`][servicequotas_list_services] operation.
-#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific
-#' quota, use the
-#' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
-#' and look for the `QuotaCode` response in the output for the quota you
-#' want.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the [`list_services`][servicequotas_list_services] operation.
+#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific quota, use the [`list_service_quotas`][servicequotas_list_service_quotas] operation, and look for the `QuotaCode` response in the output for the quota you want.
 #' @param AwsRegion &#91;required&#93; Specifies the Amazon Web Services Region for which you made the request.
 #'
 #' @keywords internal
@@ -287,32 +359,18 @@ servicequotas_get_service_quota_increase_request_from_template <- function(Servi
 .servicequotas$operations$get_service_quota_increase_request_from_template <- servicequotas_get_service_quota_increase_request_from_template
 
 #' Lists the default values for the quotas for the specified Amazon Web
-#' Service
+#' Services service
 #'
 #' @description
-#' Lists the default values for the quotas for the specified Amazon Web Service. A default value does not reflect any quota increases.
+#' Lists the default values for the quotas for the specified Amazon Web Services service. A default value does not reflect any quota increases.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_list_aws_default_service_quotas/](https://www.paws-r-sdk.com/docs/servicequotas_list_aws_default_service_quotas/) for full documentation.
 #'
-#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
-#' Amazon Web Services service, use the
-#' [`list_services`][servicequotas_list_services] operation.
-#' @param NextToken Specifies a value for receiving additional results after you receive a
-#' `NextToken` response in a previous request. A `NextToken` response
-#' indicates that more output is available. Set this parameter to the value
-#' of the previous call's `NextToken` response to indicate where the output
-#' should continue from.
-#' @param MaxResults Specifies the maximum number of results that you want included on each
-#' page of the response. If you do not include this parameter, it defaults
-#' to a value appropriate to the operation. If additional items exist
-#' beyond those included in the current response, the `NextToken` response
-#' element is present and has a value (is not null). Include that value as
-#' the `NextToken` request parameter in the next call to the operation to
-#' get the next part of the results.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the [`list_services`][servicequotas_list_services] operation.
+#' @param NextToken Specifies a value for receiving additional results after you receive a `NextToken` response in a previous request. A `NextToken` response indicates that more output is available. Set this parameter to the value of the previous call's `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults Specifies the maximum number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value appropriate to the operation. If additional items exist beyond those included in the current response, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results.
 #' 
-#' An API operation can return fewer results than the maximum even when
-#' there are more results available. You should check `NextToken` after
-#' every operation to ensure that you receive all of the results.
+#' An API operation can return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
 #'
 #' @keywords internal
 #'
@@ -337,36 +395,20 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
 .servicequotas$operations$list_aws_default_service_quotas <- servicequotas_list_aws_default_service_quotas
 
 #' Retrieves the quota increase requests for the specified Amazon Web
-#' Service
+#' Services service
 #'
 #' @description
-#' Retrieves the quota increase requests for the specified Amazon Web Service.
+#' Retrieves the quota increase requests for the specified Amazon Web Services service. Filter responses to return quota requests at either the account level, resource level, or all levels. Responses include any open or closed requests within 90 days.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_list_requested_service_quota_change_history/](https://www.paws-r-sdk.com/docs/servicequotas_list_requested_service_quota_change_history/) for full documentation.
 #'
-#' @param ServiceCode Specifies the service identifier. To find the service code value for an
-#' Amazon Web Services service, use the
-#' [`list_services`][servicequotas_list_services] operation.
-#' @param Status Specifies that you want to filter the results to only the requests with
-#' the matching status.
-#' @param NextToken Specifies a value for receiving additional results after you receive a
-#' `NextToken` response in a previous request. A `NextToken` response
-#' indicates that more output is available. Set this parameter to the value
-#' of the previous call's `NextToken` response to indicate where the output
-#' should continue from.
-#' @param MaxResults Specifies the maximum number of results that you want included on each
-#' page of the response. If you do not include this parameter, it defaults
-#' to a value appropriate to the operation. If additional items exist
-#' beyond those included in the current response, the `NextToken` response
-#' element is present and has a value (is not null). Include that value as
-#' the `NextToken` request parameter in the next call to the operation to
-#' get the next part of the results.
+#' @param ServiceCode Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the [`list_services`][servicequotas_list_services] operation.
+#' @param Status Specifies that you want to filter the results to only the requests with the matching status.
+#' @param NextToken Specifies a value for receiving additional results after you receive a `NextToken` response in a previous request. A `NextToken` response indicates that more output is available. Set this parameter to the value of the previous call's `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults Specifies the maximum number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value appropriate to the operation. If additional items exist beyond those included in the current response, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results.
 #' 
-#' An API operation can return fewer results than the maximum even when
-#' there are more results available. You should check `NextToken` after
-#' every operation to ensure that you receive all of the results.
-#' @param QuotaRequestedAtLevel Specifies at which level within the Amazon Web Services account the
-#' quota request applies to.
+#' An API operation can return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#' @param QuotaRequestedAtLevel Filters the response to return quota requests for the `ACCOUNT`, `RESOURCE`, or `ALL` levels. `ACCOUNT` is the default.
 #'
 #' @keywords internal
 #'
@@ -393,38 +435,18 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
 #' Retrieves the quota increase requests for the specified quota
 #'
 #' @description
-#' Retrieves the quota increase requests for the specified quota.
+#' Retrieves the quota increase requests for the specified quota. Filter responses to return quota requests at either the account level, resource level, or all levels.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_list_requested_service_quota_change_history_by_quota/](https://www.paws-r-sdk.com/docs/servicequotas_list_requested_service_quota_change_history_by_quota/) for full documentation.
 #'
-#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
-#' Amazon Web Services service, use the
-#' [`list_services`][servicequotas_list_services] operation.
-#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific
-#' quota, use the
-#' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
-#' and look for the `QuotaCode` response in the output for the quota you
-#' want.
-#' @param Status Specifies that you want to filter the results to only the requests with
-#' the matching status.
-#' @param NextToken Specifies a value for receiving additional results after you receive a
-#' `NextToken` response in a previous request. A `NextToken` response
-#' indicates that more output is available. Set this parameter to the value
-#' of the previous call's `NextToken` response to indicate where the output
-#' should continue from.
-#' @param MaxResults Specifies the maximum number of results that you want included on each
-#' page of the response. If you do not include this parameter, it defaults
-#' to a value appropriate to the operation. If additional items exist
-#' beyond those included in the current response, the `NextToken` response
-#' element is present and has a value (is not null). Include that value as
-#' the `NextToken` request parameter in the next call to the operation to
-#' get the next part of the results.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the [`list_services`][servicequotas_list_services] operation.
+#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific quota, use the [`list_service_quotas`][servicequotas_list_service_quotas] operation, and look for the `QuotaCode` response in the output for the quota you want.
+#' @param Status Specifies that you want to filter the results to only the requests with the matching status.
+#' @param NextToken Specifies a value for receiving additional results after you receive a `NextToken` response in a previous request. A `NextToken` response indicates that more output is available. Set this parameter to the value of the previous call's `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults Specifies the maximum number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value appropriate to the operation. If additional items exist beyond those included in the current response, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results.
 #' 
-#' An API operation can return fewer results than the maximum even when
-#' there are more results available. You should check `NextToken` after
-#' every operation to ensure that you receive all of the results.
-#' @param QuotaRequestedAtLevel Specifies at which level within the Amazon Web Services account the
-#' quota request applies to.
+#' An API operation can return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#' @param QuotaRequestedAtLevel Filters the response to return quota requests for the `ACCOUNT`, `RESOURCE`, or `ALL` levels. `ACCOUNT` is the default.
 #'
 #' @keywords internal
 #'
@@ -456,26 +478,12 @@ servicequotas_list_requested_service_quota_change_history_by_quota <- function(S
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_list_service_quota_increase_requests_in_template/](https://www.paws-r-sdk.com/docs/servicequotas_list_service_quota_increase_requests_in_template/) for full documentation.
 #'
-#' @param ServiceCode Specifies the service identifier. To find the service code value for an
-#' Amazon Web Services service, use the
-#' [`list_services`][servicequotas_list_services] operation.
+#' @param ServiceCode Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the [`list_services`][servicequotas_list_services] operation.
 #' @param AwsRegion Specifies the Amazon Web Services Region for which you made the request.
-#' @param NextToken Specifies a value for receiving additional results after you receive a
-#' `NextToken` response in a previous request. A `NextToken` response
-#' indicates that more output is available. Set this parameter to the value
-#' of the previous call's `NextToken` response to indicate where the output
-#' should continue from.
-#' @param MaxResults Specifies the maximum number of results that you want included on each
-#' page of the response. If you do not include this parameter, it defaults
-#' to a value appropriate to the operation. If additional items exist
-#' beyond those included in the current response, the `NextToken` response
-#' element is present and has a value (is not null). Include that value as
-#' the `NextToken` request parameter in the next call to the operation to
-#' get the next part of the results.
+#' @param NextToken Specifies a value for receiving additional results after you receive a `NextToken` response in a previous request. A `NextToken` response indicates that more output is available. Set this parameter to the value of the previous call's `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults Specifies the maximum number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value appropriate to the operation. If additional items exist beyond those included in the current response, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results.
 #' 
-#' An API operation can return fewer results than the maximum even when
-#' there are more results available. You should check `NextToken` after
-#' every operation to ensure that you receive all of the results.
+#' An API operation can return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
 #'
 #' @keywords internal
 #'
@@ -499,38 +507,21 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
 }
 .servicequotas$operations$list_service_quota_increase_requests_in_template <- servicequotas_list_service_quota_increase_requests_in_template
 
-#' Lists the applied quota values for the specified Amazon Web Service
+#' Lists the applied quota values for the specified Amazon Web Services
+#' service
 #'
 #' @description
-#' Lists the applied quota values for the specified Amazon Web Service. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved.
+#' Lists the applied quota values for the specified Amazon Web Services service. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved. Filter responses to return applied quota values at either the account level, resource level, or all levels.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_list_service_quotas/](https://www.paws-r-sdk.com/docs/servicequotas_list_service_quotas/) for full documentation.
 #'
-#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
-#' Amazon Web Services service, use the
-#' [`list_services`][servicequotas_list_services] operation.
-#' @param NextToken Specifies a value for receiving additional results after you receive a
-#' `NextToken` response in a previous request. A `NextToken` response
-#' indicates that more output is available. Set this parameter to the value
-#' of the previous call's `NextToken` response to indicate where the output
-#' should continue from.
-#' @param MaxResults Specifies the maximum number of results that you want included on each
-#' page of the response. If you do not include this parameter, it defaults
-#' to a value appropriate to the operation. If additional items exist
-#' beyond those included in the current response, the `NextToken` response
-#' element is present and has a value (is not null). Include that value as
-#' the `NextToken` request parameter in the next call to the operation to
-#' get the next part of the results.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the [`list_services`][servicequotas_list_services] operation.
+#' @param NextToken Specifies a value for receiving additional results after you receive a `NextToken` response in a previous request. A `NextToken` response indicates that more output is available. Set this parameter to the value of the previous call's `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults Specifies the maximum number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value appropriate to the operation. If additional items exist beyond those included in the current response, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results.
 #' 
-#' An API operation can return fewer results than the maximum even when
-#' there are more results available. You should check `NextToken` after
-#' every operation to ensure that you receive all of the results.
-#' @param QuotaCode Specifies the quota identifier. To find the quota code for a specific
-#' quota, use the
-#' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
-#' and look for the `QuotaCode` response in the output for the quota you
-#' want.
-#' @param QuotaAppliedAtLevel Specifies at which level of granularity that the quota value is applied.
+#' An API operation can return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
+#' @param QuotaCode Specifies the quota identifier. To find the quota code for a specific quota, use the [`list_service_quotas`][servicequotas_list_service_quotas] operation, and look for the `QuotaCode` response in the output for the quota you want.
+#' @param QuotaAppliedAtLevel Filters the response to return applied quota values for the `ACCOUNT`, `RESOURCE`, or `ALL` levels. `ACCOUNT` is the default.
 #'
 #' @keywords internal
 #'
@@ -554,30 +545,18 @@ servicequotas_list_service_quotas <- function(ServiceCode, NextToken = NULL, Max
 }
 .servicequotas$operations$list_service_quotas <- servicequotas_list_service_quotas
 
-#' Lists the names and codes for the Amazon Web Services integrated with
-#' Service Quotas
+#' Lists the names and codes for the Amazon Web Services services
+#' integrated with Service Quotas
 #'
 #' @description
-#' Lists the names and codes for the Amazon Web Services integrated with Service Quotas.
+#' Lists the names and codes for the Amazon Web Services services integrated with Service Quotas.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_list_services/](https://www.paws-r-sdk.com/docs/servicequotas_list_services/) for full documentation.
 #'
-#' @param NextToken Specifies a value for receiving additional results after you receive a
-#' `NextToken` response in a previous request. A `NextToken` response
-#' indicates that more output is available. Set this parameter to the value
-#' of the previous call's `NextToken` response to indicate where the output
-#' should continue from.
-#' @param MaxResults Specifies the maximum number of results that you want included on each
-#' page of the response. If you do not include this parameter, it defaults
-#' to a value appropriate to the operation. If additional items exist
-#' beyond those included in the current response, the `NextToken` response
-#' element is present and has a value (is not null). Include that value as
-#' the `NextToken` request parameter in the next call to the operation to
-#' get the next part of the results.
+#' @param NextToken Specifies a value for receiving additional results after you receive a `NextToken` response in a previous request. A `NextToken` response indicates that more output is available. Set this parameter to the value of the previous call's `NextToken` response to indicate where the output should continue from.
+#' @param MaxResults Specifies the maximum number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value appropriate to the operation. If additional items exist beyond those included in the current response, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results.
 #' 
-#' An API operation can return fewer results than the maximum even when
-#' there are more results available. You should check `NextToken` after
-#' every operation to ensure that you receive all of the results.
+#' An API operation can return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
 #'
 #' @keywords internal
 #'
@@ -608,13 +587,7 @@ servicequotas_list_services <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/servicequotas_list_tags_for_resource/) for full documentation.
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) for the applied quota for which you want
-#' to list tags. You can get this information by using the Service Quotas
-#' console, or by listing the quotas using the
-#' [list-service-quotas](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html)
-#' CLI command or the
-#' [`list_service_quotas`][servicequotas_list_service_quotas] Amazon Web
-#' Services API operation.
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) for the applied quota for which you want to list tags. You can get this information by using the Service Quotas console, or by listing the quotas using the [list-service-quotas](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html) CLI command or the [`list_service_quotas`][servicequotas_list_service_quotas] Amazon Web Services API operation.
 #'
 #' @keywords internal
 #'
@@ -645,14 +618,8 @@ servicequotas_list_tags_for_resource <- function(ResourceARN) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_put_service_quota_increase_request_into_template/](https://www.paws-r-sdk.com/docs/servicequotas_put_service_quota_increase_request_into_template/) for full documentation.
 #'
-#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific
-#' quota, use the
-#' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
-#' and look for the `QuotaCode` response in the output for the quota you
-#' want.
-#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
-#' Amazon Web Services service, use the
-#' [`list_services`][servicequotas_list_services] operation.
+#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific quota, use the [`list_service_quotas`][servicequotas_list_service_quotas] operation, and look for the `QuotaCode` response in the output for the quota you want.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the [`list_services`][servicequotas_list_services] operation.
 #' @param AwsRegion &#91;required&#93; Specifies the Amazon Web Services Region to which the template applies.
 #' @param DesiredValue &#91;required&#93; Specifies the new, increased value for the quota.
 #'
@@ -678,30 +645,26 @@ servicequotas_put_service_quota_increase_request_into_template <- function(Quota
 }
 .servicequotas$operations$put_service_quota_increase_request_into_template <- servicequotas_put_service_quota_increase_request_into_template
 
-#' Submits a quota increase request for the specified quota
+#' Submits a quota increase request for the specified quota at the account
+#' or resource level
 #'
 #' @description
-#' Submits a quota increase request for the specified quota.
+#' Submits a quota increase request for the specified quota at the account or resource level.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_request_service_quota_increase/](https://www.paws-r-sdk.com/docs/servicequotas_request_service_quota_increase/) for full documentation.
 #'
-#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
-#' Amazon Web Services service, use the
-#' [`list_services`][servicequotas_list_services] operation.
-#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific
-#' quota, use the
-#' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
-#' and look for the `QuotaCode` response in the output for the quota you
-#' want.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the [`list_services`][servicequotas_list_services] operation.
+#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific quota, use the [`list_service_quotas`][servicequotas_list_service_quotas] operation, and look for the `QuotaCode` response in the output for the quota you want.
 #' @param DesiredValue &#91;required&#93; Specifies the new, increased value for the quota.
-#' @param ContextId Specifies the Amazon Web Services account or resource to which the quota
-#' applies. The value in this field depends on the context scope associated
-#' with the specified service quota.
+#' @param ContextId Specifies the resource with an Amazon Resource Name (ARN).
+#' @param SupportCaseAllowed Specifies if an Amazon Web Services Support case can be opened for the quota increase request. This parameter is optional.
+#' 
+#' By default, this flag is set to `True` and Amazon Web Services may create a support case for some quota increase requests. You can set this flag to `False` if you do not want a support case created when you request a quota increase. If you set the flag to `False`, Amazon Web Services does not open a support case and updates the request status to `Not approved`.
 #'
 #' @keywords internal
 #'
 #' @rdname servicequotas_request_service_quota_increase
-servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode, DesiredValue, ContextId = NULL) {
+servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode, DesiredValue, ContextId = NULL, SupportCaseAllowed = NULL) {
   op <- new_operation(
     name = "RequestServiceQuotaIncrease",
     http_method = "POST",
@@ -710,7 +673,7 @@ servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .servicequotas$request_service_quota_increase_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, DesiredValue = DesiredValue, ContextId = ContextId)
+  input <- .servicequotas$request_service_quota_increase_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, DesiredValue = DesiredValue, ContextId = ContextId, SupportCaseAllowed = SupportCaseAllowed)
   output <- .servicequotas$request_service_quota_increase_output()
   config <- get_config()
   svc <- .servicequotas$service(config, op)
@@ -720,6 +683,106 @@ servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode,
 }
 .servicequotas$operations$request_service_quota_increase <- servicequotas_request_service_quota_increase
 
+#' Starts Service Quotas Automatic Management for an Amazon Web Services
+#' account, including notification preferences and excluded quotas
+#' configurations
+#'
+#' @description
+#' Starts [Service Quotas Automatic Management](https://docs.aws.amazon.com/servicequotas/latest/userguide/automatic-management.html) for an Amazon Web Services account, including notification preferences and excluded quotas configurations. Automatic Management monitors your Service Quotas utilization and notifies you before you run out of your allocated quotas.
+#'
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_start_auto_management/](https://www.paws-r-sdk.com/docs/servicequotas_start_auto_management/) for full documentation.
+#'
+#' @param OptInLevel &#91;required&#93; Sets the opt-in level for Automatic Management. Only Amazon Web Services account level is supported.
+#' @param OptInType &#91;required&#93; Sets the opt-in type for Automatic Management. There are two modes: Notify only and Notify and Auto-Adjust. Currently, only NotifyOnly is available.
+#' @param NotificationArn The [User Notifications](https://docs.aws.amazon.com/notifications/latest/userguide/resource-level-permissions.html#rlp-table) Amazon Resource Name (ARN) for Automatic Management notifications.
+#' @param ExclusionList List of Amazon Web Services services excluded from Automatic Management. You won't be notified of Service Quotas utilization for Amazon Web Services services added to the Automatic Management exclusion list.
+#'
+#' @keywords internal
+#'
+#' @rdname servicequotas_start_auto_management
+servicequotas_start_auto_management <- function(OptInLevel, OptInType, NotificationArn = NULL, ExclusionList = NULL) {
+  op <- new_operation(
+    name = "StartAutoManagement",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .servicequotas$start_auto_management_input(OptInLevel = OptInLevel, OptInType = OptInType, NotificationArn = NotificationArn, ExclusionList = ExclusionList)
+  output <- .servicequotas$start_auto_management_output()
+  config <- get_config()
+  svc <- .servicequotas$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicequotas$operations$start_auto_management <- servicequotas_start_auto_management
+
+#' Initiates the generation of a quota utilization report for your Amazon
+#' Web Services account
+#'
+#' @description
+#' Initiates the generation of a quota utilization report for your Amazon Web Services account. This asynchronous operation analyzes your quota usage across all Amazon Web Services services and returns a unique report identifier that you can use to retrieve the results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_start_quota_utilization_report/](https://www.paws-r-sdk.com/docs/servicequotas_start_quota_utilization_report/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname servicequotas_start_quota_utilization_report
+servicequotas_start_quota_utilization_report <- function() {
+  op <- new_operation(
+    name = "StartQuotaUtilizationReport",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .servicequotas$start_quota_utilization_report_input()
+  output <- .servicequotas$start_quota_utilization_report_output()
+  config <- get_config()
+  svc <- .servicequotas$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicequotas$operations$start_quota_utilization_report <- servicequotas_start_quota_utilization_report
+
+#' Stops Service Quotas Automatic Management for an Amazon Web Services
+#' account and removes all associated configurations
+#'
+#' @description
+#' Stops [Service Quotas Automatic Management](https://docs.aws.amazon.com/servicequotas/latest/userguide/automatic-management.html) for an Amazon Web Services account and removes all associated configurations. Automatic Management monitors your Service Quotas utilization and notifies you before you run out of your allocated quotas.
+#'
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_stop_auto_management/](https://www.paws-r-sdk.com/docs/servicequotas_stop_auto_management/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname servicequotas_stop_auto_management
+servicequotas_stop_auto_management <- function() {
+  op <- new_operation(
+    name = "StopAutoManagement",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .servicequotas$stop_auto_management_input()
+  output <- .servicequotas$stop_auto_management_output()
+  config <- get_config()
+  svc <- .servicequotas$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicequotas$operations$stop_auto_management <- servicequotas_stop_auto_management
+
 #' Adds tags to the specified applied quota
 #'
 #' @description
@@ -727,13 +790,7 @@ servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode,
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_tag_resource/](https://www.paws-r-sdk.com/docs/servicequotas_tag_resource/) for full documentation.
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) for the applied quota. You can get this
-#' information by using the Service Quotas console, or by listing the
-#' quotas using the
-#' [list-service-quotas](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html)
-#' CLI command or the
-#' [`list_service_quotas`][servicequotas_list_service_quotas] Amazon Web
-#' Services API operation.
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) for the applied quota. You can get this information by using the Service Quotas console, or by listing the quotas using the [list-service-quotas](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html) CLI command or the [`list_service_quotas`][servicequotas_list_service_quotas] Amazon Web Services API operation.
 #' @param Tags &#91;required&#93; The tags that you want to add to the resource.
 #'
 #' @keywords internal
@@ -765,13 +822,7 @@ servicequotas_tag_resource <- function(ResourceARN, Tags) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_untag_resource/](https://www.paws-r-sdk.com/docs/servicequotas_untag_resource/) for full documentation.
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) for the applied quota that you want to
-#' untag. You can get this information by using the Service Quotas console,
-#' or by listing the quotas using the
-#' [list-service-quotas](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html)
-#' CLI command or the
-#' [`list_service_quotas`][servicequotas_list_service_quotas] Amazon Web
-#' Services API operation.
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) for the applied quota that you want to untag. You can get this information by using the Service Quotas console, or by listing the quotas using the [list-service-quotas](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html) CLI command or the [`list_service_quotas`][servicequotas_list_service_quotas] Amazon Web Services API operation.
 #' @param TagKeys &#91;required&#93; The keys of the tags that you want to remove from the resource.
 #'
 #' @keywords internal
@@ -795,3 +846,37 @@ servicequotas_untag_resource <- function(ResourceARN, TagKeys) {
   return(response)
 }
 .servicequotas$operations$untag_resource <- servicequotas_untag_resource
+
+#' Updates your Service Quotas Automatic Management configuration,
+#' including notification preferences and excluded quotas
+#'
+#' @description
+#' Updates your [Service Quotas Automatic Management](https://docs.aws.amazon.com/servicequotas/latest/userguide/automatic-management.html) configuration, including notification preferences and excluded quotas. Automatic Management monitors your Service Quotas utilization and notifies you before you run out of your allocated quotas.
+#'
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_update_auto_management/](https://www.paws-r-sdk.com/docs/servicequotas_update_auto_management/) for full documentation.
+#'
+#' @param OptInType Information on the opt-in type for your Automatic Management configuration. There are two modes: Notify only and Notify and Auto-Adjust. Currently, only NotifyOnly is available.
+#' @param NotificationArn The [User Notifications](https://docs.aws.amazon.com/notifications/latest/userguide/resource-level-permissions.html#rlp-table) Amazon Resource Name (ARN) for Automatic Management notifications you want to update.
+#' @param ExclusionList List of Amazon Web Services services you want to exclude from Automatic Management. You won't be notified of Service Quotas utilization for Amazon Web Services services added to the Automatic Management exclusion list.
+#'
+#' @keywords internal
+#'
+#' @rdname servicequotas_update_auto_management
+servicequotas_update_auto_management <- function(OptInType = NULL, NotificationArn = NULL, ExclusionList = NULL) {
+  op <- new_operation(
+    name = "UpdateAutoManagement",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .servicequotas$update_auto_management_input(OptInType = OptInType, NotificationArn = NotificationArn, ExclusionList = ExclusionList)
+  output <- .servicequotas$update_auto_management_output()
+  config <- get_config()
+  svc <- .servicequotas$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicequotas$operations$update_auto_management <- servicequotas_update_auto_management

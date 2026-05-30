@@ -22,32 +22,25 @@ servicecatalog_create_service_action(
 
 \strong{Name}
 
-The name of the Amazon Web Services Systems Manager document (SSM
-document). For example, \code{AWS-RestartEC2Instance}.
+The name of the Amazon Web Services Systems Manager document (SSM document). For example, \code{AWS-RestartEC2Instance}.
 
-If you are using a shared SSM document, you must provide the ARN instead
-of the name.
+If you are using a shared SSM document, you must provide the ARN instead of the name.
 
 \strong{Version}
 
-The Amazon Web Services Systems Manager automation document version. For
-example, \code{"Version": "1"}
+The Amazon Web Services Systems Manager automation document version. For example, \code{"Version": "1"}
 
 \strong{AssumeRole}
 
-The Amazon Resource Name (ARN) of the role that performs the
-self-service actions on your behalf. For example,
-\code{"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"}.
+The Amazon Resource Name (ARN) of the role that performs the self-service actions on your behalf. For example, \code{"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"}.
 
-To reuse the provisioned product launch role, set to
-\code{"AssumeRole": "LAUNCH_ROLE"}.
+To reuse the provisioned product launch role, set to \code{"AssumeRole": "LAUNCH_ROLE"}.
 
 \strong{Parameters}
 
 The list of parameters in JSON format.
 
-For example: \verb{[\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TARGET\\"\}]} or
-\verb{[\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TEXT_VALUE\\"\}]}.}
+For example: \verb{[\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TARGET\\"\}]} or \verb{[\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TEXT_VALUE\\"\}]}.}
 
 \item{Description}{The self-service action description.}
 
@@ -57,9 +50,7 @@ For example: \verb{[\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TARGET\\"\}]} or
 \item \code{zh} - Chinese
 }}
 
-\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple
-requests differ only by the idempotency token, the same response is
-returned for each repeated request.}
+\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
 }
 \description{
 Creates a self-service action.

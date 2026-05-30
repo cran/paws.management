@@ -13,12 +13,9 @@ configservice_put_remediation_exceptions(
 )
 }
 \arguments{
-\item{ConfigRuleName}{[required] The name of the Config rule for which you want to create remediation
-exception.}
+\item{ConfigRuleName}{[required] The name of the Config rule for which you want to create remediation exception.}
 
-\item{ResourceKeys}{[required] An exception list of resource exception keys to be processed with the
-current request. Config adds exception for each resource key. For
-example, Config adds 3 exceptions for 3 resource keys.}
+\item{ResourceKeys}{[required] An exception list of resource exception keys to be processed with the current request. Config adds exception for each resource key. For example, Config adds 3 exceptions for 3 resource keys.}
 
 \item{Message}{The message contains an explanation of the exception.}
 

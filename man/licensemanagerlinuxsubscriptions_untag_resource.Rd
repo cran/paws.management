@@ -8,8 +8,7 @@ resource}
 licensemanagerlinuxsubscriptions_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Amazon Web Services resource to
-remove the metadata tags from.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Amazon Web Services resource to remove the metadata tags from.}
 
 \item{tagKeys}{[required] A list of metadata tag keys to remove from the requested resource.}
 }

@@ -11,8 +11,7 @@ finspace_list_kx_scaling_groups(
 )
 }
 \arguments{
-\item{environmentId}{[required] A unique identifier for the kdb environment, for which you want to
-retrieve a list of scaling groups.}
+\item{environmentId}{[required] A unique identifier for the kdb environment, for which you want to retrieve a list of scaling groups.}
 
 \item{maxResults}{The maximum number of results to return in this request.}
 

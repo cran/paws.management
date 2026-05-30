@@ -8,8 +8,7 @@ Services resource}
 licensemanagerlinuxsubscriptions_list_tags_for_resource(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource for which to list
-metadata tags.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource for which to list metadata tags.}
 }
 \description{
 List the metadata tags that are assigned to the specified Amazon Web Services resource.

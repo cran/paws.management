@@ -8,9 +8,7 @@ Services Region for the calling account}
 resourcegroupstaggingapi_get_tag_keys(PaginationToken = NULL)
 }
 \arguments{
-\item{PaginationToken}{Specifies a \code{PaginationToken} response value from a previous request to
-indicate that you want the next page of results. Leave this parameter
-empty in your initial request.}
+\item{PaginationToken}{Specifies a \code{PaginationToken} response value from a previous request to indicate that you want the next page of results. Leave this parameter empty in your initial request.}
 }
 \description{
 Returns all tag keys currently in use in the specified Amazon Web Services Region for the calling account.

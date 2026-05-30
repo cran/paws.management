@@ -19,17 +19,13 @@ ssm_get_ops_summary(
 
 \item{Filters}{Optional filters used to scope down the returned OpsData.}
 
-\item{Aggregators}{Optional aggregators that return counts of OpsData based on one or more
-expressions.}
+\item{Aggregators}{Optional aggregators that return counts of OpsData based on one or more expressions.}
 
 \item{ResultAttributes}{The OpsData data type to return.}
 
-\item{NextToken}{A token to start the list. Use this token to get the next set of
-results.}
+\item{NextToken}{A token to start the list. Use this token to get the next set of results.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 }
 \description{
 View a summary of operations metadata (OpsData) based on specified filters and aggregators. OpsData can include information about Amazon Web Services Systems Manager OpsCenter operational workitems (OpsItems) as well as information about any Amazon Web Services resource or service configured to report OpsData to Amazon Web Services Systems Manager Explorer.

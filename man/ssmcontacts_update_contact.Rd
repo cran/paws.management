@@ -7,14 +7,11 @@
 ssmcontacts_update_contact(ContactId, DisplayName = NULL, Plan = NULL)
 }
 \arguments{
-\item{ContactId}{[required] The Amazon Resource Name (ARN) of the contact or escalation plan you're
-updating.}
+\item{ContactId}{[required] The Amazon Resource Name (ARN) of the contact or escalation plan you're updating.}
 
 \item{DisplayName}{The full name of the contact or escalation plan.}
 
-\item{Plan}{A list of stages. A contact has an engagement plan with stages for
-specified contact channels. An escalation plan uses these stages to
-contact specified contacts.}
+\item{Plan}{A list of stages. A contact has an engagement plan with stages for specified contact channels. An escalation plan uses these stages to contact specified contacts.}
 }
 \description{
 Updates the contact or escalation plan specified.

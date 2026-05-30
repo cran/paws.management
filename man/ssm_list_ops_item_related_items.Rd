@@ -13,18 +13,13 @@ ssm_list_ops_item_related_items(
 )
 }
 \arguments{
-\item{OpsItemId}{The ID of the OpsItem for which you want to list all related-item
-resources.}
+\item{OpsItemId}{The ID of the OpsItem for which you want to list all related-item resources.}
 
-\item{Filters}{One or more OpsItem filters. Use a filter to return a more specific list
-of results.}
+\item{Filters}{One or more OpsItem filters. Use a filter to return a more specific list of results.}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Lists all related-item resources associated with a Systems Manager OpsCenter OpsItem. OpsCenter is a tool in Amazon Web Services Systems Manager.

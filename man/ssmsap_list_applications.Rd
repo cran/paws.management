@@ -9,9 +9,7 @@ ssmsap_list_applications(NextToken = NULL, MaxResults = NULL, Filters = NULL)
 \arguments{
 \item{NextToken}{The token for the next page of results.}
 
-\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned nextToken
-value.}
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned nextToken value.}
 
 \item{Filters}{The filter of name, value, and operator.}
 }

@@ -22,11 +22,9 @@ configservice_select_aggregate_resource_config(
 
 \item{Limit}{The maximum number of query results returned on each page.}
 
-\item{MaxResults}{The maximum number of query results returned on each page. Config also
-allows the Limit request parameter.}
+\item{MaxResults}{The maximum number of query results returned on each page. Config also allows the Limit request parameter.}
 
-\item{NextToken}{The nextToken string returned in a previous request that you use to
-request the next page of results in a paginated response.}
+\item{NextToken}{The nextToken string returned in a previous request that you use to request the next page of results in a paginated response.}
 }
 \description{
 Accepts a structured query language (SQL) SELECT command and an aggregator to query configuration state of Amazon Web Services resources across multiple accounts and regions, performs the corresponding search, and returns resource configurations matching the properties.

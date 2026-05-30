@@ -9,8 +9,7 @@ cloudwatchinternetmonitor_stop_query(MonitorName, QueryId)
 \arguments{
 \item{MonitorName}{[required] The name of the monitor.}
 
-\item{QueryId}{[required] The ID of the query that you want to stop. A \code{QueryId} is an
-internally-generated identifier for a specific query.}
+\item{QueryId}{[required] The ID of the query that you want to stop. A \code{QueryId} is an internally-generated identifier for a specific query.}
 }
 \description{
 Stop a query that is progress for a specific monitor.

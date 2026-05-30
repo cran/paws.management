@@ -37,8 +37,7 @@ You can specify one or more of the following metrics:
 
 If you omit this property, all metrics are disabled.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-metrics.html}{Amazon CloudWatch metrics for Amazon EC2 Auto Scaling}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-metrics.html}{Amazon CloudWatch metrics for Amazon EC2 Auto Scaling} in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \description{
 Disables group metrics collection for the specified Auto Scaling group.

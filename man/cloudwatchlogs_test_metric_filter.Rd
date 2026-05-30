@@ -8,7 +8,7 @@ event messages}
 cloudwatchlogs_test_metric_filter(filterPattern, logEventMessages)
 }
 \arguments{
-\item{filterPattern}{[required]}
+\item{filterPattern}{[required] A symbolic description of how CloudWatch Logs should interpret the data in each log event. For example, a log event can contain timestamps, IP addresses, strings, and so on. You use the filter pattern to specify what to look for in the log event message.}
 
 \item{logEventMessages}{[required] The log event messages to test.}
 }

@@ -15,21 +15,15 @@ autoscaling_describe_policies(
 \arguments{
 \item{AutoScalingGroupName}{The name of the Auto Scaling group.}
 
-\item{PolicyNames}{The names of one or more policies. If you omit this property, all
-policies are described. If a group name is provided, the results are
-limited to that group. If you specify an unknown policy name, it is
-ignored with no error.
+\item{PolicyNames}{The names of one or more policies. If you omit this property, all policies are described. If a group name is provided, the results are limited to that group. If you specify an unknown policy name, it is ignored with no error.
 
 Array Members: Maximum number of 50 items.}
 
-\item{PolicyTypes}{One or more policy types. The valid values are \code{SimpleScaling},
-\code{StepScaling}, \code{TargetTrackingScaling}, and \code{PredictiveScaling}.}
+\item{PolicyTypes}{One or more policy types. The valid values are \code{SimpleScaling}, \code{StepScaling}, \code{TargetTrackingScaling}, and \code{PredictiveScaling}.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{MaxRecords}{The maximum number of items to be returned with each call. The default
-value is \code{50} and the maximum value is \code{100}.}
+\item{MaxRecords}{The maximum number of items to be returned with each call. The default value is \code{50} and the maximum value is \code{100}.}
 }
 \description{
 Gets information about the scaling policies in the account and Region.

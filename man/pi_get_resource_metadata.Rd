@@ -7,14 +7,9 @@
 pi_get_resource_metadata(ServiceType, Identifier)
 }
 \arguments{
-\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights returns
-metrics.}
+\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights returns metrics.}
 
-\item{Identifier}{[required] An immutable identifier for a data source that is unique for an Amazon
-Web Services Region. Performance Insights gathers metrics from this data
-source. To use a DB instance as a data source, specify its
-\code{DbiResourceId} value. For example, specify
-\code{db-ABCDEFGHIJKLMNOPQRSTU1VW2X}.}
+\item{Identifier}{[required] An immutable identifier for a data source that is unique for an Amazon Web Services Region. Performance Insights gathers metrics from this data source. To use a DB instance as a data source, specify its \code{DbiResourceId} value. For example, specify \code{db-ABCDEFGHIJKLMNOPQRSTU1VW2X}.}
 }
 \description{
 Retrieve the metadata for different features. For example, the metadata might indicate that a feature is turned on or off on a specific DB instance.

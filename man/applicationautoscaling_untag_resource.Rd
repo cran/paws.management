@@ -7,14 +7,11 @@
 applicationautoscaling_untag_resource(ResourceARN, TagKeys)
 }
 \arguments{
-\item{ResourceARN}{[required] Identifies the Application Auto Scaling scalable target from which to
-remove tags.
+\item{ResourceARN}{[required] Identifies the Application Auto Scaling scalable target from which to remove tags.
 
-For example:
-\verb{arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123}
+For example: \verb{arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123}
 
-To get the ARN for a scalable target, use
-\code{\link[=applicationautoscaling_describe_scalable_targets]{describe_scalable_targets}}.}
+To get the ARN for a scalable target, use \code{\link[=applicationautoscaling_describe_scalable_targets]{describe_scalable_targets}}.}
 
 \item{TagKeys}{[required] One or more tag keys. Specify only the tag keys, not the tag values.}
 }

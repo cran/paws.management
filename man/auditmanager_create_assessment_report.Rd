@@ -20,20 +20,11 @@ auditmanager_create_assessment_report(
 
 \item{queryStatement}{A SQL statement that represents an evidence finder query.
 
-Provide this parameter when you want to generate an assessment report
-from the results of an evidence finder search query. When you use this
-parameter, Audit Manager generates a one-time report using only the
-evidence from the query output. This report does not include any
-assessment evidence that was manually \href{https://docs.aws.amazon.com/audit-manager/latest/userguide/generate-assessment-report.html#generate-assessment-report-include-evidence}{added to a report using the console},
-or \href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_BatchAssociateAssessmentReportEvidence.html}{associated with a report using the API}.
+Provide this parameter when you want to generate an assessment report from the results of an evidence finder search query. When you use this parameter, Audit Manager generates a one-time report using only the evidence from the query output. This report does not include any assessment evidence that was manually \href{https://docs.aws.amazon.com/audit-manager/latest/userguide/generate-assessment-report.html#generate-assessment-report-include-evidence}{added to a report using the console}, or \href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_BatchAssociateAssessmentReportEvidence.html}{associated with a report using the API}.
 
-To use this parameter, the
-\href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_EvidenceFinderEnablement.html#auditmanager-Type-EvidenceFinderEnablement-enablementStatus}{enablementStatus}
-of evidence finder must be \code{ENABLED}.
+To use this parameter, the \href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_EvidenceFinderEnablement.html#auditmanager-Type-EvidenceFinderEnablement-enablementStatus}{enablementStatus} of evidence finder must be \code{ENABLED}.
 
-For examples and help resolving \code{queryStatement} validation exceptions,
-see \href{https://docs.aws.amazon.com/audit-manager/latest/userguide/evidence-finder-issues.html#querystatement-exceptions}{Troubleshooting evidence finder issues}
-in the \emph{Audit Manager User Guide.}}
+For examples and help resolving \code{queryStatement} validation exceptions, see \href{https://docs.aws.amazon.com/audit-manager/latest/userguide/evidence-finder-issues.html#querystatement-exceptions}{Troubleshooting evidence finder issues} in the \emph{Audit Manager User Guide.}}
 }
 \description{
 Creates an assessment report for the specified assessment.

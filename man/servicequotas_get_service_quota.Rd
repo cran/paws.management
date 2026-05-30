@@ -2,27 +2,20 @@
 % Please edit documentation in R/servicequotas_operations.R
 \name{servicequotas_get_service_quota}
 \alias{servicequotas_get_service_quota}
-\title{Retrieves the applied quota value for the specified quota}
+\title{Retrieves the applied quota value for the specified account-level or
+resource-level quota}
 \usage{
 servicequotas_get_service_quota(ServiceCode, QuotaCode, ContextId = NULL)
 }
 \arguments{
-\item{ServiceCode}{[required] Specifies the service identifier. To find the service code value for an
-Amazon Web Services service, use the
-\code{\link[=servicequotas_list_services]{list_services}} operation.}
+\item{ServiceCode}{[required] Specifies the service identifier. To find the service code value for an Amazon Web Services service, use the \code{\link[=servicequotas_list_services]{list_services}} operation.}
 
-\item{QuotaCode}{[required] Specifies the quota identifier. To find the quota code for a specific
-quota, use the
-\code{\link[=servicequotas_list_service_quotas]{list_service_quotas}} operation,
-and look for the \code{QuotaCode} response in the output for the quota you
-want.}
+\item{QuotaCode}{[required] Specifies the quota identifier. To find the quota code for a specific quota, use the \code{\link[=servicequotas_list_service_quotas]{list_service_quotas}} operation, and look for the \code{QuotaCode} response in the output for the quota you want.}
 
-\item{ContextId}{Specifies the Amazon Web Services account or resource to which the quota
-applies. The value in this field depends on the context scope associated
-with the specified service quota.}
+\item{ContextId}{Specifies the resource with an Amazon Resource Name (ARN).}
 }
 \description{
-Retrieves the applied quota value for the specified quota. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved.
+Retrieves the applied quota value for the specified account-level or resource-level quota. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved.
 
 See \url{https://www.paws-r-sdk.com/docs/servicequotas_get_service_quota/} for full documentation.
 }

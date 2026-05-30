@@ -21,12 +21,9 @@ finspace_update_kx_cluster_code_configuration(
 
 \item{clientToken}{A token that ensures idempotency. This token expires in 10 minutes.}
 
-\item{code}{[required]}
+\item{code}{[required] The structure of the customer code available within the running cluster.}
 
-\item{initializationScript}{Specifies a Q program that will be run at launch of a cluster. It is a
-relative path within \emph{.zip} file that contains the custom code, which
-will be loaded on the cluster. It must include the file name itself. For
-example, \code{somedir/init.q}.
+\item{initializationScript}{Specifies a Q program that will be run at launch of a cluster. It is a relative path within \emph{.zip} file that contains the custom code, which will be loaded on the cluster. It must include the file name itself. For example, \code{somedir/init.q}.
 
 You cannot update this parameter for a \code{NO_RESTART} deployment.}
 
@@ -34,8 +31,7 @@ You cannot update this parameter for a \code{NO_RESTART} deployment.}
 
 You cannot update this parameter for a \code{NO_RESTART} deployment.}
 
-\item{deploymentConfiguration}{The configuration that allows you to choose how you want to update the
-code on a cluster.}
+\item{deploymentConfiguration}{The configuration that allows you to choose how you want to update the code on a cluster.}
 }
 \description{
 Allows you to update code configuration on a running cluster. By using this API you can update the code, the initialization script path, and the command line arguments for a specific cluster. The configuration that you want to update will override any existing configurations on the cluster.

@@ -16,16 +16,11 @@ configservice_get_compliance_details_by_config_rule(
 
 \item{ComplianceTypes}{Filters the results by compliance.
 
-\code{INSUFFICIENT_DATA} is a valid \code{ComplianceType} that is returned when an
-Config rule cannot be evaluated. However, \code{INSUFFICIENT_DATA} cannot be
-used as a \code{ComplianceType} for filtering results.}
+\code{INSUFFICIENT_DATA} is a valid \code{ComplianceType} that is returned when an Config rule cannot be evaluated. However, \code{INSUFFICIENT_DATA} cannot be used as a \code{ComplianceType} for filtering results.}
 
-\item{Limit}{The maximum number of evaluation results returned on each page. The
-default is 10. You cannot specify a number greater than 100. If you
-specify 0, Config uses the default.}
+\item{Limit}{The maximum number of evaluation results returned on each page. The default is 10. You cannot specify a number greater than 100. If you specify 0, Config uses the default.}
 
-\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
-the next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get the next page of results in a paginated response.}
 }
 \description{
 Returns the evaluation results for the specified Config rule. The results indicate which Amazon Web Services resources were evaluated by the rule, when each resource was last evaluated, and whether each resource complies with the rule.

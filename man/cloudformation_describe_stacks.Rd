@@ -8,34 +8,21 @@ specified, then it returns the description for all the stacks created}
 cloudformation_describe_stacks(StackName = NULL, NextToken = NULL)
 }
 \arguments{
-\item{StackName}{If you don't pass a parameter to \code{StackName}, the API returns a response
-that describes all resources in the account, which can impact
-performance. This requires \code{\link[=cloudformation_list_stacks]{list_stacks}}
-and \code{\link[=cloudformation_describe_stacks]{describe_stacks}} permissions.
+\item{StackName}{If you don't pass a parameter to \code{StackName}, the API returns a response that describes all resources in the account, which can impact performance. This requires \code{\link[=cloudformation_list_stacks]{list_stacks}} and \code{\link[=cloudformation_describe_stacks]{describe_stacks}} permissions.
 
-Consider using the \code{\link[=cloudformation_list_stacks]{list_stacks}} API if
-you're not passing a parameter to \code{StackName}.
+Consider using the \code{\link[=cloudformation_list_stacks]{list_stacks}} API if you're not passing a parameter to \code{StackName}.
 
-The IAM policy below can be added to IAM policies when you want to limit
-resource-level permissions and avoid returning a response when no
-parameter is sent in the request:
+The IAM policy below can be added to IAM policies when you want to limit resource-level permissions and avoid returning a response when no parameter is sent in the request:
 
-\{ "Version": "2012-10-17", "Statement": [\{ "Effect": "Deny",
-"Action": "cloudformation:DescribeStacks", "NotResource":
-"arn:aws:cloudformation:\emph{:}:stack/\emph{/}" \}] \}
+\{ "Version": "2012-10-17", "Statement": [\{ "Effect": "Deny", "Action": "cloudformation:DescribeStacks", "NotResource": "arn:aws:cloudformation:\emph{:}:stack/\emph{/}" \}] \}
 
-The name or the unique stack ID that's associated with the stack, which
-aren't always interchangeable:
+The name or the unique stack ID that's associated with the stack, which aren't always interchangeable:
 \itemize{
-\item Running stacks: You can specify either the stack's name or its
-unique stack ID.
+\item Running stacks: You can specify either the stack's name or its unique stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
-}
+}}
 
-Default: There is no default value.}
-
-\item{NextToken}{A string that identifies the next page of stacks that you want to
-retrieve.}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created. For more information about a stack's event history, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stack-resource-configuration-complete.html}{Understand CloudFormation stack creation events} in the \emph{CloudFormation User Guide}.

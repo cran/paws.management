@@ -9,9 +9,7 @@ ssm_remove_tags_from_resource(ResourceType, ResourceId, TagKeys)
 \arguments{
 \item{ResourceType}{[required] The type of resource from which you want to remove a tag.
 
-The \code{ManagedInstance} type for this API operation is only for
-on-premises managed nodes. Specify the name of the managed node in the
-following format: \code{mi-ID_number }. For example, \verb{mi-1a2b3c4d5e6f}.}
+The \code{ManagedInstance} type for this API operation is only for on-premises managed nodes. Specify the name of the managed node in the following format: \code{mi-ID_number }. For example, \verb{mi-1a2b3c4d5e6f}.}
 
 \item{ResourceId}{[required] The ID of the resource from which you want to remove tags. For example:
 
@@ -23,19 +21,11 @@ MaintenanceWindow: mw-012345abcde
 
 PatchBaseline: pb-012345abcde
 
-OpsMetadata object: \code{ResourceID} for tagging is created from the Amazon
-Resource Name (ARN) for the object. Specifically, \code{ResourceID} is
-created from the strings that come after the word \code{opsmetadata} in the
-ARN. For example, an OpsMetadata object with an ARN of
-\code{arn:aws:ssm:us-east-2:1234567890:opsmetadata/aws/ssm/MyGroup/appmanager}
-has a \code{ResourceID} of either \code{aws/ssm/MyGroup/appmanager} or
-\verb{/aws/ssm/MyGroup/appmanager}.
+OpsMetadata object: \code{ResourceID} for tagging is created from the Amazon Resource Name (ARN) for the object. Specifically, \code{ResourceID} is created from the strings that come after the word \code{opsmetadata} in the ARN. For example, an OpsMetadata object with an ARN of \code{arn:aws:ssm:us-east-2:1234567890:opsmetadata/aws/ssm/MyGroup/appmanager} has a \code{ResourceID} of either \code{aws/ssm/MyGroup/appmanager} or \verb{/aws/ssm/MyGroup/appmanager}.
 
 For the Document and Parameter values, use the name of the resource.
 
-The \code{ManagedInstance} type for this API operation is only for
-on-premises managed nodes. Specify the name of the managed node in the
-following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.}
+The \code{ManagedInstance} type for this API operation is only for on-premises managed nodes. Specify the name of the managed node in the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.}
 
 \item{TagKeys}{[required] Tag keys that you want to remove from the specified resource.}
 }

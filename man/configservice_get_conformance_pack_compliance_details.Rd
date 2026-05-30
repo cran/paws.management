@@ -17,11 +17,9 @@ configservice_get_conformance_pack_compliance_details(
 
 \item{Filters}{A \code{ConformancePackEvaluationFilters} object.}
 
-\item{Limit}{The maximum number of evaluation results returned on each page. If you
-do no specify a number, Config uses the default. The default is 100.}
+\item{Limit}{The maximum number of evaluation results returned on each page. If you do no specify a number, Config uses the default. The default is 100.}
 
-\item{NextToken}{The \code{nextToken} string returned in a previous request that you use to
-request the next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned in a previous request that you use to request the next page of results in a paginated response.}
 }
 \description{
 Returns compliance details of a conformance pack for all Amazon Web Services resources that are monitered by conformance pack.

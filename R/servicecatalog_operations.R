@@ -16,19 +16,15 @@ NULL
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
-#' @param PortfolioShareType The type of shared portfolios to accept. The default is to accept
-#' imported portfolios.
+#' @param PortfolioShareType The type of shared portfolios to accept. The default is to accept imported portfolios.
 #' 
-#' -   `AWS_ORGANIZATIONS` - Accept portfolios shared by the management
-#'     account of your organization.
+#' -   `AWS_ORGANIZATIONS` - Accept portfolios shared by the management account of your organization.
 #' 
 #' -   `IMPORTED` - Accept imported portfolios.
 #' 
-#' -   `AWS_SERVICECATALOG` - Not supported. (Throws
-#'     ResourceNotFoundException.)
+#' -   `AWS_SERVICECATALOG` - Not supported. (Throws ResourceNotFoundException.)
 #' 
-#' For example,
-#' `aws servicecatalog accept-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS`
+#' For example, `aws servicecatalog accept-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS`
 #'
 #' @keywords internal
 #'
@@ -97,27 +93,15 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
-#' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). If the `PrincipalType`
-#' is `IAM`, the supported value is a fully defined [IAM Amazon Resource
-#' Name
-#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns).
-#' If the `PrincipalType` is `IAM_PATTERN`, the supported value is an `IAM`
-#' ARN *without an AccountID* in the following format:
+#' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). If the `PrincipalType` is `IAM`, the supported value is a fully defined [IAM Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). If the `PrincipalType` is `IAM_PATTERN`, the supported value is an `IAM` ARN *without an AccountID* in the following format:
 #' 
 #' *arn:partition:iam:::resource-type/resource-id*
 #' 
 #' The ARN resource-id can be either:
 #' 
-#' -   A fully formed resource-id. For example,
-#'     *arn:aws:iam:::role/resource-name* or
-#'     *arn:aws:iam:::role/resource-path/resource-name*
+#' -   A fully formed resource-id. For example, *arn:aws:iam:::role/resource-name* or *arn:aws:iam:::role/resource-path/resource-name*
 #' 
-#' -   A wildcard ARN. The wildcard ARN accepts `IAM_PATTERN` values with a
-#'     "*" or "?" in the resource-id segment of the ARN. For example
-#'     *arn:partition:service:::resource-type/resource-path/resource-name*.
-#'     The new symbols are exclusive to the **resource-path** and
-#'     **resource-name** and cannot replace the **resource-type** or other
-#'     ARN values.
+#' -   A wildcard ARN. The wildcard ARN accepts `IAM_PATTERN` values with a "*" or "?" in the resource-id segment of the ARN. For example *arn:partition:service:::resource-type/resource-path/resource-name*. The new symbols are exclusive to the **resource-path** and **resource-name** and cannot replace the **resource-type** or other ARN values.
 #' 
 #'     The ARN path and principal name allow unlimited wildcard characters.
 #' 
@@ -131,29 +115,14 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #' 
 #' -   arn:aws:iam:::*/ResourceName
 #' 
-#' You can associate multiple `IAM_PATTERN`s even if the account has no
-#' principal with that name.
+#' You can associate multiple `IAM_PATTERN`s even if the account has no principal with that name.
 #' 
-#' The "?" wildcard character matches zero or one of any character. This is
-#' similar to ".?" in regular regex context. The "*" wildcard character
-#' matches any number of any characters. This is similar to ".*" in
-#' regular regex context.
+#' The "?" wildcard character matches zero or one of any character. This is similar to ".?" in regular regex context. The "*" wildcard character matches any number of any characters. This is similar to ".*" in regular regex context.
 #' 
-#' In the IAM Principal ARN format
-#' (*arn:partition:iam:::resource-type/resource-path/resource-name*), valid
-#' resource-type values include **user/**, **group/**, or **role/**. The
-#' "?" and "*" characters are allowed only after the resource-type in the
-#' resource-id segment. You can use special characters anywhere within the
-#' resource-id.
+#' In the IAM Principal ARN format (*arn:partition:iam:::resource-type/resource-path/resource-name*), valid resource-type values include **user/**, **group/**, or **role/**. The "?" and "*" characters are allowed only after the resource-type in the resource-id segment. You can use special characters anywhere within the resource-id.
 #' 
-#' The "&#42;" character also matches the "/" character, allowing paths to be
-#' formed \emph{within} the resource-id. For example,
-#' \emph{arn:aws:iam:::role/&#42;/ResourceName_?} matches both
-#' \emph{arn:aws:iam:::role/pathA/pathB/ResourceName_1} and
-#' \emph{arn:aws:iam:::role/pathA/ResourceName_1}.
-#' @param PrincipalType &#91;required&#93; The principal type. The supported value is `IAM` if you use a fully
-#' defined Amazon Resource Name (ARN), or `IAM_PATTERN` if you use an ARN
-#' with no `accountID`, with or without wildcard characters.
+#' The "&#42;" character also matches the "/" character, allowing paths to be formed *within* the resource-id. For example, *arn:aws:iam:::role/*/ResourceName_?* matches both *arn:aws:iam:::role/pathA/pathB/ResourceName_1* and *arn:aws:iam:::role/pathA/ResourceName_1*.
+#' @param PrincipalType &#91;required&#93; The principal type. The supported value is `IAM` if you use a fully defined Amazon Resource Name (ARN), or `IAM_PATTERN` if you use an ARN with no `accountID`, with or without wildcard characters.
 #'
 #' @keywords internal
 #'
@@ -223,18 +192,14 @@ servicecatalog_associate_product_with_portfolio <- function(AcceptLanguage = NUL
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_associate_service_action_with_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_associate_service_action_with_provisioning_artifact/) for full documentation.
 #'
 #' @param ProductId &#91;required&#93; The product identifier. For example, `prod-abcdzk7xy33qa`.
-#' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact. For example,
-#' `pa-4abcdjnxjj6ne`.
+#' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact. For example, `pa-4abcdjnxjj6ne`.
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param AcceptLanguage The language code.
 #' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param IdempotencyToken A unique identifier that you provide to ensure idempotency. If multiple
-#' requests from the same Amazon Web Services account use the same
-#' idempotency token, the same response is returned for each repeated
-#' request.
+#' @param IdempotencyToken A unique identifier that you provide to ensure idempotency. If multiple requests from the same Amazon Web Services account use the same idempotency token, the same response is returned for each repeated request.
 #'
 #' @keywords internal
 #'
@@ -298,8 +263,7 @@ servicecatalog_associate_tag_option_with_resource <- function(ResourceId, TagOpt
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_batch_associate_service_action_with_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_batch_associate_service_action_with_provisioning_artifact/) for full documentation.
 #'
-#' @param ServiceActionAssociations &#91;required&#93; One or more associations, each consisting of the Action ID, the Product
-#' ID, and the Provisioning Artifact ID.
+#' @param ServiceActionAssociations &#91;required&#93; One or more associations, each consisting of the Action ID, the Product ID, and the Provisioning Artifact ID.
 #' @param AcceptLanguage The language code.
 #' 
 #' -   `jp` - Japanese
@@ -336,8 +300,7 @@ servicecatalog_batch_associate_service_action_with_provisioning_artifact <- func
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_batch_disassociate_service_action_from_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_batch_disassociate_service_action_from_provisioning_artifact/) for full documentation.
 #'
-#' @param ServiceActionAssociations &#91;required&#93; One or more associations, each consisting of the Action ID, the Product
-#' ID, and the Provisioning Artifact ID.
+#' @param ServiceActionAssociations &#91;required&#93; One or more associations, each consisting of the Action ID, the Product ID, and the Provisioning Artifact ID.
 #' @param AcceptLanguage The language code.
 #' 
 #' -   `jp` - Japanese
@@ -380,18 +343,11 @@ servicecatalog_batch_disassociate_service_action_from_provisioning_artifact <- f
 #' 
 #' -   `zh` - Chinese
 #' @param SourceProductArn &#91;required&#93; The Amazon Resource Name (ARN) of the source product.
-#' @param TargetProductId The identifier of the target product. By default, a new product is
-#' created.
-#' @param TargetProductName A name for the target product. The default is the name of the source
-#' product.
-#' @param SourceProvisioningArtifactIdentifiers The identifiers of the provisioning artifacts (also known as versions)
-#' of the product to copy. By default, all provisioning artifacts are
-#' copied.
-#' @param CopyOptions The copy options. If the value is `CopyTags`, the tags from the source
-#' product are copied to the target product.
-#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
-#' requests differ only by the idempotency token, the same response is
-#' returned for each repeated request.
+#' @param TargetProductId The identifier of the target product. By default, a new product is created.
+#' @param TargetProductName A name for the target product. The default is the name of the source product.
+#' @param SourceProvisioningArtifactIdentifiers The identifiers of the provisioning artifacts (also known as versions) of the product to copy. By default, all provisioning artifacts are copied.
+#' @param CopyOptions The copy options. If the value is `CopyTags`, the tags from the source product are copied to the target product.
+#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
 #'
 #' @keywords internal
 #'
@@ -429,13 +385,11 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param ProductId &#91;required&#93; The product identifier.
-#' @param Parameters &#91;required&#93; The constraint parameters, in JSON format. The syntax depends on the
-#' constraint type as follows:
+#' @param Parameters &#91;required&#93; The constraint parameters, in JSON format. The syntax depends on the constraint type as follows:
 #' 
 #' **LAUNCH**
 #' 
-#' You are required to specify either the `RoleArn` or the `LocalRoleName`
-#' but can't use both.
+#' You are required to specify either the `RoleArn` or the `LocalRoleName` but can't use both.
 #' 
 #' Specify the `RoleArn` property as follows:
 #' 
@@ -445,19 +399,13 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' 
 #' `{"LocalRoleName": "SCBasicLaunchRole"}`
 #' 
-#' If you specify the `LocalRoleName` property, when an account uses the
-#' launch constraint, the IAM role with that name in the account will be
-#' used. This allows launch-role constraints to be account-agnostic so the
-#' administrator can create fewer resources per shared account.
+#' If you specify the `LocalRoleName` property, when an account uses the launch constraint, the IAM role with that name in the account will be used. This allows launch-role constraints to be account-agnostic so the administrator can create fewer resources per shared account.
 #' 
-#' The given role name must exist in the account used to create the launch
-#' constraint and the account of the user who launches a product with this
-#' launch constraint.
+#' The given role name must exist in the account used to create the launch constraint and the account of the user who launches a product with this launch constraint.
 #' 
 #' You cannot have both a `LAUNCH` and a `STACKSET` constraint.
 #' 
-#' You also cannot have more than one `LAUNCH` constraint on a product and
-#' portfolio.
+#' You also cannot have more than one `LAUNCH` constraint on a product and portfolio.
 #' 
 #' **NOTIFICATION**
 #' 
@@ -471,8 +419,7 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' 
 #' `{"Version":"2.0","Properties":{"TagUpdateOnProvisionedProduct":"String"}}`
 #' 
-#' The `TagUpdatesOnProvisionedProduct` property accepts a string value of
-#' `ALLOWED` or `NOT_ALLOWED`.
+#' The `TagUpdatesOnProvisionedProduct` property accepts a string value of `ALLOWED` or `NOT_ALLOWED`.
 #' 
 #' **STACKSET**
 #' 
@@ -482,17 +429,13 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' 
 #' You cannot have both a `LAUNCH` and a `STACKSET` constraint.
 #' 
-#' You also cannot have more than one `STACKSET` constraint on a product
-#' and portfolio.
+#' You also cannot have more than one `STACKSET` constraint on a product and portfolio.
 #' 
-#' Products with a `STACKSET` constraint will launch an CloudFormation
-#' stack set.
+#' Products with a `STACKSET` constraint will launch an CloudFormation stack set.
 #' 
 #' **TEMPLATE**
 #' 
-#' Specify the `Rules` property. For more information, see [Template
-#' Constraint
-#' Rules](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
+#' Specify the `Rules` property. For more information, see [Template Constraint Rules](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
 #' @param Type &#91;required&#93; The type of constraint.
 #' 
 #' -   `LAUNCH`
@@ -505,9 +448,7 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' 
 #' -   `TEMPLATE`
 #' @param Description The description of the constraint.
-#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
-#' requests differ only by the idempotency token, the same response is
-#' returned for each repeated request.
+#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
 #'
 #' @keywords internal
 #'
@@ -547,9 +488,7 @@ servicecatalog_create_constraint <- function(AcceptLanguage = NULL, PortfolioId,
 #' @param Description The description of the portfolio.
 #' @param ProviderName &#91;required&#93; The name of the portfolio provider.
 #' @param Tags One or more tags.
-#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
-#' requests differ only by the idempotency token, the same response is
-#' returned for each repeated request.
+#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
 #'
 #' @keywords internal
 #'
@@ -588,26 +527,13 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param AccountId The Amazon Web Services account ID. For example, `123456789012`.
-#' @param OrganizationNode The organization node to whom you are going to share. When you pass
-#' `OrganizationNode`, it creates `PortfolioShare` for all of the Amazon
-#' Web Services accounts that are associated to the `OrganizationNode`. The
-#' output returns a `PortfolioShareToken`, which enables the administrator
-#' to monitor the status of the `PortfolioShare` creation process.
-#' @param ShareTagOptions Enables or disables `TagOptions ` sharing when creating the portfolio
-#' share. If this flag is not provided, TagOptions sharing is disabled.
-#' @param SharePrincipals This parameter is only supported for portfolios with an
-#' **OrganizationalNode** Type of `ORGANIZATION` or `ORGANIZATIONAL_UNIT`.
+#' @param OrganizationNode The organization node to whom you are going to share. When you pass `OrganizationNode`, it creates `PortfolioShare` for all of the Amazon Web Services accounts that are associated to the `OrganizationNode`. The output returns a `PortfolioShareToken`, which enables the administrator to monitor the status of the `PortfolioShare` creation process.
+#' @param ShareTagOptions Enables or disables `TagOptions ` sharing when creating the portfolio share. If this flag is not provided, TagOptions sharing is disabled.
+#' @param SharePrincipals This parameter is only supported for portfolios with an **OrganizationalNode** Type of `ORGANIZATION` or `ORGANIZATIONAL_UNIT`.
 #' 
-#' Enables or disables `Principal` sharing when creating the portfolio
-#' share. If you do **not** provide this flag, principal sharing is
-#' disabled.
+#' Enables or disables `Principal` sharing when creating the portfolio share. If you do **not** provide this flag, principal sharing is disabled.
 #' 
-#' When you enable Principal Name Sharing for a portfolio share, the share
-#' recipient account end users with a principal that matches any of the
-#' associated IAM patterns can provision products from the portfolio. Once
-#' shared, the share recipient can view associations of `PrincipalType`:
-#' `IAM_PATTERN` on their portfolio. You can create the principals in the
-#' recipient account before or after creating the share.
+#' When you enable Principal Name Sharing for a portfolio share, the share recipient account end users with a principal that matches any of the associated IAM patterns can provision products from the portfolio. Once shared, the share recipient can view associations of `PrincipalType`: `IAM_PATTERN` on their portfolio. You can create the principals in the recipient account before or after creating the share.
 #'
 #' @keywords internal
 #'
@@ -655,13 +581,8 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @param ProductType &#91;required&#93; The type of product.
 #' @param Tags One or more tags.
 #' @param ProvisioningArtifactParameters The configuration of the provisioning artifact.
-#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
-#' requests differ only by the idempotency token, the same response is
-#' returned for each repeated request.
-#' @param SourceConnection Specifies connection details for the created product and syncs the
-#' product to the connection source artifact. This automatically manages
-#' the product's artifacts based on changes to the source. The
-#' `SourceConnection` parameter consists of the following sub-fields.
+#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
+#' @param SourceConnection Specifies connection details for the created product and syncs the product to the connection source artifact. This automatically manages the product's artifacts based on changes to the source. The `SourceConnection` parameter consists of the following sub-fields.
 #' 
 #' -   `Type`
 #' 
@@ -703,27 +624,16 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #' -   `zh` - Chinese
 #' @param PlanName &#91;required&#93; The name of the plan.
 #' @param PlanType &#91;required&#93; The plan type.
-#' @param NotificationArns Passed to CloudFormation. The SNS topic ARNs to which to publish
-#' stack-related events.
-#' @param PathId The path identifier of the product. This value is optional if the
-#' product has a default path, and required if the product has more than
-#' one path. To list the paths for a product, use
-#' [`list_launch_paths`][servicecatalog_list_launch_paths].
+#' @param NotificationArns Passed to CloudFormation. The SNS topic ARNs to which to publish stack-related events.
+#' @param PathId The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use [`list_launch_paths`][servicecatalog_list_launch_paths].
 #' @param ProductId &#91;required&#93; The product identifier.
-#' @param ProvisionedProductName &#91;required&#93; A user-friendly name for the provisioned product. This value must be
-#' unique for the Amazon Web Services account and cannot be updated after
-#' the product is provisioned.
+#' @param ProvisionedProductName &#91;required&#93; A user-friendly name for the provisioned product. This value must be unique for the Amazon Web Services account and cannot be updated after the product is provisioned.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact.
-#' @param ProvisioningParameters Parameters specified by the administrator that are required for
-#' provisioning the product.
-#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
-#' requests differ only by the idempotency token, the same response is
-#' returned for each repeated request.
+#' @param ProvisioningParameters Parameters specified by the administrator that are required for provisioning the product.
+#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
 #' @param Tags One or more tags.
 #' 
-#' If the plan is for an existing provisioned product, the product must
-#' have a `RESOURCE_UPDATE` constraint with
-#' `TagUpdatesOnProvisionedProduct` set to `ALLOWED` to allow tag updates.
+#' If the plan is for an existing provisioned product, the product must have a `RESOURCE_UPDATE` constraint with `TagUpdatesOnProvisionedProduct` set to `ALLOWED` to allow tag updates.
 #'
 #' @keywords internal
 #'
@@ -762,9 +672,7 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param Parameters &#91;required&#93; The configuration for the provisioning artifact.
-#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
-#' requests differ only by the idempotency token, the same response is
-#' returned for each repeated request.
+#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
 #'
 #' @keywords internal
 #'
@@ -801,41 +709,32 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' 
 #' **Name**
 #' 
-#' The name of the Amazon Web Services Systems Manager document (SSM
-#' document). For example, `AWS-RestartEC2Instance`.
+#' The name of the Amazon Web Services Systems Manager document (SSM document). For example, `AWS-RestartEC2Instance`.
 #' 
-#' If you are using a shared SSM document, you must provide the ARN instead
-#' of the name.
+#' If you are using a shared SSM document, you must provide the ARN instead of the name.
 #' 
 #' **Version**
 #' 
-#' The Amazon Web Services Systems Manager automation document version. For
-#' example, `"Version": "1"`
+#' The Amazon Web Services Systems Manager automation document version. For example, `"Version": "1"`
 #' 
 #' **AssumeRole**
 #' 
-#' The Amazon Resource Name (ARN) of the role that performs the
-#' self-service actions on your behalf. For example,
-#' `"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"`.
+#' The Amazon Resource Name (ARN) of the role that performs the self-service actions on your behalf. For example, `"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"`.
 #' 
-#' To reuse the provisioned product launch role, set to
-#' `"AssumeRole": "LAUNCH_ROLE"`.
+#' To reuse the provisioned product launch role, set to `"AssumeRole": "LAUNCH_ROLE"`.
 #' 
 #' **Parameters**
 #' 
 #' The list of parameters in JSON format.
 #' 
-#' For example: `[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]` or
-#' `[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]`.
+#' For example: `[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]` or `[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]`.
 #' @param Description The self-service action description.
 #' @param AcceptLanguage The language code.
 #' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
-#' requests differ only by the idempotency token, the same response is
-#' returned for each repeated request.
+#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
 #'
 #' @keywords internal
 #'
@@ -1051,8 +950,7 @@ servicecatalog_delete_product <- function(AcceptLanguage = NULL, Id) {
 #' 
 #' -   `zh` - Chinese
 #' @param PlanId &#91;required&#93; The plan identifier.
-#' @param IgnoreErrors If set to true, Service Catalog stops managing the specified provisioned
-#' product even if it cannot delete the underlying resources.
+#' @param IgnoreErrors If set to true, Service Catalog stops managing the specified provisioned product even if it cannot delete the underlying resources.
 #'
 #' @keywords internal
 #'
@@ -1127,10 +1025,7 @@ servicecatalog_delete_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param IdempotencyToken A unique identifier that you provide to ensure idempotency. If multiple
-#' requests from the same Amazon Web Services account use the same
-#' idempotency token, the same response is returned for each repeated
-#' request.
+#' @param IdempotencyToken A unique identifier that you provide to ensure idempotency. If multiple requests from the same Amazon Web Services account use the same idempotency token, the same response is returned for each repeated request.
 #'
 #' @keywords internal
 #'
@@ -1233,8 +1128,7 @@ servicecatalog_describe_constraint <- function(AcceptLanguage = NULL, Id) {
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param CopyProductToken &#91;required&#93; The token for the copy product operation. This token is returned by
-#' [`copy_product`][servicecatalog_copy_product].
+#' @param CopyProductToken &#91;required&#93; The token for the copy product operation. This token is returned by [`copy_product`][servicecatalog_copy_product].
 #'
 #' @keywords internal
 #'
@@ -1301,8 +1195,7 @@ servicecatalog_describe_portfolio <- function(AcceptLanguage = NULL, Id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_portfolio_share_status/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_portfolio_share_status/) for full documentation.
 #'
-#' @param PortfolioShareToken &#91;required&#93; The token for the portfolio share operation. This token is returned
-#' either by CreatePortfolioShare or by DeletePortfolioShare.
+#' @param PortfolioShareToken &#91;required&#93; The token for the portfolio share operation. This token is returned either by CreatePortfolioShare or by DeletePortfolioShare.
 #'
 #' @keywords internal
 #'
@@ -1334,23 +1227,17 @@ servicecatalog_describe_portfolio_share_status <- function(PortfolioShareToken) 
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_portfolio_shares/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_portfolio_shares/) for full documentation.
 #'
-#' @param PortfolioId &#91;required&#93; The unique identifier of the portfolio for which shares will be
-#' retrieved.
-#' @param Type &#91;required&#93; The type of portfolio share to summarize. This field acts as a filter on
-#' the type of portfolio share, which can be one of the following:
+#' @param PortfolioId &#91;required&#93; The unique identifier of the portfolio for which shares will be retrieved.
+#' @param Type &#91;required&#93; The type of portfolio share to summarize. This field acts as a filter on the type of portfolio share, which can be one of the following:
 #' 
 #' 1\. `ACCOUNT` - Represents an external account to account share.
 #' 
-#' 2\. `ORGANIZATION` - Represents a share to an organization. This share
-#' is available to every account in the organization.
+#' 2\. `ORGANIZATION` - Represents a share to an organization. This share is available to every account in the organization.
 #' 
-#' 3\. `ORGANIZATIONAL_UNIT` - Represents a share to an organizational
-#' unit.
+#' 3\. `ORGANIZATIONAL_UNIT` - Represents a share to an organizational unit.
 #' 
-#' 4\. `ORGANIZATION_MEMBER_ACCOUNT` - Represents a share to an account in
-#' the organization.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' 4\. `ORGANIZATION_MEMBER_ACCOUNT` - Represents a share to an account in the organization.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #' @param PageSize The maximum number of items to return with this call.
 #'
 #' @keywords internal
@@ -1426,14 +1313,9 @@ servicecatalog_describe_product <- function(AcceptLanguage = NULL, Id = NULL, Na
 #' -   `zh` - Chinese
 #' @param Id The product identifier.
 #' @param Name The product name.
-#' @param SourcePortfolioId The unique identifier of the shared portfolio that the specified product
-#' is associated with.
+#' @param SourcePortfolioId The unique identifier of the shared portfolio that the specified product is associated with.
 #' 
-#' You can provide this parameter to retrieve the shared TagOptions
-#' associated with the product. If this parameter is provided and if
-#' TagOptions sharing is enabled in the portfolio share, the API returns
-#' both local and shared TagOptions associated with the product. Otherwise
-#' only local TagOptions will be returned.
+#' You can provide this parameter to retrieve the shared TagOptions associated with the product. If this parameter is provided and if TagOptions sharing is enabled in the portfolio share, the API returns both local and shared TagOptions associated with the product. Otherwise only local TagOptions will be returned.
 #'
 #' @keywords internal
 #'
@@ -1505,16 +1387,12 @@ servicecatalog_describe_product_view <- function(AcceptLanguage = NULL, Id) {
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param Id The provisioned product identifier. You must provide the name or ID, but
-#' not both.
+#' @param Id The provisioned product identifier. You must provide the name or ID, but not both.
 #' 
-#' If you do not provide a name or ID, or you provide both name and ID, an
-#' `InvalidParametersException` will occur.
-#' @param Name The name of the provisioned product. You must provide the name or ID,
-#' but not both.
+#' If you do not provide a name or ID, or you provide both name and ID, an `InvalidParametersException` will occur.
+#' @param Name The name of the provisioned product. You must provide the name or ID, but not both.
 #' 
-#' If you do not provide a name or ID, or you provide both name and ID, an
-#' `InvalidParametersException` will occur.
+#' If you do not provide a name or ID, or you provide both name and ID, an `InvalidParametersException` will occur.
 #'
 #' @keywords internal
 #'
@@ -1552,8 +1430,7 @@ servicecatalog_describe_provisioned_product <- function(AcceptLanguage = NULL, I
 #' -   `zh` - Chinese
 #' @param PlanId &#91;required&#93; The plan identifier.
 #' @param PageSize The maximum number of items to return with this call.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #'
 #' @keywords internal
 #'
@@ -1595,8 +1472,7 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #' @param ProvisioningArtifactName The provisioning artifact name.
 #' @param ProductName The product name.
 #' @param Verbose Indicates whether a verbose level of detail is enabled.
-#' @param IncludeProvisioningArtifactParameters Indicates if the API call response does or does not include additional
-#' details about the provisioning parameters.
+#' @param IncludeProvisioningArtifactParameters Indicates if the API call response does or does not include additional details about the provisioning parameters.
 #'
 #' @keywords internal
 #'
@@ -1633,18 +1509,11 @@ servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL,
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param ProductId The product identifier. You must provide the product name or ID, but not
-#' both.
+#' @param ProductId The product identifier. You must provide the product name or ID, but not both.
 #' @param ProductName The name of the product. You must provide the name or ID, but not both.
-#' @param ProvisioningArtifactId The identifier of the provisioning artifact. You must provide the name
-#' or ID, but not both.
-#' @param ProvisioningArtifactName The name of the provisioning artifact. You must provide the name or ID,
-#' but not both.
-#' @param PathId The path identifier of the product. This value is optional if the
-#' product has a default path, and required if the product has more than
-#' one path. To list the paths for a product, use
-#' [`list_launch_paths`][servicecatalog_list_launch_paths]. You must
-#' provide the name or ID, but not both.
+#' @param ProvisioningArtifactId The identifier of the provisioning artifact. You must provide the name or ID, but not both.
+#' @param ProvisioningArtifactName The name of the provisioning artifact. You must provide the name or ID, but not both.
+#' @param PathId The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use [`list_launch_paths`][servicecatalog_list_launch_paths]. You must provide the name or ID, but not both.
 #' @param PathName The name of the path. You must provide the name or ID, but not both.
 #'
 #' @keywords internal
@@ -1681,10 +1550,8 @@ servicecatalog_describe_provisioning_parameters <- function(AcceptLanguage = NUL
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param Id &#91;required&#93; The record identifier of the provisioned product. This identifier is
-#' returned by the request operation.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param Id &#91;required&#93; The record identifier of the provisioned product. This identifier is returned by the request operation.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #' @param PageSize The maximum number of items to return with this call.
 #'
 #' @keywords internal
@@ -1854,8 +1721,7 @@ servicecatalog_disable_aws_organizations_access <- function() {
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_budget_from_resource/](https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_budget_from_resource/) for full documentation.
 #'
 #' @param BudgetName &#91;required&#93; The name of the budget you want to disassociate.
-#' @param ResourceId &#91;required&#93; The resource identifier you want to disassociate from. Either a
-#' portfolio-id or a product-id.
+#' @param ResourceId &#91;required&#93; The resource identifier you want to disassociate from. Either a portfolio-id or a product-id.
 #'
 #' @keywords internal
 #'
@@ -1893,12 +1759,8 @@ servicecatalog_disassociate_budget_from_resource <- function(BudgetName, Resourc
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
-#' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). This field allows an
-#' ARN with no `accountID` with or without wildcard characters if
-#' `PrincipalType` is `IAM_PATTERN`.
-#' @param PrincipalType The supported value is `IAM` if you use a fully defined ARN, or
-#' `IAM_PATTERN` if you specify an `IAM` ARN with no AccountId, with or
-#' without wildcard characters.
+#' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). This field allows an ARN with no `accountID` with or without wildcard characters if `PrincipalType` is `IAM_PATTERN`.
+#' @param PrincipalType The supported value is `IAM` if you use a fully defined ARN, or `IAM_PATTERN` if you specify an `IAM` ARN with no AccountId, with or without wildcard characters.
 #'
 #' @keywords internal
 #'
@@ -1968,18 +1830,14 @@ servicecatalog_disassociate_product_from_portfolio <- function(AcceptLanguage = 
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_service_action_from_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_service_action_from_provisioning_artifact/) for full documentation.
 #'
 #' @param ProductId &#91;required&#93; The product identifier. For example, `prod-abcdzk7xy33qa`.
-#' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact. For example,
-#' `pa-4abcdjnxjj6ne`.
+#' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact. For example, `pa-4abcdjnxjj6ne`.
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param AcceptLanguage The language code.
 #' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param IdempotencyToken A unique identifier that you provide to ensure idempotency. If multiple
-#' requests from the same Amazon Web Services account use the same
-#' idempotency token, the same response is returned for each repeated
-#' request.
+#' @param IdempotencyToken A unique identifier that you provide to ensure idempotency. If multiple requests from the same Amazon Web Services account use the same idempotency token, the same response is returned for each repeated request.
 #'
 #' @keywords internal
 #'
@@ -2080,9 +1938,7 @@ servicecatalog_enable_aws_organizations_access <- function() {
 #' 
 #' -   `zh` - Chinese
 #' @param PlanId &#91;required&#93; The plan identifier.
-#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
-#' requests differ only by the idempotency token, the same response is
-#' returned for each repeated request.
+#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
 #'
 #' @keywords internal
 #'
@@ -2121,12 +1977,7 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param Parameters A map of all self-service action parameters and their values. If a
-#' provided parameter is of a special type, such as `TARGET`, the provided
-#' value will override the default value generated by Service Catalog. If
-#' the parameters field is not provided, no additional parameters are
-#' passed and default values will be used for any special parameters such
-#' as `TARGET`.
+#' @param Parameters A map of all self-service action parameters and their values. If a provided parameter is of a special type, such as `TARGET`, the provided value will override the default value generated by Service Catalog. If the parameters field is not provided, no additional parameters are passed and default values will be used for any special parameters such as `TARGET`.
 #'
 #' @keywords internal
 #'
@@ -2195,15 +2046,11 @@ servicecatalog_get_aws_organizations_access_status <- function() {
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param ProvisionedProductId The identifier of the provisioned product that you want the outputs
-#' from.
+#' @param ProvisionedProductId The identifier of the provisioned product that you want the outputs from.
 #' @param ProvisionedProductName The name of the provisioned product that you want the outputs from.
-#' @param OutputKeys The list of keys that the API should return with their values. If none
-#' are provided, the API will return all outputs of the provisioned
-#' product.
+#' @param OutputKeys The list of keys that the API should return with their values. If none are provided, the API will return all outputs of the provisioned product.
 #' @param PageSize The maximum number of items to return with this call.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #'
 #' @keywords internal
 #'
@@ -2243,14 +2090,9 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact.
-#' @param ProvisionedProductName &#91;required&#93; The user-friendly name of the provisioned product. The value must be
-#' unique for the Amazon Web Services account. The name cannot be updated
-#' after the product is provisioned.
-#' @param PhysicalId &#91;required&#93; The unique identifier of the resource to be imported. It only currently
-#' supports CloudFormation stack IDs.
-#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
-#' requests differ only by the idempotency token, the same response is
-#' returned for each repeated request.
+#' @param ProvisionedProductName &#91;required&#93; The user-friendly name of the provisioned product. The value must be unique for the Amazon Web Services account. The name cannot be updated after the product is provisioned.
+#' @param PhysicalId &#91;required&#93; The unique identifier of the resource to be imported. It only currently supports CloudFormation stack IDs.
+#' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
 #'
 #' @keywords internal
 #'
@@ -2287,20 +2129,15 @@ servicecatalog_import_as_provisioned_product <- function(AcceptLanguage = NULL, 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #' @param PageSize The maximum number of items to return with this call.
-#' @param PortfolioShareType The type of shared portfolios to list. The default is to list imported
-#' portfolios.
+#' @param PortfolioShareType The type of shared portfolios to list. The default is to list imported portfolios.
 #' 
-#' -   `AWS_ORGANIZATIONS` - List portfolios accepted and shared via
-#'     organizational sharing by the management account or delegated
-#'     administrator of your organization.
+#' -   `AWS_ORGANIZATIONS` - List portfolios accepted and shared via organizational sharing by the management account or delegated administrator of your organization.
 #' 
 #' -   `AWS_SERVICECATALOG` - Deprecated type.
 #' 
-#' -   `IMPORTED` - List imported portfolios that have been accepted and
-#'     shared through account-to-account sharing.
+#' -   `IMPORTED` - List imported portfolios that have been accepted and shared through account-to-account sharing.
 #'
 #' @keywords internal
 #'
@@ -2338,8 +2175,7 @@ servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL,
 #' -   `zh` - Chinese
 #' @param ResourceId &#91;required&#93; The resource identifier.
 #' @param PageSize The maximum number of items to return with this call.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #'
 #' @keywords internal
 #'
@@ -2378,8 +2214,7 @@ servicecatalog_list_budgets_for_resource <- function(AcceptLanguage = NULL, Reso
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param ProductId The product identifier.
 #' @param PageSize The maximum number of items to return with this call.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #'
 #' @keywords internal
 #'
@@ -2417,8 +2252,7 @@ servicecatalog_list_constraints_for_portfolio <- function(AcceptLanguage = NULL,
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param PageSize The maximum number of items to return with this call.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #'
 #' @keywords internal
 #'
@@ -2459,13 +2293,10 @@ servicecatalog_list_launch_paths <- function(AcceptLanguage = NULL, ProductId, P
 #' 
 #' -   `ORGANIZATION` - Organization that has access to the portfolio.
 #' 
-#' -   `ORGANIZATIONAL_UNIT` - Organizational unit that has access to the
-#'     portfolio within your organization.
+#' -   `ORGANIZATIONAL_UNIT` - Organizational unit that has access to the portfolio within your organization.
 #' 
-#' -   `ACCOUNT` - Account that has access to the portfolio within your
-#'     organization.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' -   `ACCOUNT` - Account that has access to the portfolio within your organization.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #' @param PageSize The maximum number of items to return with this call.
 #'
 #' @keywords internal
@@ -2503,11 +2334,8 @@ servicecatalog_list_organization_portfolio_access <- function(AcceptLanguage = N
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
-#' @param OrganizationParentId The ID of an organization node the portfolio is shared with. All
-#' children of this node with an inherited portfolio share will be
-#' returned.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param OrganizationParentId The ID of an organization node the portfolio is shared with. All children of this node with an inherited portfolio share will be returned.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #' @param PageSize The maximum number of items to return with this call.
 #'
 #' @keywords internal
@@ -2544,8 +2372,7 @@ servicecatalog_list_portfolio_access <- function(AcceptLanguage = NULL, Portfoli
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #' @param PageSize The maximum number of items to return with this call.
 #'
 #' @keywords internal
@@ -2583,8 +2410,7 @@ servicecatalog_list_portfolios <- function(AcceptLanguage = NULL, PageToken = NU
 #' 
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #' @param PageSize The maximum number of items to return with this call.
 #'
 #' @keywords internal
@@ -2624,8 +2450,7 @@ servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, Pr
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param PageSize The maximum number of items to return with this call.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #'
 #' @keywords internal
 #'
@@ -2664,8 +2489,7 @@ servicecatalog_list_principals_for_portfolio <- function(AcceptLanguage = NULL, 
 #' -   `zh` - Chinese
 #' @param ProvisionProductId The product identifier.
 #' @param PageSize The maximum number of items to return with this call.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #' @param AccessLevelFilter The access level to use to obtain results. The default is `User`.
 #'
 #' @keywords internal
@@ -2737,8 +2561,7 @@ servicecatalog_list_provisioning_artifacts <- function(AcceptLanguage = NULL, Pr
 #'
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param PageSize The maximum number of items to return with this call.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #' @param AcceptLanguage The language code.
 #' 
 #' -   `jp` - Japanese
@@ -2782,8 +2605,7 @@ servicecatalog_list_provisioning_artifacts_for_service_action <- function(Servic
 #' @param AccessLevelFilter The access level to use to obtain results. The default is `User`.
 #' @param SearchFilter The search filter to scope the results.
 #' @param PageSize The maximum number of items to return with this call.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #'
 #' @keywords internal
 #'
@@ -2821,8 +2643,7 @@ servicecatalog_list_record_history <- function(AcceptLanguage = NULL, AccessLeve
 #' 
 #' -   `Product`
 #' @param PageSize The maximum number of items to return with this call.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #'
 #' @keywords internal
 #'
@@ -2859,8 +2680,7 @@ servicecatalog_list_resources_for_tag_option <- function(TagOptionId, ResourceTy
 #' 
 #' -   `zh` - Chinese
 #' @param PageSize The maximum number of items to return with this call.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #'
 #' @keywords internal
 #'
@@ -2893,11 +2713,9 @@ servicecatalog_list_service_actions <- function(AcceptLanguage = NULL, PageSize 
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_service_actions_for_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_list_service_actions_for_provisioning_artifact/) for full documentation.
 #'
 #' @param ProductId &#91;required&#93; The product identifier. For example, `prod-abcdzk7xy33qa`.
-#' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact. For example,
-#' `pa-4abcdjnxjj6ne`.
+#' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact. For example, `pa-4abcdjnxjj6ne`.
 #' @param PageSize The maximum number of items to return with this call.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #' @param AcceptLanguage The language code.
 #' 
 #' -   `jp` - Japanese
@@ -2940,8 +2758,7 @@ servicecatalog_list_service_actions_for_provisioning_artifact <- function(Produc
 #' 
 #' -   `zh` - Chinese
 #' @param ProvisionedProductId &#91;required&#93; The identifier of the provisioned product.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #' @param PageSize The maximum number of items to return with this call.
 #'
 #' @keywords internal
@@ -2973,11 +2790,9 @@ servicecatalog_list_stack_instances_for_provisioned_product <- function(AcceptLa
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_tag_options/](https://www.paws-r-sdk.com/docs/servicecatalog_list_tag_options/) for full documentation.
 #'
-#' @param Filters The search filters. If no search filters are specified, the output
-#' includes all TagOptions.
+#' @param Filters The search filters. If no search filters are specified, the output includes all TagOptions.
 #' @param PageSize The maximum number of items to return with this call.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #'
 #' @keywords internal
 #'
@@ -3008,14 +2823,11 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_notify_provision_product_engine_workflow_result/](https://www.paws-r-sdk.com/docs/servicecatalog_notify_provision_product_engine_workflow_result/) for full documentation.
 #'
-#' @param WorkflowToken &#91;required&#93; The encrypted contents of the provisioning engine execution payload that
-#' Service Catalog sends after the Terraform product provisioning workflow
-#' starts.
+#' @param WorkflowToken &#91;required&#93; The encrypted contents of the provisioning engine execution payload that Service Catalog sends after the Terraform product provisioning workflow starts.
 #' @param RecordId &#91;required&#93; The identifier of the record.
 #' @param Status &#91;required&#93; The status of the provisioning engine execution.
 #' @param FailureReason The reason why the provisioning engine execution failed.
-#' @param ResourceIdentifier The ID for the provisioned product resources that are part of a resource
-#' group.
+#' @param ResourceIdentifier The ID for the provisioned product resources that are part of a resource group.
 #' @param Outputs The output of the provisioning engine execution.
 #' @param IdempotencyToken &#91;required&#93; The idempotency token that identifies the provisioning engine execution.
 #'
@@ -3048,9 +2860,7 @@ servicecatalog_notify_provision_product_engine_workflow_result <- function(Workf
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_notify_terminate_provisioned_product_engine_workflow_result/](https://www.paws-r-sdk.com/docs/servicecatalog_notify_terminate_provisioned_product_engine_workflow_result/) for full documentation.
 #'
-#' @param WorkflowToken &#91;required&#93; The encrypted contents of the terminate engine execution payload that
-#' Service Catalog sends after the Terraform product terminate workflow
-#' starts.
+#' @param WorkflowToken &#91;required&#93; The encrypted contents of the terminate engine execution payload that Service Catalog sends after the Terraform product terminate workflow starts.
 #' @param RecordId &#91;required&#93; The identifier of the record.
 #' @param Status &#91;required&#93; The status of the terminate engine execution.
 #' @param FailureReason The reason why the terminate engine execution failed.
@@ -3085,9 +2895,7 @@ servicecatalog_notify_terminate_provisioned_product_engine_workflow_result <- fu
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_notify_update_provisioned_product_engine_workflow_result/](https://www.paws-r-sdk.com/docs/servicecatalog_notify_update_provisioned_product_engine_workflow_result/) for full documentation.
 #'
-#' @param WorkflowToken &#91;required&#93; The encrypted contents of the update engine execution payload that
-#' Service Catalog sends after the Terraform product update workflow
-#' starts.
+#' @param WorkflowToken &#91;required&#93; The encrypted contents of the update engine execution payload that Service Catalog sends after the Terraform product update workflow starts.
 #' @param RecordId &#91;required&#93; The identifier of the record.
 #' @param Status &#91;required&#93; The status of the update engine execution.
 #' @param FailureReason The reason why the update engine execution failed.
@@ -3130,26 +2938,15 @@ servicecatalog_notify_update_provisioned_product_engine_workflow_result <- funct
 #' -   `zh` - Chinese
 #' @param ProductId The product identifier. You must provide the name or ID, but not both.
 #' @param ProductName The name of the product. You must provide the name or ID, but not both.
-#' @param ProvisioningArtifactId The identifier of the provisioning artifact. You must provide the name
-#' or ID, but not both.
-#' @param ProvisioningArtifactName The name of the provisioning artifact. You must provide the name or ID,
-#' but not both.
-#' @param PathId The path identifier of the product. This value is optional if the
-#' product has a default path, and required if the product has more than
-#' one path. To list the paths for a product, use
-#' [`list_launch_paths`][servicecatalog_list_launch_paths]. You must
-#' provide the name or ID, but not both.
+#' @param ProvisioningArtifactId The identifier of the provisioning artifact. You must provide the name or ID, but not both.
+#' @param ProvisioningArtifactName The name of the provisioning artifact. You must provide the name or ID, but not both.
+#' @param PathId The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use [`list_launch_paths`][servicecatalog_list_launch_paths]. You must provide the name or ID, but not both.
 #' @param PathName The name of the path. You must provide the name or ID, but not both.
-#' @param ProvisionedProductName &#91;required&#93; A user-friendly name for the provisioned product. This value must be
-#' unique for the Amazon Web Services account and cannot be updated after
-#' the product is provisioned.
-#' @param ProvisioningParameters Parameters specified by the administrator that are required for
-#' provisioning the product.
-#' @param ProvisioningPreferences An object that contains information about the provisioning preferences
-#' for a stack set.
+#' @param ProvisionedProductName &#91;required&#93; A user-friendly name for the provisioned product. This value must be unique for the Amazon Web Services account and cannot be updated after the product is provisioned.
+#' @param ProvisioningParameters Parameters specified by the administrator that are required for provisioning the product.
+#' @param ProvisioningPreferences An object that contains information about the provisioning preferences for a stack set.
 #' @param Tags One or more tags.
-#' @param NotificationArns Passed to CloudFormation. The SNS topic ARNs to which to publish
-#' stack-related events.
+#' @param NotificationArns Passed to CloudFormation. The SNS topic ARNs to which to publish stack-related events.
 #' @param ProvisionToken &#91;required&#93; An idempotency token that uniquely identifies the provisioning request.
 #'
 #' @keywords internal
@@ -3187,19 +2984,15 @@ servicecatalog_provision_product <- function(AcceptLanguage = NULL, ProductId = 
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
-#' @param PortfolioShareType The type of shared portfolios to reject. The default is to reject
-#' imported portfolios.
+#' @param PortfolioShareType The type of shared portfolios to reject. The default is to reject imported portfolios.
 #' 
-#' -   `AWS_ORGANIZATIONS` - Reject portfolios shared by the management
-#'     account of your organization.
+#' -   `AWS_ORGANIZATIONS` - Reject portfolios shared by the management account of your organization.
 #' 
 #' -   `IMPORTED` - Reject imported portfolios.
 #' 
-#' -   `AWS_SERVICECATALOG` - Not supported. (Throws
-#'     ResourceNotFoundException.)
+#' -   `AWS_SERVICECATALOG` - Not supported. (Throws ResourceNotFoundException.)
 #' 
-#' For example,
-#' `aws servicecatalog reject-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS`
+#' For example, `aws servicecatalog reject-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS`
 #'
 #' @keywords internal
 #'
@@ -3237,8 +3030,7 @@ servicecatalog_reject_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' -   `zh` - Chinese
 #' @param AccessLevelFilter The access level to use to obtain results. The default is `User`.
 #' @param PageSize The maximum number of items to return with this call.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #'
 #' @keywords internal
 #'
@@ -3274,13 +3066,11 @@ servicecatalog_scan_provisioned_products <- function(AcceptLanguage = NULL, Acce
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param Filters The search filters. If no search filters are specified, the output
-#' includes all products to which the caller has access.
+#' @param Filters The search filters. If no search filters are specified, the output includes all products to which the caller has access.
 #' @param PageSize The maximum number of items to return with this call.
 #' @param SortBy The sort field. If no value is specified, the results are not sorted.
 #' @param SortOrder The sort order. If no value is specified, the results are not sorted.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #'
 #' @keywords internal
 #'
@@ -3318,12 +3108,10 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId The portfolio identifier.
-#' @param Filters The search filters. If no search filters are specified, the output
-#' includes all products to which the administrator has access.
+#' @param Filters The search filters. If no search filters are specified, the output includes all products to which the administrator has access.
 #' @param SortBy The sort field. If no value is specified, the results are not sorted.
 #' @param SortOrder The sort order. If no value is specified, the results are not sorted.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #' @param PageSize The maximum number of items to return with this call.
 #' @param ProductSource Access level of the source of the product.
 #'
@@ -3362,23 +3150,16 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param AccessLevelFilter The access level to use to obtain results. The default is `User`.
+#' @param AccessLevelFilter The access level to use to obtain results. The default is `Account`.
 #' @param Filters The search filters.
 #' 
-#' When the key is `SearchQuery`, the searchable fields are `arn`,
-#' `createdTime`, `id`, `lastRecordId`, `idempotencyToken`, `name`,
-#' `physicalId`, `productId`, `provisioningArtifactId`, `type`, `status`,
-#' `tags`, `userArn`, `userArnSession`, `lastProvisioningRecordId`,
-#' `lastSuccessfulProvisioningRecordId`, `productName`, and
-#' `provisioningArtifactName`.
+#' When the key is `SearchQuery`, the searchable fields are `arn`, `createdTime`, `id`, `lastRecordId`, `idempotencyToken`, `name`, `physicalId`, `productId`, `provisioningArtifactId`, `type`, `status`, `tags`, `userArn`, `userArnSession`, `lastProvisioningRecordId`, `lastSuccessfulProvisioningRecordId`, `productName`, and `provisioningArtifactName`.
 #' 
 #' Example: `"SearchQuery":["status:AVAILABLE"]`
-#' @param SortBy The sort field. If no value is specified, the results are not sorted.
-#' The valid values are `arn`, `id`, `name`, and `lastRecordId`.
+#' @param SortBy The sort field. If no value is specified, the results are not sorted. The valid values are `arn`, `id`, `name`, and `lastRecordId`.
 #' @param SortOrder The sort order. If no value is specified, the results are not sorted.
 #' @param PageSize The maximum number of items to return with this call.
-#' @param PageToken The page token for the next set of results. To retrieve the first set of
-#' results, use null.
+#' @param PageToken The page token for the next set of results. To retrieve the first set of results, use null.
 #'
 #' @keywords internal
 #'
@@ -3409,27 +3190,16 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_terminate_provisioned_product/](https://www.paws-r-sdk.com/docs/servicecatalog_terminate_provisioned_product/) for full documentation.
 #'
-#' @param ProvisionedProductName The name of the provisioned product. You cannot specify both
-#' `ProvisionedProductName` and `ProvisionedProductId`.
-#' @param ProvisionedProductId The identifier of the provisioned product. You cannot specify both
-#' `ProvisionedProductName` and `ProvisionedProductId`.
-#' @param TerminateToken &#91;required&#93; An idempotency token that uniquely identifies the termination request.
-#' This token is only valid during the termination process. After the
-#' provisioned product is terminated, subsequent requests to terminate the
-#' same provisioned product always return **ResourceNotFound**.
-#' @param IgnoreErrors If set to true, Service Catalog stops managing the specified provisioned
-#' product even if it cannot delete the underlying resources.
+#' @param ProvisionedProductName The name of the provisioned product. You cannot specify both `ProvisionedProductName` and `ProvisionedProductId`.
+#' @param ProvisionedProductId The identifier of the provisioned product. You cannot specify both `ProvisionedProductName` and `ProvisionedProductId`.
+#' @param TerminateToken &#91;required&#93; An idempotency token that uniquely identifies the termination request. This token is only valid during the termination process. After the provisioned product is terminated, subsequent requests to terminate the same provisioned product always return **ResourceNotFound**.
+#' @param IgnoreErrors If set to true, Service Catalog stops managing the specified provisioned product even if it cannot delete the underlying resources.
 #' @param AcceptLanguage The language code.
 #' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param RetainPhysicalResources When this boolean parameter is set to true, the
-#' [`terminate_provisioned_product`][servicecatalog_terminate_provisioned_product]
-#' API deletes the Service Catalog provisioned product. However, it does
-#' not remove the CloudFormation stack, stack set, or the underlying
-#' resources of the deleted provisioned product. The default value is
-#' false.
+#' @param RetainPhysicalResources When this boolean parameter is set to true, the [`terminate_provisioned_product`][servicecatalog_terminate_provisioned_product] API deletes the Service Catalog provisioned product. However, it does not remove the CloudFormation stack, stack set, or the underlying resources of the deleted provisioned product. The default value is false.
 #'
 #' @keywords internal
 #'
@@ -3467,13 +3237,11 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The identifier of the constraint.
 #' @param Description The updated description of the constraint.
-#' @param Parameters The constraint parameters, in JSON format. The syntax depends on the
-#' constraint type as follows:
+#' @param Parameters The constraint parameters, in JSON format. The syntax depends on the constraint type as follows:
 #' 
 #' **LAUNCH**
 #' 
-#' You are required to specify either the `RoleArn` or the `LocalRoleName`
-#' but can't use both.
+#' You are required to specify either the `RoleArn` or the `LocalRoleName` but can't use both.
 #' 
 #' Specify the `RoleArn` property as follows:
 #' 
@@ -3483,19 +3251,13 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' 
 #' `{"LocalRoleName": "SCBasicLaunchRole"}`
 #' 
-#' If you specify the `LocalRoleName` property, when an account uses the
-#' launch constraint, the IAM role with that name in the account will be
-#' used. This allows launch-role constraints to be account-agnostic so the
-#' administrator can create fewer resources per shared account.
+#' If you specify the `LocalRoleName` property, when an account uses the launch constraint, the IAM role with that name in the account will be used. This allows launch-role constraints to be account-agnostic so the administrator can create fewer resources per shared account.
 #' 
-#' The given role name must exist in the account used to create the launch
-#' constraint and the account of the user who launches a product with this
-#' launch constraint.
+#' The given role name must exist in the account used to create the launch constraint and the account of the user who launches a product with this launch constraint.
 #' 
 #' You cannot have both a `LAUNCH` and a `STACKSET` constraint.
 #' 
-#' You also cannot have more than one `LAUNCH` constraint on a product and
-#' portfolio.
+#' You also cannot have more than one `LAUNCH` constraint on a product and portfolio.
 #' 
 #' **NOTIFICATION**
 #' 
@@ -3509,8 +3271,7 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' 
 #' `{"Version":"2.0","Properties":{"TagUpdateOnProvisionedProduct":"String"}}`
 #' 
-#' The `TagUpdatesOnProvisionedProduct` property accepts a string value of
-#' `ALLOWED` or `NOT_ALLOWED`.
+#' The `TagUpdatesOnProvisionedProduct` property accepts a string value of `ALLOWED` or `NOT_ALLOWED`.
 #' 
 #' **STACKSET**
 #' 
@@ -3520,17 +3281,13 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' 
 #' You cannot have both a `LAUNCH` and a `STACKSET` constraint.
 #' 
-#' You also cannot have more than one `STACKSET` constraint on a product
-#' and portfolio.
+#' You also cannot have more than one `STACKSET` constraint on a product and portfolio.
 #' 
-#' Products with a `STACKSET` constraint will launch an CloudFormation
-#' stack set.
+#' Products with a `STACKSET` constraint will launch an CloudFormation stack set.
 #' 
 #' **TEMPLATE**
 #' 
-#' Specify the `Rules` property. For more information, see [Template
-#' Constraint
-#' Rules](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
+#' Specify the `Rules` property. For more information, see [Template Constraint Rules](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
 #'
 #' @keywords internal
 #'
@@ -3607,17 +3364,11 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param PortfolioId &#91;required&#93; The unique identifier of the portfolio for which the share will be
-#' updated.
-#' @param AccountId The Amazon Web Services account Id of the recipient account. This field
-#' is required when updating an external account to account type share.
-#' @param OrganizationNode 
-#' @param ShareTagOptions Enables or disables `TagOptions` sharing for the portfolio share. If
-#' this field is not provided, the current state of TagOptions sharing on
-#' the portfolio share will not be modified.
-#' @param SharePrincipals A flag to enables or disables `Principals` sharing in the portfolio. If
-#' this field is not provided, the current state of the `Principals`
-#' sharing on the portfolio share will not be modified.
+#' @param PortfolioId &#91;required&#93; The unique identifier of the portfolio for which the share will be updated.
+#' @param AccountId The Amazon Web Services account Id of the recipient account. This field is required when updating an external account to account type share.
+#' @param OrganizationNode Information about the organization node.
+#' @param ShareTagOptions Enables or disables `TagOptions` sharing for the portfolio share. If this field is not provided, the current state of TagOptions sharing on the portfolio share will not be modified.
+#' @param SharePrincipals A flag to enables or disables `Principals` sharing in the portfolio. If this field is not provided, the current state of the `Principals` sharing on the portfolio share will not be modified.
 #'
 #' @keywords internal
 #'
@@ -3663,10 +3414,7 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @param SupportUrl The updated support URL for the product.
 #' @param AddTags The tags to add to the product.
 #' @param RemoveTags The tags to remove from the product.
-#' @param SourceConnection Specifies connection details for the updated product and syncs the
-#' product to the connection source artifact. This automatically manages
-#' the product's artifacts based on changes to the source. The
-#' `SourceConnection` parameter consists of the following sub-fields.
+#' @param SourceConnection Specifies connection details for the updated product and syncs the product to the connection source artifact. This automatically manages the product's artifacts based on changes to the source. The `SourceConnection` parameter consists of the following sub-fields.
 #' 
 #' -   `Type`
 #' 
@@ -3707,28 +3455,18 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param ProvisionedProductName The name of the provisioned product. You cannot specify both
-#' `ProvisionedProductName` and `ProvisionedProductId`.
-#' @param ProvisionedProductId The identifier of the provisioned product. You must provide the name or
-#' ID, but not both.
-#' @param ProductId The identifier of the product. You must provide the name or ID, but not
-#' both.
+#' @param ProvisionedProductName The name of the provisioned product. You cannot specify both `ProvisionedProductName` and `ProvisionedProductId`.
+#' @param ProvisionedProductId The identifier of the provisioned product. You must provide the name or ID, but not both.
+#' @param ProductId The identifier of the product. You must provide the name or ID, but not both.
 #' @param ProductName The name of the product. You must provide the name or ID, but not both.
 #' @param ProvisioningArtifactId The identifier of the provisioning artifact.
-#' @param ProvisioningArtifactName The name of the provisioning artifact. You must provide the name or ID,
-#' but not both.
-#' @param PathId The path identifier. This value is optional if the product has a default
-#' path, and required if the product has more than one path. You must
-#' provide the name or ID, but not both.
+#' @param ProvisioningArtifactName The name of the provisioning artifact. You must provide the name or ID, but not both.
+#' @param PathId The path identifier. This value is optional if the product has a default path, and required if the product has more than one path. You must provide the name or ID, but not both.
 #' @param PathName The name of the path. You must provide the name or ID, but not both.
 #' @param ProvisioningParameters The new parameters.
-#' @param ProvisioningPreferences An object that contains information about the provisioning preferences
-#' for a stack set.
-#' @param Tags One or more tags. Requires the product to have `RESOURCE_UPDATE`
-#' constraint with `TagUpdatesOnProvisionedProduct` set to `ALLOWED` to
-#' allow tag updates.
-#' @param UpdateToken &#91;required&#93; The idempotency token that uniquely identifies the provisioning update
-#' request.
+#' @param ProvisioningPreferences An object that contains information about the provisioning preferences for a stack set.
+#' @param Tags One or more tags. Requires the product to have `RESOURCE_UPDATE` constraint with `TagUpdatesOnProvisionedProduct` set to `ALLOWED` to allow tag updates.
+#' @param UpdateToken &#91;required&#93; The idempotency token that uniquely identifies the provisioning update request.
 #'
 #' @keywords internal
 #'
@@ -3767,41 +3505,14 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #' @param ProvisionedProductId &#91;required&#93; The identifier of the provisioned product.
 #' @param ProvisionedProductProperties &#91;required&#93; A map that contains the provisioned product properties to be updated.
 #' 
-#' The `LAUNCH_ROLE` key accepts role ARNs. This key allows an
-#' administrator to call
-#' [`update_provisioned_product_properties`][servicecatalog_update_provisioned_product_properties]
-#' to update the launch role that is associated with a provisioned product.
-#' This role is used when an end user calls a provisioning operation such
-#' as
-#' [`update_provisioned_product`][servicecatalog_update_provisioned_product],
-#' [`terminate_provisioned_product`][servicecatalog_terminate_provisioned_product],
-#' or
-#' [`execute_provisioned_product_service_action`][servicecatalog_execute_provisioned_product_service_action].
-#' Only a role ARN is valid. A user ARN is invalid.
+#' The `LAUNCH_ROLE` key accepts role ARNs. This key allows an administrator to call [`update_provisioned_product_properties`][servicecatalog_update_provisioned_product_properties] to update the launch role that is associated with a provisioned product. This role is used when an end user calls a provisioning operation such as [`update_provisioned_product`][servicecatalog_update_provisioned_product], [`terminate_provisioned_product`][servicecatalog_terminate_provisioned_product], or [`execute_provisioned_product_service_action`][servicecatalog_execute_provisioned_product_service_action]. Only a role ARN is valid. A user ARN is invalid.
 #' 
-#' The `OWNER` key accepts user ARNs, IAM role ARNs, and STS assumed-role
-#' ARNs. The owner is the user that has permission to see, update,
-#' terminate, and execute service actions in the provisioned product.
+#' The `OWNER` key accepts user ARNs, IAM role ARNs, and STS assumed-role ARNs. The owner is the user that has permission to see, update, terminate, and execute service actions in the provisioned product.
 #' 
-#' The administrator can change the owner of a provisioned product to
-#' another IAM or STS entity within the same account. Both end user owners
-#' and administrators can see ownership history of the provisioned product
-#' using the [`list_record_history`][servicecatalog_list_record_history]
-#' API. The new owner can describe all past records for the provisioned
-#' product using the [`describe_record`][servicecatalog_describe_record]
-#' API. The previous owner can no longer use
-#' [`describe_record`][servicecatalog_describe_record], but can still see
-#' the product's history from when he was an owner using
-#' [`list_record_history`][servicecatalog_list_record_history].
+#' The administrator can change the owner of a provisioned product to another IAM or STS entity within the same account. Both end user owners and administrators can see ownership history of the provisioned product using the [`list_record_history`][servicecatalog_list_record_history] API. The new owner can describe all past records for the provisioned product using the [`describe_record`][servicecatalog_describe_record] API. The previous owner can no longer use [`describe_record`][servicecatalog_describe_record], but can still see the product's history from when he was an owner using [`list_record_history`][servicecatalog_list_record_history].
 #' 
-#' If a provisioned product ownership is assigned to an end user, they can
-#' see and perform any action through the API or Service Catalog console
-#' such as update, terminate, and execute service actions. If an end user
-#' provisions a product and the owner is updated to someone else, they will
-#' no longer be able to see or perform any actions through API or the
-#' Service Catalog console on that provisioned product.
-#' @param IdempotencyToken &#91;required&#93; The idempotency token that uniquely identifies the provisioning product
-#' update request.
+#' If a provisioned product ownership is assigned to an end user, they can see and perform any action through the API or Service Catalog console such as update, terminate, and execute service actions. If an end user provisions a product and the owner is updated to someone else, they will no longer be able to see or perform any actions through API or the Service Catalog console on that provisioned product.
+#' @param IdempotencyToken &#91;required&#93; The idempotency token that uniquely identifies the provisioning product update request.
 #'
 #' @keywords internal
 #'
@@ -3844,18 +3555,12 @@ servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage 
 #' @param Description The updated description of the provisioning artifact.
 #' @param Active Indicates whether the product version is active.
 #' 
-#' Inactive provisioning artifacts are invisible to end users. End users
-#' cannot launch or update a provisioned product from an inactive
-#' provisioning artifact.
-#' @param Guidance Information set by the administrator to provide guidance to end users
-#' about which provisioning artifacts to use.
+#' Inactive provisioning artifacts are invisible to end users. End users cannot launch or update a provisioned product from an inactive provisioning artifact.
+#' @param Guidance Information set by the administrator to provide guidance to end users about which provisioning artifacts to use.
 #' 
 #' The `DEFAULT` value indicates that the product version is active.
 #' 
-#' The administrator can set the guidance to `DEPRECATED` to inform users
-#' that the product version is deprecated. Users are able to make updates
-#' to a provisioned product of a deprecated version but cannot launch new
-#' provisioned products using a deprecated version.
+#' The administrator can set the guidance to `DEPRECATED` to inform users that the product version is deprecated. Users are able to make updates to a provisioned product of a deprecated version but cannot launch new provisioned products using a deprecated version.
 #'
 #' @keywords internal
 #'

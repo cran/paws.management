@@ -20,12 +20,9 @@ configservice_get_aggregate_discovered_resource_counts(
 
 \item{GroupByKey}{The key to group the resource counts.}
 
-\item{Limit}{The maximum number of GroupedResourceCount objects returned on each
-page. The default is 1000. You cannot specify a number greater than
-1000. If you specify 0, Config uses the default.}
+\item{Limit}{The maximum number of GroupedResourceCount objects returned on each page. The default is 1000. You cannot specify a number greater than 1000. If you specify 0, Config uses the default.}
 
-\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
-the next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get the next page of results in a paginated response.}
 }
 \description{
 Returns the resource counts across accounts and regions that are present in your Config aggregator. You can request the resource counts by providing filters and GroupByKey.

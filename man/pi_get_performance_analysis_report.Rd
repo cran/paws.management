@@ -14,26 +14,17 @@ pi_get_performance_analysis_report(
 )
 }
 \arguments{
-\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights will
-return metrics. Valid value is \code{RDS}.}
+\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights will return metrics. Valid value is \code{RDS}.}
 
-\item{Identifier}{[required] An immutable identifier for a data source that is unique for an Amazon
-Web Services Region. Performance Insights gathers metrics from this data
-source. In the console, the identifier is shown as \emph{ResourceID}. When
-you call \code{DescribeDBInstances}, the identifier is returned as
-\code{DbiResourceId}.
+\item{Identifier}{[required] An immutable identifier for a data source that is unique for an Amazon Web Services Region. Performance Insights gathers metrics from this data source. In the console, the identifier is shown as \emph{ResourceID}. When you call \code{DescribeDBInstances}, the identifier is returned as \code{DbiResourceId}.
 
-To use a DB instance as a data source, specify its \code{DbiResourceId}
-value. For example, specify \code{db-ABCDEFGHIJKLMNOPQRSTU1VW2X}.}
+To use a DB instance as a data source, specify its \code{DbiResourceId} value. For example, specify \code{db-ABCDEFGHIJKLMNOPQRSTU1VW2X}.}
 
-\item{AnalysisReportId}{[required] A unique identifier of the created analysis report. For example,
-\code{report-12345678901234567}}
+\item{AnalysisReportId}{[required] A unique identifier of the created analysis report. For example, \code{report-12345678901234567}}
 
-\item{TextFormat}{Indicates the text format in the report. The options are \code{PLAIN_TEXT} or
-\code{MARKDOWN}. The default value is \verb{plain text}.}
+\item{TextFormat}{Indicates the text format in the report. The options are \code{PLAIN_TEXT} or \code{MARKDOWN}. The default value is \verb{plain text}.}
 
-\item{AcceptLanguage}{The text language in the report. The default language is \code{EN_US}
-(English).}
+\item{AcceptLanguage}{The text language in the report. The default language is \code{EN_US} (English).}
 }
 \description{
 Retrieves the report including the report ID, status, time details, and the insights with recommendations. The report status can be \code{RUNNING}, \code{SUCCEEDED}, or \code{FAILED}. The insights include the \code{description} and \code{recommendation} fields.

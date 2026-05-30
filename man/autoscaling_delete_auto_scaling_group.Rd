@@ -9,10 +9,7 @@ autoscaling_delete_auto_scaling_group(AutoScalingGroupName, ForceDelete = NULL)
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{ForceDelete}{Specifies that the group is to be deleted along with all instances
-associated with the group, without waiting for all instances to be
-terminated. This action also deletes any outstanding lifecycle actions
-associated with the group.}
+\item{ForceDelete}{Specifies that the group is to be deleted along with all instances associated with the group, without waiting for all instances to be terminated. This action also deletes any outstanding lifecycle actions associated with the group.}
 }
 \description{
 Deletes the specified Auto Scaling group.

@@ -12,13 +12,11 @@ configservice_list_configuration_recorders(
 )
 }
 \arguments{
-\item{Filters}{Filters the results based on a list of \code{ConfigurationRecorderFilter}
-objects that you specify.}
+\item{Filters}{Filters the results based on a list of \code{ConfigurationRecorderFilter} objects that you specify.}
 
 \item{MaxResults}{The maximum number of results to include in the response.}
 
-\item{NextToken}{The \code{NextToken} string returned on a previous page that you use to get
-the next page of results in a paginated response.}
+\item{NextToken}{The \code{NextToken} string returned on a previous page that you use to get the next page of results in a paginated response.}
 }
 \description{
 Returns a list of configuration recorders depending on the filters you specify.

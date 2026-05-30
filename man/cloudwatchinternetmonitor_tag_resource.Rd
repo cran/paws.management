@@ -7,12 +7,9 @@
 cloudwatchinternetmonitor_tag_resource(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) for a tag that you add to a resource.
-Tags are supported only for monitors in Amazon CloudWatch Internet
-Monitor.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) for a tag that you add to a resource. Tags are supported only for monitors in Amazon CloudWatch Internet Monitor.}
 
-\item{Tags}{[required] Tags that you add to a resource. You can add a maximum of 50 tags in
-Internet Monitor.}
+\item{Tags}{[required] Tags that you add to a resource. You can add a maximum of 50 tags in Internet Monitor.}
 }
 \description{
 Adds a tag to a resource. Tags are supported only for monitors in Amazon CloudWatch Internet Monitor. You can add a maximum of 50 tags in Internet Monitor.

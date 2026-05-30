@@ -57,20 +57,13 @@ Operations: Equals
 Operations: Equals
 }
 
-*The Equals operator for Title matches the first 100 characters. If you
-specify more than 100 characters, they system returns an error that the
-filter value exceeds the length limit.
+*The Equals operator for Title matches the first 100 characters. If you specify more than 100 characters, they system returns an error that the filter value exceeds the length limit.
 
-**If you filter the response by using the OperationalData operator,
-specify a key-value pair by using the following JSON format:
-\{"key":"key_name","value":"a_value"\}}
+**If you filter the response by using the OperationalData operator, specify a key-value pair by using the following JSON format: \{"key":"key_name","value":"a_value"\}}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{A token to start the list. Use this token to get the next set of
-results.}
+\item{NextToken}{A token to start the list. Use this token to get the next set of results.}
 }
 \description{
 Query a set of OpsItems. You must have permission in Identity and Access Management (IAM) to query a list of OpsItems. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html}{Set up OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.

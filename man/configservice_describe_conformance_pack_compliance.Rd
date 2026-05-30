@@ -16,11 +16,9 @@ configservice_describe_conformance_pack_compliance(
 
 \item{Filters}{A \code{ConformancePackComplianceFilters} object.}
 
-\item{Limit}{The maximum number of Config rules within a conformance pack are
-returned on each page.}
+\item{Limit}{The maximum number of Config rules within a conformance pack are returned on each page.}
 
-\item{NextToken}{The \code{nextToken} string returned in a previous request that you use to
-request the next page of results in a paginated response.}
+\item{NextToken}{The \code{nextToken} string returned in a previous request that you use to request the next page of results in a paginated response.}
 }
 \description{
 Returns compliance details for each rule in that conformance pack.

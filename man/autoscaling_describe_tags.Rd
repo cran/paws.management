@@ -7,14 +7,11 @@
 autoscaling_describe_tags(Filters = NULL, NextToken = NULL, MaxRecords = NULL)
 }
 \arguments{
-\item{Filters}{One or more filters to scope the tags to return. The maximum number of
-filters per filter type (for example, \code{auto-scaling-group}) is 1000.}
+\item{Filters}{One or more filters to scope the tags to return. The maximum number of filters per filter type (for example, \code{auto-scaling-group}) is 1000.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{MaxRecords}{The maximum number of items to return with this call. The default value
-is \code{50} and the maximum value is \code{100}.}
+\item{MaxRecords}{The maximum number of items to return with this call. The default value is \code{50} and the maximum value is \code{100}.}
 }
 \description{
 Describes the specified tags.

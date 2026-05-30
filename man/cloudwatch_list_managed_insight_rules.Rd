@@ -12,14 +12,11 @@ cloudwatch_list_managed_insight_rules(
 )
 }
 \arguments{
-\item{ResourceARN}{[required] The ARN of an Amazon Web Services resource that has managed Contributor
-Insights rules.}
+\item{ResourceARN}{[required] The ARN of an Amazon Web Services resource that has managed Contributor Insights rules.}
 
-\item{NextToken}{Include this value to get the next set of rules if the value was
-returned by the previous operation.}
+\item{NextToken}{Include this value to get the next set of rules if the value was returned by the previous operation.}
 
-\item{MaxResults}{The maximum number of results to return in one operation. If you omit
-this parameter, the default number is used. The default number is \code{100}.}
+\item{MaxResults}{The maximum number of results to return in one operation. If you omit this parameter, the default number is used. The default number is \code{100}.}
 }
 \description{
 Returns a list that contains the number of managed Contributor Insights rules in your account.

@@ -12,14 +12,9 @@ synthetics_list_associated_groups(
 )
 }
 \arguments{
-\item{NextToken}{A token that indicates that there is more data available. You can use
-this token in a subsequent operation to retrieve the next set of
-results.}
+\item{NextToken}{A token that indicates that there is more data available. You can use this token in a subsequent operation to retrieve the next set of results.}
 
-\item{MaxResults}{Specify this parameter to limit how many groups are returned each time
-you use the
-\code{\link[=synthetics_list_associated_groups]{list_associated_groups}} operation.
-If you omit this parameter, the default of 20 is used.}
+\item{MaxResults}{Specify this parameter to limit how many groups are returned each time you use the \code{\link[=synthetics_list_associated_groups]{list_associated_groups}} operation. If you omit this parameter, the default of 20 is used.}
 
 \item{ResourceArn}{[required] The ARN of the canary that you want to view groups for.}
 }

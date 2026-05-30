@@ -10,8 +10,7 @@ servicecatalog_batch_associate_service_action_with_provisioning_artifact(
 )
 }
 \arguments{
-\item{ServiceActionAssociations}{[required] One or more associations, each consisting of the Action ID, the Product
-ID, and the Provisioning Artifact ID.}
+\item{ServiceActionAssociations}{[required] One or more associations, each consisting of the Action ID, the Product ID, and the Provisioning Artifact ID.}
 
 \item{AcceptLanguage}{The language code.
 \itemize{

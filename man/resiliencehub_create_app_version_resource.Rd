@@ -21,23 +21,15 @@ resiliencehub_create_app_version_resource(
 \arguments{
 \item{additionalInfo}{Currently, there is no supported additional information for resources.}
 
-\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format
-for this ARN is:
-arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
-information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{Amazon Web Services General Reference} guide.}
+\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format for this ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference} guide.}
 
-\item{appComponents}{[required] List of Application Components that this resource belongs to. If an
-Application Component is not part of the Resilience Hub application, it
-will be added.}
+\item{appComponents}{[required] List of Application Components that this resource belongs to. If an Application Component is not part of the Resilience Hub application, it will be added.}
 
 \item{awsAccountId}{Amazon Web Services account that owns the physical resource.}
 
 \item{awsRegion}{Amazon Web Services region that owns the physical resource.}
 
-\item{clientToken}{Used for an idempotency token. A client token is a unique,
-case-sensitive string of up to 64 ASCII characters. You should not reuse
-the same client token for other API requests.}
+\item{clientToken}{Used for an idempotency token. A client token is a unique, case-sensitive string of up to 64 ASCII characters. You should not reuse the same client token for other API requests.}
 
 \item{logicalResourceId}{[required] Logical identifier of the resource.}
 

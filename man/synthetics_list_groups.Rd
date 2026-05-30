@@ -8,13 +8,9 @@ unique IDs, and ARNs}
 synthetics_list_groups(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{NextToken}{A token that indicates that there is more data available. You can use
-this token in a subsequent operation to retrieve the next set of
-results.}
+\item{NextToken}{A token that indicates that there is more data available. You can use this token in a subsequent operation to retrieve the next set of results.}
 
-\item{MaxResults}{Specify this parameter to limit how many groups are returned each time
-you use the \code{\link[=synthetics_list_groups]{list_groups}} operation. If you
-omit this parameter, the default of 20 is used.}
+\item{MaxResults}{Specify this parameter to limit how many groups are returned each time you use the \code{\link[=synthetics_list_groups]{list_groups}} operation. If you omit this parameter, the default of 20 is used.}
 }
 \description{
 Returns a list of all groups in the account, displaying their names, unique IDs, and ARNs. The groups from all Regions are returned.

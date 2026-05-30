@@ -13,13 +13,9 @@ autoscaling_set_desired_capacity(
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{DesiredCapacity}{[required] The desired capacity is the initial capacity of the Auto Scaling group
-after this operation completes and the capacity it attempts to maintain.}
+\item{DesiredCapacity}{[required] The desired capacity is the initial capacity of the Auto Scaling group after this operation completes and the capacity it attempts to maintain.}
 
-\item{HonorCooldown}{Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period
-to complete before initiating a scaling activity to set your Auto
-Scaling group to its new capacity. By default, Amazon EC2 Auto Scaling
-does not honor the cooldown period during manual scaling activities.}
+\item{HonorCooldown}{Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period to complete before initiating a scaling activity to set your Auto Scaling group to its new capacity. By default, Amazon EC2 Auto Scaling does not honor the cooldown period during manual scaling activities.}
 }
 \description{
 Sets the size of the specified Auto Scaling group.

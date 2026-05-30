@@ -21,12 +21,9 @@ servicecatalog_list_portfolio_access(
 
 \item{PortfolioId}{[required] The portfolio identifier.}
 
-\item{OrganizationParentId}{The ID of an organization node the portfolio is shared with. All
-children of this node with an inherited portfolio share will be
-returned.}
+\item{OrganizationParentId}{The ID of an organization node the portfolio is shared with. All children of this node with an inherited portfolio share will be returned.}
 
-\item{PageToken}{The page token for the next set of results. To retrieve the first set of
-results, use null.}
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 }

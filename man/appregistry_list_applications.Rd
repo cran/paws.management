@@ -7,11 +7,9 @@
 appregistry_list_applications(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{nextToken}{The token to use to get the next page of results after a previous API
-call.}
+\item{nextToken}{The token to use to get the next page of results after a previous API call.}
 
-\item{maxResults}{The upper bound of the number of results to return (cannot exceed 25).
-If this parameter is omitted, it defaults to 25. This value is optional.}
+\item{maxResults}{The upper bound of the number of results to return (cannot exceed 25). If this parameter is omitted, it defaults to 25. This value is optional.}
 }
 \description{
 Retrieves a list of all of your applications. Results are paginated.

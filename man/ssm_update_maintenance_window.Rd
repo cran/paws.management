@@ -27,52 +27,33 @@ ssm_update_maintenance_window(
 
 \item{Description}{An optional description for the update request.}
 
-\item{StartDate}{The date and time, in ISO-8601 Extended format, for when you want the
-maintenance window to become active. \code{StartDate} allows you to delay
-activation of the maintenance window until the specified future date.
+\item{StartDate}{The date and time, in ISO-8601 Extended format, for when you want the maintenance window to become active. \code{StartDate} allows you to delay activation of the maintenance window until the specified future date.
 
-When using a rate schedule, if you provide a start date that occurs in
-the past, the current date and time are used as the start date.}
+When using a rate schedule, if you provide a start date that occurs in the past, the current date and time are used as the start date.}
 
-\item{EndDate}{The date and time, in ISO-8601 Extended format, for when you want the
-maintenance window to become inactive. \code{EndDate} allows you to set a
-date and time in the future when the maintenance window will no longer
-run.}
+\item{EndDate}{The date and time, in ISO-8601 Extended format, for when you want the maintenance window to become inactive. \code{EndDate} allows you to set a date and time in the future when the maintenance window will no longer run.}
 
-\item{Schedule}{The schedule of the maintenance window in the form of a cron or rate
-expression.}
+\item{Schedule}{The schedule of the maintenance window in the form of a cron or rate expression.}
 
-\item{ScheduleTimezone}{The time zone that the scheduled maintenance window executions are based
-on, in Internet Assigned Numbers Authority (IANA) format. For example:
-"America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see
-the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA
-website.}
+\item{ScheduleTimezone}{The time zone that the scheduled maintenance window executions are based on, in Internet Assigned Numbers Authority (IANA) format. For example: "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA website.}
 
-\item{ScheduleOffset}{The number of days to wait after the date and time specified by a cron
-expression before running the maintenance window.
+\item{ScheduleOffset}{The number of days to wait after the date and time specified by a cron expression before running the maintenance window.
 
-For example, the following cron expression schedules a maintenance
-window to run the third Tuesday of every month at 11:30 PM.
+For example, the following cron expression schedules a maintenance window to run the third Tuesday of every month at 11:30 PM.
 
 \verb{cron(30 23 ? * TUE#3 *)}
 
-If the schedule offset is \code{2}, the maintenance window won't run until
-two days later.}
+If the schedule offset is \code{2}, the maintenance window won't run until two days later.}
 
 \item{Duration}{The duration of the maintenance window in hours.}
 
-\item{Cutoff}{The number of hours before the end of the maintenance window that Amazon
-Web Services Systems Manager stops scheduling new tasks for execution.}
+\item{Cutoff}{The number of hours before the end of the maintenance window that Amazon Web Services Systems Manager stops scheduling new tasks for execution.}
 
-\item{AllowUnassociatedTargets}{Whether targets must be registered with the maintenance window before
-tasks can be defined for those targets.}
+\item{AllowUnassociatedTargets}{Whether targets must be registered with the maintenance window before tasks can be defined for those targets.}
 
 \item{Enabled}{Whether the maintenance window is enabled.}
 
-\item{Replace}{If \code{True}, then all fields that are required by the
-\code{\link[=ssm_create_maintenance_window]{create_maintenance_window}} operation
-are also required for this API request. Optional fields that aren't
-specified are set to null.}
+\item{Replace}{If \code{True}, then all fields that are required by the \code{\link[=ssm_create_maintenance_window]{create_maintenance_window}} operation are also required for this API request. Optional fields that aren't specified are set to null.}
 }
 \description{
 Updates an existing maintenance window. Only specified parameters are modified.

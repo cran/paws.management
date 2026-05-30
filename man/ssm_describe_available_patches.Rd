@@ -15,16 +15,14 @@ ssm_describe_available_patches(
 
 \strong{Windows Server}
 
-Supported keys for Windows Server managed node patches include the
-following:
+Supported keys for Windows Server managed node patches include the following:
 \itemize{
 \item \strong{\code{PATCH_SET}}
 
 Sample values: \code{OS} | \code{APPLICATION}
 \item \strong{\code{PRODUCT}}
 
-Sample values: \code{WindowsServer2012} | \verb{Office 2010} |
-\code{MicrosoftDefenderAntivirus}
+Sample values: \code{WindowsServer2012} | \verb{Office 2010} | \code{MicrosoftDefenderAntivirus}
 \item \strong{\code{PRODUCT_FAMILY}}
 
 Sample values: \code{Windows} | \code{Office}
@@ -33,8 +31,7 @@ Sample values: \code{Windows} | \code{Office}
 Sample values: \code{ServicePacks} | \code{Important} | \code{Moderate}
 \item \strong{\code{CLASSIFICATION}}
 
-Sample values: \code{ServicePacks} | \code{SecurityUpdates} |
-\code{DefinitionUpdates}
+Sample values: \code{ServicePacks} | \code{SecurityUpdates} | \code{DefinitionUpdates}
 \item \strong{\code{PATCH_ID}}
 
 Sample values: \code{KB123456} | \code{KB4516046}
@@ -42,9 +39,7 @@ Sample values: \code{KB123456} | \code{KB4516046}
 
 \strong{Linux}
 
-When specifying filters for Linux patches, you must specify a key-pair
-for \code{PRODUCT}. For example, using the Command Line Interface (CLI), the
-following command fails:
+When specifying filters for Linux patches, you must specify a key-pair for \code{PRODUCT}. For example, using the Command Line Interface (CLI), the following command fails:
 
 \verb{aws ssm describe-available-patches --filters Key=CVE_ID,Values=CVE-2018-3615}
 
@@ -91,8 +86,7 @@ Sample values: \code{1463241}
 
 \item{MaxResults}{The maximum number of patches to return (per page).}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Lists all patches eligible to be included in a patch baseline.

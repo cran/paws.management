@@ -12,18 +12,10 @@ NULL
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_batch_create_rum_metric_definitions/](https://www.paws-r-sdk.com/docs/cloudwatchrum_batch_create_rum_metric_definitions/) for full documentation.
 #'
 #' @param AppMonitorName &#91;required&#93; The name of the CloudWatch RUM app monitor that is to send the metrics.
-#' @param Destination &#91;required&#93; The destination to send the metrics to. Valid values are `CloudWatch`
-#' and `Evidently`. If you specify `Evidently`, you must also specify the
-#' Amazon Resource Name (ARN) of the CloudWatchEvidently experiment that
-#' will receive the metrics and an IAM role that has permission to write to
-#' the experiment.
-#' @param DestinationArn This parameter is required if `Destination` is `Evidently`. If
-#' `Destination` is `CloudWatch`, do not use this parameter.
+#' @param Destination &#91;required&#93; The destination to send the metrics to. Valid values are `CloudWatch` and `Evidently`. If you specify `Evidently`, you must also specify the Amazon Resource Name (ARN) of the CloudWatchEvidently experiment that will receive the metrics and an IAM role that has permission to write to the experiment.
+#' @param DestinationArn This parameter is required if `Destination` is `Evidently`. If `Destination` is `CloudWatch`, do not use this parameter.
 #' 
-#' This parameter specifies the ARN of the Evidently experiment that is to
-#' receive the metrics. You must have already defined this experiment as a
-#' valid destination. For more information, see
-#' [`put_rum_metrics_destination`][cloudwatchrum_put_rum_metrics_destination].
+#' This parameter specifies the ARN of the Evidently experiment that is to receive the metrics. You must have already defined this experiment as a valid destination. For more information, see [`put_rum_metrics_destination`][cloudwatchrum_put_rum_metrics_destination].
 #' @param MetricDefinitions &#91;required&#93; An array of structures which define the metrics that you want to send.
 #'
 #' @keywords internal
@@ -56,20 +48,12 @@ cloudwatchrum_batch_create_rum_metric_definitions <- function(AppMonitorName, De
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_batch_delete_rum_metric_definitions/](https://www.paws-r-sdk.com/docs/cloudwatchrum_batch_delete_rum_metric_definitions/) for full documentation.
 #'
-#' @param AppMonitorName &#91;required&#93; The name of the CloudWatch RUM app monitor that is sending these
-#' metrics.
-#' @param Destination &#91;required&#93; Defines the destination where you want to stop sending the specified
-#' metrics. Valid values are `CloudWatch` and `Evidently`. If you specify
-#' `Evidently`, you must also specify the ARN of the CloudWatchEvidently
-#' experiment that is to be the destination and an IAM role that has
-#' permission to write to the experiment.
-#' @param DestinationArn This parameter is required if `Destination` is `Evidently`. If
-#' `Destination` is `CloudWatch`, do not use this parameter.
+#' @param AppMonitorName &#91;required&#93; The name of the CloudWatch RUM app monitor that is sending these metrics.
+#' @param Destination &#91;required&#93; Defines the destination where you want to stop sending the specified metrics. Valid values are `CloudWatch` and `Evidently`. If you specify `Evidently`, you must also specify the ARN of the CloudWatchEvidently experiment that is to be the destination and an IAM role that has permission to write to the experiment.
+#' @param DestinationArn This parameter is required if `Destination` is `Evidently`. If `Destination` is `CloudWatch`, do not use this parameter.
 #' 
-#' This parameter specifies the ARN of the Evidently experiment that was
-#' receiving the metrics that are being deleted.
-#' @param MetricDefinitionIds &#91;required&#93; An array of structures which define the metrics that you want to stop
-#' sending.
+#' This parameter specifies the ARN of the Evidently experiment that was receiving the metrics that are being deleted.
+#' @param MetricDefinitionIds &#91;required&#93; An array of structures which define the metrics that you want to stop sending.
 #'
 #' @keywords internal
 #'
@@ -102,20 +86,14 @@ cloudwatchrum_batch_delete_rum_metric_definitions <- function(AppMonitorName, De
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_batch_get_rum_metric_definitions/](https://www.paws-r-sdk.com/docs/cloudwatchrum_batch_get_rum_metric_definitions/) for full documentation.
 #'
 #' @param AppMonitorName &#91;required&#93; The name of the CloudWatch RUM app monitor that is sending the metrics.
-#' @param Destination &#91;required&#93; The type of destination that you want to view metrics for. Valid values
-#' are `CloudWatch` and `Evidently`.
-#' @param DestinationArn This parameter is required if `Destination` is `Evidently`. If
-#' `Destination` is `CloudWatch`, do not use this parameter.
+#' @param Destination &#91;required&#93; The type of destination that you want to view metrics for. Valid values are `CloudWatch` and `Evidently`.
+#' @param DestinationArn This parameter is required if `Destination` is `Evidently`. If `Destination` is `CloudWatch`, do not use this parameter.
 #' 
-#' This parameter specifies the ARN of the Evidently experiment that
-#' corresponds to the destination.
-#' @param MaxResults The maximum number of results to return in one operation. The default is
-#' 50. The maximum that you can specify is 100.
+#' This parameter specifies the ARN of the Evidently experiment that corresponds to the destination.
+#' @param MaxResults The maximum number of results to return in one operation. The default is 50. The maximum that you can specify is 100.
 #' 
-#' To retrieve the remaining results, make another call with the returned
-#' `NextToken` value.
-#' @param NextToken Use the token returned by the previous operation to request the next
-#' page of results.
+#' To retrieve the remaining results, make another call with the returned `NextToken` value.
+#' @param NextToken Use the token returned by the previous operation to request the next page of results.
 #'
 #' @keywords internal
 #'
@@ -147,51 +125,34 @@ cloudwatchrum_batch_get_rum_metric_definitions <- function(AppMonitorName, Desti
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_create_app_monitor/](https://www.paws-r-sdk.com/docs/cloudwatchrum_create_app_monitor/) for full documentation.
 #'
-#' @param AppMonitorConfiguration A structure that contains much of the configuration data for the app
-#' monitor. If you are using Amazon Cognito for authorization, you must
-#' include this structure in your request, and it must include the ID of
-#' the Amazon Cognito identity pool to use for authorization. If you don't
-#' include `AppMonitorConfiguration`, you must set up your own
-#' authorization method. For more information, see [Authorize your
-#' application to send data to Amazon Web
-#' Services](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-get-started-authorization.html).
-#' 
-#' If you omit this argument, the sample rate used for RUM is set to 10% of
-#' the user sessions.
-#' @param CustomEvents Specifies whether this app monitor allows the web client to define and
-#' send custom events. If you omit this parameter, custom events are
-#' `DISABLED`.
-#' 
-#' For more information about custom events, see [Send custom
-#' events](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-custom-events.html).
-#' @param CwLogEnabled Data collected by RUM is kept by RUM for 30 days and then deleted. This
-#' parameter specifies whether RUM sends a copy of this telemetry data to
-#' Amazon CloudWatch Logs in your account. This enables you to keep the
-#' telemetry data for more than 30 days, but it does incur Amazon
-#' CloudWatch Logs charges.
-#' 
-#' If you omit this parameter, the default is `false`.
-#' @param Domain &#91;required&#93; The top-level internet domain name for which your application has
-#' administrative authority.
 #' @param Name &#91;required&#93; A name for the app monitor.
+#' @param Domain The top-level internet domain name for which your application has administrative authority.
+#' @param DomainList List the domain names for which your application has administrative authority. The [`create_app_monitor`][cloudwatchrum_create_app_monitor] requires either the domain or the domain list.
 #' @param Tags Assigns one or more tags (key-value pairs) to the app monitor.
 #' 
-#' Tags can help you organize and categorize your resources. You can also
-#' use them to scope user permissions by granting a user permission to
-#' access or change only resources with certain tag values.
+#' Tags can help you organize and categorize your resources. You can also use them to scope user permissions by granting a user permission to access or change only resources with certain tag values.
 #' 
-#' Tags don't have any semantic meaning to Amazon Web Services and are
-#' interpreted strictly as strings of characters.
+#' Tags don't have any semantic meaning to Amazon Web Services and are interpreted strictly as strings of characters.
 #' 
 #' You can associate as many as 50 tags with an app monitor.
 #' 
-#' For more information, see [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
+#' For more information, see [Tagging Amazon Web Services resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
+#' @param AppMonitorConfiguration A structure that contains much of the configuration data for the app monitor. If you are using Amazon Cognito for authorization, you must include this structure in your request, and it must include the ID of the Amazon Cognito identity pool to use for authorization. If you don't include `AppMonitorConfiguration`, you must set up your own authorization method. For more information, see [Authorize your application to send data to Amazon Web Services](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-get-started-authorization.html).
+#' 
+#' If you omit this argument, the sample rate used for RUM is set to 10% of the user sessions.
+#' @param CwLogEnabled Data collected by RUM is kept by RUM for 30 days and then deleted. This parameter specifies whether RUM sends a copy of this telemetry data to Amazon CloudWatch Logs in your account. This enables you to keep the telemetry data for more than 30 days, but it does incur Amazon CloudWatch Logs charges.
+#' 
+#' If you omit this parameter, the default is `false`.
+#' @param CustomEvents Specifies whether this app monitor allows the web client to define and send custom events. If you omit this parameter, custom events are `DISABLED`.
+#' 
+#' For more information about custom events, see [Send custom events](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-custom-events.html).
+#' @param DeobfuscationConfiguration A structure that contains the configuration for how an app monitor can deobfuscate stack traces.
+#' @param Platform The platform type for the app monitor. Valid values are `Web` for web applications, `Android` for Android applications, and `iOS` for IOS applications. If you omit this parameter, the default is `Web`.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_create_app_monitor
-cloudwatchrum_create_app_monitor <- function(AppMonitorConfiguration = NULL, CustomEvents = NULL, CwLogEnabled = NULL, Domain, Name, Tags = NULL) {
+cloudwatchrum_create_app_monitor <- function(Name, Domain = NULL, DomainList = NULL, Tags = NULL, AppMonitorConfiguration = NULL, CwLogEnabled = NULL, CustomEvents = NULL, DeobfuscationConfiguration = NULL, Platform = NULL) {
   op <- new_operation(
     name = "CreateAppMonitor",
     http_method = "POST",
@@ -200,7 +161,7 @@ cloudwatchrum_create_app_monitor <- function(AppMonitorConfiguration = NULL, Cus
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchrum$create_app_monitor_input(AppMonitorConfiguration = AppMonitorConfiguration, CustomEvents = CustomEvents, CwLogEnabled = CwLogEnabled, Domain = Domain, Name = Name, Tags = Tags)
+  input <- .cloudwatchrum$create_app_monitor_input(Name = Name, Domain = Domain, DomainList = DomainList, Tags = Tags, AppMonitorConfiguration = AppMonitorConfiguration, CwLogEnabled = CwLogEnabled, CustomEvents = CustomEvents, DeobfuscationConfiguration = DeobfuscationConfiguration, Platform = Platform)
   output <- .cloudwatchrum$create_app_monitor_output()
   config <- get_config()
   svc <- .cloudwatchrum$service(config, op)
@@ -241,6 +202,38 @@ cloudwatchrum_delete_app_monitor <- function(Name) {
 }
 .cloudwatchrum$operations$delete_app_monitor <- cloudwatchrum_delete_app_monitor
 
+#' Removes the association of a resource-based policy from an app monitor
+#'
+#' @description
+#' Removes the association of a resource-based policy from an app monitor.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_delete_resource_policy/](https://www.paws-r-sdk.com/docs/cloudwatchrum_delete_resource_policy/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The app monitor that you want to remove the resource policy from.
+#' @param PolicyRevisionId Specifies a specific policy revision to delete. Provide a `PolicyRevisionId` to ensure an atomic delete operation. If the revision ID that you provide doesn't match the latest policy revision ID, the request will be rejected with an `InvalidPolicyRevisionIdException` error.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchrum_delete_resource_policy
+cloudwatchrum_delete_resource_policy <- function(Name, PolicyRevisionId = NULL) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "DELETE",
+    http_path = "/appmonitor/{Name}/policy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchrum$delete_resource_policy_input(Name = Name, PolicyRevisionId = PolicyRevisionId)
+  output <- .cloudwatchrum$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .cloudwatchrum$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchrum$operations$delete_resource_policy <- cloudwatchrum_delete_resource_policy
+
 #' Deletes a destination for CloudWatch RUM extended metrics, so that the
 #' specified app monitor stops sending extended metrics to that destination
 #'
@@ -249,14 +242,9 @@ cloudwatchrum_delete_app_monitor <- function(Name) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_delete_rum_metrics_destination/](https://www.paws-r-sdk.com/docs/cloudwatchrum_delete_rum_metrics_destination/) for full documentation.
 #'
-#' @param AppMonitorName &#91;required&#93; The name of the app monitor that is sending metrics to the destination
-#' that you want to delete.
-#' @param Destination &#91;required&#93; The type of destination to delete. Valid values are `CloudWatch` and
-#' `Evidently`.
-#' @param DestinationArn This parameter is required if `Destination` is `Evidently`. If
-#' `Destination` is `CloudWatch`, do not use this parameter. This parameter
-#' specifies the ARN of the Evidently experiment that corresponds to the
-#' destination to delete.
+#' @param AppMonitorName &#91;required&#93; The name of the app monitor that is sending metrics to the destination that you want to delete.
+#' @param Destination &#91;required&#93; The type of destination to delete. Valid values are `CloudWatch` and `Evidently`.
+#' @param DestinationArn This parameter is required if `Destination` is `Evidently`. If `Destination` is `CloudWatch`, do not use this parameter. This parameter specifies the ARN of the Evidently experiment that corresponds to the destination to delete.
 #'
 #' @keywords internal
 #'
@@ -320,20 +308,16 @@ cloudwatchrum_get_app_monitor <- function(Name) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_get_app_monitor_data/](https://www.paws-r-sdk.com/docs/cloudwatchrum_get_app_monitor_data/) for full documentation.
 #'
-#' @param Filters An array of structures that you can use to filter the results to those
-#' that match one or more sets of key-value pairs that you specify.
+#' @param Name &#91;required&#93; The name of the app monitor that collected the data that you want to retrieve.
+#' @param TimeRange &#91;required&#93; A structure that defines the time range that you want to retrieve results from.
+#' @param Filters An array of structures that you can use to filter the results to those that match one or more sets of key-value pairs that you specify.
 #' @param MaxResults The maximum number of results to return in one operation.
-#' @param Name &#91;required&#93; The name of the app monitor that collected the data that you want to
-#' retrieve.
-#' @param NextToken Use the token returned by the previous operation to request the next
-#' page of results.
-#' @param TimeRange &#91;required&#93; A structure that defines the time range that you want to retrieve
-#' results from.
+#' @param NextToken Use the token returned by the previous operation to request the next page of results.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_get_app_monitor_data
-cloudwatchrum_get_app_monitor_data <- function(Filters = NULL, MaxResults = NULL, Name, NextToken = NULL, TimeRange) {
+cloudwatchrum_get_app_monitor_data <- function(Name, TimeRange, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetAppMonitorData",
     http_method = "POST",
@@ -342,7 +326,7 @@ cloudwatchrum_get_app_monitor_data <- function(Filters = NULL, MaxResults = NULL
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Events"),
     stream_api = FALSE
   )
-  input <- .cloudwatchrum$get_app_monitor_data_input(Filters = Filters, MaxResults = MaxResults, Name = Name, NextToken = NextToken, TimeRange = TimeRange)
+  input <- .cloudwatchrum$get_app_monitor_data_input(Name = Name, TimeRange = TimeRange, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudwatchrum$get_app_monitor_data_output()
   config <- get_config()
   svc <- .cloudwatchrum$service(config, op)
@@ -352,6 +336,38 @@ cloudwatchrum_get_app_monitor_data <- function(Filters = NULL, MaxResults = NULL
 }
 .cloudwatchrum$operations$get_app_monitor_data <- cloudwatchrum_get_app_monitor_data
 
+#' Use this operation to retrieve information about a resource-based policy
+#' that is attached to an app monitor
+#'
+#' @description
+#' Use this operation to retrieve information about a resource-based policy that is attached to an app monitor.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_get_resource_policy/](https://www.paws-r-sdk.com/docs/cloudwatchrum_get_resource_policy/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the app monitor that is associated with the resource-based policy that you want to view.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchrum_get_resource_policy
+cloudwatchrum_get_resource_policy <- function(Name) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "GET",
+    http_path = "/appmonitor/{Name}/policy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchrum$get_resource_policy_input(Name = Name)
+  output <- .cloudwatchrum$get_resource_policy_output()
+  config <- get_config()
+  svc <- .cloudwatchrum$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchrum$operations$get_resource_policy <- cloudwatchrum_get_resource_policy
+
 #' Returns a list of the Amazon CloudWatch RUM app monitors in the account
 #'
 #' @description
@@ -359,10 +375,8 @@ cloudwatchrum_get_app_monitor_data <- function(Filters = NULL, MaxResults = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_list_app_monitors/](https://www.paws-r-sdk.com/docs/cloudwatchrum_list_app_monitors/) for full documentation.
 #'
-#' @param MaxResults The maximum number of results to return in one operation. The default is
-#' 50. The maximum that you can specify is 100.
-#' @param NextToken Use the token returned by the previous operation to request the next
-#' page of results.
+#' @param MaxResults The maximum number of results to return in one operation. The default is 50. The maximum that you can specify is 100.
+#' @param NextToken Use the token returned by the previous operation to request the next page of results.
 #'
 #' @keywords internal
 #'
@@ -394,15 +408,11 @@ cloudwatchrum_list_app_monitors <- function(MaxResults = NULL, NextToken = NULL)
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_list_rum_metrics_destinations/](https://www.paws-r-sdk.com/docs/cloudwatchrum_list_rum_metrics_destinations/) for full documentation.
 #'
-#' @param AppMonitorName &#91;required&#93; The name of the app monitor associated with the destinations that you
-#' want to retrieve.
-#' @param MaxResults The maximum number of results to return in one operation. The default is
-#' 50. The maximum that you can specify is 100.
+#' @param AppMonitorName &#91;required&#93; The name of the app monitor associated with the destinations that you want to retrieve.
+#' @param MaxResults The maximum number of results to return in one operation. The default is 50. The maximum that you can specify is 100.
 #' 
-#' To retrieve the remaining results, make another call with the returned
-#' `NextToken` value.
-#' @param NextToken Use the token returned by the previous operation to request the next
-#' page of results.
+#' To retrieve the remaining results, make another call with the returned `NextToken` value.
+#' @param NextToken Use the token returned by the previous operation to request the next page of results.
 #'
 #' @keywords internal
 #'
@@ -457,6 +467,42 @@ cloudwatchrum_list_tags_for_resource <- function(ResourceArn) {
 }
 .cloudwatchrum$operations$list_tags_for_resource <- cloudwatchrum_list_tags_for_resource
 
+#' Use this operation to assign a resource-based policy to a CloudWatch RUM
+#' app monitor to control access to it
+#'
+#' @description
+#' Use this operation to assign a resource-based policy to a CloudWatch RUM app monitor to control access to it. Each app monitor can have one resource-based policy. The maximum size of the policy is 4 KB. To learn more about using resource policies with RUM, see [Using resource-based policies with CloudWatch RUM](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-resource-policies.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_put_resource_policy/](https://www.paws-r-sdk.com/docs/cloudwatchrum_put_resource_policy/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the app monitor that you want to apply this resource-based policy to. To find the names of your app monitors, you can use the [`list_app_monitors`][cloudwatchrum_list_app_monitors] operation.
+#' @param PolicyDocument &#91;required&#93; The JSON to use as the resource policy. The document can be up to 4 KB in size. For more information about the contents and syntax for this policy, see [Using resource-based policies with CloudWatch RUM](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-resource-policies.html).
+#' @param PolicyRevisionId A string value that you can use to conditionally update your policy. You can provide the revision ID of your existing policy to make mutating requests against that policy.
+#' 
+#' When you assign a policy revision ID, then later requests about that policy will be rejected with an `InvalidPolicyRevisionIdException` error if they don't provide the correct current revision ID.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchrum_put_resource_policy
+cloudwatchrum_put_resource_policy <- function(Name, PolicyDocument, PolicyRevisionId = NULL) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "PUT",
+    http_path = "/appmonitor/{Name}/policy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchrum$put_resource_policy_input(Name = Name, PolicyDocument = PolicyDocument, PolicyRevisionId = PolicyRevisionId)
+  output <- .cloudwatchrum$put_resource_policy_output()
+  config <- get_config()
+  svc <- .cloudwatchrum$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchrum$operations$put_resource_policy <- cloudwatchrum_put_resource_policy
+
 #' Sends telemetry events about your application performance and user
 #' behavior to CloudWatch RUM
 #'
@@ -465,18 +511,17 @@ cloudwatchrum_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_put_rum_events/](https://www.paws-r-sdk.com/docs/cloudwatchrum_put_rum_events/) for full documentation.
 #'
-#' @param AppMonitorDetails &#91;required&#93; A structure that contains information about the app monitor that
-#' collected this telemetry information.
-#' @param BatchId &#91;required&#93; A unique identifier for this batch of RUM event data.
 #' @param Id &#91;required&#93; The ID of the app monitor that is sending this data.
+#' @param BatchId &#91;required&#93; A unique identifier for this batch of RUM event data.
+#' @param AppMonitorDetails &#91;required&#93; A structure that contains information about the app monitor that collected this telemetry information.
+#' @param UserDetails &#91;required&#93; A structure that contains information about the user session that this batch of events was collected from.
 #' @param RumEvents &#91;required&#93; An array of structures that contain the telemetry event data.
-#' @param UserDetails &#91;required&#93; A structure that contains information about the user session that this
-#' batch of events was collected from.
+#' @param Alias If the app monitor uses a resource-based policy that requires [`put_rum_events`][cloudwatchrum_put_rum_events] requests to specify a certain alias, specify that alias here. This alias will be compared to the `rum:alias` context key in the resource-based policy. For more information, see [Using resource-based policies with CloudWatch RUM](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-resource-policies.html).
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_put_rum_events
-cloudwatchrum_put_rum_events <- function(AppMonitorDetails, BatchId, Id, RumEvents, UserDetails) {
+cloudwatchrum_put_rum_events <- function(Id, BatchId, AppMonitorDetails, UserDetails, RumEvents, Alias = NULL) {
   op <- new_operation(
     name = "PutRumEvents",
     http_method = "POST",
@@ -485,7 +530,7 @@ cloudwatchrum_put_rum_events <- function(AppMonitorDetails, BatchId, Id, RumEven
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchrum$put_rum_events_input(AppMonitorDetails = AppMonitorDetails, BatchId = BatchId, Id = Id, RumEvents = RumEvents, UserDetails = UserDetails)
+  input <- .cloudwatchrum$put_rum_events_input(Id = Id, BatchId = BatchId, AppMonitorDetails = AppMonitorDetails, UserDetails = UserDetails, RumEvents = RumEvents, Alias = Alias)
   output <- .cloudwatchrum$put_rum_events_output()
   config <- get_config()
   svc <- .cloudwatchrum$service(config, op)
@@ -504,26 +549,13 @@ cloudwatchrum_put_rum_events <- function(AppMonitorDetails, BatchId, Id, RumEven
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_put_rum_metrics_destination/](https://www.paws-r-sdk.com/docs/cloudwatchrum_put_rum_metrics_destination/) for full documentation.
 #'
 #' @param AppMonitorName &#91;required&#93; The name of the CloudWatch RUM app monitor that will send the metrics.
-#' @param Destination &#91;required&#93; Defines the destination to send the metrics to. Valid values are
-#' `CloudWatch` and `Evidently`. If you specify `Evidently`, you must also
-#' specify the ARN of the CloudWatchEvidently experiment that is to be the
-#' destination and an IAM role that has permission to write to the
-#' experiment.
-#' @param DestinationArn Use this parameter only if `Destination` is `Evidently`. This parameter
-#' specifies the ARN of the Evidently experiment that will receive the
-#' extended metrics.
-#' @param IamRoleArn This parameter is required if `Destination` is `Evidently`. If
-#' `Destination` is `CloudWatch`, don't use this parameter.
+#' @param Destination &#91;required&#93; Defines the destination to send the metrics to. Valid values are `CloudWatch` and `Evidently`. If you specify `Evidently`, you must also specify the ARN of the CloudWatchEvidently experiment that is to be the destination and an IAM role that has permission to write to the experiment.
+#' @param DestinationArn Use this parameter only if `Destination` is `Evidently`. This parameter specifies the ARN of the Evidently experiment that will receive the extended metrics.
+#' @param IamRoleArn This parameter is required if `Destination` is `Evidently`. If `Destination` is `CloudWatch`, don't use this parameter.
 #' 
-#' This parameter specifies the ARN of an IAM role that RUM will assume to
-#' write to the Evidently experiment that you are sending metrics to. This
-#' role must have permission to write to that experiment.
+#' This parameter specifies the ARN of an IAM role that RUM will assume to write to the Evidently experiment that you are sending metrics to. This role must have permission to write to that experiment.
 #' 
-#' If you specify this parameter, you must be signed on to a role that has
-#' [PassRole](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html)
-#' permissions attached to it, to allow the role to be passed. The
-#' [CloudWatchAmazonCloudWatchRUMFullAccess](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/auth-and-access-control-cw.html#managed-policies-cloudwatch-RUM)
-#' policy doesn't include `PassRole` permissions.
+#' If you specify this parameter, you must be signed on to a role that has [PassRole](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html) permissions attached to it, to allow the role to be passed. The [CloudWatchAmazonCloudWatchRUMFullAccess](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/auth-and-access-control-cw.html#managed-policies-cloudwatch-RUM) policy doesn't include `PassRole` permissions.
 #'
 #' @keywords internal
 #'
@@ -619,32 +651,20 @@ cloudwatchrum_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_update_app_monitor/](https://www.paws-r-sdk.com/docs/cloudwatchrum_update_app_monitor/) for full documentation.
 #'
-#' @param AppMonitorConfiguration A structure that contains much of the configuration data for the app
-#' monitor. If you are using Amazon Cognito for authorization, you must
-#' include this structure in your request, and it must include the ID of
-#' the Amazon Cognito identity pool to use for authorization. If you don't
-#' include `AppMonitorConfiguration`, you must set up your own
-#' authorization method. For more information, see [Authorize your
-#' application to send data to Amazon Web
-#' Services](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-get-started-authorization.html).
-#' @param CustomEvents Specifies whether this app monitor allows the web client to define and
-#' send custom events. The default is for custom events to be `DISABLED`.
-#' 
-#' For more information about custom events, see [Send custom
-#' events](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-custom-events.html).
-#' @param CwLogEnabled Data collected by RUM is kept by RUM for 30 days and then deleted. This
-#' parameter specifies whether RUM sends a copy of this telemetry data to
-#' Amazon CloudWatch Logs in your account. This enables you to keep the
-#' telemetry data for more than 30 days, but it does incur Amazon
-#' CloudWatch Logs charges.
-#' @param Domain The top-level internet domain name for which your application has
-#' administrative authority.
 #' @param Name &#91;required&#93; The name of the app monitor to update.
+#' @param Domain The top-level internet domain name for which your application has administrative authority.
+#' @param DomainList List the domain names for which your application has administrative authority. The [`update_app_monitor`][cloudwatchrum_update_app_monitor] allows either the domain or the domain list.
+#' @param AppMonitorConfiguration A structure that contains much of the configuration data for the app monitor. If you are using Amazon Cognito for authorization, you must include this structure in your request, and it must include the ID of the Amazon Cognito identity pool to use for authorization. If you don't include `AppMonitorConfiguration`, you must set up your own authorization method. For more information, see [Authorize your application to send data to Amazon Web Services](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-get-started-authorization.html).
+#' @param CwLogEnabled Data collected by RUM is kept by RUM for 30 days and then deleted. This parameter specifies whether RUM sends a copy of this telemetry data to Amazon CloudWatch Logs in your account. This enables you to keep the telemetry data for more than 30 days, but it does incur Amazon CloudWatch Logs charges.
+#' @param CustomEvents Specifies whether this app monitor allows the web client to define and send custom events. The default is for custom events to be `DISABLED`.
+#' 
+#' For more information about custom events, see [Send custom events](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-custom-events.html).
+#' @param DeobfuscationConfiguration A structure that contains the configuration for how an app monitor can deobfuscate stack traces.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_update_app_monitor
-cloudwatchrum_update_app_monitor <- function(AppMonitorConfiguration = NULL, CustomEvents = NULL, CwLogEnabled = NULL, Domain = NULL, Name) {
+cloudwatchrum_update_app_monitor <- function(Name, Domain = NULL, DomainList = NULL, AppMonitorConfiguration = NULL, CwLogEnabled = NULL, CustomEvents = NULL, DeobfuscationConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateAppMonitor",
     http_method = "PATCH",
@@ -653,7 +673,7 @@ cloudwatchrum_update_app_monitor <- function(AppMonitorConfiguration = NULL, Cus
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchrum$update_app_monitor_input(AppMonitorConfiguration = AppMonitorConfiguration, CustomEvents = CustomEvents, CwLogEnabled = CwLogEnabled, Domain = Domain, Name = Name)
+  input <- .cloudwatchrum$update_app_monitor_input(Name = Name, Domain = Domain, DomainList = DomainList, AppMonitorConfiguration = AppMonitorConfiguration, CwLogEnabled = CwLogEnabled, CustomEvents = CustomEvents, DeobfuscationConfiguration = DeobfuscationConfiguration)
   output <- .cloudwatchrum$update_app_monitor_output()
   config <- get_config()
   svc <- .cloudwatchrum$service(config, op)
@@ -672,19 +692,11 @@ cloudwatchrum_update_app_monitor <- function(AppMonitorConfiguration = NULL, Cus
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_update_rum_metric_definition/](https://www.paws-r-sdk.com/docs/cloudwatchrum_update_rum_metric_definition/) for full documentation.
 #'
 #' @param AppMonitorName &#91;required&#93; The name of the CloudWatch RUM app monitor that sends these metrics.
-#' @param Destination &#91;required&#93; The destination to send the metrics to. Valid values are `CloudWatch`
-#' and `Evidently`. If you specify `Evidently`, you must also specify the
-#' ARN of the CloudWatchEvidently experiment that will receive the metrics
-#' and an IAM role that has permission to write to the experiment.
-#' @param DestinationArn This parameter is required if `Destination` is `Evidently`. If
-#' `Destination` is `CloudWatch`, do not use this parameter.
+#' @param Destination &#91;required&#93; The destination to send the metrics to. Valid values are `CloudWatch` and `Evidently`. If you specify `Evidently`, you must also specify the ARN of the CloudWatchEvidently experiment that will receive the metrics and an IAM role that has permission to write to the experiment.
+#' @param DestinationArn This parameter is required if `Destination` is `Evidently`. If `Destination` is `CloudWatch`, do not use this parameter.
 #' 
-#' This parameter specifies the ARN of the Evidently experiment that is to
-#' receive the metrics. You must have already defined this experiment as a
-#' valid destination. For more information, see
-#' [`put_rum_metrics_destination`][cloudwatchrum_put_rum_metrics_destination].
-#' @param MetricDefinition &#91;required&#93; A structure that contains the new definition that you want to use for
-#' this metric.
+#' This parameter specifies the ARN of the Evidently experiment that is to receive the metrics. You must have already defined this experiment as a valid destination. For more information, see [`put_rum_metrics_destination`][cloudwatchrum_put_rum_metrics_destination].
+#' @param MetricDefinition &#91;required&#93; A structure that contains the new definition that you want to use for this metric.
 #' @param MetricDefinitionId &#91;required&#93; The ID of the metric definition to update.
 #'
 #' @keywords internal

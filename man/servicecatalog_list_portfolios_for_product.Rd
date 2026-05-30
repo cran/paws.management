@@ -20,8 +20,7 @@ servicecatalog_list_portfolios_for_product(
 
 \item{ProductId}{[required] The product identifier.}
 
-\item{PageToken}{The page token for the next set of results. To retrieve the first set of
-results, use null.}
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 }

@@ -7,11 +7,9 @@
 synthetics_associate_resource(GroupIdentifier, ResourceArn)
 }
 \arguments{
-\item{GroupIdentifier}{[required] Specifies the group. You can specify the group name, the ARN, or the
-group ID as the \code{GroupIdentifier}.}
+\item{GroupIdentifier}{[required] Specifies the group. You can specify the group name, the ARN, or the group ID as the \code{GroupIdentifier}.}
 
-\item{ResourceArn}{[required] The ARN of the canary that you want to associate with the specified
-group.}
+\item{ResourceArn}{[required] The ARN of the canary that you want to associate with the specified group.}
 }
 \description{
 Associates a canary with a group. Using groups can help you with managing and automating your canaries, and you can also view aggregated run results and statistics for all canaries in a group.

@@ -12,23 +12,15 @@ cloudwatchlogs_describe_account_policies(
 )
 }
 \arguments{
-\item{policyType}{[required] Use this parameter to limit the returned policies to only the policies
-that match the policy type that you specify.}
+\item{policyType}{[required] Use this parameter to limit the returned policies to only the policies that match the policy type that you specify.}
 
-\item{policyName}{Use this parameter to limit the returned policies to only the policy
-with the name that you specify.}
+\item{policyName}{Use this parameter to limit the returned policies to only the policy with the name that you specify.}
 
-\item{accountIdentifiers}{If you are using an account that is set up as a monitoring account for
-CloudWatch unified cross-account observability, you can use this to
-specify the account ID of a source account. If you do, the operation
-returns the account policy for the specified account. Currently, you can
-specify only one account ID in this parameter.
+\item{accountIdentifiers}{If you are using an account that is set up as a monitoring account for CloudWatch unified cross-account observability, you can use this to specify the account ID of a source account. If you do, the operation returns the account policy for the specified account. Currently, you can specify only one account ID in this parameter.
 
-If you omit this parameter, only the policy in the current account is
-returned.}
+If you omit this parameter, only the policy in the current account is returned.}
 
-\item{nextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{nextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 Returns a list of all CloudWatch Logs account policies in the account.

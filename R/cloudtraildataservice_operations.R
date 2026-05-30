@@ -10,12 +10,9 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtraildataservice_put_audit_events/](https://www.paws-r-sdk.com/docs/cloudtraildataservice_put_audit_events/) for full documentation.
 #'
-#' @param auditEvents &#91;required&#93; The JSON payload of events that you want to ingest. You can also point
-#' to the JSON event payload in a file.
+#' @param auditEvents &#91;required&#93; The JSON payload of events that you want to ingest. You can also point to the JSON event payload in a file.
 #' @param channelArn &#91;required&#93; The ARN or ID (the ARN suffix) of a channel.
-#' @param externalId A unique identifier that is conditionally required when the channel's
-#' resource policy includes an external ID. This value can be any string,
-#' such as a passphrase or account number.
+#' @param externalId A unique identifier that is conditionally required when the channel's resource policy includes an external ID. This value can be any string, such as a passphrase or account number.
 #'
 #' @keywords internal
 #'

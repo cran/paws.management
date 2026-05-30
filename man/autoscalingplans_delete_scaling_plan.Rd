@@ -9,8 +9,7 @@ autoscalingplans_delete_scaling_plan(ScalingPlanName, ScalingPlanVersion)
 \arguments{
 \item{ScalingPlanName}{[required] The name of the scaling plan.}
 
-\item{ScalingPlanVersion}{[required] The version number of the scaling plan. Currently, the only valid value
-is \code{1}.}
+\item{ScalingPlanVersion}{[required] The version number of the scaling plan. Currently, the only valid value is \code{1}.}
 }
 \description{
 Deletes the specified scaling plan.

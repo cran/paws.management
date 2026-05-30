@@ -12,8 +12,7 @@ cloudformation_set_type_default_version(
 )
 }
 \arguments{
-\item{Arn}{The Amazon Resource Name (ARN) of the extension for which you want
-version summary information.
+\item{Arn}{The Amazon Resource Name (ARN) of the extension for which you want version summary information.
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
@@ -25,9 +24,7 @@ Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{A
 
 Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{VersionId}{The ID of a specific version of the extension. The version ID is the
-value at the end of the Amazon Resource Name (ARN) assigned to the
-extension version when it is registered.}
+\item{VersionId}{The ID of a specific version of the extension. The version ID is the value at the end of the Amazon Resource Name (ARN) assigned to the extension version when it is registered.}
 }
 \description{
 Specify the default version of an extension. The default version of an extension will be used in CloudFormation operations.

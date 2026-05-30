@@ -16,23 +16,17 @@ cloudwatchrum_batch_get_rum_metric_definitions(
 \arguments{
 \item{AppMonitorName}{[required] The name of the CloudWatch RUM app monitor that is sending the metrics.}
 
-\item{Destination}{[required] The type of destination that you want to view metrics for. Valid values
-are \code{CloudWatch} and \code{Evidently}.}
+\item{Destination}{[required] The type of destination that you want to view metrics for. Valid values are \code{CloudWatch} and \code{Evidently}.}
 
-\item{DestinationArn}{This parameter is required if \code{Destination} is \code{Evidently}. If
-\code{Destination} is \code{CloudWatch}, do not use this parameter.
+\item{DestinationArn}{This parameter is required if \code{Destination} is \code{Evidently}. If \code{Destination} is \code{CloudWatch}, do not use this parameter.
 
-This parameter specifies the ARN of the Evidently experiment that
-corresponds to the destination.}
+This parameter specifies the ARN of the Evidently experiment that corresponds to the destination.}
 
-\item{MaxResults}{The maximum number of results to return in one operation. The default is
-50. The maximum that you can specify is 100.
+\item{MaxResults}{The maximum number of results to return in one operation. The default is 50. The maximum that you can specify is 100.
 
-To retrieve the remaining results, make another call with the returned
-\code{NextToken} value.}
+To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
 
-\item{NextToken}{Use the token returned by the previous operation to request the next
-page of results.}
+\item{NextToken}{Use the token returned by the previous operation to request the next page of results.}
 }
 \description{
 Retrieves the list of metrics and dimensions that a RUM app monitor is sending to a single destination.

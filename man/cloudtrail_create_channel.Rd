@@ -10,19 +10,13 @@ cloudtrail_create_channel(Name, Source, Destinations, Tags = NULL)
 \arguments{
 \item{Name}{[required] The name of the channel.}
 
-\item{Source}{[required] The name of the partner or external event source. You cannot change this
-name after you create the channel. A maximum of one channel is allowed
-per source.
+\item{Source}{[required] The name of the partner or external event source. You cannot change this name after you create the channel. A maximum of one channel is allowed per source.
 
-A source can be either \code{Custom} for all valid non-Amazon Web Services
-events, or the name of a partner event source. For information about the
-source names for available partners, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-event-data-store-integration.html#cloudtrail-lake-partner-information}{Additional information about integration partners}
-in the CloudTrail User Guide.}
+A source can be either \code{Custom} for all valid non-Amazon Web Services events, or the name of a partner event source. For information about the source names for available partners, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-event-data-store-integration.html#cloudtrail-lake-partner-information}{Additional information about integration partners} in the CloudTrail User Guide.}
 
-\item{Destinations}{[required] One or more event data stores to which events arriving through a channel
-will be logged.}
+\item{Destinations}{[required] One or more event data stores to which events arriving through a channel will be logged.}
 
-\item{Tags}{}
+\item{Tags}{A list of tags.}
 }
 \description{
 Creates a channel for CloudTrail to ingest events from a partner or external source. After you create a channel, a CloudTrail Lake event data store can log events from the partner or source that you specify.

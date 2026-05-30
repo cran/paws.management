@@ -16,22 +16,15 @@ cloudwatchlogs_describe_metric_filters(
 \arguments{
 \item{logGroupName}{The name of the log group.}
 
-\item{filterNamePrefix}{The prefix to match. CloudWatch Logs uses the value that you set here
-only if you also include the \code{logGroupName} parameter in your request.}
+\item{filterNamePrefix}{The prefix to match. CloudWatch Logs uses the value that you set here only if you also include the \code{logGroupName} parameter in your request.}
 
-\item{nextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{nextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{limit}{The maximum number of items returned. If you don't specify a value, the
-default is up to 50 items.}
+\item{limit}{The maximum number of items returned. If you don't specify a value, the default is up to 50 items.}
 
-\item{metricName}{Filters results to include only those with the specified metric name. If
-you include this parameter in your request, you must also include the
-\code{metricNamespace} parameter.}
+\item{metricName}{Filters results to include only those with the specified metric name. If you include this parameter in your request, you must also include the \code{metricNamespace} parameter.}
 
-\item{metricNamespace}{Filters results to include only those in the specified namespace. If you
-include this parameter in your request, you must also include the
-\code{metricName} parameter.}
+\item{metricNamespace}{Filters results to include only those in the specified namespace. If you include this parameter in your request, you must also include the \code{metricName} parameter.}
 }
 \description{
 Lists the specified metric filters. You can list all of the metric filters or filter the results by log name, prefix, metric name, or metric namespace. The results are ASCII-sorted by filter name.

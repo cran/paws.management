@@ -14,17 +14,11 @@ pi_get_dimension_key_details(
 )
 }
 \arguments{
-\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights returns
-data. The only valid value is \code{RDS}.}
+\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights returns data. The only valid value is \code{RDS}.}
 
-\item{Identifier}{[required] The ID for a data source from which to gather dimension data. This ID
-must be immutable and unique within an Amazon Web Services Region. When
-a DB instance is the data source, specify its \code{DbiResourceId} value. For
-example, specify \code{db-ABCDEFGHIJKLMNOPQRSTU1VW2X}.}
+\item{Identifier}{[required] The ID for a data source from which to gather dimension data. This ID must be immutable and unique within an Amazon Web Services Region. When a DB instance is the data source, specify its \code{DbiResourceId} value. For example, specify \code{db-ABCDEFGHIJKLMNOPQRSTU1VW2X}.}
 
-\item{Group}{[required] The name of the dimension group. Performance Insights searches the
-specified group for the dimension group ID. The following group name
-values are valid:
+\item{Group}{[required] The name of the dimension group. Performance Insights searches the specified group for the dimension group ID. The following group name values are valid:
 \itemize{
 \item \code{db.execution_plan} (Amazon RDS and Aurora only)
 \item \code{db.lock_snapshot} (Aurora only)
@@ -32,37 +26,20 @@ values are valid:
 \item \code{db.sql} (Amazon RDS and Aurora only)
 }}
 
-\item{GroupIdentifier}{[required] The ID of the dimension group from which to retrieve dimension details.
-For dimension group \code{db.sql}, the group ID is \code{db.sql.id}. The following
-group ID values are valid:
+\item{GroupIdentifier}{[required] The ID of the dimension group from which to retrieve dimension details. For dimension group \code{db.sql}, the group ID is \code{db.sql.id}. The following group ID values are valid:
 \itemize{
-\item \code{db.execution_plan.id} for dimension group \code{db.execution_plan}
-(Aurora and RDS only)
+\item \code{db.execution_plan.id} for dimension group \code{db.execution_plan} (Aurora and RDS only)
 \item \code{db.sql.id} for dimension group \code{db.sql} (Aurora and RDS only)
 \item \code{db.query.id} for dimension group \code{db.query} (DocumentDB only)
-\item For the dimension group \code{db.lock_snapshot}, the \code{GroupIdentifier} is
-the epoch timestamp when Performance Insights captured the snapshot,
-in seconds. You can retrieve this value with the
-\code{\link[=pi_get_resource_metrics]{get_resource_metrics}} operation for a 1
-second period.
+\item For the dimension group \code{db.lock_snapshot}, the \code{GroupIdentifier} is the epoch timestamp when Performance Insights captured the snapshot, in seconds. You can retrieve this value with the \code{\link[=pi_get_resource_metrics]{get_resource_metrics}} operation for a 1 second period.
 }}
 
-\item{RequestedDimensions}{A list of dimensions to retrieve the detail data for within the given
-dimension group. If you don't specify this parameter, Performance
-Insights returns all dimension data within the specified dimension
-group. Specify dimension names for the following dimension groups:
+\item{RequestedDimensions}{A list of dimensions to retrieve the detail data for within the given dimension group. If you don't specify this parameter, Performance Insights returns all dimension data within the specified dimension group. Specify dimension names for the following dimension groups:
 \itemize{
-\item \code{db.execution_plan} - Specify the dimension name
-\code{db.execution_plan.raw_plan} or the short dimension name \code{raw_plan}
-(Amazon RDS and Aurora only)
-\item \code{db.lock_snapshot} - Specify the dimension name
-\code{db.lock_snapshot.lock_trees} or the short dimension name
-\code{lock_trees}. (Aurora only)
-\item \code{db.sql} - Specify either the full dimension name \code{db.sql.statement}
-or the short dimension name \code{statement} (Aurora and RDS only).
-\item \code{db.query} - Specify either the full dimension name
-\code{db.query.statement} or the short dimension name \code{statement}
-(DocumentDB only).
+\item \code{db.execution_plan} - Specify the dimension name \code{db.execution_plan.raw_plan} or the short dimension name \code{raw_plan} (Amazon RDS and Aurora only)
+\item \code{db.lock_snapshot} - Specify the dimension name \code{db.lock_snapshot.lock_trees} or the short dimension name \code{lock_trees}. (Aurora only)
+\item \code{db.sql} - Specify either the full dimension name \code{db.sql.statement} or the short dimension name \code{statement} (Aurora and RDS only).
+\item \code{db.query} - Specify either the full dimension name \code{db.query.statement} or the short dimension name \code{statement} (DocumentDB only).
 }}
 }
 \description{

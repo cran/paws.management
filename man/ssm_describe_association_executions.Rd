@@ -14,8 +14,7 @@ ssm_describe_association_executions(
 \arguments{
 \item{AssociationId}{[required] The association ID for which you want to view execution history details.}
 
-\item{Filters}{Filters for the request. You can specify the following filters and
-values.
+\item{Filters}{Filters for the request. You can specify the following filters and values.
 
 ExecutionId (EQUAL)
 
@@ -23,12 +22,9 @@ Status (EQUAL)
 
 CreatedTime (EQUAL, GREATER_THAN, LESS_THAN)}
 
-\item{MaxResults}{The maximum number of items to return for this call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{A token to start the list. Use this token to get the next set of
-results.}
+\item{NextToken}{A token to start the list. Use this token to get the next set of results.}
 }
 \description{
 Views all executions for a specific association ID.

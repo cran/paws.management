@@ -9,8 +9,7 @@ auditmanager_delete_assessment_framework_share(requestId, requestType)
 \arguments{
 \item{requestId}{[required] The unique identifier for the share request to be deleted.}
 
-\item{requestType}{[required] Specifies whether the share request is a sent request or a received
-request.}
+\item{requestType}{[required] Specifies whether the share request is a sent request or a received request.}
 }
 \description{
 Deletes a share request for a custom framework in Audit Manager.

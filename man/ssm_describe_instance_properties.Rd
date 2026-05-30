@@ -17,12 +17,9 @@ ssm_describe_instance_properties(
 
 \item{FiltersWithOperator}{The request filters to use with the operator.}
 
-\item{MaxResults}{The maximum number of items to return for the call. The call also
-returns a token that you can specify in a subsequent call to get the
-next set of results.}
+\item{MaxResults}{The maximum number of items to return for the call. The call also returns a token that you can specify in a subsequent call to get the next set of results.}
 
-\item{NextToken}{The token provided by a previous request to use to return the next set
-of properties.}
+\item{NextToken}{The token provided by a previous request to use to return the next set of properties.}
 }
 \description{
 An API operation used by the Systems Manager console to display information about Systems Manager managed nodes.

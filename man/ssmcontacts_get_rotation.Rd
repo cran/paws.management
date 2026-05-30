@@ -7,8 +7,7 @@
 ssmcontacts_get_rotation(RotationId)
 }
 \arguments{
-\item{RotationId}{[required] The Amazon Resource Name (ARN) of the on-call rotation to retrieve
-information about.}
+\item{RotationId}{[required] The Amazon Resource Name (ARN) of the on-call rotation to retrieve information about.}
 }
 \description{
 Retrieves information about an on-call rotation.

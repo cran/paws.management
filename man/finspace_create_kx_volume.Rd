@@ -20,29 +20,21 @@ finspace_create_kx_volume(
 \arguments{
 \item{clientToken}{A token that ensures idempotency. This token expires in 10 minutes.}
 
-\item{environmentId}{[required] A unique identifier for the kdb environment, whose clusters can attach
-to the volume.}
+\item{environmentId}{[required] A unique identifier for the kdb environment, whose clusters can attach to the volume.}
 
-\item{volumeType}{[required] The type of file system volume. Currently, FinSpace only supports
-\code{NAS_1} volume type. When you select \code{NAS_1} volume type, you must also
-provide \code{nas1Configuration}.}
+\item{volumeType}{[required] The type of file system volume. Currently, FinSpace only supports \code{NAS_1} volume type. When you select \code{NAS_1} volume type, you must also provide \code{nas1Configuration}.}
 
 \item{volumeName}{[required] A unique identifier for the volume.}
 
 \item{description}{A description of the volume.}
 
-\item{nas1Configuration}{Specifies the configuration for the Network attached storage (NAS_1)
-file system volume. This parameter is required when you choose
-\code{volumeType} as \emph{NAS_1}.}
+\item{nas1Configuration}{Specifies the configuration for the Network attached storage (NAS_1) file system volume. This parameter is required when you choose \code{volumeType} as \emph{NAS_1}.}
 
-\item{azMode}{[required] The number of availability zones you want to assign per volume.
-Currently, FinSpace only supports \code{SINGLE} for volumes. This places
-dataview in a single AZ.}
+\item{azMode}{[required] The number of availability zones you want to assign per volume. Currently, FinSpace only supports \code{SINGLE} for volumes. This places dataview in a single AZ.}
 
 \item{availabilityZoneIds}{[required] The identifier of the availability zones.}
 
-\item{tags}{A list of key-value pairs to label the volume. You can add up to 50 tags
-to a volume.}
+\item{tags}{A list of key-value pairs to label the volume. You can add up to 50 tags to a volume.}
 }
 \description{
 Creates a new volume with a specific amount of throughput and storage capacity.

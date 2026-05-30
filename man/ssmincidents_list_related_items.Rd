@@ -11,13 +11,11 @@ ssmincidents_list_related_items(
 )
 }
 \arguments{
-\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident record containing the
-listed related items.}
+\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident record containing the listed related items.}
 
 \item{maxResults}{The maximum number of related items per page.}
 
-\item{nextToken}{The pagination token for the next set of items to return. (You received
-this token from a previous call.)}
+\item{nextToken}{The pagination token for the next set of items to return. (You received this token from a previous call.)}
 }
 \description{
 List all related items for an incident record.

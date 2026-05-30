@@ -6,27 +6,25 @@
 provider}
 \usage{
 licensemanagerusersubscriptions_stop_product_subscription(
-  Domain = NULL,
+  Username = NULL,
   IdentityProvider = NULL,
   Product = NULL,
   ProductUserArn = NULL,
-  Username = NULL
+  Domain = NULL
 )
 }
 \arguments{
-\item{Domain}{The domain name of the Active Directory that contains the user for whom
-to stop the product subscription.}
+\item{Username}{The user name from the identity provider for the user.}
 
 \item{IdentityProvider}{An object that specifies details for the identity provider.}
 
 \item{Product}{The name of the user-based subscription product.
 
-Valid values: \code{VISUAL_STUDIO_ENTERPRISE} | \code{VISUAL_STUDIO_PROFESSIONAL}
-| \code{OFFICE_PROFESSIONAL_PLUS} | \code{REMOTE_DESKTOP_SERVICES}}
+Valid values: \code{VISUAL_STUDIO_ENTERPRISE} | \code{VISUAL_STUDIO_PROFESSIONAL} | \code{OFFICE_PROFESSIONAL_PLUS} | \code{REMOTE_DESKTOP_SERVICES}}
 
 \item{ProductUserArn}{The Amazon Resource Name (ARN) of the product user.}
 
-\item{Username}{The user name from the identity provider for the user.}
+\item{Domain}{The domain name of the Active Directory that contains the user for whom to stop the product subscription.}
 }
 \description{
 Stops a product subscription for a user with the specified identity provider.

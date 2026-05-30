@@ -20,35 +20,23 @@ applicationinsights_create_application(
 \arguments{
 \item{ResourceGroupName}{The name of the resource group.}
 
-\item{OpsCenterEnabled}{When set to \code{true}, creates opsItems for any problems detected on an
-application.}
+\item{OpsCenterEnabled}{When set to \code{true}, creates opsItems for any problems detected on an application.}
 
-\item{CWEMonitorEnabled}{Indicates whether Application Insights can listen to CloudWatch events
-for the application resources, such as \verb{instance terminated},
-\verb{failed deployment}, and others.}
+\item{CWEMonitorEnabled}{Indicates whether Application Insights can listen to CloudWatch events for the application resources, such as \verb{instance terminated}, \verb{failed deployment}, and others.}
 
-\item{OpsItemSNSTopicArn}{The SNS topic provided to Application Insights that is associated to the
-created opsItem. Allows you to receive notifications for updates to the
-opsItem.}
+\item{OpsItemSNSTopicArn}{The SNS topic provided to Application Insights that is associated to the created opsItem. Allows you to receive notifications for updates to the opsItem.}
 
 \item{SNSNotificationArn}{The SNS notification topic ARN.}
 
-\item{Tags}{List of tags to add to the application. tag key (\code{Key}) and an
-associated tag value (\code{Value}). The maximum length of a tag key is 128
-characters. The maximum length of a tag value is 256 characters.}
+\item{Tags}{List of tags to add to the application. tag key (\code{Key}) and an associated tag value (\code{Value}). The maximum length of a tag key is 128 characters. The maximum length of a tag value is 256 characters.}
 
-\item{AutoConfigEnabled}{Indicates whether Application Insights automatically configures
-unmonitored resources in the resource group.}
+\item{AutoConfigEnabled}{Indicates whether Application Insights automatically configures unmonitored resources in the resource group.}
 
-\item{AutoCreate}{Configures all of the resources in the resource group by applying the
-recommended configurations.}
+\item{AutoCreate}{Configures all of the resources in the resource group by applying the recommended configurations.}
 
-\item{GroupingType}{Application Insights can create applications based on a resource group
-or on an account. To create an account-based application using all of
-the resources in the account, set this parameter to \code{ACCOUNT_BASED}.}
+\item{GroupingType}{Application Insights can create applications based on a resource group or on an account. To create an account-based application using all of the resources in the account, set this parameter to \code{ACCOUNT_BASED}.}
 
-\item{AttachMissingPermission}{If set to true, the managed policies for SSM and CW will be attached to
-the instance roles if they are missing.}
+\item{AttachMissingPermission}{If set to true, the managed policies for SSM and CW will be attached to the instance roles if they are missing.}
 }
 \description{
 Adds an application that is created from a resource group.

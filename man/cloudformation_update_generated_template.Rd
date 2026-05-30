@@ -20,17 +20,11 @@ cloudformation_update_generated_template(
 
 \item{AddResources}{An optional list of resources to be added to the generated template.}
 
-\item{RemoveResources}{A list of logical ids for resources to remove from the generated
-template.}
+\item{RemoveResources}{A list of logical ids for resources to remove from the generated template.}
 
-\item{RefreshAllResources}{If \code{true}, update the resource properties in the generated template with
-their current live state. This feature is useful when the resource
-properties in your generated a template does not reflect the live state
-of the resource properties. This happens when a user update the resource
-properties after generating a template.}
+\item{RefreshAllResources}{If \code{true}, update the resource properties in the generated template with their current live state. This feature is useful when the resource properties in your generated a template does not reflect the live state of the resource properties. This happens when a user update the resource properties after generating a template.}
 
-\item{TemplateConfiguration}{The configuration details of the generated template, including the
-\code{DeletionPolicy} and \code{UpdateReplacePolicy}.}
+\item{TemplateConfiguration}{The configuration details of the generated template, including the \code{DeletionPolicy} and \code{UpdateReplacePolicy}.}
 }
 \description{
 Updates a generated template. This can be used to change the name, add and remove resources, refresh resources, and change the \code{DeletionPolicy} and \code{UpdateReplacePolicy} settings. You can check the status of the update to the generated template using the \code{\link[=cloudformation_describe_generated_template]{describe_generated_template}} API action.

@@ -26,20 +26,16 @@ ssm_create_association(
   Duration = NULL,
   TargetMaps = NULL,
   Tags = NULL,
-  AlarmConfiguration = NULL
+  AlarmConfiguration = NULL,
+  AssociationDispatchAssumeRole = NULL
 )
 }
 \arguments{
-\item{Name}{[required] The name of the SSM Command document or Automation runbook that contains
-the configuration information for the managed node.
+\item{Name}{[required] The name of the SSM Command document or Automation runbook that contains the configuration information for the managed node.
 
-You can specify Amazon Web Services-predefined documents, documents you
-created, or a document that is shared with you from another Amazon Web
-Services account.
+You can specify Amazon Web Services-predefined documents, documents you created, or a document that is shared with you from another Amazon Web Services account.
 
-For Systems Manager documents (SSM documents) that are shared with you
-from other Amazon Web Services accounts, you must specify the complete
-SSM document ARN, in the following format:
+For Systems Manager documents (SSM documents) that are shared with you from other Amazon Web Services accounts, you must specify the complete SSM document ARN, in the following format:
 
 \code{arn:partition:ssm:region:account-id:document/document-name }
 
@@ -47,152 +43,79 @@ For example:
 
 \code{arn:aws:ssm:us-east-2:12345678912:document/My-Shared-Document}
 
-For Amazon Web Services-predefined documents and SSM documents you
-created in your account, you only need to specify the document name. For
-example, \code{AWS-ApplyPatchBaseline} or \code{My-Document}.}
+For Amazon Web Services-predefined documents and SSM documents you created in your account, you only need to specify the document name. For example, \code{AWS-ApplyPatchBaseline} or \code{My-Document}.}
 
-\item{DocumentVersion}{The document version you want to associate with the targets. Can be a
-specific version or the default version.
+\item{DocumentVersion}{The document version you want to associate with the targets. Can be a specific version or the default version.
 
-State Manager doesn't support running associations that use a new
-version of a document if that document is shared from another account.
-State Manager always runs the \code{default} version of a document if shared
-from another account, even though the Systems Manager console shows that
-a new version was processed. If you want to run an association using a
-new version of a document shared form another account, you must set the
-document version to \code{default}.}
+State Manager doesn't support running associations that use a new version of a document if that document is shared from another account. State Manager always runs the \code{default} version of a document if shared from another account, even though the Systems Manager console shows that a new version was processed. If you want to run an association using a new version of a document shared form another account, you must set the document version to \code{default}.}
 
 \item{InstanceId}{The managed node ID.
 
-\code{InstanceId} has been deprecated. To specify a managed node ID for an
-association, use the \code{Targets} parameter. Requests that include the
-parameter \code{InstanceID} with Systems Manager documents (SSM documents)
-that use schema version 2.0 or later will fail. In addition, if you use
-the parameter \code{InstanceId}, you can't use the parameters
-\code{AssociationName}, \code{DocumentVersion}, \code{MaxErrors}, \code{MaxConcurrency},
-\code{OutputLocation}, or \code{ScheduleExpression}. To use these parameters, you
-must use the \code{Targets} parameter.}
+\code{InstanceId} has been deprecated. To specify a managed node ID for an association, use the \code{Targets} parameter. Requests that include the parameter \code{InstanceID} with Systems Manager documents (SSM documents) that use schema version 2.0 or later will fail. In addition, if you use the parameter \code{InstanceId}, you can't use the parameters \code{AssociationName}, \code{DocumentVersion}, \code{MaxErrors}, \code{MaxConcurrency}, \code{OutputLocation}, or \code{ScheduleExpression}. To use these parameters, you must use the \code{Targets} parameter.}
 
 \item{Parameters}{The parameters for the runtime configuration of the document.}
 
-\item{Targets}{The targets for the association. You can target managed nodes by using
-tags, Amazon Web Services resource groups, all managed nodes in an
-Amazon Web Services account, or individual managed node IDs. You can
-target all managed nodes in an Amazon Web Services account by specifying
-the \code{InstanceIds} key with a value of \code{*}. For more information about
-choosing targets for an association, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-state-manager-targets-and-rate-controls.html}{Understanding targets and rate controls in State Manager associations}
-in the \emph{Amazon Web Services Systems Manager User Guide}.}
+\item{Targets}{The targets for the association. You can target managed nodes by using tags, Amazon Web Services resource groups, all managed nodes in an Amazon Web Services account, or individual managed node IDs. You can target all managed nodes in an Amazon Web Services account by specifying the \code{InstanceIds} key with a value of \code{*}. For more information about choosing targets for an association, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-state-manager-targets-and-rate-controls.html}{Understanding targets and rate controls in State Manager associations} in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{ScheduleExpression}{A cron expression when the association will be applied to the targets.}
 
-\item{OutputLocation}{An Amazon Simple Storage Service (Amazon S3) bucket where you want to
-store the output details of the request.}
+\item{OutputLocation}{An Amazon Simple Storage Service (Amazon S3) bucket where you want to store the output details of the request.}
 
 \item{AssociationName}{Specify a descriptive name for the association.}
 
-\item{AutomationTargetParameterName}{Choose the parameter that will define how your automation will branch
-out. This target is required for associations that use an Automation
-runbook and target resources by using rate controls. Automation is a
-tool in Amazon Web Services Systems Manager.}
+\item{AutomationTargetParameterName}{Choose the parameter that will define how your automation will branch out. This target is required for associations that use an Automation runbook and target resources by using rate controls. Automation is a tool in Amazon Web Services Systems Manager.}
 
-\item{MaxErrors}{The number of errors that are allowed before the system stops sending
-requests to run the association on additional targets. You can specify
-either an absolute number of errors, for example 10, or a percentage of
-the target set, for example 10\%. If you specify 3, for example, the
-system stops sending requests when the fourth error is received. If you
-specify 0, then the system stops sending requests after the first error
-is returned. If you run an association on 50 managed nodes and set
-\code{MaxError} to 10\%, then the system stops sending the request when the
-sixth error is received.
+\item{MaxErrors}{The number of errors that are allowed before the system stops sending requests to run the association on additional targets. You can specify either an absolute number of errors, for example 10, or a percentage of the target set, for example 10\%. If you specify 3, for example, the system stops sending requests when the fourth error is received. If you specify 0, then the system stops sending requests after the first error is returned. If you run an association on 50 managed nodes and set \code{MaxError} to 10\%, then the system stops sending the request when the sixth error is received.
 
-Executions that are already running an association when \code{MaxErrors} is
-reached are allowed to complete, but some of these executions may fail
-as well. If you need to ensure that there won't be more than max-errors
-failed executions, set \code{MaxConcurrency} to 1 so that executions proceed
-one at a time.}
+Executions that are already running an association when \code{MaxErrors} is reached are allowed to complete, but some of these executions may fail as well. If you need to ensure that there won't be more than max-errors failed executions, set \code{MaxConcurrency} to 1 so that executions proceed one at a time.}
 
-\item{MaxConcurrency}{The maximum number of targets allowed to run the association at the same
-time. You can specify a number, for example 10, or a percentage of the
-target set, for example 10\%. The default value is 100\%, which means all
-targets run the association at the same time.
+\item{MaxConcurrency}{The maximum number of targets allowed to run the association at the same time. You can specify a number, for example 10, or a percentage of the target set, for example 10\%. The default value is 100\%, which means all targets run the association at the same time.
 
-If a new managed node starts and attempts to run an association while
-Systems Manager is running \code{MaxConcurrency} associations, the
-association is allowed to run. During the next association interval, the
-new managed node will process its association within the limit specified
-for \code{MaxConcurrency}.}
+If a new managed node starts and attempts to run an association while Systems Manager is running \code{MaxConcurrency} associations, the association is allowed to run. During the next association interval, the new managed node will process its association within the limit specified for \code{MaxConcurrency}.}
 
 \item{ComplianceSeverity}{The severity level to assign to the association.}
 
-\item{SyncCompliance}{The mode for generating association compliance. You can specify \code{AUTO}
-or \code{MANUAL}. In \code{AUTO} mode, the system uses the status of the
-association execution to determine the compliance status. If the
-association execution runs successfully, then the association is
-\code{COMPLIANT}. If the association execution doesn't run successfully, the
-association is \code{NON-COMPLIANT}.
+\item{SyncCompliance}{The mode for generating association compliance. You can specify \code{AUTO} or \code{MANUAL}. In \code{AUTO} mode, the system uses the status of the association execution to determine the compliance status. If the association execution runs successfully, then the association is \code{COMPLIANT}. If the association execution doesn't run successfully, the association is \code{NON-COMPLIANT}.
 
-In \code{MANUAL} mode, you must specify the \code{AssociationId} as a parameter
-for the \code{\link[=ssm_put_compliance_items]{put_compliance_items}} API
-operation. In this case, compliance data isn't managed by State Manager.
-It is managed by your direct call to the
-\code{\link[=ssm_put_compliance_items]{put_compliance_items}} API operation.
+In \code{MANUAL} mode, you must specify the \code{AssociationId} as a parameter for the \code{\link[=ssm_put_compliance_items]{put_compliance_items}} API operation. In this case, compliance data isn't managed by State Manager. It is managed by your direct call to the \code{\link[=ssm_put_compliance_items]{put_compliance_items}} API operation.
 
 By default, all associations use \code{AUTO} mode.}
 
-\item{ApplyOnlyAtCronInterval}{By default, when you create a new association, the system runs it
-immediately after it is created and then according to the schedule you
-specified. Specify this option if you don't want an association to run
-immediately after you create it. This parameter isn't supported for rate
-expressions.}
+\item{ApplyOnlyAtCronInterval}{By default, when you create a new association, the system runs it immediately after it is created and then according to the schedule you specified and when target changes are detected. Specify \code{true} for \code{ApplyOnlyAtCronInterval}if you want the association to run only according to the schedule you specified.
 
-\item{CalendarNames}{The names or Amazon Resource Names (ARNs) of the Change Calendar type
-documents you want to gate your associations under. The associations
-only run when that change calendar is open. For more information, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html}{Amazon Web Services Systems Manager Change Calendar}.}
+For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/state-manager-about.html#state-manager-about-scheduling}{Understanding when associations are applied to resources} and \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/state-manager-about.html#runbook-target-updates}{\>About target updates with Automation runbooks} in the \emph{Amazon Web Services Systems Manager User Guide}.
 
-\item{TargetLocations}{A location is a combination of Amazon Web Services Regions and Amazon
-Web Services accounts where you want to run the association. Use this
-action to create an association in multiple Regions and multiple
-accounts.}
+This parameter isn't supported for rate expressions.}
 
-\item{ScheduleOffset}{Number of days to wait after the scheduled day to run an association.
-For example, if you specified a cron schedule of
-\verb{cron(0 0 ? * THU#2 *)}, you could specify an offset of 3 to run the
-association each Sunday after the second Thursday of the month. For more
-information about cron schedules for associations, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/reference-cron-and-rate-expressions.html}{Reference: Cron and rate expressions for Systems Manager}
-in the \emph{Amazon Web Services Systems Manager User Guide}.
+\item{CalendarNames}{The names of Amazon Resource Names (ARNs) of the Change Calendar type documents you want to gate your associations under. The associations only run when that change calendar is open. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html}{Amazon Web Services Systems Manager Change Calendar} in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
-To use offsets, you must specify the \code{ApplyOnlyAtCronInterval}
-parameter. This option tells the system not to run an association
-immediately after you create it.}
+\item{TargetLocations}{A location is a combination of Amazon Web Services Regions and Amazon Web Services accounts where you want to run the association. Use this action to create an association in multiple Regions and multiple accounts.
 
-\item{Duration}{The number of hours the association can run before it is canceled.
-Duration applies to associations that are currently running, and any
-pending and in progress commands on all targets. If a target was taken
-offline for the association to run, it is made available again
-immediately, without a reboot.
+The \code{IncludeChildOrganizationUnits} parameter is not supported by State Manager.}
 
-The \code{Duration} parameter applies only when both these conditions are
-true:
+\item{ScheduleOffset}{Number of days to wait after the scheduled day to run an association. For example, if you specified a cron schedule of \verb{cron(0 0 ? * THU#2 *)}, you could specify an offset of 3 to run the association each Sunday after the second Thursday of the month. For more information about cron schedules for associations, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/reference-cron-and-rate-expressions.html}{Reference: Cron and rate expressions for Systems Manager} in the \emph{Amazon Web Services Systems Manager User Guide}.
+
+To use offsets, you must specify the \code{ApplyOnlyAtCronInterval} parameter. This option tells the system not to run an association immediately after you create it.}
+
+\item{Duration}{The number of hours the association can run before it is canceled. Duration applies to associations that are currently running, and any pending and in progress commands on all targets. If a target was taken offline for the association to run, it is made available again immediately, without a reboot.
+
+The \code{Duration} parameter applies only when both these conditions are true:
 \itemize{
-\item The association for which you specify a duration is cancelable
-according to the parameters of the SSM command document or
-Automation runbook associated with this execution.
-\item The command specifies the \code{ApplyOnlyAtCronInterval} parameter,
-which means that the association doesn't run immediately after it is
-created, but only according to the specified schedule.
+\item The association for which you specify a duration is cancelable according to the parameters of the SSM command document or Automation runbook associated with this execution.
+\item The command specifies the \code{ApplyOnlyAtCronInterval} parameter, which means that the association doesn't run immediately after it is created, but only according to the specified schedule.
 }}
 
-\item{TargetMaps}{A key-value mapping of document parameters to target resources. Both
-Targets and TargetMaps can't be specified together.}
+\item{TargetMaps}{A key-value mapping of document parameters to target resources. Both Targets and TargetMaps can't be specified together.}
 
-\item{Tags}{Adds or overwrites one or more tags for a State Manager association.
-\emph{Tags} are metadata that you can assign to your Amazon Web Services
-resources. Tags enable you to categorize your resources in different
-ways, for example, by purpose, owner, or environment. Each tag consists
-of a key and an optional value, both of which you define.}
+\item{Tags}{Adds or overwrites one or more tags for a State Manager association. \emph{Tags} are metadata that you can assign to your Amazon Web Services resources. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment. Each tag consists of a key and an optional value, both of which you define.}
 
-\item{AlarmConfiguration}{}
+\item{AlarmConfiguration}{The details for the CloudWatch alarm you want to apply to an automation or command.}
+
+\item{AssociationDispatchAssumeRole}{A role used by association to take actions on your behalf. State Manager will assume this role and call required APIs when dispatching configurations to nodes. If not specified, \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html}{service-linked role for Systems Manager} will be used by default.
+
+It is recommended that you define a custom IAM role so that you have full control of the permissions that State Manager has when taking actions on your behalf.
+
+Service-linked role support in State Manager is being phased out. Associations relying on service-linked role may require updates in the future to continue functioning properly.}
 }
 \description{
 A State Manager association defines the state that you want to maintain on your managed nodes. For example, an association can specify that anti-virus software must be installed and running on your managed nodes, or that certain ports must be closed. For static targets, the association specifies a schedule for when the configuration is reapplied. For dynamic targets, such as an Amazon Web Services resource group or an Amazon Web Services autoscaling group, State Manager, a tool in Amazon Web Services Systems Manager applies the configuration when new managed nodes are added to the group. The association also specifies actions to take when applying the configuration. For example, an association for anti-virus software might run once a day. If the software isn't installed, then State Manager installs it. If the software is installed, but the service isn't running, then the association might instruct State Manager to start the service.

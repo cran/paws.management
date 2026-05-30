@@ -13,8 +13,7 @@ autoscaling_terminate_instance_in_auto_scaling_group(
 \arguments{
 \item{InstanceId}{[required] The ID of the instance.}
 
-\item{ShouldDecrementDesiredCapacity}{[required] Indicates whether terminating the instance also decrements the size of
-the Auto Scaling group.}
+\item{ShouldDecrementDesiredCapacity}{[required] Indicates whether terminating the instance also decrements the size of the Auto Scaling group.}
 }
 \description{
 Terminates the specified instance and optionally adjusts the desired group size. This operation cannot be called on instances in a warm pool.

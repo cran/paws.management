@@ -10,23 +10,11 @@ ssm_get_command_invocation(CommandId, InstanceId, PluginName = NULL)
 \arguments{
 \item{CommandId}{[required] (Required) The parent command ID of the invocation plugin.}
 
-\item{InstanceId}{[required] (Required) The ID of the managed node targeted by the command. A
-\emph{managed node} can be an Amazon Elastic Compute Cloud (Amazon EC2)
-instance, edge device, and on-premises server or VM in your hybrid
-environment that is configured for Amazon Web Services Systems Manager.}
+\item{InstanceId}{[required] (Required) The ID of the managed node targeted by the command. A \emph{managed node} can be an Amazon Elastic Compute Cloud (Amazon EC2) instance, edge device, and on-premises server or VM in your hybrid environment that is configured for Amazon Web Services Systems Manager.}
 
-\item{PluginName}{The name of the step for which you want detailed results. If the
-document contains only one step, you can omit the name and details for
-that step. If the document contains more than one step, you must specify
-the name of the step for which you want to view details. Be sure to
-specify the name of the step, not the name of a plugin like
-\code{aws:RunShellScript}.
+\item{PluginName}{The name of the step for which you want detailed results. If the document contains only one step, you can omit the name and details for that step. If the document contains more than one step, you must specify the name of the step for which you want to view details. Be sure to specify the name of the step, not the name of a plugin like \code{aws:RunShellScript}.
 
-To find the \code{PluginName}, check the document content and find the name
-of the step you want details for. Alternatively, use
-\code{\link[=ssm_list_command_invocations]{list_command_invocations}} with the
-\code{CommandId} and \code{Details} parameters. The \code{PluginName} is the \code{Name}
-attribute of the \code{CommandPlugin} object in the \code{CommandPlugins} list.}
+To find the \code{PluginName}, check the document content and find the name of the step you want details for. Alternatively, use \code{\link[=ssm_list_command_invocations]{list_command_invocations}} with the \code{CommandId} and \code{Details} parameters. The \code{PluginName} is the \code{Name} attribute of the \code{CommandPlugin} object in the \code{CommandPlugins} list.}
 }
 \description{
 Returns detailed information about command execution for an invocation or plugin. The Run Command API follows an eventual consistency model, due to the distributed nature of the system supporting the API. This means that the result of an API command you run that affects your resources might not be immediately visible to all subsequent commands you run. You should keep this in mind when you carry out an API command that immediately follows a previous API command.

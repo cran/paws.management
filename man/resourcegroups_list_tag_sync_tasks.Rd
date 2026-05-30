@@ -11,16 +11,11 @@ resourcegroups_list_tag_sync_tasks(
 )
 }
 \arguments{
-\item{Filters}{The Amazon resource name (ARN) or name of the application group for
-which you want to return a list of tag-sync tasks.}
+\item{Filters}{The Amazon resource name (ARN) or name of the application group for which you want to return a list of tag-sync tasks.}
 
 \item{MaxResults}{The maximum number of results to be included in the response.}
 
-\item{NextToken}{The parameter for receiving additional results if you receive a
-\code{NextToken} response in a previous request. A \code{NextToken} response
-indicates that more output is available. Set this parameter to the value
-provided by a previous call's \code{NextToken} response to indicate where the
-output should continue from.}
+\item{NextToken}{The parameter for receiving additional results if you receive a \code{NextToken} response in a previous request. A \code{NextToken} response indicates that more output is available. Set this parameter to the value provided by a previous call's \code{NextToken} response to indicate where the output should continue from.}
 }
 \description{
 Returns a list of tag-sync tasks.

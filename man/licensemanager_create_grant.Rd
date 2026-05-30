@@ -10,30 +10,29 @@ licensemanager_create_grant(
   LicenseArn,
   Principals,
   HomeRegion,
-  AllowedOperations
+  AllowedOperations,
+  Tags = NULL
 )
 }
 \arguments{
-\item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+\item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.}
 
 \item{GrantName}{[required] Grant name.}
 
 \item{LicenseArn}{[required] Amazon Resource Name (ARN) of the license.}
 
-\item{Principals}{[required] The grant principals. You can specify one of the following as an Amazon
-Resource Name (ARN):
+\item{Principals}{[required] The grant principals. You can specify one of the following as an Amazon Resource Name (ARN):
 \itemize{
-\item An Amazon Web Services account, which includes only the account
-specified.
+\item An Amazon Web Services account, which includes only the account specified.
 \item An organizational unit (OU), which includes all accounts in the OU.
-\item An organization, which will include all accounts across your
-organization.
+\item An organization, which will include all accounts across your organization.
 }}
 
 \item{HomeRegion}{[required] Home Region of the grant.}
 
 \item{AllowedOperations}{[required] Allowed operations for the grant.}
+
+\item{Tags}{Tags to add to the grant. For more information about tagging support in License Manager, see the \code{\link[=licensemanager_tag_resource]{tag_resource}} operation.}
 }
 \description{
 Creates a grant for the specified license. A grant shares the use of license entitlements with a specific Amazon Web Services account, an organization, or an organizational unit (OU). For more information, see \href{https://docs.aws.amazon.com/license-manager/latest/userguide/granted-licenses.html}{Granted licenses in License Manager} in the \emph{License Manager User Guide}.

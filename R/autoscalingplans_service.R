@@ -7,33 +7,25 @@ NULL
 #' @description
 #' AWS Auto Scaling
 #' 
-#' Use AWS Auto Scaling to create scaling plans for your applications to
-#' automatically scale your scalable AWS resources.
+#' Use AWS Auto Scaling to create scaling plans for your applications to automatically scale your scalable AWS resources.
 #' 
 #' **API Summary**
 #' 
-#' You can use the AWS Auto Scaling service API to accomplish the following
-#' tasks:
+#' You can use the AWS Auto Scaling service API to accomplish the following tasks:
 #' 
 #' -   Create and manage scaling plans
 #' 
-#' -   Define target tracking scaling policies to dynamically scale your
-#'     resources based on utilization
+#' -   Define target tracking scaling policies to dynamically scale your resources based on utilization
 #' 
-#' -   Scale Amazon EC2 Auto Scaling groups using predictive scaling and
-#'     dynamic scaling to scale your Amazon EC2 capacity faster
+#' -   Scale Amazon EC2 Auto Scaling groups using predictive scaling and dynamic scaling to scale your Amazon EC2 capacity faster
 #' 
 #' -   Set minimum and maximum capacity limits
 #' 
 #' -   Retrieve information on existing scaling plans
 #' 
-#' -   Access current forecast data and historical forecast data for up to
-#'     56 days previous
+#' -   Access current forecast data and historical forecast data for up to 56 days previous
 #' 
-#' To learn more about AWS Auto Scaling, including information about
-#' granting IAM users required permissions for AWS Auto Scaling actions,
-#' see the [AWS Auto Scaling User
-#' Guide](https://docs.aws.amazon.com/autoscaling/plans/userguide/migrate-scaling-plan.html).
+#' To learn more about AWS Auto Scaling, including information about granting IAM users required permissions for AWS Auto Scaling actions, see the [AWS Auto Scaling User Guide](https://docs.aws.amazon.com/autoscaling/plans/userguide/migrate-scaling-plan.html).
 #'
 #' @param
 #' config
@@ -155,7 +147,7 @@ autoscalingplans <- function(config = list(), credentials = list(), endpoint = N
 
 .autoscalingplans$metadata <- list(
   service_name = "autoscaling",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling-plans.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling-plans.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling-plans.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling-plans.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling-plans.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling-plans.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling-plans.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling-plans.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling-plans.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling-plans.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling-plans.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling-plans.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling-plans.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling-plans.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling-plans.{region}.amazonaws.eu", global = FALSE)),
   service_id = "Auto Scaling Plans",
   api_version = "2018-01-06",
   signing_name = "autoscaling-plans",

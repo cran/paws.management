@@ -15,28 +15,17 @@ cloudwatchlogs_update_anomaly(
 )
 }
 \arguments{
-\item{anomalyId}{If you are suppressing or unsuppressing an anomaly, specify its unique
-ID here. You can find anomaly IDs by using the
-\code{\link[=cloudwatchlogs_list_anomalies]{list_anomalies}} operation.}
+\item{anomalyId}{If you are suppressing or unsuppressing an anomaly, specify its unique ID here. You can find anomaly IDs by using the \code{\link[=cloudwatchlogs_list_anomalies]{list_anomalies}} operation.}
 
-\item{patternId}{If you are suppressing or unsuppressing an pattern, specify its unique
-ID here. You can find pattern IDs by using the
-\code{\link[=cloudwatchlogs_list_anomalies]{list_anomalies}} operation.}
+\item{patternId}{If you are suppressing or unsuppressing an pattern, specify its unique ID here. You can find pattern IDs by using the \code{\link[=cloudwatchlogs_list_anomalies]{list_anomalies}} operation.}
 
 \item{anomalyDetectorArn}{[required] The ARN of the anomaly detector that this operation is to act on.}
 
-\item{suppressionType}{Use this to specify whether the suppression to be temporary or infinite.
-If you specify \code{LIMITED}, you must also specify a \code{suppressionPeriod}.
-If you specify \code{INFINITE}, any value for \code{suppressionPeriod} is ignored.}
+\item{suppressionType}{Use this to specify whether the suppression to be temporary or infinite. If you specify \code{LIMITED}, you must also specify a \code{suppressionPeriod}. If you specify \code{INFINITE}, any value for \code{suppressionPeriod} is ignored.}
 
-\item{suppressionPeriod}{If you are temporarily suppressing an anomaly or pattern, use this
-structure to specify how long the suppression is to last.}
+\item{suppressionPeriod}{If you are temporarily suppressing an anomaly or pattern, use this structure to specify how long the suppression is to last.}
 
-\item{baseline}{Set this to \code{true} to prevent CloudWatch Logs from displaying this
-behavior as an anomaly in the future. The behavior is then treated as
-baseline behavior. However, if similar but more severe occurrences of
-this behavior occur in the future, those will still be reported as
-anomalies.
+\item{baseline}{Set this to \code{true} to prevent CloudWatch Logs from displaying this behavior as an anomaly in the future. The behavior is then treated as baseline behavior. However, if similar but more severe occurrences of this behavior occur in the future, those will still be reported as anomalies.
 
 The default is \code{false}}
 }

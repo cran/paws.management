@@ -12,13 +12,9 @@ licensemanagerlinuxsubscriptions_list_linux_subscription_instances(
 )
 }
 \arguments{
-\item{Filters}{An array of structures that you can use to filter the results by your
-specified criteria. For example, you can specify \code{Region} in the \code{Name},
-with the \code{contains} operator to list all subscriptions that match a
-partial string in the \code{Value}, such as \code{us-west}.
+\item{Filters}{An array of structures that you can use to filter the results by your specified criteria. For example, you can specify \code{Region} in the \code{Name}, with the \code{contains} operator to list all subscriptions that match a partial string in the \code{Value}, such as \code{us-west}.
 
-For each filter, you can specify one of the following values for the
-\code{Name} key to streamline results:
+For each filter, you can specify one of the following values for the \code{Name} key to streamline results:
 \itemize{
 \item \code{AccountID}
 \item \code{AmiID}
@@ -31,8 +27,7 @@ For each filter, you can specify one of the following values for the
 \item \code{UsageOperation}
 }
 
-For each filter, you can use one of the following \code{Operator} values to
-define the behavior of the filter:
+For each filter, you can use one of the following \code{Operator} values to define the behavior of the filter:
 \itemize{
 \item \code{contains}
 \item \code{equals}
@@ -41,8 +36,7 @@ define the behavior of the filter:
 
 \item{MaxResults}{The maximum items to return in a request.}
 
-\item{NextToken}{A token to specify where to start paginating. This is the nextToken from
-a previously truncated response.}
+\item{NextToken}{A token to specify where to start paginating. This is the nextToken from a previously truncated response.}
 }
 \description{
 Lists the running Amazon EC2 instances that were discovered with commercial Linux subscriptions.

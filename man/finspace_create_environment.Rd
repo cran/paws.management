@@ -26,24 +26,18 @@ finspace_create_environment(
 
 \item{federationMode}{Authentication mode for the environment.
 \itemize{
-\item \code{FEDERATED} - Users access FinSpace through Single Sign On (SSO) via
-your Identity provider.
-\item \code{LOCAL} - Users access FinSpace via email and password managed
-within the FinSpace environment.
+\item \code{FEDERATED} - Users access FinSpace through Single Sign On (SSO) via your Identity provider.
+\item \code{LOCAL} - Users access FinSpace via email and password managed within the FinSpace environment.
 }}
 
 \item{federationParameters}{Configuration information when authentication mode is FEDERATED.}
 
 \item{superuserParameters}{Configuration information for the superuser.}
 
-\item{dataBundles}{The list of Amazon Resource Names (ARN) of the data bundles to install.
-Currently supported data bundle ARNs:
+\item{dataBundles}{The list of Amazon Resource Names (ARN) of the data bundles to install. Currently supported data bundle ARNs:
 \itemize{
-\item \verb{arn:aws:finspace:$\{Region\}::data-bundle/capital-markets-sample} -
-Contains sample Capital Markets datasets, categories and controlled
-vocabularies.
-\item \verb{arn:aws:finspace:$\{Region\}::data-bundle/taq} (default) - Contains
-trades and quotes data in addition to sample Capital Markets data.
+\item \verb{arn:aws:finspace:$\{Region\}::data-bundle/capital-markets-sample} - Contains sample Capital Markets datasets, categories and controlled vocabularies.
+\item \verb{arn:aws:finspace:$\{Region\}::data-bundle/taq} (default) - Contains trades and quotes data in addition to sample Capital Markets data.
 }}
 }
 \description{

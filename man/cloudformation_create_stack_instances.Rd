@@ -17,81 +17,50 @@ cloudformation_create_stack_instances(
 )
 }
 \arguments{
-\item{StackSetName}{[required] The name or unique ID of the stack set that you want to create stack
-instances from.}
+\item{StackSetName}{[required] The name or unique ID of the StackSet that you want to create stack instances from.}
 
-\item{Accounts}{[Self-managed permissions] The account IDs of one or more Amazon Web
-Services accounts that you want to create stack instances in the
-specified Region(s) for.
+\item{Accounts}{[Self-managed permissions] The account IDs of one or more Amazon Web Services accounts that you want to create stack instances in the specified Region(s) for.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 
-\item{DeploymentTargets}{[Service-managed permissions] The Organizations accounts for which to
-create stack instances in the specified Amazon Web Services Regions.
+\item{DeploymentTargets}{[Service-managed permissions] The Organizations accounts in which to create stack instances in the specified Amazon Web Services Regions.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 
-\item{Regions}{[required] The names of one or more Amazon Web Services Regions where you want to
-create stack instances using the specified Amazon Web Services accounts.}
+\item{Regions}{[required] The names of one or more Amazon Web Services Regions where you want to create stack instances using the specified Amazon Web Services accounts.}
 
-\item{ParameterOverrides}{A list of stack set parameters whose values you want to override in the
-selected stack instances.
+\item{ParameterOverrides}{A list of StackSet parameters whose values you want to override in the selected stack instances.
 
-Any overridden parameter values will be applied to all stack instances
-in the specified accounts and Amazon Web Services Regions. When
-specifying parameters and their values, be aware of how CloudFormation
-sets parameter values during stack instance operations:
+Any overridden parameter values will be applied to all stack instances in the specified accounts and Amazon Web Services Regions. When specifying parameters and their values, be aware of how CloudFormation sets parameter values during stack instance operations:
 \itemize{
-\item To override the current value for a parameter, include the parameter
-and specify its value.
-\item To leave an overridden parameter set to its present value, include
-the parameter and specify \code{UsePreviousValue} as \code{true}. (You can't
-specify both a value and set \code{UsePreviousValue} to \code{true}.)
-\item To set an overridden parameter back to the value specified in the
-stack set, specify a parameter list but don't include the parameter
-in the list.
-\item To leave all parameters set to their present values, don't specify
-this property at all.
+\item To override the current value for a parameter, include the parameter and specify its value.
+\item To leave an overridden parameter set to its present value, include the parameter and specify \code{UsePreviousValue} as \code{true}. (You can't specify both a value and set \code{UsePreviousValue} to \code{true}.)
+\item To set an overridden parameter back to the value specified in the StackSet, specify a parameter list but don't include the parameter in the list.
+\item To leave all parameters set to their present values, don't specify this property at all.
 }
 
-During stack set updates, any parameter values overridden for a stack
-instance aren't updated, but retain their overridden value.
+During StackSet updates, any parameter values overridden for a stack instance aren't updated, but retain their overridden value.
 
-You can only override the parameter \emph{values} that are specified in the
-stack set; to add or delete a parameter itself, use
-\code{\link[=cloudformation_update_stack_set]{update_stack_set}} to update the
-stack set template.}
+You can only override the parameter \emph{values} that are specified in the StackSet; to add or delete a parameter itself, use \code{\link[=cloudformation_update_stack_set]{update_stack_set}} to update the StackSet template.}
 
-\item{OperationPreferences}{Preferences for how CloudFormation performs this stack set operation.}
+\item{OperationPreferences}{Preferences for how CloudFormation performs this StackSet operation.}
 
-\item{OperationId}{The unique identifier for this stack set operation.
+\item{OperationId}{The unique identifier for this StackSet operation.
 
-The operation ID also functions as an idempotency token, to ensure that
-CloudFormation performs the stack set operation only once, even if you
-retry the request multiple times. You might retry stack set operation
-requests to ensure that CloudFormation successfully received them.
+The operation ID also functions as an idempotency token, to ensure that CloudFormation performs the StackSet operation only once, even if you retry the request multiple times. You might retry StackSet operation requests to ensure that CloudFormation successfully received them.
 
-If you don't specify an operation ID, the SDK generates one
-automatically.
+If you don't specify an operation ID, the SDK generates one automatically.
 
-Repeating this stack set operation with a new operation ID retries all
-stack instances whose status is \code{OUTDATED}.}
+Repeating this StackSet operation with a new operation ID retries all stack instances whose status is \code{OUTDATED}.}
 
-\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
-account administrator in the organization's management account or as a
-delegated administrator in a member account.
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an account administrator in the organization's management account or as a delegated administrator in a member account.
 
-By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
-self-managed permissions.
+By default, \code{SELF} is specified. Use \code{SELF} for StackSets with self-managed permissions.
 \itemize{
 \item If you are signed in to the management account, specify \code{SELF}.
-\item If you are signed in to a delegated administrator account, specify
-\code{DELEGATED_ADMIN}.
+\item If you are signed in to a delegated administrator account, specify \code{DELEGATED_ADMIN}.
 
-Your Amazon Web Services account must be registered as a delegated
-administrator in the management account. For more information, see
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
-in the \emph{CloudFormation User Guide}.
+Your Amazon Web Services account must be registered as a delegated administrator in the management account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator} in the \emph{CloudFormation User Guide}.
 }}
 }
 \description{

@@ -16,8 +16,7 @@ ssmcontacts_list_engagements(
 
 \item{MaxResults}{The maximum number of engagements per page of results.}
 
-\item{IncidentId}{The Amazon Resource Name (ARN) of the incident you're listing
-engagements for.}
+\item{IncidentId}{The Amazon Resource Name (ARN) of the incident you're listing engagements for.}
 
 \item{TimeRangeValue}{The time range to lists engagements for an incident.}
 }

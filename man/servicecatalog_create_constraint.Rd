@@ -25,13 +25,11 @@ servicecatalog_create_constraint(
 
 \item{ProductId}{[required] The product identifier.}
 
-\item{Parameters}{[required] The constraint parameters, in JSON format. The syntax depends on the
-constraint type as follows:
+\item{Parameters}{[required] The constraint parameters, in JSON format. The syntax depends on the constraint type as follows:
 
 \strong{LAUNCH}
 
-You are required to specify either the \code{RoleArn} or the \code{LocalRoleName}
-but can't use both.
+You are required to specify either the \code{RoleArn} or the \code{LocalRoleName} but can't use both.
 
 Specify the \code{RoleArn} property as follows:
 
@@ -41,19 +39,13 @@ Specify the \code{LocalRoleName} property as follows:
 
 \code{{"LocalRoleName": "SCBasicLaunchRole"}}
 
-If you specify the \code{LocalRoleName} property, when an account uses the
-launch constraint, the IAM role with that name in the account will be
-used. This allows launch-role constraints to be account-agnostic so the
-administrator can create fewer resources per shared account.
+If you specify the \code{LocalRoleName} property, when an account uses the launch constraint, the IAM role with that name in the account will be used. This allows launch-role constraints to be account-agnostic so the administrator can create fewer resources per shared account.
 
-The given role name must exist in the account used to create the launch
-constraint and the account of the user who launches a product with this
-launch constraint.
+The given role name must exist in the account used to create the launch constraint and the account of the user who launches a product with this launch constraint.
 
 You cannot have both a \code{LAUNCH} and a \code{STACKSET} constraint.
 
-You also cannot have more than one \code{LAUNCH} constraint on a product and
-portfolio.
+You also cannot have more than one \code{LAUNCH} constraint on a product and portfolio.
 
 \strong{NOTIFICATION}
 
@@ -67,8 +59,7 @@ Specify the \code{TagUpdatesOnProvisionedProduct} property as follows:
 
 \verb{\{"Version":"2.0","Properties":\{"TagUpdateOnProvisionedProduct":"String"\}\}}
 
-The \code{TagUpdatesOnProvisionedProduct} property accepts a string value of
-\code{ALLOWED} or \code{NOT_ALLOWED}.
+The \code{TagUpdatesOnProvisionedProduct} property accepts a string value of \code{ALLOWED} or \code{NOT_ALLOWED}.
 
 \strong{STACKSET}
 
@@ -78,11 +69,9 @@ Specify the \code{Parameters} property as follows:
 
 You cannot have both a \code{LAUNCH} and a \code{STACKSET} constraint.
 
-You also cannot have more than one \code{STACKSET} constraint on a product
-and portfolio.
+You also cannot have more than one \code{STACKSET} constraint on a product and portfolio.
 
-Products with a \code{STACKSET} constraint will launch an CloudFormation
-stack set.
+Products with a \code{STACKSET} constraint will launch an CloudFormation stack set.
 
 \strong{TEMPLATE}
 
@@ -99,9 +88,7 @@ Specify the \code{Rules} property. For more information, see \href{https://docs.
 
 \item{Description}{The description of the constraint.}
 
-\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple
-requests differ only by the idempotency token, the same response is
-returned for each repeated request.}
+\item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.}
 }
 \description{
 Creates a constraint.

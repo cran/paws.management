@@ -11,8 +11,7 @@ finspace_delete_kx_scaling_group(
 )
 }
 \arguments{
-\item{environmentId}{[required] A unique identifier for the kdb environment, from where you want to
-delete the dataview.}
+\item{environmentId}{[required] A unique identifier for the kdb environment, from where you want to delete the dataview.}
 
 \item{scalingGroupName}{[required] A unique identifier for the kdb scaling group.}
 

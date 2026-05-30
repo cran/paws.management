@@ -8,8 +8,7 @@ service}
 ssm_get_service_setting(SettingId)
 }
 \arguments{
-\item{SettingId}{[required] The ID of the service setting to get. The setting ID can be one of the
-following.
+\item{SettingId}{[required] The ID of the service setting to get. The setting ID can be one of the following.
 \itemize{
 \item \verb{/ssm/appmanager/appmanager-enabled}
 \item \verb{/ssm/automation/customer-script-log-destination}

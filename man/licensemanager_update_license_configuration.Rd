@@ -13,7 +13,8 @@ licensemanager_update_license_configuration(
   Name = NULL,
   Description = NULL,
   ProductInformationList = NULL,
-  DisassociateWhenNotFound = NULL
+  DisassociateWhenNotFound = NULL,
+  LicenseExpiry = NULL
 )
 }
 \arguments{
@@ -21,8 +22,7 @@ licensemanager_update_license_configuration(
 
 \item{LicenseConfigurationStatus}{New status of the license configuration.}
 
-\item{LicenseRules}{New license rule. The only rule that you can add after you create a
-license configuration is licenseAffinityToHost.}
+\item{LicenseRules}{New license rule. The only rule that you can add after you create a license configuration is licenseAffinityToHost.}
 
 \item{LicenseCount}{New number of licenses managed by the license configuration.}
 
@@ -35,6 +35,8 @@ license configuration is licenseAffinityToHost.}
 \item{ProductInformationList}{New product information.}
 
 \item{DisassociateWhenNotFound}{When true, disassociates a resource when software is uninstalled.}
+
+\item{LicenseExpiry}{License configuration expiry time.}
 }
 \description{
 Modifies the attributes of an existing license configuration.

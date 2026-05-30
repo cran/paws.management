@@ -16,20 +16,13 @@ ssm_modify_document_permission(
 \arguments{
 \item{Name}{[required] The name of the document that you want to share.}
 
-\item{PermissionType}{[required] The permission type for the document. The permission type can be
-\emph{Share}.}
+\item{PermissionType}{[required] The permission type for the document. The permission type can be \emph{Share}.}
 
-\item{AccountIdsToAdd}{The Amazon Web Services users that should have access to the document.
-The account IDs can either be a group of account IDs or \emph{All}.}
+\item{AccountIdsToAdd}{The Amazon Web Services users that should have access to the document. The account IDs can either be a group of account IDs or \emph{All}. You must specify a value for this parameter or the \code{AccountIdsToRemove} parameter.}
 
-\item{AccountIdsToRemove}{The Amazon Web Services users that should no longer have access to the
-document. The Amazon Web Services user can either be a group of account
-IDs or \emph{All}. This action has a higher priority than \code{AccountIdsToAdd}.
-If you specify an ID to add and the same ID to remove, the system
-removes access to the document.}
+\item{AccountIdsToRemove}{The Amazon Web Services users that should no longer have access to the document. The Amazon Web Services user can either be a group of account IDs or \emph{All}. This action has a higher priority than \code{AccountIdsToAdd}. If you specify an ID to add and the same ID to remove, the system removes access to the document. You must specify a value for this parameter or the \code{AccountIdsToAdd} parameter.}
 
-\item{SharedDocumentVersion}{(Optional) The version of the document to share. If it isn't specified,
-the system choose the \code{Default} version to share.}
+\item{SharedDocumentVersion}{(Optional) The version of the document to share. If it isn't specified, the system choose the \code{Default} version to share.}
 }
 \description{
 Shares a Amazon Web Services Systems Manager document (SSM document)publicly or privately. If you share a document privately, you must specify the Amazon Web Services user IDs for those people who can use the document. If you share a document publicly, you must specify \emph{All} as the account ID.

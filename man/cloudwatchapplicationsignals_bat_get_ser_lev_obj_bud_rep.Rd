@@ -11,11 +11,9 @@ cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report(
 )
 }
 \arguments{
-\item{Timestamp}{[required] The date and time that you want the report to be for. It is expressed as
-the number of milliseconds since Jan 1, 1970 00:00:00 UTC.}
+\item{Timestamp}{[required] The date and time that you want the report to be for. It is expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.}
 
-\item{SloIds}{[required] An array containing the IDs of the service level objectives that you
-want to include in the report.}
+\item{SloIds}{[required] An array containing the IDs of the service level objectives that you want to include in the report.}
 }
 \description{
 Use this operation to retrieve one or more \emph{service level objective (SLO) budget reports}.

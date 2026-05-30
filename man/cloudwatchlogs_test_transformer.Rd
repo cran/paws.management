@@ -7,13 +7,9 @@
 cloudwatchlogs_test_transformer(transformerConfig, logEventMessages)
 }
 \arguments{
-\item{transformerConfig}{[required] This structure contains the configuration of this log transformer that
-you want to test. A log transformer is an array of processors, where
-each processor applies one type of transformation to the log events that
-are ingested.}
+\item{transformerConfig}{[required] This structure contains the configuration of this log transformer that you want to test. A log transformer is an array of processors, where each processor applies one type of transformation to the log events that are ingested.}
 
-\item{logEventMessages}{[required] An array of the raw log events that you want to use to test this
-transformer.}
+\item{logEventMessages}{[required] An array of the raw log events that you want to use to test this transformer.}
 }
 \description{
 Use this operation to test a log transformer. You enter the transformer configuration and a set of log events to test with. The operation responds with an array that includes the original log events and the transformed versions.

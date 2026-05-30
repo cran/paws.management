@@ -15,20 +15,11 @@ ssm_create_resource_data_sync(
 \arguments{
 \item{SyncName}{[required] A name for the configuration.}
 
-\item{S3Destination}{Amazon S3 configuration details for the sync. This parameter is required
-if the \code{SyncType} value is SyncToDestination.}
+\item{S3Destination}{Amazon S3 configuration details for the sync. This parameter is required if the \code{SyncType} value is SyncToDestination.}
 
-\item{SyncType}{Specify \code{SyncToDestination} to create a resource data sync that
-synchronizes data to an S3 bucket for Inventory. If you specify
-\code{SyncToDestination}, you must provide a value for \code{S3Destination}.
-Specify \code{SyncFromSource} to synchronize data from a single account and
-multiple Regions, or multiple Amazon Web Services accounts and Amazon
-Web Services Regions, as listed in Organizations for Explorer. If you
-specify \code{SyncFromSource}, you must provide a value for \code{SyncSource}. The
-default value is \code{SyncToDestination}.}
+\item{SyncType}{Specify \code{SyncToDestination} to create a resource data sync that synchronizes data to an S3 bucket for Inventory. If you specify \code{SyncToDestination}, you must provide a value for \code{S3Destination}. Specify \code{SyncFromSource} to synchronize data from a single account and multiple Regions, or multiple Amazon Web Services accounts and Amazon Web Services Regions, as listed in Organizations for Explorer. If you specify \code{SyncFromSource}, you must provide a value for \code{SyncSource}. The default value is \code{SyncToDestination}.}
 
-\item{SyncSource}{Specify information about the data sources to synchronize. This
-parameter is required if the \code{SyncType} value is SyncFromSource.}
+\item{SyncSource}{Specify information about the data sources to synchronize. This parameter is required if the \code{SyncType} value is SyncFromSource.}
 }
 \description{
 A resource data sync helps you view data from multiple sources in a single location. Amazon Web Services Systems Manager offers two types of resource data sync: \code{SyncToDestination} and \code{SyncFromSource}.

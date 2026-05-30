@@ -7,10 +7,7 @@
 cloudwatchlogs_delete_delivery_destination(name)
 }
 \arguments{
-\item{name}{[required] The name of the delivery destination that you want to delete. You can
-find a list of delivery destionation names by using the
-\code{\link[=cloudwatchlogs_describe_delivery_destinations]{describe_delivery_destinations}}
-operation.}
+\item{name}{[required] The name of the delivery destination that you want to delete. You can find a list of delivery destination names by using the \code{\link[=cloudwatchlogs_describe_delivery_destinations]{describe_delivery_destinations}} operation.}
 }
 \description{
 Deletes a \emph{delivery destination}. A delivery is a connection between a logical \emph{delivery source} and a logical \emph{delivery destination}.

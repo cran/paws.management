@@ -19,14 +19,9 @@ cloudwatchlogs_put_log_events(
 
 \item{logEvents}{[required] The log events.}
 
-\item{sequenceToken}{The sequence token obtained from the response of the previous
-\code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} call.
+\item{sequenceToken}{The sequence token obtained from the response of the previous \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} call.
 
-The \code{sequenceToken} parameter is now ignored in
-\code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} actions.
-\code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} actions are now
-accepted and never return \code{InvalidSequenceTokenException} or
-\code{DataAlreadyAcceptedException} even if the sequence token is not valid.}
+The \code{sequenceToken} parameter is now ignored in \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} actions. \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} actions are now accepted and never return \code{InvalidSequenceTokenException} or \code{DataAlreadyAcceptedException} even if the sequence token is not valid.}
 
 \item{entity}{The entity associated with the log events.}
 }

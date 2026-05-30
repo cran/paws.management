@@ -17,36 +17,23 @@ support_describe_cases(
 )
 }
 \arguments{
-\item{caseIdList}{A list of ID numbers of the support cases you want returned. The maximum
-number of cases is 100.}
+\item{caseIdList}{A list of ID numbers of the support cases you want returned. The maximum number of cases is 100.}
 
-\item{displayId}{The ID displayed for a case in the Amazon Web Services Support Center
-user interface.}
+\item{displayId}{The ID displayed for a case in the Amazon Web Services Support Center user interface.}
 
-\item{afterTime}{The start date for a filtered date search on support case
-communications. Case communications are available for 12 months after
-creation.}
+\item{afterTime}{The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.}
 
-\item{beforeTime}{The end date for a filtered date search on support case communications.
-Case communications are available for 12 months after creation.}
+\item{beforeTime}{The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.}
 
-\item{includeResolvedCases}{Specifies whether to include resolved support cases in the
-\code{\link[=support_describe_cases]{describe_cases}} response. By default,
-resolved cases aren't included.}
+\item{includeResolvedCases}{Specifies whether to include resolved support cases in the \code{\link[=support_describe_cases]{describe_cases}} response. By default, resolved cases aren't included.}
 
 \item{nextToken}{A resumption point for pagination.}
 
 \item{maxResults}{The maximum number of results to return before paginating.}
 
-\item{language}{The language in which Amazon Web Services Support handles the case.
-Amazon Web Services Support currently supports Chinese (“zh”), English
-("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO
-639-1 code for the \code{language} parameter if you want support in that
-language.}
+\item{language}{The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the \code{language} parameter if you want support in that language.}
 
-\item{includeCommunications}{Specifies whether to include communications in the
-\code{\link[=support_describe_cases]{describe_cases}} response. By default,
-communications are included.}
+\item{includeCommunications}{Specifies whether to include communications in the \code{\link[=support_describe_cases]{describe_cases}} response. By default, communications are included.}
 }
 \description{
 Returns a list of cases that you specify by passing one or more case IDs. You can use the \code{afterTime} and \code{beforeTime} parameters to filter the cases by date. You can set values for the \code{includeResolvedCases} and \code{includeCommunications} parameters to specify how much information to return.

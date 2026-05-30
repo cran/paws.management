@@ -14,8 +14,7 @@ cloudwatchobservabilityaccessmanager_list_sinks(
 \arguments{
 \item{MaxResults}{Limits the number of returned links to the specified number.}
 
-\item{NextToken}{The token for the next set of items to return. You received this token
-from a previous call.}
+\item{NextToken}{The token for the next set of items to return. You received this token from a previous call.}
 }
 \description{
 Use this operation in a monitoring account to return the list of sinks created in that account.

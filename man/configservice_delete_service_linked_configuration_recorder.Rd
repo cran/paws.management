@@ -7,8 +7,7 @@
 configservice_delete_service_linked_configuration_recorder(ServicePrincipal)
 }
 \arguments{
-\item{ServicePrincipal}{[required] The service principal of the Amazon Web Services service for the
-service-linked configuration recorder that you want to delete.}
+\item{ServicePrincipal}{[required] The service principal of the Amazon Web Services service for the service-linked configuration recorder that you want to delete.}
 }
 \description{
 Deletes an existing service-linked configuration recorder.

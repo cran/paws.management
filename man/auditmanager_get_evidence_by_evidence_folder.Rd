@@ -21,8 +21,7 @@ auditmanager_get_evidence_by_evidence_folder(
 
 \item{nextToken}{The pagination token that's used to fetch the next set of results.}
 
-\item{maxResults}{Represents the maximum number of results on a page or for an API request
-call.}
+\item{maxResults}{Represents the maximum number of results on a page or for an API request call.}
 }
 \description{
 Gets all evidence from a specified evidence folder in Audit Manager.

@@ -8,12 +8,9 @@ Insights resource}
 pi_list_tags_for_resource(ServiceType, ResourceARN)
 }
 \arguments{
-\item{ServiceType}{[required] List the tags for the Amazon Web Services service for which Performance
-Insights returns metrics. Valid value is \code{RDS}.}
+\item{ServiceType}{[required] List the tags for the Amazon Web Services service for which Performance Insights returns metrics. Valid value is \code{RDS}.}
 
-\item{ResourceARN}{[required] Lists all the tags for the Amazon RDS Performance Insights resource.
-This value is an Amazon Resource Name (ARN). For information about
-creating an ARN, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an RDS Amazon Resource Name (ARN)}.}
+\item{ResourceARN}{[required] Lists all the tags for the Amazon RDS Performance Insights resource. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an RDS Amazon Resource Name (ARN)}.}
 }
 \description{
 Retrieves all the metadata tags associated with Amazon RDS Performance Insights resource.

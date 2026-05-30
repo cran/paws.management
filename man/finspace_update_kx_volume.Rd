@@ -13,8 +13,7 @@ finspace_update_kx_volume(
 )
 }
 \arguments{
-\item{environmentId}{[required] A unique identifier for the kdb environment where you created the
-storage volume.}
+\item{environmentId}{[required] A unique identifier for the kdb environment where you created the storage volume.}
 
 \item{volumeName}{[required] A unique identifier for the volume.}
 
@@ -22,8 +21,7 @@ storage volume.}
 
 \item{clientToken}{A token that ensures idempotency. This token expires in 10 minutes.}
 
-\item{nas1Configuration}{Specifies the configuration for the Network attached storage (NAS_1)
-file system volume.}
+\item{nas1Configuration}{Specifies the configuration for the Network attached storage (NAS_1) file system volume.}
 }
 \description{
 Updates the throughput or capacity of a volume. During the update process, the filesystem might be unavailable for a few minutes. You can retry any operations after the update is complete.

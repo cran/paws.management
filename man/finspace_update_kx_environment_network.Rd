@@ -15,11 +15,9 @@ finspace_update_kx_environment_network(
 \arguments{
 \item{environmentId}{[required] A unique identifier for the kdb environment.}
 
-\item{transitGatewayConfiguration}{Specifies the transit gateway and network configuration to connect the
-kdb environment to an internal network.}
+\item{transitGatewayConfiguration}{Specifies the transit gateway and network configuration to connect the kdb environment to an internal network.}
 
-\item{customDNSConfiguration}{A list of DNS server name and server IP. This is used to set up Route-53
-outbound resolvers.}
+\item{customDNSConfiguration}{A list of DNS server name and server IP. This is used to set up Route-53 outbound resolvers.}
 
 \item{clientToken}{A token that ensures idempotency. This token expires in 10 minutes.}
 }

@@ -7,14 +7,9 @@
 cloudformation_list_generated_templates(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{NextToken}{A string that identifies the next page of resource scan results.}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{MaxResults}{If the number of available results exceeds this maximum, the response
-includes a \code{NextToken} value that you can use for the \code{NextToken}
-parameter to get the next set of results. By default the
-\code{\link[=cloudformation_list_generated_templates]{list_generated_templates}}
-API action will return at most 50 results in each response. The maximum
-value is 100.}
+\item{MaxResults}{If the number of available results exceeds this maximum, the response includes a \code{NextToken} value that you can use for the \code{NextToken} parameter to get the next set of results. By default the \code{\link[=cloudformation_list_generated_templates]{list_generated_templates}} API action will return at most 50 results in each response. The maximum value is 100.}
 }
 \description{
 Lists your generated templates in this Region.

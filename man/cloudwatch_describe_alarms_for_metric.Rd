@@ -19,15 +19,11 @@ cloudwatch_describe_alarms_for_metric(
 
 \item{Namespace}{[required] The namespace of the metric.}
 
-\item{Statistic}{The statistic for the metric, other than percentiles. For percentile
-statistics, use \code{ExtendedStatistics}.}
+\item{Statistic}{The statistic for the metric, other than percentiles. For percentile statistics, use \code{ExtendedStatistics}.}
 
-\item{ExtendedStatistic}{The percentile statistic for the metric. Specify a value between p0.0
-and p100.}
+\item{ExtendedStatistic}{The percentile statistic for the metric. Specify a value between p0.0 and p100.}
 
-\item{Dimensions}{The dimensions associated with the metric. If the metric has any
-associated dimensions, you must specify them in order for the call to
-succeed.}
+\item{Dimensions}{The dimensions associated with the metric. If the metric has any associated dimensions, you must specify them in order for the call to succeed.}
 
 \item{Period}{The period, in seconds, over which the statistic is applied.}
 

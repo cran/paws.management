@@ -24,214 +24,121 @@ cloudformation_create_change_set(
   ResourcesToImport = NULL,
   IncludeNestedStacks = NULL,
   OnStackFailure = NULL,
-  ImportExistingResources = NULL
+  ImportExistingResources = NULL,
+  DeploymentMode = NULL
 )
 }
 \arguments{
-\item{StackName}{[required] The name or the unique ID of the stack for which you are creating a
-change set. CloudFormation generates the change set by comparing this
-stack's information with the information that you submit, such as a
-modified template or different parameter input values.}
+\item{StackName}{[required] The name or the unique ID of the stack for which you are creating a change set. CloudFormation generates the change set by comparing this stack's information with the information that you submit, such as a modified template or different parameter input values.}
 
-\item{TemplateBody}{A structure that contains the body of the revised template, with a
-minimum length of 1 byte and a maximum length of 51,200 bytes.
-CloudFormation generates the change set by comparing this template with
-the template of the stack that you specified.
+\item{TemplateBody}{A structure that contains the body of the revised template, with a minimum length of 1 byte and a maximum length of 51,200 bytes. CloudFormation generates the change set by comparing this template with the template of the stack that you specified.
 
-Conditional: You must specify only \code{TemplateBody} or \code{TemplateURL}.}
+Conditional: You must specify only one of the following parameters: \code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to \code{true}.}
 
-\item{TemplateURL}{The URL of the file that contains the revised template. The URL must
-point to a template (max size: 1 MB) that's located in an Amazon S3
-bucket or a Systems Manager document. CloudFormation generates the
-change set by comparing this template with the stack that you specified.
-The location for an Amazon S3 bucket must start with \verb{https://}.
+\item{TemplateURL}{The URL of the file that contains the revised template. The URL must point to a template (max size: 1 MB) that's located in an Amazon S3 bucket or a Systems Manager document. CloudFormation generates the change set by comparing this template with the stack that you specified. The location for an Amazon S3 bucket must start with \verb{https://}. URLs from S3 static websites are not supported.
 
-Conditional: You must specify only \code{TemplateBody} or \code{TemplateURL}.}
+Conditional: You must specify only one of the following parameters: \code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to \code{true}.}
 
-\item{UsePreviousTemplate}{Whether to reuse the template that's associated with the stack to create
-the change set.}
+\item{UsePreviousTemplate}{Whether to reuse the template that's associated with the stack to create the change set.
 
-\item{Parameters}{A list of \code{Parameter} structures that specify input parameters for the
-change set. For more information, see the Parameter data type.}
+When using templates with the \code{AWS::LanguageExtensions} transform, provide the template instead of using \code{UsePreviousTemplate} to ensure new parameter values and Systems Manager parameter updates are applied correctly. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/transform-aws-languageextensions.html}{AWS::LanguageExtensions transform}.
 
-\item{Capabilities}{In some cases, you must explicitly acknowledge that your stack template
-contains certain capabilities in order for CloudFormation to create the
-stack.
+Conditional: You must specify only one of the following parameters: \code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to \code{true}.}
+
+\item{Parameters}{A list of \code{Parameter} structures that specify input parameters for the change set. For more information, see the Parameter data type.}
+
+\item{Capabilities}{In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in order for CloudFormation to create the stack.
 \itemize{
 \item \code{CAPABILITY_IAM} and \code{CAPABILITY_NAMED_IAM}
 
-Some stack templates might include resources that can affect
-permissions in your Amazon Web Services account; for example, by
-creating new IAM users. For those stacks, you must explicitly
-acknowledge this by specifying one of these capabilities.
+Some stack templates might include resources that can affect permissions in your Amazon Web Services account, for example, by creating new IAM users. For those stacks, you must explicitly acknowledge this by specifying one of these capabilities.
 
-The following IAM resources require you to specify either the
-\code{CAPABILITY_IAM} or \code{CAPABILITY_NAMED_IAM} capability.
+The following IAM resources require you to specify either the \code{CAPABILITY_IAM} or \code{CAPABILITY_NAMED_IAM} capability.
 \itemize{
 \item If you have IAM resources, you can specify either capability.
-\item If you have IAM resources with custom names, you \emph{must} specify
-\code{CAPABILITY_NAMED_IAM}.
-\item If you don't specify either of these capabilities,
-CloudFormation returns an \code{InsufficientCapabilities} error.
+\item If you have IAM resources with custom names, you \emph{must} specify \code{CAPABILITY_NAMED_IAM}.
+\item If you don't specify either of these capabilities, CloudFormation returns an \code{InsufficientCapabilities} error.
 }
 
-If your stack template contains these resources, we suggest that you
-review all permissions associated with them and edit their
-permissions if necessary.
+If your stack template contains these resources, we suggest that you review all permissions associated with them and edit their permissions if necessary.
 \itemize{
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html}{AWS::IAM::Group}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-managedpolicy.html}{AWS::IAM::ManagedPolicy}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html}{AWS::IAM::Policy}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html}{AWS::IAM::User}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-group.html}{AWS::IAM::Group}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-managedpolicy.html}{AWS::IAM::ManagedPolicy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-policy.html}{AWS::IAM::Policy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-role.html}{AWS::IAM::Role}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-user.html}{AWS::IAM::User}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#using-iam-capabilities}{Acknowledging IAM resources in CloudFormation templates}.
 \item \code{CAPABILITY_AUTO_EXPAND}
 
-Some template contain macros. Macros perform custom processing on
-templates; this can include simple actions like find-and-replace
-operations, all the way to extensive transformations of entire
-templates. Because of this, users typically create a change set from
-the processed template, so that they can review the changes
-resulting from the macros before actually creating the stack. If
-your stack template contains one or more macros, and you choose to
-create a stack directly from the processed template, without first
-reviewing the resulting changes in a change set, you must
-acknowledge this capability. This includes the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-include.html}{AWS::Include}
-and
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
-transforms, which are macros hosted by CloudFormation.
+Some template contain macros. Macros perform custom processing on templates; this can include simple actions like find-and-replace operations, all the way to extensive transformations of entire templates. Because of this, users typically create a change set from the processed template, so that they can review the changes resulting from the macros before actually creating the stack. If your stack template contains one or more macros, and you choose to create a stack directly from the processed template, without first reviewing the resulting changes in a change set, you must acknowledge this capability. This includes the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/transform-aws-include.html}{AWS::Include} and \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/transform-aws-serverless.html}{AWS::Serverless} transforms, which are macros hosted by CloudFormation.
 
-This capacity doesn't apply to creating change sets, and specifying
-it when creating change sets has no effect.
+This capacity doesn't apply to creating change sets, and specifying it when creating change sets has no effect.
 
-If you want to create a stack from a stack template that contains
-macros \emph{and} nested stacks, you must create or update the stack
-directly from the template using the
-\code{\link[=cloudformation_create_stack]{create_stack}} or
-\code{\link[=cloudformation_update_stack]{update_stack}} action, and specifying
-this capability.
+If you want to create a stack from a stack template that contains macros \emph{and} nested stacks, you must create or update the stack directly from the template using the \code{\link[=cloudformation_create_stack]{create_stack}} or \code{\link[=cloudformation_update_stack]{update_stack}} action, and specifying this capability.
 
 For more information about macros, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Perform custom processing on CloudFormation templates with template macros}.
 }
 
-Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
-specified.}
+Only one of the \code{Capabilities} and \code{ResourceType} parameters can be specified.}
 
-\item{ResourceTypes}{The template resource types that you have permissions to work with if
-you execute this change set, such as \verb{AWS::EC2::Instance},
-\verb{AWS::EC2::*}, or \code{Custom::MyCustomInstance}.
+\item{ResourceTypes}{Specifies which resource types you can work with, such as \verb{AWS::EC2::Instance} or \code{Custom::MyCustomInstance}.
 
-If the list of resource types doesn't include a resource type that
-you're updating, the stack update fails. By default, CloudFormation
-grants permissions to all resource types. IAM uses this parameter for
-condition keys in IAM policies for CloudFormation. For more information,
-see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html}{Control access with Identity and Access Management}
-in the \emph{CloudFormation User Guide}.
+If the list of resource types doesn't include a resource type that you're updating, the stack update fails. By default, CloudFormation grants permissions to all resource types. IAM uses this parameter for condition keys in IAM policies for CloudFormation. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html}{Control CloudFormation access with Identity and Access Management} in the \emph{CloudFormation User Guide}.
 
-Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
-specified.}
+Only one of the \code{Capabilities} and \code{ResourceType} parameters can be specified.}
 
-\item{RoleARN}{The Amazon Resource Name (ARN) of an IAM role that CloudFormation
-assumes when executing the change set. CloudFormation uses the role's
-credentials to make calls on your behalf. CloudFormation uses this role
-for all future operations on the stack. Provided that users have
-permission to operate on the stack, CloudFormation uses this role even
-if the users don't have permission to pass it. Ensure that the role
-grants least permission.
+\item{RoleARN}{The Amazon Resource Name (ARN) of an IAM role that CloudFormation assumes when executing the change set. CloudFormation uses the role's credentials to make calls on your behalf. CloudFormation uses this role for all future operations on the stack. Provided that users have permission to operate on the stack, CloudFormation uses this role even if the users don't have permission to pass it. Ensure that the role grants least permission.
 
-If you don't specify a value, CloudFormation uses the role that was
-previously associated with the stack. If no role is available,
-CloudFormation uses a temporary session that is generated from your user
-credentials.}
+If you don't specify a value, CloudFormation uses the role that was previously associated with the stack. If no role is available, CloudFormation uses a temporary session that is generated from your user credentials.}
 
-\item{RollbackConfiguration}{The rollback triggers for CloudFormation to monitor during stack
-creation and updating operations, and for the specified monitoring
-period afterwards.}
+\item{RollbackConfiguration}{The rollback triggers for CloudFormation to monitor during stack creation and updating operations, and for the specified monitoring period afterwards.}
 
-\item{NotificationARNs}{The Amazon Resource Names (ARNs) of Amazon SNS topics that
-CloudFormation associates with the stack. To remove all associated
-notification topics, specify an empty list.}
+\item{NotificationARNs}{The Amazon Resource Names (ARNs) of Amazon SNS topics that CloudFormation associates with the stack. To remove all associated notification topics, specify an empty list.}
 
-\item{Tags}{Key-value pairs to associate with this stack. CloudFormation also
-propagates these tags to resources in the stack. You can specify a
-maximum of 50 tags.}
+\item{Tags}{Key-value pairs to associate with this stack. CloudFormation also propagates these tags to resources in the stack. You can specify a maximum of 50 tags.}
 
-\item{ChangeSetName}{[required] The name of the change set. The name must be unique among all change
-sets that are associated with the specified stack.
+\item{ChangeSetName}{[required] The name of the change set. The name must be unique among all change sets that are associated with the specified stack.
 
-A change set name can contain only alphanumeric, case sensitive
-characters, and hyphens. It must start with an alphabetical character
-and can't exceed 128 characters.}
+A change set name can contain only alphanumeric, case sensitive characters, and hyphens. It must start with an alphabetical character and can't exceed 128 characters.}
 
-\item{ClientToken}{A unique identifier for this
-\code{\link[=cloudformation_create_change_set]{create_change_set}} request. Specify
-this token if you plan to retry requests so that CloudFormation knows
-that you're not attempting to create another change set with the same
-name. You might retry
-\code{\link[=cloudformation_create_change_set]{create_change_set}} requests to
-ensure that CloudFormation successfully received them.}
+\item{ClientToken}{A unique identifier for this \code{\link[=cloudformation_create_change_set]{create_change_set}} request. Specify this token if you plan to retry requests so that CloudFormation knows that you're not attempting to create another change set with the same name. You might retry \code{\link[=cloudformation_create_change_set]{create_change_set}} requests to ensure that CloudFormation successfully received them.}
 
 \item{Description}{A description to help you identify this change set.}
 
-\item{ChangeSetType}{The type of change set operation. To create a change set for a new
-stack, specify \code{CREATE}. To create a change set for an existing stack,
-specify \code{UPDATE}. To create a change set for an import operation,
-specify \code{IMPORT}.
+\item{ChangeSetType}{The type of change set operation. To create a change set for a new stack, specify \code{CREATE}. To create a change set for an existing stack, specify \code{UPDATE}. To create a change set for an import operation, specify \code{IMPORT}.
 
-If you create a change set for a new stack, CloudFormation creates a
-stack with a unique stack ID, but no template or resources. The stack
-will be in the \code{REVIEW_IN_PROGRESS} state until you execute the change
-set.
+If you create a change set for a new stack, CloudFormation creates a stack with a unique stack ID, but no template or resources. The stack will be in the \code{REVIEW_IN_PROGRESS} state until you execute the change set.
 
-By default, CloudFormation specifies \code{UPDATE}. You can't use the
-\code{UPDATE} type to create a change set for a new stack or the \code{CREATE}
-type to create a change set for an existing stack.}
+By default, CloudFormation specifies \code{UPDATE}. You can't use the \code{UPDATE} type to create a change set for a new stack or the \code{CREATE} type to create a change set for an existing stack.}
 
 \item{ResourcesToImport}{The resources to import into your stack.}
 
-\item{IncludeNestedStacks}{Creates a change set for the all nested stacks specified in the
-template. The default behavior of this action is set to \code{False}. To
-include nested sets in a change set, specify \code{True}.}
+\item{IncludeNestedStacks}{Creates a change set for the all nested stacks specified in the template. The default behavior of this action is set to \code{False}. To include nested sets in a change set, specify \code{True}.}
 
-\item{OnStackFailure}{Determines what action will be taken if stack creation fails. If this
-parameter is specified, the \code{DisableRollback} parameter to the
-\code{\link[=cloudformation_execute_change_set]{execute_change_set}} API operation
-must not be specified. This must be one of these values:
+\item{OnStackFailure}{Determines what action will be taken if stack creation fails. If this parameter is specified, the \code{DisableRollback} parameter to the \code{\link[=cloudformation_execute_change_set]{execute_change_set}} API operation must not be specified. This must be one of these values:
 \itemize{
-\item \code{DELETE} - Deletes the change set if the stack creation fails. This
-is only valid when the \code{ChangeSetType} parameter is set to \code{CREATE}.
-If the deletion of the stack fails, the status of the stack is
-\code{DELETE_FAILED}.
-\item \code{DO_NOTHING} - if the stack creation fails, do nothing. This is
-equivalent to specifying \code{true} for the \code{DisableRollback} parameter
-to the \code{\link[=cloudformation_execute_change_set]{execute_change_set}} API
-operation.
-\item \code{ROLLBACK} - if the stack creation fails, roll back the stack. This
-is equivalent to specifying \code{false} for the \code{DisableRollback}
-parameter to the
-\code{\link[=cloudformation_execute_change_set]{execute_change_set}} API
-operation.
+\item \code{DELETE} - Deletes the change set if the stack creation fails. This is only valid when the \code{ChangeSetType} parameter is set to \code{CREATE}. If the deletion of the stack fails, the status of the stack is \code{DELETE_FAILED}.
+\item \code{DO_NOTHING} - if the stack creation fails, do nothing. This is equivalent to specifying \code{true} for the \code{DisableRollback} parameter to the \code{\link[=cloudformation_execute_change_set]{execute_change_set}} API operation.
+\item \code{ROLLBACK} - if the stack creation fails, roll back the stack. This is equivalent to specifying \code{false} for the \code{DisableRollback} parameter to the \code{\link[=cloudformation_execute_change_set]{execute_change_set}} API operation.
 }
 
-For nested stacks, when the \code{OnStackFailure} parameter is set to
-\code{DELETE} for the change set for the parent stack, any failure in a child
-stack will cause the parent stack creation to fail and all stacks to be
-deleted.}
+For nested stacks, when the \code{OnStackFailure} parameter is set to \code{DELETE} for the change set for the parent stack, any failure in a child stack will cause the parent stack creation to fail and all stacks to be deleted.}
 
-\item{ImportExistingResources}{Indicates if the change set imports resources that already exist.
+\item{ImportExistingResources}{Indicates if the change set auto-imports resources that already exist. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/import-resources-automatically.html}{Import Amazon Web Services resources into a CloudFormation stack automatically} in the \emph{CloudFormation User Guide}.
 
-This parameter can only import resources that have custom names in
-templates. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-name.html}{name type}
-in the \emph{CloudFormation User Guide}. To import resources that do not
-accept custom names, such as EC2 instances, use the resource import
-feature instead. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import.html}{Import Amazon Web Services resources into a CloudFormation stack with a resource import}
-in the \emph{CloudFormation User Guide}.}
+This parameter can only import resources that have custom names in templates. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-properties-name.html}{name type} in the \emph{CloudFormation User Guide}. To import resources that do not accept custom names, such as EC2 instances, use the \code{ResourcesToImport} parameter instead.}
+
+\item{DeploymentMode}{Determines how CloudFormation handles configuration drift during deployment.
+\itemize{
+\item \code{REVERT_DRIFT} – Creates a drift-aware change set that brings actual resource states in line with template definitions. Provides a three-way comparison between actual state, previous deployment state, and desired state.
+}
+
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/drift-aware-change-sets.html}{Using drift-aware change sets} in the \emph{CloudFormation User Guide}.}
 }
 \description{
 Creates a list of changes that will be applied to a stack so that you can review the changes before executing them. You can create a change set for a stack that doesn't exist or an existing stack. If you create a change set for a stack that doesn't exist, the change set shows all of the resources that CloudFormation will create. If you create a change set for an existing stack, CloudFormation compares the stack's information with the information that you submit in the change set and lists the differences. Use change sets to understand which resources CloudFormation will create or change, and how it will change resources in an existing stack, before you create or update a stack.

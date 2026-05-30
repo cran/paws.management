@@ -15,35 +15,21 @@ ssmincidents_update_timeline_event(
 )
 }
 \arguments{
-\item{clientToken}{A token that ensures that a client calls the operation only once with
-the specified details.}
+\item{clientToken}{A token that ensures that a client calls the operation only once with the specified details.}
 
 \item{eventData}{A short description of the event.}
 
-\item{eventId}{[required] The ID of the event to update. You can use
-\code{\link[=ssmincidents_list_timeline_events]{list_timeline_events}} to find an
-event's ID.}
+\item{eventId}{[required] The ID of the event to update. You can use \code{\link[=ssmincidents_list_timeline_events]{list_timeline_events}} to find an event's ID.}
 
-\item{eventReferences}{Updates all existing references in a \code{TimelineEvent}. A reference is an
-Amazon Web Services resource involved or associated with the incident.
-To specify a reference, enter its Amazon Resource Name (ARN). You can
-also specify a related item associated with that resource. For example,
-to specify an Amazon DynamoDB (DynamoDB) table as a resource, use its
-ARN. You can also specify an Amazon CloudWatch metric associated with
-the DynamoDB table as a related item.
+\item{eventReferences}{Updates all existing references in a \code{TimelineEvent}. A reference is an Amazon Web Services resource involved or associated with the incident. To specify a reference, enter its Amazon Resource Name (ARN). You can also specify a related item associated with that resource. For example, to specify an Amazon DynamoDB (DynamoDB) table as a resource, use its ARN. You can also specify an Amazon CloudWatch metric associated with the DynamoDB table as a related item.
 
-This update action overrides all existing references. If you want to
-keep existing references, you must specify them in the call. If you
-don't, this action removes any existing references and enters only new
-references.}
+This update action overrides all existing references. If you want to keep existing references, you must specify them in the call. If you don't, this action removes any existing references and enters only new references.}
 
 \item{eventTime}{The timestamp for when the event occurred.}
 
-\item{eventType}{The type of event. You can update events of type \verb{Custom Event} and
-\code{Note}.}
+\item{eventType}{The type of event. You can update events of type \verb{Custom Event} and \code{Note}.}
 
-\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident that includes the
-timeline event.}
+\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident that includes the timeline event.}
 }
 \description{
 Updates a timeline event. You can update events of type \verb{Custom Event}.

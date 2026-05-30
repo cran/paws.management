@@ -53,11 +53,7 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Web Services Service Catalog AppRegistry enables organizations to
-understand the application context of their Amazon Web Services
-resources. AppRegistry provides a repository of your applications, their
-resources, and the application metadata that you use within your
-enterprise.
+Amazon Web Services Service Catalog AppRegistry enables organizations to understand the application context of their Amazon Web Services resources. AppRegistry provides a repository of your applications, their resources, and the application metadata that you use within your enterprise.
 }
 \section{Service syntax}{
 

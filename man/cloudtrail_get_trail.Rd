@@ -7,8 +7,7 @@
 cloudtrail_get_trail(Name)
 }
 \arguments{
-\item{Name}{[required] The name or the Amazon Resource Name (ARN) of the trail for which you
-want to retrieve settings information.}
+\item{Name}{[required] The name or the Amazon Resource Name (ARN) of the trail for which you want to retrieve settings information.}
 }
 \description{
 Returns settings information for a specified trail.

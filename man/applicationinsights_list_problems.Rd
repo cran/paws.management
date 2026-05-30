@@ -20,23 +20,17 @@ applicationinsights_list_problems(
 
 \item{ResourceGroupName}{The name of the resource group.}
 
-\item{StartTime}{The time when the problem was detected, in epoch seconds. If you don't
-specify a time frame for the request, problems within the past seven
-days are returned.}
+\item{StartTime}{The time when the problem was detected, in epoch seconds. If you don't specify a time frame for the request, problems within the past seven days are returned.}
 
-\item{EndTime}{The time when the problem ended, in epoch seconds. If not specified,
-problems within the past seven days are returned.}
+\item{EndTime}{The time when the problem ended, in epoch seconds. If not specified, problems within the past seven days are returned.}
 
-\item{MaxResults}{The maximum number of results to return in a single call. To retrieve
-the remaining results, make another call with the returned \code{NextToken}
-value.}
+\item{MaxResults}{The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned \code{NextToken} value.}
 
 \item{NextToken}{The token to request the next page of results.}
 
 \item{ComponentName}{The name of the component.}
 
-\item{Visibility}{Specifies whether or not you can view the problem. If not specified,
-visible and ignored problems are returned.}
+\item{Visibility}{Specifies whether or not you can view the problem. If not specified, visible and ignored problems are returned.}
 }
 \description{
 Lists the problems with your application.

@@ -7,11 +7,9 @@
 cloudwatch_describe_insight_rules(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{NextToken}{Include this value, if it was returned by the previous operation, to get
-the next set of rules.}
+\item{NextToken}{Include this value, if it was returned by the previous operation, to get the next set of rules.}
 
-\item{MaxResults}{The maximum number of results to return in one operation. If you omit
-this parameter, the default of 500 is used.}
+\item{MaxResults}{The maximum number of results to return in one operation. If you omit this parameter, the default of 500 is used.}
 }
 \description{
 Returns a list of all the Contributor Insights rules in your account.

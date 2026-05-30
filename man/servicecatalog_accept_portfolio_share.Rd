@@ -19,18 +19,14 @@ servicecatalog_accept_portfolio_share(
 
 \item{PortfolioId}{[required] The portfolio identifier.}
 
-\item{PortfolioShareType}{The type of shared portfolios to accept. The default is to accept
-imported portfolios.
+\item{PortfolioShareType}{The type of shared portfolios to accept. The default is to accept imported portfolios.
 \itemize{
-\item \code{AWS_ORGANIZATIONS} - Accept portfolios shared by the management
-account of your organization.
+\item \code{AWS_ORGANIZATIONS} - Accept portfolios shared by the management account of your organization.
 \item \code{IMPORTED} - Accept imported portfolios.
-\item \code{AWS_SERVICECATALOG} - Not supported. (Throws
-ResourceNotFoundException.)
+\item \code{AWS_SERVICECATALOG} - Not supported. (Throws ResourceNotFoundException.)
 }
 
-For example,
-\verb{aws servicecatalog accept-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS}}
+For example, \verb{aws servicecatalog accept-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS}}
 }
 \description{
 Accepts an offer to share the specified portfolio.

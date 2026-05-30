@@ -7,8 +7,7 @@
 ssmincidents_get_replication_set(arn)
 }
 \arguments{
-\item{arn}{[required] The Amazon Resource Name (ARN) of the replication set you want to
-retrieve.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the replication set you want to retrieve.}
 }
 \description{
 Retrieve your Incident Manager replication set.

@@ -7,8 +7,7 @@
 configservice_stop_configuration_recorder(ConfigurationRecorderName)
 }
 \arguments{
-\item{ConfigurationRecorderName}{[required] The name of the customer managed configuration recorder that you want to
-stop.}
+\item{ConfigurationRecorderName}{[required] The name of the customer managed configuration recorder that you want to stop.}
 }
 \description{
 Stops the customer managed configuration recorder. The customer managed configuration recorder will stop recording configuration changes for the resource types you have specified.

@@ -19,10 +19,7 @@ servicecatalog_delete_service_action(
 \item \code{zh} - Chinese
 }}
 
-\item{IdempotencyToken}{A unique identifier that you provide to ensure idempotency. If multiple
-requests from the same Amazon Web Services account use the same
-idempotency token, the same response is returned for each repeated
-request.}
+\item{IdempotencyToken}{A unique identifier that you provide to ensure idempotency. If multiple requests from the same Amazon Web Services account use the same idempotency token, the same response is returned for each repeated request.}
 }
 \description{
 Deletes a self-service action.

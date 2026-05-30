@@ -15,30 +15,19 @@ ssmincidents_create_timeline_event(
 )
 }
 \arguments{
-\item{clientToken}{A token that ensures that a client calls the action only once with the
-specified details.}
+\item{clientToken}{A token that ensures that a client calls the action only once with the specified details.}
 
 \item{eventData}{[required] A short description of the event.}
 
-\item{eventReferences}{Adds one or more references to the \code{TimelineEvent}. A reference is an
-Amazon Web Services resource involved or associated with the incident.
-To specify a reference, enter its Amazon Resource Name (ARN). You can
-also specify a related item associated with a resource. For example, to
-specify an Amazon DynamoDB (DynamoDB) table as a resource, use the
-table's ARN. You can also specify an Amazon CloudWatch metric associated
-with the DynamoDB table as a related item.}
+\item{eventReferences}{Adds one or more references to the \code{TimelineEvent}. A reference is an Amazon Web Services resource involved or associated with the incident. To specify a reference, enter its Amazon Resource Name (ARN). You can also specify a related item associated with a resource. For example, to specify an Amazon DynamoDB (DynamoDB) table as a resource, use the table's ARN. You can also specify an Amazon CloudWatch metric associated with the DynamoDB table as a related item.}
 
 \item{eventTime}{[required] The timestamp for when the event occurred.}
 
-\item{eventType}{[required] The type of event. You can create timeline events of type \verb{Custom Event}
-and \code{Note}.
+\item{eventType}{[required] The type of event. You can create timeline events of type \verb{Custom Event} and \code{Note}.
 
-To make a Note-type event appear on the \emph{Incident notes} panel in the
-console, specify \code{eventType} as \code{Note}and enter the Amazon Resource Name
-(ARN) of the incident as the value for \code{eventReference}.}
+To make a Note-type event appear on the \emph{Incident notes} panel in the console, specify \code{eventType} as \code{Note}and enter the Amazon Resource Name (ARN) of the incident as the value for \code{eventReference}.}
 
-\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident record that the action
-adds the incident to.}
+\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident record that the action adds the incident to.}
 }
 \description{
 Creates a custom timeline event on the incident details page of an incident record. Incident Manager automatically creates timeline events that mark key moments during an incident. You can create custom timeline events to mark important events that Incident Manager can detect automatically.

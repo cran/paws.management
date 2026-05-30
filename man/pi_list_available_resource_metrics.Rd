@@ -14,33 +14,21 @@ pi_list_available_resource_metrics(
 )
 }
 \arguments{
-\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights returns
-metrics.}
+\item{ServiceType}{[required] The Amazon Web Services service for which Performance Insights returns metrics.}
 
-\item{Identifier}{[required] An immutable identifier for a data source that is unique within an
-Amazon Web Services Region. Performance Insights gathers metrics from
-this data source. To use an Amazon RDS DB instance as a data source,
-specify its \code{DbiResourceId} value. For example, specify
-\code{db-ABCDEFGHIJKLMNOPQRSTU1VWZ}.}
+\item{Identifier}{[required] An immutable identifier for a data source that is unique within an Amazon Web Services Region. Performance Insights gathers metrics from this data source. To use an Amazon RDS DB instance as a data source, specify its \code{DbiResourceId} value. For example, specify \code{db-ABCDEFGHIJKLMNOPQRSTU1VWZ}.}
 
-\item{MetricTypes}{[required] The types of metrics to return in the response. Valid values in the
-array include the following:
+\item{MetricTypes}{[required] The types of metrics to return in the response. Valid values in the array include the following:
 \itemize{
 \item \code{os} (OS counter metrics) - All engines
 \item \code{db} (DB load metrics) - All engines except for Amazon DocumentDB
-\item \code{db.sql.stats} (per-SQL metrics) - All engines except for Amazon
-DocumentDB
-\item \code{db.sql_tokenized.stats} (per-SQL digest metrics) - All engines
-except for Amazon DocumentDB
+\item \code{db.sql.stats} (per-SQL metrics) - All engines except for Amazon DocumentDB
+\item \code{db.sql_tokenized.stats} (per-SQL digest metrics) - All engines except for Amazon DocumentDB
 }}
 
-\item{NextToken}{An optional pagination token provided by a previous request. If this
-parameter is specified, the response includes only records beyond the
-token, up to the value specified by \code{MaxRecords}.}
+\item{NextToken}{An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the token, up to the value specified by \code{MaxRecords}.}
 
-\item{MaxResults}{The maximum number of items to return. If the \code{MaxRecords} value is less
-than the number of existing items, the response includes a pagination
-token.}
+\item{MaxResults}{The maximum number of items to return. If the \code{MaxRecords} value is less than the number of existing items, the response includes a pagination token.}
 }
 \description{
 Retrieve metrics of the specified types that can be queried for a specified DB instance.

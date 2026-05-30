@@ -30,21 +30,17 @@ licensemanager_create_license_version(
 
 \item{HomeRegion}{[required] Home Region of the license.}
 
-\item{Validity}{[required] Date and time range during which the license is valid, in ISO8601-UTC
-format.}
+\item{Validity}{[required] Date and time range during which the license is valid, in ISO8601-UTC format.}
 
 \item{LicenseMetadata}{Information about the license.}
 
 \item{Entitlements}{[required] License entitlements.}
 
-\item{ConsumptionConfiguration}{[required] Configuration for consumption of the license. Choose a provisional
-configuration for workloads running with continuous connectivity. Choose
-a borrow configuration for workloads with offline usage.}
+\item{ConsumptionConfiguration}{[required] Configuration for consumption of the license. Choose a provisional configuration for workloads running with continuous connectivity. Choose a borrow configuration for workloads with offline usage.}
 
 \item{Status}{[required] License status.}
 
-\item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+\item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.}
 
 \item{SourceVersion}{Current version of the license.}
 }

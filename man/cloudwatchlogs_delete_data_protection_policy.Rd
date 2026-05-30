@@ -7,8 +7,7 @@
 cloudwatchlogs_delete_data_protection_policy(logGroupIdentifier)
 }
 \arguments{
-\item{logGroupIdentifier}{[required] The name or ARN of the log group that you want to delete the data
-protection policy for.}
+\item{logGroupIdentifier}{[required] The name or ARN of the log group that you want to delete the data protection policy for.}
 }
 \description{
 Deletes the data protection policy from the specified log group.

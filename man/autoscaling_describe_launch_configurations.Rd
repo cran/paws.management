@@ -12,16 +12,13 @@ autoscaling_describe_launch_configurations(
 )
 }
 \arguments{
-\item{LaunchConfigurationNames}{The launch configuration names. If you omit this property, all launch
-configurations are described.
+\item{LaunchConfigurationNames}{The launch configuration names. If you omit this property, all launch configurations are described.
 
 Array Members: Maximum number of 50 items.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{MaxRecords}{The maximum number of items to return with this call. The default value
-is \code{50} and the maximum value is \code{100}.}
+\item{MaxRecords}{The maximum number of items to return with this call. The default value is \code{50} and the maximum value is \code{100}.}
 }
 \description{
 Gets information about the launch configurations in the account and Region.

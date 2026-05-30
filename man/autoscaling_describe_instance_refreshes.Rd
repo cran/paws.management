@@ -17,11 +17,9 @@ autoscaling_describe_instance_refreshes(
 
 \item{InstanceRefreshIds}{One or more instance refresh IDs.}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{MaxRecords}{The maximum number of items to return with this call. The default value
-is \code{50} and the maximum value is \code{100}.}
+\item{MaxRecords}{The maximum number of items to return with this call. The default value is \code{50} and the maximum value is \code{100}.}
 }
 \description{
 Gets information about the instance refreshes for the specified Auto Scaling group from the previous six weeks.

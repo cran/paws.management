@@ -10,11 +10,9 @@ synthetics_tag_resource(ResourceArn, Tags)
 \arguments{
 \item{ResourceArn}{[required] The ARN of the canary or group that you're adding tags to.
 
-The ARN format of a canary is
-\code{arn:aws:synthetics:Region:account-id:canary:canary-name }.
+The ARN format of a canary is \code{arn:aws:synthetics:Region:account-id:canary:canary-name }.
 
-The ARN format of a group is
-\code{arn:aws:synthetics:Region:account-id:group:group-name }}
+The ARN format of a group is \code{arn:aws:synthetics:Region:account-id:group:group-name }}
 
 \item{Tags}{[required] The list of key-value pairs to associate with the resource.}
 }

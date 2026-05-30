@@ -15,15 +15,11 @@ cloudformation_rollback_stack(
 \arguments{
 \item{StackName}{[required] The name that's associated with the stack.}
 
-\item{RoleARN}{The Amazon Resource Name (ARN) of an IAM role that CloudFormation
-assumes to rollback the stack.}
+\item{RoleARN}{The Amazon Resource Name (ARN) of an IAM role that CloudFormation assumes to rollback the stack.}
 
-\item{ClientRequestToken}{A unique identifier for this
-\code{\link[=cloudformation_rollback_stack]{rollback_stack}} request.}
+\item{ClientRequestToken}{A unique identifier for this \code{\link[=cloudformation_rollback_stack]{rollback_stack}} request.}
 
-\item{RetainExceptOnCreate}{When set to \code{true}, newly created resources are deleted when the
-operation rolls back. This includes newly created resources marked with
-a deletion policy of \code{Retain}.
+\item{RetainExceptOnCreate}{When set to \code{true}, newly created resources are deleted when the operation rolls back. This includes newly created resources marked with a deletion policy of \code{Retain}.
 
 Default: \code{false}}
 }

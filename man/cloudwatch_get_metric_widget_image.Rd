@@ -8,24 +8,15 @@ one or more Amazon CloudWatch metrics as a bitmap image}
 cloudwatch_get_metric_widget_image(MetricWidget, OutputFormat = NULL)
 }
 \arguments{
-\item{MetricWidget}{[required] A JSON string that defines the bitmap graph to be retrieved. The string
-includes the metrics to include in the graph, statistics, annotations,
-title, axis limits, and so on. You can include only one \code{MetricWidget}
-parameter in each
-\code{\link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image}} call.
+\item{MetricWidget}{[required] A JSON string that defines the bitmap graph to be retrieved. The string includes the metrics to include in the graph, statistics, annotations, title, axis limits, and so on. You can include only one \code{MetricWidget} parameter in each \code{\link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image}} call.
 
-For more information about the syntax of \code{MetricWidget} see
-\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Metric-Widget-Structure.html}{GetMetricWidgetImage: Metric Widget Structure and Syntax}.
+For more information about the syntax of \code{MetricWidget} see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metric-Widget-Structure.html}{GetMetricWidgetImage: Metric Widget Structure and Syntax}.
 
-If any metric on the graph could not load all the requested data points,
-an orange triangle with an exclamation point appears next to the graph
-legend.}
+If any metric on the graph could not load all the requested data points, an orange triangle with an exclamation point appears next to the graph legend.}
 
 \item{OutputFormat}{The format of the resulting image. Only PNG images are supported.
 
-The default is \code{png}. If you specify \code{png}, the API returns an HTTP
-response with the content-type set to \code{text/xml}. The image data is in a
-\code{MetricWidgetImage} field. For example:
+The default is \code{png}. If you specify \code{png}, the API returns an HTTP response with the content-type set to \code{text/xml}. The image data is in a \code{MetricWidgetImage} field. For example:
 
 \verb{ <GetMetricWidgetImageResponse xmlns=<URLstring>>}
 
@@ -47,11 +38,7 @@ response with the content-type set to \code{text/xml}. The image data is in a
 
 \verb{</GetMetricWidgetImageResponse>}
 
-The \code{image/png} setting is intended only for custom HTTP requests. For
-most use cases, and all actions using an Amazon Web Services SDK, you
-should use \code{png}. If you specify \code{image/png}, the HTTP response has a
-content-type set to \code{image/png}, and the body of the response is a PNG
-image.}
+The \code{image/png} setting is intended only for custom HTTP requests. For most use cases, and all actions using an Amazon Web Services SDK, you should use \code{png}. If you specify \code{image/png}, the HTTP response has a content-type set to \code{image/png}, and the body of the response is a PNG image.}
 }
 \description{
 You can use the \code{\link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image}} API to retrieve a snapshot graph of one or more Amazon CloudWatch metrics as a bitmap image. You can then embed this image into your services and products, such as wiki pages, reports, and documents. You could also retrieve images regularly, such as every minute, and create your own custom live dashboard.

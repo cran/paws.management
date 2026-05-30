@@ -14,11 +14,9 @@ cloudwatchlogs_put_destination(
 \arguments{
 \item{destinationName}{[required] A name for the destination.}
 
-\item{targetArn}{[required] The ARN of an Amazon Kinesis stream to which to deliver matching log
-events.}
+\item{targetArn}{[required] The ARN of an Amazon Kinesis stream to which to deliver matching log events.}
 
-\item{roleArn}{[required] The ARN of an IAM role that grants CloudWatch Logs permissions to call
-the Amazon Kinesis \code{PutRecord} operation on the destination stream.}
+\item{roleArn}{[required] The ARN of an IAM role that grants CloudWatch Logs permissions to call the Amazon Kinesis \code{PutRecord} operation on the destination stream.}
 
 \item{tags}{An optional list of key-value pairs to associate with the resource.
 

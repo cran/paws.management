@@ -12,17 +12,13 @@ cloudwatchlogs_describe_export_tasks(
 )
 }
 \arguments{
-\item{taskId}{The ID of the export task. Specifying a task ID filters the results to
-one or zero export tasks.}
+\item{taskId}{The ID of the export task. Specifying a task ID filters the results to one or zero export tasks.}
 
-\item{statusCode}{The status code of the export task. Specifying a status code filters the
-results to zero or more export tasks.}
+\item{statusCode}{The status code of the export task. Specifying a status code filters the results to zero or more export tasks.}
 
-\item{nextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{nextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
-\item{limit}{The maximum number of items returned. If you don't specify a value, the
-default is up to 50 items.}
+\item{limit}{The maximum number of items returned. If you don't specify a value, the default is up to 50 items.}
 }
 \description{
 Lists the specified export tasks. You can list all your export tasks or filter the results based on task ID or task status.

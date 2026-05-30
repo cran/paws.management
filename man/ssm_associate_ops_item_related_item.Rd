@@ -12,22 +12,17 @@ ssm_associate_ops_item_related_item(
 )
 }
 \arguments{
-\item{OpsItemId}{[required] The ID of the OpsItem to which you want to associate a resource as a
-related item.}
+\item{OpsItemId}{[required] The ID of the OpsItem to which you want to associate a resource as a related item.}
 
-\item{AssociationType}{[required] The type of association that you want to create between an OpsItem and a
-resource. OpsCenter supports \code{IsParentOf} and \code{RelatesTo} association
-types.}
+\item{AssociationType}{[required] The type of association that you want to create between an OpsItem and a resource. OpsCenter supports \code{IsParentOf} and \code{RelatesTo} association types.}
 
-\item{ResourceType}{[required] The type of resource that you want to associate with an OpsItem.
-OpsCenter supports the following types:
+\item{ResourceType}{[required] The type of resource that you want to associate with an OpsItem. OpsCenter supports the following types:
 
 \verb{AWS::SSMIncidents::IncidentRecord}: an Incident Manager incident.
 
 \verb{AWS::SSM::Document}: a Systems Manager (SSM) document.}
 
-\item{ResourceUri}{[required] The Amazon Resource Name (ARN) of the Amazon Web Services resource that
-you want to associate with the OpsItem.}
+\item{ResourceUri}{[required] The Amazon Resource Name (ARN) of the Amazon Web Services resource that you want to associate with the OpsItem.}
 }
 \description{
 Associates a related item to a Systems Manager OpsCenter OpsItem. For example, you can associate an Incident Manager incident or analysis with an OpsItem. Incident Manager and OpsCenter are tools in Amazon Web Services Systems Manager.

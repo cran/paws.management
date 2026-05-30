@@ -25,15 +25,13 @@ servicecatalog_search_products_as_admin(
 
 \item{PortfolioId}{The portfolio identifier.}
 
-\item{Filters}{The search filters. If no search filters are specified, the output
-includes all products to which the administrator has access.}
+\item{Filters}{The search filters. If no search filters are specified, the output includes all products to which the administrator has access.}
 
 \item{SortBy}{The sort field. If no value is specified, the results are not sorted.}
 
 \item{SortOrder}{The sort order. If no value is specified, the results are not sorted.}
 
-\item{PageToken}{The page token for the next set of results. To retrieve the first set of
-results, use null.}
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 

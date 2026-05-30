@@ -7,8 +7,7 @@
 configservice_batch_get_resource_config(resourceKeys)
 }
 \arguments{
-\item{resourceKeys}{[required] A list of resource keys to be processed with the current request. Each
-element in the list consists of the resource type and resource ID.}
+\item{resourceKeys}{[required] A list of resource keys to be processed with the current request. Each element in the list consists of the resource type and resource ID.}
 }
 \description{
 Returns the \code{BaseConfigurationItem} for one or more requested resources. The operation also returns a list of resources that are not processed in the current request. If there are no unprocessed resources, the operation returns an empty unprocessedResourceKeys list.

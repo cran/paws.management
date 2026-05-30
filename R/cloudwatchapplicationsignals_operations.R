@@ -11,10 +11,8 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report/) for full documentation.
 #'
-#' @param Timestamp &#91;required&#93; The date and time that you want the report to be for. It is expressed as
-#' the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
-#' @param SloIds &#91;required&#93; An array containing the IDs of the service level objectives that you
-#' want to include in the report.
+#' @param Timestamp &#91;required&#93; The date and time that you want the report to be for. It is expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+#' @param SloIds &#91;required&#93; An array containing the IDs of the service level objectives that you want to include in the report.
 #'
 #' @keywords internal
 #'
@@ -38,6 +36,40 @@ cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report <- 
 }
 .cloudwatchapplicationsignals$operations$batch_get_service_level_objective_budget_report <- cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report
 
+#' Add or remove time window exclusions for one or more Service Level
+#' Objectives (SLOs)
+#'
+#' @description
+#' Add or remove time window exclusions for one or more Service Level Objectives (SLOs).
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_batch_update_exclusion_windows/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_batch_update_exclusion_windows/) for full documentation.
+#'
+#' @param SloIds &#91;required&#93; The list of SLO IDs to add or remove exclusion windows from.
+#' @param AddExclusionWindows A list of exclusion windows to add to the specified SLOs. You can add up to 10 exclusion windows per SLO.
+#' @param RemoveExclusionWindows A list of exclusion windows to remove from the specified SLOs. The window configuration must match an existing exclusion window.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_batch_update_exclusion_windows
+cloudwatchapplicationsignals_batch_update_exclusion_windows <- function(SloIds, AddExclusionWindows = NULL, RemoveExclusionWindows = NULL) {
+  op <- new_operation(
+    name = "BatchUpdateExclusionWindows",
+    http_method = "PATCH",
+    http_path = "/exclusion-windows",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$batch_update_exclusion_windows_input(SloIds = SloIds, AddExclusionWindows = AddExclusionWindows, RemoveExclusionWindows = RemoveExclusionWindows)
+  output <- .cloudwatchapplicationsignals$batch_update_exclusion_windows_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$batch_update_exclusion_windows <- cloudwatchapplicationsignals_batch_update_exclusion_windows
+
 #' Creates a service level objective (SLO), which can help you ensure that
 #' your critical business operations are meeting customer expectations
 #'
@@ -48,34 +80,26 @@ cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report <- 
 #'
 #' @param Name &#91;required&#93; A name for this SLO.
 #' @param Description An optional description for this SLO.
-#' @param SliConfig If this SLO is a period-based SLO, this structure defines the
-#' information about what performance metric this SLO will monitor.
+#' @param SliConfig If this SLO is a period-based SLO, this structure defines the information about what performance metric this SLO will monitor.
 #' 
-#' You can't specify both `RequestBasedSliConfig` and `SliConfig` in the
-#' same operation.
-#' @param RequestBasedSliConfig If this SLO is a request-based SLO, this structure defines the
-#' information about what performance metric this SLO will monitor.
+#' You can't specify both `RequestBasedSliConfig` and `SliConfig` in the same operation.
+#' @param RequestBasedSliConfig If this SLO is a request-based SLO, this structure defines the information about what performance metric this SLO will monitor.
 #' 
-#' You can't specify both `RequestBasedSliConfig` and `SliConfig` in the
-#' same operation.
-#' @param Goal This structure contains the attributes that determine the goal of the
-#' SLO.
-#' @param Tags A list of key-value pairs to associate with the SLO. You can associate
-#' as many as 50 tags with an SLO. To be able to associate tags with the
-#' SLO when you create the SLO, you must have the `cloudwatch:TagResource`
-#' permission.
+#' You can't specify both `RequestBasedSliConfig` and `SliConfig` in the same operation.
+#' @param Goal This structure contains the attributes that determine the goal of the SLO.
+#' @param Tags A list of key-value pairs to associate with the SLO. You can associate as many as 50 tags with an SLO. To be able to associate tags with the SLO when you create the SLO, you must have the `cloudwatch:TagResource` permission.
 #' 
-#' Tags can help you organize and categorize your resources. You can also
-#' use them to scope user permissions by granting a user permission to
-#' access or change only resources with certain tag values.
-#' @param BurnRateConfigurations Use this array to create *burn rates* for this SLO. Each burn rate is a
-#' metric that indicates how fast the service is consuming the error
-#' budget, relative to the attainment goal of the SLO.
+#' Tags can help you organize and categorize your resources. You can also use them to scope user permissions by granting a user permission to access or change only resources with certain tag values.
+#' @param BurnRateConfigurations Use this array to create *burn rates* for this SLO. Each burn rate is a metric that indicates how fast the service is consuming the error budget, relative to the attainment goal of the SLO.
+#' @param CreateRecommendedSlo Set this to `true` to create a recommended SLO out of the box. When set to `true`, you don't need to specify the `MetricThreshold` or `ComparisonOperator` in the `SliConfig` or `RequestBasedSliConfig`. The default value is `false`.
+#' 
+#' This is supported for SLOs on a service, service operation, or a dependency.
+#' @param AutoInvestigationEnabled Indicates whether DevOps Agent will automatically investigate this SLO when it is breached
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchapplicationsignals_create_service_level_objective
-cloudwatchapplicationsignals_create_service_level_objective <- function(Name, Description = NULL, SliConfig = NULL, RequestBasedSliConfig = NULL, Goal = NULL, Tags = NULL, BurnRateConfigurations = NULL) {
+cloudwatchapplicationsignals_create_service_level_objective <- function(Name, Description = NULL, SliConfig = NULL, RequestBasedSliConfig = NULL, Goal = NULL, Tags = NULL, BurnRateConfigurations = NULL, CreateRecommendedSlo = NULL, AutoInvestigationEnabled = NULL) {
   op <- new_operation(
     name = "CreateServiceLevelObjective",
     http_method = "POST",
@@ -84,7 +108,7 @@ cloudwatchapplicationsignals_create_service_level_objective <- function(Name, De
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchapplicationsignals$create_service_level_objective_input(Name = Name, Description = Description, SliConfig = SliConfig, RequestBasedSliConfig = RequestBasedSliConfig, Goal = Goal, Tags = Tags, BurnRateConfigurations = BurnRateConfigurations)
+  input <- .cloudwatchapplicationsignals$create_service_level_objective_input(Name = Name, Description = Description, SliConfig = SliConfig, RequestBasedSliConfig = RequestBasedSliConfig, Goal = Goal, Tags = Tags, BurnRateConfigurations = BurnRateConfigurations, CreateRecommendedSlo = CreateRecommendedSlo, AutoInvestigationEnabled = AutoInvestigationEnabled)
   output <- .cloudwatchapplicationsignals$create_service_level_objective_output()
   config <- get_config()
   svc <- .cloudwatchapplicationsignals$service(config, op)
@@ -93,6 +117,37 @@ cloudwatchapplicationsignals_create_service_level_objective <- function(Name, De
   return(response)
 }
 .cloudwatchapplicationsignals$operations$create_service_level_objective <- cloudwatchapplicationsignals_create_service_level_objective
+
+#' Deletes the grouping configuration for this account
+#'
+#' @description
+#' Deletes the grouping configuration for this account. This removes all custom grouping attribute definitions that were previously configured.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_delete_grouping_configuration/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_delete_grouping_configuration/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_delete_grouping_configuration
+cloudwatchapplicationsignals_delete_grouping_configuration <- function() {
+  op <- new_operation(
+    name = "DeleteGroupingConfiguration",
+    http_method = "DELETE",
+    http_path = "/grouping-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$delete_grouping_configuration_input()
+  output <- .cloudwatchapplicationsignals$delete_grouping_configuration_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$delete_grouping_configuration <- cloudwatchapplicationsignals_delete_grouping_configuration
 
 #' Deletes the specified service level objective
 #'
@@ -132,38 +187,25 @@ cloudwatchapplicationsignals_delete_service_level_objective <- function(Id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_get_service/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_get_service/) for full documentation.
 #'
-#' @param StartTime &#91;required&#93; The start of the time period to retrieve information about. When used in
-#' a raw HTTP Query API, it is formatted as be epoch time in seconds. For
-#' example: `1698778057`
+#' @param StartTime &#91;required&#93; The start of the time period to retrieve information about. When used in a raw HTTP Query API, it is formatted as be epoch time in seconds. For example: `1698778057`
 #' 
 #' Your requested start time will be rounded to the nearest hour.
-#' @param EndTime &#91;required&#93; The end of the time period to retrieve information about. When used in a
-#' raw HTTP Query API, it is formatted as be epoch time in seconds. For
-#' example: `1698778057`
+#' @param EndTime &#91;required&#93; The end of the time period to retrieve information about. When used in a raw HTTP Query API, it is formatted as be epoch time in seconds. For example: `1698778057`
 #' 
 #' Your requested start time will be rounded to the nearest hour.
-#' @param KeyAttributes &#91;required&#93; Use this field to specify which service you want to retrieve information
-#' for. You must specify at least the `Type`, `Name`, and `Environment`
-#' attributes.
+#' @param KeyAttributes &#91;required&#93; Use this field to specify which service you want to retrieve information for. You must specify at least the `Type`, `Name`, and `Environment` attributes.
 #' 
 #' This is a string-to-string map. It can include the following fields.
 #' 
 #' -   `Type` designates the type of object this is.
 #' 
-#' -   `ResourceType` specifies the type of the resource. This field is
-#'     used only when the value of the `Type` field is `Resource` or
-#'     `AWS::Resource`.
+#' -   `ResourceType` specifies the type of the resource. This field is used only when the value of the `Type` field is `Resource` or `AWS::Resource`.
 #' 
-#' -   `Name` specifies the name of the object. This is used only if the
-#'     value of the `Type` field is `Service`, `RemoteService`, or
-#'     `AWS::Service`.
+#' -   `Name` specifies the name of the object. This is used only if the value of the `Type` field is `Service`, `RemoteService`, or `AWS::Service`.
 #' 
-#' -   `Identifier` identifies the resource objects of this resource. This
-#'     is used only if the value of the `Type` field is `Resource` or
-#'     `AWS::Resource`.
+#' -   `Identifier` identifies the resource objects of this resource. This is used only if the value of the `Type` field is `Resource` or `AWS::Resource`.
 #' 
-#' -   `Environment` specifies the location where this object is hosted, or
-#'     what it belongs to.
+#' -   `Environment` specifies the location where this object is hosted, or what it belongs to.
 #'
 #' @keywords internal
 #'
@@ -194,10 +236,7 @@ cloudwatchapplicationsignals_get_service <- function(StartTime, EndTime, KeyAttr
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_get_service_level_objective/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_get_service_level_objective/) for full documentation.
 #'
-#' @param Id &#91;required&#93; The ARN or name of the SLO that you want to retrieve information about.
-#' You can find the ARNs of SLOs by using the
-#' [`list_service_level_objectives`][cloudwatchapplicationsignals_list_service_level_objectives]
-#' operation.
+#' @param Id &#91;required&#93; The ARN or name of the SLO that you want to retrieve information about. You can find the ARNs of SLOs by using the [`list_service_level_objectives`][cloudwatchapplicationsignals_list_service_level_objectives] operation.
 #'
 #' @keywords internal
 #'
@@ -221,6 +260,158 @@ cloudwatchapplicationsignals_get_service_level_objective <- function(Id) {
 }
 .cloudwatchapplicationsignals$operations$get_service_level_objective <- cloudwatchapplicationsignals_get_service_level_objective
 
+#' Returns a list of audit findings that provide automated analysis of
+#' service behavior and root cause analysis
+#'
+#' @description
+#' Returns a list of audit findings that provide automated analysis of service behavior and root cause analysis. These findings help identify the most significant observations about your services, including performance issues, anomalies, and potential problems. The findings are generated using heuristic algorithms based on established troubleshooting patterns.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_audit_findings/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_audit_findings/) for full documentation.
+#'
+#' @param StartTime &#91;required&#93; The start of the time period to retrieve audit findings for. When used in a raw HTTP Query API, it is formatted as epoch time in seconds. For example, `1698778057`
+#' @param EndTime &#91;required&#93; The end of the time period to retrieve audit findings for. When used in a raw HTTP Query API, it is formatted as epoch time in seconds. For example, `1698778057`
+#' @param Auditors A list of auditor names to filter the findings by. Only findings generated by the specified auditors will be returned.
+#' 
+#' The following auditors are available for configuration:
+#' 
+#' -   `slo` - SloAuditor: Identifies SLO violations and detects breached thresholds during the Assessment phase.
+#' 
+#' -   `operation_metric` - OperationMetricAuditor: Detects anomalies in service operation metrics from Application Signals RED metrics during the Assessment phase
+#' 
+#'     Anomaly detection is not supported for sparse metrics (those missing more than 80% of datapoints within the given time period).
+#' 
+#' -   `service_quota` - ServiceQuotaAuditor: Monitors resource utilization against service quotas during the Assessment phase
+#' 
+#' -   `trace` - TraceAuditor: Performs deep-dive analysis of distributed traces, correlating traces with breached SLOs or abnormal RED metrics during the Analysis phase
+#' 
+#' -   `dependency_metric` - CriticalPathAuditor: Analyzes service dependency impacts and maps dependency relationships from Application Signals RED metrics during the Analysis phase
+#' 
+#' -   `top_contributor` - TopContributorAuditor: Identifies infrastructure-level contributors to issues by analyzing EMF logs of Application Signals RED metrics during the Analysis phase
+#' 
+#' -   `log` - LogAuditor: Extracts insights from application logs, categorizing error types and ranking severity by frequency during the Analysis phase
+#' 
+#' -   `change_indicator` - ChangeIndicatorAuditor: Detects change events (deployments, configuration changes) that occurred within 10 minutes before and during a detected anomaly, and surfaces them as findings with deployment timestamps in the Analysis phase. When changes are detected, the `top_contributor` auditor skips its analysis to avoid redundancy.
+#' 
+#' `InitAuditor` and `Summarizer` auditors are not configurable as they are automatically triggered during the audit process.
+#' @param AuditTargets &#91;required&#93; A list of audit targets to filter the findings by. You can specify services, SLOs, or service operations to limit the audit findings to specific entities.
+#' @param DetailLevel The level of details of the audit findings. Supported values: `BRIEF`, `DETAILED`.
+#' @param NextToken Include this value, if it was returned by the previous operation, to get the next set of audit findings.
+#' @param MaxResults The maximum number of audit findings to return in one operation. If you omit this parameter, the default of 10 is used.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_list_audit_findings
+cloudwatchapplicationsignals_list_audit_findings <- function(StartTime, EndTime, Auditors = NULL, AuditTargets, DetailLevel = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAuditFindings",
+    http_method = "POST",
+    http_path = "/auditFindings",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$list_audit_findings_input(StartTime = StartTime, EndTime = EndTime, Auditors = Auditors, AuditTargets = AuditTargets, DetailLevel = DetailLevel, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .cloudwatchapplicationsignals$list_audit_findings_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$list_audit_findings <- cloudwatchapplicationsignals_list_audit_findings
+
+#' Returns a list of change events for a specific entity, such as
+#' deployments, configuration changes, or other state-changing activities
+#'
+#' @description
+#' Returns a list of change events for a specific entity, such as deployments, configuration changes, or other state-changing activities. This operation helps track the history of changes that may have affected service performance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_entity_events/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_entity_events/) for full documentation.
+#'
+#' @param Entity &#91;required&#93; The entity for which to retrieve change events. This specifies the service, resource, or other entity whose event history you want to examine.
+#' 
+#' This is a string-to-string map. It can include the following fields.
+#' 
+#' -   `Type` designates the type of object this is.
+#' 
+#' -   `ResourceType` specifies the type of the resource. This field is used only when the value of the `Type` field is `Resource` or `AWS::Resource`.
+#' 
+#' -   `Name` specifies the name of the object. This is used only if the value of the `Type` field is `Service`, `RemoteService`, or `AWS::Service`.
+#' 
+#' -   `Identifier` identifies the resource objects of this resource. This is used only if the value of the `Type` field is `Resource` or `AWS::Resource`.
+#' 
+#' -   `Environment` specifies the location where this object is hosted, or what it belongs to.
+#' 
+#' -   `AwsAccountId` specifies the account where this object is in.
+#' 
+#' Below is an example of a service.
+#' 
+#' `{ "Type": "Service", "Name": "visits-service", "Environment": "petclinic-test" }`
+#' 
+#' Below is an example of a resource.
+#' 
+#' `{ "Type": "AWS::Resource", "ResourceType": "AWS::DynamoDB::Table", "Identifier": "Customers" }`
+#' @param StartTime &#91;required&#93; The start of the time period to retrieve change events for. When used in a raw HTTP Query API, it is formatted as epoch time in seconds. For example: `1698778057`
+#' @param EndTime &#91;required&#93; The end of the time period to retrieve change events for. When used in a raw HTTP Query API, it is formatted as epoch time in seconds. For example: `1698778057`
+#' @param MaxResults The maximum number of change events to return in one operation. If you omit this parameter, the default of 50 is used.
+#' @param NextToken Include this value, if it was returned by the previous operation, to get the next set of change events.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_list_entity_events
+cloudwatchapplicationsignals_list_entity_events <- function(Entity, StartTime, EndTime, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListEntityEvents",
+    http_method = "POST",
+    http_path = "/events",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ChangeEvents"),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$list_entity_events_input(Entity = Entity, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .cloudwatchapplicationsignals$list_entity_events_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$list_entity_events <- cloudwatchapplicationsignals_list_entity_events
+
+#' Returns the current grouping configuration for this account, including
+#' all custom grouping attribute definitions that have been configured
+#'
+#' @description
+#' Returns the current grouping configuration for this account, including all custom grouping attribute definitions that have been configured. These definitions determine how services are logically grouped based on telemetry attributes, Amazon Web Services tags, or predefined mappings.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_grouping_attribute_definitions/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_grouping_attribute_definitions/) for full documentation.
+#'
+#' @param NextToken Include this value, if it was returned by the previous operation, to get the next set of grouping attribute definitions.
+#' @param AwsAccountId The Amazon Web Services account ID to retrieve grouping attribute definitions for. Use this when accessing grouping configurations from a different account in cross-account monitoring scenarios.
+#' @param IncludeLinkedAccounts If you are using this operation in a monitoring account, specify `true` to include grouping attributes from source accounts in the returned data.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_list_grou_attr_defi
+cloudwatchapplicationsignals_list_grouping_attribute_definitions <- function(NextToken = NULL, AwsAccountId = NULL, IncludeLinkedAccounts = NULL) {
+  op <- new_operation(
+    name = "ListGroupingAttributeDefinitions",
+    http_method = "POST",
+    http_path = "/grouping-attribute-definitions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$list_grouping_attribute_definitions_input(NextToken = NextToken, AwsAccountId = AwsAccountId, IncludeLinkedAccounts = IncludeLinkedAccounts)
+  output <- .cloudwatchapplicationsignals$list_grouping_attribute_definitions_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$list_grouping_attribute_definitions <- cloudwatchapplicationsignals_list_grouping_attribute_definitions
+
 #' Returns a list of service dependencies of the service that you specify
 #'
 #' @description
@@ -228,42 +419,27 @@ cloudwatchapplicationsignals_get_service_level_objective <- function(Id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_service_dependencies/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_service_dependencies/) for full documentation.
 #'
-#' @param StartTime &#91;required&#93; The start of the time period to retrieve information about. When used in
-#' a raw HTTP Query API, it is formatted as be epoch time in seconds. For
-#' example: `1698778057`
+#' @param StartTime &#91;required&#93; The start of the time period to retrieve information about. When used in a raw HTTP Query API, it is formatted as be epoch time in seconds. For example: `1698778057`
 #' 
 #' Your requested start time will be rounded to the nearest hour.
-#' @param EndTime &#91;required&#93; The end of the time period to retrieve information about. When used in a
-#' raw HTTP Query API, it is formatted as be epoch time in seconds. For
-#' example: `1698778057`
+#' @param EndTime &#91;required&#93; The end of the time period to retrieve information about. When used in a raw HTTP Query API, it is formatted as be epoch time in seconds. For example: `1698778057`
 #' 
 #' Your requested end time will be rounded to the nearest hour.
-#' @param KeyAttributes &#91;required&#93; Use this field to specify which service you want to retrieve information
-#' for. You must specify at least the `Type`, `Name`, and `Environment`
-#' attributes.
+#' @param KeyAttributes &#91;required&#93; Use this field to specify which service you want to retrieve information for. You must specify at least the `Type`, `Name`, and `Environment` attributes.
 #' 
 #' This is a string-to-string map. It can include the following fields.
 #' 
 #' -   `Type` designates the type of object this is.
 #' 
-#' -   `ResourceType` specifies the type of the resource. This field is
-#'     used only when the value of the `Type` field is `Resource` or
-#'     `AWS::Resource`.
+#' -   `ResourceType` specifies the type of the resource. This field is used only when the value of the `Type` field is `Resource` or `AWS::Resource`.
 #' 
-#' -   `Name` specifies the name of the object. This is used only if the
-#'     value of the `Type` field is `Service`, `RemoteService`, or
-#'     `AWS::Service`.
+#' -   `Name` specifies the name of the object. This is used only if the value of the `Type` field is `Service`, `RemoteService`, or `AWS::Service`.
 #' 
-#' -   `Identifier` identifies the resource objects of this resource. This
-#'     is used only if the value of the `Type` field is `Resource` or
-#'     `AWS::Resource`.
+#' -   `Identifier` identifies the resource objects of this resource. This is used only if the value of the `Type` field is `Resource` or `AWS::Resource`.
 #' 
-#' -   `Environment` specifies the location where this object is hosted, or
-#'     what it belongs to.
-#' @param MaxResults The maximum number of results to return in one operation. If you omit
-#' this parameter, the default of 50 is used.
-#' @param NextToken Include this value, if it was returned by the previous operation, to get
-#' the next set of service dependencies.
+#' -   `Environment` specifies the location where this object is hosted, or what it belongs to.
+#' @param MaxResults The maximum number of results to return in one operation. If you omit this parameter, the default of 50 is used.
+#' @param NextToken Include this value, if it was returned by the previous operation, to get the next set of service dependencies.
 #'
 #' @keywords internal
 #'
@@ -295,42 +471,27 @@ cloudwatchapplicationsignals_list_service_dependencies <- function(StartTime, En
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_service_dependents/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_service_dependents/) for full documentation.
 #'
-#' @param StartTime &#91;required&#93; The start of the time period to retrieve information about. When used in
-#' a raw HTTP Query API, it is formatted as be epoch time in seconds. For
-#' example: `1698778057`
+#' @param StartTime &#91;required&#93; The start of the time period to retrieve information about. When used in a raw HTTP Query API, it is formatted as be epoch time in seconds. For example: `1698778057`
 #' 
 #' Your requested start time will be rounded to the nearest hour.
-#' @param EndTime &#91;required&#93; The end of the time period to retrieve information about. When used in a
-#' raw HTTP Query API, it is formatted as be epoch time in seconds. For
-#' example: `1698778057`
+#' @param EndTime &#91;required&#93; The end of the time period to retrieve information about. When used in a raw HTTP Query API, it is formatted as be epoch time in seconds. For example: `1698778057`
 #' 
 #' Your requested start time will be rounded to the nearest hour.
-#' @param KeyAttributes &#91;required&#93; Use this field to specify which service you want to retrieve information
-#' for. You must specify at least the `Type`, `Name`, and `Environment`
-#' attributes.
+#' @param KeyAttributes &#91;required&#93; Use this field to specify which service you want to retrieve information for. You must specify at least the `Type`, `Name`, and `Environment` attributes.
 #' 
 #' This is a string-to-string map. It can include the following fields.
 #' 
 #' -   `Type` designates the type of object this is.
 #' 
-#' -   `ResourceType` specifies the type of the resource. This field is
-#'     used only when the value of the `Type` field is `Resource` or
-#'     `AWS::Resource`.
+#' -   `ResourceType` specifies the type of the resource. This field is used only when the value of the `Type` field is `Resource` or `AWS::Resource`.
 #' 
-#' -   `Name` specifies the name of the object. This is used only if the
-#'     value of the `Type` field is `Service`, `RemoteService`, or
-#'     `AWS::Service`.
+#' -   `Name` specifies the name of the object. This is used only if the value of the `Type` field is `Service`, `RemoteService`, or `AWS::Service`.
 #' 
-#' -   `Identifier` identifies the resource objects of this resource. This
-#'     is used only if the value of the `Type` field is `Resource` or
-#'     `AWS::Resource`.
+#' -   `Identifier` identifies the resource objects of this resource. This is used only if the value of the `Type` field is `Resource` or `AWS::Resource`.
 #' 
-#' -   `Environment` specifies the location where this object is hosted, or
-#'     what it belongs to.
-#' @param MaxResults The maximum number of results to return in one operation. If you omit
-#' this parameter, the default of 50 is used.
-#' @param NextToken Include this value, if it was returned by the previous operation, to get
-#' the next set of service dependents.
+#' -   `Environment` specifies the location where this object is hosted, or what it belongs to.
+#' @param MaxResults The maximum number of results to return in one operation. If you omit this parameter, the default of 50 is used.
+#' @param NextToken Include this value, if it was returned by the previous operation, to get the next set of service dependents.
 #'
 #' @keywords internal
 #'
@@ -354,6 +515,39 @@ cloudwatchapplicationsignals_list_service_dependents <- function(StartTime, EndT
 }
 .cloudwatchapplicationsignals$operations$list_service_dependents <- cloudwatchapplicationsignals_list_service_dependents
 
+#' Retrieves all exclusion windows configured for a specific SLO
+#'
+#' @description
+#' Retrieves all exclusion windows configured for a specific SLO.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_service_level_objective_exclusion_windows/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_service_level_objective_exclusion_windows/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the SLO to list exclusion windows for.
+#' @param MaxResults The maximum number of results to return in one operation. If you omit this parameter, the default of 50 is used.
+#' @param NextToken Include this value, if it was returned by the previous operation, to get the next set of service level objectives.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_lis_ser_lev_obj_exc_win
+cloudwatchapplicationsignals_list_service_level_objective_exclusion_windows <- function(Id, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListServiceLevelObjectiveExclusionWindows",
+    http_method = "GET",
+    http_path = "/slo/{Id}/exclusion-windows",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ExclusionWindows"),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$list_service_level_objective_exclusion_windows_input(Id = Id, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .cloudwatchapplicationsignals$list_service_level_objective_exclusion_windows_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$list_service_level_objective_exclusion_windows <- cloudwatchapplicationsignals_list_service_level_objective_exclusion_windows
+
 #' Returns a list of SLOs created in this account
 #'
 #' @description
@@ -361,37 +555,46 @@ cloudwatchapplicationsignals_list_service_dependents <- function(StartTime, EndT
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_service_level_objectives/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_service_level_objectives/) for full documentation.
 #'
-#' @param KeyAttributes You can use this optional field to specify which services you want to
-#' retrieve SLO information for.
+#' @param KeyAttributes You can use this optional field to specify which services you want to retrieve SLO information for.
 #' 
 #' This is a string-to-string map. It can include the following fields.
 #' 
 #' -   `Type` designates the type of object this is.
 #' 
-#' -   `ResourceType` specifies the type of the resource. This field is
-#'     used only when the value of the `Type` field is `Resource` or
-#'     `AWS::Resource`.
+#' -   `ResourceType` specifies the type of the resource. This field is used only when the value of the `Type` field is `Resource` or `AWS::Resource`.
 #' 
-#' -   `Name` specifies the name of the object. This is used only if the
-#'     value of the `Type` field is `Service`, `RemoteService`, or
-#'     `AWS::Service`.
+#' -   `Name` specifies the name of the object. This is used only if the value of the `Type` field is `Service`, `RemoteService`, or `AWS::Service`.
 #' 
-#' -   `Identifier` identifies the resource objects of this resource. This
-#'     is used only if the value of the `Type` field is `Resource` or
-#'     `AWS::Resource`.
+#' -   `Identifier` identifies the resource objects of this resource. This is used only if the value of the `Type` field is `Resource` or `AWS::Resource`.
 #' 
-#' -   `Environment` specifies the location where this object is hosted, or
-#'     what it belongs to.
+#' -   `Environment` specifies the location where this object is hosted, or what it belongs to.
 #' @param OperationName The name of the operation that this SLO is associated with.
-#' @param MaxResults The maximum number of results to return in one operation. If you omit
-#' this parameter, the default of 50 is used.
-#' @param NextToken Include this value, if it was returned by the previous operation, to get
-#' the next set of service level objectives.
+#' @param DependencyConfig Identifies the dependency using the `DependencyKeyAttributes` and `DependencyOperationName`.
+#' @param MaxResults The maximum number of results to return in one operation. If you omit this parameter, the default of 50 is used.
+#' @param NextToken Include this value, if it was returned by the previous operation, to get the next set of service level objectives.
+#' @param MetricSourceTypes Use this optional field to only include SLOs with the specified metric source types in the output. Supported types are:
+#' 
+#' -   Service operation
+#' 
+#' -   Service dependency
+#' 
+#' -   Service
+#' 
+#' -   CloudWatch metric
+#' 
+#' -   AppMonitor
+#' 
+#' -   Canary
+#' @param IncludeLinkedAccounts If you are using this operation in a monitoring account, specify `true` to include SLO from source accounts in the returned data.
+#' 
+#' When you are monitoring an account, you can use Amazon Web Services account ID in `KeyAttribute` filter for service source account and `SloOwnerawsaccountID` for SLO source account with `IncludeLinkedAccounts` to filter the returned data to only a single source account.
+#' @param SloOwnerAwsAccountId SLO's Amazon Web Services account ID.
+#' @param MetricSource Identifies the metric source to filter SLOs by.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchapplicationsignals_list_service_level_objectives
-cloudwatchapplicationsignals_list_service_level_objectives <- function(KeyAttributes = NULL, OperationName = NULL, MaxResults = NULL, NextToken = NULL) {
+cloudwatchapplicationsignals_list_service_level_objectives <- function(KeyAttributes = NULL, OperationName = NULL, DependencyConfig = NULL, MaxResults = NULL, NextToken = NULL, MetricSourceTypes = NULL, IncludeLinkedAccounts = NULL, SloOwnerAwsAccountId = NULL, MetricSource = NULL) {
   op <- new_operation(
     name = "ListServiceLevelObjectives",
     http_method = "POST",
@@ -400,7 +603,7 @@ cloudwatchapplicationsignals_list_service_level_objectives <- function(KeyAttrib
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SloSummaries"),
     stream_api = FALSE
   )
-  input <- .cloudwatchapplicationsignals$list_service_level_objectives_input(KeyAttributes = KeyAttributes, OperationName = OperationName, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .cloudwatchapplicationsignals$list_service_level_objectives_input(KeyAttributes = KeyAttributes, OperationName = OperationName, DependencyConfig = DependencyConfig, MaxResults = MaxResults, NextToken = NextToken, MetricSourceTypes = MetricSourceTypes, IncludeLinkedAccounts = IncludeLinkedAccounts, SloOwnerAwsAccountId = SloOwnerAwsAccountId, MetricSource = MetricSource)
   output <- .cloudwatchapplicationsignals$list_service_level_objectives_output()
   config <- get_config()
   svc <- .cloudwatchapplicationsignals$service(config, op)
@@ -418,42 +621,27 @@ cloudwatchapplicationsignals_list_service_level_objectives <- function(KeyAttrib
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_service_operations/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_service_operations/) for full documentation.
 #'
-#' @param StartTime &#91;required&#93; The start of the time period to retrieve information about. When used in
-#' a raw HTTP Query API, it is formatted as be epoch time in seconds. For
-#' example: `1698778057`
+#' @param StartTime &#91;required&#93; The start of the time period to retrieve information about. When used in a raw HTTP Query API, it is formatted as be epoch time in seconds. For example: `1698778057`
 #' 
 #' Your requested start time will be rounded to the nearest hour.
-#' @param EndTime &#91;required&#93; The end of the time period to retrieve information about. When used in a
-#' raw HTTP Query API, it is formatted as be epoch time in seconds. For
-#' example: `1698778057`
+#' @param EndTime &#91;required&#93; The end of the time period to retrieve information about. When used in a raw HTTP Query API, it is formatted as be epoch time in seconds. For example: `1698778057`
 #' 
 #' Your requested end time will be rounded to the nearest hour.
-#' @param KeyAttributes &#91;required&#93; Use this field to specify which service you want to retrieve information
-#' for. You must specify at least the `Type`, `Name`, and `Environment`
-#' attributes.
+#' @param KeyAttributes &#91;required&#93; Use this field to specify which service you want to retrieve information for. You must specify at least the `Type`, `Name`, and `Environment` attributes.
 #' 
 #' This is a string-to-string map. It can include the following fields.
 #' 
 #' -   `Type` designates the type of object this is.
 #' 
-#' -   `ResourceType` specifies the type of the resource. This field is
-#'     used only when the value of the `Type` field is `Resource` or
-#'     `AWS::Resource`.
+#' -   `ResourceType` specifies the type of the resource. This field is used only when the value of the `Type` field is `Resource` or `AWS::Resource`.
 #' 
-#' -   `Name` specifies the name of the object. This is used only if the
-#'     value of the `Type` field is `Service`, `RemoteService`, or
-#'     `AWS::Service`.
+#' -   `Name` specifies the name of the object. This is used only if the value of the `Type` field is `Service`, `RemoteService`, or `AWS::Service`.
 #' 
-#' -   `Identifier` identifies the resource objects of this resource. This
-#'     is used only if the value of the `Type` field is `Resource` or
-#'     `AWS::Resource`.
+#' -   `Identifier` identifies the resource objects of this resource. This is used only if the value of the `Type` field is `Resource` or `AWS::Resource`.
 #' 
-#' -   `Environment` specifies the location where this object is hosted, or
-#'     what it belongs to.
-#' @param MaxResults The maximum number of results to return in one operation. If you omit
-#' this parameter, the default of 50 is used.
-#' @param NextToken Include this value, if it was returned by the previous operation, to get
-#' the next set of service operations.
+#' -   `Environment` specifies the location where this object is hosted, or what it belongs to.
+#' @param MaxResults The maximum number of results to return in one operation. If you omit this parameter, the default of 50 is used.
+#' @param NextToken Include this value, if it was returned by the previous operation, to get the next set of service operations.
 #'
 #' @keywords internal
 #'
@@ -477,6 +665,44 @@ cloudwatchapplicationsignals_list_service_operations <- function(StartTime, EndT
 }
 .cloudwatchapplicationsignals$operations$list_service_operations <- cloudwatchapplicationsignals_list_service_operations
 
+#' Returns information about the last deployment and other change states of
+#' services
+#'
+#' @description
+#' Returns information about the last deployment and other change states of services. This API provides visibility into recent changes that may have affected service performance, helping with troubleshooting and change correlation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_service_states/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_service_states/) for full documentation.
+#'
+#' @param StartTime &#91;required&#93; The start of the time period to retrieve service state information for. When used in a raw HTTP Query API, it is formatted as epoch time in seconds. For example, `1698778057`.
+#' @param EndTime &#91;required&#93; The end of the time period to retrieve service state information for. When used in a raw HTTP Query API, it is formatted as epoch time in seconds. For example, `1698778057`.
+#' @param MaxResults The maximum number of service states to return in one operation. If you omit this parameter, the default of 20 is used.
+#' @param NextToken Include this value, if it was returned by the previous operation, to get the next set of service states.
+#' @param IncludeLinkedAccounts If you are using this operation in a monitoring account, specify `true` to include service states from source accounts in the returned data.
+#' @param AwsAccountId The Amazon Web Services account ID to filter service states by. Use this to limit results to services from a specific account.
+#' @param AttributeFilters A list of attribute filters to narrow down the services. You can filter by platform, environment, or other service attributes.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_list_service_states
+cloudwatchapplicationsignals_list_service_states <- function(StartTime, EndTime, MaxResults = NULL, NextToken = NULL, IncludeLinkedAccounts = NULL, AwsAccountId = NULL, AttributeFilters = NULL) {
+  op <- new_operation(
+    name = "ListServiceStates",
+    http_method = "POST",
+    http_path = "/service/states",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ServiceStates"),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$list_service_states_input(StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, IncludeLinkedAccounts = IncludeLinkedAccounts, AwsAccountId = AwsAccountId, AttributeFilters = AttributeFilters)
+  output <- .cloudwatchapplicationsignals$list_service_states_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$list_service_states <- cloudwatchapplicationsignals_list_service_states
+
 #' Returns a list of services that have been discovered by Application
 #' Signals
 #'
@@ -485,25 +711,21 @@ cloudwatchapplicationsignals_list_service_operations <- function(StartTime, EndT
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_services/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_services/) for full documentation.
 #'
-#' @param StartTime &#91;required&#93; The start of the time period to retrieve information about. When used in
-#' a raw HTTP Query API, it is formatted as be epoch time in seconds. For
-#' example: `1698778057`
+#' @param StartTime &#91;required&#93; The start of the time period to retrieve information about. When used in a raw HTTP Query API, it is formatted as be epoch time in seconds. For example: `1698778057`
 #' 
 #' Your requested start time will be rounded to the nearest hour.
-#' @param EndTime &#91;required&#93; The end of the time period to retrieve information about. When used in a
-#' raw HTTP Query API, it is formatted as be epoch time in seconds. For
-#' example: `1698778057`
+#' @param EndTime &#91;required&#93; The end of the time period to retrieve information about. When used in a raw HTTP Query API, it is formatted as be epoch time in seconds. For example: `1698778057`
 #' 
 #' Your requested start time will be rounded to the nearest hour.
-#' @param MaxResults The maximum number of results to return in one operation. If you omit
-#' this parameter, the default of 50 is used.
-#' @param NextToken Include this value, if it was returned by the previous operation, to get
-#' the next set of services.
+#' @param MaxResults The maximum number of results to return in one operation. If you omit this parameter, the default of 50 is used.
+#' @param NextToken Include this value, if it was returned by the previous operation, to get the next set of services.
+#' @param IncludeLinkedAccounts If you are using this operation in a monitoring account, specify `true` to include services from source accounts in the returned data.
+#' @param AwsAccountId Amazon Web Services Account ID.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchapplicationsignals_list_services
-cloudwatchapplicationsignals_list_services <- function(StartTime, EndTime, MaxResults = NULL, NextToken = NULL) {
+cloudwatchapplicationsignals_list_services <- function(StartTime, EndTime, MaxResults = NULL, NextToken = NULL, IncludeLinkedAccounts = NULL, AwsAccountId = NULL) {
   op <- new_operation(
     name = "ListServices",
     http_method = "GET",
@@ -512,7 +734,7 @@ cloudwatchapplicationsignals_list_services <- function(StartTime, EndTime, MaxRe
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ServiceSummaries"),
     stream_api = FALSE
   )
-  input <- .cloudwatchapplicationsignals$list_services_input(StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .cloudwatchapplicationsignals$list_services_input(StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, IncludeLinkedAccounts = IncludeLinkedAccounts, AwsAccountId = AwsAccountId)
   output <- .cloudwatchapplicationsignals$list_services_output()
   config <- get_config()
   svc <- .cloudwatchapplicationsignals$service(config, op)
@@ -529,16 +751,11 @@ cloudwatchapplicationsignals_list_services <- function(StartTime, EndTime, MaxRe
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_tags_for_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudWatch resource that you want
-#' to view tags for.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudWatch resource that you want to view tags for.
 #' 
-#' The ARN format of an Application Signals SLO is
-#' `arn:aws:cloudwatch:Region:account-id:slo:slo-name `
+#' The ARN format of an Application Signals SLO is `arn:aws:cloudwatch:Region:account-id:slo:slo-name `
 #' 
-#' For more information about ARN format, see [Resource Types Defined by
-#' Amazon
-#' CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies)
-#' in the *Amazon Web Services General Reference*.
+#' For more information about ARN format, see [Resource Types Defined by Amazon CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies) in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
 #'
@@ -561,6 +778,37 @@ cloudwatchapplicationsignals_list_tags_for_resource <- function(ResourceArn) {
   return(response)
 }
 .cloudwatchapplicationsignals$operations$list_tags_for_resource <- cloudwatchapplicationsignals_list_tags_for_resource
+
+#' Creates or updates the grouping configuration for this account
+#'
+#' @description
+#' Creates or updates the grouping configuration for this account. This operation allows you to define custom grouping attributes that determine how services are logically grouped based on telemetry attributes, Amazon Web Services tags, or predefined mappings. These grouping attributes can then be used to organize and filter services in the Application Signals console and APIs.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_put_grouping_configuration/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_put_grouping_configuration/) for full documentation.
+#'
+#' @param GroupingAttributeDefinitions &#91;required&#93; An array of grouping attribute definitions that specify how services should be grouped. Each definition includes a friendly name, source keys to derive the grouping value from, and an optional default value.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_put_grouping_configuration
+cloudwatchapplicationsignals_put_grouping_configuration <- function(GroupingAttributeDefinitions) {
+  op <- new_operation(
+    name = "PutGroupingConfiguration",
+    http_method = "PUT",
+    http_path = "/grouping-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$put_grouping_configuration_input(GroupingAttributeDefinitions = GroupingAttributeDefinitions)
+  output <- .cloudwatchapplicationsignals$put_grouping_configuration_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$put_grouping_configuration <- cloudwatchapplicationsignals_put_grouping_configuration
 
 #' Enables this Amazon Web Services account to be able to use CloudWatch
 #' Application Signals by creating the
@@ -603,16 +851,11 @@ cloudwatchapplicationsignals_start_discovery <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_tag_resource/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_tag_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudWatch resource that you want
-#' to set tags for.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudWatch resource that you want to set tags for.
 #' 
-#' The ARN format of an Application Signals SLO is
-#' `arn:aws:cloudwatch:Region:account-id:slo:slo-name `
+#' The ARN format of an Application Signals SLO is `arn:aws:cloudwatch:Region:account-id:slo:slo-name `
 #' 
-#' For more information about ARN format, see [Resource Types Defined by
-#' Amazon
-#' CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies)
-#' in the *Amazon Web Services General Reference*.
+#' For more information about ARN format, see [Resource Types Defined by Amazon CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies) in the *Amazon Web Services General Reference*.
 #' @param Tags &#91;required&#93; The list of key-value pairs to associate with the alarm.
 #'
 #' @keywords internal
@@ -644,16 +887,11 @@ cloudwatchapplicationsignals_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_untag_resource/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_untag_resource/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudWatch resource that you want
-#' to delete tags from.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudWatch resource that you want to delete tags from.
 #' 
-#' The ARN format of an Application Signals SLO is
-#' `arn:aws:cloudwatch:Region:account-id:slo:slo-name `
+#' The ARN format of an Application Signals SLO is `arn:aws:cloudwatch:Region:account-id:slo:slo-name `
 #' 
-#' For more information about ARN format, see [Resource Types Defined by
-#' Amazon
-#' CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies)
-#' in the *Amazon Web Services General Reference*.
+#' For more information about ARN format, see [Resource Types Defined by Amazon CloudWatch](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies) in the *Amazon Web Services General Reference*.
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
 #'
 #' @keywords internal
@@ -685,27 +923,20 @@ cloudwatchapplicationsignals_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_update_service_level_objective/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_update_service_level_objective/) for full documentation.
 #'
-#' @param Id &#91;required&#93; The Amazon Resource Name (ARN) or name of the service level objective
-#' that you want to update.
+#' @param Id &#91;required&#93; The Amazon Resource Name (ARN) or name of the service level objective that you want to update.
 #' @param Description An optional description for the SLO.
-#' @param SliConfig If this SLO is a period-based SLO, this structure defines the
-#' information about what performance metric this SLO will monitor.
-#' @param RequestBasedSliConfig If this SLO is a request-based SLO, this structure defines the
-#' information about what performance metric this SLO will monitor.
+#' @param SliConfig If this SLO is a period-based SLO, this structure defines the information about what performance metric this SLO will monitor.
+#' @param RequestBasedSliConfig If this SLO is a request-based SLO, this structure defines the information about what performance metric this SLO will monitor.
 #' 
-#' You can't specify both `SliConfig` and `RequestBasedSliConfig` in the
-#' same operation.
-#' @param Goal A structure that contains the attributes that determine the goal of the
-#' SLO. This includes the time period for evaluation and the attainment
-#' threshold.
-#' @param BurnRateConfigurations Use this array to create *burn rates* for this SLO. Each burn rate is a
-#' metric that indicates how fast the service is consuming the error
-#' budget, relative to the attainment goal of the SLO.
+#' You can't specify both `SliConfig` and `RequestBasedSliConfig` in the same operation.
+#' @param Goal A structure that contains the attributes that determine the goal of the SLO. This includes the time period for evaluation and the attainment threshold.
+#' @param BurnRateConfigurations Use this array to create *burn rates* for this SLO. Each burn rate is a metric that indicates how fast the service is consuming the error budget, relative to the attainment goal of the SLO.
+#' @param AutoInvestigationEnabled Indicates whether DevOps Agent will automatically investigate this SLO when it is breached
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchapplicationsignals_update_service_level_objective
-cloudwatchapplicationsignals_update_service_level_objective <- function(Id, Description = NULL, SliConfig = NULL, RequestBasedSliConfig = NULL, Goal = NULL, BurnRateConfigurations = NULL) {
+cloudwatchapplicationsignals_update_service_level_objective <- function(Id, Description = NULL, SliConfig = NULL, RequestBasedSliConfig = NULL, Goal = NULL, BurnRateConfigurations = NULL, AutoInvestigationEnabled = NULL) {
   op <- new_operation(
     name = "UpdateServiceLevelObjective",
     http_method = "PATCH",
@@ -714,7 +945,7 @@ cloudwatchapplicationsignals_update_service_level_objective <- function(Id, Desc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchapplicationsignals$update_service_level_objective_input(Id = Id, Description = Description, SliConfig = SliConfig, RequestBasedSliConfig = RequestBasedSliConfig, Goal = Goal, BurnRateConfigurations = BurnRateConfigurations)
+  input <- .cloudwatchapplicationsignals$update_service_level_objective_input(Id = Id, Description = Description, SliConfig = SliConfig, RequestBasedSliConfig = RequestBasedSliConfig, Goal = Goal, BurnRateConfigurations = BurnRateConfigurations, AutoInvestigationEnabled = AutoInvestigationEnabled)
   output <- .cloudwatchapplicationsignals$update_service_level_objective_output()
   config <- get_config()
   svc <- .cloudwatchapplicationsignals$service(config, op)

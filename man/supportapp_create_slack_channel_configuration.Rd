@@ -17,25 +17,17 @@ supportapp_create_slack_channel_configuration(
 )
 }
 \arguments{
-\item{channelId}{[required] The channel ID in Slack. This ID identifies a channel within a Slack
-workspace.}
+\item{channelId}{[required] The channel ID in Slack. This ID identifies a channel within a Slack workspace.}
 
-\item{channelName}{The name of the Slack channel that you configure for the Amazon Web
-Services Support App.}
+\item{channelName}{The name of the Slack channel that you configure for the Amazon Web Services Support App.}
 
-\item{channelRoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that you want to use to
-perform operations on Amazon Web Services. For more information, see
-\href{https://docs.aws.amazon.com/awssupport/latest/user/support-app-permissions.html}{Managing access to the Amazon Web Services Support App}
-in the \emph{Amazon Web Services Support User Guide}.}
+\item{channelRoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that you want to use to perform operations on Amazon Web Services. For more information, see \href{https://docs.aws.amazon.com/awssupport/latest/user/support-app-permissions.html}{Managing access to the Amazon Web Services Support App} in the \emph{Amazon Web Services Support User Guide}.}
 
-\item{notifyOnAddCorrespondenceToCase}{Whether you want to get notified when a support case has a new
-correspondence.}
+\item{notifyOnAddCorrespondenceToCase}{Whether you want to get notified when a support case has a new correspondence.}
 
-\item{notifyOnCaseSeverity}{[required] The case severity for a support case that you want to receive
-notifications.
+\item{notifyOnCaseSeverity}{[required] The case severity for a support case that you want to receive notifications.
 
-If you specify \code{high} or \code{all}, you must specify \code{true} for at least one
-of the following parameters:
+If you specify \code{high} or \code{all}, you must specify \code{true} for at least one of the following parameters:
 \itemize{
 \item \code{notifyOnAddCorrespondenceToCase}
 \item \code{notifyOnCreateOrReopenCase}
@@ -49,16 +41,13 @@ If you specify \code{none}, the following parameters must be null or \code{false
 \item \code{notifyOnResolveCase}
 }
 
-If you don't specify these parameters in your request, they default to
-\code{false}.}
+If you don't specify these parameters in your request, they default to \code{false}.}
 
-\item{notifyOnCreateOrReopenCase}{Whether you want to get notified when a support case is created or
-reopened.}
+\item{notifyOnCreateOrReopenCase}{Whether you want to get notified when a support case is created or reopened.}
 
 \item{notifyOnResolveCase}{Whether you want to get notified when a support case is resolved.}
 
-\item{teamId}{[required] The team ID in Slack. This ID uniquely identifies a Slack workspace,
-such as \code{T012ABCDEFG}.}
+\item{teamId}{[required] The team ID in Slack. This ID uniquely identifies a Slack workspace, such as \code{T012ABCDEFG}.}
 }
 \description{
 Creates a Slack channel configuration for your Amazon Web Services account.

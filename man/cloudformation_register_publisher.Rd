@@ -11,19 +11,13 @@ cloudformation_register_publisher(
 )
 }
 \arguments{
-\item{AcceptTermsAndConditions}{Whether you accept the \href{https://cloudformation-registry-documents.s3.amazonaws.com/Terms_and_Conditions_for_AWS_CloudFormation_Registry_Publishers.pdf}{Terms and Conditions}
-for publishing extensions in the CloudFormation registry. You must
-accept the terms and conditions in order to register to publish public
-extensions to the CloudFormation registry.
+\item{AcceptTermsAndConditions}{Whether you accept the \href{https://cloudformation-registry-documents.s3.amazonaws.com/Terms_and_Conditions_for_AWS_CloudFormation_Registry_Publishers.pdf}{Terms and Conditions} for publishing extensions in the CloudFormation registry. You must accept the terms and conditions in order to register to publish public extensions to the CloudFormation registry.
 
 The default is \code{false}.}
 
-\item{ConnectionArn}{If you are using a Bitbucket or GitHub account for identity
-verification, the Amazon Resource Name (ARN) for your connection to that
-account.
+\item{ConnectionArn}{If you are using a Bitbucket or GitHub account for identity verification, the Amazon Resource Name (ARN) for your connection to that account.
 
-For more information, see \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html#publish-extension-prereqs}{Prerequisite: Registering your account to publish CloudFormation extensions}
-in the \emph{CloudFormation Command Line Interface (CLI) User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html#publish-extension-prereqs}{Prerequisite: Registering your account to publish CloudFormation extensions} in the \emph{CloudFormation Command Line Interface (CLI) User Guide}.}
 }
 \description{
 Registers your account as a publisher of public extensions in the CloudFormation registry. Public extensions are available for use by all CloudFormation users. This publisher ID applies to your account in all Amazon Web Services Regions.

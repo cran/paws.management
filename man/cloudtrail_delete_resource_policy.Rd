@@ -8,17 +8,13 @@ store, dashboard, or channel}
 cloudtrail_delete_resource_policy(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the CloudTrail event data store,
-dashboard, or channel you're deleting the resource-based policy from.
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the CloudTrail event data store, dashboard, or channel you're deleting the resource-based policy from.
 
-Example event data store ARN format:
-\verb{arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE}
+Example event data store ARN format: \verb{arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE}
 
-Example dashboard ARN format:
-\code{arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash}
+Example dashboard ARN format: \code{arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash}
 
-Example channel ARN format:
-\code{arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890}}
+Example channel ARN format: \code{arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890}}
 }
 \description{
 Deletes the resource-based policy attached to the CloudTrail event data store, dashboard, or channel.

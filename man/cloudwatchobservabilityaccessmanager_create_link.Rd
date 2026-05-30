@@ -15,39 +15,30 @@ cloudwatchobservabilityaccessmanager_create_link(
 )
 }
 \arguments{
-\item{LabelTemplate}{[required] Specify a friendly human-readable name to use to identify this source
-account when you are viewing data from it in the monitoring account.
+\item{LabelTemplate}{[required] Specify a friendly human-readable name to use to identify this source account when you are viewing data from it in the monitoring account.
 
 You can use a custom label or use the following variables:
 \itemize{
 \item \verb{$AccountName} is the name of the account
 \item \verb{$AccountEmail} is the globally unique email address of the account
-\item \verb{$AccountEmailNoDomain} is the email address of the account without
-the domain name
-}}
+\item \verb{$AccountEmailNoDomain} is the email address of the account without the domain name
+}
 
-\item{LinkConfiguration}{Use this structure to optionally create filters that specify that only
-some metric namespaces or log groups are to be shared from the source
-account to the monitoring account.}
+In the Amazon Web Services GovCloud (US-East) and Amazon Web Services GovCloud (US-West) Regions, the only supported option is to use custom labels, and the \verb{$AccountName}, \verb{$AccountEmail}, and \verb{$AccountEmailNoDomain} variables all resolve as \emph{account-id} instead of the specified variable.}
 
-\item{ResourceTypes}{[required] An array of strings that define which types of data that the source
-account shares with the monitoring account.}
+\item{LinkConfiguration}{Use this structure to optionally create filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account.}
 
-\item{SinkIdentifier}{[required] The ARN of the sink to use to create this link. You can use
-\code{\link[=cloudwatchobservabilityaccessmanager_list_sinks]{list_sinks}} to find
-the ARNs of sinks.
+\item{ResourceTypes}{[required] An array of strings that define which types of data that the source account shares with the monitoring account.}
 
-For more information about sinks, see
-\code{\link[=cloudwatchobservabilityaccessmanager_create_sink]{create_sink}}.}
+\item{SinkIdentifier}{[required] The ARN of the sink to use to create this link. You can use \code{\link[=cloudwatchobservabilityaccessmanager_list_sinks]{list_sinks}} to find the ARNs of sinks.
+
+For more information about sinks, see \code{\link[=cloudwatchobservabilityaccessmanager_create_sink]{create_sink}}.}
 
 \item{Tags}{Assigns one or more tags (key-value pairs) to the link.
 
-Tags can help you organize and categorize your resources. You can also
-use them to scope user permissions by granting a user permission to
-access or change only resources with certain tag values.
+Tags can help you organize and categorize your resources. You can also use them to scope user permissions by granting a user permission to access or change only resources with certain tag values.
 
-For more information about using tags to control access, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Controlling access to Amazon Web Services resources using tags}.}
+For more information about using tags to control access, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Controlling access to Amazon Web Services resources using tags}.}
 }
 \description{
 Creates a link between a source account and a sink that you have created in a monitoring account. After the link is created, data is sent from the source account to the monitoring account. When you create a link, you can optionally specify filters that specify which metric namespaces and which log groups are shared from the source account to the monitoring account.

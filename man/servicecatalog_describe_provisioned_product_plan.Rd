@@ -22,8 +22,7 @@ servicecatalog_describe_provisioned_product_plan(
 
 \item{PageSize}{The maximum number of items to return with this call.}
 
-\item{PageToken}{The page token for the next set of results. To retrieve the first set of
-results, use null.}
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 }
 \description{
 Gets information about the resource changes for the specified plan.

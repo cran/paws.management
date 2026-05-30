@@ -9,27 +9,27 @@ cloudwatchapplicationsignals_list_services(
   StartTime,
   EndTime,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  IncludeLinkedAccounts = NULL,
+  AwsAccountId = NULL
 )
 }
 \arguments{
-\item{StartTime}{[required] The start of the time period to retrieve information about. When used in
-a raw HTTP Query API, it is formatted as be epoch time in seconds. For
-example: \code{1698778057}
+\item{StartTime}{[required] The start of the time period to retrieve information about. When used in a raw HTTP Query API, it is formatted as be epoch time in seconds. For example: \code{1698778057}
 
 Your requested start time will be rounded to the nearest hour.}
 
-\item{EndTime}{[required] The end of the time period to retrieve information about. When used in a
-raw HTTP Query API, it is formatted as be epoch time in seconds. For
-example: \code{1698778057}
+\item{EndTime}{[required] The end of the time period to retrieve information about. When used in a raw HTTP Query API, it is formatted as be epoch time in seconds. For example: \code{1698778057}
 
 Your requested start time will be rounded to the nearest hour.}
 
-\item{MaxResults}{The maximum number of results to return in one operation. If you omit
-this parameter, the default of 50 is used.}
+\item{MaxResults}{The maximum number of results to return in one operation. If you omit this parameter, the default of 50 is used.}
 
-\item{NextToken}{Include this value, if it was returned by the previous operation, to get
-the next set of services.}
+\item{NextToken}{Include this value, if it was returned by the previous operation, to get the next set of services.}
+
+\item{IncludeLinkedAccounts}{If you are using this operation in a monitoring account, specify \code{true} to include services from source accounts in the returned data.}
+
+\item{AwsAccountId}{Amazon Web Services Account ID.}
 }
 \description{
 Returns a list of services that have been discovered by Application Signals. A service represents a minimum logical and transactional unit that completes a business function. Services are discovered through Application Signals instrumentation.

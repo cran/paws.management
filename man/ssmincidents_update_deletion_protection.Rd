@@ -14,8 +14,7 @@ ssmincidents_update_deletion_protection(
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the replication set to update.}
 
-\item{clientToken}{A token that ensures that the operation is called only once with the
-specified details.}
+\item{clientToken}{A token that ensures that the operation is called only once with the specified details.}
 
 \item{deletionProtected}{[required] Specifies if deletion protection is turned on or off in your account.}
 }

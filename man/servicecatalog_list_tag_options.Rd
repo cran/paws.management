@@ -11,13 +11,11 @@ servicecatalog_list_tag_options(
 )
 }
 \arguments{
-\item{Filters}{The search filters. If no search filters are specified, the output
-includes all TagOptions.}
+\item{Filters}{The search filters. If no search filters are specified, the output includes all TagOptions.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 
-\item{PageToken}{The page token for the next set of results. To retrieve the first set of
-results, use null.}
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of results, use null.}
 }
 \description{
 Lists the specified TagOptions or all TagOptions.

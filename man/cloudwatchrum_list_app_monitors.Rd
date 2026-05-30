@@ -7,11 +7,9 @@
 cloudwatchrum_list_app_monitors(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
-\item{MaxResults}{The maximum number of results to return in one operation. The default is
-50. The maximum that you can specify is 100.}
+\item{MaxResults}{The maximum number of results to return in one operation. The default is 50. The maximum that you can specify is 100.}
 
-\item{NextToken}{Use the token returned by the previous operation to request the next
-page of results.}
+\item{NextToken}{Use the token returned by the previous operation to request the next page of results.}
 }
 \description{
 Returns a list of the Amazon CloudWatch RUM app monitors in the account.

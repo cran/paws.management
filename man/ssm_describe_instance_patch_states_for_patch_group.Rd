@@ -13,8 +13,7 @@ ssm_describe_instance_patch_states_for_patch_group(
 )
 }
 \arguments{
-\item{PatchGroup}{[required] The name of the patch group for which the patch state information should
-be retrieved.}
+\item{PatchGroup}{[required] The name of the patch group for which the patch state information should be retrieved.}
 
 \item{Filters}{Each entry in the array is a structure containing:
 \itemize{
@@ -23,8 +22,7 @@ be retrieved.}
 \item Type (string "Equal", "NotEqual", "LessThan", "GreaterThan")
 }}
 
-\item{NextToken}{The token for the next set of items to return. (You received this token
-from a previous call.)}
+\item{NextToken}{The token for the next set of items to return. (You received this token from a previous call.)}
 
 \item{MaxResults}{The maximum number of patches to return (per page).}
 }

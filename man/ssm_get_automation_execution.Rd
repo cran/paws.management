@@ -7,9 +7,7 @@
 ssm_get_automation_execution(AutomationExecutionId)
 }
 \arguments{
-\item{AutomationExecutionId}{[required] The unique identifier for an existing automation execution to examine.
-The execution ID is returned by StartAutomationExecution when the
-execution of an Automation runbook is initiated.}
+\item{AutomationExecutionId}{[required] The unique identifier for an existing automation execution to examine. The execution ID is returned by StartAutomationExecution when the execution of an Automation runbook is initiated.}
 }
 \description{
 Get detailed information about a particular Automation execution.

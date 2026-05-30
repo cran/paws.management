@@ -8,15 +8,11 @@ resource}
 pi_untag_resource(ServiceType, ResourceARN, TagKeys)
 }
 \arguments{
-\item{ServiceType}{[required] List the tags for the Amazon Web Services service for which Performance
-Insights returns metrics. Valid value is \code{RDS}.}
+\item{ServiceType}{[required] List the tags for the Amazon Web Services service for which Performance Insights returns metrics. Valid value is \code{RDS}.}
 
-\item{ResourceARN}{[required] The Amazon RDS Performance Insights resource that the tags are added to.
-This value is an Amazon Resource Name (ARN). For information about
-creating an ARN, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an RDS Amazon Resource Name (ARN)}.}
+\item{ResourceARN}{[required] The Amazon RDS Performance Insights resource that the tags are added to. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an RDS Amazon Resource Name (ARN)}.}
 
-\item{TagKeys}{[required] The metadata assigned to an Amazon RDS Performance Insights resource
-consisting of a key-value pair.}
+\item{TagKeys}{[required] The metadata assigned to an Amazon RDS Performance Insights resource consisting of a key-value pair.}
 }
 \description{
 Deletes the metadata tags from the Amazon RDS Performance Insights resource.
