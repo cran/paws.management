@@ -1,3 +1,3 @@
-svc <- paws::support()
+svc <- paws.management::support()
 
 

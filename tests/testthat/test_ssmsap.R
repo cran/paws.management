@@ -1,33 +1,41 @@
-svc <- paws::ssmsap()
+svc <- paws.management::ssmsap()
 
 test_that("list_applications", {
+  skip_on_cran()
   expect_error(svc$list_applications(), NA)
 })
 
 test_that("list_applications", {
+  skip_on_cran()
   expect_error(svc$list_applications(MaxResults = 20), NA)
 })
 
 test_that("list_components", {
+  skip_on_cran()
   expect_error(svc$list_components(), NA)
 })
 
 test_that("list_components", {
+  skip_on_cran()
   expect_error(svc$list_components(MaxResults = 20), NA)
 })
 
 test_that("list_configuration_check_definitions", {
+  skip_on_cran()
   expect_error(svc$list_configuration_check_definitions(), NA)
 })
 
 test_that("list_configuration_check_definitions", {
+  skip_on_cran()
   expect_error(svc$list_configuration_check_definitions(MaxResults = 20), NA)
 })
 
 test_that("list_databases", {
+  skip_on_cran()
   expect_error(svc$list_databases(), NA)
 })
 
 test_that("list_databases", {
+  skip_on_cran()
   expect_error(svc$list_databases(MaxResults = 20), NA)
 })

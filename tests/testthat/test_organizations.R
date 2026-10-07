@@ -1,3 +1,3 @@
-svc <- paws::organizations()
+svc <- paws.management::organizations()
 
 

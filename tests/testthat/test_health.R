@@ -1,3 +1,3 @@
-svc <- paws::health()
+svc <- paws.management::health()
 
 

@@ -1,6 +1,6 @@
 Package: paws.management
 Title: 'Amazon Web Services' Management & Governance Services
-Version: 0.10.0
+Version: 0.11.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -16,10 +16,11 @@ URL: https://github.com/paws-r/paws,
         https://paws-r.r-universe.dev/paws.management,
         https://www.paws-r-sdk.com
 BugReports: https://github.com/paws-r/paws/issues
-Imports: paws.common (>= 0.8.0)
+Depends: R (>= 3.5.0)
+Imports: paws.common (>= 0.9.0)
 Suggests: testthat
 Encoding: UTF-8
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0
 Collate: 'applicationautoscaling_service.R'
         'applicationautoscaling_interfaces.R'
         'applicationautoscaling_operations.R'
@@ -93,11 +94,11 @@ Collate: 'applicationautoscaling_service.R'
         'synthetics_service.R' 'synthetics_interfaces.R'
         'synthetics_operations.R'
 NeedsCompilation: no
-Packaged: 2026-05-29 17:22:32 UTC; dyfan
+Packaged: 2026-10-07 17:47:01 UTC; Dyfan.Jones
 Author: David Kretch [aut],
   Adam Banker [aut],
   Dyfan Jones [cre],
   Amazon.com, Inc. [cph]
 Maintainer: Dyfan Jones <dyfan.r.jones@gmail.com>
 Repository: CRAN
-Date/Publication: 2026-05-30 22:40:02 UTC
+Date/Publication: 2026-10-07 19:50:28 UTC

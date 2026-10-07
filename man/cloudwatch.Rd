@@ -29,6 +29,7 @@ cloudwatch(
 \item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}: Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
 \item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+\item{\strong{use_dual_stack}: Set this to \code{true} to use the dualstack (IPv4 and IPv6) endpoint for a service, where available, falling back to the regular endpoint when it isn't. Defaults to the \code{AWS_USE_DUALSTACK_ENDPOINT} environment variable when unset.}
 }}
 
 \item{credentials}{Optional credentials shorthand for the config parameter
@@ -53,11 +54,39 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon CloudWatch monitors your Amazon Web Services (Amazon Web Services) resources and the applications you run on Amazon Web Services in real time. You can use CloudWatch to collect and track metrics, which are the variables you want to measure for your resources and applications.
+Amazon CloudWatch enables you to publish, monitor, and manage various metrics, as well as configure alarm actions based on data from metrics. This guide provides detailed information about CloudWatch actions, data types, parameters, and errors. For more information about CloudWatch features, see \href{https://aws.amazon.com/cloudwatch/}{Amazon CloudWatch} and the \emph{Amazon CloudWatch User Guide}.
 
-CloudWatch alarms send notifications or automatically change the resources you are monitoring based on rules that you define. For example, you can monitor the CPU usage and disk reads and writes of your Amazon EC2 instances. Then, use this data to determine whether you should launch additional instances to handle increased load. You can also use this data to stop under-used instances to save money.
+For information about the metrics that other Amazon Web Services products send to CloudWatch, see the \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/aws-services-cloudwatch-metrics.html}{Amazon CloudWatch Metrics and Dimensions Reference} in the \emph{Amazon CloudWatch User Guide}.
 
-In addition to monitoring the built-in metrics that come with Amazon Web Services, you can monitor your own custom metrics. With CloudWatch, you gain system-wide visibility into resource utilization, application performance, and operational health.
+Use the following links to get started using the CloudWatch Query API:
+
+: An alphabetical list of all CloudWatch actions.
+
+: An alphabetical list of all CloudWatch data types.
+
+CommonParameters: Parameters that all Query actions can use.
+
+CommonErrors: Client and server errors that all actions can return.
+
+\href{https://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region}{Regions and Endpoints}: Supported regions and endpoints for all Amazon Web Services products.
+
+Alternatively, you can use one of the \href{https://builder.aws.com/build/tools#sdk}{Amazon Web Services SDKs} to access CloudWatch using an API tailored to your programming language or platform.
+
+Developers in the Amazon Web Services developer community also provide their own libraries, which you can find at the following Amazon Web Services developer centers:
+
+\href{https://builder.aws.com/build/tools}{Java Developer Center}
+
+\href{https://builder.aws.com/build/tools}{JavaScript Developer Center}
+
+\href{https://aws.amazon.com/products/frontend-web-mobile/}{Amazon Web Services Mobile Services}
+
+\href{https://builder.aws.com/build/tools}{PHP Developer Center}
+
+\href{https://builder.aws.com/build/tools}{Python Developer Center}
+
+\href{https://builder.aws.com/build/tools}{Ruby Developer Center}
+
+\href{https://builder.aws.com/build/tools}{Windows and .NET Developer Center}
 }
 \section{Service syntax}{
 
@@ -78,7 +107,8 @@ In addition to monitoring the built-in metrics that come with Amazon Web Service
     close_connection = "logical",
     timeout = "numeric",
     s3_force_path_style = "logical",
-    sts_regional_endpoint = "string"
+    sts_regional_endpoint = "string",
+    use_dual_stack = "logical"
   ),
   credentials = list(
     creds = list(
@@ -98,12 +128,15 @@ In addition to monitoring the built-in metrics that come with Amazon Web Service
 \section{Operations}{
 
 \tabular{ll}{
+\link[=cloudwatch_associate_dataset_kms_key]{associate_dataset_kms_key} \tab Associates an Amazon Web Services Key Management Service (Amazon Web Services KMS) customer managed key with the specified dataset\cr
+\link[=cloudwatch_create_resource_metrics_configuration]{create_resource_metrics_configuration} \tab Creates a resource metrics configuration for an Amazon Web Services resource\cr
 \link[=cloudwatch_delete_alarm_mute_rule]{delete_alarm_mute_rule} \tab Deletes a specific alarm mute rule\cr
 \link[=cloudwatch_delete_alarms]{delete_alarms} \tab Deletes the specified alarms\cr
 \link[=cloudwatch_delete_anomaly_detector]{delete_anomaly_detector} \tab Deletes the specified anomaly detection model from your account\cr
 \link[=cloudwatch_delete_dashboards]{delete_dashboards} \tab Deletes all dashboards that you specify\cr
 \link[=cloudwatch_delete_insight_rules]{delete_insight_rules} \tab Permanently deletes the specified Contributor Insights rules\cr
 \link[=cloudwatch_delete_metric_stream]{delete_metric_stream} \tab Permanently deletes the metric stream that you specify\cr
+\link[=cloudwatch_delete_resource_metrics_configuration]{delete_resource_metrics_configuration} \tab Deletes the resource metrics configuration for an Amazon Web Services resource\cr
 \link[=cloudwatch_describe_alarm_contributors]{describe_alarm_contributors} \tab Returns the information of the current alarm contributors that are in ALARM state\cr
 \link[=cloudwatch_describe_alarm_history]{describe_alarm_history} \tab Retrieves the history for the specified alarm\cr
 \link[=cloudwatch_describe_alarms]{describe_alarms} \tab Retrieves the specified alarms\cr
@@ -112,16 +145,19 @@ In addition to monitoring the built-in metrics that come with Amazon Web Service
 \link[=cloudwatch_describe_insight_rules]{describe_insight_rules} \tab Returns a list of all the Contributor Insights rules in your account\cr
 \link[=cloudwatch_disable_alarm_actions]{disable_alarm_actions} \tab Disables the actions for the specified alarms\cr
 \link[=cloudwatch_disable_insight_rules]{disable_insight_rules} \tab Disables the specified Contributor Insights rules\cr
+\link[=cloudwatch_disassociate_dataset_kms_key]{disassociate_dataset_kms_key} \tab Removes the customer managed Amazon Web Services Key Management Service (Amazon Web Services KMS) key association from the specified dataset\cr
 \link[=cloudwatch_enable_alarm_actions]{enable_alarm_actions} \tab Enables the actions for the specified alarms\cr
 \link[=cloudwatch_enable_insight_rules]{enable_insight_rules} \tab Enables the specified Contributor Insights rules\cr
 \link[=cloudwatch_get_alarm_mute_rule]{get_alarm_mute_rule} \tab Retrieves details for a specific alarm mute rule\cr
 \link[=cloudwatch_get_dashboard]{get_dashboard} \tab Displays the details of the dashboard that you specify\cr
+\link[=cloudwatch_get_dataset]{get_dataset} \tab Returns information about the specified dataset\cr
 \link[=cloudwatch_get_insight_rule_report]{get_insight_rule_report} \tab This operation returns the time series data collected by a Contributor Insights rule\cr
 \link[=cloudwatch_get_metric_data]{get_metric_data} \tab You can use the GetMetricData API to retrieve CloudWatch metric values\cr
 \link[=cloudwatch_get_metric_statistics]{get_metric_statistics} \tab Gets statistics for the specified metric\cr
 \link[=cloudwatch_get_metric_stream]{get_metric_stream} \tab Returns information about the metric stream that you specify\cr
 \link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image} \tab You can use the GetMetricWidgetImage API to retrieve a snapshot graph of one or more Amazon CloudWatch metrics as a bitmap image\cr
 \link[=cloudwatch_get_o_tel_enrichment]{get_o_tel_enrichment} \tab Returns the current status of vended metric enrichment for the account, including whether CloudWatch vended metrics are enriched with resource ARN and resource tag labels and queryable using PromQL\cr
+\link[=cloudwatch_get_resource_metrics_configuration]{get_resource_metrics_configuration} \tab Retrieves the current resource metrics configuration for an Amazon Web Services resource\cr
 \link[=cloudwatch_list_alarm_mute_rules]{list_alarm_mute_rules} \tab Lists alarm mute rules in your Amazon Web Services account and region\cr
 \link[=cloudwatch_list_dashboards]{list_dashboards} \tab Returns a list of the dashboards for your account\cr
 \link[=cloudwatch_list_managed_insight_rules]{list_managed_insight_rules} \tab Returns a list that contains the number of managed Contributor Insights rules in your account\cr
@@ -133,6 +169,7 @@ In addition to monitoring the built-in metrics that come with Amazon Web Service
 \link[=cloudwatch_put_composite_alarm]{put_composite_alarm} \tab Creates or updates a composite alarm\cr
 \link[=cloudwatch_put_dashboard]{put_dashboard} \tab Creates a dashboard if it does not already exist, or updates an existing dashboard\cr
 \link[=cloudwatch_put_insight_rule]{put_insight_rule} \tab Creates a Contributor Insights rule\cr
+\link[=cloudwatch_put_log_alarm]{put_log_alarm} \tab Creates or updates a log alarm\cr
 \link[=cloudwatch_put_managed_insight_rules]{put_managed_insight_rules} \tab Creates a managed Contributor Insights rule for a specified Amazon Web Services resource\cr
 \link[=cloudwatch_put_metric_alarm]{put_metric_alarm} \tab Creates or updates an alarm and associates it with the specified metric, metric math expression, anomaly detection model, Metrics Insights query, or PromQL query\cr
 \link[=cloudwatch_put_metric_data]{put_metric_data} \tab Publishes metric data to Amazon CloudWatch\cr
@@ -143,14 +180,16 @@ In addition to monitoring the built-in metrics that come with Amazon Web Service
 \link[=cloudwatch_stop_metric_streams]{stop_metric_streams} \tab Stops the streaming of metrics for one or more of your metric streams\cr
 \link[=cloudwatch_stop_o_tel_enrichment]{stop_o_tel_enrichment} \tab Disables enrichment and PromQL access for CloudWatch vended metrics for supported Amazon Web Services resources in the account\cr
 \link[=cloudwatch_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified CloudWatch resource\cr
-\link[=cloudwatch_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource
+\link[=cloudwatch_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
+\link[=cloudwatch_update_o_tel_enrichment]{update_o_tel_enrichment} \tab Replaces the filters that determine which CloudWatch vended metrics are enriched with resource ARN and resource tag labels for the account\cr
+\link[=cloudwatch_update_resource_metrics_configuration]{update_resource_metrics_configuration} \tab Updates the resource metrics configuration for an Amazon Web Services resource
 }
 }
 
 \examples{
 \dontrun{
 svc <- cloudwatch()
-svc$delete_alarm_mute_rule(
+svc$associate_dataset_kms_key(
   Foo = 123
 )
 }

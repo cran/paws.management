@@ -24,6 +24,7 @@ health(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 \item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}: Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
 \item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+\item{\strong{use_dual_stack}: Set this to \code{true} to use the dualstack (IPv4 and IPv6) endpoint for a service, where available, falling back to the regular endpoint when it isn't. Defaults to the \code{AWS_USE_DUALSTACK_ENDPOINT} environment variable when unset.}
 }}
 
 \item{credentials}{Optional credentials shorthand for the config parameter
@@ -87,7 +88,8 @@ When you use the Health API operations to return Health events, see the followin
     close_connection = "logical",
     timeout = "numeric",
     s3_force_path_style = "logical",
-    sts_regional_endpoint = "string"
+    sts_regional_endpoint = "string",
+    use_dual_stack = "logical"
   ),
   credentials = list(
     creds = list(
@@ -119,6 +121,7 @@ When you use the Health API operations to return Health events, see the followin
 \link[=health_describe_events_for_organization]{describe_events_for_organization} \tab Returns information about events across your organization in Organizations\cr
 \link[=health_describe_event_types]{describe_event_types} \tab Returns the event types that meet the specified filter criteria\cr
 \link[=health_describe_health_service_status_for_organization]{describe_health_service_status_for_organization} \tab This operation provides status information on enabling or disabling Health to work with your organization\cr
+\link[=health_describe_service_lifecycle]{describe_service_lifecycle} \tab Returns lifecycle information for Amazon Web Services services, including end-of-life dates, version recommendations, and lifecycle events\cr
 \link[=health_disable_health_service_access_for_organization]{disable_health_service_access_for_organization} \tab Disables Health from working with Organizations\cr
 \link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization} \tab Enables Health to work with Organizations
 }

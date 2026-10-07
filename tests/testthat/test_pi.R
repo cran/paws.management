@@ -1,3 +1,3 @@
-svc <- paws::pi()
+svc <- paws.management::pi()
 
 

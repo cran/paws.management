@@ -23,7 +23,8 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
     http_path = "/group/{groupIdentifier}/associate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$associate_resource_input(GroupIdentifier = GroupIdentifier, ResourceArn = ResourceArn)
   output <- .synthetics$associate_resource_output()
@@ -83,26 +84,29 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
 #' @param BrowserConfigs CloudWatch Synthetics now supports multibrowser canaries for `syn-nodejs-puppeteer-11.0` and `syn-nodejs-playwright-3.0` runtimes. This feature allows you to run your canaries on both Firefox and Chrome browsers. To create a multibrowser canary, you need to specify the BrowserConfigs with a list of browsers you want to use.
 #' 
 #' If not specified, `browserConfigs` defaults to Chrome.
+#' @param AddReplicaLocations A list of locations (Amazon Web Services Regions) to add as replicas for the canary. Each location specifies a Region and optional VPC configuration for the replica. You can add up to 50 replica locations.
 #' @param Tags A list of key-value pairs to associate with the canary. You can associate as many as 50 tags with a canary.
 #' 
 #' Tags can help you organize and categorize your resources. You can also use them to scope user permissions, by granting a user permission to access or change only the resources that have certain tag values.
 #' 
 #' To have the tags that you apply to this canary also be applied to the Lambda function that the canary uses, specify this parameter with the value `lambda-function`.
 #' @param ArtifactConfig A structure that contains the configuration for canary artifacts, including the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3.
+#' @param KmsKeyArn The Amazon Resource Name (ARN) of the customer-managed AWS Key Management Service (AWS KMS) key used to encrypt the canary's AWS Lambda function environment variables at rest. If you don't specify a value, the service uses an AWS-managed key.
 #'
 #' @keywords internal
 #'
 #' @rdname synthetics_create_canary
-synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRoleArn, Schedule, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, RuntimeVersion, VpcConfig = NULL, ResourcesToReplicateTags = NULL, ProvisionedResourceCleanup = NULL, BrowserConfigs = NULL, Tags = NULL, ArtifactConfig = NULL) {
+synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRoleArn, Schedule, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, RuntimeVersion, VpcConfig = NULL, ResourcesToReplicateTags = NULL, ProvisionedResourceCleanup = NULL, BrowserConfigs = NULL, AddReplicaLocations = NULL, Tags = NULL, ArtifactConfig = NULL, KmsKeyArn = NULL) {
   op <- new_operation(
     name = "CreateCanary",
     http_method = "POST",
     http_path = "/canary",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .synthetics$create_canary_input(Name = Name, Code = Code, ArtifactS3Location = ArtifactS3Location, ExecutionRoleArn = ExecutionRoleArn, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, RuntimeVersion = RuntimeVersion, VpcConfig = VpcConfig, ResourcesToReplicateTags = ResourcesToReplicateTags, ProvisionedResourceCleanup = ProvisionedResourceCleanup, BrowserConfigs = BrowserConfigs, Tags = Tags, ArtifactConfig = ArtifactConfig)
+  input <- .synthetics$create_canary_input(Name = Name, Code = Code, ArtifactS3Location = ArtifactS3Location, ExecutionRoleArn = ExecutionRoleArn, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, RuntimeVersion = RuntimeVersion, VpcConfig = VpcConfig, ResourcesToReplicateTags = ResourcesToReplicateTags, ProvisionedResourceCleanup = ProvisionedResourceCleanup, BrowserConfigs = BrowserConfigs, AddReplicaLocations = AddReplicaLocations, Tags = Tags, ArtifactConfig = ArtifactConfig, KmsKeyArn = KmsKeyArn)
   output <- .synthetics$create_canary_output()
   config <- get_config()
   svc <- .synthetics$service(config, op)
@@ -137,7 +141,8 @@ synthetics_create_group <- function(Name, Tags = NULL) {
     http_path = "/group",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$create_group_input(Name = Name, Tags = Tags)
   output <- .synthetics$create_group_output()
@@ -173,7 +178,8 @@ synthetics_delete_canary <- function(Name, DeleteLambda = NULL) {
     http_path = "/canary/{name}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$delete_canary_input(Name = Name, DeleteLambda = DeleteLambda)
   output <- .synthetics$delete_canary_output()
@@ -204,7 +210,8 @@ synthetics_delete_group <- function(GroupIdentifier) {
     http_path = "/group/{groupIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$delete_group_input(GroupIdentifier = GroupIdentifier)
   output <- .synthetics$delete_group_output()
@@ -242,7 +249,8 @@ synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL, Na
     http_path = "/canaries",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$describe_canaries_input(NextToken = NextToken, MaxResults = MaxResults, Names = Names)
   output <- .synthetics$describe_canaries_output()
@@ -281,7 +289,8 @@ synthetics_describe_canaries_last_run <- function(NextToken = NULL, MaxResults =
     http_path = "/canaries/last-run",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$describe_canaries_last_run_input(NextToken = NextToken, MaxResults = MaxResults, Names = Names, BrowserType = BrowserType)
   output <- .synthetics$describe_canaries_last_run_output()
@@ -313,7 +322,8 @@ synthetics_describe_runtime_versions <- function(NextToken = NULL, MaxResults = 
     http_path = "/runtime-versions",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$describe_runtime_versions_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .synthetics$describe_runtime_versions_output()
@@ -345,7 +355,8 @@ synthetics_disassociate_resource <- function(GroupIdentifier, ResourceArn) {
     http_path = "/group/{groupIdentifier}/disassociate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$disassociate_resource_input(GroupIdentifier = GroupIdentifier, ResourceArn = ResourceArn)
   output <- .synthetics$disassociate_resource_output()
@@ -377,7 +388,8 @@ synthetics_get_canary <- function(Name, DryRunId = NULL) {
     http_path = "/canary/{name}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$get_canary_input(Name = Name, DryRunId = DryRunId)
   output <- .synthetics$get_canary_output()
@@ -420,7 +432,8 @@ synthetics_get_canary_runs <- function(Name, NextToken = NULL, MaxResults = NULL
     http_path = "/canary/{name}/runs",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$get_canary_runs_input(Name = Name, NextToken = NextToken, MaxResults = MaxResults, DryRunId = DryRunId, RunType = RunType)
   output <- .synthetics$get_canary_runs_output()
@@ -451,7 +464,8 @@ synthetics_get_group <- function(GroupIdentifier) {
     http_path = "/group/{groupIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$get_group_input(GroupIdentifier = GroupIdentifier)
   output <- .synthetics$get_group_output()
@@ -485,7 +499,8 @@ synthetics_list_associated_groups <- function(NextToken = NULL, MaxResults = NUL
     http_path = "/resource/{resourceArn}/groups",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$list_associated_groups_input(NextToken = NextToken, MaxResults = MaxResults, ResourceArn = ResourceArn)
   output <- .synthetics$list_associated_groups_output()
@@ -519,7 +534,8 @@ synthetics_list_group_resources <- function(NextToken = NULL, MaxResults = NULL,
     http_path = "/group/{groupIdentifier}/resources",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$list_group_resources_input(NextToken = NextToken, MaxResults = MaxResults, GroupIdentifier = GroupIdentifier)
   output <- .synthetics$list_group_resources_output()
@@ -552,7 +568,8 @@ synthetics_list_groups <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/groups",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$list_groups_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .synthetics$list_groups_output()
@@ -587,7 +604,8 @@ synthetics_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .synthetics$list_tags_for_resource_output()
@@ -618,7 +636,8 @@ synthetics_start_canary <- function(Name) {
     http_path = "/canary/{name}/start",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$start_canary_input(Name = Name)
   output <- .synthetics$start_canary_output()
@@ -683,7 +702,8 @@ synthetics_start_canary_dry_run <- function(Name, Code = NULL, RuntimeVersion = 
     http_path = "/canary/{name}/dry-run/start",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$start_canary_dry_run_input(Name = Name, Code = Code, RuntimeVersion = RuntimeVersion, RunConfig = RunConfig, VpcConfig = VpcConfig, ExecutionRoleArn = ExecutionRoleArn, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, VisualReference = VisualReference, ArtifactS3Location = ArtifactS3Location, ArtifactConfig = ArtifactConfig, ProvisionedResourceCleanup = ProvisionedResourceCleanup, BrowserConfigs = BrowserConfigs, VisualReferences = VisualReferences)
   output <- .synthetics$start_canary_dry_run_output()
@@ -714,7 +734,8 @@ synthetics_stop_canary <- function(Name) {
     http_path = "/canary/{name}/stop",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$stop_canary_input(Name = Name)
   output <- .synthetics$stop_canary_output()
@@ -751,7 +772,8 @@ synthetics_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .synthetics$tag_resource_output()
@@ -787,7 +809,8 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .synthetics$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .synthetics$untag_resource_output()
@@ -860,20 +883,24 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param BrowserConfigs A structure that specifies the browser type to use for a canary run. CloudWatch Synthetics supports running canaries on both `CHROME` and `FIREFOX` browsers.
 #' 
 #' If not specified, `browserConfigs` defaults to Chrome.
+#' @param AddReplicaLocations A list of locations (Amazon Web Services Regions) to add as replicas for the canary. Each location specifies a Region and optional VPC configuration for the replica. You can add up to 50 replica locations.
+#' @param RemoveReplicaLocations A list of locations (Amazon Web Services Regions) to remove as replicas for the canary. You must specify at least one location to remove. All replicas can be removed in a single API call and you cannot remove the primary location.
+#' @param KmsKeyArn The Amazon Resource Name (ARN) of the customer-managed AWS Key Management Service (AWS KMS) key used to encrypt the canary's AWS Lambda function environment variables at rest. If you don't specify a value, the service uses an AWS-managed key. If you omit this parameter, the service retains the existing value. To revert to the AWS-managed key, set this parameter to an empty string.
 #'
 #' @keywords internal
 #'
 #' @rdname synthetics_update_canary
-synthetics_update_canary <- function(Name, Code = NULL, ExecutionRoleArn = NULL, RuntimeVersion = NULL, Schedule = NULL, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, VpcConfig = NULL, VisualReference = NULL, ArtifactS3Location = NULL, ArtifactConfig = NULL, ProvisionedResourceCleanup = NULL, DryRunId = NULL, VisualReferences = NULL, BrowserConfigs = NULL) {
+synthetics_update_canary <- function(Name, Code = NULL, ExecutionRoleArn = NULL, RuntimeVersion = NULL, Schedule = NULL, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, VpcConfig = NULL, VisualReference = NULL, ArtifactS3Location = NULL, ArtifactConfig = NULL, ProvisionedResourceCleanup = NULL, DryRunId = NULL, VisualReferences = NULL, BrowserConfigs = NULL, AddReplicaLocations = NULL, RemoveReplicaLocations = NULL, KmsKeyArn = NULL) {
   op <- new_operation(
     name = "UpdateCanary",
     http_method = "PATCH",
     http_path = "/canary/{name}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .synthetics$update_canary_input(Name = Name, Code = Code, ExecutionRoleArn = ExecutionRoleArn, RuntimeVersion = RuntimeVersion, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, VpcConfig = VpcConfig, VisualReference = VisualReference, ArtifactS3Location = ArtifactS3Location, ArtifactConfig = ArtifactConfig, ProvisionedResourceCleanup = ProvisionedResourceCleanup, DryRunId = DryRunId, VisualReferences = VisualReferences, BrowserConfigs = BrowserConfigs)
+  input <- .synthetics$update_canary_input(Name = Name, Code = Code, ExecutionRoleArn = ExecutionRoleArn, RuntimeVersion = RuntimeVersion, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, VpcConfig = VpcConfig, VisualReference = VisualReference, ArtifactS3Location = ArtifactS3Location, ArtifactConfig = ArtifactConfig, ProvisionedResourceCleanup = ProvisionedResourceCleanup, DryRunId = DryRunId, VisualReferences = VisualReferences, BrowserConfigs = BrowserConfigs, AddReplicaLocations = AddReplicaLocations, RemoveReplicaLocations = RemoveReplicaLocations, KmsKeyArn = KmsKeyArn)
   output <- .synthetics$update_canary_output()
   config <- get_config()
   svc <- .synthetics$service(config, op)

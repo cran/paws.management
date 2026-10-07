@@ -9,9 +9,9 @@ NULL
 #' 
 #' The *Amazon Web Services Support API Reference* is intended for programmers who need detailed information about the Amazon Web Services Support operations and data types. You can use the API to manage your support cases programmatically. The Amazon Web Services Support API uses HTTP methods that return results in JSON format.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API.
+#' -   You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the `SubscriptionRequiredException` error message appears. For information about changing your support plan, see [Amazon Web Services Support](https://aws.amazon.com/premiumsupport/).
 #' 
 #' You can also use the Amazon Web Services Support API to access features for [Trusted Advisor](https://aws.amazon.com/premiumsupport/technology/trusted-advisor/). You can return a list of checks and their descriptions, get check results, specify checks to refresh, and get the refresh status of checks.
 #' 
@@ -48,6 +48,7 @@ NULL
 #' \item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}: Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
 #' \item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' \item{\strong{use_dual_stack}: Set this to `true` to use the dualstack (IPv4 and IPv6) endpoint for a service, where available, falling back to the regular endpoint when it isn't. Defaults to the `AWS_USE_DUALSTACK_ENDPOINT` environment variable when unset.}
 #' }
 #' @param
 #' credentials
@@ -86,7 +87,8 @@ NULL
 #'     close_connection = "logical",
 #'     timeout = "numeric",
 #'     s3_force_path_style = "logical",
-#'     sts_regional_endpoint = "string"
+#'     sts_regional_endpoint = "string",
+#'     use_dual_stack = "logical"
 #'   ),
 #'   credentials = list(
 #'     creds = list(
@@ -113,9 +115,11 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=support_add_attachments_to_set]{add_attachments_to_set} \tab Adds one or more attachments to an attachment set\cr
-#'  \link[=support_add_communication_to_case]{add_communication_to_case} \tab Adds additional customer communication to an Amazon Web Services Support case\cr
+#'  \link[=support_add_communication_to_case]{add_communication_to_case} \tab Adds additional customer communication to a Amazon Web Services Support case\cr
+#'  \link[=support_complete_attachment_upload]{complete_attachment_upload} \tab Completes an attachment upload that was started with GetAttachmentUploadLinks\cr
 #'  \link[=support_create_case]{create_case} \tab Creates a case in the Amazon Web Services Support Center\cr
 #'  \link[=support_describe_attachment]{describe_attachment} \tab Returns the attachment that has the specified ID\cr
+#'  \link[=support_describe_attachment_upload_status]{describe_attachment_upload_status} \tab Returns the current status, file name, and progress of a multipart attachment upload that was started with GetAttachmentUploadLinks\cr
 #'  \link[=support_describe_cases]{describe_cases} \tab Returns a list of cases that you specify by passing one or more case IDs\cr
 #'  \link[=support_describe_communications]{describe_communications} \tab Returns communications and attachments for one or more support cases\cr
 #'  \link[=support_describe_create_case_options]{describe_create_case_options} \tab Returns a list of CreateCaseOption types along with the corresponding supported hours and language availability\cr
@@ -126,6 +130,8 @@ NULL
 #'  \link[=support_describe_trusted_advisor_check_result]{describe_trusted_advisor_check_result} \tab Returns the results of the Trusted Advisor check that has the specified check ID\cr
 #'  \link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks} \tab Returns information about all available Trusted Advisor checks, including the name, ID, category, description, and metadata\cr
 #'  \link[=support_describe_trusted_advisor_check_summaries]{describe_trusted_advisor_check_summaries} \tab Returns the results for the Trusted Advisor check summaries for the check IDs that you specified\cr
+#'  \link[=support_get_attachment_download_link]{get_attachment_download_link} \tab Returns a presigned download URL for an attachment that is associated with a case communication\cr
+#'  \link[=support_get_attachment_upload_links]{get_attachment_upload_links} \tab Returns one or more presigned upload URLs for uploading a large file attachment to a support case by using a multipart upload workflow\cr
 #'  \link[=support_refresh_trusted_advisor_check]{refresh_trusted_advisor_check} \tab Refreshes the Trusted Advisor check that you specify using the check ID\cr
 #'  \link[=support_resolve_case]{resolve_case} \tab Resolves a support case
 #' }

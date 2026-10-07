@@ -34,6 +34,7 @@ NULL
 #' \item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}: Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
 #' \item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' \item{\strong{use_dual_stack}: Set this to `true` to use the dualstack (IPv4 and IPv6) endpoint for a service, where available, falling back to the regular endpoint when it isn't. Defaults to the `AWS_USE_DUALSTACK_ENDPOINT` environment variable when unset.}
 #' }
 #' @param
 #' credentials
@@ -72,7 +73,8 @@ NULL
 #'     close_connection = "logical",
 #'     timeout = "numeric",
 #'     s3_force_path_style = "logical",
-#'     sts_regional_endpoint = "string"
+#'     sts_regional_endpoint = "string",
+#'     use_dual_stack = "logical"
 #'   ),
 #'   credentials = list(
 #'     creds = list(
@@ -103,7 +105,7 @@ NULL
 #'  \link[=prometheusservice_create_logging_configuration]{create_logging_configuration} \tab The CreateLoggingConfiguration operation creates rules and alerting logging configuration for the workspace\cr
 #'  \link[=prometheusservice_create_query_logging_configuration]{create_query_logging_configuration} \tab Creates a query logging configuration for the specified workspace\cr
 #'  \link[=prometheusservice_create_rule_groups_namespace]{create_rule_groups_namespace} \tab The CreateRuleGroupsNamespace operation creates a rule groups namespace within a workspace\cr
-#'  \link[=prometheusservice_create_scraper]{create_scraper} \tab The CreateScraper operation creates a scraper to collect metrics\cr
+#'  \link[=prometheusservice_create_scraper]{create_scraper} \tab Creates a scraper to collect metrics from Prometheus-compatible sources\cr
 #'  \link[=prometheusservice_create_workspace]{create_workspace} \tab Creates a Prometheus workspace\cr
 #'  \link[=prometheusservice_delete_alert_manager_definition]{delete_alert_manager_definition} \tab Deletes the alert manager definition from a workspace\cr
 #'  \link[=prometheusservice_delete_anomaly_detector]{delete_anomaly_detector} \tab Removes an anomaly detector from a workspace\cr
